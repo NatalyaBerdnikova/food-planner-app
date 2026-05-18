@@ -26,6 +26,7 @@ enum FoodPlannerSchema {
             for: Schema(modelTypes),
             configurations: ModelConfiguration(isStoredInMemoryOnly: true)
         )
+        PreviewSampleData.populate(in: container)
         return container
     }()
 }
