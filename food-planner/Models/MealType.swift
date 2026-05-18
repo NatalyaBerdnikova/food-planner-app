@@ -8,12 +8,12 @@ enum MealType: String, Codable, CaseIterable {
 }
 
 extension MealType {
-    var displayName: String {
+    var displayName: LocalizedStringResource {
         switch self {
-        case .breakfast: "Завтрак"
-        case .lunch: "Обед"
-        case .dinner: "Ужин"
-        case .snack: "Перекус"
+        case .breakfast: "mealType.breakfast"
+        case .lunch: "mealType.lunch"
+        case .dinner: "mealType.dinner"
+        case .snack: "mealType.snack"
         }
     }
 }

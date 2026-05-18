@@ -8,28 +8,28 @@ struct MainTabView: View {
                 HomeView()
             }
             .tabItem {
-                Label("Главная", systemImage: "house.fill")
+                Label("tab.home", systemImage: "house.fill")
             }
 
             NavigationStack {
                 WeekPlanView()
             }
             .tabItem {
-                Label("План", systemImage: "calendar")
+                Label("tab.plan", systemImage: "calendar")
             }
 
             NavigationStack {
                 ShoppingListView()
             }
             .tabItem {
-                Label("Покупки", systemImage: "cart.fill")
+                Label("tab.shopping", systemImage: "cart.fill")
             }
 
             NavigationStack {
                 RecipeLibraryView()
             }
             .tabItem {
-                Label("Рецепты", systemImage: "book.fill")
+                Label("tab.recipes", systemImage: "book.fill")
             }
         }
     }

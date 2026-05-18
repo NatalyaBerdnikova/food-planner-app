@@ -15,21 +15,21 @@ struct AddMealSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Приём пищи") {
-                    Picker("Тип", selection: $mealType) {
+                Section("addMeal.section") {
+                    Picker("addMeal.type", selection: $mealType) {
                         ForEach(MealType.allCases, id: \.self) { type in
                             Text(type.displayName).tag(type)
                         }
                     }
                 }
 
-                Section("Рецепт") {
+                Section("addMeal.recipe") {
                     Button {
                         showRecipePicker = true
                     } label: {
                         HStack {
-                            Text(selectedRecipe?.name ?? "Выбрать рецепт")
-                                .foregroundStyle(selectedRecipe == nil ? .accentColor : .primary)
+                            Text(selectedRecipe?.name ?? String(localized: "addMeal.selectRecipe"))
+                                .foregroundStyle(selectedRecipe == nil ? Color.accentColor : Color.primary)
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .font(.caption.weight(.semibold))
@@ -38,14 +38,14 @@ struct AddMealSheet: View {
                     }
                 }
             }
-            .navigationTitle("Новый приём пищи")
+            .navigationTitle("addMeal.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Отмена") { dismiss() }
+                    Button("common.cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Добавить") { saveMeal() }
+                    Button("common.add") { saveMeal() }
                         .disabled(selectedRecipe == nil)
                 }
             }

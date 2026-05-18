@@ -22,9 +22,9 @@ struct ShoppingListView: View {
         Group {
             if sortedItems.isEmpty {
                 ContentUnavailableView(
-                    "Список пуст",
+                    "empty.shopping",
                     systemImage: "cart",
-                    description: Text("Добавьте приёмы пищи в план на неделю — ингредиенты появятся здесь")
+                    description: Text("empty.shopping.hint")
                 )
             } else {
                 List {
@@ -35,7 +35,7 @@ struct ShoppingListView: View {
                 .listStyle(.insetGrouped)
             }
         }
-        .navigationTitle("Список покупок")
+        .navigationTitle("nav.shopping")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -44,7 +44,7 @@ struct ShoppingListView: View {
                     Image(systemName: "square.and.arrow.up")
                 }
                 .disabled(sortedItems.isEmpty)
-                .accessibilityLabel("Поделиться")
+                .accessibilityLabel("accessibility.share")
             }
         }
         .onAppear { refreshList() }
@@ -54,14 +54,16 @@ struct ShoppingListView: View {
     }
 
     private var shareText: String {
+        let header = String(localized: "shopping.shareHeader")
         let lines = sortedItems.map { item in
-            let mark = item.isPurchased ? "✓ " : "○ "
-            let qty = item.quantity.truncatingRemainder(dividingBy: 1) == 0
-                ? String(format: "%.0f", item.quantity)
-                : String(format: "%.1f", item.quantity)
-            return "\(mark)\(item.name) — \(qty) \(item.unit.displayName)"
+            L10n.shoppingShareLine(
+                purchased: item.isPurchased,
+                name: item.name,
+                quantity: item.quantity,
+                unit: item.unit
+            )
         }
-        return "Список покупок\n\n" + lines.joined(separator: "\n")
+        return header + "\n\n" + lines.joined(separator: "\n")
     }
 
     private func refreshList() {
@@ -86,7 +88,7 @@ struct ShoppingItemRow: View {
                     Text(item.name)
                         .strikethrough(item.isPurchased)
                         .foregroundStyle(item.isPurchased ? .secondary : .primary)
-                    Text(formattedQuantity)
+                    Text(L10n.amount(quantity: item.quantity, unit: item.unit))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -95,12 +97,5 @@ struct ShoppingItemRow: View {
             }
         }
         .buttonStyle(.plain)
-    }
-
-    private var formattedQuantity: String {
-        let qty = item.quantity.truncatingRemainder(dividingBy: 1) == 0
-            ? String(format: "%.0f", item.quantity)
-            : String(format: "%.1f", item.quantity)
-        return "\(qty) \(item.unit.displayName)"
     }
 }

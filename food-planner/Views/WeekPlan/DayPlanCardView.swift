@@ -22,7 +22,7 @@ struct DayPlanCardView: View {
                         Text(dayTitle)
                             .font(.headline)
                         if isToday {
-                            Text("Сегодня")
+                            Text("weekPlan.today")
                                 .font(.caption)
                                 .foregroundStyle(.tint)
                         }
@@ -36,7 +36,7 @@ struct DayPlanCardView: View {
 
             if isExpanded {
                 if dayPlan.meals.isEmpty {
-                    Text("Нет приёмов пищи")
+                    Text("weekPlan.noMeals")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 } else {
@@ -46,7 +46,7 @@ struct DayPlanCardView: View {
                 }
 
                 Button(action: onAddMeal) {
-                    Label("Добавить", systemImage: "plus.circle.fill")
+                    Label("common.add", systemImage: "plus.circle.fill")
                         .font(.subheadline.weight(.medium))
                 }
             }
@@ -83,7 +83,7 @@ struct MealRowView: View {
                 Text(meal.mealType.displayName)
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                Text(meal.recipe?.name ?? "Без рецепта")
+                Text(meal.recipe?.name ?? String(localized: "meal.noRecipe"))
                     .font(.subheadline)
                     .lineLimit(1)
             }

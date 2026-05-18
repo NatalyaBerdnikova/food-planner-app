@@ -23,7 +23,7 @@ struct HomeView: View {
             }
             .padding()
         }
-        .navigationTitle("Главная")
+        .navigationTitle("nav.home")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 NavigationLink {
@@ -31,7 +31,7 @@ struct HomeView: View {
                 } label: {
                     Image(systemName: "gearshape")
                 }
-                .accessibilityLabel("Настройки")
+                .accessibilityLabel("accessibility.settings")
             }
         }
         .onAppear { loadWeekPlan() }
@@ -43,9 +43,9 @@ struct HomeView: View {
         } label: {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Текущий план питания")
+                    Text("home.currentPlan")
                         .font(.headline)
-                    Text(weekRangeText)
+                    Text(weekRangeFormatted)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
@@ -62,7 +62,7 @@ struct HomeView: View {
 
     private var todayPlanSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Сегодня")
+            Text("home.today")
                 .font(.title2.bold())
 
             NutritionSummaryView(nutrition: todayNutrition)
@@ -77,11 +77,11 @@ struct HomeView: View {
 
     private var recommendationsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Рекомендации")
+            Text("home.recommendations")
                 .font(.title2.bold())
 
             if recommendedRecipes.isEmpty {
-                Text("Добавьте рецепты, чтобы увидеть рекомендации")
+                Text("home.addRecipesHint")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             } else {
@@ -117,8 +117,10 @@ struct HomeView: View {
         Array(recipes.prefix(4))
     }
 
-    private var weekRangeText: String {
-        guard let weekPlan = currentWeekPlan else { return "Неделя не создана" }
+    private var weekRangeFormatted: String {
+        guard let weekPlan = currentWeekPlan else {
+            return String(localized: "home.weekNotCreated")
+        }
         let calendar = Calendar.current
         let start = weekPlan.weekStartDate
         let end = calendar.date(byAdding: .day, value: 6, to: start) ?? start
@@ -145,14 +147,18 @@ struct TodayMealSlotView: View {
                 Text(mealType.displayName)
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                Text(meal?.recipe?.name ?? "Не запланировано")
+                Text(meal?.recipe?.name ?? String(localized: "home.notPlanned"))
                     .font(.body)
             }
 
             Spacer()
 
             if let recipe = meal?.recipe {
-                Text("\(Int(recipe.caloriesPer100g)) ккал")
+                let nutrition = NutritionCalculator.recipeNutrition(recipe)
+                let calories = nutrition.totalWeightGrams > 0
+                    ? Int(nutrition.total.calories.rounded())
+                    : Int(recipe.caloriesPer100g)
+                Text(L10n.kcalShort(calories))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

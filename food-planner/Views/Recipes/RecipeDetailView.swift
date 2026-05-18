@@ -3,6 +3,12 @@ import SwiftUI
 struct RecipeDetailView: View {
     let recipe: Recipe
 
+    @State private var showMicronutrients = false
+
+    private var nutrition: RecipeNutrition {
+        NutritionCalculator.recipeNutrition(recipe)
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -13,31 +19,69 @@ struct RecipeDetailView: View {
                 Text(recipe.name)
                     .font(.title.bold())
 
-                NutritionSummaryView(
-                    nutrition: DailyNutrition(
-                        calories: recipe.caloriesPer100g,
-                        protein: recipe.proteinPer100g,
-                        fat: recipe.fatPer100g,
-                        carbs: recipe.carbsPer100g
-                    ),
-                    title: "КБЖУ на 100 г"
-                )
+                if nutrition.totalWeightGrams > 0 {
+                    NutritionSummaryView(
+                        nutrition: nutrition.per100g.macros,
+                        title: "nutrition.title.per100g"
+                    )
+
+                    HStack {
+                        Text(L10n.recipeTotalCalories(Int(nutrition.total.calories.rounded())))
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        Text("·")
+                            .foregroundStyle(.tertiary)
+                        Text(L10n.recipeWeight(Int(nutrition.totalWeightGrams.rounded())))
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Button {
+                        showMicronutrients = true
+                    } label: {
+                        Label("nutrition.microDetail", systemImage: "chart.bar.doc.horizontal")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                } else {
+                    NutritionSummaryView(
+                        nutrition: DailyNutrition(
+                            calories: recipe.caloriesPer100g,
+                            protein: recipe.proteinPer100g,
+                            fat: recipe.fatPer100g,
+                            carbs: recipe.carbsPer100g
+                        ),
+                        title: "nutrition.title.per100g"
+                    )
+                }
 
                 if !recipe.ingredients.isEmpty {
-                    sectionTitle("Ингредиенты")
+                    sectionTitle("recipe.ingredients")
                     ForEach(recipe.ingredients) { ingredient in
                         HStack {
-                            Text(ingredient.name)
+                            VStack(alignment: .leading, spacing: 2) {
+                                if let product = ingredient.foodProduct {
+                                    Text(LocalizedStringResource(stringLiteral: product.localizationKey))
+                                } else {
+                                    Text(ingredient.name)
+                                }
+                                Text(L10n.amount(quantity: ingredient.quantity, unit: ingredient.unit))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                             Spacer()
-                            Text("\(formatted(ingredient.quantity)) \(ingredient.unit.displayName)")
-                                .foregroundStyle(.secondary)
+                            if ingredient.foodProduct != nil {
+                                Text(L10n.kcalShort(Int(NutritionCalculator.ingredientNutrition(ingredient).calories.rounded())))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                         .font(.subheadline)
                     }
                 }
 
                 if !recipe.steps.isEmpty {
-                    sectionTitle("Шаги")
+                    sectionTitle("recipe.steps")
                     ForEach(Array(recipe.steps.enumerated()), id: \.offset) { index, step in
                         HStack(alignment: .top, spacing: 8) {
                             Text("\(index + 1).")
@@ -50,7 +94,7 @@ struct RecipeDetailView: View {
                 }
 
                 if let urlString = recipe.sourceURL, let url = URL(string: urlString) {
-                    Link("Источник", destination: url)
+                    Link("recipe.source", destination: url)
                         .font(.subheadline)
                 }
             }
@@ -58,16 +102,16 @@ struct RecipeDetailView: View {
         }
         .navigationTitle(recipe.name)
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showMicronutrients) {
+            MicronutrientDetailSheet(recipe: recipe)
+        }
+        .onAppear {
+            recipe.recalculateNutrition()
+        }
     }
 
-    private func sectionTitle(_ title: String) -> some View {
+    private func sectionTitle(_ title: LocalizedStringResource) -> some View {
         Text(title)
             .font(.headline)
-    }
-
-    private func formatted(_ value: Double) -> String {
-        value.truncatingRemainder(dividingBy: 1) == 0
-            ? String(format: "%.0f", value)
-            : String(format: "%.1f", value)
     }
 }

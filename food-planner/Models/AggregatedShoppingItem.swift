@@ -9,9 +9,6 @@ struct AggregatedShoppingItem: Identifiable, Hashable {
     let category: IngredientCategory
 
     var formattedQuantity: String {
-        let value = quantity.truncatingRemainder(dividingBy: 1) == 0
-            ? String(format: "%.0f", quantity)
-            : String(format: "%.1f", quantity)
-        return "\(value) \(unit.displayName)"
+        L10n.amount(quantity: quantity, unit: unit)
     }
 }

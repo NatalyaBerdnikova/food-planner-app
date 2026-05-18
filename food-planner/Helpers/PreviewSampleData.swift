@@ -9,46 +9,62 @@ enum PreviewSampleData {
             return
         }
 
+        FoodCatalogSeeder.seedIfNeeded(in: context)
+
+        func product(_ key: String) -> FoodProduct? {
+            FoodCatalogSeeder.product(forKey: key, in: context)
+        }
+
+        func ingredient(
+            key: String,
+            quantity: Double,
+            unit: MeasurementUnit,
+            recipe: Recipe
+        ) -> Ingredient? {
+            guard let food = product(key) else { return nil }
+            let name = String(localized: LocalizedStringResource(stringLiteral: food.localizationKey))
+            let ing = Ingredient(
+                name: name,
+                quantity: quantity,
+                unit: unit,
+                category: food.category,
+                recipe: recipe,
+                foodProduct: food
+            )
+            context.insert(ing)
+            return ing
+        }
+
         let oatmeal = Recipe(
             name: "Овсянка с ягодами",
-            steps: ["Залить овсянку молоком", "Добавить ягоды"],
-            caloriesPer100g: 350,
-            proteinPer100g: 12,
-            fatPer100g: 8,
-            carbsPer100g: 55,
-            ingredients: [
-                Ingredient(name: "Овсянка", quantity: 80, unit: .gram, category: .grains),
-                Ingredient(name: "Молоко", quantity: 200, unit: .milliliter, category: .dairy),
-            ]
+            steps: ["Залить овсянку молоком", "Добавить ягоды"]
         )
-
-        let soup = Recipe(
-            name: "Куриный суп",
-            caloriesPer100g: 45,
-            proteinPer100g: 4,
-            fatPer100g: 1.5,
-            carbsPer100g: 5,
-            ingredients: [
-                Ingredient(name: "Курица", quantity: 300, unit: .gram, category: .meat),
-                Ingredient(name: "Морковь", quantity: 1, unit: .piece, category: .vegetables),
-            ]
-        )
-
-        let salad = Recipe(
-            name: "Греческий салат",
-            caloriesPer100g: 120,
-            proteinPer100g: 4,
-            fatPer100g: 9,
-            carbsPer100g: 6,
-            ingredients: [
-                Ingredient(name: "Помидоры", quantity: 2, unit: .piece, category: .vegetables),
-                Ingredient(name: "Сыр фета", quantity: 100, unit: .gram, category: .dairy),
-            ]
-        )
-
         context.insert(oatmeal)
+        if let o = ingredient(key: "oatmeal", quantity: 80, unit: .gram, recipe: oatmeal),
+           let m = ingredient(key: "milk", quantity: 200, unit: .milliliter, recipe: oatmeal),
+           let b = ingredient(key: "banana", quantity: 1, unit: .piece, recipe: oatmeal) {
+            oatmeal.ingredients = [o, m, b]
+        }
+        oatmeal.recalculateNutrition()
+
+        let soup = Recipe(name: "Куриный суп")
         context.insert(soup)
+        if let c = ingredient(key: "chicken_breast", quantity: 300, unit: .gram, recipe: soup),
+           let car = ingredient(key: "carrot", quantity: 1, unit: .piece, recipe: soup),
+           let on = ingredient(key: "onion", quantity: 1, unit: .piece, recipe: soup) {
+            soup.ingredients = [c, car, on]
+        }
+        soup.recalculateNutrition()
+
+        let salad = Recipe(name: "Греческий салат")
         context.insert(salad)
+        if let t = ingredient(key: "tomato", quantity: 2, unit: .piece, recipe: salad),
+           let cu = ingredient(key: "cucumber", quantity: 1, unit: .piece, recipe: salad),
+           let ch = ingredient(key: "cheese", quantity: 100, unit: .gram, recipe: salad),
+           let oil = ingredient(key: "olive_oil", quantity: 1, unit: .tablespoon, recipe: salad) {
+            salad.ingredients = [t, cu, ch, oil]
+        }
+        salad.recalculateNutrition()
 
         let weekPlan = WeekPlan(weekStartDate: Calendar.current.startOfWeek(for: .now))
         context.insert(weekPlan)

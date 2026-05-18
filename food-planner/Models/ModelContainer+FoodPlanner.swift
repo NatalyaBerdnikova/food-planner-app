@@ -2,6 +2,7 @@ import SwiftData
 
 enum FoodPlannerSchema {
     static let modelTypes: [any PersistentModel.Type] = [
+        FoodProduct.self,
         Recipe.self,
         Ingredient.self,
         Meal.self,

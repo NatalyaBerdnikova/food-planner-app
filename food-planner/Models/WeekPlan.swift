@@ -63,8 +63,8 @@ final class WeekPlan {
                 )
             }
             .sorted { lhs, rhs in
-                if lhs.category.displayName != rhs.category.displayName {
-                    return lhs.category.displayName < rhs.category.displayName
+                if lhs.category.rawValue != rhs.category.rawValue {
+                    return lhs.category.rawValue < rhs.category.rawValue
                 }
                 return lhs.name.localizedCaseInsensitiveCompare(rhs.name) == .orderedAscending
             }

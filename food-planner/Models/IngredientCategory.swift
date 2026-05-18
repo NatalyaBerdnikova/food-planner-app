@@ -12,16 +12,16 @@ enum IngredientCategory: String, Codable, CaseIterable {
 }
 
 extension IngredientCategory {
-    var displayName: String {
+    var displayName: LocalizedStringResource {
         switch self {
-        case .vegetables: "Овощи"
-        case .meat: "Мясо"
-        case .fish: "Рыба и морепродукты"
-        case .dairy: "Молочные продукты"
-        case .grains: "Крупы и макароны"
-        case .fruits: "Фрукты"
-        case .spices: "Специи и приправы"
-        case .other: "Прочее"
+        case .vegetables: "category.vegetables"
+        case .meat: "category.meat"
+        case .fish: "category.fish"
+        case .dairy: "category.dairy"
+        case .grains: "category.grains"
+        case .fruits: "category.fruits"
+        case .spices: "category.spices"
+        case .other: "category.other"
         }
     }
 }

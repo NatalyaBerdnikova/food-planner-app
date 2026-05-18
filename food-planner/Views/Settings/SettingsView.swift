@@ -1,29 +1,44 @@
 import SwiftUI
+import SwiftData
 
 struct SettingsView: View {
     @AppStorage("openAIAPIKey") private var apiKey = ""
     @AppStorage("productDatabaseName") private var productDatabaseName = ""
+    @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
+    @Query private var foodProducts: [FoodProduct]
 
     var body: some View {
         Form {
             Section {
-                SecureField("API ключ", text: $apiKey)
-                    .textInputAutocapitalization(.never)
-            } header: {
-                Text("API")
-            } footer: {
-                Text("Ключ для генерации рецептов и подсказок (будет использоваться позже).")
+                Picker("settings.language", selection: $appLanguageRaw) {
+                    ForEach(AppLanguage.allCases) { language in
+                        Text(language.displayName)
+                            .tag(language.rawValue)
+                    }
+                }
             }
 
             Section {
-                TextField("Название базы продуктов", text: $productDatabaseName)
+                SecureField("settings.apiKey", text: $apiKey)
+                    .textInputAutocapitalization(.never)
             } header: {
-                Text("База продуктов")
+                Text("settings.api")
             } footer: {
-                Text("Справочник продуктов для автозаполнения ингредиентов.")
+                Text("settings.api.footer")
+            }
+
+            Section {
+                TextField("settings.productDBName", text: $productDatabaseName)
+                LabeledContent("settings.productDB.count") {
+                    Text("\(foodProducts.count)")
+                }
+            } header: {
+                Text("settings.productDB")
+            } footer: {
+                Text("settings.productDB.footer")
             }
         }
-        .navigationTitle("Настройки")
+        .navigationTitle("nav.settings")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -30,7 +30,7 @@ struct WeekPlanView: View {
                 ProgressView()
             }
         }
-        .navigationTitle("План на неделю")
+        .navigationTitle("nav.weekPlan")
         .onAppear { loadWeekPlan() }
         .onChange(of: weekPlans.count) { _, _ in loadWeekPlan() }
         .sheet(isPresented: $showAddMeal) {

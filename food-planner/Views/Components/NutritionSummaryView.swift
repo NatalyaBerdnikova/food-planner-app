@@ -2,7 +2,7 @@ import SwiftUI
 
 struct NutritionSummaryView: View {
     let nutrition: DailyNutrition
-    var title: String = "КБЖУ за день"
+    var title: LocalizedStringResource = "nutrition.title.day"
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -11,10 +11,10 @@ struct NutritionSummaryView: View {
                 .foregroundStyle(.secondary)
 
             HStack(spacing: 12) {
-                macroChip(title: "Ккал", value: nutrition.calories)
-                macroChip(title: "Б", value: nutrition.protein)
-                macroChip(title: "Ж", value: nutrition.fat)
-                macroChip(title: "У", value: nutrition.carbs)
+                macroChip(title: "nutrition.macro.kcal", value: nutrition.calories)
+                macroChip(title: "nutrition.macro.protein", value: nutrition.protein)
+                macroChip(title: "nutrition.macro.fat", value: nutrition.fat)
+                macroChip(title: "nutrition.macro.carbs", value: nutrition.carbs)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -23,7 +23,7 @@ struct NutritionSummaryView: View {
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
-    private func macroChip(title: String, value: Double) -> some View {
+    private func macroChip(title: LocalizedStringResource, value: Double) -> some View {
         VStack(spacing: 4) {
             Text(title)
                 .font(.caption)

@@ -1,0 +1,44 @@
+import Foundation
+
+enum L10n {
+    static func kcalPer100g(_ calories: Int) -> String {
+        String(localized: "nutrition.kcalPer100g \(calories)")
+    }
+
+    static func kcalShort(_ calories: Int) -> String {
+        String(localized: "nutrition.kcalShort \(calories)")
+    }
+
+    static func recipeTotalCalories(_ calories: Int) -> String {
+        String(localized: "nutrition.recipeTotal \(calories)")
+    }
+
+    static func recipeWeight(_ grams: Int) -> String {
+        String(localized: "nutrition.recipeWeight \(grams)")
+    }
+
+    static func amount(quantity: Double, unit: MeasurementUnit) -> String {
+        let value = formatNumber(quantity)
+        return String(localized: "format.amount \(value) \(String(localized: unit.displayName))")
+    }
+
+    static func shoppingShareLine(
+        purchased: Bool,
+        name: String,
+        quantity: Double,
+        unit: MeasurementUnit
+    ) -> String {
+        let mark = purchased
+            ? String(localized: "shopping.share.purchasedMark")
+            : String(localized: "shopping.share.pendingMark")
+        let qty = formatNumber(quantity)
+        let unitName = String(localized: unit.displayName)
+        return String(localized: "shopping.share.line \(mark) \(name) \(qty) \(unitName)")
+    }
+
+    private static func formatNumber(_ value: Double) -> String {
+        value.truncatingRemainder(dividingBy: 1) == 0
+            ? String(format: "%.0f", value)
+            : String(format: "%.1f", value)
+    }
+}

@@ -20,7 +20,7 @@ struct RecipePickerView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(recipe.name)
                             .foregroundStyle(.primary)
-                        Text("\(Int(recipe.caloriesPer100g)) ккал / 100 г")
+                        Text(L10n.kcalPer100g(Int(recipe.caloriesPer100g)))
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -34,14 +34,14 @@ struct RecipePickerView: View {
                 }
             }
         }
-        .navigationTitle("Выбор рецепта")
+        .navigationTitle("nav.recipePicker")
         .navigationBarTitleDisplayMode(.inline)
         .overlay {
             if recipes.isEmpty {
                 ContentUnavailableView(
-                    "Нет рецептов",
+                    "empty.recipes",
                     systemImage: "book.closed",
-                    description: Text("Добавьте рецепт во вкладке «Рецепты»")
+                    description: Text("empty.recipes.hint")
                 )
             }
         }

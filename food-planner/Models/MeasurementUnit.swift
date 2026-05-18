@@ -11,15 +11,15 @@ enum MeasurementUnit: String, Codable, CaseIterable {
 }
 
 extension MeasurementUnit {
-    var displayName: String {
+    var displayName: LocalizedStringResource {
         switch self {
-        case .gram: "г"
-        case .kilogram: "кг"
-        case .milliliter: "мл"
-        case .liter: "л"
-        case .piece: "шт"
-        case .tablespoon: "ст. л."
-        case .teaspoon: "ч. л."
+        case .gram: "unit.gram"
+        case .kilogram: "unit.kilogram"
+        case .milliliter: "unit.milliliter"
+        case .liter: "unit.liter"
+        case .piece: "unit.piece"
+        case .tablespoon: "unit.tablespoon"
+        case .teaspoon: "unit.teaspoon"
         }
     }
 }

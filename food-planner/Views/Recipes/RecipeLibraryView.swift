@@ -15,9 +15,9 @@ struct RecipeLibraryView: View {
         Group {
             if recipes.isEmpty {
                 ContentUnavailableView(
-                    "Нет рецептов",
+                    "empty.recipesLibrary",
                     systemImage: "book.closed",
-                    description: Text("Создайте первый рецепт")
+                    description: Text("empty.recipesLibrary.hint")
                 )
             } else {
                 ScrollView {
@@ -35,7 +35,7 @@ struct RecipeLibraryView: View {
                 }
             }
         }
-        .navigationTitle("Рецепты")
+        .navigationTitle("nav.recipes")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -43,7 +43,7 @@ struct RecipeLibraryView: View {
                 } label: {
                     Image(systemName: "plus")
                 }
-                .accessibilityLabel("Добавить рецепт")
+                .accessibilityLabel("accessibility.addRecipe")
             }
         }
         .navigationDestination(isPresented: $showAddRecipe) {
