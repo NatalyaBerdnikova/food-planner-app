@@ -1,38 +1,550 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "product.chicken_breast" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Chicken breast" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Куриная грудка" } } } },
-    "product.beef" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Beef" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Говядина" } } } },
-    "product.salmon" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Salmon" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Лосось" } } } },
-    "product.egg" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Egg" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Яйцо" } } } },
-    "product.milk" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Milk" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Молоко" } } } },
-    "product.yogurt" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Greek yogurt" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Греческий йогурт" } } } },
-    "product.cheese" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Cheese" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Сыр" } } } },
-    "product.oatmeal" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Oatmeal" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Овсянка" } } } },
-    "product.rice" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Rice" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Рис" } } } },
-    "product.pasta" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Pasta" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Макароны" } } } },
-    "product.bread" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Bread" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Хлеб" } } } },
-    "product.potato" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Potato" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Картофель" } } } },
-    "product.tomato" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Tomato" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Помидор" } } } },
-    "product.cucumber" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Cucumber" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Огурец" } } } },
-    "product.carrot" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Carrot" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Морковь" } } } },
-    "product.onion" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Onion" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Лук" } } } },
-    "product.broccoli" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Broccoli" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Брокколи" } } } },
-    "product.spinach" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Spinach" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Шпинат" } } } },
-    "product.banana" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Banana" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Банан" } } } },
-    "product.apple" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Apple" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Яблоко" } } } },
-    "product.olive_oil" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Olive oil" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Оливковое масло" } } } },
-    "product.butter" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Butter" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Сливочное масло" } } } },
-    "product.sugar" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Sugar" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Сахар" } } } },
-    "product.honey" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Honey" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Мёд" } } } },
-    "product.lentils" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Lentils" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Чечевица" } } } },
-    "product.beans" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Beans" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Фасоль" } } } },
-    "product.almonds" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Almonds" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Миндаль" } } } },
-    "product.garlic" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Garlic" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Чеснок" } } } },
-    "product.lemon" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Lemon" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Лимон" } } } },
-    "product.avocado" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Avocado" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Авокадо" } } } },
-    "product.bell_pepper" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Bell pepper" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Болгарский перец" } } } },
-    "product.turkey" : { "localizations" : { "en" : { "stringUnit" : { "state" : "translated", "value" : "Turkey" } }, "ru" : { "stringUnit" : { "state" : "translated", "value" : "Индейка" } } } }
+    "product.almonds" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almonds"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Миндаль"
+          }
+        }
+      }
+    },
+    "product.apple" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яблоко"
+          }
+        }
+      }
+    },
+    "product.avocado" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avocado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Авокадо"
+          }
+        }
+      }
+    },
+    "product.banana" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banana"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Банан"
+          }
+        }
+      }
+    },
+    "product.beans" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beans"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фасоль"
+          }
+        }
+      }
+    },
+    "product.beef" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beef"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Говядина"
+          }
+        }
+      }
+    },
+    "product.bell_pepper" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bell pepper"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Болгарский перец"
+          }
+        }
+      }
+    },
+    "product.bread" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bread"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хлеб"
+          }
+        }
+      }
+    },
+    "product.broccoli" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Broccoli"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Брокколи"
+          }
+        }
+      }
+    },
+    "product.butter" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Butter"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сливочное масло"
+          }
+        }
+      }
+    },
+    "product.carrot" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carrot"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Морковь"
+          }
+        }
+      }
+    },
+    "product.cheese" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cheese"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сыр"
+          }
+        }
+      }
+    },
+    "product.chicken_breast" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chicken breast"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Куриная грудка"
+          }
+        }
+      }
+    },
+    "product.cucumber" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cucumber"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Огурец"
+          }
+        }
+      }
+    },
+    "product.egg" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Egg"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яйцо"
+          }
+        }
+      }
+    },
+    "product.garlic" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garlic"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чеснок"
+          }
+        }
+      }
+    },
+    "product.honey" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Honey"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мёд"
+          }
+        }
+      }
+    },
+    "product.lemon" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lemon"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лимон"
+          }
+        }
+      }
+    },
+    "product.lentils" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lentils"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чечевица"
+          }
+        }
+      }
+    },
+    "product.milk" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Milk"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Молоко"
+          }
+        }
+      }
+    },
+    "product.oatmeal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oatmeal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Овсянка"
+          }
+        }
+      }
+    },
+    "product.olive_oil" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olive oil"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оливковое масло"
+          }
+        }
+      }
+    },
+    "product.onion" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onion"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лук"
+          }
+        }
+      }
+    },
+    "product.pasta" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pasta"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Макароны"
+          }
+        }
+      }
+    },
+    "product.potato" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potato"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Картофель"
+          }
+        }
+      }
+    },
+    "product.rice" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rice"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рис"
+          }
+        }
+      }
+    },
+    "product.salmon" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salmon"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лосось"
+          }
+        }
+      }
+    },
+    "product.spinach" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spinach"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шпинат"
+          }
+        }
+      }
+    },
+    "product.sugar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сахар"
+          }
+        }
+      }
+    },
+    "product.tomato" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tomato"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помидор"
+          }
+        }
+      }
+    },
+    "product.turkey" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turkey"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Индейка"
+          }
+        }
+      }
+    },
+    "product.yogurt" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Greek yogurt"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Греческий йогурт"
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }

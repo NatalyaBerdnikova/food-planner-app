@@ -21,6 +21,7 @@ struct ContentView: View {
             .applyAppLanguage(appLanguage)
             .onAppear {
                 FoodCatalogSeeder.seedIfNeeded(in: modelContext)
+                _ = AppSettingsService.settings(in: modelContext)
             }
     }
 }

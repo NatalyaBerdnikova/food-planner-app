@@ -9,11 +9,15 @@ enum FoodPlannerSchema {
         DayPlan.self,
         WeekPlan.self,
         ShoppingItem.self,
+        AppSettings.self,
     ]
 
     static var container: ModelContainer {
         let schema = Schema(modelTypes)
-        let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let configuration = ModelConfiguration(
+            schema: schema,
+            url: LocalPersistence.storeURL
+        )
         do {
             return try ModelContainer(for: schema, configurations: [configuration])
         } catch {

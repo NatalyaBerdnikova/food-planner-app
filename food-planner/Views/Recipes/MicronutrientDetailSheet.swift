@@ -13,11 +13,11 @@ struct MicronutrientDetailSheet: View {
             List {
                 if nutrition.totalWeightGrams > 0 {
                     Section("nutrition.section.total") {
-                        nutrientRows(for: nutrition.total)
+                        micronutrientRows(for: nutrition.total)
                     }
 
                     Section("nutrition.section.per100g") {
-                        nutrientRows(for: nutrition.per100g)
+                        micronutrientRows(for: nutrition.per100g)
                     }
 
                     Section {
@@ -33,7 +33,7 @@ struct MicronutrientDetailSheet: View {
                     )
                 }
             }
-            .navigationTitle("nutrition.microDetail")
+            .navigationTitle("nutrition.microTitle")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -44,36 +44,14 @@ struct MicronutrientDetailSheet: View {
     }
 
     @ViewBuilder
-    private func nutrientRows(for totals: NutrientTotals) -> some View {
-        macroRow("nutrition.macro.kcal", value: totals.calories, unit: "nutrition.unit.kcal")
-        macroRow("nutrition.macro.protein", value: totals.protein, unit: "nutrition.unit.g")
-        macroRow("nutrition.macro.fat", value: totals.fat, unit: "nutrition.unit.g")
-        macroRow("nutrition.macro.carbs", value: totals.carbs, unit: "nutrition.unit.g")
-        macroRow("micro.fiber", value: totals.fiber, unit: "nutrition.unit.g")
-        macroRow("micro.sugar", value: totals.sugar, unit: "nutrition.unit.g")
-        macroRow("micro.saturatedFat", value: totals.saturatedFat, unit: "nutrition.unit.g")
-        macroRow("micro.sodium", value: totals.sodium, unit: "nutrition.unit.mg")
-        macroRow("micro.potassium", value: totals.potassium, unit: "nutrition.unit.mg")
-        macroRow("micro.calcium", value: totals.calcium, unit: "nutrition.unit.mg")
-        macroRow("micro.iron", value: totals.iron, unit: "nutrition.unit.mg")
-        macroRow("micro.magnesium", value: totals.magnesium, unit: "nutrition.unit.mg")
-        macroRow("micro.zinc", value: totals.zinc, unit: "nutrition.unit.mg")
-        macroRow("micro.vitaminC", value: totals.vitaminC, unit: "nutrition.unit.mg")
-        macroRow("micro.vitaminD", value: totals.vitaminD, unit: "nutrition.unit.mcg")
-        macroRow("micro.vitaminB12", value: totals.vitaminB12, unit: "nutrition.unit.mcg")
-        macroRow("micro.folate", value: totals.folate, unit: "nutrition.unit.mcg")
-    }
-
-    private func macroRow(
-        _ title: LocalizedStringResource,
-        value: Double,
-        unit: LocalizedStringResource
-    ) -> some View {
-        HStack {
-            Text(title)
-            Spacer()
-            Text("\(formatted(value)) \(String(localized: unit))")
-                .foregroundStyle(.secondary)
+    private func micronutrientRows(for totals: NutrientTotals) -> some View {
+        ForEach(MicronutrientKind.allCases) { kind in
+            HStack {
+                Text(kind.displayName)
+                Spacer()
+                Text("\(formatted(totals.value(for: kind))) \(String(localized: String.LocalizationValue(kind.unitLocalizationKey)))")
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 

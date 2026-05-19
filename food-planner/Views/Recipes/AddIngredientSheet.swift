@@ -17,22 +17,36 @@ struct AddIngredientSheet: View {
     @State private var selectedKey: String?
     @State private var quantityText = "100"
     @State private var unit: MeasurementUnit = .gram
+    @State private var searchText = ""
 
     private var selectedProduct: FoodProduct? {
         guard let key = selectedKey else { return nil }
         return products.first { $0.catalogKey == key }
     }
 
+    private var filteredProducts: [FoodProduct] {
+        let query = searchText.trimmingCharacters(in: .whitespaces)
+        guard !query.isEmpty else { return products }
+        return products.filter { product in
+            product.displayName.localizedCaseInsensitiveContains(query)
+                || product.catalogKey.localizedCaseInsensitiveContains(query)
+        }
+    }
+
     var body: some View {
         NavigationStack {
-            Form {
+            List {
                 Section("addIngredient.product") {
-                    Picker("addIngredient.product", selection: $selectedKey) {
-                        Text("addIngredient.selectProduct")
-                            .tag(nil as String?)
-                        ForEach(products, id: \.catalogKey) { product in
-                            Text(LocalizedStringResource(stringLiteral: product.localizationKey))
-                                .tag(product.catalogKey as String?)
+                    if filteredProducts.isEmpty {
+                        ContentUnavailableView(
+                            "search.noResults",
+                            systemImage: "magnifyingglass",
+                            description: Text("search.noResults.hint")
+                        )
+                        .listRowBackground(Color.clear)
+                    } else {
+                        ForEach(filteredProducts, id: \.catalogKey) { product in
+                            productRow(product)
                         }
                     }
                 }
@@ -47,6 +61,7 @@ struct AddIngredientSheet: View {
                     }
                 }
             }
+            .searchable(text: $searchText, prompt: "search.products")
             .navigationTitle("addIngredient.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -59,6 +74,23 @@ struct AddIngredientSheet: View {
                 }
             }
         }
+    }
+
+    private func productRow(_ product: FoodProduct) -> some View {
+        Button {
+            selectedKey = product.catalogKey
+        } label: {
+            HStack {
+                Text(product.displayName)
+                    .foregroundStyle(.primary)
+                Spacer()
+                if selectedKey == product.catalogKey {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(.tint)
+                }
+            }
+        }
+        .buttonStyle(.plain)
     }
 
     private var canAdd: Bool {

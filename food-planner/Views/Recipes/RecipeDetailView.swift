@@ -1,6 +1,9 @@
 import SwiftUI
+import SwiftData
 
 struct RecipeDetailView: View {
+    @Environment(\.modelContext) private var modelContext
+
     let recipe: Recipe
 
     @State private var showMicronutrients = false
@@ -39,7 +42,7 @@ struct RecipeDetailView: View {
                     Button {
                         showMicronutrients = true
                     } label: {
-                        Label("nutrition.microDetail", systemImage: "chart.bar.doc.horizontal")
+                        Label("recipe.moreDetails", systemImage: "list.bullet.rectangle")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.bordered)
@@ -60,11 +63,7 @@ struct RecipeDetailView: View {
                     ForEach(recipe.ingredients) { ingredient in
                         HStack {
                             VStack(alignment: .leading, spacing: 2) {
-                                if let product = ingredient.foodProduct {
-                                    Text(LocalizedStringResource(stringLiteral: product.localizationKey))
-                                } else {
-                                    Text(ingredient.name)
-                                }
+                                Text(ingredient.displayName)
                                 Text(L10n.amount(quantity: ingredient.quantity, unit: ingredient.unit))
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
@@ -107,6 +106,7 @@ struct RecipeDetailView: View {
         }
         .onAppear {
             recipe.recalculateNutrition()
+            LocalPersistence.save(modelContext)
         }
     }
 

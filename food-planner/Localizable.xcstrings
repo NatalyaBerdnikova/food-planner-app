@@ -1,6 +1,32 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "·" : {
+
+    },
+    "%@ / %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ / %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
     "%lld." : {
 
     },
@@ -52,6 +78,102 @@
         }
       }
     },
+    "addIngredient.amount" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество"
+          }
+        }
+      }
+    },
+    "addIngredient.product" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продукт"
+          }
+        }
+      }
+    },
+    "addIngredient.quantity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quantity"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество"
+          }
+        }
+      }
+    },
+    "addIngredient.selectProduct" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select product"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите продукт"
+          }
+        }
+      }
+    },
+    "addIngredient.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredient"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ингредиент"
+          }
+        }
+      }
+    },
+    "addIngredient.unit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unit"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Единица"
+          }
+        }
+      }
+    },
     "addMeal.recipe" : {
       "localizations" : {
         "en" : {
@@ -69,6 +191,7 @@
       }
     },
     "addMeal.section" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -85,6 +208,7 @@
       }
     },
     "addMeal.selectRecipe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -132,7 +256,24 @@
         }
       }
     },
+    "addRecipe.addIngredient" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add ingredient"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить ингредиент"
+          }
+        }
+      }
+    },
     "addRecipe.calories" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -149,6 +290,7 @@
       }
     },
     "addRecipe.carbs" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -165,6 +307,7 @@
       }
     },
     "addRecipe.fat" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -176,6 +319,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Жиры"
+          }
+        }
+      }
+    },
+    "addRecipe.import" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From device"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "С устройства"
+          }
+        }
+      }
+    },
+    "addRecipe.import.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON with name, steps, and ingredients (catalogKey, quantity, unit). Plain text: first line is the title."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON: название, шаги, ингредиенты (catalogKey, quantity, unit). Текст: первая строка — название."
+          }
+        }
+      }
+    },
+    "addRecipe.importFile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import file"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импортировать файл"
+          }
+        }
+      }
+    },
+    "addRecipe.ingredients" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredients"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ингредиенты"
           }
         }
       }
@@ -228,7 +435,40 @@
         }
       }
     },
+    "addRecipe.photo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фото"
+          }
+        }
+      }
+    },
+    "addRecipe.pickPhoto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose photo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать фото"
+          }
+        }
+      }
+    },
     "addRecipe.protein" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -468,6 +708,22 @@
         }
       }
     },
+    "common.done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
+          }
+        }
+      }
+    },
     "common.save" : {
       "localizations" : {
         "en" : {
@@ -660,6 +916,22 @@
         }
       }
     },
+    "home.targetProgress" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress vs target"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прогресс к цели"
+          }
+        }
+      }
+    },
     "home.today" : {
       "localizations" : {
         "en" : {
@@ -688,6 +960,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неделя не создана"
+          }
+        }
+      }
+    },
+    "import.error.invalid" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid recipe format."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неверный формат рецепта."
+          }
+        }
+      }
+    },
+    "import.error.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import failed"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка импорта"
+          }
+        }
+      }
+    },
+    "import.error.unreadable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not read the file."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось прочитать файл."
           }
         }
       }
@@ -816,6 +1136,295 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Перекус"
+          }
+        }
+      }
+    },
+    "micro.calcium" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcium"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кальций"
+          }
+        }
+      }
+    },
+    "micro.chromium" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chromium"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хром"
+          }
+        }
+      }
+    },
+    "micro.fiber" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fiber"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клетчатка"
+          }
+        }
+      }
+    },
+    "micro.iodine" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iodine"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Йод"
+          }
+        }
+      }
+    },
+    "micro.iron" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iron"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Железо"
+          }
+        }
+      }
+    },
+    "micro.magnesium" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Magnesium"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Магний"
+          }
+        }
+      }
+    },
+    "micro.potassium" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potassium"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Калий"
+          }
+        }
+      }
+    },
+    "micro.selenium" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selenium"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Селен"
+          }
+        }
+      }
+    },
+    "micro.vitaminA" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin A"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A"
+          }
+        }
+      }
+    },
+    "micro.vitaminB6" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin B6"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B6"
+          }
+        }
+      }
+    },
+    "micro.vitaminB9" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin B9"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B9"
+          }
+        }
+      }
+    },
+    "micro.vitaminB12" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin B12"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B12"
+          }
+        }
+      }
+    },
+    "micro.vitaminC" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin C"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C"
+          }
+        }
+      }
+    },
+    "micro.vitaminD3" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin D3"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D3"
+          }
+        }
+      }
+    },
+    "micro.vitaminE" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin E"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E"
+          }
+        }
+      }
+    },
+    "micro.vitaminK" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin K"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "K"
+          }
+        }
+      }
+    },
+    "micro.zinc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zinc"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цинк"
           }
         }
       }
@@ -1012,6 +1621,135 @@
         }
       }
     },
+    "nutrition.microDetail" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutrient details"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Детализация нутриентов"
+          }
+        }
+      }
+    },
+    "nutrition.microTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Micronutrients"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Микронутриенты"
+          }
+        }
+      }
+    },
+    "nutrition.noIngredients" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No ingredients"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет ингредиентов"
+          }
+        }
+      }
+    },
+    "nutrition.noIngredients.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add ingredients from the product catalog to calculate nutrition."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавьте ингредиенты из каталога продуктов для расчёта нутриентов."
+          }
+        }
+      }
+    },
+    "nutrition.recipeTotal %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total %lld kcal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всего %lld ккал"
+          }
+        }
+      }
+    },
+    "nutrition.recipeWeight %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weight %lld g"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Масса %lld г"
+          }
+        }
+      }
+    },
+    "nutrition.section.per100g" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per 100 g"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На 100 г"
+          }
+        }
+      }
+    },
+    "nutrition.section.total" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total (whole recipe)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всего (весь рецепт)"
+          }
+        }
+      }
+    },
     "nutrition.title.day" : {
       "localizations" : {
         "en" : {
@@ -1044,6 +1782,74 @@
         }
       }
     },
+    "nutrition.unit.g" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "g"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "г"
+          }
+        }
+      }
+    },
+    "nutrition.unit.kcal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kcal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ккал"
+          }
+        }
+      }
+    },
+    "nutrition.unit.mcg" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mcg"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мкг"
+          }
+        }
+      }
+    },
+    "nutrition.unit.mg" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mg"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мг"
+          }
+        }
+      }
+    },
     "recipe.ingredients" : {
       "localizations" : {
         "en" : {
@@ -1056,6 +1862,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ингредиенты"
+          }
+        }
+      }
+    },
+    "recipe.moreDetails" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More details"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробнее"
           }
         }
       }
@@ -1088,6 +1910,102 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шаги"
+          }
+        }
+      }
+    },
+    "search.noResults" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ничего не найдено"
+          }
+        }
+      }
+    },
+    "search.noResults.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try a different search term."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Попробуйте другой запрос."
+          }
+        }
+      }
+    },
+    "filter.all" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все"
+          }
+        }
+      }
+    },
+    "addMeal.filter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильтр"
+          }
+        }
+      }
+    },
+    "search.products" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search products"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск продуктов"
+          }
+        }
+      }
+    },
+    "search.recipes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск рецептов"
           }
         }
       }
@@ -1172,6 +2090,22 @@
         }
       }
     },
+    "settings.productDB.count" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Products in catalog"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продуктов в каталоге"
+          }
+        }
+      }
+    },
     "settings.productDB.footer" : {
       "localizations" : {
         "en" : {
@@ -1200,6 +2134,182 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Название базы продуктов"
+          }
+        }
+      }
+    },
+    "settings.storage.activePlan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active plan"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущий план"
+          }
+        }
+      }
+    },
+    "settings.storage.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recipes and meal plans are saved locally on your device."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рецепты и планы питания сохраняются локально на устройстве."
+          }
+        }
+      }
+    },
+    "settings.storage.recipes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранённых рецептов"
+          }
+        }
+      }
+    },
+    "settings.storage.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On this device"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На устройстве"
+          }
+        }
+      }
+    },
+    "settings.storage.weekPlans" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week plans"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Планов на неделю"
+          }
+        }
+      }
+    },
+    "settings.target.calories" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories (kcal)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Калории (ккал)"
+          }
+        }
+      }
+    },
+    "settings.target.carbs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carbs (g)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Углеводы (г)"
+          }
+        }
+      }
+    },
+    "settings.target.fat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fat (g)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жиры (г)"
+          }
+        }
+      }
+    },
+    "settings.target.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily macro goals for your meal plan."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Целевые значения КБЖУ на день для плана питания."
+          }
+        }
+      }
+    },
+    "settings.target.protein" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protein (g)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белки (г)"
+          }
+        }
+      }
+    },
+    "settings.target.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily targets"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рекомендуемое КБЖУ"
           }
         }
       }
@@ -1474,210 +2584,6 @@
             "value" : "Сегодня"
           }
         }
-      }
-    },
-    "addRecipe.ingredients" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ingredients" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Ингредиенты" } }
-      }
-    },
-    "addRecipe.addIngredient" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add ingredient" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Добавить ингредиент" } }
-      }
-    },
-    "addIngredient.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ingredient" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Ингредиент" } }
-      }
-    },
-    "addIngredient.product" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Product" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Продукт" } }
-      }
-    },
-    "addIngredient.selectProduct" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Select product" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Выберите продукт" } }
-      }
-    },
-    "addIngredient.amount" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Amount" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Количество" } }
-      }
-    },
-    "addIngredient.quantity" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Quantity" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Количество" } }
-      }
-    },
-    "addIngredient.unit" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unit" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Единица" } }
-      }
-    },
-    "nutrition.microDetail" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Nutrient details" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Детализация нутриентов" } }
-      }
-    },
-    "nutrition.section.total" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Total (whole recipe)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Всего (весь рецепт)" } }
-      }
-    },
-    "nutrition.section.per100g" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Per 100 g" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "На 100 г" } }
-      }
-    },
-    "nutrition.noIngredients" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "No ingredients" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Нет ингредиентов" } }
-      }
-    },
-    "nutrition.noIngredients.hint" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add ingredients from the product catalog to calculate nutrition." } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Добавьте ингредиенты из каталога продуктов для расчёта нутриентов." } }
-      }
-    },
-    "nutrition.recipeTotal %lld" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Total %lld kcal" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Всего %lld ккал" } }
-      }
-    },
-    "nutrition.recipeWeight %lld" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weight %lld g" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Масса %lld г" } }
-      }
-    },
-    "common.done" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Готово" } }
-      }
-    },
-    "micro.fiber" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fiber" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Клетчатка" } }
-      }
-    },
-    "micro.sugar" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sugar" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Сахар" } }
-      }
-    },
-    "micro.saturatedFat" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Saturated fat" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Насыщенные жиры" } }
-      }
-    },
-    "micro.sodium" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sodium" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Натрий" } }
-      }
-    },
-    "micro.potassium" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Potassium" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Калий" } }
-      }
-    },
-    "micro.calcium" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calcium" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Кальций" } }
-      }
-    },
-    "micro.iron" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Iron" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Железо" } }
-      }
-    },
-    "micro.magnesium" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Magnesium" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Магний" } }
-      }
-    },
-    "micro.zinc" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Zinc" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Цинк" } }
-      }
-    },
-    "micro.vitaminC" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Vitamin C" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Витамин C" } }
-      }
-    },
-    "micro.vitaminD" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Vitamin D" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Витамин D" } }
-      }
-    },
-    "micro.vitaminB12" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Vitamin B12" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Витамин B12" } }
-      }
-    },
-    "micro.folate" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Folate" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Фолат" } }
-      }
-    },
-    "nutrition.unit.kcal" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "kcal" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "ккал" } }
-      }
-    },
-    "nutrition.unit.g" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "g" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "г" } }
-      }
-    },
-    "nutrition.unit.mg" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "mg" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "мг" } }
-      }
-    },
-    "nutrition.unit.mcg" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "mcg" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "мкг" } }
-      }
-    },
-    "settings.productDB.count" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Products in catalog" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Продуктов в каталоге" } }
       }
     }
   },

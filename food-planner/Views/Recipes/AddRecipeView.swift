@@ -1,3 +1,4 @@
+import PhotosUI
 import SwiftUI
 import SwiftData
 
@@ -6,10 +7,11 @@ struct AddRecipeView: View {
     @Environment(\.modelContext) private var modelContext
 
     @State private var name = ""
-    @State private var sourceURL = ""
     @State private var stepsText = ""
+    @State private var imageData: Data?
     @State private var draftIngredients: [DraftIngredient] = []
     @State private var showAddIngredient = false
+    @State private var photoPickerItem: PhotosPickerItem?
 
     private var previewNutrition: RecipeNutrition? {
         guard !draftIngredients.isEmpty else { return nil }
@@ -35,17 +37,25 @@ struct AddRecipeView: View {
 
     var body: some View {
         Form {
+            Section("addRecipe.photo") {
+                PhotosPicker(selection: $photoPickerItem, matching: .images) {
+                    Label("addRecipe.pickPhoto", systemImage: "photo.on.rectangle")
+                }
+
+                if imageData != nil {
+                    RecipeImageView(imageData: imageData, cornerRadius: 8)
+                        .frame(height: 120)
+                }
+            }
+
             Section("addRecipe.main") {
                 TextField("addRecipe.name", text: $name)
-                TextField("addRecipe.sourceURL", text: $sourceURL)
-                    .textInputAutocapitalization(.never)
-                    .keyboardType(.URL)
             }
 
             Section("addRecipe.ingredients") {
                 ForEach(draftIngredients) { draft in
                     HStack {
-                        Text(LocalizedStringResource(stringLiteral: draft.product.localizationKey))
+                        Text(draft.product.displayName)
                         Spacer()
                         Text(L10n.amount(quantity: draft.quantity, unit: draft.unit))
                             .foregroundStyle(.secondary)
@@ -93,12 +103,24 @@ struct AddRecipeView: View {
                 draftIngredients.append(draft)
             }
         }
+        .onChange(of: photoPickerItem) { _, item in
+            loadPhoto(from: item)
+        }
+    }
+
+    private func loadPhoto(from item: PhotosPickerItem?) {
+        guard let item else { return }
+        Task {
+            if let data = try? await item.loadTransferable(type: Data.self) {
+                await MainActor.run { imageData = data }
+            }
+        }
     }
 
     private func saveRecipe() {
         let recipe = Recipe(
             name: name.trimmingCharacters(in: .whitespaces),
-            sourceURL: sourceURL.isEmpty ? nil : sourceURL,
+            imageData: imageData,
             steps: stepsText
                 .components(separatedBy: .newlines)
                 .map { $0.trimmingCharacters(in: .whitespaces) }
@@ -108,7 +130,7 @@ struct AddRecipeView: View {
 
         for draft in draftIngredients {
             let ingredient = Ingredient(
-                name: String(localized: LocalizedStringResource(stringLiteral: draft.product.localizationKey)),
+                name: draft.product.displayName,
                 quantity: draft.quantity,
                 unit: draft.unit,
                 category: draft.product.category,
@@ -120,6 +142,7 @@ struct AddRecipeView: View {
         }
 
         recipe.recalculateNutrition()
+        LocalPersistence.save(modelContext)
         dismiss()
     }
 }

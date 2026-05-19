@@ -7,6 +7,7 @@ struct HomeView: View {
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
 
     @State private var currentWeekPlan: WeekPlan?
+    @State private var appSettings: AppSettings?
 
     private let mainMealTypes: [MealType] = [.breakfast, .lunch, .dinner]
     private let recommendationColumns = [
@@ -34,7 +35,7 @@ struct HomeView: View {
                 .accessibilityLabel("accessibility.settings")
             }
         }
-        .onAppear { loadWeekPlan() }
+        .onAppear { refresh() }
     }
 
     private var weekPlanLinkSection: some View {
@@ -64,6 +65,13 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("home.today")
                 .font(.title2.bold())
+
+            if let settings = appSettings {
+                NutritionTargetProgressView(
+                    actual: todayNutrition,
+                    target: settings.targetNutrition
+                )
+            }
 
             NutritionSummaryView(nutrition: todayNutrition)
 
@@ -106,7 +114,7 @@ struct HomeView: View {
 
     private var todayNutrition: DailyNutrition {
         guard let dayPlan = todayDayPlan else { return .zero }
-        return DailyNutrition.from(dayPlan: dayPlan)
+        return NutritionCalculator.from(dayPlan: dayPlan)
     }
 
     private func meal(for type: MealType) -> Meal? {
@@ -128,8 +136,11 @@ struct HomeView: View {
         return "\(start.formatted(formatter)) – \(end.formatted(formatter))"
     }
 
-    private func loadWeekPlan() {
-        currentWeekPlan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+    private func refresh() {
+        appSettings = AppSettingsService.settings(in: modelContext)
+        let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+        currentWeekPlan = plan
+        AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
     }
 }
 

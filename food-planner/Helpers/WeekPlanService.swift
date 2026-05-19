@@ -4,18 +4,47 @@ import SwiftData
 enum WeekPlanService {
     @MainActor
     static func currentWeekPlan(from weekPlans: [WeekPlan], in context: ModelContext) -> WeekPlan {
+        let settings = AppSettingsService.settings(in: context)
         let weekStart = Calendar.current.startOfWeek(for: .now)
+
+        if let active = settings.activeWeekPlan {
+            ensureDayPlansExist(for: active, weekStart: active.weekStartDate, in: context)
+            LocalPersistence.save(context)
+            return active
+        }
 
         if let existing = weekPlans.first(where: {
             Calendar.current.isSameDay($0.weekStartDate, weekStart)
         }) {
             ensureDayPlansExist(for: existing, weekStart: weekStart, in: context)
+            settings.activeWeekPlan = existing
+            LocalPersistence.save(context)
             return existing
         }
 
         let plan = WeekPlan(weekStartDate: weekStart)
         context.insert(plan)
         ensureDayPlansExist(for: plan, weekStart: weekStart, in: context)
+        settings.activeWeekPlan = plan
+        LocalPersistence.save(context)
+        return plan
+    }
+
+    @MainActor
+    static func weekPlan(forWeekStarting weekStart: Date, from weekPlans: [WeekPlan], in context: ModelContext) -> WeekPlan {
+        let normalized = Calendar.current.startOfWeek(for: weekStart)
+
+        if let existing = weekPlans.first(where: {
+            Calendar.current.isSameDay($0.weekStartDate, normalized)
+        }) {
+            ensureDayPlansExist(for: existing, weekStart: normalized, in: context)
+            return existing
+        }
+
+        let plan = WeekPlan(weekStartDate: normalized)
+        context.insert(plan)
+        ensureDayPlansExist(for: plan, weekStart: normalized, in: context)
+        LocalPersistence.save(context)
         return plan
     }
 
@@ -53,6 +82,7 @@ enum WeekPlanService {
         context.insert(dayPlan)
         weekPlan.dayPlans.append(dayPlan)
         weekPlan.dayPlans.sort { $0.date < $1.date }
+        LocalPersistence.save(context)
         return dayPlan
     }
 
@@ -74,5 +104,6 @@ enum WeekPlanService {
             context.insert(item)
             weekPlan.shoppingItems.append(item)
         }
+        LocalPersistence.save(context)
     }
 }

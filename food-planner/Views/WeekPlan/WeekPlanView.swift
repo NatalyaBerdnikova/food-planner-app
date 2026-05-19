@@ -1,77 +1,65 @@
 import SwiftUI
 import SwiftData
 
+private struct DayPlanSheetItem: Identifiable {
+    let dayPlan: DayPlan
+    var id: PersistentIdentifier { dayPlan.persistentModelID }
+}
+
 struct WeekPlanView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
 
     @State private var currentWeekPlan: WeekPlan?
-    @State private var expandedDay: Date?
-    @State private var dayPlanForNewMeal: DayPlan?
-    @State private var showAddMeal = false
+    @State private var selectedDay: Date?
+    @State private var mealSheetItem: DayPlanSheetItem?
 
     var body: some View {
-        Group {
-            if let weekPlan = currentWeekPlan {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .top, spacing: 16) {
-                        ForEach(sortedDayPlans(weekPlan), id: \.date) { dayPlan in
-                            DayPlanCardView(
-                                dayPlan: dayPlan,
-                                isExpanded: isExpanded(dayPlan),
-                                onToggle: { toggleDay(dayPlan) },
-                                onAddMeal: { presentAddMeal(for: dayPlan) }
-                            )
-                        }
-                    }
-                    .padding()
-                }
-            } else {
-                ProgressView()
-            }
-        }
-        .navigationTitle("nav.weekPlan")
-        .onAppear { loadWeekPlan() }
-        .onChange(of: weekPlans.count) { _, _ in loadWeekPlan() }
-        .sheet(isPresented: $showAddMeal) {
-            if let dayPlan = dayPlanForNewMeal {
-                AddMealSheet(dayPlan: dayPlan) {
-                    if let plan = currentWeekPlan {
-                        WeekPlanService.syncShoppingItems(for: plan, in: modelContext)
-                    }
+        content
+            .navigationTitle("nav.weekPlan")
+            .onAppear(perform: loadWeekPlan)
+            .onChange(of: weekPlans.count) { _, _ in loadWeekPlan() }
+            .sheet(item: $mealSheetItem) { item in
+                AddMealSheet(dayPlan: item.dayPlan) {
+                    syncShoppingList()
                 }
             }
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        if let weekPlan = currentWeekPlan {
+            WeekDayCarousel(
+                dayPlans: sortedDayPlans(weekPlan),
+                selectedDay: $selectedDay,
+                onAddMeal: presentAddMeal
+            )
+        } else {
+            ProgressView()
         }
     }
 
     private func loadWeekPlan() {
         currentWeekPlan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
-        if expandedDay == nil, let today = currentWeekPlan?.dayPlans.first(where: {
-            Calendar.current.isDateInToday($0.date)
-        }) {
-            expandedDay = today.date
+        if let plan = currentWeekPlan {
+            AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
         }
+        guard selectedDay == nil else { return }
+
+        let today = currentWeekPlan?.dayPlans.first { Calendar.current.isDateInToday($0.date) }?.date
+        selectedDay = today ?? Calendar.current.startOfDay(for: .now)
     }
 
     private func sortedDayPlans(_ weekPlan: WeekPlan) -> [DayPlan] {
         weekPlan.dayPlans.sorted { $0.date < $1.date }
     }
 
-    private func isExpanded(_ dayPlan: DayPlan) -> Bool {
-        guard let expandedDay else { return false }
-        return Calendar.current.isSameDay(expandedDay, dayPlan.date)
+    private func presentAddMeal(_ dayPlan: DayPlan) {
+        mealSheetItem = DayPlanSheetItem(dayPlan: dayPlan)
     }
 
-    private func toggleDay(_ dayPlan: DayPlan) {
-        if isExpanded(dayPlan) {
-            expandedDay = nil
-        } else {
-            expandedDay = dayPlan.date
-        }
-    }
-
-    private func presentAddMeal(for dayPlan: DayPlan) {
-        dayPlanForNewMeal = dayPlan
-        showAddMeal = true
+    private func syncShoppingList() {
+        guard let plan = currentWeekPlan else { return }
+        WeekPlanService.syncShoppingItems(for: plan, in: modelContext)
     }
 }

@@ -10,6 +10,7 @@ enum PreviewSampleData {
         }
 
         FoodCatalogSeeder.seedIfNeeded(in: context)
+        _ = AppSettingsService.settings(in: context)
 
         func product(_ key: String) -> FoodProduct? {
             FoodCatalogSeeder.product(forKey: key, in: context)
@@ -22,7 +23,7 @@ enum PreviewSampleData {
             recipe: Recipe
         ) -> Ingredient? {
             guard let food = product(key) else { return nil }
-            let name = String(localized: LocalizedStringResource(stringLiteral: food.localizationKey))
+            let name = food.displayName
             let ing = Ingredient(
                 name: name,
                 quantity: quantity,
@@ -85,5 +86,7 @@ enum PreviewSampleData {
         weekPlan.dayPlans = [dayPlan]
 
         WeekPlanService.syncShoppingItems(for: weekPlan, in: context)
+        AppSettingsService.setActiveWeekPlan(weekPlan, in: context)
+        LocalPersistence.save(context)
     }
 }

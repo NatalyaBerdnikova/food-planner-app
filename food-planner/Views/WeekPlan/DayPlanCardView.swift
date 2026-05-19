@@ -2,8 +2,7 @@ import SwiftUI
 
 struct DayPlanCardView: View {
     let dayPlan: DayPlan
-    let isExpanded: Bool
-    let onToggle: () -> Void
+    let isSelected: Bool
     let onAddMeal: () -> Void
 
     private var dayTitle: String {
@@ -16,51 +15,52 @@ struct DayPlanCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Button(action: onToggle) {
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(dayTitle)
-                            .font(.headline)
-                        if isToday {
-                            Text("weekPlan.today")
-                                .font(.caption)
-                                .foregroundStyle(.tint)
-                        }
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(dayTitle)
+                        .font(.headline)
+                    if isToday {
+                        Text("weekPlan.today")
+                            .font(.caption)
+                            .foregroundStyle(.tint)
                     }
-                    Spacer()
-                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+            }
+
+            if dayPlan.meals.isEmpty {
+                Text("weekPlan.noMeals")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            } else {
+                ForEach(sortedMeals) { meal in
+                    MealRowView(meal: meal)
                 }
             }
-            .buttonStyle(.plain)
 
-            if isExpanded {
-                if dayPlan.meals.isEmpty {
-                    Text("weekPlan.noMeals")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                } else {
-                    ForEach(sortedMeals) { meal in
-                        MealRowView(meal: meal)
-                    }
-                }
-
-                Button(action: onAddMeal) {
-                    Label("common.add", systemImage: "plus.circle.fill")
-                        .font(.subheadline.weight(.medium))
-                }
+            Button(action: onAddMeal) {
+                Label("common.add", systemImage: "plus.circle.fill")
+                    .font(.subheadline.weight(.medium))
             }
         }
         .padding()
-        .frame(width: 280, alignment: .topLeading)
+        .frame(maxWidth: .infinity, alignment: .topLeading)
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .overlay {
-            if isToday {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.accentColor, lineWidth: 2)
-            }
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(borderColor, lineWidth: borderWidth)
         }
+    }
+
+    private var borderWidth: CGFloat {
+        isSelected || isToday ? 2 : 0
+    }
+
+    private var borderColor: Color {
+        if isSelected { return .accentColor }
+        if isToday { return .accentColor.opacity(0.5) }
+        return .clear
     }
 
     private var sortedMeals: [Meal] {

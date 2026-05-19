@@ -29,4 +29,12 @@ final class Ingredient {
             self.category = product.category
         }
     }
+
+    var displayName: String {
+        if let foodProduct { return foodProduct.displayName }
+        if name.hasPrefix("product.") {
+            return String(localized: String.LocalizationValue(name))
+        }
+        return name
+    }
 }
