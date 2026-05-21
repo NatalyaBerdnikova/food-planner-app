@@ -44,7 +44,7 @@ struct AddMealSheet: View {
     var body: some View {
         NavigationStack {
             List {
-                filterSection
+                filterControls
                 recipesSection
             }
             .listStyle(.insetGrouped)
@@ -66,8 +66,8 @@ struct AddMealSheet: View {
         }
     }
 
-    private var filterSection: some View {
-        Section {
+    private var filterControls: some View {
+        VStack(spacing: 12) {
             Picker("addMeal.filter", selection: $filterTab) {
                 ForEach(RecipeFilterTab.allCases) { tab in
                     Text(tab.displayName).tag(tab)
@@ -84,6 +84,8 @@ struct AddMealSheet: View {
                 }
             }
         }
+        .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+        .listRowBackground(Color.clear)
     }
 
     private var recipesSection: some View {

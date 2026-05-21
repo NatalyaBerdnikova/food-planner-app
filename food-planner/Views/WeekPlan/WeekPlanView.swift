@@ -11,6 +11,7 @@ struct WeekPlanView: View {
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
 
     @State private var currentWeekPlan: WeekPlan?
+    @State private var displayedWeekStart = Calendar.current.startOfWeek(for: .now)
     @State private var selectedDay: Date?
     @State private var mealSheetItem: DayPlanSheetItem?
 
@@ -29,25 +30,24 @@ struct WeekPlanView: View {
     @ViewBuilder
     private var content: some View {
         if let weekPlan = currentWeekPlan {
-            WeekDayCarousel(
-                dayPlans: sortedDayPlans(weekPlan),
-                selectedDay: $selectedDay,
-                onAddMeal: presentAddMeal
-            )
+            VStack(spacing: 12) {
+                weekSwitcher
+
+                WeekDayCarousel(
+                    dayPlans: sortedDayPlans(weekPlan),
+                    selectedDay: $selectedDay,
+                    onAddMeal: presentAddMeal
+                )
+            }
         } else {
             ProgressView()
         }
     }
 
     private func loadWeekPlan() {
-        currentWeekPlan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
-        if let plan = currentWeekPlan {
-            AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
-        }
-        guard selectedDay == nil else { return }
-
-        let today = currentWeekPlan?.dayPlans.first { Calendar.current.isDateInToday($0.date) }?.date
-        selectedDay = today ?? Calendar.current.startOfDay(for: .now)
+        let initialPlan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+        displayedWeekStart = Calendar.current.startOfWeek(for: initialPlan.weekStartDate)
+        setWeek(startingFrom: displayedWeekStart)
     }
 
     private func sortedDayPlans(_ weekPlan: WeekPlan) -> [DayPlan] {
@@ -61,5 +61,62 @@ struct WeekPlanView: View {
     private func syncShoppingList() {
         guard let plan = currentWeekPlan else { return }
         WeekPlanService.syncShoppingItems(for: plan, in: modelContext)
+    }
+
+    private var weekSwitcher: some View {
+        HStack {
+            Button {
+                shiftWeek(by: -1)
+            } label: {
+                Image(systemName: "chevron.left")
+            }
+
+            Spacer()
+
+            Text(weekRangeTitle)
+                .font(.subheadline.weight(.semibold))
+
+            Spacer()
+
+            Button {
+                shiftWeek(by: 1)
+            } label: {
+                Image(systemName: "chevron.right")
+            }
+        }
+        .padding(.horizontal, 16)
+    }
+
+    private var weekRangeTitle: String {
+        guard let weekPlan = currentWeekPlan else { return "" }
+        let calendar = Calendar.current
+        let start = calendar.startOfDay(for: weekPlan.weekStartDate)
+        guard let endDate = calendar.date(byAdding: .day, value: 6, to: start) else {
+            return start.formatted(.dateTime.day().month(.abbreviated))
+        }
+        let startText = start.formatted(.dateTime.day().month(.abbreviated))
+        let endText = endDate.formatted(.dateTime.day().month(.abbreviated))
+        return "\(startText) - \(endText)"
+    }
+
+    private func shiftWeek(by offset: Int) {
+        guard let newStart = Calendar.current.date(byAdding: .weekOfYear, value: offset, to: displayedWeekStart) else {
+            return
+        }
+        displayedWeekStart = Calendar.current.startOfWeek(for: newStart)
+        setWeek(startingFrom: displayedWeekStart)
+    }
+
+    private func setWeek(startingFrom weekStart: Date) {
+        let plan = WeekPlanService.weekPlan(forWeekStarting: weekStart, from: weekPlans, in: modelContext)
+        currentWeekPlan = plan
+        AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
+
+        let calendar = Calendar.current
+        if let today = plan.dayPlans.first(where: { calendar.isDateInToday($0.date) })?.date {
+            selectedDay = today
+        } else {
+            selectedDay = sortedDayPlans(plan).first?.date ?? calendar.startOfDay(for: weekStart)
+        }
     }
 }
