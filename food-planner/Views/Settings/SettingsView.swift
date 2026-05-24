@@ -7,6 +7,7 @@ struct SettingsView: View {
     @AppStorage("openAIAPIKey") private var apiKey = ""
     @AppStorage("productDatabaseName") private var productDatabaseName = ""
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
+    @AppStorage(AppColorScheme.storageKey) private var appColorSchemeRaw = AppColorScheme.system.rawValue
 
     @Query private var foodProducts: [FoodProduct]
     @Query private var recipes: [Recipe]
@@ -25,6 +26,13 @@ struct SettingsView: View {
                     ForEach(AppLanguage.allCases) { language in
                         Text(language.displayName)
                             .tag(language.rawValue)
+                    }
+                }
+
+                Picker("settings.theme", selection: $appColorSchemeRaw) {
+                    ForEach(AppColorScheme.allCases) { theme in
+                        Text(theme.displayName)
+                            .tag(theme.rawValue)
                     }
                 }
             }

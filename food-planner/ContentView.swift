@@ -11,14 +11,20 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
+    @AppStorage(AppColorScheme.storageKey) private var appColorSchemeRaw = AppColorScheme.system.rawValue
 
     private var appLanguage: AppLanguage {
         AppLanguage(rawValue: appLanguageRaw) ?? .system
     }
 
+    private var appColorScheme: AppColorScheme {
+        AppColorScheme(rawValue: appColorSchemeRaw) ?? .system
+    }
+
     var body: some View {
         MainTabView()
             .applyAppLanguage(appLanguage)
+            .applyAppColorScheme(appColorScheme)
             .onAppear {
                 FoodCatalogSeeder.seedIfNeeded(in: modelContext)
                 _ = AppSettingsService.settings(in: modelContext)
