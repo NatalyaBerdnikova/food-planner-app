@@ -3,37 +3,50 @@ import SwiftUI
 struct NutritionTargetProgressView: View {
     let actual: DailyNutrition
     let target: DailyNutrition
+    var macroLabelStyle: MacroLabelStyle = .full
+    var embedded: Bool = false
 
     var body: some View {
+        Group {
+            if embedded {
+                content
+            } else {
+                content
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var content: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("home.targetProgress")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
 
             progressRow(
-                title: "nutrition.macro.kcal",
+                title: macroLabelStyle.kcalTitle,
                 actual: actual.calories,
                 target: target.calories
             )
             progressRow(
-                title: "nutrition.macro.protein",
+                title: macroLabelStyle.proteinTitle,
                 actual: actual.protein,
                 target: target.protein
             )
             progressRow(
-                title: "nutrition.macro.fat",
+                title: macroLabelStyle.fatTitle,
                 actual: actual.fat,
                 target: target.fat
             )
             progressRow(
-                title: "nutrition.macro.carbs",
+                title: macroLabelStyle.carbsTitle,
                 actual: actual.carbs,
                 target: target.carbs
             )
         }
-        .padding()
-        .background(Color(.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
     private func progressRow(

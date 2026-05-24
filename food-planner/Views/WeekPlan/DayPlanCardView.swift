@@ -5,6 +5,8 @@ struct DayPlanCardView: View {
     let isSelected: Bool
     let onAddMeal: () -> Void
 
+    private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
+
     private var dayTitle: String {
         dayPlan.date.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated))
     }
@@ -28,13 +30,9 @@ struct DayPlanCardView: View {
                 Spacer()
             }
 
-            if dayPlan.meals.isEmpty {
-                Text("weekPlan.noMeals")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            } else {
-                ForEach(sortedMeals) { meal in
-                    MealRowView(meal: meal)
+            VStack(spacing: 4) {
+                ForEach(dayMealTypes, id: \.self) { type in
+                    MealRowView(mealType: type, meal: meal(for: type))
                 }
             }
 
@@ -53,6 +51,10 @@ struct DayPlanCardView: View {
         }
     }
 
+    private func meal(for type: MealType) -> Meal? {
+        dayPlan.meals.first { $0.mealType == type }
+    }
+
     private var borderWidth: CGFloat {
         isSelected || isToday ? 2 : 0
     }
@@ -62,16 +64,21 @@ struct DayPlanCardView: View {
         if isToday { return .accentColor.opacity(0.5) }
         return .clear
     }
-
-    private var sortedMeals: [Meal] {
-        dayPlan.meals.sorted { lhs, rhs in
-            lhs.mealType.rawValue < rhs.mealType.rawValue
-        }
-    }
 }
 
 struct MealRowView: View {
-    let meal: Meal
+    let mealType: MealType
+    let meal: Meal?
+
+    init(meal: Meal) {
+        self.mealType = meal.mealType
+        self.meal = meal
+    }
+
+    init(mealType: MealType, meal: Meal?) {
+        self.mealType = mealType
+        self.meal = meal
+    }
 
     var body: some View {
         HStack(spacing: 10) {
@@ -80,24 +87,29 @@ struct MealRowView: View {
                 .frame(width: 24)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(meal.mealType.displayName)
+                Text(mealTypeLabel)
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                Text(meal.recipe?.name ?? String(localized: "meal.noRecipe"))
+                Text(meal?.recipe?.name ?? String(localized: "home.notPlanned"))
                     .font(.subheadline)
                     .lineLimit(1)
+                    .foregroundStyle(meal?.recipe == nil ? .secondary : .primary)
             }
             Spacer()
         }
         .padding(.vertical, 4)
     }
 
+    private var mealTypeLabel: LocalizedStringResource {
+        mealType == .snack ? "filter.other" : mealType.displayName
+    }
+
     private var iconName: String {
-        switch meal.mealType {
+        switch mealType {
         case .breakfast: "sunrise.fill"
         case .lunch: "sun.max.fill"
         case .dinner: "moon.stars.fill"
-        case .snack: "leaf.fill"
+        case .snack: "ellipsis.circle.fill"
         }
     }
 }

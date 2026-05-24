@@ -923,6 +923,7 @@
       }
     },
     "home.addOther" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1004,6 +1005,7 @@
       }
     },
     "home.other" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1020,6 +1022,7 @@
       }
     },
     "home.otherEmpty" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1068,7 +1071,6 @@
       }
     },
     "home.today" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1214,6 +1216,7 @@
       }
     },
     "meal.noRecipe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1743,6 +1746,22 @@
         }
       }
     },
+    "nutrition.macro.carbs.full" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carbs"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Углеводы"
+          }
+        }
+      }
+    },
     "nutrition.macro.fat" : {
       "localizations" : {
         "en" : {
@@ -1755,6 +1774,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ж"
+          }
+        }
+      }
+    },
+    "nutrition.macro.fat.full" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fat"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жиры"
           }
         }
       }
@@ -1775,6 +1810,22 @@
         }
       }
     },
+    "nutrition.macro.kcal.full" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Калории"
+          }
+        }
+      }
+    },
     "nutrition.macro.protein" : {
       "localizations" : {
         "en" : {
@@ -1787,6 +1838,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Б"
+          }
+        }
+      }
+    },
+    "nutrition.macro.protein.full" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protein"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белки"
           }
         }
       }
@@ -1948,6 +2015,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "КБЖУ на 100 г"
+          }
+        }
+      }
+    },
+    "nutrition.title.weekAverage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average per day"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Среднее за день"
           }
         }
       }
@@ -2192,70 +2275,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "API ключ"
-          }
-        }
-      }
-    },
-    "settings.theme" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Appearance"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тема"
-          }
-        }
-      }
-    },
-    "theme.dark" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dark"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тёмная"
-          }
-        }
-      }
-    },
-    "theme.light" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Light"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Светлая"
-          }
-        }
-      }
-    },
-    "theme.system" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "System"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Как в системе"
           }
         }
       }
@@ -2516,6 +2535,22 @@
         }
       }
     },
+    "settings.theme" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тема"
+          }
+        }
+      }
+    },
     "shopping.share.line %@ %@ %@ %@" : {
       "localizations" : {
         "en" : {
@@ -2661,6 +2696,54 @@
         }
       }
     },
+    "theme.dark" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тёмная"
+          }
+        }
+      }
+    },
+    "theme.light" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Светлая"
+          }
+        }
+      }
+    },
+    "theme.system" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Как в системе"
+          }
+        }
+      }
+    },
     "unit.gram" : {
       "localizations" : {
         "en" : {
@@ -2774,6 +2857,7 @@
       }
     },
     "weekPlan.noMeals" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

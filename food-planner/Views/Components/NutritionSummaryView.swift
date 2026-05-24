@@ -3,24 +3,36 @@ import SwiftUI
 struct NutritionSummaryView: View {
     let nutrition: DailyNutrition
     var title: LocalizedStringResource = "nutrition.title.day"
+    var embedded: Bool = false
+    var macroLabelStyle: MacroLabelStyle = .compact
 
     var body: some View {
+        Group {
+            if embedded {
+                content
+            } else {
+                content
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var content: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
 
             HStack(spacing: 12) {
-                macroChip(title: "nutrition.macro.kcal", value: nutrition.calories)
-                macroChip(title: "nutrition.macro.protein", value: nutrition.protein)
-                macroChip(title: "nutrition.macro.fat", value: nutrition.fat)
-                macroChip(title: "nutrition.macro.carbs", value: nutrition.carbs)
+                macroChip(title: macroLabelStyle.kcalTitle, value: nutrition.calories)
+                macroChip(title: macroLabelStyle.proteinTitle, value: nutrition.protein)
+                macroChip(title: macroLabelStyle.fatTitle, value: nutrition.fat)
+                macroChip(title: macroLabelStyle.carbsTitle, value: nutrition.carbs)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
     private func macroChip(title: LocalizedStringResource, value: Double) -> some View {

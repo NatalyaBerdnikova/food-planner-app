@@ -1,12 +1,6 @@
 import SwiftUI
 import SwiftData
 
-private struct AddMealPresentation: Identifiable {
-    let dayPlan: DayPlan
-    var preferredMealType: MealType?
-    var id: PersistentIdentifier { dayPlan.persistentModelID }
-}
-
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
@@ -14,10 +8,9 @@ struct HomeView: View {
 
     @State private var currentWeekPlan: WeekPlan?
     @State private var appSettings: AppSettings?
-    @State private var selectedDay: Date?
-    @State private var addMealPresentation: AddMealPresentation?
+    @State private var isTodayExpanded = false
 
-    private let mainMealTypes: [MealType] = [.breakfast, .lunch, .dinner]
+    private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
     private let recommendationColumns = [
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12),
@@ -26,9 +19,8 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                todayPlanSection
-                otherMealsSection
-                weekPlanSection
+                todayNutritionCard
+                weekPlanCard
                 recommendationsSection
             }
             .padding()
@@ -45,93 +37,95 @@ struct HomeView: View {
             }
         }
         .onAppear { refresh() }
-        .sheet(item: $addMealPresentation) { presentation in
-            AddMealSheet(
-                dayPlan: presentation.dayPlan,
-                preferredMealType: presentation.preferredMealType
-            ) {
-                refresh()
-            }
-        }
+        .animation(.easeInOut(duration: 0.25), value: isTodayExpanded)
     }
 
-    private var todayPlanSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            if let settings = appSettings {
-                NutritionTargetProgressView(
-                    actual: todayNutrition,
-                    target: settings.targetNutrition
+    // MARK: - Today nutrition card
+
+    private var todayNutritionCard: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Button {
+                withAnimation(.easeInOut(duration: 0.25)) {
+                    isTodayExpanded.toggle()
+                }
+            } label: {
+                HStack {
+                    Text("home.today")
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                    Spacer()
+                    Image(systemName: isTodayExpanded ? "chevron.up" : "chevron.down")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.tertiary)
+                }
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+
+            if isTodayExpanded {
+                if let settings = appSettings {
+                    NutritionTargetProgressView(
+                        actual: todayNutrition,
+                        target: settings.targetNutrition,
+                        macroLabelStyle: .full,
+                        embedded: true
+                    )
+                }
+
+                VStack(spacing: 8) {
+                    ForEach(dayMealTypes, id: \.self) { type in
+                        TodayMealSlotView(mealType: type, meal: meal(for: type))
+                    }
+                }
+            } else {
+                NutritionSummaryView(
+                    nutrition: todayNutrition,
+                    title: "nutrition.title.day",
+                    embedded: true,
+                    macroLabelStyle: .compact
                 )
             }
-
-            NutritionSummaryView(nutrition: todayNutrition)
-
-            VStack(spacing: 8) {
-                ForEach(mainMealTypes, id: \.self) { type in
-                    TodayMealSlotView(mealType: type, meal: meal(for: type))
-                }
-            }
         }
+        .homeCardStyle()
     }
 
-    private var otherMealsSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("home.other")
+    // MARK: - Week plan card
+
+    private var weekPlanCard: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("home.weekPlan")
                 .font(.headline)
 
-            if snackMeals.isEmpty {
-                Text("home.otherEmpty")
+            if let weekPlan = currentWeekPlan {
+                Text(weekRangeFormatted(for: weekPlan))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-            } else {
-                ForEach(snackMeals) { meal in
-                    TodaySnackRowView(meal: meal)
-                }
-            }
 
-            Button {
-                presentAddSnack()
-            } label: {
-                Label("home.addOther", systemImage: "plus.circle")
-                    .font(.subheadline.weight(.medium))
-            }
-            .disabled(todayDayPlan == nil)
-        }
-    }
+                NutritionSummaryView(
+                    nutrition: NutritionCalculator.averageDaily(for: weekPlan),
+                    title: "nutrition.title.weekAverage",
+                    embedded: true,
+                    macroLabelStyle: .compact
+                )
 
-    private var weekPlanSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text("home.weekPlan")
-                    .font(.title2.bold())
-                Spacer()
                 NavigationLink {
                     WeekPlanView()
                 } label: {
                     Text("home.openWeekPlan")
-                        .font(.subheadline)
+                        .font(.subheadline.weight(.medium))
+                        .frame(maxWidth: .infinity)
                 }
-            }
-
-            Text(weekRangeFormatted)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-
-            if let weekPlan = currentWeekPlan {
-                WeekDayCarousel(
-                    dayPlans: sortedDayPlans(weekPlan),
-                    selectedDay: $selectedDay,
-                    onAddMeal: { dayPlan in
-                        addMealPresentation = AddMealPresentation(dayPlan: dayPlan)
-                    }
-                )
+                .buttonStyle(.bordered)
             } else {
                 Text("home.weekNotCreated")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
         }
+        .homeCardStyle()
     }
+
+    // MARK: - Recommendations
 
     private var recommendationsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -157,14 +151,11 @@ struct HomeView: View {
         }
     }
 
+    // MARK: - Data
+
     private var todayDayPlan: DayPlan? {
         guard let weekPlan = currentWeekPlan else { return nil }
         return weekPlan.dayPlans.first { Calendar.current.isDateInToday($0.date) }
-    }
-
-    private var snackMeals: [Meal] {
-        guard let dayPlan = todayDayPlan else { return [] }
-        return dayPlan.meals.filter { $0.mealType == .snack }
     }
 
     private var todayNutrition: DailyNutrition {
@@ -180,24 +171,12 @@ struct HomeView: View {
         Array(recipes.prefix(4))
     }
 
-    private var weekRangeFormatted: String {
-        guard let weekPlan = currentWeekPlan else {
-            return String(localized: "home.weekNotCreated")
-        }
+    private func weekRangeFormatted(for weekPlan: WeekPlan) -> String {
         let calendar = Calendar.current
         let start = weekPlan.weekStartDate
         let end = calendar.date(byAdding: .day, value: 6, to: start) ?? start
         let formatter = Date.FormatStyle(date: .abbreviated, time: .omitted)
         return "\(start.formatted(formatter)) – \(end.formatted(formatter))"
-    }
-
-    private func sortedDayPlans(_ weekPlan: WeekPlan) -> [DayPlan] {
-        weekPlan.dayPlans.sorted { $0.date < $1.date }
-    }
-
-    private func presentAddSnack() {
-        guard let dayPlan = todayDayPlan else { return }
-        addMealPresentation = AddMealPresentation(dayPlan: dayPlan, preferredMealType: .snack)
     }
 
     private func refresh() {
@@ -206,13 +185,21 @@ struct HomeView: View {
         currentWeekPlan = plan
         AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
         _ = WeekPlanService.dayPlan(for: .now, in: plan, context: modelContext)
-
-        if selectedDay == nil {
-            let today = plan.dayPlans.first { Calendar.current.isDateInToday($0.date) }?.date
-            selectedDay = today ?? Calendar.current.startOfDay(for: .now)
-        }
     }
 }
+
+// MARK: - Card style
+
+private extension View {
+    func homeCardStyle() -> some View {
+        padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.secondarySystemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+}
+
+// MARK: - Meal slots
 
 struct TodayMealSlotView: View {
     let mealType: MealType
@@ -240,7 +227,7 @@ struct TodayMealSlotView: View {
                 .frame(width: 28)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(mealType.displayName)
+                Text(mealTypeLabel)
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 Text(meal?.recipe?.name ?? String(localized: "home.notPlanned"))
@@ -264,8 +251,12 @@ struct TodayMealSlotView: View {
             }
         }
         .padding()
-        .background(Color(.secondarySystemBackground))
+        .background(Color(.tertiarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+
+    private var mealTypeLabel: LocalizedStringResource {
+        mealType == .snack ? "filter.other" : mealType.displayName
     }
 
     private var iconName: String {
@@ -275,47 +266,5 @@ struct TodayMealSlotView: View {
         case .dinner: "moon.stars.fill"
         case .snack: "ellipsis.circle.fill"
         }
-    }
-}
-
-struct TodaySnackRowView: View {
-    let meal: Meal
-
-    var body: some View {
-        Group {
-            if let recipe = meal.recipe {
-                NavigationLink {
-                    RecipeDetailView(recipe: recipe)
-                } label: {
-                    rowContent
-                }
-                .buttonStyle(.plain)
-            } else {
-                rowContent
-            }
-        }
-    }
-
-    private var rowContent: some View {
-        HStack {
-            Image(systemName: "ellipsis.circle.fill")
-                .foregroundStyle(.tint)
-                .frame(width: 28)
-
-            Text(meal.recipe?.name ?? String(localized: "meal.noRecipe"))
-                .font(.body)
-                .foregroundStyle(.primary)
-
-            Spacer()
-
-            if meal.recipe != nil {
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-            }
-        }
-        .padding()
-        .background(Color(.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

@@ -28,6 +28,28 @@ enum NutritionCalculator {
         }
     }
 
+    /// Среднее КБЖУ в день за неделю (по всем дням плана, включая пустые).
+    static func averageDaily(for weekPlan: WeekPlan) -> DailyNutrition {
+        let dayPlans = weekPlan.dayPlans.sorted { $0.date < $1.date }
+        guard !dayPlans.isEmpty else { return .zero }
+
+        let weekTotal = dayPlans.reduce(into: DailyNutrition()) { totals, dayPlan in
+            let daily = from(dayPlan: dayPlan)
+            totals.calories += daily.calories
+            totals.protein += daily.protein
+            totals.fat += daily.fat
+            totals.carbs += daily.carbs
+        }
+
+        let dayCount = Double(dayPlans.count)
+        return DailyNutrition(
+            calories: weekTotal.calories / dayCount,
+            protein: weekTotal.protein / dayCount,
+            fat: weekTotal.fat / dayCount,
+            carbs: weekTotal.carbs / dayCount
+        )
+    }
+
     static func recipeNutrition(_ recipe: Recipe) -> RecipeNutrition {
         var totalWeight = 0.0
         var totals = NutrientTotals.zero
