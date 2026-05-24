@@ -2503,6 +2503,156 @@
         }
       }
     },
+    "calculator.activity" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Activity" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Активность" } }
+      }
+    },
+    "calculator.activity.active" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active (×1.725)" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Высокая (×1.725)" } }
+      }
+    },
+    "calculator.activity.light" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Light (×1.375)" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Низкая (×1.375)" } }
+      }
+    },
+    "calculator.activity.moderate" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Moderate (×1.55)" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Умеренная (×1.55)" } }
+      }
+    },
+    "calculator.activity.sedentary" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sedentary (×1.2)" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Минимальная (×1.2)" } }
+      }
+    },
+    "calculator.activity.veryActive" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Very active (×1.9)" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Очень высокая (×1.9)" } }
+      }
+    },
+    "calculator.activityLevel" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Activity level" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Уровень активности" } }
+      }
+    },
+    "calculator.age" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Age (years)" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Возраст (лет)" } }
+      }
+    },
+    "calculator.calculate" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calculate" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Рассчитать" } }
+      }
+    },
+    "calculator.height" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Height (cm)" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Рост (см)" } }
+      }
+    },
+    "calculator.invalidInput" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Please fill in all fields with valid values." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Заполните все поля корректными значениями." } }
+      }
+    },
+    "calculator.profile" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your parameters" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Ваши параметры" } }
+      }
+    },
+    "calculator.fatPerKg" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fat per kg of target weight" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Жиры на 1 кг желаемого веса" } }
+      }
+    },
+    "calculator.macrosPerKg.footer" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Protein: 1–3 g/kg. Fat: 0.8–1.5 g/kg. Remaining calories go to carbs (4 kcal/g)." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Белки: 1–3 г/кг. Жиры: 0,8–1,5 г/кг. Остаток калорий — углеводы (4 ккал/г)." } }
+      }
+    },
+    "calculator.proteinPerKg" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Protein per kg of target weight" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Белки на 1 кг желаемого веса" } }
+      }
+    },
+    "calculator.proteinPerKg.footer" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fat: 1 g per kg of target weight. Remaining calories go to carbs (4 kcal/g)." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Жиры: 1 г на 1 кг желаемого веса. Остаток калорий — углеводы (4 ккал/г)." } }
+      }
+    },
+    "calculator.result" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily targets" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Суточная норма" } }
+      }
+    },
+    "calculator.sex" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sex" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Пол" } }
+      }
+    },
+    "calculator.sex.female" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Female" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Женский" } }
+      }
+    },
+    "calculator.sex.male" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Male" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Мужской" } }
+      }
+    },
+    "calculator.targetWeight" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target weight (kg)" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Желаемый вес (кг)" } }
+      }
+    },
+    "calculator.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calculate your macros" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Рассчитать своё КБЖУ" } }
+      }
+    },
+    "calculator.use" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Use" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Использовать" } }
+      }
+    },
+    "calculator.weight" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Current weight (kg)" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Текущий вес (кг)" } }
+      }
+    },
+    "settings.calculateTargets" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calculate your macros" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Рассчитать своё КБЖУ" } }
+      }
+    },
     "settings.target.calories" : {
       "localizations" : {
         "en" : {

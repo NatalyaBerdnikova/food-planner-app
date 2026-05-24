@@ -18,6 +18,7 @@ struct SettingsView: View {
     @State private var proteinText = ""
     @State private var fatText = ""
     @State private var carbsText = ""
+    @State private var showNutritionCalculator = false
 
     var body: some View {
         Form {
@@ -38,6 +39,12 @@ struct SettingsView: View {
             }
 
             Section {
+                Button {
+                    showNutritionCalculator = true
+                } label: {
+                    Label("settings.calculateTargets", systemImage: "function")
+                }
+
                 TextField("settings.target.calories", text: $caloriesText)
                     .keyboardType(.decimalPad)
                 TextField("settings.target.protein", text: $proteinText)
@@ -94,6 +101,19 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: loadSettings)
         .onDisappear(perform: saveTargets)
+        .sheet(isPresented: $showNutritionCalculator) {
+            NutritionTargetCalculatorSheet { nutrition in
+                applyCalculatedTargets(nutrition)
+            }
+        }
+    }
+
+    private func applyCalculatedTargets(_ nutrition: DailyNutrition) {
+        caloriesText = format(nutrition.calories)
+        proteinText = format(nutrition.protein)
+        fatText = format(nutrition.fat)
+        carbsText = format(nutrition.carbs)
+        saveTargets()
     }
 
     private func loadSettings() {
