@@ -538,18 +538,82 @@
         }
       }
     },
-    "addRecipe.stepsFooter" : {
+    "addRecipe.format.bold" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Describe how to prepare the dish. Enter one step per line — they will appear as a numbered list in the recipe."
+            "value" : "Bold"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Опишите, как приготовить блюдо. Каждый шаг — с новой строки, в рецепте они отобразятся нумерованным списком."
+            "value" : "Жирный"
+          }
+        }
+      }
+    },
+    "addRecipe.format.heading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heading"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заголовок"
+          }
+        }
+      }
+    },
+    "addRecipe.format.numberedList" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numbered list"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нумерованный список"
+          }
+        }
+      }
+    },
+    "addRecipe.format.underline" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Underline"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подчёркнутый"
+          }
+        }
+      }
+    },
+    "addRecipe.stepsFooter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select text and use the toolbar: bold, underline, heading, or numbered list."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выделите текст и используйте панель: жирный, подчёркивание, заголовок или нумерованный список."
           }
         }
       }

@@ -7,6 +7,7 @@ final class Recipe {
     @Attribute(.externalStorage) var imageData: Data?
     var sourceURL: String?
     var steps: [String]
+    @Attribute(.externalStorage) var stepsRichTextData: Data?
 
     /// Калории на 100 г
     var caloriesPer100g: Double
@@ -28,6 +29,7 @@ final class Recipe {
         imageData: Data? = nil,
         sourceURL: String? = nil,
         steps: [String] = [],
+        stepsRichTextData: Data? = nil,
         caloriesPer100g: Double = 0,
         proteinPer100g: Double = 0,
         fatPer100g: Double = 0,
@@ -38,6 +40,7 @@ final class Recipe {
         self.imageData = imageData
         self.sourceURL = sourceURL
         self.steps = steps
+        self.stepsRichTextData = stepsRichTextData
         self.caloriesPer100g = caloriesPer100g
         self.proteinPer100g = proteinPer100g
         self.fatPer100g = fatPer100g

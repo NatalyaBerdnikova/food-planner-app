@@ -79,17 +79,9 @@ struct RecipeDetailView: View {
                     }
                 }
 
-                if !recipe.steps.isEmpty {
+                if hasSteps {
                     sectionTitle("recipe.steps")
-                    ForEach(Array(recipe.steps.enumerated()), id: \.offset) { index, step in
-                        HStack(alignment: .top, spacing: 8) {
-                            Text("\(index + 1).")
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.tint)
-                            Text(step)
-                        }
-                        .font(.subheadline)
-                    }
+                    recipeStepsContent
                 }
 
                 if let urlString = recipe.sourceURL, let url = URL(string: urlString) {
@@ -107,6 +99,30 @@ struct RecipeDetailView: View {
         .onAppear {
             recipe.recalculateNutrition()
             LocalPersistence.save(modelContext)
+        }
+    }
+
+    private var hasSteps: Bool {
+        recipe.stepsRichTextData != nil || !recipe.steps.isEmpty
+    }
+
+    @ViewBuilder
+    private var recipeStepsContent: some View {
+        if let data = recipe.stepsRichTextData,
+           let attributed = RecipeStepsStorage.attributedString(from: data) {
+            Text(AttributedString(attributed))
+                .font(.subheadline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        } else {
+            ForEach(Array(recipe.steps.enumerated()), id: \.offset) { index, step in
+                HStack(alignment: .top, spacing: 8) {
+                    Text("\(index + 1).")
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.tint)
+                    Text(step)
+                }
+                .font(.subheadline)
+            }
         }
     }
 

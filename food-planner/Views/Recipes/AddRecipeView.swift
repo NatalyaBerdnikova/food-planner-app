@@ -1,13 +1,14 @@
 import PhotosUI
 import SwiftUI
 import SwiftData
+import UIKit
 
 struct AddRecipeView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
 
     @State private var name = ""
-    @State private var stepsText = ""
+    @State private var stepsAttributed = NSAttributedString()
     @State private var imageData: Data?
     @State private var draftIngredients: [DraftIngredient] = []
     @State private var showAddIngredient = false
@@ -53,17 +54,7 @@ struct AddRecipeView: View {
             }
 
             Section {
-                TextEditor(text: $stepsText)
-                    .frame(minHeight: 140)
-                    .overlay(alignment: .topLeading) {
-                        if stepsText.isEmpty {
-                            Text("addRecipe.stepsPlaceholder")
-                                .foregroundStyle(.tertiary)
-                                .padding(.top, 8)
-                                .padding(.leading, 4)
-                                .allowsHitTesting(false)
-                        }
-                    }
+                RichTextEditorView(attributedText: $stepsAttributed)
             } header: {
                 Text("addRecipe.steps")
             } footer: {
@@ -134,10 +125,8 @@ struct AddRecipeView: View {
         let recipe = Recipe(
             name: name.trimmingCharacters(in: .whitespaces),
             imageData: imageData,
-            steps: stepsText
-                .components(separatedBy: .newlines)
-                .map { $0.trimmingCharacters(in: .whitespaces) }
-                .filter { !$0.isEmpty }
+            steps: RecipeStepsStorage.plainStepLines(from: stepsAttributed),
+            stepsRichTextData: RecipeStepsStorage.rtfData(from: stepsAttributed)
         )
         modelContext.insert(recipe)
 
