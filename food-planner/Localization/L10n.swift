@@ -17,9 +17,16 @@ enum L10n {
         String(localized: "nutrition.recipeWeight \(grams)")
     }
 
+    static func resolvedProductName(_ name: String) -> String {
+        if name.hasPrefix("product.") {
+            return String(localized: String.LocalizationValue(name))
+        }
+        return name
+    }
+
     static func amount(quantity: Double, unit: MeasurementUnit) -> String {
         let value = formatNumber(quantity)
-        return String(localized: "format.amount \(value) \(String(localized: unit.displayName))")
+        return String(localized: "format.amount \(value) \(unit.localizedName)")
     }
 
     static func shoppingShareLine(
@@ -32,8 +39,8 @@ enum L10n {
             ? String(localized: "shopping.share.purchasedMark")
             : String(localized: "shopping.share.pendingMark")
         let qty = formatNumber(quantity)
-        let unitName = String(localized: unit.displayName)
-        return String(localized: "shopping.share.line \(mark) \(name) \(qty) \(unitName)")
+        let resolvedName = resolvedProductName(name)
+        return String(localized: "shopping.share.line \(mark) \(resolvedName) \(qty) \(unit.localizedName)")
     }
 
     private static func formatNumber(_ value: Double) -> String {

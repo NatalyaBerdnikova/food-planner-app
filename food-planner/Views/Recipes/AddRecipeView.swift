@@ -52,6 +52,24 @@ struct AddRecipeView: View {
                 TextField("addRecipe.name", text: $name)
             }
 
+            Section {
+                TextEditor(text: $stepsText)
+                    .frame(minHeight: 140)
+                    .overlay(alignment: .topLeading) {
+                        if stepsText.isEmpty {
+                            Text("addRecipe.stepsPlaceholder")
+                                .foregroundStyle(.tertiary)
+                                .padding(.top, 8)
+                                .padding(.leading, 4)
+                                .allowsHitTesting(false)
+                        }
+                    }
+            } header: {
+                Text("addRecipe.steps")
+            } footer: {
+                Text("addRecipe.stepsFooter")
+            }
+
             Section("addRecipe.ingredients") {
                 ForEach(draftIngredients) { draft in
                     HStack {
@@ -80,11 +98,6 @@ struct AddRecipeView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
-            }
-
-            Section("addRecipe.steps") {
-                TextField("addRecipe.stepsPlaceholder", text: $stepsText, axis: .vertical)
-                    .lineLimit(4...8)
             }
         }
         .navigationTitle("addRecipe.title")

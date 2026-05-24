@@ -176,6 +176,7 @@
       }
     },
     "addMeal.filter" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -526,13 +527,29 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Steps"
+            "value" : "Cooking steps"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Шаги"
+            "value" : "Шаги приготовления"
+          }
+        }
+      }
+    },
+    "addRecipe.stepsFooter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Describe how to prepare the dish. Enter one step per line — they will appear as a numbered list in the recipe."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Опишите, как приготовить блюдо. Каждый шаг — с новой строки, в рецепте они отобразятся нумерованным списком."
           }
         }
       }
@@ -542,13 +559,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "One step per line"
+            "value" : "For example: Chop vegetables. Fry for 5 minutes…"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Каждый шаг с новой строки"
+            "value" : "Например: Нарезать овощи. Обжарить 5 минут…"
           }
         }
       }
@@ -873,6 +890,22 @@
         }
       }
     },
+    "filter.other" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Другое"
+          }
+        }
+      }
+    },
     "format.amount %@ %@" : {
       "localizations" : {
         "en" : {
@@ -885,6 +918,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "home.addOther" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add snack"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить перекус"
           }
         }
       }
@@ -906,6 +955,7 @@
       }
     },
     "home.currentPlan" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -933,6 +983,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не запланировано"
+          }
+        }
+      }
+    },
+    "home.openWeekPlan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open plan"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть план"
+          }
+        }
+      }
+    },
+    "home.other" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Другое"
+          }
+        }
+      }
+    },
+    "home.otherEmpty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No snacks planned for today"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перекусы на сегодня не запланированы"
           }
         }
       }
@@ -970,6 +1068,7 @@
       }
     },
     "home.today" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -997,6 +1096,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неделя не создана"
+          }
+        }
+      }
+    },
+    "home.weekPlan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly meal plan"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "План питания на неделю"
           }
         }
       }
@@ -1167,13 +1282,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Snack"
+            "value" : "Other"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перекус"
+            "value" : "Другое"
           }
         }
       }
@@ -1468,6 +1583,7 @@
       }
     },
     "nav.home" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1543,6 +1659,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Список покупок"
+          }
+        }
+      }
+    },
+    "nav.today" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сегодня"
           }
         }
       }
@@ -2385,6 +2517,7 @@
       }
     },
     "tab.home" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2444,6 +2577,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Покупки"
+          }
+        }
+      }
+    },
+    "tab.today" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сегодня"
           }
         }
       }

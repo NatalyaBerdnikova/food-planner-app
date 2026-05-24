@@ -32,9 +32,6 @@ final class Ingredient {
 
     var displayName: String {
         if let foodProduct { return foodProduct.displayName }
-        if name.hasPrefix("product.") {
-            return String(localized: String.LocalizationValue(name))
-        }
-        return name
+        return L10n.resolvedProductName(name)
     }
 }

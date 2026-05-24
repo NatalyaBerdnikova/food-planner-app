@@ -9,11 +9,32 @@ struct AddMealSheet: View {
     let dayPlan: DayPlan
     let onSave: () -> Void
 
-    @State private var filterTab: RecipeFilterTab = .all
-    @State private var mealTypeWhenAll: MealType = .breakfast
+    @State private var filterTab: RecipeFilterTab
+    @State private var mealTypeWhenAll: MealType
     @State private var selectedRecipe: Recipe?
     @State private var searchText = ""
     @State private var showAddRecipe = false
+
+    init(
+        dayPlan: DayPlan,
+        preferredMealType: MealType? = nil,
+        onSave: @escaping () -> Void
+    ) {
+        self.dayPlan = dayPlan
+        self.onSave = onSave
+
+        let initialTab: RecipeFilterTab
+        let initialMealType: MealType
+        if let preferredMealType {
+            initialTab = RecipeFilterTab(rawValue: preferredMealType.rawValue) ?? .all
+            initialMealType = preferredMealType
+        } else {
+            initialTab = .all
+            initialMealType = .breakfast
+        }
+        _filterTab = State(initialValue: initialTab)
+        _mealTypeWhenAll = State(initialValue: initialMealType)
+    }
 
     private var effectiveMealType: MealType {
         filterTab.mealType ?? mealTypeWhenAll
@@ -67,25 +88,49 @@ struct AddMealSheet: View {
     }
 
     private var filterControls: some View {
-        VStack(spacing: 12) {
-            Picker("addMeal.filter", selection: $filterTab) {
-                ForEach(RecipeFilterTab.allCases) { tab in
-                    Text(tab.displayName).tag(tab)
+        VStack(alignment: .leading, spacing: 12) {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(RecipeFilterTab.allCases) { tab in
+                        filterChip(tab)
+                    }
                 }
             }
-            .pickerStyle(.segmented)
-            .labelsHidden()
 
             if filterTab == .all {
                 Picker("addMeal.type", selection: $mealTypeWhenAll) {
-                    ForEach(MealType.allCases, id: \.self) { type in
-                        Text(type.displayName).tag(type)
+                    ForEach(mealTypesForPicker, id: \.self) { type in
+                        Text(mealTypeLabel(type)).tag(type)
                     }
                 }
+                .pickerStyle(.segmented)
             }
         }
         .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
         .listRowBackground(Color.clear)
+    }
+
+    private var mealTypesForPicker: [MealType] {
+        [.breakfast, .lunch, .dinner, .snack]
+    }
+
+    private func mealTypeLabel(_ type: MealType) -> LocalizedStringResource {
+        type == .snack ? "filter.other" : type.displayName
+    }
+
+    private func filterChip(_ tab: RecipeFilterTab) -> some View {
+        Button {
+            filterTab = tab
+        } label: {
+            Text(tab.displayName)
+                .font(.subheadline.weight(.medium))
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .background(filterTab == tab ? Color.accentColor : Color(.tertiarySystemFill))
+                .foregroundStyle(filterTab == tab ? Color.white : Color.primary)
+                .clipShape(Capsule())
+        }
+        .buttonStyle(.plain)
     }
 
     private var recipesSection: some View {

@@ -19,7 +19,7 @@ enum RecipeFilterTab: String, CaseIterable, Identifiable {
         case .breakfast: "mealType.breakfast"
         case .lunch: "mealType.lunch"
         case .dinner: "mealType.dinner"
-        case .snack: "mealType.snack"
+        case .snack: "filter.other"
         }
     }
 }

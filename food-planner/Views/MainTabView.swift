@@ -8,7 +8,7 @@ struct MainTabView: View {
                 HomeView()
             }
             .tabItem {
-                Label("tab.home", systemImage: "house.fill")
+                Label("tab.today", systemImage: "sun.max.fill")
             }
 
             NavigationStack {

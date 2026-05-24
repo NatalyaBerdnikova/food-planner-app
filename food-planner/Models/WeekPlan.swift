@@ -42,7 +42,7 @@ final class WeekPlan {
                         )
                     } else {
                         totals[key] = (
-                            ingredient.name,
+                            ingredient.displayName,
                             ingredient.quantity,
                             ingredient.unit,
                             ingredient.category

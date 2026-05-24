@@ -14,7 +14,7 @@ struct ShoppingListView: View {
             if lhs.isPurchased != rhs.isPurchased {
                 return !lhs.isPurchased
             }
-            return lhs.name.localizedCaseInsensitiveCompare(rhs.name) == .orderedAscending
+            return lhs.displayName.localizedCaseInsensitiveCompare(rhs.displayName) == .orderedAscending
         }
     }
 
@@ -58,7 +58,7 @@ struct ShoppingListView: View {
         let lines = sortedItems.map { item in
             L10n.shoppingShareLine(
                 purchased: item.isPurchased,
-                name: item.name,
+                name: item.displayName,
                 quantity: item.quantity,
                 unit: item.unit
             )
@@ -80,12 +80,12 @@ struct ShoppingItemRow: View {
         Button {
             item.isPurchased.toggle()
         } label: {
-            HStack {
+            HStack(alignment: .center, spacing: 12) {
                 Image(systemName: item.isPurchased ? "checkmark.circle.fill" : "circle")
                     .foregroundStyle(item.isPurchased ? .green : .secondary)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(item.name)
+                    Text(item.displayName)
                         .strikethrough(item.isPurchased)
                         .foregroundStyle(item.isPurchased ? .secondary : .primary)
                     Text(L10n.amount(quantity: item.quantity, unit: item.unit))
@@ -93,8 +93,10 @@ struct ShoppingItemRow: View {
                         .foregroundStyle(.secondary)
                 }
 
-                Spacer()
+                Spacer(minLength: 0)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }

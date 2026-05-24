@@ -30,14 +30,18 @@ struct WeekPlanView: View {
     @ViewBuilder
     private var content: some View {
         if let weekPlan = currentWeekPlan {
-            VStack(spacing: 12) {
-                weekSwitcher
+            ScrollView {
+                VStack(spacing: 12) {
+                    weekSwitcher
 
-                WeekDayCarousel(
-                    dayPlans: sortedDayPlans(weekPlan),
-                    selectedDay: $selectedDay,
-                    onAddMeal: presentAddMeal
-                )
+                    WeekDayCarousel(
+                        dayPlans: sortedDayPlans(weekPlan),
+                        selectedDay: $selectedDay,
+                        onAddMeal: presentAddMeal
+                    )
+                }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 16)
             }
         } else {
             ProgressView()
@@ -84,7 +88,6 @@ struct WeekPlanView: View {
                 Image(systemName: "chevron.right")
             }
         }
-        .padding(.horizontal, 16)
     }
 
     private var weekRangeTitle: String {

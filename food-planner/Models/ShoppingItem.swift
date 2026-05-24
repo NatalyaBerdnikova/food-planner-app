@@ -23,4 +23,8 @@ final class ShoppingItem {
         self.isPurchased = isPurchased
         self.weekPlan = weekPlan
     }
+
+    var displayName: String {
+        L10n.resolvedProductName(name)
+    }
 }
