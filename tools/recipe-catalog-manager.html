@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Каталог рецептов — food-planner</title>
+  <style>
+    :root {
+      --bg: #f2f2f7;
+      --card: #fff;
+      --border: #d1d1d6;
+      --accent: #007aff;
+      --text: #1c1c1e;
+      --muted: #636366;
+      --danger: #ff3b30;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+    header h1 { margin: 0 0 6px; font-size: 1.35rem; }
+    header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    main { max-width: 1280px; margin: 0 auto; padding: 20px 24px 48px; }
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 960px) {
+      .grid-editor { grid-template-columns: 320px 1fr; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .card h2 { margin: 0 0 12px; font-size: 1.05rem; }
+    label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font: inherit;
+      margin-bottom: 10px;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    textarea.mono { font-family: ui-monospace, monospace; font-size: 0.82rem; }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+    button {
+      font: inherit;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      cursor: pointer;
+    }
+    button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    button.danger { color: var(--danger); border-color: #ffc9c5; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    tr:hover td { background: #f9f9fb; cursor: pointer; }
+    tr.selected td { background: #e8f2ff; }
+    .hint { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+    .status { padding: 10px; border-radius: 8px; background: #eef6ff; font-size: 0.85rem; margin-top: 10px; }
+    .status.error { background: #ffebea; color: #8a1f17; }
+    .section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 14px 0 8px; }
+    .nutrition-box {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+    .nutrition-box span { display: block; color: var(--muted); font-size: 0.72rem; }
+    .ingredient-row {
+      display: grid;
+      grid-template-columns: 1fr 80px 110px 36px;
+      gap: 8px;
+      align-items: end;
+      margin-bottom: 8px;
+    }
+    .ingredient-row input, .ingredient-row select { margin-bottom: 0; }
+    .image-preview {
+      width: 100%;
+      max-width: 200px;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #f9f9fb;
+    }
+    .image-placeholder {
+      width: 100%;
+      max-width: 200px;
+      aspect-ratio: 4/3;
+      border-radius: 10px;
+      border: 1px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+    .badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: #eee; color: var(--muted); }
+    .badge.warn { background: #fff3cd; color: #856404; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Менеджер каталога рецептов</h1>
+    <p>
+      Создавайте рецепты как в приложении: название, ингредиенты по <code>catalogKey</code>,
+      шаги, <code>imageId</code> (файл в <code>RecipeImages/</code>) или превью в JSON.
+      Экспорт → <code>recipes-catalog.json</code> в проект iOS.
+    </p>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Каталог ингредиентов</h2>
+      <div class="row">
+        <input type="file" id="productsFile" accept="application/json,.json" />
+      </div>
+      <p class="hint">
+        Загрузите JSON из <code>ingredient-catalog-manager</code>
+        (<code>{ "version": 1, "products": [...] }</code>).
+        Без каталога нельзя подобрать ингредиенты и посчитать КБЖУ.
+      </p>
+      <div id="productsStatus" class="status" hidden></div>
+      <p id="productsCount" class="hint"></p>
+    </section>
+
+    <section class="card">
+      <h2>Рецепты — импорт / экспорт</h2>
+      <div class="row">
+        <input type="file" id="recipesFile" accept="application/json,.json" />
+        <button type="button" id="btnExport" class="primary">Скачать recipes-catalog.json</button>
+        <button type="button" id="btnNew" class="primary">Новый рецепт</button>
+        <button type="button" id="btnClear" class="danger">Очистить список</button>
+      </div>
+      <label class="row" style="margin-top: 4px;">
+        <input type="checkbox" id="exportIncludeImages" />
+        Включить <code>imageBase64</code> в экспорт (тяжёлый файл)
+      </label>
+      <p class="hint">
+        Формат: <code>{ "version": 1, "recipes": [ { "id", "name", "imageId", "steps", "ingredients" } ] }</code>.
+        Совместим с импортом одного рецепта в приложении (<code>RecipeImportService</code>).
+      </p>
+      <div id="ioStatus" class="status" hidden></div>
+    </section>
+
+    <div class="grid grid-editor">
+      <section class="card">
+        <h2>Список рецептов</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Название</th>
+              <th>Ккал/100г</th>
+            </tr>
+          </thead>
+          <tbody id="recipeTableBody"></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2 id="formTitle">Редактор рецепта</h2>
+
+        <div class="row" style="align-items: flex-start;">
+          <div style="flex: 1; min-width: 200px;">
+            <label for="recipeId">ID (slug, для файла картинки)</label>
+            <input type="text" id="recipeId" placeholder="oatmeal_berries" />
+
+            <label for="recipeName">Название</label>
+            <input type="text" id="recipeName" placeholder="Овсянка с ягодами" />
+
+            <label for="imageId">imageId (имя файла без расширения)</label>
+            <input type="text" id="imageId" placeholder="oatmeal_berries" />
+            <p class="hint">В Xcode: <code>food-planner/Resources/RecipeImages/&lt;imageId&gt;.jpg</code></p>
+          </div>
+          <div>
+            <label>Фото (превью / base64 при экспорте)</label>
+            <img id="imagePreview" class="image-preview" alt="" hidden />
+            <div id="imagePlaceholder" class="image-placeholder">Нет фото</div>
+            <input type="file" id="imageFile" accept="image/*" />
+            <button type="button" id="btnClearImage">Убрать фото</button>
+          </div>
+        </div>
+
+        <div class="section-title">КБЖУ на 100 г (расчёт)</div>
+        <div class="nutrition-box" id="nutritionBox">
+          <div><span>Ккал</span><strong id="nCal">—</strong></div>
+          <div><span>Б</span><strong id="nPro">—</strong></div>
+          <div><span>Ж</span><strong id="nFat">—</strong></div>
+          <div><span>У</span><strong id="nCarb">—</strong></div>
+        </div>
+        <p id="weightHint" class="hint"></p>
+
+        <div class="section-title">Ингредиенты</div>
+        <div id="ingredientsList"></div>
+        <button type="button" id="btnAddIngredient">+ Ингредиент</button>
+
+        <div class="section-title">Шаги приготовления</div>
+        <label for="stepsText">По одному шагу на строку (как <code>steps: [String]</code> в приложении)</label>
+        <textarea id="stepsText" class="mono" placeholder="Залить овсянку молоком&#10;Добавить ягоды"></textarea>
+
+        <div class="row">
+          <button type="button" id="btnSave" class="primary">Сохранить рецепт</button>
+          <button type="button" id="btnDelete" class="danger">Удалить</button>
+          <button type="button" id="btnDuplicate">Дублировать</button>
+        </div>
+        <div id="formStatus" class="status" hidden></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const UNITS = [
+      { value: 'gram', label: 'г' },
+      { value: 'kilogram', label: 'кг' },
+      { value: 'milliliter', label: 'мл' },
+      { value: 'liter', label: 'л' },
+      { value: 'piece', label: 'шт' },
+      { value: 'tablespoon', label: 'ст. л.' },
+      { value: 'teaspoon', label: 'ч. л.' },
+    ];
+
+    let productsByKey = new Map();
+    let recipes = [];
+    let editingIndex = null;
+    let draftImageBase64 = null;
+
+    const $ = id => document.getElementById(id);
+
+    function slugify(s) {
+      return (s || '')
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-zа-яё0-9]+/gi, '_')
+        .replace(/^_|_$/g, '')
+        .slice(0, 64) || 'recipe';
+    }
+
+    function showStatus(el, msg, isError) {
+      el.hidden = false;
+      el.textContent = msg;
+      el.classList.toggle('error', !!isError);
+    }
+
+    function grams(quantity, unit, product) {
+      const q = Number(quantity) || 0;
+      switch (unit) {
+        case 'gram': return q;
+        case 'kilogram': return q * 1000;
+        case 'milliliter': return q;
+        case 'liter': return q * 1000;
+        case 'piece': return q * (product?.defaultPieceWeightGrams ?? 100);
+        case 'tablespoon': return q * 15;
+        case 'teaspoon': return q * 5;
+        default: return q;
+      }
+    }
+
+    function recipeNutrition(ingredients) {
+      let totalWeight = 0;
+      let cal = 0, pro = 0, fat = 0, carb = 0;
+      for (const ing of ingredients) {
+        const product = productsByKey.get(ing.catalogKey);
+        if (!product) continue;
+        const g = grams(ing.quantity, ing.unit, product);
+        if (g <= 0) continue;
+        totalWeight += g;
+        const f = g / 100;
+        cal += (product.caloriesPer100g || 0) * f;
+        pro += (product.proteinPer100g || 0) * f;
+        fat += (product.fatPer100g || 0) * f;
+        carb += (product.carbsPer100g || 0) * f;
+      }
+      const per100 = totalWeight > 0
+        ? {
+            cal: cal / totalWeight * 100,
+            pro: pro / totalWeight * 100,
+            fat: fat / totalWeight * 100,
+            carb: carb / totalWeight * 100,
+          }
+        : null;
+      return { totalWeight, per100, total: { cal, pro, fat, carb } };
+    }
+
+    function loadProductsFromJSON(data) {
+      const list = Array.isArray(data) ? data : (data.products || []);
+      productsByKey = new Map();
+      for (const p of list) {
+        const key = p.catalogKey || p.key;
+        if (key) productsByKey.set(key, p);
+      }
+      $('productsCount').textContent = productsByKey.size
+        ? `Загружено продуктов: ${productsByKey.size}`
+        : '';
+      return productsByKey.size;
+    }
+
+    function normalizeRecipe(raw) {
+      return {
+        id: raw.id || slugify(raw.name),
+        name: (raw.name || '').trim(),
+        imageId: raw.imageId || raw.id || '',
+        imageBase64: raw.imageBase64 || null,
+        steps: Array.isArray(raw.steps) ? raw.steps : [],
+        ingredients: (raw.ingredients || []).map(i => ({
+          catalogKey: i.catalogKey || i.key || '',
+          quantity: Number(i.quantity) || 0,
+          unit: i.unit || 'gram',
+        })),
+        caloriesPer100g: raw.caloriesPer100g,
+        proteinPer100g: raw.proteinPer100g,
+        fatPer100g: raw.fatPer100g,
+        carbsPer100g: raw.carbsPer100g,
+      };
+    }
+
+    function loadRecipesFromJSON(data) {
+      const list = Array.isArray(data)
+        ? data
+        : (data.recipes || []);
+      recipes = list.map(normalizeRecipe).filter(r => r.name);
+      editingIndex = null;
+      renderTable();
+      resetForm();
+    }
+
+    function renderTable() {
+      const tbody = $('recipeTableBody');
+      tbody.innerHTML = '';
+      recipes.forEach((r, i) => {
+        const nut = recipeNutrition(r.ingredients);
+        const tr = document.createElement('tr');
+        if (i === editingIndex) tr.classList.add('selected');
+        const kcal = nut.per100 ? Math.round(nut.per100.cal) : (r.caloriesPer100g != null ? Math.round(r.caloriesPer100g) : '—');
+        const missing = r.ingredients.some(ing => !productsByKey.has(ing.catalogKey));
+        tr.innerHTML = `
+          <td>${escapeHtml(r.name)}${missing ? ' <span class="badge warn">?</span>' : ''}</td>
+          <td>${kcal}</td>
+        `;
+        tr.addEventListener('click', () => selectRecipe(i));
+        tbody.appendChild(tr);
+      });
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function selectRecipe(index) {
+      editingIndex = index;
+      const r = recipes[index];
+      $('formTitle').textContent = 'Редактирование';
+      $('recipeId').value = r.id || '';
+      $('recipeName').value = r.name || '';
+      $('imageId').value = r.imageId || '';
+      $('stepsText').value = (r.steps || []).join('\n');
+      draftImageBase64 = r.imageBase64 || null;
+      updateImagePreview();
+      renderIngredientsEditor(r.ingredients);
+      updateNutritionPreview();
+      renderTable();
+      $('btnDelete').disabled = false;
+    }
+
+    function resetForm() {
+      editingIndex = null;
+      $('formTitle').textContent = 'Новый рецепт';
+      $('recipeId').value = '';
+      $('recipeName').value = '';
+      $('imageId').value = '';
+      $('stepsText').value = '';
+      draftImageBase64 = null;
+      $('imageFile').value = '';
+      updateImagePreview();
+      renderIngredientsEditor([]);
+      updateNutritionPreview();
+      renderTable();
+      $('btnDelete').disabled = true;
+    }
+
+    function readFormIngredients() {
+      return [...document.querySelectorAll('.ingredient-row')].map(row => ({
+        catalogKey: row.querySelector('.ing-catalog').value,
+        quantity: parseFloat(row.querySelector('.ing-qty').value) || 0,
+        unit: row.querySelector('.ing-unit').value,
+      })).filter(i => i.catalogKey);
+    }
+
+    function renderIngredientsEditor(ingredients) {
+      const host = $('ingredientsList');
+      host.innerHTML = '';
+      const keys = [...productsByKey.keys()].sort();
+      (ingredients.length ? ingredients : [{ catalogKey: '', quantity: 100, unit: 'gram' }]).forEach(ing => {
+        const row = document.createElement('div');
+        row.className = 'ingredient-row';
+        const select = document.createElement('select');
+        select.className = 'ing-catalog';
+        select.innerHTML = '<option value="">— продукт —</option>' +
+          keys.map(k => {
+            const p = productsByKey.get(k);
+            const label = p.displayName || k;
+            const sel = k === ing.catalogKey ? ' selected' : '';
+            return `<option value="${escapeHtml(k)}"${sel}>${escapeHtml(label)}</option>`;
+          }).join('');
+        if (ing.catalogKey && !keys.includes(ing.catalogKey)) {
+          select.innerHTML += `<option value="${escapeHtml(ing.catalogKey)}" selected>${escapeHtml(ing.catalogKey)} (нет в каталоге)</option>`;
+        }
+        const qty = document.createElement('input');
+        qty.type = 'number';
+        qty.className = 'ing-qty';
+        qty.min = '0';
+        qty.step = 'any';
+        qty.value = ing.quantity ?? 100;
+        const unit = document.createElement('select');
+        unit.className = 'ing-unit';
+        unit.innerHTML = UNITS.map(u =>
+          `<option value="${u.value}"${u.value === (ing.unit || 'gram') ? ' selected' : ''}>${u.label}</option>`
+        ).join('');
+        const rm = document.createElement('button');
+        rm.type = 'button';
+        rm.textContent = '×';
+        rm.className = 'danger';
+        rm.addEventListener('click', () => {
+          row.remove();
+          updateNutritionPreview();
+        });
+        [select, qty, unit].forEach(el => el.addEventListener('change', updateNutritionPreview));
+        [select, qty, unit].forEach(el => el.addEventListener('input', updateNutritionPreview));
+        row.append(select, qty, unit, rm);
+        host.appendChild(row);
+      });
+    }
+
+    function updateNutritionPreview() {
+      const ings = readFormIngredients();
+      const nut = recipeNutrition(ings);
+      if (nut.per100) {
+        $('nCal').textContent = Math.round(nut.per100.cal);
+        $('nPro').textContent = nut.per100.pro.toFixed(1);
+        $('nFat').textContent = nut.per100.fat.toFixed(1);
+        $('nCarb').textContent = nut.per100.carb.toFixed(1);
+        $('weightHint').textContent = `Масса блюда ≈ ${Math.round(nut.totalWeight)} г (сумма ингредиентов)`;
+      } else {
+        $('nCal').textContent = $('nPro').textContent = $('nFat').textContent = $('nCarb').textContent = '—';
+        $('weightHint').textContent = productsByKey.size
+          ? 'Добавьте ингредиенты с количеством'
+          : 'Сначала загрузите каталог ингредиентов';
+      }
+    }
+
+    function updateImagePreview() {
+      const img = $('imagePreview');
+      const ph = $('imagePlaceholder');
+      if (draftImageBase64) {
+        img.src = 'data:image/jpeg;base64,' + draftImageBase64;
+        img.hidden = false;
+        ph.hidden = true;
+      } else {
+        img.hidden = true;
+        ph.hidden = false;
+      }
+    }
+
+    function readFormRecipe() {
+      const name = $('recipeName').value.trim();
+      const id = ($('recipeId').value.trim() || slugify(name));
+      let imageId = $('imageId').value.trim();
+      if (!imageId) imageId = id;
+      const steps = $('stepsText').value
+        .split('\n')
+        .map(s => s.trim())
+        .filter(Boolean);
+      const ingredients = readFormIngredients();
+      const nut = recipeNutrition(ingredients);
+      const recipe = {
+        id,
+        name,
+        imageId,
+        steps,
+        ingredients,
+      };
+      if (draftImageBase64) recipe.imageBase64 = draftImageBase64;
+      if (nut.per100) {
+        recipe.caloriesPer100g = Math.round(nut.per100.cal * 10) / 10;
+        recipe.proteinPer100g = Math.round(nut.per100.pro * 10) / 10;
+        recipe.fatPer100g = Math.round(nut.per100.fat * 10) / 10;
+        recipe.carbsPer100g = Math.round(nut.per100.carb * 10) / 10;
+      }
+      return recipe;
+    }
+
+    $('recipeName').addEventListener('input', () => {
+      if (!$('recipeId').value.trim()) $('recipeId').value = slugify($('recipeName').value);
+      if (!$('imageId').value.trim()) $('imageId').value = $('recipeId').value;
+    });
+
+    $('btnAddIngredient').addEventListener('click', () => {
+      const ings = readFormIngredients();
+      ings.push({ catalogKey: '', quantity: 100, unit: 'gram' });
+      renderIngredientsEditor(ings);
+      updateNutritionPreview();
+    });
+
+    $('btnSave').addEventListener('click', () => {
+      const recipe = readFormRecipe();
+      if (!recipe.name) {
+        showStatus($('formStatus'), 'Укажите название', true);
+        return;
+      }
+      const dupId = recipes.findIndex((r, i) => r.id === recipe.id && i !== editingIndex);
+      if (dupId >= 0) {
+        showStatus($('formStatus'), `ID «${recipe.id}» уже используется`, true);
+        return;
+      }
+      if (editingIndex != null) recipes[editingIndex] = recipe;
+      else recipes.push(recipe);
+      editingIndex = recipes.length - 1;
+      renderTable();
+      selectRecipe(editingIndex);
+      showStatus($('formStatus'), 'Сохранено', false);
+    });
+
+    $('btnDelete').addEventListener('click', () => {
+      if (editingIndex == null) return;
+      if (!confirm('Удалить рецепт?')) return;
+      recipes.splice(editingIndex, 1);
+      resetForm();
+      showStatus($('formStatus'), 'Удалено', false);
+    });
+
+    $('btnDuplicate').addEventListener('click', () => {
+      const recipe = readFormRecipe();
+      if (!recipe.name) return;
+      recipe.id = recipe.id + '_copy';
+      recipe.name = recipe.name + ' (копия)';
+      recipes.push(recipe);
+      selectRecipe(recipes.length - 1);
+    });
+
+    $('btnNew').addEventListener('click', resetForm);
+
+    $('productsFile').addEventListener('change', async e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const data = JSON.parse(await file.text());
+        const n = loadProductsFromJSON(data);
+        showStatus($('productsStatus'), `Загружено ${n} продуктов`, false);
+        if (editingIndex != null) {
+          renderIngredientsEditor(recipes[editingIndex].ingredients);
+          updateNutritionPreview();
+        }
+        renderTable();
+      } catch (err) {
+        showStatus($('productsStatus'), 'Ошибка JSON: ' + err.message, true);
+      }
+      e.target.value = '';
+    });
+
+    $('recipesFile').addEventListener('change', async e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const data = JSON.parse(await file.text());
+        loadRecipesFromJSON(data);
+        showStatus($('ioStatus'), `Загружено рецептов: ${recipes.length}`, false);
+      } catch (err) {
+        showStatus($('ioStatus'), 'Ошибка JSON: ' + err.message, true);
+      }
+      e.target.value = '';
+    });
+
+    $('btnExport').addEventListener('click', () => {
+      const includeImages = $('exportIncludeImages').checked;
+      const out = {
+        version: 1,
+        recipes: recipes.map(r => {
+          const item = {
+            id: r.id,
+            name: r.name,
+            imageId: r.imageId || r.id,
+            steps: r.steps || [],
+            ingredients: r.ingredients || [],
+          };
+          const nut = recipeNutrition(r.ingredients);
+          if (nut.per100) {
+            item.caloriesPer100g = Math.round(nut.per100.cal * 10) / 10;
+            item.proteinPer100g = Math.round(nut.per100.pro * 10) / 10;
+            item.fatPer100g = Math.round(nut.per100.fat * 10) / 10;
+            item.carbsPer100g = Math.round(nut.per100.carb * 10) / 10;
+          }
+          if (includeImages && r.imageBase64) item.imageBase64 = r.imageBase64;
+          return item;
+        }),
+      };
+      const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'recipes-catalog.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      showStatus($('ioStatus'), 'Файл recipes-catalog.json скачан. Положите в food-planner/Resources/', false);
+    });
+
+    $('btnClear').addEventListener('click', () => {
+      if (!confirm('Очистить все рецепты?')) return;
+      recipes = [];
+      resetForm();
+    });
+
+    $('imageFile').addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = reader.result;
+        draftImageBase64 = String(dataUrl).split(',')[1] || null;
+        updateImagePreview();
+        if (!$('imageId').value.trim()) {
+          const base = file.name.replace(/\.[^.]+$/, '');
+          $('imageId').value = slugify(base);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    $('btnClearImage').addEventListener('click', () => {
+      draftImageBase64 = null;
+      $('imageFile').value = '';
+      updateImagePreview();
+    });
+
+    resetForm();
+    renderTable();
+  </script>
+</body>
+</html>

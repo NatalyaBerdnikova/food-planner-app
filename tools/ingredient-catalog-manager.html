@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Каталог ингредиентов — food-planner</title>
+  <style>
+    :root {
+      --bg: #f2f2f7;
+      --card: #fff;
+      --border: #d1d1d6;
+      --accent: #007aff;
+      --text: #1c1c1e;
+      --muted: #636366;
+      --danger: #ff3b30;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+    header h1 { margin: 0 0 6px; font-size: 1.35rem; }
+    header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    main { max-width: 1280px; margin: 0 auto; padding: 20px 24px 48px; }
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 960px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+      .grid-editor { grid-template-columns: 380px 1fr; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .card h2 { margin: 0 0 12px; font-size: 1.05rem; }
+    label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font: inherit;
+      margin-bottom: 10px;
+    }
+    textarea { min-height: 100px; resize: vertical; font-family: ui-monospace, monospace; font-size: 0.82rem; }
+    .fields-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px 12px;
+    }
+    .fields-grid input { margin-bottom: 0; }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+    button {
+      font: inherit;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      cursor: pointer;
+    }
+    button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    button.danger { color: var(--danger); border-color: #ffc9c5; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; }
+    th { color: var(--muted); font-weight: 600; }
+    tr:hover td { background: #f9f9fb; }
+    tr.selected td { background: #e8f2ff; }
+    .hint { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+    .status { padding: 10px; border-radius: 8px; background: #eef6ff; font-size: 0.85rem; margin-top: 10px; }
+    .status.error { background: #ffebea; color: #8a1f17; }
+    .section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 14px 0 8px; }
+    .unit-hint { font-size: 0.7rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Менеджер каталога ингредиентов</h1>
+    <p>
+      Поля соответствуют модели <code>FoodProduct</code> (на 100 г).
+      В приложении нет поля «фтор» — вместо него в БД есть <strong>хром (chromium)</strong>.
+      Натрий с health-diet.ru парсится справочно, в JSON не экспортируется.
+    </p>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Импорт / экспорт JSON</h2>
+      <div class="row">
+        <input type="file" id="fileInput" accept="application/json,.json" />
+        <button type="button" id="btnExport">Скачать JSON</button>
+        <button type="button" id="btnClear" class="danger">Очистить список</button>
+      </div>
+      <p class="hint">Формат: <code>{ "version": 1, "products": [ … ] }</code> или массив продуктов.</p>
+      <div id="ioStatus" class="status" hidden></div>
+    </section>
+
+    <section class="card">
+      <h2>Парсинг с health-diet.ru</h2>
+      <label for="parseUrl">Ссылка на страницу состава</label>
+      <input type="url" id="parseUrl" placeholder="https://health-diet.ru/base_of_food/sostav/39.php" />
+      <div class="row">
+        <button type="button" id="btnFetchParse" class="primary">Загрузить и разобрать</button>
+      </div>
+      <label for="pasteHtml">Или вставьте HTML страницы (если загрузка заблокирована CORS)</label>
+      <textarea id="pasteHtml" placeholder="Вставьте HTML таблицы с сайта…"></textarea>
+      <div class="row">
+        <button type="button" id="btnParseHtml">Разобрать вставленный HTML</button>
+      </div>
+      <div id="parseStatus" class="status" hidden></div>
+    </section>
+
+    <section class="card grid-editor" style="grid-column: 1 / -1;">
+      <div>
+        <h2 id="formTitle">Новый продукт</h2>
+        <form id="productForm">
+          <label for="displayName">Название (для каталога / локализации)</label>
+          <input type="text" id="displayName" required placeholder="Яичный белок куриный" />
+
+          <div class="fields-grid">
+            <div>
+              <label for="catalogKey">catalogKey</label>
+              <input type="text" id="catalogKey" required placeholder="egg_white" />
+            </div>
+            <div>
+              <label for="category">category</label>
+              <select id="category"></select>
+            </div>
+            <div>
+              <label for="defaultPieceWeightGrams">Вес «шт», г</label>
+              <input type="number" id="defaultPieceWeightGrams" min="0" step="1" value="100" />
+            </div>
+          </div>
+
+          <div class="section-title">КБЖУ (на 100 г)</div>
+          <div class="fields-grid">
+            <div><label>Калории</label><input type="number" id="caloriesPer100g" step="0.1" min="0" /></div>
+            <div><label>Белки, г</label><input type="number" id="proteinPer100g" step="0.1" min="0" /></div>
+            <div><label>Жиры, г</label><input type="number" id="fatPer100g" step="0.1" min="0" /></div>
+            <div><label>Углеводы, г</label><input type="number" id="carbsPer100g" step="0.1" min="0" /></div>
+          </div>
+
+          <div class="section-title">Микронутриенты (на 100 г)</div>
+          <p class="hint unit-hint">мг: Ca, Mg, Zn, C, K; мкг: D3, A, K, B9, B12, Se, Cr, I; г: fiber, E, B6, Fe</p>
+          <div class="fields-grid" id="microFields"></div>
+
+          <div class="row" style="margin-top: 12px;">
+            <button type="submit" class="primary" id="btnSave">Сохранить в список</button>
+            <button type="button" id="btnCancel">Отмена</button>
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <h2>Список (<span id="countLabel">0</span>)</h2>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Название</th>
+                <th>key</th>
+                <th>ккал</th>
+                <th>Б</th>
+                <th>Ж</th>
+                <th>У</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const CATEGORIES = ['vegetables', 'meat', 'fish', 'dairy', 'grains', 'fruits', 'spices', 'other'];
+
+    const FIELD_DEFS = [
+      { key: 'fiberPer100g', label: 'Клетчатка', unit: 'г' },
+      { key: 'vitaminD3Per100g', label: 'Витамин D3', unit: 'мкг' },
+      { key: 'vitaminAPer100g', label: 'Витамин A', unit: 'мкг' },
+      { key: 'vitaminB6Per100g', label: 'Витамин B6', unit: 'г' },
+      { key: 'vitaminB12Per100g', label: 'Витамин B12', unit: 'мкг' },
+      { key: 'vitaminCPer100g', label: 'Витамин C', unit: 'мг' },
+      { key: 'vitaminEPer100g', label: 'Витамин E', unit: 'г' },
+      { key: 'vitaminKPer100g', label: 'Витамин K', unit: 'мкг' },
+      { key: 'potassiumPer100g', label: 'Калий', unit: 'мг' },
+      { key: 'calciumPer100g', label: 'Кальций', unit: 'мг' },
+      { key: 'magnesiumPer100g', label: 'Магний', unit: 'мг' },
+      { key: 'ironPer100g', label: 'Железо', unit: 'г' },
+      { key: 'seleniumPer100g', label: 'Селен', unit: 'мкг' },
+      { key: 'zincPer100g', label: 'Цинк', unit: 'мг' },
+      { key: 'chromiumPer100g', label: 'Хром (вместо фтора в БД)', unit: 'мкг' },
+      { key: 'iodinePer100g', label: 'Йод', unit: 'мкг' },
+      { key: 'vitaminB9Per100g', label: 'Витамин B9 (фолаты)', unit: 'мкг' },
+    ];
+
+    const MACRO_KEYS = ['caloriesPer100g', 'proteinPer100g', 'fatPer100g', 'carbsPer100g'];
+    const ALL_NUMERIC = [...MACRO_KEYS, ...FIELD_DEFS.map(f => f.key)];
+
+    let products = [];
+    let editingIndex = null;
+
+    const $ = (id) => document.getElementById(id);
+
+    function emptyProduct() {
+      const p = {
+        catalogKey: '',
+        displayName: '',
+        category: 'other',
+        defaultPieceWeightGrams: 100,
+      };
+      ALL_NUMERIC.forEach(k => { p[k] = 0; });
+      return p;
+    }
+
+    function slugify(text) {
+      const map = { а:'a', б:'b', в:'v', г:'g', д:'d', е:'e', ё:'e', ж:'zh', з:'z', и:'i', й:'y', к:'k', л:'l', м:'m', н:'n', о:'o', п:'p', р:'r', с:'s', т:'t', у:'u', ф:'f', х:'h', ц:'ts', ч:'ch', ш:'sh', щ:'sch', ъ:'', ы:'y', ь:'', э:'e', ю:'yu', я:'ya' };
+      return text.toLowerCase().trim()
+        .split('')
+        .map(ch => map[ch] ?? ch)
+        .join('')
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_|_$/g, '')
+        .slice(0, 48) || 'product';
+    }
+
+    function num(v) {
+      const n = parseFloat(String(v).replace(',', '.'));
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function normalizeProduct(raw) {
+      const p = emptyProduct();
+      p.catalogKey = String(raw.catalogKey ?? raw.key ?? '').trim();
+      p.displayName = String(raw.displayName ?? raw.name ?? '').trim();
+      p.category = CATEGORIES.includes(raw.category) ? raw.category : 'other';
+      p.defaultPieceWeightGrams = num(raw.defaultPieceWeightGrams ?? raw.pieceGrams ?? 100);
+      ALL_NUMERIC.forEach(k => { p[k] = num(raw[k] ?? 0); });
+      if (!p.catalogKey && p.displayName) p.catalogKey = slugify(p.displayName);
+      return p;
+    }
+
+    function initForm() {
+      const cat = $('category');
+      cat.innerHTML = CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('');
+
+      const micro = $('microFields');
+      micro.innerHTML = FIELD_DEFS.map(f => `
+        <div>
+          <label>${f.label} <span class="unit-hint">(${f.unit})</span></label>
+          <input type="number" id="${f.key}" step="0.001" min="0" data-field="${f.key}" />
+        </div>
+      `).join('');
+    }
+
+    function fillForm(p) {
+      $('displayName').value = p.displayName;
+      $('catalogKey').value = p.catalogKey;
+      $('category').value = p.category;
+      $('defaultPieceWeightGrams').value = p.defaultPieceWeightGrams;
+      MACRO_KEYS.forEach(k => { $(k).value = p[k]; });
+      FIELD_DEFS.forEach(f => { $(f.key).value = p[f.key]; });
+    }
+
+    function readForm() {
+      const p = emptyProduct();
+      p.displayName = $('displayName').value.trim();
+      p.catalogKey = $('catalogKey').value.trim() || slugify(p.displayName);
+      p.category = $('category').value;
+      p.defaultPieceWeightGrams = num($('defaultPieceWeightGrams').value);
+      MACRO_KEYS.forEach(k => { p[k] = num($(k).value); });
+      FIELD_DEFS.forEach(f => { p[k] = num($(f.key).value); });
+      return p;
+    }
+
+    function renderTable() {
+      $('countLabel').textContent = products.length;
+      const tbody = $('tableBody');
+      tbody.innerHTML = products.map((p, i) => `
+        <tr class="${editingIndex === i ? 'selected' : ''}" data-index="${i}">
+          <td>${escapeHtml(p.displayName)}</td>
+          <td><code>${escapeHtml(p.catalogKey)}</code></td>
+          <td>${fmt(p.caloriesPer100g)}</td>
+          <td>${fmt(p.proteinPer100g)}</td>
+          <td>${fmt(p.fatPer100g)}</td>
+          <td>${fmt(p.carbsPer100g)}</td>
+          <td>
+            <button type="button" data-edit="${i}">Изм.</button>
+            <button type="button" class="danger" data-del="${i}">×</button>
+          </td>
+        </tr>
+      `).join('');
+
+      tbody.querySelectorAll('[data-edit]').forEach(btn => {
+        btn.addEventListener('click', () => startEdit(+btn.dataset.edit));
+      });
+      tbody.querySelectorAll('[data-del]').forEach(btn => {
+        btn.addEventListener('click', () => deleteProduct(+btn.dataset.del));
+      });
+      tbody.querySelectorAll('tr[data-index]').forEach(row => {
+        row.addEventListener('click', (e) => {
+          if (e.target.closest('button')) return;
+          startEdit(+row.dataset.index);
+        });
+      });
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+    function fmt(n) { return Number(n).toLocaleString('ru-RU', { maximumFractionDigits: 2 }); }
+
+    function startEdit(index) {
+      editingIndex = index;
+      $('formTitle').textContent = 'Редактирование';
+      $('btnSave').textContent = 'Обновить';
+      fillForm(products[index]);
+      renderTable();
+    }
+
+    function resetForm() {
+      editingIndex = null;
+      $('formTitle').textContent = 'Новый продукт';
+      $('btnSave').textContent = 'Сохранить в список';
+      fillForm(emptyProduct());
+    }
+
+    function deleteProduct(index) {
+      if (!confirm('Удалить «' + products[index].displayName + '»?')) return;
+      products.splice(index, 1);
+      if (editingIndex === index) resetForm();
+      else if (editingIndex > index) editingIndex--;
+      renderTable();
+    }
+
+    function showStatus(el, msg, isError) {
+      el.hidden = false;
+      el.textContent = msg;
+      el.classList.toggle('error', !!isError);
+    }
+
+    $('productForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const p = readForm();
+      if (!p.displayName) return alert('Укажите название');
+      if (!p.catalogKey) return alert('Укажите catalogKey');
+
+      const dup = products.findIndex((x, i) => x.catalogKey === p.catalogKey && i !== editingIndex);
+      if (dup >= 0) return alert('catalogKey уже используется: ' + p.catalogKey);
+
+      if (editingIndex === null) products.push(p);
+      else products[editingIndex] = p;
+      resetForm();
+      renderTable();
+    });
+
+    $('btnCancel').addEventListener('click', resetForm);
+
+    $('displayName').addEventListener('blur', () => {
+      if (!$('catalogKey').value.trim() && $('displayName').value.trim()) {
+        $('catalogKey').value = slugify($('displayName').value);
+      }
+    });
+
+    $('fileInput').addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        const list = Array.isArray(data) ? data : data.products;
+        if (!Array.isArray(list)) throw new Error('Ожидается массив products');
+        products = list.map(normalizeProduct);
+        resetForm();
+        renderTable();
+        showStatus($('ioStatus'), `Загружено ${products.length} продукт(ов)`, false);
+      } catch (err) {
+        showStatus($('ioStatus'), 'Ошибка чтения JSON: ' + err.message, true);
+      }
+      e.target.value = '';
+    });
+
+    $('btnExport').addEventListener('click', () => {
+      const payload = { version: 1, exportedAt: new Date().toISOString(), products };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'food-catalog.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      showStatus($('ioStatus'), 'Файл food-catalog.json скачан', false);
+    });
+
+    $('btnClear').addEventListener('click', () => {
+      if (!confirm('Очистить весь список?')) return;
+      products = [];
+      resetForm();
+      renderTable();
+    });
+
+    // ——— health-diet.ru parser ———
+
+    const NUTRIENT_MAP = [
+      { patterns: [/калорийность/i, /энергетическая ценность/i], field: 'caloriesPer100g', unit: 'kcal' },
+      { patterns: [/белки/i], field: 'proteinPer100g', unit: 'g' },
+      { patterns: [/жиры/i], field: 'fatPer100g', unit: 'g' },
+      { patterns: [/углеводы/i], field: 'carbsPer100g', unit: 'g' },
+      { patterns: [/витамин\s*а\b/i, /vitamin\s*a/i, /ретинол/i], field: 'vitaminAPer100g', unit: 'mcg' },
+      { patterns: [/витамин\s*в6|b6|пиридоксин/i], field: 'vitaminB6Per100g', unit: 'g' },
+      { patterns: [/витамин\s*в12|b12|кобаламин/i], field: 'vitaminB12Per100g', unit: 'mcg' },
+      { patterns: [/витамин\s*с\b|c\b.*витамин|аскорбин/i], field: 'vitaminCPer100g', unit: 'mg' },
+      { patterns: [/витамин\s*d3|витамин\s*d\b|d3\b/i], field: 'vitaminD3Per100g', unit: 'mcg' },
+      { patterns: [/витамин\s*е\b|витамин\s*e\b|токоферол/i], field: 'vitaminEPer100g', unit: 'g' },
+      { patterns: [/витамин\s*к\b|витамин\s*k\b/i], field: 'vitaminKPer100g', unit: 'mcg' },
+      { patterns: [/калий/i, /\bk\b.*мг/i], field: 'potassiumPer100g', unit: 'mg' },
+      { patterns: [/кальций/i, /\bca\b/i], field: 'calciumPer100g', unit: 'mg' },
+      { patterns: [/магний/i, /\bmg\b.*макро/i], field: 'magnesiumPer100g', unit: 'mg' },
+      { patterns: [/железо/i, /\bfe\b/i], field: 'ironPer100g', unit: 'g' },
+      { patterns: [/селен/i, /\bse\b/i], field: 'seleniumPer100g', unit: 'mcg' },
+      { patterns: [/цинк/i, /\bzn\b/i], field: 'zincPer100g', unit: 'mg' },
+      { patterns: [/хром/i, /\bcr\b/i], field: 'chromiumPer100g', unit: 'mcg' },
+      { patterns: [/йод/i, /\bi\b.*мкг/i], field: 'iodinePer100g', unit: 'mcg' },
+      { patterns: [/фолат|витамин\s*в9|b9/i], field: 'vitaminB9Per100g', unit: 'mcg' },
+      { patterns: [/пищевые волокна|клетчатк|fiber/i], field: 'fiberPer100g', unit: 'g' },
+    ];
+
+    function parseAmount(text) {
+      const t = text.replace(/\s+/g, ' ').trim().toLowerCase();
+      const m = t.match(/([\d.,]+)\s*(ккал|ккалорий|kcal|г|гр|g|мг|mg|мкг|μg|mcg)?/i);
+      if (!m) return null;
+      let value = parseFloat(m[1].replace(',', '.'));
+      let unit = (m[2] || '').toLowerCase();
+      if (unit.includes('ккал') || unit === 'kcal') unit = 'kcal';
+      else if (unit === 'г' || unit === 'гр' || unit === 'g') unit = 'g';
+      else if (unit === 'мг' || unit === 'mg') unit = 'mg';
+      else if (unit === 'мкг' || unit === 'μg' || unit === 'mcg') unit = 'mcg';
+      return { value, unit };
+    }
+
+    function convertToFieldUnit(value, fromUnit, targetUnit) {
+      if (fromUnit === targetUnit) return value;
+      if (targetUnit === 'kcal') return value;
+      if (fromUnit === 'mg' && targetUnit === 'mcg') return value * 1000;
+      if (fromUnit === 'mcg' && targetUnit === 'mg') return value / 1000;
+      if (fromUnit === 'g' && targetUnit === 'mg') return value * 1000;
+      return value;
+    }
+
+    function parseHealthDietHtml(html) {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const product = emptyProduct();
+
+      const h1 = doc.querySelector('h1');
+      if (h1) {
+        product.displayName = h1.textContent.replace(/Калорийность\s*/i, '').trim();
+        product.catalogKey = slugify(product.displayName);
+      }
+
+      const rows = doc.querySelectorAll('table tr');
+      rows.forEach(tr => {
+        const cells = tr.querySelectorAll('td, th');
+        if (cells.length < 2) return;
+        const name = cells[0].textContent.trim();
+        const amount = cells[1].textContent.trim();
+        if (!name || !amount || /нутриент|норма/i.test(name)) return;
+
+        const parsed = parseAmount(amount);
+        if (!parsed) return;
+
+        for (const rule of NUTRIENT_MAP) {
+          if (rule.patterns.some(rx => rx.test(name))) {
+            const val = convertToFieldUnit(parsed.value, parsed.unit, rule.unit);
+            product[rule.field] = val;
+            break;
+          }
+        }
+      });
+
+      // Fallback: текст «48 кКал» в описании
+      const bodyText = doc.body?.textContent || '';
+      const calMatch = bodyText.match(/(\d+[.,]?\d*)\s*ккал/i);
+      if (calMatch && !product.caloriesPer100g) {
+        product.caloriesPer100g = parseFloat(calMatch[1].replace(',', '.'));
+      }
+
+      return product;
+    }
+
+    function applyParsedToForm(parsed) {
+      fillForm(parsed);
+      $('formTitle').textContent = 'Импорт с health-diet.ru';
+      $('btnSave').textContent = 'Сохранить в список';
+      editingIndex = null;
+      showStatus($('parseStatus'),
+        `Разобрано: ${parsed.displayName || 'без названия'}. Проверьте значения и сохраните.`,
+        false);
+    }
+
+    $('btnParseHtml').addEventListener('click', () => {
+      const html = $('pasteHtml').value.trim();
+      if (!html) return showStatus($('parseStatus'), 'Вставьте HTML', true);
+      try {
+        applyParsedToForm(parseHealthDietHtml(html));
+      } catch (err) {
+        showStatus($('parseStatus'), 'Ошибка разбора: ' + err.message, true);
+      }
+    });
+
+    $('btnFetchParse').addEventListener('click', async () => {
+      const url = $('parseUrl').value.trim();
+      if (!url) return showStatus($('parseStatus'), 'Укажите URL', true);
+      showStatus($('parseStatus'), 'Загрузка…', false);
+      try {
+        const proxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+        const res = await fetch(proxy);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const html = await res.text();
+        $('pasteHtml').value = html;
+        applyParsedToForm(parseHealthDietHtml(html));
+      } catch (err) {
+        showStatus($('parseStatus'),
+          'Не удалось загрузить страницу (' + err.message + '). Скопируйте HTML вручную (Ctrl+U → фрагмент таблицы).',
+          true);
+      }
+    });
+
+    initForm();
+    resetForm();
+    renderTable();
+    $('parseUrl').value = 'https://health-diet.ru/base_of_food/sostav/39.php';
+  </script>
+</body>
+</html>
