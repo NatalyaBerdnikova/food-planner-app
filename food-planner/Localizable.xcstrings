@@ -408,6 +408,38 @@
         }
       }
     },
+    "addRecipe.servings %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servings: %lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Порций: %lld"
+          }
+        }
+      }
+    },
+    "addRecipe.servingsFooter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredient amounts are for this number of servings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количества ингредиентов указаны на это число порций"
+          }
+        }
+      }
+    },
     "addRecipe.main" : {
       "localizations" : {
         "en" : {
@@ -895,13 +927,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Create your first recipe"
+            "value" : "Create a recipe or add recommendations to favorites"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Создайте первый рецепт"
+            "value" : "Создайте рецепт или добавьте рекомендации в избранное"
           }
         }
       }
@@ -999,6 +1031,150 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавить перекус"
+          }
+        }
+      }
+    },
+    "accessibility.addFavorite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to favorites"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить в избранное"
+          }
+        }
+      }
+    },
+    "accessibility.removeFavorite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from favorites"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Убрать из избранного"
+          }
+        }
+      }
+    },
+    "accessibility.userRecipe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your recipe"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш рецепт"
+          }
+        }
+      }
+    },
+    "favorites.remove.confirm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
+        }
+      }
+    },
+    "favorites.remove.message %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove \"%@\" from favorites?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить «%@» из избранного?"
+          }
+        }
+      }
+    },
+    "favorites.remove.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from favorites?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить из избранного?"
+          }
+        }
+      }
+    },
+    "home.catalogEmpty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catalog recipes will appear here after you add them to recipes-catalog.json"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рекомендации появятся после добавления рецептов в recipes-catalog.json"
+          }
+        }
+      }
+    },
+    "home.recommendations.noResults" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recipes match your search"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет рецептов по вашему запросу"
+          }
+        }
+      }
+    },
+    "home.recommendations.search" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск рецептов"
           }
         }
       }
@@ -2063,6 +2239,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "КБЖУ за день"
+          }
+        }
+      }
+    },
+    "nutrition.title.perServing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per serving"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На 1 порцию"
+          }
+        }
+      }
+    },
+    "nutrition.section.perServing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per serving"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На 1 порцию"
+          }
+        }
+      }
+    },
+    "nutrition.recipePerServing %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kcal per serving"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ккал на порцию"
+          }
+        }
+      }
+    },
+    "nutrition.recipeWeightPerServing %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld g per serving"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld г на порцию"
+          }
+        }
+      }
+    },
+    "recipe.displayPortions %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show ingredients for %lld servings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ингредиенты на %lld порций"
           }
         }
       }

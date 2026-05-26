@@ -16,6 +16,7 @@ enum RecipeCatalogSeeder {
 
         var id: String?
         var name: String
+        var servings: Int?
         var imageId: String?
         var imageBase64: String?
         var steps: [String]?
@@ -23,35 +24,75 @@ enum RecipeCatalogSeeder {
     }
 
     @MainActor
-    static func seedIfNeeded(in context: ModelContext) {
-        let descriptor = FetchDescriptor<Recipe>()
-        let count = (try? context.fetchCount(descriptor)) ?? 0
-        guard count == 0 else { return }
-
+    static func syncCatalog(in context: ModelContext) {
         guard let url = Bundle.main.url(forResource: "recipes-catalog", withExtension: "json"),
               let data = try? Data(contentsOf: url),
               let catalog = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
             return
         }
 
+        var existingById: [String: Recipe] = [:]
+        let descriptor = FetchDescriptor<Recipe>()
+        if let all = try? context.fetch(descriptor) {
+            for recipe in all {
+                if let id = recipe.catalogRecipeId {
+                    existingById[id] = recipe
+                }
+            }
+        }
+
         for item in catalog.recipes {
-            guard let recipe = makeRecipe(from: item, in: context) else { continue }
-            context.insert(recipe)
+            let catalogId = resolvedCatalogId(for: item)
+            guard !catalogId.isEmpty else { continue }
+
+            if let recipe = existingById[catalogId] {
+                apply(item: item, catalogId: catalogId, to: recipe, in: context)
+            } else if let recipe = makeRecipe(from: item, catalogId: catalogId, in: context) {
+                context.insert(recipe)
+                existingById[catalogId] = recipe
+            }
         }
 
         LocalPersistence.save(context)
     }
 
     @MainActor
-    private static func makeRecipe(from item: RecipeItem, in context: ModelContext) -> Recipe? {
+    private static func apply(item: RecipeItem, catalogId: String, to recipe: Recipe, in context: ModelContext) {
+        let name = item.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !name.isEmpty else { return }
+
+        recipe.catalogRecipeId = catalogId
+        recipe.name = name
+        recipe.servings = max(item.servings ?? 1, 1)
+        recipe.imageData = loadImageData(for: item)
+        recipe.steps = item.steps ?? []
+        replaceIngredients(for: recipe, from: item, in: context)
+        recipe.recalculateNutrition()
+    }
+
+    @MainActor
+    private static func makeRecipe(from item: RecipeItem, catalogId: String, in context: ModelContext) -> Recipe? {
         let name = item.name.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !name.isEmpty else { return nil }
 
         let recipe = Recipe(
             name: name,
+            catalogRecipeId: catalogId,
+            servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
             steps: item.steps ?? []
         )
+        replaceIngredients(for: recipe, from: item, in: context)
+        recipe.recalculateNutrition()
+        return recipe
+    }
+
+    @MainActor
+    private static func replaceIngredients(for recipe: Recipe, from item: RecipeItem, in context: ModelContext) {
+        for ingredient in recipe.ingredients {
+            context.delete(ingredient)
+        }
+        recipe.ingredients = []
 
         for entry in item.ingredients ?? [] {
             guard let product = FoodCatalogSeeder.product(forKey: entry.catalogKey, in: context) else {
@@ -69,9 +110,12 @@ enum RecipeCatalogSeeder {
             context.insert(ingredient)
             recipe.ingredients.append(ingredient)
         }
+    }
 
-        recipe.recalculateNutrition()
-        return recipe
+    private static func resolvedCatalogId(for item: RecipeItem) -> String {
+        let raw = (item.id ?? item.name)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        return raw
     }
 
     private static func loadImageData(for item: RecipeItem) -> Data? {

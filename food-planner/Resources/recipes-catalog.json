@@ -1,4 +1,48 @@
 {
   "version": 1,
-  "recipes": []
+  "recipes": [
+    {
+      "id": "oatmeal_berries",
+      "name": "Овсянка с ягодами",
+      "imageId": "oatmeal_berries",
+      "steps": [
+        "Залить овсянку молоком и довести до кипения",
+        "Варить 5 минут, добавить нарезанный банан"
+      ],
+      "ingredients": [
+        { "catalogKey": "oatmeal", "quantity": 80, "unit": "gram" },
+        { "catalogKey": "milk", "quantity": 200, "unit": "milliliter" },
+        { "catalogKey": "banana", "quantity": 1, "unit": "piece" }
+      ]
+    },
+    {
+      "id": "chicken_soup",
+      "name": "Куриный суп",
+      "imageId": "chicken_soup",
+      "steps": [
+        "Отварить курицу в подсоленной воде",
+        "Добавить нарезанные овощи и варить до готовности"
+      ],
+      "ingredients": [
+        { "catalogKey": "chicken_breast", "quantity": 300, "unit": "gram" },
+        { "catalogKey": "carrot", "quantity": 1, "unit": "piece" },
+        { "catalogKey": "onion", "quantity": 1, "unit": "piece" }
+      ]
+    },
+    {
+      "id": "greek_salad",
+      "name": "Греческий салат",
+      "imageId": "greek_salad",
+      "steps": [
+        "Нарезать овощи и сыр",
+        "Заправить оливковым маслом"
+      ],
+      "ingredients": [
+        { "catalogKey": "tomato", "quantity": 2, "unit": "piece" },
+        { "catalogKey": "cucumber", "quantity": 1, "unit": "piece" },
+        { "catalogKey": "cheese", "quantity": 100, "unit": "gram" },
+        { "catalogKey": "olive_oil", "quantity": 1, "unit": "tablespoon" }
+      ]
+    }
+  ]
 }

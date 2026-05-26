@@ -70,6 +70,30 @@ enum NutritionCalculator {
         return RecipeNutrition(total: totals, totalWeightGrams: totalWeight, per100g: per100g)
     }
 
+    static func nutritionPerServing(for recipe: Recipe) -> DailyNutrition {
+        let nutrition = recipeNutrition(recipe)
+        let servings = max(Double(recipe.servings), 1)
+        return DailyNutrition(
+            calories: nutrition.total.calories / servings,
+            protein: nutrition.total.protein / servings,
+            fat: nutrition.total.fat / servings,
+            carbs: nutrition.total.carbs / servings
+        )
+    }
+
+    static func weightPerServingGrams(for recipe: Recipe) -> Double {
+        recipeNutrition(recipe).totalWeightGrams / max(Double(recipe.servings), 1)
+    }
+
+    static func displayQuantity(
+        for ingredient: Ingredient,
+        displayPortions: Double,
+        recipeServings: Int
+    ) -> Double {
+        let base = max(Double(recipeServings), 1)
+        return ingredient.quantity * displayPortions / base
+    }
+
     static func ingredientNutrition(_ ingredient: Ingredient) -> NutrientTotals {
         guard let product = ingredient.foodProduct else { return .zero }
         let grams = UnitConverter.grams(

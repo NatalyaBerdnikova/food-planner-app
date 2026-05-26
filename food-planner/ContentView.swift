@@ -25,9 +25,9 @@ struct ContentView: View {
         MainTabView()
             .applyAppLanguage(appLanguage)
             .applyAppColorScheme(appColorScheme)
-            .onAppear {
+            .task {
                 FoodCatalogSeeder.seedIfNeeded(in: modelContext)
-                RecipeCatalogSeeder.seedIfNeeded(in: modelContext)
+                RecipeCatalogSeeder.syncCatalog(in: modelContext)
                 _ = AppSettingsService.settings(in: modelContext)
             }
     }

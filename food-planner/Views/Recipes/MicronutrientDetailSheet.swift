@@ -8,10 +8,19 @@ struct MicronutrientDetailSheet: View {
         NutritionCalculator.recipeNutrition(recipe)
     }
 
+    private var perServing: NutrientTotals {
+        let servings = max(Double(recipe.servings), 1)
+        return nutrition.total.scaled(by: 1 / servings)
+    }
+
     var body: some View {
         NavigationStack {
             List {
                 if nutrition.totalWeightGrams > 0 {
+                    Section("nutrition.section.perServing") {
+                        micronutrientRows(for: perServing)
+                    }
+
                     Section("nutrition.section.total") {
                         micronutrientRows(for: nutrition.total)
                     }
@@ -21,7 +30,7 @@ struct MicronutrientDetailSheet: View {
                     }
 
                     Section {
-                        Text(L10n.recipeWeight(Int(nutrition.totalWeightGrams.rounded())))
+                        Text(L10n.recipeWeightPerServing(Int(NutritionCalculator.weightPerServingGrams(for: recipe).rounded())))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }

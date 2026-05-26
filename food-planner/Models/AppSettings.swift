@@ -12,13 +12,17 @@ final class AppSettings {
 
     var activeWeekPlan: WeekPlan?
 
+    /// `catalogRecipeId` рецептов из каталога, добавленных в «Мои рецепты».
+    var favoriteCatalogRecipeIds: [String]
+
     init(
         singletonKey: String = "main",
         targetCalories: Double = 2000,
         targetProtein: Double = 90,
         targetFat: Double = 70,
         targetCarbs: Double = 250,
-        activeWeekPlan: WeekPlan? = nil
+        activeWeekPlan: WeekPlan? = nil,
+        favoriteCatalogRecipeIds: [String] = []
     ) {
         self.singletonKey = singletonKey
         self.targetCalories = targetCalories
@@ -26,6 +30,7 @@ final class AppSettings {
         self.targetFat = targetFat
         self.targetCarbs = targetCarbs
         self.activeWeekPlan = activeWeekPlan
+        self.favoriteCatalogRecipeIds = favoriteCatalogRecipeIds
     }
 
     var targetNutrition: DailyNutrition {

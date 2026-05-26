@@ -13,8 +13,16 @@ enum L10n {
         String(localized: "nutrition.recipeTotal \(calories)")
     }
 
+    static func recipeCaloriesPerServing(_ calories: Int) -> String {
+        String(localized: "nutrition.recipePerServing \(calories)")
+    }
+
     static func recipeWeight(_ grams: Int) -> String {
         String(localized: "nutrition.recipeWeight \(grams)")
+    }
+
+    static func recipeWeightPerServing(_ grams: Int) -> String {
+        String(localized: "nutrition.recipeWeightPerServing \(grams)")
     }
 
     static func resolvedProductName(_ name: String) -> String {

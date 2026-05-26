@@ -8,15 +8,15 @@ struct AddRecipeView: View {
     @Environment(\.modelContext) private var modelContext
 
     @State private var name = ""
+    @State private var servings = 1
     @State private var stepsAttributed = NSAttributedString()
     @State private var imageData: Data?
     @State private var draftIngredients: [DraftIngredient] = []
     @State private var showAddIngredient = false
     @State private var photoPickerItem: PhotosPickerItem?
 
-    private var previewNutrition: RecipeNutrition? {
+    private var previewNutritionPerServing: DailyNutrition? {
         guard !draftIngredients.isEmpty else { return nil }
-        var totalWeight = 0.0
         var totals = NutrientTotals.zero
         for draft in draftIngredients {
             let grams = UnitConverter.grams(
@@ -25,14 +25,15 @@ struct AddRecipeView: View {
                 product: draft.product
             )
             guard grams > 0 else { continue }
-            totalWeight += grams
             totals = totals + draft.product.nutrientsPer100g.scaled(by: grams / 100.0)
         }
-        guard totalWeight > 0 else { return nil }
-        return RecipeNutrition(
-            total: totals,
-            totalWeightGrams: totalWeight,
-            per100g: totals.per100g(totalWeightGrams: totalWeight)
+        guard totals.calories > 0 || totals.protein > 0 else { return nil }
+        let divisor = max(Double(servings), 1)
+        return DailyNutrition(
+            calories: totals.calories / divisor,
+            protein: totals.protein / divisor,
+            fat: totals.fat / divisor,
+            carbs: totals.carbs / divisor
         )
     }
 
@@ -49,8 +50,15 @@ struct AddRecipeView: View {
                 }
             }
 
-            Section("addRecipe.main") {
+            Section {
                 TextField("addRecipe.name", text: $name)
+                Stepper(value: $servings, in: 1...99) {
+                    Text("addRecipe.servings \(servings)")
+                }
+            } header: {
+                Text("addRecipe.main")
+            } footer: {
+                Text("addRecipe.servingsFooter")
             }
 
             Section {
@@ -79,15 +87,12 @@ struct AddRecipeView: View {
                 }
             }
 
-            if let nutrition = previewNutrition, nutrition.totalWeightGrams > 0 {
+            if let nutrition = previewNutritionPerServing {
                 Section("addRecipe.nutrition") {
                     NutritionSummaryView(
-                        nutrition: nutrition.per100g.macros,
-                        title: "nutrition.title.per100g"
+                        nutrition: nutrition,
+                        title: "nutrition.title.perServing"
                     )
-                    Text(L10n.recipeTotalCalories(Int(nutrition.total.calories.rounded())))
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
                 }
             }
         }
@@ -124,6 +129,7 @@ struct AddRecipeView: View {
     private func saveRecipe() {
         let recipe = Recipe(
             name: name.trimmingCharacters(in: .whitespaces),
+            servings: servings,
             imageData: imageData,
             steps: RecipeStepsStorage.plainStepLines(from: stepsAttributed),
             stepsRichTextData: RecipeStepsStorage.rtfData(from: stepsAttributed)

@@ -3,7 +3,12 @@ import SwiftData
 
 @Model
 final class Recipe {
+    /// Стабильный id из `recipes-catalog.json`; `nil` — рецепт создан пользователем.
+    var catalogRecipeId: String?
+
     var name: String
+    /// На сколько порций указаны количества ингредиентов (минимум 1).
+    var servings: Int
     @Attribute(.externalStorage) var imageData: Data?
     var sourceURL: String?
     var steps: [String]
@@ -24,8 +29,13 @@ final class Recipe {
     @Relationship(inverse: \Meal.recipe)
     var meals: [Meal]
 
+    var isCatalogRecipe: Bool { catalogRecipeId != nil }
+    var isUserCreated: Bool { catalogRecipeId == nil }
+
     init(
         name: String,
+        catalogRecipeId: String? = nil,
+        servings: Int = 1,
         imageData: Data? = nil,
         sourceURL: String? = nil,
         steps: [String] = [],
@@ -36,7 +46,9 @@ final class Recipe {
         carbsPer100g: Double = 0,
         ingredients: [Ingredient] = []
     ) {
+        self.catalogRecipeId = catalogRecipeId
         self.name = name
+        self.servings = max(servings, 1)
         self.imageData = imageData
         self.sourceURL = sourceURL
         self.steps = steps

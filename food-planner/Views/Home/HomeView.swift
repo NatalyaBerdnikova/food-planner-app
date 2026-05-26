@@ -9,6 +9,8 @@ struct HomeView: View {
     @State private var currentWeekPlan: WeekPlan?
     @State private var appSettings: AppSettings?
     @State private var isTodayExpanded = false
+    @State private var recommendationSearch = ""
+    @State private var unfavoriteCandidate: Recipe?
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
     private let recommendationColumns = [
@@ -38,6 +40,27 @@ struct HomeView: View {
         }
         .onAppear { refresh() }
         .animation(.easeInOut(duration: 0.25), value: isTodayExpanded)
+        .alert(
+            "favorites.remove.title",
+            isPresented: Binding(
+                get: { unfavoriteCandidate != nil },
+                set: { if !$0 { unfavoriteCandidate = nil } }
+            )
+        ) {
+            Button("common.cancel", role: .cancel) {
+                unfavoriteCandidate = nil
+            }
+            Button("favorites.remove.confirm", role: .destructive) {
+                if let recipe = unfavoriteCandidate {
+                    RecipeFavoritesService.setFavorite(recipe, favorite: false, in: modelContext)
+                }
+                unfavoriteCandidate = nil
+            }
+        } message: {
+            if let recipe = unfavoriteCandidate {
+                Text("favorites.remove.message \(recipe.name)")
+            }
+        }
     }
 
     // MARK: - Today nutrition card
@@ -132,26 +155,75 @@ struct HomeView: View {
             Text("home.recommendations")
                 .font(.title2.bold())
 
-            if recommendedRecipes.isEmpty {
-                Text("home.addRecipesHint")
+            if !catalogRecipes.isEmpty {
+                TextField("home.recommendations.search", text: $recommendationSearch)
+                    .textFieldStyle(.roundedBorder)
+            }
+
+            if catalogRecipes.isEmpty {
+                Text("home.catalogEmpty")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            } else if filteredCatalogRecipes.isEmpty {
+                Text("home.recommendations.noResults")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             } else {
                 LazyVGrid(columns: recommendationColumns, spacing: 12) {
-                    ForEach(recommendedRecipes) { recipe in
-                        NavigationLink {
-                            RecipeDetailView(recipe: recipe)
-                        } label: {
-                            RecipeCardView(recipe: recipe)
-                        }
-                        .buttonStyle(.plain)
+                    ForEach(filteredCatalogRecipes) { recipe in
+                        recommendationCard(recipe)
                     }
                 }
             }
         }
     }
 
+    private func recommendationCard(_ recipe: Recipe) -> some View {
+        let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
+        return ZStack(alignment: .topTrailing) {
+            NavigationLink {
+                RecipeDetailView(recipe: recipe)
+            } label: {
+                RecipeCardView(recipe: recipe)
+            }
+            .buttonStyle(.plain)
+
+            Button {
+                if isFavorite {
+                    unfavoriteCandidate = recipe
+                } else {
+                    RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
+                }
+            } label: {
+                Image(systemName: isFavorite ? "heart.fill" : "heart")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(isFavorite ? .red : .secondary)
+                    .padding(8)
+                    .background(.ultraThinMaterial, in: Circle())
+            }
+            .buttonStyle(.plain)
+            .padding(6)
+            .accessibilityLabel(
+                isFavorite
+                    ? String(localized: "accessibility.removeFavorite")
+                    : String(localized: "accessibility.addFavorite")
+            )
+        }
+    }
+
     // MARK: - Data
+
+    private var catalogRecipes: [Recipe] {
+        RecipeCollections.catalogRecipes(from: recipes)
+    }
+
+    private var filteredCatalogRecipes: [Recipe] {
+        let query = recommendationSearch.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return catalogRecipes }
+        return catalogRecipes.filter {
+            $0.name.localizedCaseInsensitiveContains(query)
+        }
+    }
 
     private var todayDayPlan: DayPlan? {
         guard let weekPlan = currentWeekPlan else { return nil }
@@ -165,10 +237,6 @@ struct HomeView: View {
 
     private func meal(for type: MealType) -> Meal? {
         todayDayPlan?.meals.first { $0.mealType == type }
-    }
-
-    private var recommendedRecipes: [Recipe] {
-        Array(recipes.prefix(4))
     }
 
     private func weekRangeFormatted(for weekPlan: WeekPlan) -> String {

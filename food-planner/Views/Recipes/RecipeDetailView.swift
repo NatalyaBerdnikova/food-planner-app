@@ -3,13 +3,18 @@ import SwiftData
 
 struct RecipeDetailView: View {
     @Environment(\.modelContext) private var modelContext
-
     let recipe: Recipe
 
     @State private var showMicronutrients = false
+    @State private var showUnfavoriteConfirmation = false
+    @State private var displayPortions = 1
 
     private var nutrition: RecipeNutrition {
         NutritionCalculator.recipeNutrition(recipe)
+    }
+
+    private var nutritionPerServing: DailyNutrition {
+        NutritionCalculator.nutritionPerServing(for: recipe)
     }
 
     var body: some View {
@@ -22,19 +27,21 @@ struct RecipeDetailView: View {
                 Text(recipe.name)
                     .font(.title.bold())
 
+                portionsControl
+
                 if nutrition.totalWeightGrams > 0 {
                     NutritionSummaryView(
-                        nutrition: nutrition.per100g.macros,
-                        title: "nutrition.title.per100g"
+                        nutrition: nutritionPerServing,
+                        title: "nutrition.title.perServing"
                     )
 
                     HStack {
-                        Text(L10n.recipeTotalCalories(Int(nutrition.total.calories.rounded())))
+                        Text(L10n.recipeCaloriesPerServing(Int(nutritionPerServing.calories.rounded())))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                         Text("·")
                             .foregroundStyle(.tertiary)
-                        Text(L10n.recipeWeight(Int(nutrition.totalWeightGrams.rounded())))
+                        Text(L10n.recipeWeightPerServing(Int(NutritionCalculator.weightPerServingGrams(for: recipe).rounded())))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -48,34 +55,15 @@ struct RecipeDetailView: View {
                     .buttonStyle(.bordered)
                 } else {
                     NutritionSummaryView(
-                        nutrition: DailyNutrition(
-                            calories: recipe.caloriesPer100g,
-                            protein: recipe.proteinPer100g,
-                            fat: recipe.fatPer100g,
-                            carbs: recipe.carbsPer100g
-                        ),
-                        title: "nutrition.title.per100g"
+                        nutrition: nutritionPerServing,
+                        title: "nutrition.title.perServing"
                     )
                 }
 
                 if !recipe.ingredients.isEmpty {
                     sectionTitle("recipe.ingredients")
                     ForEach(recipe.ingredients) { ingredient in
-                        HStack {
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(ingredient.displayName)
-                                Text(L10n.amount(quantity: ingredient.quantity, unit: ingredient.unit))
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            Spacer()
-                            if ingredient.foodProduct != nil {
-                                Text(L10n.kcalShort(Int(NutritionCalculator.ingredientNutrition(ingredient).calories.rounded())))
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                        .font(.subheadline)
+                        ingredientRow(ingredient)
                     }
                 }
 
@@ -93,6 +81,21 @@ struct RecipeDetailView: View {
         }
         .navigationTitle(recipe.name)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if recipe.isCatalogRecipe {
+                ToolbarItem(placement: .topBarTrailing) {
+                    favoriteToolbarButton
+                }
+            }
+        }
+        .alert("favorites.remove.title", isPresented: $showUnfavoriteConfirmation) {
+            Button("common.cancel", role: .cancel) {}
+            Button("favorites.remove.confirm", role: .destructive) {
+                RecipeFavoritesService.setFavorite(recipe, favorite: false, in: modelContext)
+            }
+        } message: {
+            Text("favorites.remove.message \(recipe.name)")
+        }
         .sheet(isPresented: $showMicronutrients) {
             MicronutrientDetailSheet(recipe: recipe)
         }
@@ -100,6 +103,65 @@ struct RecipeDetailView: View {
             recipe.recalculateNutrition()
             LocalPersistence.save(modelContext)
         }
+    }
+
+    private var portionsControl: some View {
+        Stepper(value: $displayPortions, in: 1...99) {
+            Text("recipe.displayPortions \(displayPortions)")
+        }
+        .font(.subheadline)
+    }
+
+    private func ingredientRow(_ ingredient: Ingredient) -> some View {
+        let quantity = NutritionCalculator.displayQuantity(
+            for: ingredient,
+            displayPortions: Double(displayPortions),
+            recipeServings: recipe.servings
+        )
+        return HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(ingredient.displayName)
+                Text(L10n.amount(quantity: quantity, unit: ingredient.unit))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            if let product = ingredient.foodProduct {
+                let grams = UnitConverter.grams(
+                    quantity: quantity,
+                    unit: ingredient.unit,
+                    product: product
+                )
+                let kcal = product.nutrientsPer100g.calories * grams / 100
+                Text(L10n.kcalShort(Int(kcal.rounded())))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .font(.subheadline)
+    }
+
+    private var isFavorite: Bool {
+        RecipeFavoritesService.isFavorite(recipe, in: modelContext)
+    }
+
+    @ViewBuilder
+    private var favoriteToolbarButton: some View {
+        Button {
+            if isFavorite {
+                showUnfavoriteConfirmation = true
+            } else {
+                RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
+            }
+        } label: {
+            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                .foregroundStyle(isFavorite ? .red : .primary)
+        }
+        .accessibilityLabel(
+            isFavorite
+                ? String(localized: "accessibility.removeFavorite")
+                : String(localized: "accessibility.addFavorite")
+        )
     }
 
     private var hasSteps: Bool {
