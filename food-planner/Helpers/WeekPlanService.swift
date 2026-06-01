@@ -2,32 +2,22 @@ import Foundation
 import SwiftData
 
 enum WeekPlanService {
+    /// План на календарную неделю, в которую попадает `date` (для «Сегодня» — текущая неделя).
+    @MainActor
+    static func weekPlan(containing date: Date, from weekPlans: [WeekPlan], in context: ModelContext) -> WeekPlan {
+        let weekStart = Calendar.current.startOfWeek(for: date)
+        return weekPlan(forWeekStarting: weekStart, from: weekPlans, in: context)
+    }
+
     @MainActor
     static func currentWeekPlan(from weekPlans: [WeekPlan], in context: ModelContext) -> WeekPlan {
-        let settings = AppSettingsService.settings(in: context)
-        let weekStart = Calendar.current.startOfWeek(for: .now)
+        weekPlan(containing: .now, from: weekPlans, in: context)
+    }
 
-        if let active = settings.activeWeekPlan {
-            ensureDayPlansExist(for: active, weekStart: active.weekStartDate, in: context)
-            LocalPersistence.save(context)
-            return active
-        }
-
-        if let existing = weekPlans.first(where: {
-            Calendar.current.isSameDay($0.weekStartDate, weekStart)
-        }) {
-            ensureDayPlansExist(for: existing, weekStart: weekStart, in: context)
-            settings.activeWeekPlan = existing
-            LocalPersistence.save(context)
-            return existing
-        }
-
-        let plan = WeekPlan(weekStartDate: weekStart)
-        context.insert(plan)
-        ensureDayPlansExist(for: plan, weekStart: weekStart, in: context)
-        settings.activeWeekPlan = plan
-        LocalPersistence.save(context)
-        return plan
+    @MainActor
+    static func todayDayPlan(from weekPlans: [WeekPlan], in context: ModelContext) -> DayPlan {
+        let plan = currentWeekPlan(from: weekPlans, in: context)
+        return dayPlan(for: .now, in: plan, context: context)
     }
 
     @MainActor
@@ -38,12 +28,15 @@ enum WeekPlanService {
             Calendar.current.isSameDay($0.weekStartDate, normalized)
         }) {
             ensureDayPlansExist(for: existing, weekStart: normalized, in: context)
+            AppSettingsService.settings(in: context).activeWeekPlan = existing
+            LocalPersistence.save(context)
             return existing
         }
 
         let plan = WeekPlan(weekStartDate: normalized)
         context.insert(plan)
         ensureDayPlansExist(for: plan, weekStart: normalized, in: context)
+        AppSettingsService.settings(in: context).activeWeekPlan = plan
         LocalPersistence.save(context)
         return plan
     }

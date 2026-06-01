@@ -44,8 +44,7 @@ struct WeekPlanView: View {
     }
 
     private func loadWeekPlan() {
-        let initialPlan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
-        displayedWeekStart = Calendar.current.startOfWeek(for: initialPlan.weekStartDate)
+        displayedWeekStart = Calendar.current.startOfWeek(for: .now)
         setWeek(startingFrom: displayedWeekStart)
     }
 

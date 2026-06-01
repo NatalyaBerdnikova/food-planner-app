@@ -117,9 +117,11 @@ struct HomeView: View {
     private var todayMealsSection: some View {
         VStack(spacing: 8) {
             ForEach(dayMealTypes, id: \.self) { type in
-                TodayMealSlotView(mealType: type, meal: meal(for: type)) {
-                    presentAddMeal(for: type)
-                }
+                PlannedMealSlotView(
+                    mealType: type,
+                    meals: meals(for: type),
+                    onTap: { presentAddMeal(for: type) }
+                )
             }
         }
     }
@@ -239,7 +241,8 @@ struct HomeView: View {
 
     private var todayDayPlan: DayPlan? {
         guard let weekPlan = currentWeekPlan else { return nil }
-        return weekPlan.dayPlans.first { Calendar.current.isDateInToday($0.date) }
+        let calendar = Calendar.current
+        return weekPlan.dayPlans.first { calendar.isDateInToday($0.date) }
     }
 
     private var todayNutrition: DailyNutrition {
@@ -247,13 +250,13 @@ struct HomeView: View {
         return NutritionCalculator.from(dayPlan: dayPlan)
     }
 
-    private func meal(for type: MealType) -> Meal? {
-        todayDayPlan?.meals.first { $0.mealType == type }
+    private func meals(for type: MealType) -> [Meal] {
+        todayDayPlan?.meals(for: type) ?? []
     }
 
     private func presentAddMeal(for mealType: MealType) {
-        guard let weekPlan = currentWeekPlan else { return }
-        let dayPlan = WeekPlanService.dayPlan(for: .now, in: weekPlan, context: modelContext)
+        let dayPlan = WeekPlanService.todayDayPlan(from: weekPlans, in: modelContext)
+        currentWeekPlan = dayPlan.weekPlan
         addMealPresentation = AddMealPresentation(dayPlan: dayPlan, mealType: mealType)
     }
 
@@ -270,7 +273,7 @@ struct HomeView: View {
         let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
         currentWeekPlan = plan
         AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
-        _ = WeekPlanService.dayPlan(for: .now, in: plan, context: modelContext)
+        _ = WeekPlanService.todayDayPlan(from: weekPlans, in: modelContext)
     }
 }
 
@@ -285,80 +288,3 @@ private extension View {
     }
 }
 
-// MARK: - Meal slots
-
-struct TodayMealSlotView: View {
-    let mealType: MealType
-    let meal: Meal?
-    var onAddMeal: () -> Void
-
-    var body: some View {
-        Group {
-            if let recipe = meal?.recipe {
-                NavigationLink {
-                    RecipeDetailView(recipe: recipe)
-                } label: {
-                    slotContent
-                }
-                .buttonStyle(.plain)
-            } else {
-                Button(action: onAddMeal) {
-                    slotContent
-                }
-                .buttonStyle(.plain)
-            }
-        }
-    }
-
-    private var slotContent: some View {
-        HStack {
-            Image(systemName: iconName)
-                .foregroundStyle(.tint)
-                .frame(width: 28)
-
-            VStack(alignment: .leading, spacing: 2) {
-                Text(mealTypeLabel)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                Text(meal?.recipe?.name ?? String(localized: "home.notPlanned"))
-                    .font(.body)
-                    .foregroundStyle(meal?.recipe == nil ? .secondary : .primary)
-            }
-
-            Spacer()
-
-            if meal?.recipe == nil {
-                Image(systemName: "plus.circle")
-                    .font(.caption)
-                    .foregroundStyle(.tertiary)
-            } else if let recipe = meal?.recipe {
-                let nutrition = NutritionCalculator.recipeNutrition(recipe)
-                let calories = nutrition.totalWeightGrams > 0
-                    ? Int(nutrition.total.calories.rounded())
-                    : Int(recipe.caloriesPer100g)
-                Text(L10n.kcalShort(calories))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-            }
-        }
-        .padding()
-        .background(Color(.tertiarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-    }
-
-    private var mealTypeLabel: LocalizedStringResource {
-        mealType == .snack ? "filter.other" : mealType.displayName
-    }
-
-    private var iconName: String {
-        switch mealType {
-        case .breakfast: "sunrise.fill"
-        case .lunch: "sun.max.fill"
-        case .dinner: "moon.stars.fill"
-        case .snack: "ellipsis.circle.fill"
-        }
-    }
-}

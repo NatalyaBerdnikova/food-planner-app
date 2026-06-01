@@ -12,8 +12,8 @@ final class AppSettings {
 
     var activeWeekPlan: WeekPlan?
 
-    /// `catalogRecipeId` рецептов из каталога, добавленных в «Мои рецепты».
-    var favoriteCatalogRecipeIds: [String] = []
+    /// Сериализованные `catalogRecipeId` (разделитель Unit Separator).
+    var favoriteCatalogRecipeIdsStorage: String = ""
 
     init(
         singletonKey: String = "main",
@@ -40,5 +40,21 @@ final class AppSettings {
             fat: targetFat,
             carbs: targetCarbs
         )
+    }
+}
+
+extension AppSettings {
+    private static let favoritesSeparator = "\u{1F}"
+
+    var favoriteCatalogRecipeIds: [String] {
+        get {
+            guard !favoriteCatalogRecipeIdsStorage.isEmpty else { return [] }
+            return favoriteCatalogRecipeIdsStorage
+                .components(separatedBy: Self.favoritesSeparator)
+                .filter { !$0.isEmpty }
+        }
+        set {
+            favoriteCatalogRecipeIdsStorage = newValue.joined(separator: Self.favoritesSeparator)
+        }
     }
 }

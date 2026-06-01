@@ -273,6 +273,22 @@
         }
       }
     },
+    "addMeal.selectedCount %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected: %lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрано: %lld"
+          }
+        }
+      }
+    },
     "addMeal.selectRecipe" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -286,6 +302,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выбрать рецепт"
+          }
+        }
+      }
+    },
+    "addMeal.targetFooter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recipes will be added to this meal slot. Filters only narrow the list."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рецепты добавятся в этот приём пищи. Фильтры только сужают список."
           }
         }
       }
@@ -307,6 +339,7 @@
       }
     },
     "addMeal.type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2794,6 +2827,9 @@
           }
         }
       }
+    },
+    "product.%@" : {
+
     },
     "recipe.displayPortions %lld" : {
       "localizations" : {

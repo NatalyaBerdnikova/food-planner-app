@@ -7,10 +7,11 @@ struct AddMealSheet: View {
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
 
     let dayPlan: DayPlan
+    let targetMealType: MealType
     let onSave: () -> Void
 
-    @State private var filterTab: RecipeFilterTab
-    @State private var selectedRecipe: Recipe?
+    @State private var filterTab: RecipeFilterTab = .all
+    @State private var selectedRecipeIDs: Set<PersistentIdentifier>
     @State private var searchText = ""
     @State private var showAddRecipe = false
 
@@ -20,9 +21,13 @@ struct AddMealSheet: View {
         onSave: @escaping () -> Void
     ) {
         self.dayPlan = dayPlan
+        self.targetMealType = preferredMealType
         self.onSave = onSave
-        let tab = RecipeFilterTab(rawValue: preferredMealType.rawValue) ?? .breakfast
-        _filterTab = State(initialValue: tab)
+
+        let existingIDs = Set(
+            dayPlan.meals(for: preferredMealType).compactMap(\.recipe?.persistentModelID)
+        )
+        _selectedRecipeIDs = State(initialValue: existingIDs)
     }
 
     private var emptyStateHint: String {
@@ -32,9 +37,11 @@ struct AddMealSheet: View {
     }
 
     private var tabFilteredRecipes: [Recipe] {
-        let mealType = filterTab.mealType
+        guard let filterMealType = filterTab.mealType else {
+            return recipes
+        }
         return recipes.filter { recipe in
-            recipe.meals.isEmpty || recipe.meals.contains { $0.mealType == mealType }
+            recipe.meals.isEmpty || recipe.meals.contains { $0.mealType == filterMealType }
         }
     }
 
@@ -48,6 +55,7 @@ struct AddMealSheet: View {
     var body: some View {
         NavigationStack {
             List {
+                targetMealHeader
                 filterControls
                 recipesSection
             }
@@ -64,9 +72,19 @@ struct AddMealSheet: View {
                     AddRecipeView()
                 }
             }
-            .onChange(of: filterTab) { _, _ in
-                selectedRecipe = nil
+        }
+    }
+
+    private var targetMealHeader: some View {
+        Section {
+            HStack(spacing: 10) {
+                Image(systemName: targetMealIcon)
+                    .foregroundStyle(.tint)
+                Text(targetMealTypeLabel)
+                    .font(.subheadline.weight(.medium))
             }
+        } footer: {
+            Text("addMeal.targetFooter")
         }
     }
 
@@ -98,7 +116,7 @@ struct AddMealSheet: View {
     }
 
     private var recipesSection: some View {
-        Section("addMeal.recipe") {
+        Section {
             if filteredRecipes.isEmpty {
                 ContentUnavailableView(
                     searchText.isEmpty ? "empty.recipes" : "search.noResults",
@@ -110,6 +128,12 @@ struct AddMealSheet: View {
                 ForEach(filteredRecipes) { recipe in
                     recipeRow(recipe)
                 }
+            }
+        } header: {
+            Text("addMeal.recipe")
+        } footer: {
+            if !selectedRecipeIDs.isEmpty {
+                Text("addMeal.selectedCount \(selectedRecipeIDs.count)")
             }
         }
     }
@@ -137,14 +161,14 @@ struct AddMealSheet: View {
             Button("common.cancel") { dismiss() }
         }
         ToolbarItem(placement: .confirmationAction) {
-            Button("common.save") { saveMeal() }
-                .disabled(selectedRecipe == nil)
+            Button("common.save") { saveMeals() }
         }
     }
 
     private func recipeRow(_ recipe: Recipe) -> some View {
-        Button {
-            selectedRecipe = recipe
+        let isSelected = selectedRecipeIDs.contains(recipe.persistentModelID)
+        return Button {
+            toggleSelection(for: recipe)
         } label: {
             HStack(spacing: 12) {
                 RecipeImageView(imageData: recipe.imageData, cornerRadius: 8)
@@ -160,31 +184,52 @@ struct AddMealSheet: View {
 
                 Spacer()
 
-                if selectedRecipe?.persistentModelID == recipe.persistentModelID {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(.tint)
-                }
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .foregroundStyle(isSelected ? Color.accentColor : Color(.tertiaryLabel))
             }
         }
         .buttonStyle(.plain)
     }
 
-    private func saveMeal() {
-        guard let recipe = selectedRecipe else { return }
+    private func toggleSelection(for recipe: Recipe) {
+        let id = recipe.persistentModelID
+        if selectedRecipeIDs.contains(id) {
+            selectedRecipeIDs.remove(id)
+        } else {
+            selectedRecipeIDs.insert(id)
+        }
+    }
 
-        if let existing = dayPlan.meals.first(where: { $0.mealType == filterTab.mealType }) {
-            modelContext.delete(existing)
-            dayPlan.meals.removeAll { $0.persistentModelID == existing.persistentModelID }
+    private func saveMeals() {
+        let existing = dayPlan.meals.filter { $0.mealType == targetMealType }
+
+        for meal in existing {
+            guard let recipeID = meal.recipe?.persistentModelID else {
+                modelContext.delete(meal)
+                continue
+            }
+            if !selectedRecipeIDs.contains(recipeID) {
+                modelContext.delete(meal)
+                dayPlan.meals.removeAll { $0.persistentModelID == meal.persistentModelID }
+            }
         }
 
-        let meal = Meal(
-            mealType: filterTab.mealType,
-            date: dayPlan.date,
-            recipe: recipe,
-            dayPlan: dayPlan
+        let remainingRecipeIDs = Set(
+            dayPlan.meals(for: targetMealType).compactMap(\.recipe?.persistentModelID)
         )
-        modelContext.insert(meal)
-        dayPlan.meals.append(meal)
+
+        let selectedRecipes = recipes.filter { selectedRecipeIDs.contains($0.persistentModelID) }
+        for recipe in selectedRecipes {
+            guard !remainingRecipeIDs.contains(recipe.persistentModelID) else { continue }
+            let meal = Meal(
+                mealType: targetMealType,
+                date: dayPlan.date,
+                recipe: recipe,
+                dayPlan: dayPlan
+            )
+            modelContext.insert(meal)
+            dayPlan.meals.append(meal)
+        }
 
         if let weekPlan = dayPlan.weekPlan {
             WeekPlanService.syncShoppingItems(for: weekPlan, in: modelContext)
@@ -193,5 +238,18 @@ struct AddMealSheet: View {
         LocalPersistence.save(modelContext)
         onSave()
         dismiss()
+    }
+
+    private var targetMealTypeLabel: LocalizedStringResource {
+        targetMealType == .snack ? "filter.other" : targetMealType.displayName
+    }
+
+    private var targetMealIcon: String {
+        switch targetMealType {
+        case .breakfast: "sunrise.fill"
+        case .lunch: "sun.max.fill"
+        case .dinner: "moon.stars.fill"
+        case .snack: "ellipsis.circle.fill"
+        }
     }
 }

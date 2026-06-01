@@ -1,6 +1,7 @@
 import Foundation
 
 enum RecipeFilterTab: String, CaseIterable, Identifiable {
+    case all
     case breakfast
     case lunch
     case dinner
@@ -8,12 +9,16 @@ enum RecipeFilterTab: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    var mealType: MealType {
-        MealType(rawValue: rawValue) ?? .breakfast
+    var mealType: MealType? {
+        switch self {
+        case .all: nil
+        default: MealType(rawValue: rawValue)
+        }
     }
 
     var displayName: LocalizedStringResource {
         switch self {
+        case .all: "filter.all"
         case .breakfast: "mealType.breakfast"
         case .lunch: "mealType.lunch"
         case .dinner: "mealType.dinner"
