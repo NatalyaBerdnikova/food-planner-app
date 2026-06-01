@@ -8,7 +8,7 @@ final class Recipe {
 
     var name: String
     /// На сколько порций указаны количества ингредиентов (минимум 1).
-    var servings: Int
+    var servings: Int = 1
     @Attribute(.externalStorage) var imageData: Data?
     var sourceURL: String?
     var steps: [String]

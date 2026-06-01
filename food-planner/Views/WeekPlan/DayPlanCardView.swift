@@ -3,7 +3,7 @@ import SwiftUI
 struct DayPlanCardView: View {
     let dayPlan: DayPlan
     let isSelected: Bool
-    let onAddMeal: () -> Void
+    let onTapEmptyMeal: (MealType) -> Void
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
 
@@ -32,13 +32,12 @@ struct DayPlanCardView: View {
 
             VStack(spacing: 4) {
                 ForEach(dayMealTypes, id: \.self) { type in
-                    MealRowView(mealType: type, meal: meal(for: type))
+                    MealRowView(
+                        mealType: type,
+                        meal: meal(for: type),
+                        onTapWhenEmpty: { onTapEmptyMeal(type) }
+                    )
                 }
-            }
-
-            Button(action: onAddMeal) {
-                Label("common.add", systemImage: "plus.circle.fill")
-                    .font(.subheadline.weight(.medium))
             }
         }
         .padding()
@@ -69,18 +68,34 @@ struct DayPlanCardView: View {
 struct MealRowView: View {
     let mealType: MealType
     let meal: Meal?
+    var onTapWhenEmpty: (() -> Void)?
 
     init(meal: Meal) {
         self.mealType = meal.mealType
         self.meal = meal
+        self.onTapWhenEmpty = nil
     }
 
-    init(mealType: MealType, meal: Meal?) {
+    init(mealType: MealType, meal: Meal?, onTapWhenEmpty: (() -> Void)? = nil) {
         self.mealType = mealType
         self.meal = meal
+        self.onTapWhenEmpty = onTapWhenEmpty
     }
 
     var body: some View {
+        Group {
+            if meal?.recipe == nil, let onTapWhenEmpty {
+                Button(action: onTapWhenEmpty) {
+                    rowContent
+                }
+                .buttonStyle(.plain)
+            } else {
+                rowContent
+            }
+        }
+    }
+
+    private var rowContent: some View {
         HStack(spacing: 10) {
             Image(systemName: iconName)
                 .foregroundStyle(.tint)
@@ -95,9 +110,17 @@ struct MealRowView: View {
                     .lineLimit(1)
                     .foregroundStyle(meal?.recipe == nil ? .secondary : .primary)
             }
+
             Spacer()
+
+            if meal?.recipe == nil {
+                Image(systemName: "plus.circle")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+            }
         }
         .padding(.vertical, 4)
+        .contentShape(Rectangle())
     }
 
     private var mealTypeLabel: LocalizedStringResource {

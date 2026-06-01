@@ -10,34 +10,19 @@ struct AddMealSheet: View {
     let onSave: () -> Void
 
     @State private var filterTab: RecipeFilterTab
-    @State private var mealTypeWhenAll: MealType
     @State private var selectedRecipe: Recipe?
     @State private var searchText = ""
     @State private var showAddRecipe = false
 
     init(
         dayPlan: DayPlan,
-        preferredMealType: MealType? = nil,
+        preferredMealType: MealType = .breakfast,
         onSave: @escaping () -> Void
     ) {
         self.dayPlan = dayPlan
         self.onSave = onSave
-
-        let initialTab: RecipeFilterTab
-        let initialMealType: MealType
-        if let preferredMealType {
-            initialTab = RecipeFilterTab(rawValue: preferredMealType.rawValue) ?? .all
-            initialMealType = preferredMealType
-        } else {
-            initialTab = .all
-            initialMealType = .breakfast
-        }
-        _filterTab = State(initialValue: initialTab)
-        _mealTypeWhenAll = State(initialValue: initialMealType)
-    }
-
-    private var effectiveMealType: MealType {
-        filterTab.mealType ?? mealTypeWhenAll
+        let tab = RecipeFilterTab(rawValue: preferredMealType.rawValue) ?? .breakfast
+        _filterTab = State(initialValue: tab)
     }
 
     private var emptyStateHint: String {
@@ -47,9 +32,7 @@ struct AddMealSheet: View {
     }
 
     private var tabFilteredRecipes: [Recipe] {
-        guard let mealType = filterTab.mealType else {
-            return recipes
-        }
+        let mealType = filterTab.mealType
         return recipes.filter { recipe in
             recipe.meals.isEmpty || recipe.meals.contains { $0.mealType == mealType }
         }
@@ -88,34 +71,15 @@ struct AddMealSheet: View {
     }
 
     private var filterControls: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8) {
-                    ForEach(RecipeFilterTab.allCases) { tab in
-                        filterChip(tab)
-                    }
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+                ForEach(RecipeFilterTab.allCases) { tab in
+                    filterChip(tab)
                 }
-            }
-
-            if filterTab == .all {
-                Picker("addMeal.type", selection: $mealTypeWhenAll) {
-                    ForEach(mealTypesForPicker, id: \.self) { type in
-                        Text(mealTypeLabel(type)).tag(type)
-                    }
-                }
-                .pickerStyle(.segmented)
             }
         }
         .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
         .listRowBackground(Color.clear)
-    }
-
-    private var mealTypesForPicker: [MealType] {
-        [.breakfast, .lunch, .dinner, .snack]
-    }
-
-    private func mealTypeLabel(_ type: MealType) -> LocalizedStringResource {
-        type == .snack ? "filter.other" : type.displayName
     }
 
     private func filterChip(_ tab: RecipeFilterTab) -> some View {
@@ -173,7 +137,7 @@ struct AddMealSheet: View {
             Button("common.cancel") { dismiss() }
         }
         ToolbarItem(placement: .confirmationAction) {
-            Button("common.add") { saveMeal() }
+            Button("common.save") { saveMeal() }
                 .disabled(selectedRecipe == nil)
         }
     }
@@ -208,8 +172,13 @@ struct AddMealSheet: View {
     private func saveMeal() {
         guard let recipe = selectedRecipe else { return }
 
+        if let existing = dayPlan.meals.first(where: { $0.mealType == filterTab.mealType }) {
+            modelContext.delete(existing)
+            dayPlan.meals.removeAll { $0.persistentModelID == existing.persistentModelID }
+        }
+
         let meal = Meal(
-            mealType: effectiveMealType,
+            mealType: filterTab.mealType,
             date: dayPlan.date,
             recipe: recipe,
             dayPlan: dayPlan

@@ -11,6 +11,7 @@ struct HomeView: View {
     @State private var isTodayExpanded = false
     @State private var recommendationSearch = ""
     @State private var unfavoriteCandidate: Recipe?
+    @State private var addMealPresentation: AddMealPresentation?
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
     private let recommendationColumns = [
@@ -22,6 +23,7 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 todayNutritionCard
+                todayMealsSection
                 weekPlanCard
                 recommendationsSection
             }
@@ -40,6 +42,11 @@ struct HomeView: View {
         }
         .onAppear { refresh() }
         .animation(.easeInOut(duration: 0.25), value: isTodayExpanded)
+        .sheet(item: $addMealPresentation) { item in
+            AddMealSheet(dayPlan: item.dayPlan, preferredMealType: item.mealType) {
+                refresh()
+            }
+        }
         .alert(
             "favorites.remove.title",
             isPresented: Binding(
@@ -94,16 +101,9 @@ struct HomeView: View {
                         embedded: true
                     )
                 }
-
-                VStack(spacing: 8) {
-                    ForEach(dayMealTypes, id: \.self) { type in
-                        TodayMealSlotView(mealType: type, meal: meal(for: type))
-                    }
-                }
             } else {
                 NutritionSummaryView(
                     nutrition: todayNutrition,
-                    title: "nutrition.title.day",
                     embedded: true,
                     macroLabelStyle: .compact
                 )
@@ -112,40 +112,52 @@ struct HomeView: View {
         .homeCardStyle()
     }
 
+    // MARK: - Today meals
+
+    private var todayMealsSection: some View {
+        VStack(spacing: 8) {
+            ForEach(dayMealTypes, id: \.self) { type in
+                TodayMealSlotView(mealType: type, meal: meal(for: type)) {
+                    presentAddMeal(for: type)
+                }
+            }
+        }
+    }
+
     // MARK: - Week plan card
 
     private var weekPlanCard: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("home.weekPlan")
-                .font(.headline)
+        NavigationLink {
+            WeekPlanView()
+        } label: {
+            HStack(alignment: .center, spacing: 12) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("home.weekPlan")
+                        .font(.headline)
+                        .foregroundStyle(.primary)
 
-            if let weekPlan = currentWeekPlan {
-                Text(weekRangeFormatted(for: weekPlan))
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-
-                NutritionSummaryView(
-                    nutrition: NutritionCalculator.averageDaily(for: weekPlan),
-                    title: "nutrition.title.weekAverage",
-                    embedded: true,
-                    macroLabelStyle: .compact
-                )
-
-                NavigationLink {
-                    WeekPlanView()
-                } label: {
-                    Text("home.openWeekPlan")
-                        .font(.subheadline.weight(.medium))
-                        .frame(maxWidth: .infinity)
+                    if let weekPlan = currentWeekPlan {
+                        Text(weekRangeFormatted(for: weekPlan))
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Text("home.weekNotCreated")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
                 }
-                .buttonStyle(.bordered)
-            } else {
-                Text("home.weekNotCreated")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.tertiary)
             }
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
         .homeCardStyle()
+        .accessibilityLabel("home.openWeekPlan")
     }
 
     // MARK: - Recommendations
@@ -239,6 +251,12 @@ struct HomeView: View {
         todayDayPlan?.meals.first { $0.mealType == type }
     }
 
+    private func presentAddMeal(for mealType: MealType) {
+        guard let weekPlan = currentWeekPlan else { return }
+        let dayPlan = WeekPlanService.dayPlan(for: .now, in: weekPlan, context: modelContext)
+        addMealPresentation = AddMealPresentation(dayPlan: dayPlan, mealType: mealType)
+    }
+
     private func weekRangeFormatted(for weekPlan: WeekPlan) -> String {
         let calendar = Calendar.current
         let start = weekPlan.weekStartDate
@@ -272,6 +290,7 @@ private extension View {
 struct TodayMealSlotView: View {
     let mealType: MealType
     let meal: Meal?
+    var onAddMeal: () -> Void
 
     var body: some View {
         Group {
@@ -283,7 +302,10 @@ struct TodayMealSlotView: View {
                 }
                 .buttonStyle(.plain)
             } else {
-                slotContent
+                Button(action: onAddMeal) {
+                    slotContent
+                }
+                .buttonStyle(.plain)
             }
         }
     }
@@ -300,12 +322,16 @@ struct TodayMealSlotView: View {
                     .foregroundStyle(.secondary)
                 Text(meal?.recipe?.name ?? String(localized: "home.notPlanned"))
                     .font(.body)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(meal?.recipe == nil ? .secondary : .primary)
             }
 
             Spacer()
 
-            if let recipe = meal?.recipe {
+            if meal?.recipe == nil {
+                Image(systemName: "plus.circle")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+            } else if let recipe = meal?.recipe {
                 let nutrition = NutritionCalculator.recipeNutrition(recipe)
                 let calories = nutrition.totalWeightGrams > 0
                     ? Int(nutrition.total.calories.rounded())

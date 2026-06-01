@@ -13,6 +13,10 @@ enum FoodPlannerSchema {
     ]
 
     static var container: ModelContainer {
+        makeContainer(recoveryAttempted: false)
+    }
+
+    private static func makeContainer(recoveryAttempted: Bool) -> ModelContainer {
         let schema = Schema(modelTypes)
         let configuration = ModelConfiguration(
             schema: schema,
@@ -21,7 +25,14 @@ enum FoodPlannerSchema {
         do {
             return try ModelContainer(for: schema, configurations: [configuration])
         } catch {
-            fatalError("Не удалось создать ModelContainer: \(error)")
+            guard !recoveryAttempted else {
+                fatalError("Не удалось создать ModelContainer: \(error)")
+            }
+            #if DEBUG
+            print("SwiftData: сброс локальной БД после ошибки загрузки: \(error)")
+            #endif
+            LocalPersistence.removeStore()
+            return makeContainer(recoveryAttempted: true)
         }
     }
 

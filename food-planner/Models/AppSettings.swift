@@ -13,7 +13,7 @@ final class AppSettings {
     var activeWeekPlan: WeekPlan?
 
     /// `catalogRecipeId` рецептов из каталога, добавленных в «Мои рецепты».
-    var favoriteCatalogRecipeIds: [String]
+    var favoriteCatalogRecipeIds: [String] = []
 
     init(
         singletonKey: String = "main",

@@ -22,10 +22,6 @@ struct NutritionSummaryView: View {
 
     private var content: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(title)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-
             HStack(spacing: 12) {
                 macroChip(title: macroLabelStyle.kcalTitle, value: nutrition.calories)
                 macroChip(title: macroLabelStyle.proteinTitle, value: nutrition.protein)

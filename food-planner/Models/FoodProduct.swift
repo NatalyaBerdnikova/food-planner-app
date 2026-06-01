@@ -115,6 +115,6 @@ final class FoodProduct {
     var localizationKey: String { "product.\(catalogKey)" }
 
     var displayName: String {
-        String(localized: String.LocalizationValue(localizationKey))
+        L10n.productName(catalogKey: catalogKey)
     }
 }

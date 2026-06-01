@@ -30,6 +30,22 @@
     "%lld." : {
 
     },
+    "accessibility.addFavorite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to favorites"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить в избранное"
+          }
+        }
+      }
+    },
     "accessibility.addRecipe" : {
       "localizations" : {
         "en" : {
@@ -42,6 +58,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавить рецепт"
+          }
+        }
+      }
+    },
+    "accessibility.removeFavorite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from favorites"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Убрать из избранного"
           }
         }
       }
@@ -74,6 +106,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поделиться"
+          }
+        }
+      }
+    },
+    "accessibility.userRecipe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your recipe"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш рецепт"
           }
         }
       }
@@ -341,6 +389,70 @@
         }
       }
     },
+    "addRecipe.format.bold" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bold"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жирный"
+          }
+        }
+      }
+    },
+    "addRecipe.format.heading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heading"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заголовок"
+          }
+        }
+      }
+    },
+    "addRecipe.format.numberedList" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numbered list"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нумерованный список"
+          }
+        }
+      }
+    },
+    "addRecipe.format.underline" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Underline"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подчёркнутый"
+          }
+        }
+      }
+    },
     "addRecipe.import" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -404,38 +516,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ингредиенты"
-          }
-        }
-      }
-    },
-    "addRecipe.servings %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Servings: %lld"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Порций: %lld"
-          }
-        }
-      }
-    },
-    "addRecipe.servingsFooter" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingredient amounts are for this number of servings"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Количества ингредиентов указаны на это число порций"
           }
         }
       }
@@ -537,6 +617,38 @@
         }
       }
     },
+    "addRecipe.servings %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servings: %lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Порций: %lld"
+          }
+        }
+      }
+    },
+    "addRecipe.servingsFooter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredient amounts are for this number of servings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количества ингредиентов указаны на это число порций"
+          }
+        }
+      }
+    },
     "addRecipe.sourceURL" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -566,70 +678,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шаги приготовления"
-          }
-        }
-      }
-    },
-    "addRecipe.format.bold" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bold"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Жирный"
-          }
-        }
-      }
-    },
-    "addRecipe.format.heading" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heading"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Заголовок"
-          }
-        }
-      }
-    },
-    "addRecipe.format.numberedList" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Numbered list"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нумерованный список"
-          }
-        }
-      }
-    },
-    "addRecipe.format.underline" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Underline"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Подчёркнутый"
           }
         }
       }
@@ -678,6 +726,391 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Новый рецепт"
+          }
+        }
+      }
+    },
+    "calculator.activity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activity"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Активность"
+          }
+        }
+      }
+    },
+    "calculator.activity.active" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active (×1.725)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Высокая (×1.725)"
+          }
+        }
+      }
+    },
+    "calculator.activity.light" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light (×1.375)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Низкая (×1.375)"
+          }
+        }
+      }
+    },
+    "calculator.activity.moderate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moderate (×1.55)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Умеренная (×1.55)"
+          }
+        }
+      }
+    },
+    "calculator.activity.sedentary" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sedentary (×1.2)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Минимальная (×1.2)"
+          }
+        }
+      }
+    },
+    "calculator.activity.veryActive" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very active (×1.9)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очень высокая (×1.9)"
+          }
+        }
+      }
+    },
+    "calculator.activityLevel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activity level"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уровень активности"
+          }
+        }
+      }
+    },
+    "calculator.age" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Age (years)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Возраст (лет)"
+          }
+        }
+      }
+    },
+    "calculator.calculate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рассчитать"
+          }
+        }
+      }
+    },
+    "calculator.fatPerKg" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fat per kg of target weight"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жиры на 1 кг желаемого веса"
+          }
+        }
+      }
+    },
+    "calculator.height" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Height (cm)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рост (см)"
+          }
+        }
+      }
+    },
+    "calculator.invalidInput" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please fill in all fields with valid values."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заполните все поля корректными значениями."
+          }
+        }
+      }
+    },
+    "calculator.macrosPerKg.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protein: 1–3 g/kg. Fat: 0.8–1.5 g/kg. Remaining calories go to carbs (4 kcal/g)."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белки: 1–3 г/кг. Жиры: 0,8–1,5 г/кг. Остаток калорий — углеводы (4 ккал/г)."
+          }
+        }
+      }
+    },
+    "calculator.profile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your parameters"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваши параметры"
+          }
+        }
+      }
+    },
+    "calculator.proteinPerKg" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protein per kg of target weight"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белки на 1 кг желаемого веса"
+          }
+        }
+      }
+    },
+    "calculator.proteinPerKg.footer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fat: 1 g per kg of target weight. Remaining calories go to carbs (4 kcal/g)."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жиры: 1 г на 1 кг желаемого веса. Остаток калорий — углеводы (4 ккал/г)."
+          }
+        }
+      }
+    },
+    "calculator.result" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily targets"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Суточная норма"
+          }
+        }
+      }
+    },
+    "calculator.sex" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sex"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пол"
+          }
+        }
+      }
+    },
+    "calculator.sex.female" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Female"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Женский"
+          }
+        }
+      }
+    },
+    "calculator.sex.male" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Male"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мужской"
+          }
+        }
+      }
+    },
+    "calculator.targetWeight" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Target weight (kg)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Желаемый вес (кг)"
+          }
+        }
+      }
+    },
+    "calculator.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate your macros"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рассчитать своё КБЖУ"
+          }
+        }
+      }
+    },
+    "calculator.use" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Использовать"
+          }
+        }
+      }
+    },
+    "calculator.weight" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current weight (kg)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущий вес (кг)"
           }
         }
       }
@@ -970,6 +1403,54 @@
         }
       }
     },
+    "favorites.remove.confirm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
+        }
+      }
+    },
+    "favorites.remove.message %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove \"%@\" from favorites?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить «%@» из избранного?"
+          }
+        }
+      }
+    },
+    "favorites.remove.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from favorites?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить из избранного?"
+          }
+        }
+      }
+    },
     "filter.all" : {
       "localizations" : {
         "en" : {
@@ -1035,98 +1516,19 @@
         }
       }
     },
-    "accessibility.addFavorite" : {
+    "home.addRecipesHint" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add to favorites"
+            "value" : "Add recipes to see recommendations"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Добавить в избранное"
-          }
-        }
-      }
-    },
-    "accessibility.removeFavorite" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove from favorites"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Убрать из избранного"
-          }
-        }
-      }
-    },
-    "accessibility.userRecipe" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your recipe"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ваш рецепт"
-          }
-        }
-      }
-    },
-    "favorites.remove.confirm" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Удалить"
-          }
-        }
-      }
-    },
-    "favorites.remove.message %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove \"%@\" from favorites?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Удалить «%@» из избранного?"
-          }
-        }
-      }
-    },
-    "favorites.remove.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove from favorites?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Удалить из избранного?"
+            "value" : "Добавьте рецепты, чтобы увидеть рекомендации"
           }
         }
       }
@@ -1143,54 +1545,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Рекомендации появятся после добавления рецептов в recipes-catalog.json"
-          }
-        }
-      }
-    },
-    "home.recommendations.noResults" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No recipes match your search"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нет рецептов по вашему запросу"
-          }
-        }
-      }
-    },
-    "home.recommendations.search" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search recipes"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поиск рецептов"
-          }
-        }
-      }
-    },
-    "home.addRecipesHint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add recipes to see recommendations"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Добавьте рецепты, чтобы увидеть рекомендации"
           }
         }
       }
@@ -1290,6 +1644,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Рекомендации"
+          }
+        }
+      }
+    },
+    "home.recommendations.noResults" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recipes match your search"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет рецептов по вашему запросу"
+          }
+        }
+      }
+    },
+    "home.recommendations.search" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск рецептов"
           }
         }
       }
@@ -2163,6 +2549,22 @@
         }
       }
     },
+    "nutrition.recipePerServing %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kcal per serving"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ккал на порцию"
+          }
+        }
+      }
+    },
     "nutrition.recipeTotal %lld" : {
       "localizations" : {
         "en" : {
@@ -2195,6 +2597,22 @@
         }
       }
     },
+    "nutrition.recipeWeightPerServing %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld g per serving"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld г на порцию"
+          }
+        }
+      }
+    },
     "nutrition.section.per100g" : {
       "localizations" : {
         "en" : {
@@ -2207,6 +2625,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "На 100 г"
+          }
+        }
+      }
+    },
+    "nutrition.section.perServing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per serving"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На 1 порцию"
           }
         }
       }
@@ -2243,6 +2677,23 @@
         }
       }
     },
+    "nutrition.title.per100g" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Macros per 100 g"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "КБЖУ на 100 г"
+          }
+        }
+      }
+    },
     "nutrition.title.perServing" : {
       "localizations" : {
         "en" : {
@@ -2259,87 +2710,8 @@
         }
       }
     },
-    "nutrition.section.perServing" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Per serving"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "На 1 порцию"
-          }
-        }
-      }
-    },
-    "nutrition.recipePerServing %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld kcal per serving"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld ккал на порцию"
-          }
-        }
-      }
-    },
-    "nutrition.recipeWeightPerServing %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld g per serving"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld г на порцию"
-          }
-        }
-      }
-    },
-    "recipe.displayPortions %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show ingredients for %lld servings"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ингредиенты на %lld порций"
-          }
-        }
-      }
-    },
-    "nutrition.title.per100g" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Macros per 100 g"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "КБЖУ на 100 г"
-          }
-        }
-      }
-    },
     "nutrition.title.weekAverage" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2419,6 +2791,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "мг"
+          }
+        }
+      }
+    },
+    "recipe.displayPortions %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show ingredients for %lld servings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ингредиенты на %lld порций"
           }
         }
       }
@@ -2599,6 +2987,22 @@
         }
       }
     },
+    "settings.calculateTargets" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate your macros"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рассчитать своё КБЖУ"
+          }
+        }
+      }
+    },
     "settings.language" : {
       "localizations" : {
         "en" : {
@@ -2757,156 +3161,6 @@
             "value" : "Планов на неделю"
           }
         }
-      }
-    },
-    "calculator.activity" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Activity" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Активность" } }
-      }
-    },
-    "calculator.activity.active" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active (×1.725)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Высокая (×1.725)" } }
-      }
-    },
-    "calculator.activity.light" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Light (×1.375)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Низкая (×1.375)" } }
-      }
-    },
-    "calculator.activity.moderate" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Moderate (×1.55)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Умеренная (×1.55)" } }
-      }
-    },
-    "calculator.activity.sedentary" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sedentary (×1.2)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Минимальная (×1.2)" } }
-      }
-    },
-    "calculator.activity.veryActive" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Very active (×1.9)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Очень высокая (×1.9)" } }
-      }
-    },
-    "calculator.activityLevel" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Activity level" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Уровень активности" } }
-      }
-    },
-    "calculator.age" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Age (years)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Возраст (лет)" } }
-      }
-    },
-    "calculator.calculate" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calculate" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Рассчитать" } }
-      }
-    },
-    "calculator.height" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Height (cm)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Рост (см)" } }
-      }
-    },
-    "calculator.invalidInput" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Please fill in all fields with valid values." } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Заполните все поля корректными значениями." } }
-      }
-    },
-    "calculator.profile" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Your parameters" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Ваши параметры" } }
-      }
-    },
-    "calculator.fatPerKg" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fat per kg of target weight" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Жиры на 1 кг желаемого веса" } }
-      }
-    },
-    "calculator.macrosPerKg.footer" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Protein: 1–3 g/kg. Fat: 0.8–1.5 g/kg. Remaining calories go to carbs (4 kcal/g)." } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Белки: 1–3 г/кг. Жиры: 0,8–1,5 г/кг. Остаток калорий — углеводы (4 ккал/г)." } }
-      }
-    },
-    "calculator.proteinPerKg" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Protein per kg of target weight" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Белки на 1 кг желаемого веса" } }
-      }
-    },
-    "calculator.proteinPerKg.footer" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fat: 1 g per kg of target weight. Remaining calories go to carbs (4 kcal/g)." } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Жиры: 1 г на 1 кг желаемого веса. Остаток калорий — углеводы (4 ккал/г)." } }
-      }
-    },
-    "calculator.result" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily targets" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Суточная норма" } }
-      }
-    },
-    "calculator.sex" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sex" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Пол" } }
-      }
-    },
-    "calculator.sex.female" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Female" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Женский" } }
-      }
-    },
-    "calculator.sex.male" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Male" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Мужской" } }
-      }
-    },
-    "calculator.targetWeight" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target weight (kg)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Желаемый вес (кг)" } }
-      }
-    },
-    "calculator.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calculate your macros" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Рассчитать своё КБЖУ" } }
-      }
-    },
-    "calculator.use" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Use" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Использовать" } }
-      }
-    },
-    "calculator.weight" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Current weight (kg)" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Текущий вес (кг)" } }
-      }
-    },
-    "settings.calculateTargets" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Calculate your macros" } },
-        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Рассчитать своё КБЖУ" } }
       }
     },
     "settings.target.calories" : {

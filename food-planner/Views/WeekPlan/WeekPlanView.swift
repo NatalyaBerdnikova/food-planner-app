@@ -1,11 +1,6 @@
 import SwiftUI
 import SwiftData
 
-private struct DayPlanSheetItem: Identifiable {
-    let dayPlan: DayPlan
-    var id: PersistentIdentifier { dayPlan.persistentModelID }
-}
-
 struct WeekPlanView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
@@ -13,15 +8,15 @@ struct WeekPlanView: View {
     @State private var currentWeekPlan: WeekPlan?
     @State private var displayedWeekStart = Calendar.current.startOfWeek(for: .now)
     @State private var selectedDay: Date?
-    @State private var mealSheetItem: DayPlanSheetItem?
+    @State private var addMealPresentation: AddMealPresentation?
 
     var body: some View {
         content
             .navigationTitle("nav.weekPlan")
             .onAppear(perform: loadWeekPlan)
             .onChange(of: weekPlans.count) { _, _ in loadWeekPlan() }
-            .sheet(item: $mealSheetItem) { item in
-                AddMealSheet(dayPlan: item.dayPlan) {
+            .sheet(item: $addMealPresentation) { item in
+                AddMealSheet(dayPlan: item.dayPlan, preferredMealType: item.mealType) {
                     syncShoppingList()
                 }
             }
@@ -37,7 +32,7 @@ struct WeekPlanView: View {
                     WeekDayCarousel(
                         dayPlans: sortedDayPlans(weekPlan),
                         selectedDay: $selectedDay,
-                        onAddMeal: presentAddMeal
+                        onTapEmptyMeal: presentAddMeal
                     )
                 }
                 .padding(.horizontal, 16)
@@ -58,8 +53,8 @@ struct WeekPlanView: View {
         weekPlan.dayPlans.sorted { $0.date < $1.date }
     }
 
-    private func presentAddMeal(_ dayPlan: DayPlan) {
-        mealSheetItem = DayPlanSheetItem(dayPlan: dayPlan)
+    private func presentAddMeal(_ dayPlan: DayPlan, mealType: MealType) {
+        addMealPresentation = AddMealPresentation(dayPlan: dayPlan, mealType: mealType)
     }
 
     private func syncShoppingList() {

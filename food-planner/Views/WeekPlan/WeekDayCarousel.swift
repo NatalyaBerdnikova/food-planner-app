@@ -3,7 +3,7 @@ import SwiftUI
 struct WeekDayCarousel: View {
     let dayPlans: [DayPlan]
     @Binding var selectedDay: Date?
-    let onAddMeal: (DayPlan) -> Void
+    let onTapEmptyMeal: (DayPlan, MealType) -> Void
 
     private let daySpacing: CGFloat = 12
 
@@ -13,7 +13,9 @@ struct WeekDayCarousel: View {
                 DayPlanCardView(
                     dayPlan: dayPlan,
                     isSelected: isSelected(dayPlan),
-                    onAddMeal: { onAddMeal(dayPlan) }
+                    onTapEmptyMeal: { mealType in
+                        onTapEmptyMeal(dayPlan, mealType)
+                    }
                 )
                 .onTapGesture {
                     selectedDay = dayPlan.date

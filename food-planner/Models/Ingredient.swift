@@ -31,7 +31,9 @@ final class Ingredient {
     }
 
     var displayName: String {
-        if let foodProduct { return foodProduct.displayName }
+        if let foodProduct {
+            return L10n.productName(catalogKey: foodProduct.catalogKey)
+        }
         return L10n.resolvedProductName(name)
     }
 }
