@@ -25,18 +25,33 @@ enum L10n {
         String(localized: "nutrition.recipeWeightPerServing \(grams)")
     }
 
-    private static let productsTable = "Products"
-
     static func productName(catalogKey: String) -> String {
-        String(
-            localized: String.LocalizationValue("product.\(catalogKey)"),
-            table: productsTable
-        )
+        if let catalogName = FoodCatalogLocalization.name(
+            for: catalogKey,
+            languageCode: currentLanguageCode
+        ) {
+            return catalogName
+        }
+        return catalogKey.replacingOccurrences(of: "_", with: " ").capitalized
+    }
+
+    static var currentLanguageCode: String {
+        let stored = UserDefaults.standard.string(forKey: AppLanguage.storageKey)
+            ?? AppLanguage.system.rawValue
+        let appLanguage = AppLanguage(rawValue: stored) ?? .system
+        switch appLanguage {
+        case .system:
+            return Locale.current.language.languageCode?.identifier ?? "en"
+        case .english:
+            return "en"
+        case .russian:
+            return "ru"
+        }
     }
 
     static func resolvedProductName(_ name: String) -> String {
         if name.hasPrefix("product.") {
-            return String(localized: String.LocalizationValue(name), table: productsTable)
+            return productName(catalogKey: String(name.dropFirst("product.".count)))
         }
         if looksLikeCatalogKey(name) {
             return productName(catalogKey: name)

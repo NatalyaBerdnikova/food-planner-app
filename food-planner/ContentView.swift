@@ -27,7 +27,7 @@ struct ContentView: View {
             .applyAppColorScheme(appColorScheme)
             .task {
                 FoodCatalogSeeder.seedIfNeeded(in: modelContext)
-                RecipeCatalogSeeder.syncCatalog(in: modelContext)
+                RecipeCatalogStore.seedIfNeeded(in: modelContext)
                 _ = AppSettingsService.settings(in: modelContext)
             }
     }

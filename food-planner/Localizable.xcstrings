@@ -715,22 +715,6 @@
         }
       }
     },
-    "addRecipe.stepsFooter" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select text and use the toolbar: bold, underline, heading, or numbered list."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выделите текст и используйте панель: жирный, подчёркивание, заголовок или нумерованный список."
-          }
-        }
-      }
-    },
     "addRecipe.stepsPlaceholder" : {
       "localizations" : {
         "en" : {

@@ -112,8 +112,6 @@ final class FoodProduct {
         )
     }
 
-    var localizationKey: String { "product.\(catalogKey)" }
-
     var displayName: String {
         L10n.productName(catalogKey: catalogKey)
     }

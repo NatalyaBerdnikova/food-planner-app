@@ -10,7 +10,7 @@ enum PreviewSampleData {
         }
 
         FoodCatalogSeeder.seedIfNeeded(in: context)
-        RecipeCatalogSeeder.syncCatalog(in: context)
+        RecipeCatalogStore.seedIfNeeded(in: context)
         _ = AppSettingsService.settings(in: context)
 
         guard let oatmeal = catalogRecipe(id: "oatmeal_berries", in: context),

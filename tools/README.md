@@ -64,7 +64,7 @@ open tools/recipe-catalog-manager.html
 3. Опционально загрузите фото — в экспорте можно включить `imageBase64` или положить файлы в `food-planner/Resources/RecipeImages/<imageId>.jpg`.
 4. Скачайте `recipes-catalog.json` и поместите в `food-planner/Resources/recipes-catalog.json`.
 
-При каждом запуске `RecipeCatalogSeeder.syncCatalog` синхронизирует рецепты из JSON (они всегда в блоке «Рекомендации» на главной). Избранные каталоговые рецепты дополнительно показываются на вкладке «Рецепты».
+При первом запуске `RecipeCatalogStore.seedIfNeeded` импортирует рецепты из системного `recipes-catalog.json` и пользовательского `recipes-user.json` (Application Support) в SwiftData на устройстве. Новые рецепты пользователя сохраняются в SwiftData и в `recipes-user.json`.
 
 ### Формат JSON
 

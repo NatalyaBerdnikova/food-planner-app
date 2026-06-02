@@ -65,8 +65,6 @@ struct AddRecipeView: View {
                 RichTextEditorView(attributedText: $stepsAttributed)
             } header: {
                 Text("addRecipe.steps")
-            } footer: {
-                Text("addRecipe.stepsFooter")
             }
 
             Section("addRecipe.ingredients") {
@@ -129,6 +127,7 @@ struct AddRecipeView: View {
     private func saveRecipe() {
         let recipe = Recipe(
             name: name.trimmingCharacters(in: .whitespaces),
+            userRecipeId: UUID().uuidString,
             servings: servings,
             imageData: imageData,
             steps: RecipeStepsStorage.plainStepLines(from: stepsAttributed),
@@ -138,7 +137,7 @@ struct AddRecipeView: View {
 
         for draft in draftIngredients {
             let ingredient = Ingredient(
-                name: draft.product.displayName,
+                name: draft.product.catalogKey,
                 quantity: draft.quantity,
                 unit: draft.unit,
                 category: draft.product.category,
@@ -151,6 +150,7 @@ struct AddRecipeView: View {
 
         recipe.recalculateNutrition()
         LocalPersistence.save(modelContext)
+        RecipeCatalogStore.persistUserRecipes(in: modelContext)
         dismiss()
     }
 }

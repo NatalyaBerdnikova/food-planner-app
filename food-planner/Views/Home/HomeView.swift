@@ -29,6 +29,7 @@ struct HomeView: View {
             }
             .padding()
         }
+        .background(Color.white)
         .navigationTitle("nav.today")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -36,6 +37,10 @@ struct HomeView: View {
                     SettingsView()
                 } label: {
                     Image(systemName: "gearshape")
+                        .font(.headline)
+                        .foregroundStyle(Color(red: 0.05, green: 0.30, blue: 0.40))
+                        .padding(10)
+                        .background(Color.white, in: Circle())
                 }
                 .accessibilityLabel("accessibility.settings")
             }
@@ -81,12 +86,12 @@ struct HomeView: View {
             } label: {
                 HStack {
                     Text("home.today")
-                        .font(.headline)
-                        .foregroundStyle(.primary)
+                        .font(.title3.weight(.bold))
+                        .foregroundStyle(.white)
                     Spacer()
                     Image(systemName: isTodayExpanded ? "chevron.up" : "chevron.down")
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(.tertiary)
+                        .foregroundStyle(.white.opacity(0.8))
                 }
                 .contentShape(Rectangle())
             }
@@ -100,6 +105,7 @@ struct HomeView: View {
                         macroLabelStyle: .full,
                         embedded: true
                     )
+                    .colorScheme(.dark)
                 }
             } else {
                 NutritionSummaryView(
@@ -107,6 +113,7 @@ struct HomeView: View {
                     embedded: true,
                     macroLabelStyle: .compact
                 )
+                .colorScheme(.dark)
             }
         }
         .homeCardStyle()
@@ -120,7 +127,8 @@ struct HomeView: View {
                 PlannedMealSlotView(
                     mealType: type,
                     meals: meals(for: type),
-                    onTap: { presentAddMeal(for: type) }
+                    onTap: { presentAddMeal(for: type) },
+                    style: .home
                 )
             }
         }
@@ -132,28 +140,31 @@ struct HomeView: View {
         NavigationLink {
             WeekPlanView()
         } label: {
-            HStack(alignment: .center, spacing: 12) {
-                VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .center, spacing: 16) {
+                VStack(alignment: .leading, spacing: 8) {
                     Text("home.weekPlan")
                         .font(.headline)
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(.white)
 
                     if let weekPlan = currentWeekPlan {
                         Text(weekRangeFormatted(for: weekPlan))
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.white.opacity(0.8))
                     } else {
                         Text("home.weekNotCreated")
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.white.opacity(0.8))
                     }
                 }
 
                 Spacer()
 
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.tertiary)
+                Text("home.openWeekPlan")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color(red: 0.13, green: 0.20, blue: 0.25))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(Color(red: 0.97, green: 0.78, blue: 0.36), in: Capsule())
             }
             .contentShape(Rectangle())
         }
@@ -283,8 +294,19 @@ private extension View {
     func homeCardStyle() -> some View {
         padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(.secondarySystemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .background(
+                LinearGradient(
+                    colors: [Color(red: 0.06, green: 0.33, blue: 0.45), Color(red: 0.05, green: 0.22, blue: 0.33)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.white.opacity(0.18), lineWidth: 1)
+            }
+            .shadow(color: Color.black.opacity(0.12), radius: 12, y: 4)
     }
 }
 

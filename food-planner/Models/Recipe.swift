@@ -3,8 +3,10 @@ import SwiftData
 
 @Model
 final class Recipe {
-    /// Стабильный id из `recipes-catalog.json`; `nil` — рецепт создан пользователем.
+    /// Стабильный id из системного `recipes-catalog.json`; `nil` — не каталоговый рецепт.
     var catalogRecipeId: String?
+    /// Стабильный id пользовательского рецепта из `recipes-user.json`.
+    var userRecipeId: String?
 
     var name: String
     /// На сколько порций указаны количества ингредиентов (минимум 1).
@@ -35,6 +37,7 @@ final class Recipe {
     init(
         name: String,
         catalogRecipeId: String? = nil,
+        userRecipeId: String? = nil,
         servings: Int = 1,
         imageData: Data? = nil,
         sourceURL: String? = nil,
@@ -47,6 +50,7 @@ final class Recipe {
         ingredients: [Ingredient] = []
     ) {
         self.catalogRecipeId = catalogRecipeId
+        self.userRecipeId = userRecipeId
         self.name = name
         self.servings = max(servings, 1)
         self.imageData = imageData
