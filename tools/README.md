@@ -19,6 +19,22 @@ open tools/ingredient-catalog-manager.html
 - Экспорт изменённого `food-catalog.json`
 - Парсинг таблицы с [health-diet.ru](https://health-diet.ru/base_of_food/sostav/39.php): по URL (через прокси) или вставкой HTML
 
+### Без прокси (локальный парсер)
+
+Если прокси в браузере не работает (timeout/403), используйте локальный скрипт — он скачивает страницу напрямую (server-side запрос, без CORS):
+
+```bash
+python3 tools/parse_health_diet.py "https://health-diet.ru/base_of_food/sostav/39.php" --out /tmp/product.json
+```
+
+Дальше откройте `ingredient-catalog-manager.html` и импортируйте полученный JSON (`/tmp/product.json`).
+
+Массовый сбор диапазона id (с паузами между запросами, без добавления страниц с «Запрашиваемая страница не найдена!»):
+
+```bash
+python3 tools/parse_health_diet_range.py --start 19 --end 510 --delay 1.3 --timeout 10 --insecure-ssl --out food-planner/Resources/food-catalog.json
+```
+
 ### Соответствие полей приложению
 
 | JSON / форма | Модель Swift |

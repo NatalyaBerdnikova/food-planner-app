@@ -517,22 +517,61 @@
       }
     });
 
+    async function fetchWithTimeout(url, timeoutMs) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const res = await fetch(url, { signal: controller.signal });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return await res.text();
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    function proxyCandidates(sourceUrl) {
+      return [
+        {
+          name: 'allorigins',
+          url: 'https://api.allorigins.win/raw?url=' + encodeURIComponent(sourceUrl),
+        },
+        {
+          name: 'corsproxy.io',
+          url: 'https://corsproxy.io/?' + encodeURIComponent(sourceUrl),
+        },
+        {
+          name: 'r.jina.ai',
+          url: 'https://r.jina.ai/http://' + sourceUrl.replace(/^https?:\/\//i, ''),
+        },
+      ];
+    }
+
     $('btnFetchParse').addEventListener('click', async () => {
       const url = $('parseUrl').value.trim();
       if (!url) return showStatus($('parseStatus'), 'Укажите URL', true);
       showStatus($('parseStatus'), 'Загрузка…', false);
-      try {
-        const proxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
-        const res = await fetch(proxy);
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const html = await res.text();
-        $('pasteHtml').value = html;
-        applyParsedToForm(parseHealthDietHtml(html));
-      } catch (err) {
-        showStatus($('parseStatus'),
-          'Не удалось загрузить страницу (' + err.message + '). Скопируйте HTML вручную (Ctrl+U → фрагмент таблицы).',
-          true);
+      const attempts = proxyCandidates(url);
+      let lastError = null;
+
+      for (let i = 0; i < attempts.length; i++) {
+        const attempt = attempts[i];
+        showStatus($('parseStatus'), `Попытка ${i + 1}/${attempts.length}: ${attempt.name}…`, false);
+        try {
+          const html = await fetchWithTimeout(attempt.url, 15000);
+          $('pasteHtml').value = html;
+          applyParsedToForm(parseHealthDietHtml(html));
+          return;
+        } catch (err) {
+          lastError = err;
+        }
       }
+
+      showStatus(
+        $('parseStatus'),
+        'Не удалось загрузить страницу (' + (lastError?.message || 'network error') +
+          '). Попробуйте позже или вставьте HTML вручную (Ctrl+U → фрагмент таблицы).',
+        true
+      );
     });
 
     initForm();

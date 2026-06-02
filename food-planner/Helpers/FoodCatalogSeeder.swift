@@ -2,6 +2,39 @@ import Foundation
 import SwiftData
 
 enum FoodCatalogSeeder {
+    private struct CatalogFile: Decodable {
+        var version: Int?
+        var products: [ProductJSON]
+    }
+
+    private struct ProductJSON: Decodable {
+        var catalogKey: String
+        var displayName: String?
+        var category: String?
+        var defaultPieceWeightGrams: Double?
+        var caloriesPer100g: Double
+        var proteinPer100g: Double
+        var fatPer100g: Double
+        var carbsPer100g: Double
+        var fiberPer100g: Double?
+        var vitaminD3Per100g: Double?
+        var calciumPer100g: Double?
+        var magnesiumPer100g: Double?
+        var zincPer100g: Double?
+        var vitaminKPer100g: Double?
+        var vitaminCPer100g: Double?
+        var vitaminEPer100g: Double?
+        var vitaminAPer100g: Double?
+        var vitaminB6Per100g: Double?
+        var vitaminB9Per100g: Double?
+        var vitaminB12Per100g: Double?
+        var seleniumPer100g: Double?
+        var chromiumPer100g: Double?
+        var ironPer100g: Double?
+        var potassiumPer100g: Double?
+        var iodinePer100g: Double?
+    }
+
     struct Micro {
         var fiber = 0.0
         var d3 = 0.0
@@ -73,10 +106,17 @@ enum FoodCatalogSeeder {
     @MainActor
     static func seedIfNeeded(in context: ModelContext) {
         let descriptor = FetchDescriptor<FoodProduct>()
-        let count = (try? context.fetchCount(descriptor)) ?? 0
-        guard count == 0 else { return }
+        let existingProducts = (try? context.fetch(descriptor)) ?? []
+        var existingKeys = Set(existingProducts.map(\.catalogKey))
+
+        let bundleProducts = loadBundleCatalog()
+        for json in bundleProducts where !existingKeys.contains(json.catalogKey) {
+            context.insert(makeProduct(from: json))
+            existingKeys.insert(json.catalogKey)
+        }
 
         for seed in catalog {
+            guard !existingKeys.contains(seed.key) else { continue }
             let m = seed.micro
             let product = FoodProduct(
                 catalogKey: seed.key,
@@ -105,7 +145,9 @@ enum FoodCatalogSeeder {
                 iodinePer100g: m.i
             )
             context.insert(product)
+            existingKeys.insert(seed.key)
         }
+        LocalPersistence.save(context)
     }
 
     @MainActor
@@ -115,5 +157,49 @@ enum FoodCatalogSeeder {
         )
         descriptor.fetchLimit = 1
         return try? context.fetch(descriptor).first
+    }
+
+    private static func loadBundleCatalog() -> [ProductJSON] {
+        guard let url = Bundle.main.url(forResource: "food-catalog", withExtension: "json"),
+              let data = try? Data(contentsOf: url) else {
+            return []
+        }
+        if let file = try? JSONDecoder().decode(CatalogFile.self, from: data) {
+            return file.products
+        }
+        if let array = try? JSONDecoder().decode([ProductJSON].self, from: data) {
+            return array
+        }
+        return []
+    }
+
+    private static func makeProduct(from json: ProductJSON) -> FoodProduct {
+        let category = IngredientCategory(rawValue: json.category ?? "") ?? .other
+        return FoodProduct(
+            catalogKey: json.catalogKey,
+            category: category,
+            defaultPieceWeightGrams: json.defaultPieceWeightGrams ?? 100,
+            caloriesPer100g: json.caloriesPer100g,
+            proteinPer100g: json.proteinPer100g,
+            fatPer100g: json.fatPer100g,
+            carbsPer100g: json.carbsPer100g,
+            fiberPer100g: json.fiberPer100g ?? 0,
+            vitaminD3Per100g: json.vitaminD3Per100g ?? 0,
+            calciumPer100g: json.calciumPer100g ?? 0,
+            magnesiumPer100g: json.magnesiumPer100g ?? 0,
+            zincPer100g: json.zincPer100g ?? 0,
+            vitaminKPer100g: json.vitaminKPer100g ?? 0,
+            vitaminCPer100g: json.vitaminCPer100g ?? 0,
+            vitaminEPer100g: json.vitaminEPer100g ?? 0,
+            vitaminAPer100g: json.vitaminAPer100g ?? 0,
+            vitaminB6Per100g: json.vitaminB6Per100g ?? 0,
+            vitaminB9Per100g: json.vitaminB9Per100g ?? 0,
+            vitaminB12Per100g: json.vitaminB12Per100g ?? 0,
+            seleniumPer100g: json.seleniumPer100g ?? 0,
+            chromiumPer100g: json.chromiumPer100g ?? 0,
+            ironPer100g: json.ironPer100g ?? 0,
+            potassiumPer100g: json.potassiumPer100g ?? 0,
+            iodinePer100g: json.iodinePer100g ?? 0
+        )
     }
 }
