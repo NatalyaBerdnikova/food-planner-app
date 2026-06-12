@@ -3,12 +3,17 @@ import SwiftData
 
 struct RecipeLibraryView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(ImportCoordinator.self) private var importCoordinator
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
     private var settingsList: [AppSettings]
 
     @State private var showAddRecipe = false
     @State private var unfavoriteCandidate: Recipe?
+
+    #if DEBUG
+    @State private var debugImportURL = ""
+    #endif
 
     private let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -42,6 +47,11 @@ struct RecipeLibraryView: View {
                 }
             }
         }
+        #if DEBUG
+        .safeAreaInset(edge: .bottom) {
+            debugImportBar
+        }
+        #endif
         .navigationTitle("nav.recipes")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -78,6 +88,28 @@ struct RecipeLibraryView: View {
             }
         }
     }
+
+    #if DEBUG
+    private var debugImportBar: some View {
+        HStack(spacing: 8) {
+            TextField("import.debug.placeholder", text: $debugImportURL)
+                .textFieldStyle(.roundedBorder)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .keyboardType(.URL)
+            Button("import.debug.button") {
+                let url = debugImportURL.trimmingCharacters(in: .whitespacesAndNewlines)
+                guard !url.isEmpty else { return }
+                importCoordinator.startImport(urlString: url)
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(debugImportURL.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .background(.bar)
+    }
+    #endif
 
     private func libraryCard(_ recipe: Recipe) -> some View {
         let isFavorite = recipe.isCatalogRecipe
