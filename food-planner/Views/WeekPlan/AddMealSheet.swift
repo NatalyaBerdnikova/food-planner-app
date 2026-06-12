@@ -111,6 +111,7 @@ struct AddMealSheet: View {
                 .background(filterTab == tab ? Color.accentColor : Color(.tertiarySystemFill))
                 .foregroundStyle(filterTab == tab ? Color.white : Color.primary)
                 .clipShape(Capsule())
+                .contentShape(Capsule())
         }
         .buttonStyle(.plain)
     }
@@ -187,6 +188,8 @@ struct AddMealSheet: View {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .foregroundStyle(isSelected ? Color.accentColor : Color(.tertiaryLabel))
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }

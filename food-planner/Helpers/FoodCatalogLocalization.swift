@@ -13,6 +13,8 @@ enum FoodCatalogLocalization {
 
     private static var namesByKey: [String: ProductEntry]?
 
+    private static let supportedLanguageCodes = ["en", "ru"]
+
     static func name(for catalogKey: String, languageCode: String) -> String? {
         guard let entry = loadEntries()[catalogKey] else { return nil }
 
@@ -29,6 +31,39 @@ enum FoodCatalogLocalization {
         }
 
         return entry.displayName
+    }
+
+    static func matchesSearch(catalogKey: String, query: String) -> Bool {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return true }
+
+        return searchableTexts(for: catalogKey).contains {
+            $0.localizedCaseInsensitiveContains(trimmed)
+        }
+    }
+
+    static func searchableTexts(for catalogKey: String) -> [String] {
+        var texts: Set<String> = [
+            catalogKey,
+            catalogKey.replacingOccurrences(of: "_", with: " "),
+        ]
+
+        if let entry = loadEntries()[catalogKey] {
+            if let displayName = entry.displayName, !displayName.isEmpty {
+                texts.insert(displayName)
+            }
+            entry.translations?.values
+                .filter { !$0.isEmpty }
+                .forEach { texts.insert($0) }
+        }
+
+        for code in supportedLanguageCodes {
+            if let name = name(for: catalogKey, languageCode: code), !name.isEmpty {
+                texts.insert(name)
+            }
+        }
+
+        return Array(texts)
     }
 
     private static func loadEntries() -> [String: ProductEntry] {

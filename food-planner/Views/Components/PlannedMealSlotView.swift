@@ -44,6 +44,7 @@ struct PlannedMealSlotView: View {
                         .font(.subheadline)
                         .foregroundStyle(style == .home ? .white.opacity(0.8) : .secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
             } else {
@@ -99,6 +100,8 @@ struct PlannedMealSlotView: View {
                 .font(.caption2.weight(.semibold))
                 .foregroundStyle(style == .home ? .white.opacity(0.75) : Color(UIColor.tertiaryLabel))
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
     }
 
     private var mealTypeLabel: LocalizedStringResource {

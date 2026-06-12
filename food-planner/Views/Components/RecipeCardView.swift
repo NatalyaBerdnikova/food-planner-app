@@ -60,6 +60,8 @@ struct RecipeCardView: View {
             }
             .padding(6)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
     }
 
     @ViewBuilder

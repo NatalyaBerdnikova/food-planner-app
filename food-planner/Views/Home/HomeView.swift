@@ -212,6 +212,7 @@ struct HomeView: View {
                 RecipeCardView(recipe: recipe)
             }
             .buttonStyle(.plain)
+            .frame(maxWidth: .infinity, alignment: .leading)
 
             Button {
                 if isFavorite {

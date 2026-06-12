@@ -90,6 +90,7 @@ struct RecipeLibraryView: View {
                 RecipeCardView(recipe: recipe)
             }
             .buttonStyle(.plain)
+            .frame(maxWidth: .infinity, alignment: .leading)
 
             if recipe.isUserCreated {
                 Image(systemName: "person.crop.circle.fill")

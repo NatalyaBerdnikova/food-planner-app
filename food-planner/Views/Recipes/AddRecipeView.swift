@@ -82,7 +82,10 @@ struct AddRecipeView: View {
                     showAddIngredient = true
                 } label: {
                     Label("addRecipe.addIngredient", systemImage: "plus.circle")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
                 }
+                .buttonStyle(.plain)
             }
 
             if let nutrition = previewNutritionPerServing {
