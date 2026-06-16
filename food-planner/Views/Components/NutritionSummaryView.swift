@@ -2,6 +2,7 @@ import SwiftUI
 
 struct NutritionSummaryView: View {
     let nutrition: DailyNutrition
+    var target: DailyNutrition?
     var title: LocalizedStringResource = "nutrition.title.day"
     var embedded: Bool = false
     var macroLabelStyle: MacroLabelStyle = .compact
@@ -23,21 +24,24 @@ struct NutritionSummaryView: View {
     private var content: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
-                macroChip(title: macroLabelStyle.kcalTitle, value: nutrition.calories)
-                macroChip(title: macroLabelStyle.proteinTitle, value: nutrition.protein)
-                macroChip(title: macroLabelStyle.fatTitle, value: nutrition.fat)
-                macroChip(title: macroLabelStyle.carbsTitle, value: nutrition.carbs)
+                macroChip(title: macroLabelStyle.kcalTitle, value: nutrition.calories, target: target?.calories)
+                macroChip(title: macroLabelStyle.proteinTitle, value: nutrition.protein, target: target?.protein)
+                macroChip(title: macroLabelStyle.fatTitle, value: nutrition.fat, target: target?.fat)
+                macroChip(title: macroLabelStyle.carbsTitle, value: nutrition.carbs, target: target?.carbs)
             }
         }
     }
 
-    private func macroChip(title: LocalizedStringResource, value: Double) -> some View {
-        VStack(spacing: 4) {
+    private func macroChip(title: LocalizedStringResource, value: Double, target: Double?) -> some View {
+        let status = target.flatMap { NutritionTargetStatus.from(actual: value, target: $0) }
+
+        return VStack(spacing: 4) {
             Text(title)
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Text(formatted(value))
                 .font(.headline)
+                .foregroundStyle(status?.color ?? .primary)
         }
         .frame(maxWidth: .infinity)
     }

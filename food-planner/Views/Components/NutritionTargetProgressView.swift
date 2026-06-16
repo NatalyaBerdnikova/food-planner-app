@@ -54,14 +54,16 @@ struct NutritionTargetProgressView: View {
         actual: Double,
         target: Double
     ) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
+        let status = NutritionTargetStatus.from(actual: actual, target: target)
+
+        return VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(title)
                     .font(.caption)
                 Spacer()
                 Text("\(formatted(actual)) / \(formatted(target))")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(status?.color ?? .secondary)
             }
 
             GeometryReader { geometry in
@@ -69,24 +71,17 @@ struct NutritionTargetProgressView: View {
                     Capsule()
                         .fill(Color(.tertiarySystemFill))
                     Capsule()
-                        .fill(progressColor(actual: actual, target: target))
-                        .frame(width: geometry.size.width * min(progress(actual: actual, target: target), 1))
+                        .fill(status?.color ?? .accentColor)
+                        .frame(width: geometry.size.width * progressWidth(actual: actual, target: target))
                 }
             }
             .frame(height: 6)
         }
     }
 
-    private func progress(actual: Double, target: Double) -> CGFloat {
+    private func progressWidth(actual: Double, target: Double) -> CGFloat {
         guard target > 0 else { return 0 }
-        return CGFloat(min(actual / target, 1.2))
-    }
-
-    private func progressColor(actual: Double, target: Double) -> Color {
-        guard target > 0 else { return .accentColor }
-        let ratio = actual / target
-        if ratio > 1.1 { return .orange }
-        return .accentColor
+        return CGFloat(min(actual / target, 1))
     }
 
     private func formatted(_ value: Double) -> String {

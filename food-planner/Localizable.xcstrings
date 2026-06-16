@@ -30,6 +30,9 @@
     "%lld." : {
 
     },
+    "0" : {
+
+    },
     "accessibility.addFavorite" : {
       "localizations" : {
         "en" : {
@@ -142,6 +145,22 @@
         }
       }
     },
+    "addIngredient.grams" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grams"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Граммы"
+          }
+        }
+      }
+    },
     "addIngredient.product" : {
       "localizations" : {
         "en" : {
@@ -159,6 +178,7 @@
       }
     },
     "addIngredient.quantity" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -170,22 +190,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Количество"
-          }
-        }
-      }
-    },
-    "addIngredient.grams" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Grams"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Граммы"
           }
         }
       }
@@ -224,6 +228,7 @@
       }
     },
     "addIngredient.unit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -33,11 +33,19 @@ enum RecipeCollections {
         recipes.filter(\.isCatalogRecipe)
     }
 
-    static func libraryRecipes(from recipes: [Recipe], favoriteIds: Set<String>) -> [Recipe] {
-        recipes.filter { recipe in
-            if recipe.isUserCreated { return true }
-            guard let id = recipe.catalogRecipeId else { return false }
-            return favoriteIds.contains(id)
-        }
+    static func userRecipes(from recipes: [Recipe]) -> [Recipe] {
+        recipes
+            .filter(\.isUserCreated)
+            .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+    }
+
+    static func sortedCatalogRecipes(from recipes: [Recipe]) -> [Recipe] {
+        recipes
+            .filter(\.isCatalogRecipe)
+            .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+    }
+
+    static func libraryRecipes(from recipes: [Recipe]) -> [Recipe] {
+        userRecipes(from: recipes) + sortedCatalogRecipes(from: recipes)
     }
 }

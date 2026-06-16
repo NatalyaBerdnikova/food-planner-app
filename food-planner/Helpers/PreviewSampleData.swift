@@ -13,9 +13,9 @@ enum PreviewSampleData {
         RecipeCatalogStore.seedIfNeeded(in: context)
         _ = AppSettingsService.settings(in: context)
 
-        guard let oatmeal = catalogRecipe(id: "oatmeal_berries", in: context),
-              let soup = catalogRecipe(id: "chicken_soup", in: context),
-              let salad = catalogRecipe(id: "greek_salad", in: context) else {
+        guard let breakfastRecipe = catalogRecipe(id: "recipe_01", in: context),
+              let lunchRecipe = catalogRecipe(id: "recipe_10", in: context),
+              let dinnerRecipe = catalogRecipe(id: "recipe_18", in: context) else {
             return
         }
 
@@ -26,9 +26,9 @@ enum PreviewSampleData {
         let dayPlan = DayPlan(date: today, weekPlan: weekPlan)
         context.insert(dayPlan)
 
-        let breakfast = Meal(mealType: .breakfast, date: today, recipe: oatmeal, dayPlan: dayPlan)
-        let lunch = Meal(mealType: .lunch, date: today, recipe: soup, dayPlan: dayPlan)
-        let dinner = Meal(mealType: .dinner, date: today, recipe: salad, dayPlan: dayPlan)
+        let breakfast = Meal(mealType: .breakfast, date: today, recipe: breakfastRecipe, dayPlan: dayPlan)
+        let lunch = Meal(mealType: .lunch, date: today, recipe: lunchRecipe, dayPlan: dayPlan)
+        let dinner = Meal(mealType: .dinner, date: today, recipe: dinnerRecipe, dayPlan: dayPlan)
 
         context.insert(breakfast)
         context.insert(lunch)

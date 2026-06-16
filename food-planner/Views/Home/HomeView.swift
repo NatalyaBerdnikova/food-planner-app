@@ -110,6 +110,7 @@ struct HomeView: View {
             } else {
                 NutritionSummaryView(
                     nutrition: todayNutrition,
+                    target: appSettings?.targetNutrition,
                     embedded: true,
                     macroLabelStyle: .compact
                 )
