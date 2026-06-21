@@ -2857,6 +2857,7 @@
       }
     },
     "nutrition.section.per100g" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2873,6 +2874,7 @@
       }
     },
     "nutrition.section.perServing" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2889,6 +2891,7 @@
       }
     },
     "nutrition.section.total" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -9,8 +9,10 @@ struct RichTextEditorView: View {
     @Binding var attributedText: NSAttributedString
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            RichTextFormatToolbar(attributedText: $attributedText)
+        VStack(spacing: 0) {
+            RichTextFormatToolbar()
+
+            Divider()
 
             ZStack(alignment: .topLeading) {
                 RichTextEditorRepresentable(attributedText: $attributedText)
@@ -31,40 +33,34 @@ struct RichTextEditorView: View {
 // MARK: - Toolbar
 
 struct RichTextFormatToolbar: View {
-    @Binding var attributedText: NSAttributedString
+    private let items: [(icon: String, label: LocalizedStringResource, action: () -> Void)] = [
+        ("bold", "addRecipe.format.bold", RichTextFormatting.toggleBold),
+        ("underline", "addRecipe.format.underline", RichTextFormatting.toggleUnderline),
+        ("textformat.size", "addRecipe.format.heading", RichTextFormatting.applyHeading),
+        ("list.number", "addRecipe.format.numberedList", RichTextFormatting.toggleNumberedList),
+    ]
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 4) {
-                formatButton("bold", label: "addRecipe.format.bold") {
-                    RichTextFormatting.toggleBold()
+        HStack(spacing: 0) {
+            ForEach(Array(items.enumerated()), id: \.offset) { index, item in
+                if index > 0 {
+                    Divider()
+                        .frame(height: 22)
                 }
-                formatButton("underline", label: "addRecipe.format.underline") {
-                    RichTextFormatting.toggleUnderline()
+
+                Button(action: item.action) {
+                    Image(systemName: item.icon)
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.primary)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .contentShape(Rectangle())
                 }
-                formatButton("textformat.size", label: "addRecipe.format.heading") {
-                    RichTextFormatting.applyHeading()
-                }
-                formatButton("list.number", label: "addRecipe.format.numberedList") {
-                    RichTextFormatting.toggleNumberedList()
-                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(Text(item.label))
             }
         }
-    }
-
-    private func formatButton(
-        _ systemImage: String,
-        label: LocalizedStringResource,
-        action: @escaping () -> Void
-    ) -> some View {
-        Button(action: action) {
-            Image(systemName: systemImage)
-                .frame(width: 36, height: 36)
-                .background(Color(.tertiarySystemFill))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(Text(label))
+        .frame(maxWidth: .infinity)
     }
 }
 

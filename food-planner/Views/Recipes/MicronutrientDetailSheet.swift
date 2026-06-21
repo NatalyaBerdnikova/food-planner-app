@@ -17,23 +17,7 @@ struct MicronutrientDetailSheet: View {
         NavigationStack {
             List {
                 if nutrition.totalWeightGrams > 0 {
-                    Section("nutrition.section.perServing") {
-                        micronutrientRows(for: perServing)
-                    }
-
-                    Section("nutrition.section.total") {
-                        micronutrientRows(for: nutrition.total)
-                    }
-
-                    Section("nutrition.section.per100g") {
-                        micronutrientRows(for: nutrition.per100g)
-                    }
-
-                    Section {
-                        Text(L10n.recipeWeightPerServing(Int(NutritionCalculator.weightPerServingGrams(for: recipe).rounded())))
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
+                    micronutrientRows(for: perServing)
                 } else {
                     ContentUnavailableView(
                         "nutrition.noIngredients",
