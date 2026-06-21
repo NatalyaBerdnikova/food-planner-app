@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "·" : {
+    "" : {
 
     },
     "%@ / %@" : {
@@ -25,9 +25,6 @@
       }
     },
     "%lld" : {
-
-    },
-    "%lld." : {
 
     },
     "0" : {
@@ -1670,6 +1667,214 @@
         }
       }
     },
+    "home.proOffer.bannerSubtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get personalized plans and instant AI help"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Персональные планы и мгновенные рекомендации AI"
+          }
+        }
+      }
+    },
+    "home.proOffer.bannerTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan with Pro AI"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Планируйте с Pro AI"
+          }
+        }
+      }
+    },
+    "home.proOffer.feature.ai" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI Chef recommends recipes and snacks balanced to your goals."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI-шеф подбирает блюда и перекусы с учетом ваших целей."
+          }
+        }
+      }
+    },
+    "home.proOffer.feature.insights" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced nutrition insights for calories, macros, and micronutrients."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Расширенная аналитика по калориям, макро- и микронутриентам."
+          }
+        }
+      }
+    },
+    "home.proOffer.feature.plan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart weekly planning that saves your time every day."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Умное недельное планирование, которое экономит время каждый день."
+          }
+        }
+      }
+    },
+    "home.proOffer.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro subscription"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подписка Pro"
+          }
+        }
+      }
+    },
+    "home.proOffer.price" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Pro for $4.99 / month"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Попробуйте Pro за 399 ₽ / месяц"
+          }
+        }
+      }
+    },
+    "home.proOffer.priceHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel anytime. 7-day free trial for new users."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена в любой момент. 7 дней бесплатно для новых пользователей."
+          }
+        }
+      }
+    },
+    "home.proOffer.primaryAction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start free trial"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начать бесплатный период"
+          }
+        }
+      }
+    },
+    "home.proPromo.accessibility" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Pro subscription offer"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть предложение подписки Pro"
+          }
+        }
+      }
+    },
+    "home.proPromo.cta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock Pro"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть Pro"
+          }
+        }
+      }
+    },
+    "home.proPromo.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI Chef recommends a perfectly balanced snack"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI-шеф предложит идеально сбалансированный перекус"
+          }
+        }
+      }
+    },
+    "home.proPromo.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan with Pro AI"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan with Pro AI"
+          }
+        }
+      }
+    },
     "home.recommendations" : {
       "localizations" : {
         "en" : {
@@ -2838,13 +3043,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show ingredients for %lld servings"
+            "value" : "%lld servings"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ингредиенты на %lld порций"
+            "value" : "%lld порций"
           }
         }
       }
@@ -2909,6 +3114,102 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шаги"
+          }
+        }
+      }
+    },
+    "recipeDetail.calculateFor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate for"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рассчитать для"
+          }
+        }
+      }
+    },
+    "recipeDetail.energy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Energy"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Энергия"
+          }
+        }
+      }
+    },
+    "recipeDetail.ingredients %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ingredients"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ингредиентов"
+          }
+        }
+      }
+    },
+    "recipeDetail.portionWeight" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portion weight"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вес порции"
+          }
+        }
+      }
+    },
+    "recipeDetail.servings %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld servings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld порций"
+          }
+        }
+      }
+    },
+    "recipeLibrary.myRecipes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мои рецепты"
           }
         }
       }

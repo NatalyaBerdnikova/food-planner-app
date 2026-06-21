@@ -19,66 +19,105 @@ struct RecipeDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                RecipeImageView(imageData: recipe.imageData, cornerRadius: 16)
-                    .frame(height: 220)
-                    .frame(maxWidth: .infinity)
-
-                Text(recipe.name)
-                    .font(.title.bold())
-
-                portionsControl
+            VStack(alignment: .leading, spacing: 18) {
+                heroSection
 
                 if nutrition.totalWeightGrams > 0 {
-                    NutritionSummaryView(
-                        nutrition: nutritionPerServing,
-                        title: "nutrition.title.perServing"
-                    )
+                    sectionCard {
+                        VStack(alignment: .leading, spacing: 16) {
+                            sectionHeader(
+                                title: "nutrition.title.perServing",
+                                systemImage: "chart.bar.fill"
+                            )
 
-                    HStack {
-                        Text(L10n.recipeCaloriesPerServing(Int(nutritionPerServing.calories.rounded())))
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                        Text("·")
-                            .foregroundStyle(.tertiary)
-                        Text(L10n.recipeWeightPerServing(Int(NutritionCalculator.weightPerServingGrams(for: recipe).rounded())))
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
+                            NutritionSummaryView(
+                                nutrition: nutritionPerServing,
+                                title: "nutrition.title.perServing",
+                                embedded: true,
+                                macroLabelStyle: .full
+                            )
 
-                    Button {
-                        showMicronutrients = true
-                    } label: {
-                        Label("recipe.moreDetails", systemImage: "list.bullet.rectangle")
-                            .frame(maxWidth: .infinity)
+                            HStack(spacing: 10) {
+                                detailMetricChip(
+                                    icon: "flame.fill",
+                                    title: "recipeDetail.energy",
+                                    value: L10n.recipeCaloriesPerServing(Int(nutritionPerServing.calories.rounded()))
+                                )
+                                detailMetricChip(
+                                    icon: "scalemass.fill",
+                                    title: "recipeDetail.portionWeight",
+                                    value: L10n.recipeWeightPerServing(Int(weightPerServing.rounded()))
+                                )
+                            }
+
+                            Button {
+                                showMicronutrients = true
+                            } label: {
+                                Label("recipe.moreDetails", systemImage: "list.bullet.rectangle")
+                                    .font(.subheadline.weight(.semibold))
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(Color(red: 0.06, green: 0.33, blue: 0.45))
+                        }
                     }
-                    .buttonStyle(.bordered)
                 } else {
-                    NutritionSummaryView(
-                        nutrition: nutritionPerServing,
-                        title: "nutrition.title.perServing"
-                    )
+                    sectionCard {
+                        VStack(alignment: .leading, spacing: 16) {
+                            sectionHeader(
+                                title: "nutrition.title.perServing",
+                                systemImage: "chart.bar.fill"
+                            )
+
+                            NutritionSummaryView(
+                                nutrition: nutritionPerServing,
+                                title: "nutrition.title.perServing",
+                                embedded: true,
+                                macroLabelStyle: .full
+                            )
+                        }
+                    }
                 }
 
                 if !recipe.ingredients.isEmpty {
-                    sectionTitle("recipe.ingredients")
-                    ForEach(recipe.ingredients) { ingredient in
-                        ingredientRow(ingredient)
+                    sectionCard {
+                        VStack(alignment: .leading, spacing: 12) {
+                            sectionHeader(
+                                title: "recipe.ingredients",
+                                systemImage: "leaf.fill",
+                                subtitle: "\(recipe.ingredients.count)"
+                            )
+                            VStack(spacing: 10) {
+                                ForEach(recipe.ingredients) { ingredient in
+                                    ingredientRow(ingredient)
+                                }
+                            }
+                        }
                     }
                 }
 
                 if hasSteps {
-                    sectionTitle("recipe.steps")
-                    recipeStepsContent
+                    sectionCard {
+                        VStack(alignment: .leading, spacing: 14) {
+                            sectionHeader(title: "recipe.steps", systemImage: "list.number")
+                            recipeStepsContent
+                        }
+                    }
                 }
 
                 if let urlString = recipe.sourceURL, let url = URL(string: urlString) {
-                    Link("recipe.source", destination: url)
-                        .font(.subheadline)
+                    Link(destination: url) {
+                        Label("recipe.source", systemImage: "safari.fill")
+                            .font(.subheadline.weight(.semibold))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+                    }
                 }
             }
             .padding()
         }
+        .background(Color(.systemGroupedBackground))
         .navigationTitle(recipe.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -105,11 +144,73 @@ struct RecipeDetailView: View {
         }
     }
 
-    private var portionsControl: some View {
-        Stepper(value: $displayPortions, in: 1...99) {
-            Text("recipe.displayPortions \(displayPortions)")
+    private var heroSection: some View {
+        ZStack(alignment: .bottomLeading) {
+            RecipeImageView(imageData: recipe.imageData, cornerRadius: 26)
+                .frame(height: 300)
+                .frame(maxWidth: .infinity)
+                .overlay {
+                    LinearGradient(
+                        colors: [.clear, .black.opacity(0.18), .black.opacity(0.74)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+                }
+
+            VStack(alignment: .leading, spacing: 14) {
+                Text(recipe.name)
+                    .font(.system(.largeTitle, design: .rounded).weight(.bold))
+                    .foregroundStyle(.white)
+                    .lineLimit(3)
+                    .shadow(color: .black.opacity(0.28), radius: 8, y: 4)
+
+                HStack(spacing: 8) {
+                    heroMetricChip(
+                        icon: "person.2.fill",
+                        text: String(localized: "recipeDetail.servings \(recipe.servings)")
+                    )
+                    heroMetricChip(
+                        icon: "carrot.fill",
+                        text: String(localized: "recipeDetail.ingredients \(recipe.ingredients.count)")
+                    )
+                    if nutrition.totalWeightGrams > 0 {
+                        heroMetricChip(
+                            icon: "scalemass.fill",
+                            text: L10n.recipeWeight(Int(nutrition.totalWeightGrams.rounded()))
+                        )
+                    }
+                }
+
+                portionsControl
+            }
+            .padding(18)
         }
-        .font(.subheadline)
+        .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+        .shadow(color: Color.black.opacity(0.16), radius: 22, x: 0, y: 12)
+    }
+
+    private var portionsControl: some View {
+        HStack(spacing: 14) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("recipeDetail.calculateFor")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.white.opacity(0.72))
+                Text("recipe.displayPortions \(displayPortions)")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(.white)
+            }
+
+            Spacer()
+
+            Stepper("", value: $displayPortions, in: 1...99)
+                .labelsHidden()
+                .tint(.white)
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .colorScheme(.dark)
     }
 
     private func ingredientRow(_ ingredient: Ingredient) -> some View {
@@ -118,9 +219,18 @@ struct RecipeDetailView: View {
             displayPortions: Double(displayPortions),
             recipeServings: recipe.servings
         )
-        return HStack {
-            VStack(alignment: .leading, spacing: 2) {
+        return HStack(spacing: 12) {
+            Image(systemName: "circle.fill")
+                .font(.system(size: 9))
+                .foregroundStyle(Color(red: 0.18, green: 0.54, blue: 0.36))
+                .frame(width: 24, height: 24)
+                .background(Color(red: 0.18, green: 0.54, blue: 0.36).opacity(0.12), in: Circle())
+
+            VStack(alignment: .leading, spacing: 4) {
                 Text(ingredient.displayName)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+                    .lineLimit(2)
                 Text(L10n.amount(quantity: quantity, unit: ingredient.unit))
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -134,11 +244,15 @@ struct RecipeDetailView: View {
                 )
                 let kcal = product.nutrientsPer100g.calories * grams / 100
                 Text(L10n.kcalShort(Int(kcal.rounded())))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color(red: 0.06, green: 0.33, blue: 0.45))
+                    .padding(.horizontal, 9)
+                    .padding(.vertical, 6)
+                    .background(Color(red: 0.06, green: 0.33, blue: 0.45).opacity(0.1), in: Capsule())
             }
         }
-        .font(.subheadline)
+        .padding(12)
+        .background(Color(.tertiarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
     private var isFavorite: Bool {
@@ -174,22 +288,103 @@ struct RecipeDetailView: View {
            let attributed = RecipeStepsStorage.attributedString(from: data) {
             Text(AttributedString(attributed))
                 .font(.subheadline)
+                .lineSpacing(4)
                 .frame(maxWidth: .infinity, alignment: .leading)
         } else {
             ForEach(Array(recipe.steps.enumerated()), id: \.offset) { index, step in
-                HStack(alignment: .top, spacing: 8) {
-                    Text("\(index + 1).")
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.tint)
+                HStack(alignment: .top, spacing: 12) {
+                    Text("\(index + 1)")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(.white)
+                        .frame(width: 26, height: 26)
+                        .background(Color(red: 0.06, green: 0.33, blue: 0.45), in: Circle())
                     Text(step)
+                        .font(.subheadline)
+                        .foregroundStyle(.primary)
+                        .lineSpacing(4)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-                .font(.subheadline)
+                .padding(.vertical, 4)
             }
         }
     }
 
-    private func sectionTitle(_ title: LocalizedStringResource) -> some View {
-        Text(title)
-            .font(.headline)
+    private var weightPerServing: Double {
+        NutritionCalculator.weightPerServingGrams(for: recipe)
+    }
+
+    private func sectionCard<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        content()
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.secondarySystemGroupedBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
+            }
+    }
+
+    private func sectionHeader(
+        title: LocalizedStringResource,
+        systemImage: String,
+        subtitle: String? = nil
+    ) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: systemImage)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(Color(red: 0.06, green: 0.33, blue: 0.45))
+                .frame(width: 30, height: 30)
+                .background(Color(red: 0.06, green: 0.33, blue: 0.45).opacity(0.1), in: Circle())
+            Text(title)
+                .font(.headline)
+            Spacer()
+            if let subtitle {
+                Text(subtitle)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 9)
+                    .padding(.vertical, 5)
+                    .background(Color(.tertiarySystemGroupedBackground), in: Capsule())
+            }
+        }
+    }
+
+    private func heroMetricChip(icon: String, text: String) -> some View {
+        Label {
+            Text(text)
+                .lineLimit(1)
+        } icon: {
+            Image(systemName: icon)
+        }
+        .font(.caption.weight(.semibold))
+        .foregroundStyle(.white)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 7)
+        .background(.black.opacity(0.24), in: Capsule())
+    }
+
+    private func detailMetricChip(
+        icon: String,
+        title: LocalizedStringResource,
+        value: String
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Label {
+                Text(title)
+            } icon: {
+                Image(systemName: icon)
+            }
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+            Text(value)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(.primary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(.tertiarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }

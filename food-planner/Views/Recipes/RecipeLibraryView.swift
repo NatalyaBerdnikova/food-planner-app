@@ -46,6 +46,7 @@ struct RecipeLibraryView: View {
                 }
             }
         }
+        .background(Color(.systemGroupedBackground))
         .navigationTitle("nav.recipes")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -84,18 +85,24 @@ struct RecipeLibraryView: View {
     }
 
     private var userRecipesSection: some View {
-        LazyVGrid(columns: columns, spacing: 16) {
-            ForEach(userRecipes) { recipe in
-                userRecipeCard(recipe)
+        VStack(alignment: .leading, spacing: 14) {
+            Text("recipeLibrary.myRecipes")
+                .font(.title2.bold())
+                .foregroundStyle(.primary)
+
+            LazyVGrid(columns: columns, spacing: 16) {
+                ForEach(userRecipes) { recipe in
+                    userRecipeCard(recipe)
+                }
             }
         }
     }
 
     private var recommendationsSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 14) {
             Text("home.recommendations")
-                .font(.title3.bold())
-                .foregroundStyle(.white)
+                .font(.title2.bold())
+                .foregroundStyle(.primary)
 
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(catalogRecipes) { recipe in
@@ -103,44 +110,17 @@ struct RecipeLibraryView: View {
                 }
             }
         }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            LinearGradient(
-                colors: [
-                    Color(red: 0.06, green: 0.33, blue: 0.45),
-                    Color(red: 0.05, green: 0.22, blue: 0.33),
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.white.opacity(0.18), lineWidth: 1)
-        }
-        .shadow(color: Color.black.opacity(0.12), radius: 12, y: 4)
     }
 
     private func userRecipeCard(_ recipe: Recipe) -> some View {
-        ZStack(alignment: .topTrailing) {
-            NavigationLink {
-                RecipeDetailView(recipe: recipe)
-            } label: {
-                RecipeCardView(recipe: recipe)
-            }
-            .buttonStyle(.plain)
-            .frame(maxWidth: .infinity, alignment: .leading)
-
-            Image(systemName: "person.crop.circle.fill")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .padding(8)
-                .background(.ultraThinMaterial, in: Circle())
-                .padding(6)
-                .accessibilityLabel("accessibility.userRecipe")
+        NavigationLink {
+            RecipeDetailView(recipe: recipe)
+        } label: {
+            RecipeCardView(recipe: recipe, badge: .userCreated)
         }
+        .buttonStyle(.plain)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityLabel("accessibility.userRecipe")
     }
 
     private func recommendationCard(_ recipe: Recipe) -> some View {
@@ -165,11 +145,11 @@ struct RecipeLibraryView: View {
                 Image(systemName: isFavorite ? "heart.fill" : "heart")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(isFavorite ? .red : .secondary)
-                    .padding(8)
+                    .frame(width: 34, height: 34)
                     .background(.ultraThinMaterial, in: Circle())
             }
             .buttonStyle(.plain)
-            .padding(6)
+            .padding(8)
             .accessibilityLabel(
                 isFavorite
                     ? String(localized: "accessibility.removeFavorite")

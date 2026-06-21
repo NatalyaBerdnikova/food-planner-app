@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var recommendationSearch = ""
     @State private var unfavoriteCandidate: Recipe?
     @State private var addMealPresentation: AddMealPresentation?
+    @State private var showProSubscriptionOffer = false
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
     private let recommendationColumns = [
@@ -19,17 +20,22 @@ struct HomeView: View {
         GridItem(.flexible(), spacing: 12),
     ]
 
+    private let accentTeal = Color(red: 0.06, green: 0.33, blue: 0.45)
+
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 18) {
                 todayNutritionCard
+                ProSubscriptionPromoView {
+                    showProSubscriptionOffer = true
+                }
                 todayMealsSection
                 weekPlanCard
                 recommendationsSection
             }
             .padding()
         }
-        .background(Color.white)
+        .background(Color(.systemGroupedBackground))
         .navigationTitle("nav.today")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -38,9 +44,7 @@ struct HomeView: View {
                 } label: {
                     Image(systemName: "gearshape")
                         .font(.headline)
-                        .foregroundStyle(Color(red: 0.05, green: 0.30, blue: 0.40))
-                        .padding(10)
-                        .background(Color.white, in: Circle())
+                        .foregroundStyle(accentTeal)
                 }
                 .accessibilityLabel("accessibility.settings")
             }
@@ -51,6 +55,10 @@ struct HomeView: View {
             AddMealSheet(dayPlan: item.dayPlan, preferredMealType: item.mealType) {
                 refresh()
             }
+        }
+        .sheet(isPresented: $showProSubscriptionOffer) {
+            ProSubscriptionOfferSheet()
+                .presentationDetents([.medium, .large])
         }
         .alert(
             "favorites.remove.title",
@@ -78,52 +86,52 @@ struct HomeView: View {
     // MARK: - Today nutrition card
 
     private var todayNutritionCard: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Button {
-                withAnimation(.easeInOut(duration: 0.25)) {
-                    isTodayExpanded.toggle()
+        homeSectionCard {
+            VStack(alignment: .leading, spacing: 16) {
+                Button {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        isTodayExpanded.toggle()
+                    }
+                } label: {
+                    HStack(spacing: 10) {
+                        sectionIcon("chart.bar.fill")
+                        Text("home.today")
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        Image(systemName: isTodayExpanded ? "chevron.up" : "chevron.down")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                    }
+                    .contentShape(Rectangle())
                 }
-            } label: {
-                HStack {
-                    Text("home.today")
-                        .font(.title3.weight(.bold))
-                        .foregroundStyle(.white)
-                    Spacer()
-                    Image(systemName: isTodayExpanded ? "chevron.up" : "chevron.down")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.white.opacity(0.8))
-                }
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
+                .buttonStyle(.plain)
 
-            if isTodayExpanded {
-                if let settings = appSettings {
-                    NutritionTargetProgressView(
-                        actual: todayNutrition,
-                        target: settings.targetNutrition,
-                        macroLabelStyle: .full,
-                        embedded: true
+                if isTodayExpanded {
+                    if let settings = appSettings {
+                        NutritionTargetProgressView(
+                            actual: todayNutrition,
+                            target: settings.targetNutrition,
+                            macroLabelStyle: .full,
+                            embedded: true
+                        )
+                    }
+                } else {
+                    NutritionSummaryView(
+                        nutrition: todayNutrition,
+                        target: appSettings?.targetNutrition,
+                        embedded: true,
+                        macroLabelStyle: .compact
                     )
-                    .colorScheme(.dark)
                 }
-            } else {
-                NutritionSummaryView(
-                    nutrition: todayNutrition,
-                    target: appSettings?.targetNutrition,
-                    embedded: true,
-                    macroLabelStyle: .compact
-                )
-                .colorScheme(.dark)
             }
         }
-        .homeCardStyle()
     }
 
     // MARK: - Today meals
 
     private var todayMealsSection: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 10) {
             ForEach(dayMealTypes, id: \.self) { type in
                 PlannedMealSlotView(
                     mealType: type,
@@ -141,43 +149,44 @@ struct HomeView: View {
         NavigationLink {
             WeekPlanView()
         } label: {
-            HStack(alignment: .center, spacing: 16) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("home.weekPlan")
-                        .font(.headline)
-                        .foregroundStyle(.white)
+            homeSectionCard {
+                VStack(alignment: .leading, spacing: 14) {
+                    HStack(spacing: 10) {
+                        sectionIcon("calendar")
+                        Text("home.weekPlan")
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+                        Spacer()
+                    }
 
                     if let weekPlan = currentWeekPlan {
                         Text(weekRangeFormatted(for: weekPlan))
                             .font(.subheadline)
-                            .foregroundStyle(.white.opacity(0.8))
+                            .foregroundStyle(.secondary)
                     } else {
                         Text("home.weekNotCreated")
                             .font(.subheadline)
-                            .foregroundStyle(.white.opacity(0.8))
+                            .foregroundStyle(.secondary)
                     }
+
+                    Text("home.openWeekPlan")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .background(accentTeal, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
                 }
-
-                Spacer()
-
-                Text("home.openWeekPlan")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Color(red: 0.13, green: 0.20, blue: 0.25))
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 8)
-                    .background(Color(red: 0.97, green: 0.78, blue: 0.36), in: Capsule())
             }
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .homeCardStyle()
         .accessibilityLabel("home.openWeekPlan")
     }
 
     // MARK: - Recommendations
 
     private var recommendationsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
             Text("home.recommendations")
                 .font(.title2.bold())
 
@@ -225,11 +234,11 @@ struct HomeView: View {
                 Image(systemName: isFavorite ? "heart.fill" : "heart")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(isFavorite ? .red : .secondary)
-                    .padding(8)
+                    .frame(width: 34, height: 34)
                     .background(.ultraThinMaterial, in: Circle())
             }
             .buttonStyle(.plain)
-            .padding(6)
+            .padding(8)
             .accessibilityLabel(
                 isFavorite
                     ? String(localized: "accessibility.removeFavorite")
@@ -288,27 +297,26 @@ struct HomeView: View {
         AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
         _ = WeekPlanService.todayDayPlan(from: weekPlans, in: modelContext)
     }
-}
 
-// MARK: - Card style
+    // MARK: - Section styling
 
-private extension View {
-    func homeCardStyle() -> some View {
-        padding()
+    private func homeSectionCard<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        content()
+            .padding(16)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(
-                LinearGradient(
-                    colors: [Color(red: 0.06, green: 0.33, blue: 0.45), Color(red: 0.05, green: 0.22, blue: 0.33)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .background(Color(.secondarySystemGroupedBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
             .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.white.opacity(0.18), lineWidth: 1)
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
             }
-            .shadow(color: Color.black.opacity(0.12), radius: 12, y: 4)
+    }
+
+    private func sectionIcon(_ systemImage: String) -> some View {
+        Image(systemName: systemImage)
+            .font(.subheadline.weight(.bold))
+            .foregroundStyle(accentTeal)
+            .frame(width: 30, height: 30)
+            .background(accentTeal.opacity(0.1), in: Circle())
     }
 }
-
