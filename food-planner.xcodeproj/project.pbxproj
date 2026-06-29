@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FPADAPTY001 /* Adapty in Frameworks */ = {isa = PBXBuildFile; productRef = FPADAPTY003 /* Adapty */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C16787D72FB70F9000DA5BC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FPADAPTY001 /* Adapty in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = "food-planner";
 			packageProductDependencies = (
+				FPADAPTY003 /* Adapty */,
 			);
 			productName = "food-planner";
 			productReference = C16787C62FB70F8E00DA5BC9 /* food-planner.app */;
@@ -196,6 +202,9 @@
 			);
 			mainGroup = C16787BD2FB70F8E00DA5BC9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FPADAPTY002 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C16787C72FB70F8E00DA5BC9 /* Products */;
 			projectDirPath = "";
@@ -571,6 +580,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FPADAPTY002 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adaptyteam/AdaptySDK-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.11.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FPADAPTY003 /* Adapty */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FPADAPTY002 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = Adapty;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C16787BE2FB70F8E00DA5BC9 /* Project object */;
 }

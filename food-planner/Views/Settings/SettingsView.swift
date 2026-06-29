@@ -3,6 +3,7 @@ import SwiftData
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var subscriptionSession: SubscriptionSession
 
     @AppStorage("openAIAPIKey") private var apiKey = ""
     @AppStorage("productDatabaseName") private var productDatabaseName = ""
@@ -22,6 +23,29 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            Section {
+                if subscriptionSession.isPro {
+                    LabeledContent("settings.subscription.status") {
+                        Text("settings.subscription.active")
+                            .foregroundStyle(.green)
+                    }
+                } else {
+                    Button {
+                        subscriptionSession.showPayment()
+                    } label: {
+                        Label("settings.subscription.buy", systemImage: "sparkles")
+                    }
+
+                    Button {
+                        restorePurchases()
+                    } label: {
+                        Label("settings.subscription.restore", systemImage: "goforward")
+                    }
+                }
+            } header: {
+                Text("settings.subscription.title")
+            }
+
             Section {
                 Picker("settings.language", selection: $appLanguageRaw) {
                     ForEach(AppLanguage.allCases) { language in
@@ -119,6 +143,7 @@ struct SettingsView: View {
     private func loadSettings() {
         let appSettings = AppSettingsService.settings(in: modelContext)
         settings = appSettings
+        subscriptionSession.load(from: appSettings)
         caloriesText = format(appSettings.targetCalories)
         proteinText = format(appSettings.targetProtein)
         fatText = format(appSettings.targetFat)
@@ -138,5 +163,26 @@ struct SettingsView: View {
         value.truncatingRemainder(dividingBy: 1) == 0
             ? String(format: "%.0f", value)
             : String(format: "%.1f", value)
+    }
+
+    private func restorePurchases() {
+        subscriptionSession.showLoader()
+
+        PurchaseService.restorePurchases { purchased in
+            Task { @MainActor in
+                subscriptionSession.hideLoader()
+
+                if purchased {
+                    guard let settings else { return }
+                    subscriptionSession.upgradeToPro(settings: settings, in: modelContext)
+                } else {
+                    subscriptionSession.showAlert(String(localized: "subscription.restoreEmpty"))
+                }
+            }
+        } errorCallback: { _ in
+            Task { @MainActor in
+                subscriptionSession.hideLoader()
+            }
+        }
     }
 }

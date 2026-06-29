@@ -3,6 +3,7 @@ import SwiftData
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var subscriptionSession: SubscriptionSession
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
 
@@ -12,7 +13,6 @@ struct HomeView: View {
     @State private var recommendationSearch = ""
     @State private var unfavoriteCandidate: Recipe?
     @State private var addMealPresentation: AddMealPresentation?
-    @State private var showProSubscriptionOffer = false
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
     private let recommendationColumns = [
@@ -26,8 +26,10 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 todayNutritionCard
-                ProSubscriptionPromoView {
-                    showProSubscriptionOffer = true
+                if !subscriptionSession.hasFullAccess {
+                    ProSubscriptionPromoView {
+                        subscriptionSession.showPayment()
+                    }
                 }
                 todayMealsSection
                 weekPlanCard
@@ -55,10 +57,6 @@ struct HomeView: View {
             AddMealSheet(dayPlan: item.dayPlan, preferredMealType: item.mealType) {
                 refresh()
             }
-        }
-        .sheet(isPresented: $showProSubscriptionOffer) {
-            ProSubscriptionOfferSheet()
-                .presentationDetents([.medium, .large])
         }
         .alert(
             "favorites.remove.title",

@@ -10,6 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var subscriptionSession: SubscriptionSession
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
     @AppStorage(AppColorScheme.storageKey) private var appColorSchemeRaw = AppColorScheme.system.rawValue
 
@@ -22,18 +23,42 @@ struct ContentView: View {
     }
 
     var body: some View {
-        MainTabView()
-            .applyAppLanguage(appLanguage)
-            .applyAppColorScheme(appColorScheme)
-            .task {
-                FoodCatalogSeeder.seedIfNeeded(in: modelContext)
-                RecipeCatalogStore.seedIfNeeded(in: modelContext)
-                _ = AppSettingsService.settings(in: modelContext)
-            }
+        ZStack {
+            MainTabView()
+                .applyAppLanguage(appLanguage)
+                .applyAppColorScheme(appColorScheme)
+
+            SubscriptionLoader(isPresented: $subscriptionSession.loaderPresented)
+        }
+        .task {
+            FoodCatalogSeeder.seedIfNeeded(in: modelContext)
+            RecipeCatalogStore.seedIfNeeded(in: modelContext)
+            let settings = AppSettingsService.settings(in: modelContext)
+            subscriptionSession.load(from: settings)
+            refreshSubscriptionStatus(settings: settings)
+        }
+        .alert(
+            subscriptionSession.alertText,
+            isPresented: $subscriptionSession.alertPresented
+        ) {
+            Button("common.done", role: .cancel) {}
+        }
+        .sheet(isPresented: $subscriptionSession.paymentPresented) {
+            PaymentModalView()
+                .environmentObject(subscriptionSession)
+        }
+    }
+
+    private func refreshSubscriptionStatus(settings: AppSettings) {
+        PurchaseService.checkAccess { isPro in
+            subscriptionSession.isPro = isPro
+            subscriptionSession.persist(to: settings, in: modelContext)
+        }
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(SubscriptionSession())
         .modelContainer(FoodPlannerSchema.previewContainer)
 }

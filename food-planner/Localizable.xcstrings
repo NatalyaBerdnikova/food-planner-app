@@ -1342,6 +1342,186 @@
         }
       }
     },
+    "day" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "day" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "день" } }
+      }
+    },
+    "day2" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "days" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "дня" } }
+      }
+    },
+    "days" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "days" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "дней" } }
+      }
+    },
+    "month" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "month" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "месяц" } }
+      }
+    },
+    "month2" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "months" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "месяца" } }
+      }
+    },
+    "months" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "months" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "месяцев" } }
+      }
+    },
+    "week" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "week" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "неделя" } }
+      }
+    },
+    "week2" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "weeks" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "недели" } }
+      }
+    },
+    "weeks" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "weeks" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "недель" } }
+      }
+    },
+    "year" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "year" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "год" } }
+      }
+    },
+    "year2" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "years" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "года" } }
+      }
+    },
+    "years" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "years" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "лет" } }
+      }
+    },
+    "settings.subscription.active" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Активна" } }
+      }
+    },
+    "settings.subscription.buy" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Buy subscription" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Купить подписку" } }
+      }
+    },
+    "settings.subscription.restore" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore purchases" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Восстановить покупки" } }
+      }
+    },
+    "settings.subscription.status" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Status" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Статус" } }
+      }
+    },
+    "settings.subscription.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Subscription" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Подписка" } }
+      }
+    },
+    "subscription.alreadyActive" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You already have an active subscription!" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "У вас уже есть активная подписка!" } }
+      }
+    },
+    "subscription.enableTrial" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enable %@ Free Trial" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Включить пробный период %@" } }
+      }
+    },
+    "subscription.period.annual" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Annual" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Годовая" } }
+      }
+    },
+    "subscription.period.monthly" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Monthly" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Месячная" } }
+      }
+    },
+    "subscription.period.weekly" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Weekly" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Недельная" } }
+      }
+    },
+    "subscription.privacy" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Privacy Policy" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Политика конфиденциальности" } }
+      }
+    },
+    "subscription.purchaseError" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "An error occurred while purchasing. Make sure you are connected to the Internet. If the problem persists, restart the app and try again." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Ошибка при покупке. Проверьте подключение к интернету. Если проблема сохраняется, перезапустите приложение и попробуйте снова." } }
+      }
+    },
+    "subscription.restore" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Восстановить" } }
+      }
+    },
+    "subscription.restoreEmpty" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You have no active subscription to restore." } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Нет активной подписки для восстановления." } }
+      }
+    },
+    "subscription.startFree" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start for Free" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Начать бесплатно" } }
+      }
+    },
+    "subscription.startSubscribe" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Subscribe" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Оформить подписку" } }
+      }
+    },
+    "subscription.startTrial" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start with Free Trial" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Начать с пробного периода" } }
+      }
+    },
+    "subscription.terms" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Terms of Use" } },
+        "ru" : { "stringUnit" : { "state" : "translated", "value" : "Условия использования" } }
+      }
+    },
     "empty.recipes" : {
       "localizations" : {
         "en" : {

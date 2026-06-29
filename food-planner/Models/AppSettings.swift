@@ -15,6 +15,11 @@ final class AppSettings {
     /// Сериализованные `catalogRecipeId` (разделитель Unit Separator).
     var favoriteCatalogRecipeIdsStorage: String = ""
 
+    var isPro: Bool = false
+    var isFree: Bool = false
+
+    var hasFullAccess: Bool { isPro || isFree }
+
     init(
         singletonKey: String = "main",
         targetCalories: Double = 2000,
