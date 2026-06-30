@@ -7,15 +7,11 @@
 
 import SwiftUI
 import SwiftData
-import Adapty
 
 @main
 struct food_plannerApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var subscriptionSession = SubscriptionSession()
-
-    init() {
-        Adapty.activate(AppVars.adaptyToken)
-    }
 
     var body: some Scene {
         WindowGroup {

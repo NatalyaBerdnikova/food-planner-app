@@ -104,6 +104,60 @@ enum FoodCatalogSeeder {
   // swiftlint:enable line_length
 
     @MainActor
+    static func seedIfNeeded(in context: ModelContext) async {
+        let descriptor = FetchDescriptor<FoodProduct>()
+        let existingProducts = (try? context.fetch(descriptor)) ?? []
+        var existingKeys = Set(existingProducts.map(\.catalogKey))
+
+        let bundleProducts = loadBundleCatalog()
+        for (index, json) in bundleProducts.enumerated() where !existingKeys.contains(json.catalogKey) {
+            context.insert(makeProduct(from: json))
+            existingKeys.insert(json.catalogKey)
+            if index.isMultiple(of: 20) {
+                await Task.yield()
+            }
+        }
+
+        for (index, seed) in catalog.enumerated() {
+            guard !existingKeys.contains(seed.key) else { continue }
+            let m = seed.micro
+            let product = FoodProduct(
+                catalogKey: seed.key,
+                category: seed.category,
+                defaultPieceWeightGrams: seed.pieceGrams,
+                caloriesPer100g: seed.calories,
+                proteinPer100g: seed.protein,
+                fatPer100g: seed.fat,
+                carbsPer100g: seed.carbs,
+                fiberPer100g: m.fiber,
+                vitaminD3Per100g: m.d3,
+                calciumPer100g: m.ca,
+                magnesiumPer100g: m.mg,
+                zincPer100g: m.zn,
+                vitaminKPer100g: m.k,
+                vitaminCPer100g: m.c,
+                vitaminEPer100g: m.e,
+                vitaminAPer100g: m.a,
+                vitaminB6Per100g: m.b6,
+                vitaminB9Per100g: m.b9,
+                vitaminB12Per100g: m.b12,
+                seleniumPer100g: m.se,
+                chromiumPer100g: m.cr,
+                ironPer100g: m.fe,
+                potassiumPer100g: m.kali,
+                iodinePer100g: m.i
+            )
+            context.insert(product)
+            existingKeys.insert(seed.key)
+            if index.isMultiple(of: 10) {
+                await Task.yield()
+            }
+        }
+        LocalPersistence.save(context)
+    }
+
+    /// Синхронный вариант для превью Xcode.
+    @MainActor
     static func seedIfNeeded(in context: ModelContext) {
         let descriptor = FetchDescriptor<FoodProduct>()
         let existingProducts = (try? context.fetch(descriptor)) ?? []

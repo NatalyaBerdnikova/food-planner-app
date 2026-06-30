@@ -1,17 +1,13 @@
 import SwiftUI
 
 struct SubscriptionLoader: View {
-    @Binding var isPresented: Bool
-
     var body: some View {
-        if isPresented {
-            ZStack {
-                Color.black.opacity(0.1)
-                    .ignoresSafeArea()
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    .scaleEffect(2)
-            }
+        ZStack {
+            Color.black.opacity(0.1)
+                .ignoresSafeArea()
+            ProgressView()
+                .progressViewStyle(.circular)
+                .scaleEffect(2)
         }
     }
 }

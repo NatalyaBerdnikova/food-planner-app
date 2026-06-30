@@ -14,6 +14,18 @@ enum WeekPlanService {
         weekPlan(containing: .now, from: weekPlans, in: context)
     }
 
+    /// Только чтение из уже загруженных планов — без записи в SwiftData.
+    @MainActor
+    static func findCurrentWeekPlan(in weekPlans: [WeekPlan]) -> WeekPlan? {
+        findWeekPlan(forWeekStarting: .now, in: weekPlans)
+    }
+
+    @MainActor
+    static func findWeekPlan(forWeekStarting weekStart: Date, in weekPlans: [WeekPlan]) -> WeekPlan? {
+        let normalized = Calendar.current.startOfWeek(for: weekStart)
+        return weekPlans.first { Calendar.current.isSameDay($0.weekStartDate, normalized) }
+    }
+
     @MainActor
     static func todayDayPlan(from weekPlans: [WeekPlan], in context: ModelContext) -> DayPlan {
         let plan = currentWeekPlan(from: weekPlans, in: context)
@@ -27,9 +39,15 @@ enum WeekPlanService {
         if let existing = weekPlans.first(where: {
             Calendar.current.isSameDay($0.weekStartDate, normalized)
         }) {
-            ensureDayPlansExist(for: existing, weekStart: normalized, in: context)
-            AppSettingsService.settings(in: context).activeWeekPlan = existing
-            LocalPersistence.save(context)
+            var needsSave = ensureDayPlansExist(for: existing, weekStart: normalized, in: context)
+            let settings = AppSettingsService.settings(in: context)
+            if settings.activeWeekPlan?.persistentModelID != existing.persistentModelID {
+                settings.activeWeekPlan = existing
+                needsSave = true
+            }
+            if needsSave {
+                LocalPersistence.save(context)
+            }
             return existing
         }
 
@@ -42,13 +60,15 @@ enum WeekPlanService {
     }
 
     @MainActor
+    @discardableResult
     private static func ensureDayPlansExist(
         for weekPlan: WeekPlan,
         weekStart: Date,
         in context: ModelContext
-    ) {
+    ) -> Bool {
         let calendar = Calendar.current
         let weekDates = calendar.weekDates(startingFrom: weekStart)
+        var changed = false
 
         for date in weekDates {
             let exists = weekPlan.dayPlans.contains { calendar.isSameDay($0.date, date) }
@@ -57,9 +77,13 @@ enum WeekPlanService {
             let dayPlan = DayPlan(date: calendar.startOfDay(for: date), weekPlan: weekPlan)
             context.insert(dayPlan)
             weekPlan.dayPlans.append(dayPlan)
+            changed = true
         }
 
-        weekPlan.dayPlans.sort { $0.date < $1.date }
+        if changed {
+            weekPlan.dayPlans.sort { $0.date < $1.date }
+        }
+        return changed
     }
 
     @MainActor

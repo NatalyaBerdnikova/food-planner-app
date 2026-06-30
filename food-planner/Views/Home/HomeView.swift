@@ -24,8 +24,8 @@ struct HomeView: View {
 
     private var appSettings: AppSettings? { settingsList.first }
 
-    private var currentWeekPlan: WeekPlan {
-        WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+    private var currentWeekPlan: WeekPlan? {
+        WeekPlanService.findCurrentWeekPlan(in: weekPlans)
     }
 
     var body: some View {
@@ -163,12 +163,12 @@ struct HomeView: View {
                         Spacer()
                     }
 
-                    if weekPlans.isEmpty {
-                        Text("home.weekNotCreated")
+                    if let weekPlan = currentWeekPlan {
+                        Text(weekRangeFormatted(for: weekPlan))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     } else {
-                        Text(weekRangeFormatted(for: currentWeekPlan))
+                        Text("home.weekNotCreated")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -264,8 +264,9 @@ struct HomeView: View {
     }
 
     private var todayDayPlan: DayPlan? {
+        guard let weekPlan = currentWeekPlan else { return nil }
         let calendar = Calendar.current
-        return currentWeekPlan.dayPlans.first { calendar.isDateInToday($0.date) }
+        return weekPlan.dayPlans.first { calendar.isDateInToday($0.date) }
     }
 
     private var todayNutrition: DailyNutrition {

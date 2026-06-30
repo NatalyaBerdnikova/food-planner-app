@@ -13,6 +13,7 @@ struct ContentView: View {
     @EnvironmentObject private var subscriptionSession: SubscriptionSession
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
     @AppStorage(AppColorScheme.storageKey) private var appColorSchemeRaw = AppColorScheme.system.rawValue
+    @State private var isDatabaseReady = false
 
     private var appLanguage: AppLanguage {
         AppLanguage(rawValue: appLanguageRaw) ?? .system
@@ -23,19 +24,23 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack {
-            MainTabView()
-                .applyAppLanguage(appLanguage)
-                .applyAppColorScheme(appColorScheme)
-
-            SubscriptionLoader(isPresented: $subscriptionSession.loaderPresented)
+        Group {
+            if isDatabaseReady {
+                MainTabView()
+                    .applyAppLanguage(appLanguage)
+                    .applyAppColorScheme(appColorScheme)
+                    .overlay {
+                        if subscriptionSession.loaderPresented {
+                            SubscriptionLoader()
+                        }
+                    }
+            } else {
+                SubscriptionLoader()
+            }
         }
         .task {
-            FoodCatalogSeeder.seedIfNeeded(in: modelContext)
-            RecipeCatalogStore.seedIfNeeded(in: modelContext)
-            let settings = AppSettingsService.settings(in: modelContext)
-            subscriptionSession.load(from: settings)
-            refreshSubscriptionStatus()
+            await bootstrapIfNeeded()
+            isDatabaseReady = true
         }
         .alert(
             subscriptionSession.alertText,
@@ -47,6 +52,15 @@ struct ContentView: View {
             PaymentModalView()
                 .environmentObject(subscriptionSession)
         }
+    }
+
+    private func bootstrapIfNeeded() async {
+        await Task.yield()
+        await FoodCatalogSeeder.seedIfNeeded(in: modelContext)
+        await RecipeCatalogStore.seedIfNeeded(in: modelContext)
+        let settings = AppSettingsService.settings(in: modelContext)
+        subscriptionSession.load(from: settings)
+        refreshSubscriptionStatus()
     }
 
     private func refreshSubscriptionStatus() {

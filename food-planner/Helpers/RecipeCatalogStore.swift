@@ -36,6 +36,14 @@ enum RecipeCatalogStore {
 
     /// Импортирует отсутствующие рецепты из bundle и пользовательского файла в SwiftData.
     @MainActor
+    static func seedIfNeeded(in context: ModelContext) async {
+        await importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
+        await importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
+        LocalPersistence.save(context)
+    }
+
+    /// Синхронный вариант для превью Xcode.
+    @MainActor
     static func seedIfNeeded(in context: ModelContext) {
         importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
         importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
@@ -72,6 +80,55 @@ enum RecipeCatalogStore {
 
     @MainActor
     private static func importMissingRecipes(
+        from url: URL?,
+        isUserSource: Bool,
+        in context: ModelContext
+    ) {
+        importMissingRecipesSync(from: url, isUserSource: isUserSource, in: context)
+    }
+
+    @MainActor
+    private static func importMissingRecipes(
+        from url: URL?,
+        isUserSource: Bool,
+        in context: ModelContext
+    ) async {
+        guard let url,
+              FileManager.default.fileExists(atPath: url.path),
+              let data = try? Data(contentsOf: url),
+              let catalog = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+            return
+        }
+
+        let existingCatalogIds = existingCatalogIds(in: context)
+        let existingUserIds = existingUserIds(in: context)
+
+        for (index, item) in catalog.recipes.enumerated() {
+            let entryId = resolvedEntryId(for: item)
+            guard !entryId.isEmpty else { continue }
+
+            if isUserSource {
+                guard !existingUserIds.contains(entryId),
+                      let recipe = makeRecipe(from: item, userRecipeId: entryId, in: context) else {
+                    continue
+                }
+                context.insert(recipe)
+            } else {
+                guard !existingCatalogIds.contains(entryId),
+                      let recipe = makeRecipe(from: item, catalogId: entryId, in: context) else {
+                    continue
+                }
+                context.insert(recipe)
+            }
+
+            if index.isMultiple(of: 3) {
+                await Task.yield()
+            }
+        }
+    }
+
+    @MainActor
+    private static func importMissingRecipesSync(
         from url: URL?,
         isUserSource: Bool,
         in context: ModelContext

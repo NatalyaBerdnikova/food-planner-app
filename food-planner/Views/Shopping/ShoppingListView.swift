@@ -8,11 +8,13 @@ struct ShoppingListView: View {
     @State private var showShareSheet = false
     @State private var showAddItem = false
 
-    private var currentWeekPlan: WeekPlan {
-        WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+    private var currentWeekPlan: WeekPlan? {
+        WeekPlanService.findCurrentWeekPlan(in: weekPlans)
     }
 
     private var groupedItems: [(category: IngredientCategory, items: [ShoppingItem])] {
+        guard currentWeekPlan != nil else { return [] }
+
         let grouped = Dictionary(grouping: sortedItems, by: \.category)
         return IngredientCategory.shoppingListOrder.compactMap { category in
             guard let items = grouped[category], !items.isEmpty else { return nil }
@@ -21,7 +23,8 @@ struct ShoppingListView: View {
     }
 
     private var sortedItems: [ShoppingItem] {
-        currentWeekPlan.shoppingItems.sorted { lhs, rhs in
+        guard let plan = currentWeekPlan else { return [] }
+        return plan.shoppingItems.sorted { lhs, rhs in
             if lhs.isPurchased != rhs.isPurchased {
                 return !lhs.isPurchased
             }
@@ -114,15 +117,17 @@ struct ShoppingListView: View {
     }
 
     private func syncShoppingList() {
-        WeekPlanService.syncShoppingItems(for: currentWeekPlan, in: modelContext)
+        let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+        WeekPlanService.syncShoppingItems(for: plan, in: modelContext)
     }
 
     private func addManualItem(_ draft: DraftIngredient) {
+        let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
         WeekPlanService.addManualShoppingItem(
             product: draft.product,
             quantity: draft.quantity,
             unit: draft.unit,
-            to: currentWeekPlan,
+            to: plan,
             in: modelContext
         )
     }
