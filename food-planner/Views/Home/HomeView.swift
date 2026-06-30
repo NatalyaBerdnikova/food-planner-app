@@ -6,9 +6,9 @@ struct HomeView: View {
     @EnvironmentObject private var subscriptionSession: SubscriptionSession
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
+    @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
+    private var settingsList: [AppSettings]
 
-    @State private var currentWeekPlan: WeekPlan?
-    @State private var appSettings: AppSettings?
     @State private var isTodayExpanded = false
     @State private var recommendationSearch = ""
     @State private var unfavoriteCandidate: Recipe?
@@ -21,6 +21,12 @@ struct HomeView: View {
     ]
 
     private let accentTeal = Color(red: 0.06, green: 0.33, blue: 0.45)
+
+    private var appSettings: AppSettings? { settingsList.first }
+
+    private var currentWeekPlan: WeekPlan {
+        WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+    }
 
     var body: some View {
         ScrollView {
@@ -157,12 +163,12 @@ struct HomeView: View {
                         Spacer()
                     }
 
-                    if let weekPlan = currentWeekPlan {
-                        Text(weekRangeFormatted(for: weekPlan))
+                    if weekPlans.isEmpty {
+                        Text("home.weekNotCreated")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     } else {
-                        Text("home.weekNotCreated")
+                        Text(weekRangeFormatted(for: currentWeekPlan))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -258,9 +264,8 @@ struct HomeView: View {
     }
 
     private var todayDayPlan: DayPlan? {
-        guard let weekPlan = currentWeekPlan else { return nil }
         let calendar = Calendar.current
-        return weekPlan.dayPlans.first { calendar.isDateInToday($0.date) }
+        return currentWeekPlan.dayPlans.first { calendar.isDateInToday($0.date) }
     }
 
     private var todayNutrition: DailyNutrition {
@@ -274,7 +279,6 @@ struct HomeView: View {
 
     private func presentAddMeal(for mealType: MealType) {
         let dayPlan = WeekPlanService.todayDayPlan(from: weekPlans, in: modelContext)
-        currentWeekPlan = dayPlan.weekPlan
         addMealPresentation = AddMealPresentation(dayPlan: dayPlan, mealType: mealType)
     }
 
@@ -287,9 +291,7 @@ struct HomeView: View {
     }
 
     private func refresh() {
-        appSettings = AppSettingsService.settings(in: modelContext)
         let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
-        currentWeekPlan = plan
         AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
         _ = WeekPlanService.todayDayPlan(from: weekPlans, in: modelContext)
     }

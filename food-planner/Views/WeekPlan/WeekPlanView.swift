@@ -5,16 +5,24 @@ struct WeekPlanView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
 
-    @State private var currentWeekPlan: WeekPlan?
     @State private var displayedWeekStart = Calendar.current.startOfWeek(for: .now)
     @State private var selectedDay: Date?
     @State private var addMealPresentation: AddMealPresentation?
 
+    private var displayedWeekPlan: WeekPlan? {
+        let normalized = Calendar.current.startOfWeek(for: displayedWeekStart)
+        return weekPlans.first { Calendar.current.isSameDay($0.weekStartDate, normalized) }
+    }
+
     var body: some View {
         content
             .navigationTitle("nav.weekPlan")
-            .onAppear(perform: loadWeekPlan)
-            .onChange(of: weekPlans.count) { _, _ in loadWeekPlan() }
+            .task(id: displayedWeekStart) {
+                ensureDisplayedWeekPlan()
+            }
+            .onChange(of: weekPlans.count) { _, _ in
+                updateSelectedDayIfNeeded()
+            }
             .sheet(item: $addMealPresentation) { item in
                 AddMealSheet(dayPlan: item.dayPlan, preferredMealType: item.mealType) {
                     syncShoppingList()
@@ -24,7 +32,7 @@ struct WeekPlanView: View {
 
     @ViewBuilder
     private var content: some View {
-        if let weekPlan = currentWeekPlan {
+        if let weekPlan = displayedWeekPlan {
             ScrollView {
                 VStack(spacing: 12) {
                     weekSwitcher
@@ -43,11 +51,6 @@ struct WeekPlanView: View {
         }
     }
 
-    private func loadWeekPlan() {
-        displayedWeekStart = Calendar.current.startOfWeek(for: .now)
-        setWeek(startingFrom: displayedWeekStart)
-    }
-
     private func sortedDayPlans(_ weekPlan: WeekPlan) -> [DayPlan] {
         weekPlan.dayPlans.sorted { $0.date < $1.date }
     }
@@ -57,7 +60,7 @@ struct WeekPlanView: View {
     }
 
     private func syncShoppingList() {
-        guard let plan = currentWeekPlan else { return }
+        guard let plan = displayedWeekPlan else { return }
         WeekPlanService.syncShoppingItems(for: plan, in: modelContext)
     }
 
@@ -85,7 +88,7 @@ struct WeekPlanView: View {
     }
 
     private var weekRangeTitle: String {
-        guard let weekPlan = currentWeekPlan else { return "" }
+        guard let weekPlan = displayedWeekPlan else { return "" }
         let calendar = Calendar.current
         let start = calendar.startOfDay(for: weekPlan.weekStartDate)
         guard let endDate = calendar.date(byAdding: .day, value: 6, to: start) else {
@@ -101,19 +104,29 @@ struct WeekPlanView: View {
             return
         }
         displayedWeekStart = Calendar.current.startOfWeek(for: newStart)
-        setWeek(startingFrom: displayedWeekStart)
     }
 
-    private func setWeek(startingFrom weekStart: Date) {
-        let plan = WeekPlanService.weekPlan(forWeekStarting: weekStart, from: weekPlans, in: modelContext)
-        currentWeekPlan = plan
+    private func ensureDisplayedWeekPlan() {
+        let plan = WeekPlanService.weekPlan(
+            forWeekStarting: displayedWeekStart,
+            from: weekPlans,
+            in: modelContext
+        )
         AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
+        updateSelectedDay(for: plan)
+    }
 
+    private func updateSelectedDayIfNeeded() {
+        guard let plan = displayedWeekPlan else { return }
+        updateSelectedDay(for: plan)
+    }
+
+    private func updateSelectedDay(for plan: WeekPlan) {
         let calendar = Calendar.current
         if let today = plan.dayPlans.first(where: { calendar.isDateInToday($0.date) })?.date {
             selectedDay = today
         } else {
-            selectedDay = sortedDayPlans(plan).first?.date ?? calendar.startOfDay(for: weekStart)
+            selectedDay = sortedDayPlans(plan).first?.date ?? calendar.startOfDay(for: plan.weekStartDate)
         }
     }
 }

@@ -13,13 +13,16 @@ struct SettingsView: View {
     @Query private var foodProducts: [FoodProduct]
     @Query private var recipes: [Recipe]
     @Query private var weekPlans: [WeekPlan]
+    @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
+    private var settingsList: [AppSettings]
 
-    @State private var settings: AppSettings?
     @State private var caloriesText = ""
     @State private var proteinText = ""
     @State private var fatText = ""
     @State private var carbsText = ""
     @State private var showNutritionCalculator = false
+
+    private var settings: AppSettings? { settingsList.first }
 
     var body: some View {
         Form {
@@ -142,7 +145,6 @@ struct SettingsView: View {
 
     private func loadSettings() {
         let appSettings = AppSettingsService.settings(in: modelContext)
-        settings = appSettings
         subscriptionSession.load(from: appSettings)
         caloriesText = format(appSettings.targetCalories)
         proteinText = format(appSettings.targetProtein)
@@ -151,7 +153,7 @@ struct SettingsView: View {
     }
 
     private func saveTargets() {
-        guard let settings else { return }
+        let settings = AppSettingsService.settings(in: modelContext)
         settings.targetCalories = Double(caloriesText.replacingOccurrences(of: ",", with: ".")) ?? settings.targetCalories
         settings.targetProtein = Double(proteinText.replacingOccurrences(of: ",", with: ".")) ?? settings.targetProtein
         settings.targetFat = Double(fatText.replacingOccurrences(of: ",", with: ".")) ?? settings.targetFat
@@ -173,7 +175,7 @@ struct SettingsView: View {
                 subscriptionSession.hideLoader()
 
                 if purchased {
-                    guard let settings else { return }
+                    let settings = AppSettingsService.settings(in: modelContext)
                     subscriptionSession.upgradeToPro(settings: settings, in: modelContext)
                 } else {
                     subscriptionSession.showAlert(String(localized: "subscription.restoreEmpty"))

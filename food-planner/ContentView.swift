@@ -35,7 +35,7 @@ struct ContentView: View {
             RecipeCatalogStore.seedIfNeeded(in: modelContext)
             let settings = AppSettingsService.settings(in: modelContext)
             subscriptionSession.load(from: settings)
-            refreshSubscriptionStatus(settings: settings)
+            refreshSubscriptionStatus()
         }
         .alert(
             subscriptionSession.alertText,
@@ -49,10 +49,13 @@ struct ContentView: View {
         }
     }
 
-    private func refreshSubscriptionStatus(settings: AppSettings) {
+    private func refreshSubscriptionStatus() {
         PurchaseService.checkAccess { isPro in
-            subscriptionSession.isPro = isPro
-            subscriptionSession.persist(to: settings, in: modelContext)
+            Task { @MainActor in
+                subscriptionSession.isPro = isPro
+                let settings = AppSettingsService.settings(in: modelContext)
+                subscriptionSession.persist(to: settings, in: modelContext)
+            }
         }
     }
 }

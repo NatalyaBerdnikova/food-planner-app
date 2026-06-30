@@ -5,13 +5,14 @@ struct ShoppingListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
 
-    @State private var currentWeekPlan: WeekPlan?
     @State private var showShareSheet = false
     @State private var showAddItem = false
 
-    private var groupedItems: [(category: IngredientCategory, items: [ShoppingItem])] {
-        guard currentWeekPlan != nil else { return [] }
+    private var currentWeekPlan: WeekPlan {
+        WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+    }
 
+    private var groupedItems: [(category: IngredientCategory, items: [ShoppingItem])] {
         let grouped = Dictionary(grouping: sortedItems, by: \.category)
         return IngredientCategory.shoppingListOrder.compactMap { category in
             guard let items = grouped[category], !items.isEmpty else { return nil }
@@ -20,8 +21,7 @@ struct ShoppingListView: View {
     }
 
     private var sortedItems: [ShoppingItem] {
-        guard let plan = currentWeekPlan else { return [] }
-        return plan.shoppingItems.sorted { lhs, rhs in
+        currentWeekPlan.shoppingItems.sorted { lhs, rhs in
             if lhs.isPurchased != rhs.isPurchased {
                 return !lhs.isPurchased
             }
@@ -84,7 +84,8 @@ struct ShoppingListView: View {
                 .accessibilityLabel("accessibility.share")
             }
         }
-        .onAppear { refreshList() }
+        .onAppear { syncShoppingList() }
+        .onChange(of: weekPlans.count) { _, _ in syncShoppingList() }
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(items: [shareText])
         }
@@ -112,22 +113,18 @@ struct ShoppingListView: View {
         return header + "\n\n" + sections.joined(separator: "\n\n")
     }
 
-    private func refreshList() {
-        let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
-        WeekPlanService.syncShoppingItems(for: plan, in: modelContext)
-        currentWeekPlan = plan
+    private func syncShoppingList() {
+        WeekPlanService.syncShoppingItems(for: currentWeekPlan, in: modelContext)
     }
 
     private func addManualItem(_ draft: DraftIngredient) {
-        let plan = currentWeekPlan ?? WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
         WeekPlanService.addManualShoppingItem(
             product: draft.product,
             quantity: draft.quantity,
             unit: draft.unit,
-            to: plan,
+            to: currentWeekPlan,
             in: modelContext
         )
-        currentWeekPlan = plan
     }
 
     private func deleteItem(_ item: ShoppingItem) {

@@ -68,7 +68,7 @@ struct DefaultPaywall: View {
                             .scaleEffect(2)
                             .frame(maxWidth: .infinity)
                     } else {
-                        if let trialDescription = eligibleProduct?.skProduct.localizedTrialDescription {
+                        if let trialDescription = eligibleProduct.flatMap({ SubscriptionProductDisplay.trialDescription(for: $0) }) {
                             SubscriptionHContainer {
                                 Toggle(isOn: Binding(
                                     get: { hasTrialState },
@@ -103,14 +103,14 @@ struct DefaultPaywall: View {
                                         }
                                     }
 
-                                    Text(product.skProduct.title)
+                                    Text(SubscriptionProductDisplay.title(for: product))
                                         .font(.title3)
                                         .foregroundStyle(.primary)
                                         .padding(.horizontal, 5)
 
                                     Spacer()
 
-                                    Text(product.skProduct.localizedPrice)
+                                    Text(SubscriptionProductDisplay.price(for: product))
                                         .font(.title2)
                                 }
                                 .overlay {
@@ -256,26 +256,27 @@ struct DefaultPaywall: View {
         PurchaseService.getPaywall(placement: placement) { paywall in
             PurchaseService.getProducts(paywall: paywall) { loadedProducts in
                 Task { @MainActor in
+                    await StoreKitProductCatalog.load(productIds: loadedProducts.map(\.vendorProductId))
                     products = loadedProducts
-                }
 
-                PurchaseService.getEligibilities(products: loadedProducts) { loadedEligibilities in
-                    Task { @MainActor in
-                        eligibilities = loadedEligibilities
-                        let eligProduct = PurchaseService.getFirstEligibleProduct(
-                            products: loadedProducts,
-                            eligibilities: loadedEligibilities
-                        )
+                    PurchaseService.getEligibilities(products: loadedProducts) { loadedEligibilities in
+                        Task { @MainActor in
+                            eligibilities = loadedEligibilities
+                            let eligProduct = PurchaseService.getFirstEligibleProduct(
+                                products: loadedProducts,
+                                eligibilities: loadedEligibilities
+                            )
 
-                        if let eligProduct {
-                            selectedProduct = eligProduct
-                            eligibleProduct = eligProduct
-                        } else {
-                            selectedProduct = loadedProducts.last
+                            if let eligProduct {
+                                selectedProduct = eligProduct
+                                eligibleProduct = eligProduct
+                            } else {
+                                selectedProduct = loadedProducts.last
+                            }
+
+                            hasTrialState = hasTrial
+                            trialStateDisabled = !PurchaseService.canToggleTrial(loadedEligibilities)
                         }
-
-                        hasTrialState = hasTrial
-                        trialStateDisabled = !PurchaseService.canToggleTrial(loadedEligibilities)
                     }
                 }
             }

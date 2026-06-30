@@ -1,7 +1,6 @@
 import Foundation
 import SwiftUI
 import Adapty
-import StoreKit
 
 enum Placements: String {
     case basic = "basic_placement"
@@ -134,47 +133,6 @@ enum PurchaseService {
                 print(error.debugDescription)
                 onLoad(nil)
             }
-        }
-    }
-}
-
-extension SKProduct {
-    var localizedPrice: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = priceLocale
-        return formatter.string(from: price) ?? ""
-    }
-
-    var localizedTrialDescription: String? {
-        guard let period = introductoryPrice?.subscriptionPeriod else { return nil }
-        return "\(period.numberOfUnits) \(SubscriptionPlural.unit(period.unit, count: period.numberOfUnits))"
-    }
-
-    var title: String {
-        switch subscriptionPeriod?.unit.calendarComponent {
-        case .year:
-            return String(localized: "subscription.period.annual")
-        case .month:
-            return String(localized: "subscription.period.monthly")
-        case .week:
-            return String(localized: "subscription.period.weekly")
-        case .day:
-            return String(localized: "subscription.period.weekly")
-        default:
-            return localizedTitle
-        }
-    }
-}
-
-private extension SKProduct.PeriodUnit {
-    var calendarComponent: Calendar.Component {
-        switch self {
-        case .day: return .day
-        case .week: return .weekOfYear
-        case .month: return .month
-        case .year: return .year
-        @unknown default: return .day
         }
     }
 }
