@@ -17,12 +17,18 @@ enum RecipeCatalogStore {
             var unit: String
         }
 
+        struct Translation: Codable {
+            var name: String
+            var steps: String
+        }
+
         var id: String?
-        var name: String
+        var name: String?
         var servings: Int?
         var imageId: String?
         var imageBase64: String?
         var steps: [String]?
+        var translations: [String: Translation]?
         var ingredients: [IngredientEntry]?
     }
 
@@ -47,9 +53,10 @@ enum RecipeCatalogStore {
             recipe.userRecipeId = UUID().uuidString
         }
 
-        let entries = userRecipes.compactMap(makeEntry(from:))
+        let existingById = loadExistingUserEntriesById()
+        let entries = userRecipes.compactMap { makeEntry(from: $0, merging: existingById[$0.userRecipeId ?? ""]) }
 
-        let file = CatalogFile(version: 1, recipes: entries)
+        let file = CatalogFile(version: 2, recipes: entries)
         guard let data = try? JSONEncoder().encode(file) else { return }
 
         let url = userCatalogURL()
@@ -119,7 +126,7 @@ enum RecipeCatalogStore {
         catalogId: String,
         in context: ModelContext
     ) -> Recipe? {
-        let name = item.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let name = resolvedName(from: item)
         guard !name.isEmpty else { return nil }
 
         let recipe = Recipe(
@@ -127,7 +134,7 @@ enum RecipeCatalogStore {
             catalogRecipeId: catalogId,
             servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
-            steps: item.steps ?? []
+            steps: resolvedSteps(from: item)
         )
         replaceIngredients(for: recipe, from: item, in: context)
         recipe.recalculateNutrition()
@@ -140,7 +147,7 @@ enum RecipeCatalogStore {
         userRecipeId: String,
         in context: ModelContext
     ) -> Recipe? {
-        let name = item.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let name = resolvedName(from: item)
         guard !name.isEmpty else { return nil }
 
         let recipe = Recipe(
@@ -148,7 +155,7 @@ enum RecipeCatalogStore {
             userRecipeId: userRecipeId,
             servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
-            steps: item.steps ?? []
+            steps: resolvedSteps(from: item)
         )
         replaceIngredients(for: recipe, from: item, in: context)
         recipe.recalculateNutrition()
@@ -183,7 +190,7 @@ enum RecipeCatalogStore {
 
     // MARK: - Export
 
-    private static func makeEntry(from recipe: Recipe) -> RecipeEntry? {
+    private static func makeEntry(from recipe: Recipe, merging existing: RecipeEntry? = nil) -> RecipeEntry? {
         guard recipe.isUserCreated else { return nil }
 
         let ingredients = recipe.ingredients.compactMap { ingredient -> RecipeEntry.IngredientEntry? in
@@ -196,14 +203,52 @@ enum RecipeCatalogStore {
             )
         }
 
+        let recipeId = recipe.userRecipeId ?? UUID().uuidString
+        var translations = existing?.translations ?? [:]
+        translations[L10n.currentLanguageCode] = RecipeEntry.Translation(
+            name: recipe.name.trimmingCharacters(in: .whitespacesAndNewlines),
+            steps: exportStepsText(from: recipe)
+        )
+
         return RecipeEntry(
-            id: recipe.userRecipeId ?? UUID().uuidString,
-            name: recipe.name,
+            id: recipeId,
             servings: recipe.servings,
             imageBase64: recipe.imageData?.base64EncodedString(),
-            steps: recipe.steps,
+            translations: translations,
             ingredients: ingredients
         )
+    }
+
+    private static func loadExistingUserEntriesById() -> [String: RecipeEntry] {
+        let url = userCatalogURL()
+        guard FileManager.default.fileExists(atPath: url.path),
+              let data = try? Data(contentsOf: url),
+              let catalog = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+            return [:]
+        }
+
+        var map: [String: RecipeEntry] = [:]
+        for entry in catalog.recipes {
+            let id = resolvedEntryId(for: entry)
+            guard !id.isEmpty else { continue }
+            map[id] = entry
+        }
+        return map
+    }
+
+    private static func exportStepsText(from recipe: Recipe) -> String {
+        if let data = recipe.stepsRichTextData,
+           let attributed = RecipeStepsStorage.attributedString(from: data) {
+            let text = attributed.string.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !text.isEmpty {
+                return text
+            }
+        }
+
+        return recipe.steps
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+            .joined(separator: "\n")
     }
 
     // MARK: - URLs
@@ -223,7 +268,54 @@ enum RecipeCatalogStore {
     // MARK: - Helpers
 
     private static func resolvedEntryId(for item: RecipeEntry) -> String {
-        (item.id ?? item.name).trimmingCharacters(in: .whitespacesAndNewlines)
+        if let id = item.id?.trimmingCharacters(in: .whitespacesAndNewlines), !id.isEmpty {
+            return id
+        }
+        return resolvedName(from: item)
+    }
+
+    private static func resolvedTranslation(from item: RecipeEntry) -> RecipeEntry.Translation? {
+        guard let translations = item.translations, !translations.isEmpty else { return nil }
+
+        let preferred = L10n.currentLanguageCode
+        if let translation = translations[preferred],
+           !translation.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return translation
+        }
+        if let translation = translations["ru"],
+           !translation.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return translation
+        }
+        if let translation = translations["en"],
+           !translation.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return translation
+        }
+        return translations.values.first {
+            !$0.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        }
+    }
+
+    private static func resolvedName(from item: RecipeEntry) -> String {
+        if let translation = resolvedTranslation(from: item) {
+            return translation.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        return item.name?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    }
+
+    private static func resolvedSteps(from item: RecipeEntry) -> [String] {
+        if let steps = resolvedTranslation(from: item)?.steps
+            .trimmingCharacters(in: .whitespacesAndNewlines),
+           !steps.isEmpty {
+            return [steps]
+        }
+        if let joined = item.steps?
+            .map({ $0.trimmingCharacters(in: .whitespacesAndNewlines) })
+            .filter({ !$0.isEmpty })
+            .joined(separator: "\n"),
+           !joined.isEmpty {
+            return [joined]
+        }
+        return []
     }
 
     private static func loadImageData(for item: RecipeEntry) -> Data? {

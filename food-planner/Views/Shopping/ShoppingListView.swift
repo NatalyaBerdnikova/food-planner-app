@@ -7,6 +7,17 @@ struct ShoppingListView: View {
 
     @State private var currentWeekPlan: WeekPlan?
     @State private var showShareSheet = false
+    @State private var showAddItem = false
+
+    private var groupedItems: [(category: IngredientCategory, items: [ShoppingItem])] {
+        guard currentWeekPlan != nil else { return [] }
+
+        let grouped = Dictionary(grouping: sortedItems, by: \.category)
+        return IngredientCategory.shoppingListOrder.compactMap { category in
+            guard let items = grouped[category], !items.isEmpty else { return nil }
+            return (category, items)
+        }
+    }
 
     private var sortedItems: [ShoppingItem] {
         guard let plan = currentWeekPlan else { return [] }
@@ -14,13 +25,16 @@ struct ShoppingListView: View {
             if lhs.isPurchased != rhs.isPurchased {
                 return !lhs.isPurchased
             }
+            if lhs.category.shoppingListOrderIndex != rhs.category.shoppingListOrderIndex {
+                return lhs.category.shoppingListOrderIndex < rhs.category.shoppingListOrderIndex
+            }
             return lhs.displayName.localizedCaseInsensitiveCompare(rhs.displayName) == .orderedAscending
         }
     }
 
     var body: some View {
         Group {
-            if sortedItems.isEmpty {
+            if groupedItems.isEmpty {
                 ContentUnavailableView(
                     "empty.shopping",
                     systemImage: "cart",
@@ -28,8 +42,23 @@ struct ShoppingListView: View {
                 )
             } else {
                 List {
-                    ForEach(sortedItems) { item in
-                        ShoppingItemRow(item: item)
+                    ForEach(groupedItems, id: \.category) { section in
+                        Section {
+                            ForEach(section.items) { item in
+                                ShoppingItemRow(item: item)
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                        if item.isManual {
+                                            Button(role: .destructive) {
+                                                deleteItem(item)
+                                            } label: {
+                                                Label("favorites.remove.confirm", systemImage: "trash")
+                                            }
+                                        }
+                                    }
+                            }
+                        } header: {
+                            Text(section.category.displayName)
+                        }
                     }
                 }
                 .listStyle(.insetGrouped)
@@ -39,11 +68,19 @@ struct ShoppingListView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
+                    showAddItem = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .accessibilityLabel("shopping.addItem")
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
                     showShareSheet = true
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                 }
-                .disabled(sortedItems.isEmpty)
+                .disabled(groupedItems.isEmpty)
                 .accessibilityLabel("accessibility.share")
             }
         }
@@ -51,25 +88,51 @@ struct ShoppingListView: View {
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(items: [shareText])
         }
+        .sheet(isPresented: $showAddItem) {
+            AddIngredientSheet { draft in
+                addManualItem(draft)
+            }
+        }
     }
 
     private var shareText: String {
         let header = String(localized: "shopping.shareHeader")
-        let lines = sortedItems.map { item in
-            L10n.shoppingShareLine(
-                purchased: item.isPurchased,
-                name: item.displayName,
-                quantity: item.quantity,
-                unit: item.unit
-            )
+        let sections = groupedItems.map { section in
+            let title = String(localized: section.category.displayName)
+            let lines = section.items.map { item in
+                L10n.shoppingShareLine(
+                    purchased: item.isPurchased,
+                    name: item.displayName,
+                    quantity: item.quantity,
+                    unit: item.unit
+                )
+            }
+            return ([title] + lines).joined(separator: "\n")
         }
-        return header + "\n\n" + lines.joined(separator: "\n")
+        return header + "\n\n" + sections.joined(separator: "\n\n")
     }
 
     private func refreshList() {
         let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
         WeekPlanService.syncShoppingItems(for: plan, in: modelContext)
         currentWeekPlan = plan
+    }
+
+    private func addManualItem(_ draft: DraftIngredient) {
+        let plan = currentWeekPlan ?? WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+        WeekPlanService.addManualShoppingItem(
+            product: draft.product,
+            quantity: draft.quantity,
+            unit: draft.unit,
+            to: plan,
+            in: modelContext
+        )
+        currentWeekPlan = plan
+    }
+
+    private func deleteItem(_ item: ShoppingItem) {
+        modelContext.delete(item)
+        LocalPersistence.save(modelContext)
     }
 }
 
@@ -85,9 +148,17 @@ struct ShoppingItemRow: View {
                     .foregroundStyle(item.isPurchased ? .green : .secondary)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(item.displayName)
-                        .strikethrough(item.isPurchased)
-                        .foregroundStyle(item.isPurchased ? .secondary : .primary)
+                    HStack(spacing: 6) {
+                        Text(item.displayName)
+                            .strikethrough(item.isPurchased)
+                            .foregroundStyle(item.isPurchased ? .secondary : .primary)
+                        if item.isManual {
+                            Image(systemName: "cart.badge.plus")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(Color(red: 0.06, green: 0.33, blue: 0.45))
+                                .accessibilityLabel("shopping.manualItem")
+                        }
+                    }
                     Text(L10n.amount(quantity: item.quantity, unit: item.unit))
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -99,5 +170,11 @@ struct ShoppingItemRow: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+    }
+}
+
+private extension IngredientCategory {
+    var shoppingListOrderIndex: Int {
+        Self.shoppingListOrder.firstIndex(of: self) ?? Int.max
     }
 }

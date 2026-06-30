@@ -18,7 +18,7 @@ struct RecipePickerView: View {
                         .frame(width: 48, height: 48)
 
                     VStack(alignment: .leading, spacing: 2) {
-                        Text(recipe.name)
+                        Text(recipe.localizedName)
                             .foregroundStyle(.primary)
                         Text(L10n.kcalPer100g(Int(recipe.caloriesPer100g)))
                             .font(.caption)

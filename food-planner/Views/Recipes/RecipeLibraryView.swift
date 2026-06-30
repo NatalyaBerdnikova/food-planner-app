@@ -79,7 +79,7 @@ struct RecipeLibraryView: View {
             }
         } message: {
             if let recipe = unfavoriteCandidate {
-                Text("favorites.remove.message \(recipe.name)")
+                Text("favorites.remove.message \(recipe.localizedName)")
             }
         }
     }

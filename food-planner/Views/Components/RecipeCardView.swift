@@ -59,7 +59,7 @@ struct RecipeCardView: View {
             }
 
             VStack(alignment: .leading, spacing: 10) {
-                Text(recipe.name)
+                Text(recipe.localizedName)
                     .font(.subheadline.weight(.semibold))
                     .lineLimit(2)
                     .minimumScaleFactor(0.9)

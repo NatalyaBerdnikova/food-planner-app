@@ -6,7 +6,7 @@ extension DayPlan {
         meals
             .filter { $0.mealType == mealType }
             .sorted { lhs, rhs in
-                (lhs.recipe?.name ?? "").localizedCaseInsensitiveCompare(rhs.recipe?.name ?? "") == .orderedAscending
+                (lhs.recipe?.localizedName ?? "").localizedCaseInsensitiveCompare(rhs.recipe?.localizedName ?? "") == .orderedAscending
             }
     }
 }

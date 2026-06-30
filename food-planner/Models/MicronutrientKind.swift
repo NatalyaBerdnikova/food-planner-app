@@ -58,6 +58,29 @@ enum MicronutrientKind: String, CaseIterable, Identifiable {
             "nutrition.unit.mcg"
         }
     }
+
+    /// Суточная норма для взрослого (ориентир для шкалы, не персональная цель).
+    var dailyTarget: Double {
+        switch self {
+        case .fiber: 30
+        case .vitaminD3: 15
+        case .calcium: 1000
+        case .magnesium: 400
+        case .zinc: 11
+        case .vitaminK: 90
+        case .vitaminC: 90
+        case .vitaminE: 15
+        case .vitaminA: 800
+        case .vitaminB6: 1.5
+        case .vitaminB9: 400
+        case .vitaminB12: 2.4
+        case .selenium: 55
+        case .chromium: 35
+        case .iron: 15
+        case .potassium: 3000
+        case .iodine: 150
+        }
+    }
 }
 
 extension NutrientTotals {

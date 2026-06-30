@@ -1,501 +1,1150 @@
 {
-  "version": 1,
+  "version": 2,
   "recipes": [
     {
       "id": "recipe_01",
-      "name": "Йогурт с гранолой и ягодами",
       "servings": 1,
       "imageId": "1",
-      "steps": [
-        "Выложите йогурт в миску",
-        "Добавьте овсяные хлопья, мёд и миндаль",
-        "Украсьте нарезанным бананом"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Йогурт с гранолой и ягодами",
+          "steps": "Выложите йогурт в миску.\nДобавьте овсяные хлопья, мёд и миндаль.\nУкрасьте нарезанным бананом."
+        },
+        "en": {
+          "name": "Yogurt with granola and berries",
+          "steps": "Place yogurt in a bowl.\nAdd oatmeal, honey, and almonds.\nTop with sliced banana."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "yogurt", "quantity": 180, "unit": "gram" },
-        { "catalogKey": "oatmeal", "quantity": 40, "unit": "gram" },
-        { "catalogKey": "honey", "quantity": 15, "unit": "gram" },
-        { "catalogKey": "almonds", "quantity": 20, "unit": "gram" },
-        { "catalogKey": "banana", "quantity": 80, "unit": "gram" }
+        {
+          "catalogKey": "yogurt",
+          "quantity": 180,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "oatmeal",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "honey",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 80,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_02",
-      "name": "Ягодный смузи-боул",
       "servings": 1,
       "imageId": "2",
-      "steps": [
-        "Смешайте йогурт с клубникой до однородности",
-        "Перелейте в миску",
-        "Посыпьте рубленым миндалём"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Ягодный смузи-боул",
+          "steps": "Смешайте йогурт с клубникой до однородности.\nПерелейте в миску.\nПосыпьте рубленым миндалём."
+        },
+        "en": {
+          "name": "Berry smoothie bowl",
+          "steps": "Blend yogurt with strawberries until smooth.\nPour into a bowl.\nSprinkle with chopped almonds."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "yogurt", "quantity": 200, "unit": "gram" },
-        { "catalogKey": "strawberries", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "almonds", "quantity": 25, "unit": "gram" }
+        {
+          "catalogKey": "yogurt",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "strawberries",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 25,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_03",
-      "name": "Чиа-пудинг с фруктами",
       "servings": 1,
       "imageId": "3",
-      "steps": [
-        "Смешайте йогурт с молоком и мёдом",
-        "Добавьте нарезанный банан",
-        "Охладите перед подачей"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Чиа-пудинг с фруктами",
+          "steps": "Смешайте йогурт с молоком и мёдом.\nДобавьте нарезанный банан.\nОхладите перед подачей."
+        },
+        "en": {
+          "name": "Chia-style pudding with fruit",
+          "steps": "Mix yogurt with milk and honey.\nAdd sliced banana.\nChill before serving."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "yogurt", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "honey", "quantity": 15, "unit": "gram" },
-        { "catalogKey": "banana", "quantity": 100, "unit": "gram" }
+        {
+          "catalogKey": "yogurt",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "honey",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 100,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_04",
-      "name": "Гречка с брокколи и яйцом",
       "servings": 1,
       "imageId": "4",
-      "steps": [
-        "Отварите гречневую крупу",
-        "Приготовьте брокколи на пару",
-        "Обжарьте яйцо и подавайте вместе"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Гречка с брокколи и яйцом",
+          "steps": "Отварите гречневую крупу.\nПриготовьте брокколи на пару.\nОбжарьте яйцо и подавайте вместе."
+        },
+        "en": {
+          "name": "Buckwheat with broccoli and egg",
+          "steps": "Cook buckwheat groats.\nSteam the broccoli.\nFry an egg and serve everything together."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "buckwheat_kernel", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "broccoli", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "egg", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "olive_oil", "quantity": 10, "unit": "gram" }
+        {
+          "catalogKey": "buckwheat_kernel",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "broccoli",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "egg",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 10,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_05",
-      "name": "Сырные булочки",
       "servings": 1,
       "imageId": "5",
-      "steps": [
-        "Смешайте муку, молоко, яйцо и сыр",
-        "Сформируйте небольшие булочки",
-        "Выпекайте при 180 °C около 20 минут"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Сырные булочки",
+          "steps": "Смешайте муку, молоко, яйцо и сыр.\nСформируйте небольшие булочки.\nВыпекайте при 180 °C около 20 минут."
+        },
+        "en": {
+          "name": "Cheese buns",
+          "steps": "Mix flour, milk, egg, and cheese.\nShape into small buns.\nBake at 180 °C for about 20 minutes."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "wheat_flour_premium_grade", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "egg", "quantity": 50, "unit": "gram" },
-        { "catalogKey": "cheese", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "butter", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "wheat_flour_premium_grade",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "egg",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cheese",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_06",
-      "name": "Оладьи",
       "servings": 1,
       "imageId": "6",
-      "steps": [
-        "Смешайте муку, молоко, яйцо и мёд",
-        "Выпекайте оладьи на сковороде с маслом",
-        "Подавайте тёплыми"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Оладьи",
+          "steps": "Смешайте муку, молоко, яйцо и мёд.\nВыпекайте оладьи на сковороде с маслом.\nПодавайте тёплыми."
+        },
+        "en": {
+          "name": "Pancakes",
+          "steps": "Mix flour, milk, egg, and honey.\nCook pancakes in a buttered skillet.\nServe warm."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "wheat_flour_premium_grade", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "egg", "quantity": 50, "unit": "gram" },
-        { "catalogKey": "honey", "quantity": 20, "unit": "gram" },
-        { "catalogKey": "butter", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "wheat_flour_premium_grade",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "egg",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "honey",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_07",
-      "name": "Профитроли",
       "servings": 1,
       "imageId": "7",
-      "steps": [
-        "Заварите тесто из воды, масла и муки",
-        "Вмешайте яйца",
-        "Выпекайте до золотистого цвета"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Профитроли",
+          "steps": "Заварите тесто из воды, масла и муки.\nВмешайте яйца.\nВыпекайте до золотистого цвета."
+        },
+        "en": {
+          "name": "Profiteroles",
+          "steps": "Make choux pastry from water, butter, and flour.\nBeat in the eggs.\nBake until golden."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "wheat_flour_premium_grade", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "egg", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "butter", "quantity": 40, "unit": "gram" }
+        {
+          "catalogKey": "wheat_flour_premium_grade",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "egg",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter",
+          "quantity": 40,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_08",
-      "name": "Лобио с грецким орехом",
       "servings": 1,
       "imageId": "8",
-      "steps": [
-        "Отварите фасоль до мягкости",
-        "Обжарьте лук с чесноком и томатом",
-        "Смешайте с фасолью и посыпьте орехами"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Лобио с грецким орехом",
+          "steps": "Отварите фасоль до мягкости.\nОбжарьте лук с чесноком и томатом.\nСмешайте с фасолью и посыпьте орехами."
+        },
+        "en": {
+          "name": "Lobio with walnuts",
+          "steps": "Cook the beans until tender.\nSauté onion with garlic and tomato.\nMix with the beans and sprinkle with walnuts."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "beans", "quantity": 200, "unit": "gram" },
-        { "catalogKey": "onion", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "tomato", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "garlic", "quantity": 10, "unit": "gram" },
-        { "catalogKey": "walnut", "quantity": 30, "unit": "gram" },
-        { "catalogKey": "olive_oil", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "beans",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "onion",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tomato",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "garlic",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "walnut",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_09",
-      "name": "Креветки с овощами",
       "servings": 1,
       "imageId": "9",
-      "steps": [
-        "Обжарьте креветки на масле",
-        "Добавьте морковь, перец и фасоль",
-        "Тушите 5–7 минут до готовности"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Креветки с овощами",
+          "steps": "Обжарьте креветки на масле.\nДобавьте морковь, перец и фасоль.\nТушите 5–7 минут до готовности."
+        },
+        "en": {
+          "name": "Shrimp with vegetables",
+          "steps": "Sauté the shrimp in oil.\nAdd carrot, pepper, and green beans.\nSimmer for 5–7 minutes until done."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "far_eastern_shrimp_meat", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "carrot", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "bell_pepper", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "fasol_struchkovaya", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "olive_oil", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "far_eastern_shrimp_meat",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrot",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bell_pepper",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "fasol_struchkovaya",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_10",
-      "name": "Суп-пюре из чечевицы",
       "servings": 1,
       "imageId": "10",
-      "steps": [
-        "Отварите чечевицу с морковью и луком",
-        "Пробейте блендером до кремовой консистенции",
-        "Подавайте с гренками из хлеба"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Суп-пюре из чечевицы",
+          "steps": "Отварите чечевицу с морковью и луком.\nПробейте блендером до кремовой консистенции.\nПодавайте с гренками из хлеба."
+        },
+        "en": {
+          "name": "Lentil puree soup",
+          "steps": "Cook lentils with carrot and onion.\nBlend until creamy.\nServe with bread croutons."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "chechevitsa_zerno", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "carrot", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "onion", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "tomato", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "bread", "quantity": 40, "unit": "gram" }
+        {
+          "catalogKey": "chechevitsa_zerno",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrot",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "onion",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tomato",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bread",
+          "quantity": 40,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_11",
-      "name": "Десерт с клубникой и миндалём",
       "servings": 1,
       "imageId": "11",
-      "steps": [
-        "Смешайте йогурт с мёдом",
-        "Выложите в миску",
-        "Добавьте клубнику и миндаль"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Десерт с клубникой и миндалём",
+          "steps": "Смешайте йогурт с мёдом.\nВыложите в миску.\nДобавьте клубнику и миндаль."
+        },
+        "en": {
+          "name": "Strawberry and almond dessert",
+          "steps": "Mix yogurt with honey.\nSpoon into a bowl.\nAdd strawberries and almonds."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "yogurt", "quantity": 180, "unit": "gram" },
-        { "catalogKey": "honey", "quantity": 20, "unit": "gram" },
-        { "catalogKey": "strawberries", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "almonds", "quantity": 25, "unit": "gram" }
+        {
+          "catalogKey": "yogurt",
+          "quantity": 180,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "honey",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "strawberries",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 25,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_12",
-      "name": "Запечённые сырные тосты",
       "servings": 1,
       "imageId": "12",
-      "steps": [
-        "Смешайте сыр с яйцом",
-        "Намажьте на хлеб",
-        "Запекайте до румяной корочки"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Запечённые сырные тосты",
+          "steps": "Смешайте сыр с яйцом.\nНамажьте на хлеб.\nЗапекайте до румяной корочки."
+        },
+        "en": {
+          "name": "Baked cheese toasts",
+          "steps": "Mix cheese with egg.\nSpread on bread.\nBake until golden."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "bread", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "cheese", "quantity": 70, "unit": "gram" },
-        { "catalogKey": "egg", "quantity": 50, "unit": "gram" },
-        { "catalogKey": "green_onion_feather", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "bread",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cheese",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "egg",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "green_onion_feather",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_13",
-      "name": "Рис с креветками и лососем",
       "servings": 1,
       "imageId": "13",
-      "steps": [
-        "Отварите рис",
-        "Обжарьте креветки и лосось",
-        "Выложите на рис и посыпьте зелёным луком"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Рис с креветками и лососем",
+          "steps": "Отварите рис.\nОбжарьте креветки и лосось.\nВыложите на рис и посыпьте зелёным луком."
+        },
+        "en": {
+          "name": "Rice with shrimp and salmon",
+          "steps": "Cook the rice.\nSauté the shrimp and salmon.\nServe over rice and sprinkle with green onion."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "rice", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "far_eastern_shrimp_meat", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "salmon", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "green_onion_feather", "quantity": 15, "unit": "gram" },
-        { "catalogKey": "olive_oil", "quantity": 10, "unit": "gram" }
+        {
+          "catalogKey": "rice",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "far_eastern_shrimp_meat",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salmon",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "green_onion_feather",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 10,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_14",
-      "name": "Творог с клубникой и лимоном",
       "servings": 1,
       "imageId": "14",
-      "steps": [
-        "Смешайте творог с йогуртом",
-        "Добавьте клубнику",
-        "Украсьте цедрой лимона"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Творог с клубникой и лимоном",
+          "steps": "Смешайте творог с йогуртом.\nДобавьте клубнику.\nУкрасьте цедрой лимона."
+        },
+        "en": {
+          "name": "Cottage cheese with strawberries and lemon",
+          "steps": "Mix cottage cheese with yogurt.\nAdd strawberries.\nGarnish with lemon zest."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "tvorog_9_zhirnosti", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "yogurt", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "strawberries", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "lemon", "quantity": 20, "unit": "gram" }
+        {
+          "catalogKey": "tvorog_9_zhirnosti",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "strawberries",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "lemon",
+          "quantity": 20,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_15",
-      "name": "Мидии на кукурузной поленте",
       "servings": 1,
       "imageId": "15",
-      "steps": [
-        "Сварите кукурузную крупу с молоком и маслом",
-        "Обжарьте мидии",
-        "Выложите мидии на поленту"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Мидии на кукурузной поленте",
+          "steps": "Сварите кукурузную крупу с молоком и маслом.\nОбжарьте мидии.\nВыложите мидии на поленту."
+        },
+        "en": {
+          "name": "Mussels on corn polenta",
+          "steps": "Cook corn grits with milk and butter.\nSauté the mussels.\nServe the mussels over polenta."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "mussels", "quantity": 180, "unit": "gram" },
-        { "catalogKey": "corn_grits", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "butter", "quantity": 20, "unit": "gram" }
+        {
+          "catalogKey": "mussels",
+          "quantity": 180,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "corn_grits",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter",
+          "quantity": 20,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_16",
-      "name": "Поке с тунцом",
       "servings": 1,
       "imageId": "16",
-      "steps": [
-        "Выложите рис в миску",
-        "Добавьте тунец, огурцы, кукурузу и авокадо",
-        "Украсьте яйцом"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Поке с тунцом",
+          "steps": "Выложите рис в миску.\nДобавьте тунец, огурцы, кукурузу и авокадо.\nУкрасьте яйцом."
+        },
+        "en": {
+          "name": "Tuna poke bowl",
+          "steps": "Place rice in a bowl.\nAdd tuna, cucumber, corn, and avocado.\nTop with egg."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "rice", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "tunets", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "cucumber", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "cut_corn", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "avocado", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "egg", "quantity": 50, "unit": "gram" }
+        {
+          "catalogKey": "rice",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tuna",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cucumber",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cut_corn",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "avocado",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "egg",
+          "quantity": 50,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_17",
-      "name": "Творог с фруктами и блинчиком",
       "servings": 1,
       "imageId": "17",
-      "steps": [
-        "Смешайте творог с йогуртом",
-        "Добавьте нарезанный ананас",
-        "Подавайте с тонким блинчиком"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Творог с фруктами и блинчиком",
+          "steps": "Смешайте творог с йогуртом.\nДобавьте нарезанный ананас.\nПодавайте с тонким блинчиком."
+        },
+        "en": {
+          "name": "Cottage cheese with fruit and crepe",
+          "steps": "Mix cottage cheese with yogurt.\nAdd diced pineapple.\nServe with a thin crepe."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "tvorog_9_zhirnosti", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "yogurt", "quantity": 50, "unit": "gram" },
-        { "catalogKey": "pineapple", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "egg", "quantity": 50, "unit": "gram" },
-        { "catalogKey": "wheat_flour_premium_grade", "quantity": 40, "unit": "gram" }
+        {
+          "catalogKey": "tvorog_9_zhirnosti",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pineapple",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "egg",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "wheat_flour_premium_grade",
+          "quantity": 40,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_18",
-      "name": "Пирог «Шефард»",
       "servings": 1,
       "imageId": "18",
-      "steps": [
-        "Обжарьте фарш с луком и морковью",
-        "Приготовьте пюре из картофеля",
-        "Выложите фарш в форму, сверху — пюре, запекайте"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Пирог «Шефард»",
+          "steps": "Обжарьте фарш с луком и морковью.\nПриготовьте пюре из картофеля.\nВыложите фарш в форму, сверху — пюре, запекайте."
+        },
+        "en": {
+          "name": "Shepherd's pie",
+          "steps": "Brown the ground beef with onion and carrot.\nMake mashed potatoes.\nLayer beef in a dish, top with mash, and bake."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "beef", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "potato", "quantity": 200, "unit": "gram" },
-        { "catalogKey": "carrot", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "onion", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "butter", "quantity": 20, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 50, "unit": "gram" }
+        {
+          "catalogKey": "beef",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "potato",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrot",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "onion",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 50,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_19",
-      "name": "Поке с креветками и яйцом",
       "servings": 1,
       "imageId": "19",
-      "steps": [
-        "Выложите рис в миску",
-        "Добавьте креветки, кукурузу и ананас",
-        "Украсьте яйцом пашот"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Поке с креветками и яйцом",
+          "steps": "Выложите рис в миску.\nДобавьте креветки, кукурузу и ананас.\nУкрасьте яйцом пашот."
+        },
+        "en": {
+          "name": "Shrimp poke bowl with egg",
+          "steps": "Place rice in a bowl.\nAdd shrimp, corn, and pineapple.\nTop with a poached egg."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "rice", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "far_eastern_shrimp_meat", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "cut_corn", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "pineapple", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "egg", "quantity": 50, "unit": "gram" }
+        {
+          "catalogKey": "rice",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "far_eastern_shrimp_meat",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cut_corn",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pineapple",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "egg",
+          "quantity": 50,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_20",
-      "name": "Шоколадная овсянка с ягодами",
       "servings": 1,
       "imageId": "20",
-      "steps": [
-        "Сварите овсянку на молоке с мёдом",
-        "Добавьте какао по вкусу через мёд",
-        "Украсьте клубникой"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Шоколадная овсянка с ягодами",
+          "steps": "Сварите овсянку на молоке с мёдом.\nДобавьте какао по вкусу через мёд.\nУкрасьте клубникой."
+        },
+        "en": {
+          "name": "Chocolate oatmeal with berries",
+          "steps": "Cook oatmeal in milk with honey.\nStir in cocoa through the honey to taste.\nTop with strawberries."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "oatmeal", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 200, "unit": "gram" },
-        { "catalogKey": "honey", "quantity": 20, "unit": "gram" },
-        { "catalogKey": "strawberries", "quantity": 60, "unit": "gram" }
+        {
+          "catalogKey": "oatmeal",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "honey",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "strawberries",
+          "quantity": 60,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_21",
-      "name": "Паста в розовом соусе",
       "servings": 1,
       "imageId": "21",
-      "steps": [
-        "Отварите пасту",
-        "Обжарьте курицу с томатом и сливками",
-        "Смешайте пасту с соусом"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Паста в розовом соусе",
+          "steps": "Отварите пасту.\nОбжарьте курицу с томатом и сливками.\nСмешайте пасту с соусом."
+        },
+        "en": {
+          "name": "Pasta in pink sauce",
+          "steps": "Cook the pasta.\nSauté chicken with tomato and cream.\nToss the pasta with the sauce."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "pasta", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "chicken_breast", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "tomato", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "butter", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "pasta",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_breast",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tomato",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_22",
-      "name": "Овсянка с сыром и фруктами",
       "servings": 1,
       "imageId": "22",
-      "steps": [
-        "Сварите овсянку на молоке",
-        "Подавайте с яблоком и сыром"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Овсянка с сыром и фруктами",
+          "steps": "Сварите овсянку на молоке.\nПодавайте с яблоком и сыром."
+        },
+        "en": {
+          "name": "Oatmeal with cheese and fruit",
+          "steps": "Cook oatmeal in milk.\nServe with apple and cheese."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "oatmeal", "quantity": 80, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 200, "unit": "gram" },
-        { "catalogKey": "yabloko", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "cheese", "quantity": 50, "unit": "gram" }
+        {
+          "catalogKey": "oatmeal",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yabloko",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cheese",
+          "quantity": 50,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_23",
-      "name": "Бутерброды с тунцом и огурцом",
       "servings": 1,
       "imageId": "23",
-      "steps": [
-        "Смешайте тунец с йогуртом",
-        "Намажьте на хлеб",
-        "Добавьте ломтики огурца"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Бутерброды с тунцом и огурцом",
+          "steps": "Смешайте тунец с йогуртом.\nНамажьте на хлеб.\nДобавьте ломтики огурца."
+        },
+        "en": {
+          "name": "Tuna and cucumber sandwiches",
+          "steps": "Mix tuna with yogurt.\nSpread on bread.\nAdd cucumber slices."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "bread", "quantity": 90, "unit": "gram" },
-        { "catalogKey": "tunets", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "yogurt", "quantity": 40, "unit": "gram" },
-        { "catalogKey": "cucumber", "quantity": 80, "unit": "gram" }
+        {
+          "catalogKey": "bread",
+          "quantity": 90,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tuna",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cucumber",
+          "quantity": 80,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_24",
-      "name": "Паста с курицей в сливочном соусе",
       "servings": 1,
       "imageId": "24",
-      "steps": [
-        "Отварите пасту",
-        "Обжарьте курицу",
-        "Добавьте сливки, сыр и смешайте с пастой"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Паста с курицей в сливочном соусе",
+          "steps": "Отварите пасту.\nОбжарьте курицу.\nДобавьте сливки, сыр и смешайте с пастой."
+        },
+        "en": {
+          "name": "Chicken pasta in cream sauce",
+          "steps": "Cook the pasta.\nSauté the chicken.\nAdd cream, cheese, and toss with the pasta."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "pasta", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "chicken_breast", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "cheese", "quantity": 40, "unit": "gram" },
-        { "catalogKey": "butter", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "pasta",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_breast",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cheese",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_25",
-      "name": "Жаркое с курицей, грибами и картофелем",
       "servings": 1,
       "imageId": "25",
-      "steps": [
-        "Обжарьте курицу с луком",
-        "Добавьте картофель, грибы и морковь",
-        "Тушите до готовности"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Жаркое с курицей, грибами и картофелем",
+          "steps": "Обжарьте курицу с луком.\nДобавьте картофель, грибы и морковь.\nТушите до готовности."
+        },
+        "en": {
+          "name": "Chicken stew with mushrooms and potatoes",
+          "steps": "Brown chicken with onion.\nAdd potato, mushrooms, and carrot.\nSimmer until tender."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "chicken_breast", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "potato", "quantity": 180, "unit": "gram" },
-        { "catalogKey": "cep", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "carrot", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "onion", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "olive_oil", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "chicken_breast",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "potato",
+          "quantity": 180,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cep",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrot",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "onion",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_26",
-      "name": "Курица с овощами и рисом",
       "servings": 1,
       "imageId": "26",
-      "steps": [
-        "Отварите рис",
-        "Обжарьте курицу с перцем и луком",
-        "Подавайте с рисом"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Курица с овощами и рисом",
+          "steps": "Отварите рис.\nОбжарьте курицу с перцем и луком.\nПодавайте с рисом."
+        },
+        "en": {
+          "name": "Chicken with vegetables and rice",
+          "steps": "Cook the rice.\nSauté chicken with pepper and onion.\nServe with rice."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "rice", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "chicken_breast", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "bell_pepper", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "onion", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "olive_oil", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "rice",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_breast",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bell_pepper",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "onion",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_27",
-      "name": "Карри с рисом",
       "servings": 1,
       "imageId": "27",
-      "steps": [
-        "Отварите рис",
-        "Обжарьте курицу с луком, морковью и картофелем",
-        "Добавьте воду и тушите до густого соуса"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Карри с рисом",
+          "steps": "Отварите рис.\nОбжарьте курицу с луком, морковью и картофелем.\nДобавьте воду и тушите до густого соуса."
+        },
+        "en": {
+          "name": "Curry with rice",
+          "steps": "Cook the rice.\nSauté chicken with onion, carrot, and potato.\nAdd water and simmer until the sauce thickens."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "rice", "quantity": 150, "unit": "gram" },
-        { "catalogKey": "chicken_breast", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "potato", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "carrot", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "onion", "quantity": 60, "unit": "gram" },
-        { "catalogKey": "butter", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "rice",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_breast",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "potato",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrot",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "onion",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     },
     {
       "id": "recipe_28",
-      "name": "Паста с ветчиной в сливочном соусе",
       "servings": 1,
       "imageId": "28",
-      "steps": [
-        "Отварите пасту",
-        "Обжарьте индейку",
-        "Смешайте с молоком, сыром и маслом"
-      ],
+      "translations": {
+        "ru": {
+          "name": "Паста с ветчиной в сливочном соусе",
+          "steps": "Отварите пасту.\nОбжарьте индейку.\nСмешайте с молоком, сыром и маслом."
+        },
+        "en": {
+          "name": "Pasta with ham in cream sauce",
+          "steps": "Cook the pasta.\nSauté the turkey.\nMix with milk, cheese, and butter."
+        }
+      },
       "ingredients": [
-        { "catalogKey": "pasta", "quantity": 120, "unit": "gram" },
-        { "catalogKey": "turkey", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "milk", "quantity": 100, "unit": "gram" },
-        { "catalogKey": "cheese", "quantity": 40, "unit": "gram" },
-        { "catalogKey": "butter", "quantity": 15, "unit": "gram" }
+        {
+          "catalogKey": "pasta",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "turkey",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cheese",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter",
+          "quantity": 15,
+          "unit": "gram"
+        }
       ]
     }
   ]

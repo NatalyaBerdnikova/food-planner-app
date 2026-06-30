@@ -1161,7 +1161,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Молочные продукты"
+            "value" : "Молочка"
           }
         }
       }
@@ -1177,7 +1177,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Рыба и морепродукты"
+            "value" : "Рыба"
           }
         }
       }
@@ -1203,13 +1203,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grains & pasta"
+            "value" : "Grains"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Крупы и макароны"
+            "value" : "Крупы"
           }
         }
       }
@@ -1257,7 +1257,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Специи и приправы"
+            "value" : "Специи"
           }
         }
       }
@@ -1607,13 +1607,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add meals to the weekly plan — ingredients will appear here"
+            "value" : "Add meals to the weekly plan or tap + to add products from the catalog"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Добавьте приёмы пищи в план на неделю — ингредиенты появятся здесь"
+            "value" : "Добавьте приёмы пищи в план на неделю или нажмите +, чтобы добавить продукт из каталога"
           }
         }
       }
@@ -2924,6 +2924,22 @@
         }
       }
     },
+    "nutrition.microDailyReference" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Values are per serving. Scale shows share of average daily intake for an adult."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Значения на порцию. Шкала показывает долю среднесуточной нормы для взрослого."
+          }
+        }
+      }
+    },
     "nutrition.microTitle" : {
       "localizations" : {
         "en" : {
@@ -3841,6 +3857,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "✓"
+          }
+        }
+      }
+    },
+    "shopping.addItem" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add product"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить продукт"
+          }
+        }
+      }
+    },
+    "shopping.manualItem" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Added manually, not from meal plan"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавлено вручную, не из рецептов"
           }
         }
       }

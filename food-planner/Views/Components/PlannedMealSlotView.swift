@@ -88,7 +88,7 @@ struct PlannedMealSlotView: View {
                 .clipped()
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(recipe.name)
+                Text(recipe.localizedName)
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.primary)
                     .lineLimit(2)

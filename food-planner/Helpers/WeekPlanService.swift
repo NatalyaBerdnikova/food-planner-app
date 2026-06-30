@@ -81,22 +81,77 @@ enum WeekPlanService {
 
     @MainActor
     static func syncShoppingItems(for weekPlan: WeekPlan, in context: ModelContext) {
-        for aggregated in weekPlan.aggregatedShoppingList {
-            let exists = weekPlan.shoppingItems.contains {
-                $0.name.caseInsensitiveCompare(aggregated.name) == .orderedSame
-                    && $0.unit == aggregated.unit
+        let aggregated = weekPlan.aggregatedShoppingList
+        let aggregatedByKey = Dictionary(
+            uniqueKeysWithValues: aggregated.map { (shoppingItemKey(name: $0.name, unit: $0.unit), $0) }
+        )
+
+        for item in weekPlan.shoppingItems where !item.isManual {
+            let key = shoppingItemKey(name: item.name, unit: item.unit)
+            if aggregatedByKey[key] == nil {
+                context.delete(item)
             }
-            guard !exists else { continue }
+        }
+        weekPlan.shoppingItems.removeAll { item in
+            !item.isManual && aggregatedByKey[shoppingItemKey(name: item.name, unit: item.unit)] == nil
+        }
+
+        for aggregated in aggregated {
+            let key = shoppingItemKey(name: aggregated.name, unit: aggregated.unit)
+            if let existing = weekPlan.shoppingItems.first(where: {
+                shoppingItemKey(name: $0.name, unit: $0.unit) == key
+            }) {
+                existing.category = aggregated.category
+                if !existing.isManual {
+                    existing.quantity = aggregated.quantity
+                }
+                continue
+            }
 
             let item = ShoppingItem(
                 name: aggregated.name,
                 quantity: aggregated.quantity,
                 unit: aggregated.unit,
+                category: aggregated.category,
                 weekPlan: weekPlan
             )
             context.insert(item)
             weekPlan.shoppingItems.append(item)
         }
         LocalPersistence.save(context)
+    }
+
+    @MainActor
+    static func addManualShoppingItem(
+        product: FoodProduct,
+        quantity: Double,
+        unit: MeasurementUnit,
+        to weekPlan: WeekPlan,
+        in context: ModelContext
+    ) {
+        let key = shoppingItemKey(name: product.catalogKey, unit: unit)
+        if let existing = weekPlan.shoppingItems.first(where: {
+            shoppingItemKey(name: $0.name, unit: $0.unit) == key
+        }) {
+            existing.quantity += quantity
+            existing.isManual = true
+            existing.category = product.category
+        } else {
+            let item = ShoppingItem(
+                name: product.catalogKey,
+                quantity: quantity,
+                unit: unit,
+                category: product.category,
+                isManual: true,
+                weekPlan: weekPlan
+            )
+            context.insert(item)
+            weekPlan.shoppingItems.append(item)
+        }
+        LocalPersistence.save(context)
+    }
+
+    private static func shoppingItemKey(name: String, unit: MeasurementUnit) -> String {
+        "\(name.lowercased())|\(unit.rawValue)"
     }
 }

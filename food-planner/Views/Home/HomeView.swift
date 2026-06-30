@@ -76,7 +76,7 @@ struct HomeView: View {
             }
         } message: {
             if let recipe = unfavoriteCandidate {
-                Text("favorites.remove.message \(recipe.name)")
+                Text("favorites.remove.message \(recipe.localizedName)")
             }
         }
     }
@@ -254,9 +254,7 @@ struct HomeView: View {
     private var filteredCatalogRecipes: [Recipe] {
         let query = recommendationSearch.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !query.isEmpty else { return catalogRecipes }
-        return catalogRecipes.filter {
-            $0.name.localizedCaseInsensitiveContains(query)
-        }
+        return catalogRecipes.filter { $0.matchesSearch(query) }
     }
 
     private var todayDayPlan: DayPlan? {

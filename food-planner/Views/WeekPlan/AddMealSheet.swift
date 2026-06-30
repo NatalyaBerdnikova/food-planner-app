@@ -49,7 +49,7 @@ struct AddMealSheet: View {
         let query = searchText.trimmingCharacters(in: .whitespaces)
         let base = tabFilteredRecipes
         guard !query.isEmpty else { return base }
-        return base.filter { $0.name.localizedCaseInsensitiveContains(query) }
+        return base.filter { $0.matchesSearch(query) }
     }
 
     var body: some View {
@@ -176,7 +176,7 @@ struct AddMealSheet: View {
                     .frame(width: 48, height: 48)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(recipe.name)
+                    Text(recipe.localizedName)
                         .foregroundStyle(.primary)
                     Text(L10n.kcalPer100g(Int(recipe.caloriesPer100g)))
                         .font(.caption)

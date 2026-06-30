@@ -17,7 +17,16 @@ struct MicronutrientDetailSheet: View {
         NavigationStack {
             List {
                 if nutrition.totalWeightGrams > 0 {
-                    micronutrientRows(for: perServing)
+                    Section {
+                        ForEach(MicronutrientKind.allCases) { kind in
+                            MicronutrientProgressRow(
+                                kind: kind,
+                                actual: perServing.value(for: kind)
+                            )
+                        }
+                    } footer: {
+                        Text("nutrition.microDailyReference")
+                    }
                 } else {
                     ContentUnavailableView(
                         "nutrition.noIngredients",
@@ -34,26 +43,5 @@ struct MicronutrientDetailSheet: View {
                 }
             }
         }
-    }
-
-    @ViewBuilder
-    private func micronutrientRows(for totals: NutrientTotals) -> some View {
-        ForEach(MicronutrientKind.allCases) { kind in
-            HStack {
-                Text(kind.displayName)
-                Spacer()
-                Text("\(formatted(totals.value(for: kind))) \(String(localized: String.LocalizationValue(kind.unitLocalizationKey)))")
-                    .foregroundStyle(.secondary)
-            }
-        }
-    }
-
-    private func formatted(_ value: Double) -> String {
-        if value >= 100 {
-            return String(format: "%.0f", value)
-        }
-        return value.truncatingRemainder(dividingBy: 1) == 0
-            ? String(format: "%.0f", value)
-            : String(format: "%.1f", value)
     }
 }

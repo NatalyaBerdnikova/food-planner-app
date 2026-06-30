@@ -12,6 +12,18 @@ enum IngredientCategory: String, Codable, CaseIterable {
 }
 
 extension IngredientCategory {
+    /// Порядок секций в списке покупок.
+    static let shoppingListOrder: [IngredientCategory] = [
+        .vegetables,
+        .fruits,
+        .meat,
+        .fish,
+        .dairy,
+        .grains,
+        .spices,
+        .other,
+    ]
+
     var displayName: LocalizedStringResource {
         switch self {
         case .vegetables: "category.vegetables"

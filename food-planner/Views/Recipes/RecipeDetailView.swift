@@ -37,18 +37,18 @@ struct RecipeDetailView: View {
                                 macroLabelStyle: .full
                             )
 
-                            HStack(spacing: 10) {
-                                detailMetricChip(
-                                    icon: "flame.fill",
-                                    title: "recipeDetail.energy",
-                                    value: L10n.recipeCaloriesPerServing(Int(nutritionPerServing.calories.rounded()))
-                                )
-                                detailMetricChip(
-                                    icon: "scalemass.fill",
-                                    title: "recipeDetail.portionWeight",
-                                    value: L10n.recipeWeightPerServing(Int(weightPerServing.rounded()))
-                                )
-                            }
+                            // HStack(spacing: 10) {
+                            //     detailMetricChip(
+                            //         icon: "flame.fill",
+                            //         title: "recipeDetail.energy",
+                            //         value: L10n.recipeCaloriesPerServing(Int(nutritionPerServing.calories.rounded()))
+                            //     )
+                            //     detailMetricChip(
+                            //         icon: "scalemass.fill",
+                            //         title: "recipeDetail.portionWeight",
+                            //         value: L10n.recipeWeightPerServing(Int(weightPerServing.rounded()))
+                            //     )
+                            // }
 
                             Button {
                                 showMicronutrients = true
@@ -96,7 +96,7 @@ struct RecipeDetailView: View {
                     }
                 }
 
-                if hasSteps {
+                if recipe.hasLocalizedSteps {
                     sectionCard {
                         VStack(alignment: .leading, spacing: 14) {
                             sectionHeader(title: "recipe.steps", systemImage: "list.number")
@@ -118,7 +118,7 @@ struct RecipeDetailView: View {
             .padding()
         }
         .background(Color(.systemGroupedBackground))
-        .navigationTitle(recipe.name)
+        .navigationTitle(recipe.localizedName)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if recipe.isCatalogRecipe {
@@ -133,7 +133,7 @@ struct RecipeDetailView: View {
                 RecipeFavoritesService.setFavorite(recipe, favorite: false, in: modelContext)
             }
         } message: {
-            Text("favorites.remove.message \(recipe.name)")
+            Text("favorites.remove.message \(recipe.localizedName)")
         }
         .sheet(isPresented: $showMicronutrients) {
             MicronutrientDetailSheet(recipe: recipe)
@@ -159,7 +159,7 @@ struct RecipeDetailView: View {
                 }
 
             VStack(alignment: .leading, spacing: 14) {
-                Text(recipe.name)
+                Text(recipe.localizedName)
                     .font(.system(.largeTitle, design: .rounded).weight(.bold))
                     .foregroundStyle(.white)
                     .lineLimit(3)
@@ -278,34 +278,14 @@ struct RecipeDetailView: View {
         )
     }
 
-    private var hasSteps: Bool {
-        recipe.stepsRichTextData != nil || !recipe.steps.isEmpty
-    }
-
     @ViewBuilder
     private var recipeStepsContent: some View {
-        if let data = recipe.stepsRichTextData,
-           let attributed = RecipeStepsStorage.attributedString(from: data) {
-            Text(AttributedString(attributed))
+        if let stepsText = recipe.localizedStepsText {
+            Text(stepsText)
                 .font(.subheadline)
+                .foregroundStyle(.primary)
                 .lineSpacing(4)
                 .frame(maxWidth: .infinity, alignment: .leading)
-        } else {
-            ForEach(Array(recipe.steps.enumerated()), id: \.offset) { index, step in
-                HStack(alignment: .top, spacing: 12) {
-                    Text("\(index + 1)")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(.white)
-                        .frame(width: 26, height: 26)
-                        .background(Color(red: 0.06, green: 0.33, blue: 0.45), in: Circle())
-                    Text(step)
-                        .font(.subheadline)
-                        .foregroundStyle(.primary)
-                        .lineSpacing(4)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                .padding(.vertical, 4)
-            }
         }
     }
 

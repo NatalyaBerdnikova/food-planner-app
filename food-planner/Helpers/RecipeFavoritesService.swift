@@ -36,13 +36,13 @@ enum RecipeCollections {
     static func userRecipes(from recipes: [Recipe]) -> [Recipe] {
         recipes
             .filter(\.isUserCreated)
-            .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+            .sorted { $0.localizedName.localizedCaseInsensitiveCompare($1.localizedName) == .orderedAscending }
     }
 
     static func sortedCatalogRecipes(from recipes: [Recipe]) -> [Recipe] {
         recipes
             .filter(\.isCatalogRecipe)
-            .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+            .sorted { $0.localizedName.localizedCaseInsensitiveCompare($1.localizedName) == .orderedAscending }
     }
 
     static func libraryRecipes(from recipes: [Recipe]) -> [Recipe] {
