@@ -3,12 +3,17 @@ import SwiftData
 
 enum InstagramImportService {
     @MainActor
-    static func importRecipe(from urlString: String, in context: ModelContext) async throws -> ImportedRecipeDraft {
+    static func importRecipe(
+        from urlString: String,
+        in context: ModelContext,
+        onStage: ((ImportStage) -> Void)? = nil
+    ) async throws -> ImportedRecipeDraft {
         let normalizedURL = normalizeInstagramURL(urlString)
         guard isInstagramURL(normalizedURL) else {
             throw RecipeImportError.instagramUnavailable
         }
 
+        onStage?(.fetchingPost)
         let postInfo: InstagramPostInfo
         do {
             postInfo = try await ScrapeCreatorsClient.fetchPostInfo(url: normalizedURL)
@@ -18,17 +23,20 @@ enum InstagramImportService {
             throw RecipeImportError.networkFailure
         }
 
+        onStage?(.readingContent)
         let transcript = await ScrapeCreatorsClient.fetchTranscriptIfAvailable(url: normalizedURL)
 
         guard !postInfo.caption.isEmpty || !transcript.isEmpty else {
             throw RecipeImportError.invalidFormat
         }
 
+        onStage?(.parsingRecipe)
         let parsed = try await resolveParsedRecipe(
             caption: postInfo.caption,
             transcript: transcript
         )
 
+        onStage?(.matchingIngredients)
         let matchResult = IngredientCatalogMatcher.match(parsed.ingredients, in: context)
 
         var imageData: Data?
@@ -39,6 +47,7 @@ enum InstagramImportService {
             imageData = await LinkMetadataFetcher.thumbnailData(for: pageURL)
         }
 
+        onStage?(.ready)
         return ImportedRecipeDraft(
             name: parsed.name,
             sourceURL: normalizedURL,

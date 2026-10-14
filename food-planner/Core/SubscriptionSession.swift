@@ -1,14 +1,16 @@
 import Foundation
+import Observation
 import SwiftData
 
 @MainActor
-final class SubscriptionSession: ObservableObject {
-    @Published var isPro = false
-    @Published var isFree = false
-    @Published var loaderPresented = false
-    @Published var alertPresented = false
-    @Published var alertText = ""
-    @Published var paymentPresented = false
+@Observable
+final class SubscriptionSession {
+    var isPro = false
+    var isFree = false
+    var loaderPresented = false
+    var alertPresented = false
+    var alertText = ""
+    var paymentPresented = false
 
     var hasFullAccess: Bool { isPro || isFree }
 

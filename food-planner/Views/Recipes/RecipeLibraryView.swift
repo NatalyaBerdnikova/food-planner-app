@@ -5,15 +5,9 @@ struct RecipeLibraryView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(ImportCoordinator.self) private var importCoordinator
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
-    @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
-    private var settingsList: [AppSettings]
 
-    @State private var showAddRecipe = false
+    @State private var pasteImportRequest: PasteImportRequest?
     @State private var unfavoriteCandidate: Recipe?
-
-    #if DEBUG
-    @State private var debugImportURL = ""
-    #endif
 
     private let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -29,47 +23,43 @@ struct RecipeLibraryView: View {
     }
 
     var body: some View {
-        Group {
-            if userRecipes.isEmpty && catalogRecipes.isEmpty {
-                ContentUnavailableView(
-                    "empty.recipesLibrary",
-                    systemImage: "book.closed",
-                    description: Text("empty.recipesLibrary.hint")
-                )
-            } else {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 24) {
-                        if !userRecipes.isEmpty {
-                            userRecipesSection
-                        }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
+                importHero
 
-                        if !catalogRecipes.isEmpty {
-                            recommendationsSection
-                        }
+                if userRecipes.isEmpty && catalogRecipes.isEmpty {
+                    ContentUnavailableView(
+                        "empty.recipesLibrary",
+                        systemImage: "book.closed",
+                        description: Text("empty.recipesLibrary.hint")
+                    )
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 40)
+                } else {
+                    if !userRecipes.isEmpty {
+                        userRecipesSection
                     }
-                    .padding()
+                    if !catalogRecipes.isEmpty {
+                        recommendationsSection
+                    }
                 }
             }
+            .padding()
         }
         .background(Color(.systemGroupedBackground))
-        #if DEBUG
-        .safeAreaInset(edge: .bottom) {
-            debugImportBar
-        }
-        #endif
         .navigationTitle("nav.recipes")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    showAddRecipe = true
+                NavigationLink {
+                    AddRecipeView()
                 } label: {
                     Image(systemName: "plus")
                 }
                 .accessibilityLabel("accessibility.addRecipe")
             }
         }
-        .navigationDestination(isPresented: $showAddRecipe) {
-            AddRecipeView()
+        .sheet(item: $pasteImportRequest) { _ in
+            PasteImportSheet()
         }
         .alert(
             "favorites.remove.title",
@@ -94,15 +84,73 @@ struct RecipeLibraryView: View {
         }
     }
 
+    private var importHero: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: "square.and.arrow.down.on.square.fill")
+                    .font(.system(size: 34))
+                    .foregroundStyle(AppTheme.warmFill)
+                    .motionSafeSymbolEffect(.pulse)
+                    .accessibilityHidden(true)
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("import.hero.title")
+                        .font(.title2.bold())
+                        .foregroundStyle(.white)
+                    Text("import.hero.subtitle")
+                        .font(.subheadline)
+                        .foregroundStyle(.white.opacity(0.85))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+
+            VStack(spacing: 10) {
+                Button {
+                    pasteImportRequest = PasteImportRequest()
+                } label: {
+                    Label("import.hero.paste", systemImage: "link")
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: AppTheme.controlMinHeight)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(AppTheme.warmFill)
+                .foregroundStyle(.black)
+
+                Button {
+                    openInstagram()
+                } label: {
+                    Label("import.hero.openInstagram", systemImage: "camera")
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: AppTheme.controlMinHeight)
+                }
+                .buttonStyle(.bordered)
+                .tint(.white)
+            }
+
+            Text("import.hero.shareHint")
+                .font(.footnote)
+                .foregroundStyle(.white.opacity(0.75))
+        }
+        .padding(20)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppTheme.heroGradient, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+        .accessibilityElement(children: .contain)
+    }
+
     private var userRecipesSection: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("recipeLibrary.myRecipes")
                 .font(.title2.bold())
-                .foregroundStyle(.primary)
 
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(userRecipes) { recipe in
-                    userRecipeCard(recipe)
+                    NavigationLink {
+                        RecipeDetailView(recipe: recipe)
+                    } label: {
+                        RecipeCardView(recipe: recipe, badge: .userCreated)
+                    }
+                    .buttonStyle(.plain)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }
@@ -112,50 +160,14 @@ struct RecipeLibraryView: View {
         VStack(alignment: .leading, spacing: 14) {
             Text("home.recommendations")
                 .font(.title2.bold())
-                .foregroundStyle(.primary)
 
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(catalogRecipes) { recipe in
-                    recommendationCard(recipe)
+                    libraryCard(recipe)
                 }
             }
         }
     }
-
-    private func userRecipeCard(_ recipe: Recipe) -> some View {
-        NavigationLink {
-            RecipeDetailView(recipe: recipe)
-        } label: {
-            RecipeCardView(recipe: recipe, badge: .userCreated)
-        }
-        .buttonStyle(.plain)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .accessibilityLabel("accessibility.userRecipe")
-    }
-
-    private func recommendationCard(_ recipe: Recipe) -> some View {
-        let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
-    #if DEBUG
-    private var debugImportBar: some View {
-        HStack(spacing: 8) {
-            TextField("import.debug.placeholder", text: $debugImportURL)
-                .textFieldStyle(.roundedBorder)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-                .keyboardType(.URL)
-            Button("import.debug.button") {
-                let url = debugImportURL.trimmingCharacters(in: .whitespacesAndNewlines)
-                guard !url.isEmpty else { return }
-                importCoordinator.startImport(urlString: url)
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(debugImportURL.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 8)
-        .background(.bar)
-    }
-    #endif
 
     private func libraryCard(_ recipe: Recipe) -> some View {
         let isFavorite = recipe.isCatalogRecipe
@@ -180,7 +192,8 @@ struct RecipeLibraryView: View {
                 Image(systemName: isFavorite ? "heart.fill" : "heart")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(isFavorite ? .red : .secondary)
-                    .frame(width: 34, height: 34)
+                    .frame(width: 44, height: 44)
+                    .contentShape(Rectangle())
                     .background(.ultraThinMaterial, in: Circle())
             }
             .buttonStyle(.plain)
@@ -190,6 +203,15 @@ struct RecipeLibraryView: View {
                     ? String(localized: "accessibility.removeFavorite")
                     : String(localized: "accessibility.addFavorite")
             )
+        }
+    }
+
+    private func openInstagram() {
+        if let url = URL(string: "instagram://"),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        } else if let web = URL(string: "https://www.instagram.com") {
+            UIApplication.shared.open(web)
         }
     }
 }

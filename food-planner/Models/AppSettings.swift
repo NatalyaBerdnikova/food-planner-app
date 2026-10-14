@@ -12,11 +12,22 @@ final class AppSettings {
 
     var activeWeekPlan: WeekPlan?
 
-    /// Сериализованные `catalogRecipeId` (разделитель Unit Separator).
     var favoriteCatalogRecipeIdsStorage: String = ""
 
     var isPro: Bool = false
     var isFree: Bool = false
+
+    var hasCompletedOnboarding: Bool = false
+    var profileSexRaw: String = BiologicalSex.female.rawValue
+    var profileAge: Int = 30
+    var profileHeightCm: Double = 165
+    var profileWeightKg: Double = 65
+    var profileTargetWeightKg: Double = 65
+    var profileActivityRaw: String = ActivityLevel.moderate.rawValue
+    var profileGoalRaw: String = NutritionGoal.maintain.rawValue
+    var profileDietFlagsStorage: String = ""
+    var profileMicronutrientFocusStorage: String = ""
+    var profileRecipeSourceRaw: String = RecipeSourceHabit.instagram.rawValue
 
     var hasFullAccess: Bool { isPro || isFree }
 
@@ -49,17 +60,79 @@ final class AppSettings {
 }
 
 extension AppSettings {
-    private static let favoritesSeparator = "\u{1F}"
+    private static let listSeparator = "\u{1F}"
 
     var favoriteCatalogRecipeIds: [String] {
         get {
             guard !favoriteCatalogRecipeIdsStorage.isEmpty else { return [] }
             return favoriteCatalogRecipeIdsStorage
-                .components(separatedBy: Self.favoritesSeparator)
+                .components(separatedBy: Self.listSeparator)
                 .filter { !$0.isEmpty }
         }
         set {
-            favoriteCatalogRecipeIdsStorage = newValue.joined(separator: Self.favoritesSeparator)
+            favoriteCatalogRecipeIdsStorage = newValue.joined(separator: Self.listSeparator)
         }
+    }
+
+    var profileSex: BiologicalSex {
+        get { BiologicalSex(rawValue: profileSexRaw) ?? .female }
+        set { profileSexRaw = newValue.rawValue }
+    }
+
+    var profileActivity: ActivityLevel {
+        get { ActivityLevel(rawValue: profileActivityRaw) ?? .moderate }
+        set { profileActivityRaw = newValue.rawValue }
+    }
+
+    var profileGoal: NutritionGoal {
+        get { NutritionGoal(rawValue: profileGoalRaw) ?? .maintain }
+        set { profileGoalRaw = newValue.rawValue }
+    }
+
+    var profileRecipeSource: RecipeSourceHabit {
+        get { RecipeSourceHabit(rawValue: profileRecipeSourceRaw) ?? .instagram }
+        set { profileRecipeSourceRaw = newValue.rawValue }
+    }
+
+    var profileDietPreferences: Set<DietPreference> {
+        get {
+            Set(
+                profileDietFlagsStorage
+                    .components(separatedBy: Self.listSeparator)
+                    .compactMap(DietPreference.init(rawValue:))
+            )
+        }
+        set {
+            profileDietFlagsStorage = newValue.map(\.rawValue).sorted().joined(separator: Self.listSeparator)
+        }
+    }
+
+    var profileMicronutrientFocus: [MicronutrientKind] {
+        get {
+            profileMicronutrientFocusStorage
+                .components(separatedBy: Self.listSeparator)
+                .compactMap(MicronutrientKind.init(rawValue:))
+        }
+        set {
+            profileMicronutrientFocusStorage = newValue.map(\.rawValue).joined(separator: Self.listSeparator)
+        }
+    }
+
+    func apply(onboarding draft: OnboardingDraft, nutrition: DailyNutrition) {
+        hasCompletedOnboarding = true
+        profileGoal = draft.goal
+        profileSex = draft.sex
+        profileAge = draft.age
+        profileHeightCm = draft.heightCm
+        profileWeightKg = draft.weightKg
+        profileTargetWeightKg = draft.targetWeightKg
+        profileActivity = draft.activity
+        profileDietPreferences = draft.dietPreferences
+        profileMicronutrientFocus = Array(draft.micronutrientFocus)
+        profileRecipeSource = draft.recipeSource
+        targetCalories = nutrition.calories
+        targetProtein = nutrition.protein
+        targetFat = nutrition.fat
+        targetCarbs = nutrition.carbs
     }
 }

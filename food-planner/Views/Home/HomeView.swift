@@ -3,7 +3,7 @@ import SwiftData
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
-    @EnvironmentObject private var subscriptionSession: SubscriptionSession
+    @Environment(ImportCoordinator.self) private var importCoordinator
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
@@ -13,6 +13,7 @@ struct HomeView: View {
     @State private var recommendationSearch = ""
     @State private var unfavoriteCandidate: Recipe?
     @State private var addMealPresentation: AddMealPresentation?
+    @State private var pasteImportRequest: PasteImportRequest?
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
     private let recommendationColumns = [
@@ -20,7 +21,7 @@ struct HomeView: View {
         GridItem(.flexible(), spacing: 12),
     ]
 
-    private let accentTeal = Color(red: 0.06, green: 0.33, blue: 0.45)
+    private let accentTeal = AppTheme.accent
 
     private var appSettings: AppSettings? { settingsList.first }
 
@@ -32,11 +33,7 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 todayNutritionCard
-                if !subscriptionSession.hasFullAccess {
-                    ProSubscriptionPromoView {
-                        subscriptionSession.showPayment()
-                    }
-                }
+                importCTACard
                 todayMealsSection
                 weekPlanCard
                 recommendationsSection
@@ -64,6 +61,9 @@ struct HomeView: View {
                 refresh()
             }
         }
+        .sheet(item: $pasteImportRequest) { _ in
+            PasteImportSheet()
+        }
         .alert(
             "favorites.remove.title",
             isPresented: Binding(
@@ -85,6 +85,34 @@ struct HomeView: View {
                 Text("favorites.remove.message \(recipe.localizedName)")
             }
         }
+    }
+
+    private var importCTACard: some View {
+        Button {
+            pasteImportRequest = PasteImportRequest()
+        } label: {
+            HStack(spacing: 14) {
+                Image(systemName: "square.and.arrow.down.on.square.fill")
+                    .font(.title2)
+                    .foregroundStyle(AppTheme.warmFill)
+                    .accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("home.import.cta.title")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                    Text("home.import.cta.subtitle")
+                        .font(.footnote)
+                        .foregroundStyle(.white.opacity(0.8))
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(.white.opacity(0.7))
+            }
+            .padding(16)
+            .background(AppTheme.heroGradient, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .accessibilityHint("home.import.cta.subtitle")
     }
 
     // MARK: - Today nutrition card

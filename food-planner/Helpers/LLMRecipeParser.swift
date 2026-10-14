@@ -37,6 +37,7 @@ enum LLMRecipeParser {
 
     private struct RecipeJSON: Decodable {
         struct IngredientJSON: Decodable {
+            var catalogKey: String?
             var rawName: String
             var quantity: Double
             var unit: String
@@ -51,13 +52,15 @@ enum LLMRecipeParser {
     static func parse(caption: String, transcript: String) async throws -> ParsedRecipe {
         guard !ImportAPIConfig.nvidiaApiKey.isEmpty,
               ImportAPIConfig.nvidiaApiKey != "YOUR_NVIDIA_API_KEY" else {
-            throw RecipeImportError.openAIUnauthorized
+            throw RecipeImportError.apiUnauthorized
         }
 
+        let catalogSnippet = IngredientCatalogPrompt.compactCatalogForPrompt()
         let systemPrompt = """
         You extract structured recipes from Instagram Reel captions and transcripts.
         Prefer ingredient quantities from CAPTION when both sources exist.
         Do not invent ingredients that are not mentioned in the text.
+        When an ingredient matches the food catalog, set catalogKey to that key; otherwise set catalogKey to null and keep rawName.
         Ingredient units must be one of: gram, kilogram, milliliter, liter, piece, tablespoon, teaspoon.
         Reply with JSON only, no markdown and no extra text.
         JSON schema:
@@ -65,8 +68,11 @@ enum LLMRecipeParser {
           "name": "string",
           "servings": number or null,
           "steps": ["string"],
-          "ingredients": [{"rawName": "string", "quantity": number, "unit": "string"}]
+          "ingredients": [{"catalogKey": "string or null", "rawName": "string", "quantity": number, "unit": "string"}]
         }
+
+        Food catalog (catalogKey | ru | en), use only keys from this list:
+        \(catalogSnippet)
         """
 
         let userPrompt = """
@@ -119,7 +125,7 @@ enum LLMRecipeParser {
 
         let ingredients = decoded.ingredients.map { item in
             ParsedIngredient(
-                catalogKey: nil,
+                catalogKey: item.catalogKey?.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty,
                 rawName: item.rawName,
                 quantity: item.quantity,
                 unit: item.unit
@@ -175,9 +181,9 @@ enum LLMRecipeParser {
            let code = apiError.error?.code {
             switch code {
             case "insufficient_quota", "rate_limit_exceeded":
-                return .openAIQuotaExceeded
+                return .apiQuotaExceeded
             case "invalid_api_key", "authentication_error", "unauthorized":
-                return .openAIUnauthorized
+                return .apiUnauthorized
             default:
                 break
             }
@@ -185,9 +191,9 @@ enum LLMRecipeParser {
 
         switch statusCode {
         case 401, 403:
-            return .openAIUnauthorized
+            return .apiUnauthorized
         case 429:
-            return .openAIQuotaExceeded
+            return .apiQuotaExceeded
         default:
             return .parsingFailed
         }
@@ -206,5 +212,12 @@ enum LLMRecipeParser {
             "chat_template_kwargs": ["thinking": false],
             "stream": false,
         ]
+    }
+}
+
+private extension String {
+    var nilIfEmpty: String? {
+        let trimmed = trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? nil : trimmed
     }
 }

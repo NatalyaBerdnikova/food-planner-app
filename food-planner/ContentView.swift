@@ -3,56 +3,39 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @EnvironmentObject private var subscriptionSession: SubscriptionSession
+    @Environment(SubscriptionSession.self) private var subscriptionSession
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
-    @AppStorage(AppColorScheme.storageKey) private var appColorSchemeRaw = AppColorScheme.system.rawValue
-    @State private var isDatabaseReady = false
+    @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
+    private var settingsList: [AppSettings]
 
+    @State private var isDatabaseReady = false
     @State private var importCoordinator = ImportCoordinator()
 
     private var appLanguage: AppLanguage {
         AppLanguage(rawValue: appLanguageRaw) ?? .system
     }
 
-    private var appColorScheme: AppColorScheme {
-        AppColorScheme(rawValue: appColorSchemeRaw) ?? .system
+    private var settings: AppSettings? { settingsList.first }
+
+    private var hasCompletedOnboarding: Bool {
+        settings?.hasCompletedOnboarding == true
     }
 
     var body: some View {
+        @Bindable var subscriptionSession = subscriptionSession
+
         Group {
             if isDatabaseReady {
-                MainTabView()
+                gatedRoot
                     .environment(importCoordinator)
                     .applyAppLanguage(appLanguage)
-                    .applyAppColorScheme(appColorScheme)
-                    .task {
-                        ModelContextProvider.shared = modelContext
-                        FoodCatalogSeeder.seedIfNeeded(in: modelContext)
-                        RecipeCatalogStore.seedIfNeeded(in: modelContext)
-                        _ = AppSettingsService.settings(in: modelContext)
-                        importCoordinator.checkPendingImport()
-                    }
-                    .onOpenURL { url in
-                        importCoordinator.handleOpenURL(url)
-                    }
-                    .sheet(isPresented: $importCoordinator.showProgress) {
-                        ImportProgressView(coordinator: importCoordinator)
-                    }
-                    .sheet(item: $importCoordinator.editingDraft, onDismiss: {
-                        importCoordinator.importedDraft = nil
-                        importCoordinator.state = .idle
-                    }) { draft in
-                        NavigationStack {
-                            AddRecipeView(prefill: draft)
-                        }
-                    }
-                    .overlay {
-                        if subscriptionSession.loaderPresented {
-                            SubscriptionLoader()
-                        }
-                    }
             } else {
-                SubscriptionLoader()
+                ZStack {
+                    AppTheme.heroGradient.ignoresSafeArea()
+                    ProgressView()
+                        .controlSize(.large)
+                        .tint(.white)
+                }
             }
         }
         .task {
@@ -65,10 +48,50 @@ struct ContentView: View {
         ) {
             Button("common.done", role: .cancel) {}
         }
-        .sheet(isPresented: $subscriptionSession.paymentPresented) {
-            PaymentModalView()
-                .environmentObject(subscriptionSession)
+        .overlay {
+            if subscriptionSession.loaderPresented {
+                SubscriptionLoader()
+            }
         }
+    }
+
+    @ViewBuilder
+    private var gatedRoot: some View {
+        if !hasCompletedOnboarding {
+            OnboardingFlowView {
+                refreshSubscriptionStatus()
+            }
+        } else if !subscriptionSession.hasFullAccess {
+            HardPaywallView()
+        } else {
+            mainApp
+        }
+    }
+
+    private var mainApp: some View {
+        MainTabView()
+            .tint(AppTheme.accent)
+            .task {
+                importCoordinator.attach(modelContext: modelContext)
+                FoodCatalogSeeder.seedIfNeeded(in: modelContext)
+                RecipeCatalogStore.seedIfNeeded(in: modelContext)
+                _ = AppSettingsService.settings(in: modelContext)
+                importCoordinator.checkPendingImport()
+            }
+            .onOpenURL { url in
+                importCoordinator.attach(modelContext: modelContext)
+                importCoordinator.handleOpenURL(url)
+            }
+            .sheet(item: $importCoordinator.progressPresentation) { _ in
+                ImportProgressView(coordinator: importCoordinator)
+            }
+            .sheet(item: $importCoordinator.editingDraft, onDismiss: {
+                importCoordinator.clearDraft()
+            }) { draft in
+                NavigationStack {
+                    ImportedRecipeReviewView(draft: draft)
+                }
+            }
     }
 
     private func bootstrapIfNeeded() async {
@@ -93,6 +116,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(SubscriptionSession())
+        .environment(SubscriptionSession())
         .modelContainer(FoodPlannerSchema.previewContainer)
 }

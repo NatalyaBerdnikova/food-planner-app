@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct PaymentModalView: View {
-    @EnvironmentObject private var subscriptionSession: SubscriptionSession
+    @Environment(SubscriptionSession.self) private var subscriptionSession
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
 
@@ -34,7 +34,7 @@ struct PaymentModalView: View {
 }
 
 struct PaywallView: View {
-    @EnvironmentObject private var subscriptionSession: SubscriptionSession
+    @Environment(SubscriptionSession.self) private var subscriptionSession
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {

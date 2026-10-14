@@ -3,16 +3,13 @@ import SwiftData
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
-    @EnvironmentObject private var subscriptionSession: SubscriptionSession
+    @Environment(SubscriptionSession.self) private var subscriptionSession
 
-    @AppStorage("openAIAPIKey") private var apiKey = ""
-    @AppStorage("productDatabaseName") private var productDatabaseName = ""
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
-    @AppStorage(AppColorScheme.storageKey) private var appColorSchemeRaw = AppColorScheme.system.rawValue
 
-    @Query private var foodProducts: [FoodProduct]
     @Query private var recipes: [Recipe]
     @Query private var weekPlans: [WeekPlan]
+    @Query private var foodProducts: [FoodProduct]
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
     private var settingsList: [AppSettings]
 
@@ -21,24 +18,23 @@ struct SettingsView: View {
     @State private var fatText = ""
     @State private var carbsText = ""
     @State private var showNutritionCalculator = false
+    @State private var selectedMicros: Set<MicronutrientKind> = []
 
     private var settings: AppSettings? { settingsList.first }
 
     var body: some View {
         Form {
             Section {
-                if subscriptionSession.isPro {
-                    LabeledContent("settings.subscription.status") {
-                        Text("settings.subscription.active")
-                            .foregroundStyle(.green)
-                    }
-                } else {
-                    Button {
-                        subscriptionSession.showPayment()
-                    } label: {
-                        Label("settings.subscription.buy", systemImage: "sparkles")
-                    }
+                LabeledContent("settings.subscription.status") {
+                    Text(
+                        subscriptionSession.hasFullAccess
+                            ? "settings.subscription.active"
+                            : "settings.subscription.inactive"
+                    )
+                    .foregroundStyle(subscriptionSession.hasFullAccess ? .green : .secondary)
+                }
 
+                if subscriptionSession.hasFullAccess {
                     Button {
                         restorePurchases()
                     } label: {
@@ -49,6 +45,51 @@ struct SettingsView: View {
                 Text("settings.subscription.title")
             }
 
+            if let settings {
+                Section {
+                    LabeledContent("onboarding.goal.title") {
+                        Text(LocalizedStringKey(settings.profileGoal.localizationKey))
+                    }
+                    LabeledContent("onboarding.body.age") {
+                        Text("\(settings.profileAge)")
+                    }
+                    LabeledContent("onboarding.body.weight") {
+                        Text(String(format: "%.1f kg", settings.profileWeightKg))
+                    }
+                    LabeledContent("onboarding.body.targetWeight") {
+                        Text(String(format: "%.1f kg", settings.profileTargetWeightKg))
+                    }
+                } header: {
+                    Text("settings.profile.title")
+                } footer: {
+                    Text("settings.profile.footer")
+                }
+
+                Section {
+                    ForEach(MicronutrientKind.allCases) { kind in
+                        Toggle(isOn: Binding(
+                            get: { selectedMicros.contains(kind) },
+                            set: { isOn in
+                                if isOn {
+                                    if selectedMicros.count < 5 {
+                                        selectedMicros.insert(kind)
+                                    }
+                                } else {
+                                    selectedMicros.remove(kind)
+                                }
+                                persistMicronutrientFocus()
+                            }
+                        )) {
+                            Text(LocalizedStringKey(kind.localizationKey))
+                        }
+                    }
+                } header: {
+                    Text("settings.micros.title")
+                } footer: {
+                    Text("settings.micros.footer")
+                }
+            }
+
             Section {
                 Picker("settings.language", selection: $appLanguageRaw) {
                     ForEach(AppLanguage.allCases) { language in
@@ -56,13 +97,8 @@ struct SettingsView: View {
                             .tag(language.rawValue)
                     }
                 }
-
-                Picker("settings.theme", selection: $appColorSchemeRaw) {
-                    ForEach(AppColorScheme.allCases) { theme in
-                        Text(theme.displayName)
-                            .tag(theme.rawValue)
-                    }
-                }
+            } footer: {
+                Text("settings.appearance.systemFooter")
             }
 
             Section {
@@ -93,6 +129,9 @@ struct SettingsView: View {
                 LabeledContent("settings.storage.weekPlans") {
                     Text("\(weekPlans.count)")
                 }
+                LabeledContent("settings.productDB.count") {
+                    Text("\(foodProducts.count)")
+                }
                 if let active = settings?.activeWeekPlan {
                     LabeledContent("settings.storage.activePlan") {
                         Text(active.weekStartDate, format: .dateTime.day().month().year())
@@ -102,26 +141,6 @@ struct SettingsView: View {
                 Text("settings.storage.title")
             } footer: {
                 Text("settings.storage.footer")
-            }
-
-            Section {
-                SecureField("settings.apiKey", text: $apiKey)
-                    .textInputAutocapitalization(.never)
-            } header: {
-                Text("settings.api")
-            } footer: {
-                Text("settings.api.footer")
-            }
-
-            Section {
-                TextField("settings.productDBName", text: $productDatabaseName)
-                LabeledContent("settings.productDB.count") {
-                    Text("\(foodProducts.count)")
-                }
-            } header: {
-                Text("settings.productDB")
-            } footer: {
-                Text("settings.productDB.footer")
             }
         }
         .navigationTitle("nav.settings")
@@ -150,6 +169,13 @@ struct SettingsView: View {
         proteinText = format(appSettings.targetProtein)
         fatText = format(appSettings.targetFat)
         carbsText = format(appSettings.targetCarbs)
+        selectedMicros = Set(appSettings.profileMicronutrientFocus)
+    }
+
+    private func persistMicronutrientFocus() {
+        let settings = AppSettingsService.settings(in: modelContext)
+        settings.profileMicronutrientFocus = Array(selectedMicros)
+        LocalPersistence.save(modelContext)
     }
 
     private func saveTargets() {
@@ -181,9 +207,10 @@ struct SettingsView: View {
                     subscriptionSession.showAlert(String(localized: "subscription.restoreEmpty"))
                 }
             }
-        } errorCallback: { _ in
+        } errorCallback: { message in
             Task { @MainActor in
                 subscriptionSession.hideLoader()
+                subscriptionSession.showAlert(message)
             }
         }
     }

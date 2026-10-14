@@ -26,8 +26,8 @@ enum RecipeImportError: LocalizedError {
     case instagramUnavailable
     case transcriptionFailed
     case parsingFailed
-    case openAIQuotaExceeded
-    case openAIUnauthorized
+    case apiQuotaExceeded
+    case apiUnauthorized
 
     var errorDescription: String? {
         switch self {
@@ -37,8 +37,8 @@ enum RecipeImportError: LocalizedError {
         case .instagramUnavailable: String(localized: "import.error.instagram")
         case .transcriptionFailed: String(localized: "import.error.transcription")
         case .parsingFailed: String(localized: "import.error.parsing")
-        case .openAIQuotaExceeded: String(localized: "import.error.openai.quota")
-        case .openAIUnauthorized: String(localized: "import.error.openai.auth")
+        case .apiQuotaExceeded: String(localized: "import.error.api.quota")
+        case .apiUnauthorized: String(localized: "import.error.api.auth")
         }
     }
 }

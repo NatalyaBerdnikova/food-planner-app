@@ -2,13 +2,14 @@ import SwiftUI
 
 struct ImportProgressView: View {
     @Bindable var coordinator: ImportCoordinator
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         NavigationStack {
             Group {
                 switch coordinator.state {
-                case .loading:
-                    loadingContent
+                case .loading(let stage):
+                    loadingContent(stage: stage)
                 case .failed(let message):
                     errorContent(message: message)
                 case .ready:
@@ -29,19 +30,81 @@ struct ImportProgressView: View {
                 }
             }
         }
-        .interactiveDismissDisabled(coordinator.state == .loading)
+        .interactiveDismissDisabled({
+            if case .loading = coordinator.state { return true }
+            return false
+        }())
+        .presentationDetents([.medium, .large])
     }
 
-    private var loadingContent: some View {
-        VStack(spacing: 20) {
-            ProgressView()
-                .controlSize(.large)
-            Text("import.progress.loading")
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
+    private func loadingContent(stage: ImportStage) -> some View {
+        VStack(spacing: 28) {
+            ZStack {
+                Circle()
+                    .stroke(AppTheme.accent.opacity(0.15), lineWidth: 8)
+                    .frame(width: 88, height: 88)
+                Circle()
+                    .trim(from: 0, to: progress(for: stage))
+                    .stroke(AppTheme.accent, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                    .frame(width: 88, height: 88)
+                    .rotationEffect(.degrees(-90))
+                    .animation(reduceMotion ? nil : .easeInOut(duration: 0.35), value: stage)
+                Image(systemName: "sparkles")
+                    .font(.title)
+                    .foregroundStyle(AppTheme.accent)
+                    .motionSafeSymbolEffect(.variableColor)
+                    .accessibilityHidden(true)
+            }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(Text(LocalizedStringKey(stage.localizationKey)))
+
+            VStack(spacing: 8) {
+                Text(LocalizedStringKey(stage.localizationKey))
+                    .font(.title3.bold())
+                    .multilineTextAlignment(.center)
+
+                Text("import.progress.aiDisclosure")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+
+                Text("import.privacy.server")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(ImportStage.allCases.filter { $0 != .ready }) { item in
+                    stageRow(item, current: stage)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 8)
         }
+        .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
+    }
+
+    private func stageRow(_ stage: ImportStage, current: ImportStage) -> some View {
+        let isDone = stage.rawValue < current.rawValue
+        let isCurrent = stage == current
+        return HStack(spacing: 12) {
+            Image(systemName: isDone ? "checkmark.circle.fill" : (isCurrent ? "circle.inset.filled" : "circle"))
+                .foregroundStyle(isDone || isCurrent ? AppTheme.accent : .secondary)
+                .accessibilityHidden(true)
+            Text(LocalizedStringKey(stage.localizationKey))
+                .font(.subheadline.weight(isCurrent ? .semibold : .regular))
+                .foregroundStyle(isCurrent || isDone ? .primary : .secondary)
+            Spacer()
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(isCurrent ? .isSelected : [])
+    }
+
+    private func progress(for stage: ImportStage) -> CGFloat {
+        let total = CGFloat(max(ImportStage.allCases.count - 1, 1))
+        return CGFloat(stage.rawValue + 1) / total
     }
 
     private func errorContent(message: String) -> some View {
@@ -50,6 +113,10 @@ struct ImportProgressView: View {
         } description: {
             Text(message)
         } actions: {
+            Button("import.progress.retry") {
+                coordinator.retryImport()
+            }
+            .buttonStyle(.borderedProminent)
             Button("common.cancel") {
                 coordinator.dismissError()
             }
@@ -57,17 +124,35 @@ struct ImportProgressView: View {
     }
 
     private var successContent: some View {
-        ContentUnavailableView {
-            Label("import.progress.success", systemImage: "checkmark.circle")
-        } description: {
+        VStack(spacing: 20) {
+            Image(systemName: "checkmark.circle.fill")
+                .font(.system(size: 56))
+                .foregroundStyle(AppTheme.success)
+                .motionSafeSymbolEffect(.bounce)
+                .accessibilityHidden(true)
+
+            Text("import.progress.success")
+                .font(.title2.bold())
+
             if let draft = coordinator.importedDraft {
                 Text(draft.name)
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+
+                Text("import.progress.matched \(draft.ingredients.count) \(draft.unresolvedIngredients.count)")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
             }
-        } actions: {
+
             Button("import.progress.review") {
                 coordinator.openImportedRecipe()
             }
             .buttonStyle(.borderedProminent)
+            .tint(AppTheme.accent)
+            .controlSize(.large)
         }
+        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

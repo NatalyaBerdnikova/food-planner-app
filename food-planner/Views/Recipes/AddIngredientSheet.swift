@@ -15,8 +15,6 @@ struct AddIngredientSheet: View {
     let onAdd: (DraftIngredient) -> Void
 
     @State private var selectedKey: String?
-    @State private var gramsText = "100"
-    @State private var searchText = ""
     @State private var quantityText: String
     @State private var unit: MeasurementUnit
     @State private var searchText: String
@@ -72,10 +70,16 @@ struct AddIngredientSheet: View {
                     HStack {
                         Text("addIngredient.grams")
                         Spacer()
-                        TextField("0", text: $gramsText)
+                        TextField("0", text: $quantityText)
                             .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
                             .frame(maxWidth: 120)
+                    }
+
+                    Picker("unit.gram", selection: $unit) {
+                        ForEach(MeasurementUnit.allCases, id: \.self) { item in
+                            Text(item.displayName).tag(item)
+                        }
                     }
                 }
             }
@@ -116,19 +120,19 @@ struct AddIngredientSheet: View {
     }
 
     private var canAdd: Bool {
-        selectedProduct != nil && (parsedGrams() ?? 0) > 0
+        selectedProduct != nil && (parsedQuantity() ?? 0) > 0
     }
 
     private func addIngredient() {
         guard let product = selectedProduct,
-              let grams = parsedGrams(),
-              grams > 0 else { return }
+              let quantity = parsedQuantity(),
+              quantity > 0 else { return }
 
-        onAdd(DraftIngredient(product: product, quantity: grams, unit: .gram))
+        onAdd(DraftIngredient(product: product, quantity: quantity, unit: unit))
         dismiss()
     }
 
-    private func parsedGrams() -> Double? {
-        Double(gramsText.replacingOccurrences(of: ",", with: "."))
+    private func parsedQuantity() -> Double? {
+        Double(quantityText.replacingOccurrences(of: ",", with: "."))
     }
 }

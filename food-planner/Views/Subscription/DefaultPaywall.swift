@@ -3,7 +3,7 @@ import Adapty
 import SwiftData
 
 struct DefaultPaywall: View {
-    @EnvironmentObject private var subscriptionSession: SubscriptionSession
+    @Environment(SubscriptionSession.self) private var subscriptionSession
     @Environment(\.modelContext) private var modelContext
 
     let placement: Placements

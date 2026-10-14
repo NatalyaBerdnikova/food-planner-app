@@ -12,6 +12,7 @@ enum IngredientCatalogPrompt {
     }
 
     private static var cachedPrompt: String?
+    private static let maxPromptCharacters = 24_000
 
     static func compactCatalog() -> String {
         if let cachedPrompt { return cachedPrompt }
@@ -32,6 +33,16 @@ enum IngredientCatalogPrompt {
         let prompt = lines.joined(separator: "\n")
         cachedPrompt = prompt
         return prompt
+    }
+
+    static func compactCatalogForPrompt() -> String {
+        let full = compactCatalog()
+        guard full.count > maxPromptCharacters else { return full }
+        let truncated = String(full.prefix(maxPromptCharacters))
+        if let lastNewline = truncated.lastIndex(of: "\n") {
+            return String(truncated[..<lastNewline])
+        }
+        return truncated
     }
 
     static func allCatalogKeys() -> [String] {
