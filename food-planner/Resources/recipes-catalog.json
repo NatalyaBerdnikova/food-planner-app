@@ -17,7 +17,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yogurt",
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 180,
           "unit": "gram"
         },
@@ -27,7 +27,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "honey",
+          "catalogKey": "bee_honey",
           "quantity": 15,
           "unit": "gram"
         },
@@ -59,7 +59,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yogurt",
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 200,
           "unit": "gram"
         },
@@ -91,17 +91,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yogurt",
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "honey",
+          "catalogKey": "bee_honey",
           "quantity": 15,
           "unit": "gram"
         },
@@ -133,12 +133,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "broccoli",
+          "catalogKey": "brokkoli",
           "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "egg",
+          "catalogKey": "yaytso_kurinoe",
           "quantity": 100,
           "unit": "gram"
         },
@@ -170,22 +170,22 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "egg",
+          "catalogKey": "yaytso_kurinoe",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "cheese",
+          "catalogKey": "syr_korol_syrov_syrobogatov",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter",
+          "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 15,
           "unit": "gram"
         }
@@ -212,22 +212,22 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "egg",
+          "catalogKey": "yaytso_kurinoe",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "honey",
+          "catalogKey": "bee_honey",
           "quantity": 20,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter",
+          "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 15,
           "unit": "gram"
         }
@@ -254,17 +254,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "egg",
+          "catalogKey": "yaytso_kurinoe",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter",
+          "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 40,
           "unit": "gram"
         }
@@ -291,17 +291,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "onion",
+          "catalogKey": "bulb_onion",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "tomato",
+          "catalogKey": "pomidor_tomat_produkt_udalen",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "garlic",
+          "catalogKey": "chesnok",
           "quantity": 10,
           "unit": "gram"
         },
@@ -338,12 +338,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrot",
+          "catalogKey": "carrots_product_removed",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_pepper",
+          "catalogKey": "red_sweet_pepper",
           "quantity": 100,
           "unit": "gram"
         },
@@ -380,22 +380,22 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrot",
+          "catalogKey": "carrots_product_removed",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "onion",
+          "catalogKey": "bulb_onion",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "tomato",
+          "catalogKey": "pomidor_tomat_produkt_udalen",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "bread",
+          "catalogKey": "bread_pshenichnyy_produkt_udalen",
           "quantity": 40,
           "unit": "gram"
         }
@@ -417,12 +417,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yogurt",
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 180,
           "unit": "gram"
         },
         {
-          "catalogKey": "honey",
+          "catalogKey": "bee_honey",
           "quantity": 20,
           "unit": "gram"
         },
@@ -454,17 +454,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "bread",
+          "catalogKey": "bread_pshenichnyy_produkt_udalen",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "cheese",
+          "catalogKey": "syr_korol_syrov_syrobogatov",
           "quantity": 70,
           "unit": "gram"
         },
         {
-          "catalogKey": "egg",
+          "catalogKey": "yaytso_kurinoe",
           "quantity": 50,
           "unit": "gram"
         },
@@ -491,7 +491,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "rice",
+          "catalogKey": "white_rice_rice_groats",
           "quantity": 150,
           "unit": "gram"
         },
@@ -501,7 +501,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "salmon",
+          "catalogKey": "losos_atlanticheskiy_semga",
           "quantity": 120,
           "unit": "gram"
         },
@@ -538,7 +538,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt",
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 60,
           "unit": "gram"
         },
@@ -548,7 +548,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "lemon",
+          "catalogKey": "lim_n",
           "quantity": 20,
           "unit": "gram"
         }
@@ -580,12 +580,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter",
+          "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 20,
           "unit": "gram"
         }
@@ -607,7 +607,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "rice",
+          "catalogKey": "white_rice_rice_groats",
           "quantity": 150,
           "unit": "gram"
         },
@@ -617,7 +617,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cucumber",
+          "catalogKey": "ogurets_gruntovyy",
           "quantity": 80,
           "unit": "gram"
         },
@@ -627,12 +627,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "avocado",
+          "catalogKey": "avokado",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "egg",
+          "catalogKey": "yaytso_kurinoe",
           "quantity": 50,
           "unit": "gram"
         }
@@ -659,7 +659,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt",
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 50,
           "unit": "gram"
         },
@@ -669,12 +669,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "egg",
+          "catalogKey": "yaytso_kurinoe",
           "quantity": 50,
           "unit": "gram"
         },
@@ -701,7 +701,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "beef",
+          "catalogKey": "beef_cat_1",
           "quantity": 150,
           "unit": "gram"
         },
@@ -711,22 +711,22 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrot",
+          "catalogKey": "carrots_product_removed",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "onion",
+          "catalogKey": "bulb_onion",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter",
+          "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 20,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 50,
           "unit": "gram"
         }
@@ -748,7 +748,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "rice",
+          "catalogKey": "white_rice_rice_groats",
           "quantity": 150,
           "unit": "gram"
         },
@@ -768,7 +768,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "egg",
+          "catalogKey": "yaytso_kurinoe",
           "quantity": 50,
           "unit": "gram"
         }
@@ -795,12 +795,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 200,
           "unit": "gram"
         },
         {
-          "catalogKey": "honey",
+          "catalogKey": "bee_honey",
           "quantity": 20,
           "unit": "gram"
         },
@@ -827,27 +827,27 @@
       },
       "ingredients": [
         {
-          "catalogKey": "pasta",
+          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
           "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "chicken_breast",
+          "catalogKey": "tsyplyata_produkt_udalen",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "tomato",
+          "catalogKey": "pomidor_tomat_produkt_udalen",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter",
+          "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 15,
           "unit": "gram"
         }
@@ -874,7 +874,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 200,
           "unit": "gram"
         },
@@ -884,7 +884,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cheese",
+          "catalogKey": "syr_korol_syrov_syrobogatov",
           "quantity": 50,
           "unit": "gram"
         }
@@ -906,7 +906,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "bread",
+          "catalogKey": "bread_pshenichnyy_produkt_udalen",
           "quantity": 90,
           "unit": "gram"
         },
@@ -916,12 +916,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt",
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 40,
           "unit": "gram"
         },
         {
-          "catalogKey": "cucumber",
+          "catalogKey": "ogurets_gruntovyy",
           "quantity": 80,
           "unit": "gram"
         }
@@ -943,27 +943,27 @@
       },
       "ingredients": [
         {
-          "catalogKey": "pasta",
+          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
           "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "chicken_breast",
+          "catalogKey": "tsyplyata_produkt_udalen",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "cheese",
+          "catalogKey": "syr_korol_syrov_syrobogatov",
           "quantity": 40,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter",
+          "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 15,
           "unit": "gram"
         }
@@ -985,7 +985,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "chicken_breast",
+          "catalogKey": "tsyplyata_produkt_udalen",
           "quantity": 150,
           "unit": "gram"
         },
@@ -1000,12 +1000,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrot",
+          "catalogKey": "carrots_product_removed",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "onion",
+          "catalogKey": "bulb_onion",
           "quantity": 60,
           "unit": "gram"
         },
@@ -1032,22 +1032,22 @@
       },
       "ingredients": [
         {
-          "catalogKey": "rice",
+          "catalogKey": "white_rice_rice_groats",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "chicken_breast",
+          "catalogKey": "tsyplyata_produkt_udalen",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_pepper",
+          "catalogKey": "red_sweet_pepper",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "onion",
+          "catalogKey": "bulb_onion",
           "quantity": 60,
           "unit": "gram"
         },
@@ -1074,12 +1074,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "rice",
+          "catalogKey": "white_rice_rice_groats",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "chicken_breast",
+          "catalogKey": "tsyplyata_produkt_udalen",
           "quantity": 120,
           "unit": "gram"
         },
@@ -1089,17 +1089,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrot",
+          "catalogKey": "carrots_product_removed",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "onion",
+          "catalogKey": "bulb_onion",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter",
+          "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 15,
           "unit": "gram"
         }
@@ -1121,7 +1121,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "pasta",
+          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
           "quantity": 120,
           "unit": "gram"
         },
@@ -1131,18 +1131,4052 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk",
+          "catalogKey": "milk_3_5_fat_sterilized",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "cheese",
+          "catalogKey": "syr_korol_syrov_syrobogatov",
           "quantity": 40,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter",
+          "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 15,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_29",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Творожные вафли",
+          "steps": "Смешать блендером все ингредиенты кроме сиропа и ягод. Обжарить в вафельнице по 10 минут на вафлю.\nСмородину пробить блендером с сиропом топинамбура и полить этим соусом вафли.\nПри подаче можно украсить ягодами и полить сиропом топинамбура."
+        },
+        "en": {
+          "name": "Cottage cheese waffles",
+          "steps": "Смешать блендером все ингредиенты кроме сиропа и ягод. Обжарить в вафельнице по 10 минут на вафлю.\nСмородину пробить блендером с сиропом топинамбура и полить этим соусом вафли.\nПри подаче можно украсить ягодами и полить сиропом топинамбура."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 4,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "item_5",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 40,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_30",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Льняная каша с миндалем",
+          "steps": "Если используете замороженные ягоды и бананы - разморозить. Семена льна перемолоть в кофемолке. Миндаль мелко нарезать.\nСмешать в блендере: семена льна, молоко, корицу, банан и ягоды. По желанию половину ягод можно оставить для подачи.\nПри подаче сверху выложить ягоды и миндаль."
+        },
+        "en": {
+          "name": "Flax porridge with almonds",
+          "steps": "Если используете замороженные ягоды и бананы - разморозить. Семена льна перемолоть в кофемолке. Миндаль мелко нарезать.\nСмешать в блендере: семена льна, молоко, корицу, банан и ягоды. По желанию половину ягод можно оставить для подачи.\nПри подаче сверху выложить ягоды и миндаль."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "almonds",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 130,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cherries",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 50,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_31",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Гранола с ягодами",
+          "steps": "Хорошо разогреть сквороду, добавить кокосовое масло и овсяные хлопья. Обжаривать, помешивая, до первых золотистых бочков, минут 7.\nДобавить орехи, семена и сироп топинамбура. Также можно добавить сушеные ягоды. Перемешать для равномерного распределения сиропа.\nУбавить огонь и обжарить около минуты. Перемешать и обжаривать еще 1-2 минуты, до того как хлопья станут золотистыми а сироп полностью впитается.\nГотовую гранолу разложить в один слой и дать остыть минут 10-15. Она затвердеет и можно будет разломить на кусочки. При подаче добавить молоко и ягоды."
+        },
+        "en": {
+          "name": "Granola with berries",
+          "steps": "Хорошо разогреть сквороду, добавить кокосовое масло и овсяные хлопья. Обжаривать, помешивая, до первых золотистых бочков, минут 7.\nДобавить орехи, семена и сироп топинамбура. Также можно добавить сушеные ягоды. Перемешать для равномерного распределения сиропа.\nУбавить огонь и обжарить около минуты. Перемешать и обжаривать еще 1-2 минуты, до того как хлопья станут золотистыми а сироп полностью впитается.\nГотовую гранолу разложить в один слой и дать остыть минут 10-15. Она затвердеет и можно будет разломить на кусочки. При подаче добавить молоко и ягоды."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sunflower_sunflower_seeds",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "coconut_oil_liquid",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "raspberries",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "item_5",
+          "quantity": 50,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_32",
+      "servings": 6,
+      "translations": {
+        "ru": {
+          "name": "Куриные колбаски",
+          "steps": "Обжарить лук на сливочном масле. Пропустить курицу и лук через мясорубку или измельчить блендером. Вмешать в массу специи, яйцо, молоко и крахмал.\nПищевую пленку нарезать на прямоугольники. Выложить колбаску на пленку. (Можно использовать кондитерский рукав или плотный пакет с надрезом)\nЗаморозить. В морозилке хранится до 3 месяцев. После разморозки освободить от пленки.\n1 вариант приготовления: Отварить 15 минут в кипящей воде\n2 вариант приготовления: Обернуть сырокопченым беконом и запечь 20 минут в духовке, разогретой до 180 градусов."
+        },
+        "en": {
+          "name": "Chicken sausages",
+          "steps": "Обжарить лук на сливочном масле. Пропустить курицу и лук через мясорубку или измельчить блендером. Вмешать в массу специи, яйцо, молоко и крахмал.\nПищевую пленку нарезать на прямоугольники. Выложить колбаску на пленку. (Можно использовать кондитерский рукав или плотный пакет с надрезом)\nЗаморозить. В морозилке хранится до 3 месяцев. После разморозки освободить от пленки.\n1 вариант приготовления: Отварить 15 минут в кипящей воде\n2 вариант приготовления: Обернуть сырокопченым беконом и запечь 20 минут в духовке, разогретой до 180 градусов."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_leg",
+          "quantity": 500,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tsyplyata_produkt_udalen",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 150,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_33",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Боул с креветками",
+          "steps": "Сварить яйцо с жидким желтком. В кипяющую воду опустить яйцо ровно на 6 минут.\nОбжарить креветки, отварить рис, нарезать огурец.\nРазложить все на тарелке и посыпать кунжутом и кешью."
+        },
+        "en": {
+          "name": "Shrimp bowl",
+          "steps": "Сварить яйцо с жидким желтком. В кипяющую воду опустить яйцо ровно на 6 минут.\nОбжарить креветки, отварить рис, нарезать огурец.\nРазложить все на тарелке и посыпать кунжутом и кешью."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "far_eastern_shrimp_meat",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "white_rice_rice_groats",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "ogurets_gruntovyy",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sesame_seeds_and",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_34",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Сырники",
+          "steps": "Смешать все ингредиенты кроме сливочного масла.\nОбсыпать поверхность, на которой будете лепить сырники, мукой. Мокрыми руками сформировать 4 шарика для сырников, обвалять в муке и сформировать сырники.\nОбжарить с двух сторон до золотистой корочки на небольшом количестве сливочного масла. Затем довести до готовности в духовке на 180 градусах 10 минут."
+        },
+        "en": {
+          "name": "Syrniki",
+          "steps": "Смешать все ингредиенты кроме сливочного масла.\nОбсыпать поверхность, на которой будете лепить сырники, мукой. Мокрыми руками сформировать 4 шарика для сырников, обвалять в муке и сформировать сырники.\nОбжарить с двух сторон до золотистой корочки на небольшом количестве сливочного масла. Затем довести до готовности в духовке на 180 градусах 10 минут."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 4,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 40,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_35",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Витаминный салат",
+          "steps": "Морковь натереть, мелко нарезать яблоко и сельдерей, смешать с йогуртом. Можно добавить корицу и немного сладкого сиропа по вкусу."
+        },
+        "en": {
+          "name": "Vitamin salad",
+          "steps": "Морковь натереть, мелко нарезать яблоко и сельдерей, смешать с йогуртом. Можно добавить корицу и немного сладкого сиропа по вкусу."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "celery",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yabloko",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 60,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_36",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Творожная булочка",
+          "steps": "Овсяную крупу измолоть в муку, или использовать готовую муку. Перемешать все ингредиенты блендером, добавить специи.\nВыложить на противень булочки прямоугольной формы, посыпать кунжутом или другими семенами.\nВыпекать 30 минут в разогретой до 180 градусов духовке.\nВ качестве начинки можно использовать разные комбинации: Ореховая паста + ягоды Творожный сыр + зелень + слабосоленая красная рыба"
+        },
+        "en": {
+          "name": "Cottage cheese bun",
+          "steps": "Овсяную крупу измолоть в муку, или использовать готовую муку. Перемешать все ингредиенты блендером, добавить специи.\nВыложить на противень булочки прямоугольной формы, посыпать кунжутом или другими семенами.\nВыпекать 30 минут в разогретой до 180 градусов духовке.\nВ качестве начинки можно использовать разные комбинации: Ореховая паста + ягоды Творожный сыр + зелень + слабосоленая красная рыба"
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 75,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sesame_seeds_and",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_37",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Шоколадный чиа-пуддинг",
+          "steps": "Залить семена чиа молоком. Добавить какао и подсластитель. Хорошо перемешать и оставить в холодильнике на ночь.\nДобавить кешью и взбить пуддинг блендером для более легкой текстуры.\nМожно не взбивать и просто использовать кешью как украшение.\nПо желанию можно украсить ягодами."
+        },
+        "en": {
+          "name": "Chocolate chia pudding",
+          "steps": "Залить семена чиа молоком. Добавить какао и подсластитель. Хорошо перемешать и оставить в холодильнике на ночь.\nДобавить кешью и взбить пуддинг блендером для более легкой текстуры.\nМожно не взбивать и просто использовать кешью как украшение.\nПо желанию можно украсить ягодами."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 2,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_38",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Молочная рисовая каша",
+          "steps": "Сварить рис в молоке с добавлением корицы и подсластителя.\nПри подаче добавить кешью и миндаль, или аналогичные ореховые пасты. Посыпать кокосовой стружкой. По желанию украсить ягодами."
+        },
+        "en": {
+          "name": "Milk rice porridge",
+          "steps": "Сварить рис в молоке с добавлением корицы и подсластителя.\nПри подаче добавить кешью и миндаль, или аналогичные ореховые пасты. Посыпать кокосовой стружкой. По желанию украсить ягодами."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "white_rice_rice_groats",
+          "quantity": 45,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_39",
+      "servings": 5,
+      "translations": {
+        "ru": {
+          "name": "Крабовый салат с кальмаром",
+          "steps": "Отварить кальмар и яйца. Все ингредиенты мелко нарезать и перемешать.\nДля заправки смешать йогурт и горчицу. Заправить перед подачей."
+        },
+        "en": {
+          "name": "Crab salad with squid",
+          "steps": "Отварить кальмар и яйца. Все ингредиенты мелко нарезать и перемешать.\nДля заправки смешать йогурт и горчицу. Заправить перед подачей."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "squid",
+          "quantity": 500,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "kamchatka_crab_meat",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "ogurets_gruntovyy",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "ukrop",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "green_onion_feather",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 80,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_40",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Шоколадный тофу пуддинг",
+          "steps": "Выжать жидкость из тофу через марлю.\nРазделить шоколад на дольки, залить молоком и растопить в микроволновке - перемешиваем до получения равномерного шоколадного соуса.\nСмешать все вместе, пюрировать блендером до гладкости, разложить по формочкам и отправить в холодильник на полчаса для стабилизации."
+        },
+        "en": {
+          "name": "Chocolate tofu pudding",
+          "steps": "Выжать жидкость из тофу через марлю.\nРазделить шоколад на дольки, залить молоком и растопить в микроволновке - перемешиваем до получения равномерного шоколадного соуса.\nСмешать все вместе, пюрировать блендером до гладкости, разложить по формочкам и отправить в холодильник на полчаса для стабилизации."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 7,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shokolad_gorkiy",
+          "quantity": 50,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_41",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Запеченная морковь с веган-рикоттой",
+          "steps": "Выложите морковь на противень, посыпьте специями: тмином, паприкой, корицей, солью и перцем. Полейте сиропом и оливковым маслом. Перемешайте и выпекайте 25-30 минут в предварительно разогретой до 200 градусов духовке.\nДля тофу смешайте: тофу, кешью, пищевые дрожжи, лимонный сок, яблочный уксус и соль. Пробейте в блендере до гладкой консистенции. Если получается слишком густой, можно добавить растительное молоко.\nВыложите рикотту, сверху морковь. Для украшения можно посыпать зернами граната, грецкими орехами и свежей петрушкой."
+        },
+        "en": {
+          "name": "Baked carrots with vegan ricotta",
+          "steps": "Выложите морковь на противень, посыпьте специями: тмином, паприкой, корицей, солью и перцем. Полейте сиропом и оливковым маслом. Перемешайте и выпекайте 25-30 минут в предварительно разогретой до 200 градусов духовке.\nДля тофу смешайте: тофу, кешью, пищевые дрожжи, лимонный сок, яблочный уксус и соль. Пробейте в блендере до гладкой консистенции. Если получается слишком густой, можно добавить растительное молоко.\nВыложите рикотту, сверху морковь. Для украшения можно посыпать зернами граната, грецкими орехами и свежей петрушкой."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 100,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_42",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Оладьи из курицы",
+          "steps": "Курицу нарезать средними кусочками. Морковь натереть на терке, лук мелко нарезать. Овощи обжарить.\nСмешать все ингредиенты и пробить блендером.\nОбжарить на разогретой сковороде до корочки. Добавить воды и протушить 15 минут."
+        },
+        "en": {
+          "name": "Chicken fritters",
+          "steps": "Курицу нарезать средними кусочками. Морковь натереть на терке, лук мелко нарезать. Овощи обжарить.\nСмешать все ингредиенты и пробить блендером.\nОбжарить на разогретой сковороде до корочки. Добавить воды и протушить 15 минут."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tsyplyata_produkt_udalen",
+          "quantity": 300,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_43",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Вафли из батата",
+          "steps": "Отварить 200гр батата. Смешать с йогуртом и яйцом, добавить муку и специи по вкусу.\nПеремешать все до однородной массы и выпекать в вафельнице до хрустящей корочки."
+        },
+        "en": {
+          "name": "Sweet potato waffles",
+          "steps": "Отварить 200гр батата. Смешать с йогуртом и яйцом, добавить муку и специи по вкусу.\nПеремешать все до однородной массы и выпекать в вафельнице до хрустящей корочки."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "batata_sweet_potatoes",
+          "quantity": 200,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_44",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Салат с киноа",
+          "steps": "Отварить киноа. \nСвеклу и морковь запечь в микроволновке.\nМелко нарезать все ингредиенты и смешать. Заправить солью и оливковым маслом."
+        },
+        "en": {
+          "name": "Quinoa salad",
+          "steps": "Отварить киноа. \nСвеклу и морковь запечь в микроволновке.\nМелко нарезать все ингредиенты и смешать. Заправить солью и оливковым маслом."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yabloko",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "walnut",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "fresh_parsley",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_45",
+      "servings": 5,
+      "translations": {
+        "ru": {
+          "name": "Пастрома из индейки",
+          "steps": "Для маринада смешать: Соевый соус, оливковое масло, копченую паприку, карри. Также можно добавить любые другие специи для курицы.\nЗамариновать филе индейки в маринаде на 30-60 минут.\nЗапекать в предварительно разогретой до 220-250 градусов 15 минут.\nДуховку НЕ ОТКРЫВАТЬ. Оставить доходить мясо на 8-9 часов."
+        },
+        "en": {
+          "name": "Turkey pastrami",
+          "steps": "Для маринада смешать: Соевый соус, оливковое масло, копченую паприку, карри. Также можно добавить любые другие специи для курицы.\nЗамариновать филе индейки в маринаде на 30-60 минут.\nЗапекать в предварительно разогретой до 220-250 градусов 15 минут.\nДуховку НЕ ОТКРЫВАТЬ. Оставить доходить мясо на 8-9 часов."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "turkey",
+          "quantity": 500,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_46",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Шоколадный дип-соус из фасоли",
+          "steps": "<p>Фасоль замочить на ночь, а затем отварить до мягкости, ~1 час. Также можно использовать консервированную весом в 2 раза больше, но ее нужно хорошо промыть.</p>\n<p>Смешать фасоль, миндаль или миндальную пасту, молоко и хорошо пюрировать в блендере до однородной консистенции.</p>\n<p>Можно подавать с любыми фруктами и ягодами.</p>"
+        },
+        "en": {
+          "name": "Chocolate bean dip",
+          "steps": "<p>Фасоль замочить на ночь, а затем отварить до мягкости, ~1 час. Также можно использовать консервированную весом в 2 раза больше, но ее нужно хорошо промыть.</p>\n<p>Смешать фасоль, миндаль или миндальную пасту, молоко и хорошо пюрировать в блендере до однородной консистенции.</p>\n<p>Можно подавать с любыми фруктами и ягодами.</p>"
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 25,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 25,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 1,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "beans",
+          "quantity": 75,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_47",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Панкейки на греческом йогурте",
+          "steps": "Овсяную крупу измолоть в муку. Смешать все ингредиенты.\nРазогреть сковороду на средней температуре, на первый раз смазать небольшим количеством масла.\nЖарить панкейки до образования пузырьков на первой стороне и примерно такое же количество времени на второй стороне."
+        },
+        "en": {
+          "name": "Greek yogurt pancakes",
+          "steps": "Овсяную крупу измолоть в муку. Смешать все ингредиенты.\nРазогреть сковороду на средней температуре, на первый раз смазать небольшим количеством масла.\nЖарить панкейки до образования пузырьков на первой стороне и примерно такое же количество времени на второй стороне."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 45,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 30,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_48",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Воздушный бисквит",
+          "steps": "Овсяную крупу измолоть в муку или взять готовую цельнозерновую.\nВзбить белки с подсластителем. Добавить муку, какао, разрыхлитель, перемешать.\nПереложить в форму и отправить в микроволновку на 3 минуты при мощности 700W. Проверить на готовность проткнув зубочисткой - зубочистка должна быть сухая."
+        },
+        "en": {
+          "name": "Fluffy sponge cake",
+          "steps": "Овсяную крупу измолоть в муку или взять готовую цельнозерновую.\nВзбить белки с подсластителем. Добавить муку, какао, разрыхлитель, перемешать.\nПереложить в форму и отправить в микроволновку на 3 минуты при мощности 700W. Проверить на готовность проткнув зубочисткой - зубочистка должна быть сухая."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "chicken_egg_white",
+          "quantity": 90,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 2,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_49",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Глазированные яйца",
+          "steps": "Яйца отварить, почистить. На каждом яйце сделать неглубокие горизонтальные надрезы. Яйца обжарить до появления золотистой корочки.\nСмешать соус для глазирования: соевый соус, сироп топинамбура, устричный соус, чили перец, 20мл воды. Добавить соус к яйцам, продолжать обжаривать до того как яйца впитают соус.\nПри подаче посыпать кунжутом и мелко нарезанным зеленым луком."
+        },
+        "en": {
+          "name": "Glazed eggs",
+          "steps": "Яйца отварить, почистить. На каждом яйце сделать неглубокие горизонтальные надрезы. Яйца обжарить до появления золотистой корочки.\nСмешать соус для глазирования: соевый соус, сироп топинамбура, устричный соус, чили перец, 20мл воды. Добавить соус к яйцам, продолжать обжаривать до того как яйца впитают соус.\nПри подаче посыпать кунжутом и мелко нарезанным зеленым луком."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_50",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Чиа-йогурт с манго",
+          "steps": "Залить семена чиа и овсянку молоком, добавить корицу и сироп топинамбура, перемешать, оставить на час.\nСушеный манго замочить теплой водой.\nЧиа-пуддинг перемешать, смешать с йогуртом, по желанию можно взбить блендером, если вам не нравится очущение скользких семян. Манго мелко нарезать и положить сверху."
+        },
+        "en": {
+          "name": "Chia yogurt with mango",
+          "steps": "Залить семена чиа и овсянку молоком, добавить корицу и сироп топинамбура, перемешать, оставить на час.\nСушеный манго замочить теплой водой.\nЧиа-пуддинг перемешать, смешать с йогуртом, по желанию можно взбить блендером, если вам не нравится очущение скользких семян. Манго мелко нарезать и положить сверху."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 140,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_51",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Сырники на манной крупе",
+          "steps": "Смешать все ингредиенты, накрыть пищевой пленкой и отправить в холодильник на полчаса. Также можно заготовить на ночь.\nСлепить сырники любой формы, можно обвалять в небольшом количестве манной крупы.\nЗапечь на 200 градусах 20 минут. Подавать с любимым топпингом. Например можно пробить ягоды с небольшим количеством сиропа топинамбура. \nТакже можно добавить греческим йогурт или сметану."
+        },
+        "en": {
+          "name": "Semolina syrniki",
+          "steps": "Смешать все ингредиенты, накрыть пищевой пленкой и отправить в холодильник на полчаса. Также можно заготовить на ночь.\nСлепить сырники любой формы, можно обвалять в небольшом количестве манной крупы.\nЗапечь на 200 градусах 20 минут. Подавать с любимым топпингом. Например можно пробить ягоды с небольшим количеством сиропа топинамбура. \nТакже можно добавить греческим йогурт или сметану."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "semolina_flour",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 400,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 4,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "item_5",
+          "quantity": 100,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_52",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Суфле с яблоками",
+          "steps": "Мелко нарезать яблоки.\nВзбить белки с солью и лимонным соком (Или лимонной кислотой 2гр) до крепких пиков.\nНе прекращая взбивать всыпать подсластитель и крахмал. Яблоки вмешать в смесь.\nВ предварительно разогретой до 180 градусов духовке выпекать 10 минут. Затем снизить температуру до 140 градусов и выпекать еще 15 минут. Во время выпекания духовку не открывать."
+        },
+        "en": {
+          "name": "Apple soufflé",
+          "steps": "Мелко нарезать яблоки.\nВзбить белки с солью и лимонным соком (Или лимонной кислотой 2гр) до крепких пиков.\nНе прекращая взбивать всыпать подсластитель и крахмал. Яблоки вмешать в смесь.\nВ предварительно разогретой до 180 градусов духовке выпекать 10 минут. Затем снизить температуру до 140 градусов и выпекать еще 15 минут. Во время выпекания духовку не открывать."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "chicken_egg_white",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yabloko",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 5,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_53",
+      "servings": 8,
+      "translations": {
+        "ru": {
+          "name": "Хлеб из зеленой гречки",
+          "steps": "Гречку и пшено хорошо промыть, замочить минимум на 5 часов.\nСемена льна перемолоть в блендере, или кофемолке, затем замочить 50 г воды, оставить набухать 20 мин. Затем пробить блендером до консистенции яичного белка, будет такая вязкая жидкости.\nГречку и пшенку откинуть на сито, чтобы слить жидкости, затем отправить в блендер, туда же добавляем замоченный лен, оставшуюся воду, соду, погашенную уксусом, все вилы семечек и семеня, а также специи. Все, кроме миндаля. И взбиваем в блендере, могут быть частицы не перемолотого пшена, и даже цельные, не страшна, структура хлеба будет интереснее.\nВылить тесто в форму хлебную, застеленную пергаментом, посыпаем дробленым миндалем и отправить запекаться в разогретую до 170 градусов духовку на 50-60 минут. Готовность проверяем шпажкой, должна выходить сухой."
+        },
+        "en": {
+          "name": "Green buckwheat bread",
+          "steps": "Гречку и пшено хорошо промыть, замочить минимум на 5 часов.\nСемена льна перемолоть в блендере, или кофемолке, затем замочить 50 г воды, оставить набухать 20 мин. Затем пробить блендером до консистенции яичного белка, будет такая вязкая жидкости.\nГречку и пшенку откинуть на сито, чтобы слить жидкости, затем отправить в блендер, туда же добавляем замоченный лен, оставшуюся воду, соду, погашенную уксусом, все вилы семечек и семеня, а также специи. Все, кроме миндаля. И взбиваем в блендере, могут быть частицы не перемолотого пшена, и даже цельные, не страшна, структура хлеба будет интереснее.\nВылить тесто в форму хлебную, застеленную пергаментом, посыпаем дробленым миндалем и отправить запекаться в разогретую до 170 градусов духовку на 50-60 минут. Готовность проверяем шпажкой, должна выходить сухой."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "buckwheat_kernel",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "coconut_oil_liquid",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sunflower_sunflower_seeds",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "water",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "uksus_vinnyy_3",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_54",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Горячие бутерброды",
+          "steps": "Смешать все ингредиенты для начинки, выложить на тостовый хлеб и запечь в предварительно разогретой в духовке на 10 минут при 180 градусах. После включить режим «гриль» и оставить еще на 2 минуты до появления корочки"
+        },
+        "en": {
+          "name": "Hot sandwiches",
+          "steps": "Смешать все ингредиенты для начинки, выложить на тостовый хлеб и запечь в предварительно разогретой в духовке на 10 минут при 180 градусах. После включить режим «гриль» и оставить еще на 2 минуты до появления корочки"
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "green_onion_feather",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bread_pshenichnyy_produkt_udalen",
+          "quantity": 50,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_55",
+      "servings": 5,
+      "translations": {
+        "ru": {
+          "name": "Паста в соусе Ромеско",
+          "steps": "Перцы запечь до черной корочки. После выпекания накрыть фольгой, дать \"отпотеть\" и снять черную пленку. Помидоры бланшировать или использовать банку томатов в собственном соку.\nВ блендере соединить все ингредиенты соуса, кроме томатной пасты, до гладкой текстуры. Прогреть томатную пасту, добавить соус и немного выпарить для загустения.\nОтварить макароны по инструкции. Можно недоварить 1-2 минуты, чтобы макароны лучше напитались соусом. Залить макароны соусом."
+        },
+        "en": {
+          "name": "Pasta in romesco sauce",
+          "steps": "Перцы запечь до черной корочки. После выпекания накрыть фольгой, дать \"отпотеть\" и снять черную пленку. Помидоры бланшировать или использовать банку томатов в собственном соку.\nВ блендере соединить все ингредиенты соуса, кроме томатной пасты, до гладкой текстуры. Прогреть томатную пасту, добавить соус и немного выпарить для загустения.\nОтварить макароны по инструкции. Можно недоварить 1-2 минуты, чтобы макароны лучше напитались соусом. Залить макароны соусом."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "red_sweet_pepper",
+          "quantity": 600,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "quantity": 400,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tomatnaya_pasta_konservy",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "quantity": 400,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_56",
+      "servings": 10,
+      "translations": {
+        "ru": {
+          "name": "Веганский японский майонез",
+          "steps": ""
+        },
+        "en": {
+          "name": "Vegan Japanese mayo",
+          "steps": ""
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "gorchitsa_stolovaya",
+          "quantity": 6,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_57",
+      "servings": 3,
+      "translations": {
+        "ru": {
+          "name": "Лимонный тофу-мусс",
+          "steps": ""
+        },
+        "en": {
+          "name": "Lemon tofu mousse",
+          "steps": ""
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "finiki",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "lim_n",
+          "quantity": 5,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_58",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Шпинатные блинчики",
+          "steps": "Смешиваем все ингредиенты в блендере, жарим наши зелёные блинчики на масле авокадо, гхи или кокосовом.\nВ блины заворачиваем любимую начинку, например слабосоленую красную рыбу, творожный сыр и огурец."
+        },
+        "en": {
+          "name": "Spinach crepes",
+          "steps": "Смешиваем все ингредиенты в блендере, жарим наши зелёные блинчики на масле авокадо, гхи или кокосовом.\nВ блины заворачиваем любимую начинку, например слабосоленую красную рыбу, творожный сыр и огурец."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 165,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shpinat",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_59",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Шоколадный мусс из батата",
+          "steps": "Батат почистить, нарезать на произвольные кусочки и запечь до мягкости при 180 градусах. После запекания заморозить вместе с очищенным и нарезанным бананом. Замораживать около 1-1.5 часа.\nВзбить в блендере до кремовой консистенции."
+        },
+        "en": {
+          "name": "Sweet potato chocolate mousse",
+          "steps": "Батат почистить, нарезать на произвольные кусочки и запечь до мягкости при 180 градусах. После запекания заморозить вместе с очищенным и нарезанным бананом. Замораживать около 1-1.5 часа.\nВзбить в блендере до кремовой консистенции."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "batata_sweet_potatoes",
+          "quantity": 140,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 120,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_60",
+      "servings": 8,
+      "translations": {
+        "ru": {
+          "name": "Веганский шоколадный чизкейк",
+          "steps": "Нут заранее замочить в воде на 12 часов. Затем отварить до готовности, примерно 40 минут. Растопить молочный шоколад в микроволновке с небольшим количеством молока.\nВ блендере смешать до гладкой текстуры: нут, какао, растопленный шоколад, тофу, очищенные от косточек финики, ванилин и молоко.\nВыложить в форму для запекания и выпекать при 160 градусах 40 минут."
+        },
+        "en": {
+          "name": "Vegan chocolate cheesecake",
+          "steps": "Нут заранее замочить в воде на 12 часов. Затем отварить до готовности, примерно 40 минут. Растопить молочный шоколад в микроволновке с небольшим количеством молока.\nВ блендере смешать до гладкой текстуры: нут, какао, растопленный шоколад, тофу, очищенные от косточек финики, ванилин и молоко.\nВыложить в форму для запекания и выпекать при 160 градусах 40 минут."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "chickpeas_turkish_peas",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shokolad_gorkiy",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "finiki",
+          "quantity": 130,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 1,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_61",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Курица в сливочном соусе по-тоскански",
+          "steps": "Нарезать куриное филе кубиками. Добавить хлопья чили, базилик, соль, копченую паприку, оливковое масло, по желанию можно добавить чеснок. Перемешать и оставить недолго мариноваться.\nДля соуса в блендере смешать: молоко, сливочный сыр, пармезан, томатную пасту, базилик.\nОбжарить курицу до готовности, добавить соус, шпинат и помидорки черри, нарезанные на половинки. Накрыть крышкой и тушить примерно 5-7 минут.\nПодавать с отварным рисом или другим гарниром по вкусу."
+        },
+        "en": {
+          "name": "Tuscan chicken in cream sauce",
+          "steps": "Нарезать куриное филе кубиками. Добавить хлопья чили, базилик, соль, копченую паприку, оливковое масло, по желанию можно добавить чеснок. Перемешать и оставить недолго мариноваться.\nДля соуса в блендере смешать: молоко, сливочный сыр, пармезан, томатную пасту, базилик.\nОбжарить курицу до готовности, добавить соус, шпинат и помидорки черри, нарезанные на половинки. Накрыть крышкой и тушить примерно 5-7 минут.\nПодавать с отварным рисом или другим гарниром по вкусу."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tsyplyata_produkt_udalen",
+          "quantity": 700,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shpinat",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 350,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tomatnaya_pasta_konservy",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_myagkiy_produkt_udalen",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "white_rice_rice_groats",
+          "quantity": 60,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_62",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Морковно-творожная запеканка",
+          "steps": "Морковь порезать помельче, масло растопить в микроволновке. Все ингредиенты смешиваем и измельчаем в блендере, выливаем в силиконовую форму, даем постоять чтобы манка разбухла минут 10-15.\nВыпеаем в предварительно разогретой до 180 градусах духовке 30 минут.\nОстужаем и сверху по желанию можно покрыть греческим йогуртом."
+        },
+        "en": {
+          "name": "Carrot cottage cheese casserole",
+          "steps": "Морковь порезать помельче, масло растопить в микроволновке. Все ингредиенты смешиваем и измельчаем в блендере, выливаем в силиконовую форму, даем постоять чтобы манка разбухла минут 10-15.\nВыпеаем в предварительно разогретой до 180 градусах духовке 30 минут.\nОстужаем и сверху по желанию можно покрыть греческим йогуртом."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 300,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "semolina_flour",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 480,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 1,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 4,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_63",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Блинчики из зеленой гречки",
+          "steps": "Гречневую крупу на ночь замочить в воде, утром промыть несколько раз. Соду погасить соком лимона. Все ингредиенты смешать в блендере до однородной массы.\nВыпекать как обычные блинчики на хорошо разогретой сковороде"
+        },
+        "en": {
+          "name": "Green buckwheat crepes",
+          "steps": "Гречневую крупу на ночь замочить в воде, утром промыть несколько раз. Соду погасить соком лимона. Все ингредиенты смешать в блендере до однородной массы.\nВыпекать как обычные блинчики на хорошо разогретой сковороде"
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "buckwheat_kernel",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sunflower_oil",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_64",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Паста со шпинатом и тофу",
+          "steps": "Отварить макароны по инструкции. Часть воды, в которой варились макароны - оставить.\nВ антипригарную сковородку добавьте небольшой кусочек масла. Добавляем измельченный чеснок и хлопья чили и мелко нарезанный лук, готовим пару минут. Добавьте свежий шпинат и перемешивайте до того как шпинат станет мягким и маленьким.\nВ блендере соедините до гладкой текстуры жареный шпинат, тофу, базилик, семечки конопли, пищевые дрожжи, щепотку соли, перец и воду из под макарон.\nПоместите соус обратно в кастрюлю, где приготовили шпинат, добавьте готовые макароны и продолжайте готовить, пока соус не будет нужной текстуры.\nПодавайте пасту с дополнительными семенами конопли и веганским сыром пармезан."
+        },
+        "en": {
+          "name": "Pasta with spinach and tofu",
+          "steps": "Отварить макароны по инструкции. Часть воды, в которой варились макароны - оставить.\nВ антипригарную сковородку добавьте небольшой кусочек масла. Добавляем измельченный чеснок и хлопья чили и мелко нарезанный лук, готовим пару минут. Добавьте свежий шпинат и перемешивайте до того как шпинат станет мягким и маленьким.\nВ блендере соедините до гладкой текстуры жареный шпинат, тофу, базилик, семечки конопли, пищевые дрожжи, щепотку соли, перец и воду из под макарон.\nПоместите соус обратно в кастрюлю, где приготовили шпинат, добавьте готовые макароны и продолжайте готовить, пока соус не будет нужной текстуры.\nПодавайте пасту с дополнительными семенами конопли и веганским сыром пармезан."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "hemp_seed",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shpinat",
+          "quantity": 75,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 1,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "quantity": 160,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "coconut_oil_liquid",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_65",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Котлетки с индейкой",
+          "steps": "Петрушку мелко нарезать. Пюрировать остальные ингредиенты в блендере, с кабачка слить воду. Тщательно перемешать и сформировать котлеты.\nОбжарить до золотистой корочки с двух сторон минуты по 3 на среднем огне. Довести до готовности в духовке 20 минут в предварительно разогретой до 180 градусов."
+        },
+        "en": {
+          "name": "Turkey patties",
+          "steps": "Петрушку мелко нарезать. Пюрировать остальные ингредиенты в блендере, с кабачка слить воду. Тщательно перемешать и сформировать котлеты.\nОбжарить до золотистой корочки с двух сторон минуты по 3 на среднем огне. Довести до готовности в духовке 20 минут в предварительно разогретой до 180 градусов."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "turkey",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "courgette",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "fresh_parsley",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_66",
+      "servings": 5,
+      "translations": {
+        "ru": {
+          "name": "Чечевичный крем-суп",
+          "steps": "Мелко нарезать лук, помидор и натереть морковь.\nОбжарить на масле морковку с луком, помидор, томатную пасту. Минут 5. Добавить чечевицу, соль, перец, по желанию можно добавить мяту. Влить бульон или воду и уваривать до готовности чечевицы, минут 30 на огне чуть ниже среднего.\nЗатем пробить блендером до гладкой текстуры. Украсить можно паприкой, сухариками и полить лимонным соком. Не до конца вмешанные капельки сока - создают игру вкуса."
+        },
+        "en": {
+          "name": "Lentil cream soup",
+          "steps": "Мелко нарезать лук, помидор и натереть морковь.\nОбжарить на масле морковку с луком, помидор, томатную пасту. Минут 5. Добавить чечевицу, соль, перец, по желанию можно добавить мяту. Влить бульон или воду и уваривать до готовности чечевицы, минут 30 на огне чуть ниже среднего.\nЗатем пробить блендером до гладкой текстуры. Украсить можно паприкой, сухариками и полить лимонным соком. Не до конца вмешанные капельки сока - создают игру вкуса."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "chechevitsa_zerno",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tomatnaya_pasta_konservy",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "quantity": 70,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_67",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Банановый брауни",
+          "steps": "Перемешать все ингредиенты блендером. Выпекать в предварительно разогретой до 180 градусов духовке 25 минут."
+        },
+        "en": {
+          "name": "Banana brownie",
+          "steps": "Перемешать все ингредиенты блендером. Выпекать в предварительно разогретой до 180 градусов духовке 25 минут."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "banana",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "peanut_butter_liquid",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 20,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_68",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Яблочно-морковные панкейки",
+          "steps": "Яблоки и морковь нарезать ломтики и отправить в блендер. Туда же отправить молоко, овсяные хлопья, разрыхлитель и хорошо измельчить.\nДать постоять 5 минут. Выпекать с двух сторон на среднем огне до готовности."
+        },
+        "en": {
+          "name": "Apple-carrot pancakes",
+          "steps": "Яблоки и морковь нарезать ломтики и отправить в блендер. Туда же отправить молоко, овсяные хлопья, разрыхлитель и хорошо измельчить.\nДать постоять 5 минут. Выпекать с двух сторон на среднем огне до готовности."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yabloko",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 140,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 200,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_69",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Овощной салат с курицей",
+          "steps": "Отварить филе грудки, остудить и мелко нарезать. Мелко нарезать все остальные ингредиенты и перемешать."
+        },
+        "en": {
+          "name": "Vegetable salad with chicken",
+          "steps": "Отварить филе грудки, остудить и мелко нарезать. Мелко нарезать все остальные ингредиенты и перемешать."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tsyplyata_produkt_udalen",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cut_corn",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "fresh_parsley",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "gorchitsa_stolovaya",
+          "quantity": 5,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_70",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Курица в соусе Том-Ям",
+          "steps": "Нарезать филе грудки кубиками. Обжарить филе на половине сливочного масла до золотистой корочки и отложить.\nМелко нарезать лук, болгарский перец, черри нарезать пополам. Обжарить сначала лук, потом добавить перец, затем помидорки.\nК овощам добавить пасту Том-Ям, немного прогреть и залить молоком. Как начнет немного булькать - положить в соус курицу. При подаче украсить кинзой."
+        },
+        "en": {
+          "name": "Chicken in tom yum sauce",
+          "steps": "Нарезать филе грудки кубиками. Обжарить филе на половине сливочного масла до золотистой корочки и отложить.\nМелко нарезать лук, болгарский перец, черри нарезать пополам. Обжарить сначала лук, потом добавить перец, затем помидорки.\nК овощам добавить пасту Том-Ям, немного прогреть и залить молоком. Как начнет немного булькать - положить в соус курицу. При подаче украсить кинзой."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tsyplyata_produkt_udalen",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "red_sweet_pepper",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 20,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_71",
+      "servings": 6,
+      "translations": {
+        "ru": {
+          "name": "Ежики запеченные под сметанным соусом",
+          "steps": "Измельчить филе курицы и лук в блендере или через мясорубку. Отварить рис.\nСмешать: филе, лук, рис, добавить соль и перец по вкусу. Мокрыми руками сформировать ежики. Выложить в форму и поставить в духовку на 35 минут при 180 градусах.\nДля соуса смешать: сметану, воду, муку, соль и перец по вкусу. Залить готовые ежики, посыпать тертым сыром. И поставить в духовку еще на 7-10 минут."
+        },
+        "en": {
+          "name": "Baked hedgehog meatballs in sour cream",
+          "steps": "Измельчить филе курицы и лук в блендере или через мясорубку. Отварить рис.\nСмешать: филе, лук, рис, добавить соль и перец по вкусу. Мокрыми руками сформировать ежики. Выложить в форму и поставить в духовку на 35 минут при 180 градусах.\nДля соуса смешать: сметану, воду, муку, соль и перец по вкусу. Залить готовые ежики, посыпать тертым сыром. И поставить в духовку еще на 7-10 минут."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tsyplyata_produkt_udalen",
+          "quantity": 700,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "white_rice_rice_groats",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "water",
+          "quantity": 200,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_72",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Ягодный протеиновый смузи",
+          "steps": "Перемешать протеин с молоком до полного растворения. Смешать все ингредиенты в блендере. Бананы можно использовать замороженные для более кремовой текстуры."
+        },
+        "en": {
+          "name": "Berry protein smoothie",
+          "steps": "Перемешать протеин с молоком до полного растворения. Смешать все ингредиенты в блендере. Бананы можно использовать замороженные для более кремовой текстуры."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "item_5",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 250,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_73",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Шакшука с болгарскими перцами",
+          "steps": "Разогреть оливковое масло в сковороде. Добавить нарезанный лук, готовить до полупрозрачности.\nДобавить измельченный чеснок, готовить еще минуту.\nДобавьте болгарский перец, готовить 5 минут.\nДобавить кумин, паприку и кайенский перец.\nВлить помидоры, приправить солью и перцем. Тушить в течение 10-15 минут.\nСделать в соусе лунки, разбить в них яйца. Приправить солью и перцем.\nНакрыть крышкой и готовить 5-8 минут до желаемой консистенции яиц.\nУкрасить петрушкой или кинзой и фетой по желанию."
+        },
+        "en": {
+          "name": "Shakshuka with bell peppers",
+          "steps": "Разогреть оливковое масло в сковороде. Добавить нарезанный лук, готовить до полупрозрачности.\nДобавить измельченный чеснок, готовить еще минуту.\nДобавьте болгарский перец, готовить 5 минут.\nДобавить кумин, паприку и кайенский перец.\nВлить помидоры, приправить солью и перцем. Тушить в течение 10-15 минут.\nСделать в соусе лунки, разбить в них яйца. Приправить солью и перцем.\nНакрыть крышкой и готовить 5-8 минут до желаемой консистенции яиц.\nУкрасить петрушкой или кинзой и фетой по желанию."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "red_sweet_pepper",
+          "quantity": 400,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 330,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "quantity": 350,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_74",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Орео-смузи",
+          "steps": "Для кремовой текстуры лучше использовать замороженный банан. Перемешайте все ингредиенты в блендере, кроме шоколада. Шоколад измельчить ножом, добавить к остальным ингредиентам и перемешать."
+        },
+        "en": {
+          "name": "Oreo smoothie",
+          "steps": "Для кремовой текстуры лучше использовать замороженный банан. Перемешайте все ингредиенты в блендере, кроме шоколада. Шоколад измельчить ножом, добавить к остальным ингредиентам и перемешать."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "banana",
+          "quantity": 130,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 1,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shokolad_gorkiy",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_75",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Тыквенно-творожная запеканка с маком",
+          "steps": "Творог, творожный сыр, йогурт, 1 яйцо, 10гр крахмала, 3гр подсластитель и ванилин взбить блендером до однородной массы. Добавить мак.\nТыкву запечь до мягкости удобным для вас способом.Тыквенное пюре, крахмал, второе яйцо и 2гр подсластителя взбить блендером до однородной массы. Добавить цедру лимона.\nПоочередно выложить в центр формы, сначала творожную основу - 2 ложки, затем 1 ложку тыквенной начинки и т.д. В конце немного потрясти форму, чтобы распределить равномерно тесто.\nОтправить в духовку разогретую до 160 градусов на\n40-50 минут."
+        },
+        "en": {
+          "name": "Pumpkin cottage cheese casserole with poppy",
+          "steps": "Творог, творожный сыр, йогурт, 1 яйцо, 10гр крахмала, 3гр подсластитель и ванилин взбить блендером до однородной массы. Добавить мак.\nТыкву запечь до мягкости удобным для вас способом.Тыквенное пюре, крахмал, второе яйцо и 2гр подсластителя взбить блендером до однородной массы. Добавить цедру лимона.\nПоочередно выложить в центр формы, сначала творожную основу - 2 ложки, затем 1 ложку тыквенной начинки и т.д. В конце немного потрясти форму, чтобы распределить равномерно тесто.\nОтправить в духовку разогретую до 160 градусов на\n40-50 минут."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "lim_n",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tykva",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_myagkiy_produkt_udalen",
+          "quantity": 130,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_76",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Пряный яблочный кекс",
+          "steps": "Яблоко пюрировать блендером. Смешать пюре с мукой, разрыхлителем, корицей и маслом. Изюм заранее промыть и замочить в горячей воде на 10-15 минут. Также добавить в смесь.\nЗапекать 30 минут при 180 градусах в предварительно разогретой духовке. Украсить колотым миндалем."
+        },
+        "en": {
+          "name": "Spiced apple cake",
+          "steps": "Яблоко пюрировать блендером. Смешать пюре с мукой, разрыхлителем, корицей и маслом. Изюм заранее промыть и замочить в горячей воде на 10-15 минут. Также добавить в смесь.\nЗапекать 30 минут при 180 градусах в предварительно разогретой духовке. Украсить колотым миндалем."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yabloko",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "coconut_oil_liquid",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_77",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Салат",
+          "steps": "Свеклу отварить, свеклу, очищенный апельсин и фету нарезать небольшим кубиком. Для заправки смешать: Масло, сироп (Можно заменить медом), горчицу, сок лимона, соль и перец.\nВсе смешать и можно подавать, украсив орешками."
+        },
+        "en": {
+          "name": "Salad",
+          "steps": "Свеклу отварить, свеклу, очищенный апельсин и фету нарезать небольшим кубиком. Для заправки смешать: Масло, сироп (Можно заменить медом), горчицу, сок лимона, соль и перец.\nВсе смешать и можно подавать, украсив орешками."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "orange",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "gorchitsa_stolovaya",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_78",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Шоколадный мусс из тофу",
+          "steps": "Шоколад растопить в микроволновке, периодически помешивая.\nСмешать все ингредиенты блендером. Можно добавить немного апельсиновой цедры, украсить свежими ягодами и небольшим количеством орешков."
+        },
+        "en": {
+          "name": "Chocolate tofu mousse",
+          "steps": "Шоколад растопить в микроволновке, периодически помешивая.\nСмешать все ингредиенты блендером. Можно добавить немного апельсиновой цедры, украсить свежими ягодами и небольшим количеством орешков."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shokolad_gorkiy",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_79",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Синнабон-блинчики",
+          "steps": "Приготовить блинчики.\nБлинчики смазать кисточкой сливочным маслом, сиропом, посыпать корицей. Свернуть блинчики в рулетики.\nСмешать сыр, кокосовое молоко и йогурт, выложить этот крем сверху на блины, посыпать корицей и крошкой грецкого ореха."
+        },
+        "en": {
+          "name": "Cinnabon crepes",
+          "steps": "Приготовить блинчики.\nБлинчики смазать кисточкой сливочным маслом, сиропом, посыпать корицей. Свернуть блинчики в рулетики.\nСмешать сыр, кокосовое молоко и йогурт, выложить этот крем сверху на блины, посыпать корицей и крошкой грецкого ореха."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "walnut",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_myagkiy_produkt_udalen",
+          "quantity": 140,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_80",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Морковно-шоколадный торт",
+          "steps": "Овсяные хлопья измельчить в блендере. Морковь натереть на мелкой тёрке или измельчить в блендере.\nЯйца с подсластителем взбить.\nДобавить морковь, перемолотые овсяные хлопья, какао и разрыхлитель, тщательно перемешать. Переложить тесто в форму, выпекать на средней мощности(600W) в микроволновке 9-10 минут до сухой зубочистки.\nДля глазури - поломать шоколад на дольки, залить молоком, и растопить в микроволновке, периодически помешивая. Полить тортик глазурью."
+        },
+        "en": {
+          "name": "Carrot chocolate cake",
+          "steps": "Овсяные хлопья измельчить в блендере. Морковь натереть на мелкой тёрке или измельчить в блендере.\nЯйца с подсластителем взбить.\nДобавить морковь, перемолотые овсяные хлопья, какао и разрыхлитель, тщательно перемешать. Переложить тесто в форму, выпекать на средней мощности(600W) в микроволновке 9-10 минут до сухой зубочистки.\nДля глазури - поломать шоколад на дольки, залить молоком, и растопить в микроволновке, периодически помешивая. Полить тортик глазурью."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 165,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 90,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shokolad_gorkiy",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 50,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_81",
+      "servings": 6,
+      "translations": {
+        "ru": {
+          "name": "Сухой завтрак из овсяных хлопьев и зеленой гречки",
+          "steps": "Все сухие ингредиенты, кроме кунжута, перемолоть в блендере до мелкой крошки. Банан и масло размять вилкой. Все тщательно перемешать. Если получилось слишком жидко, можно добавить еще немного овсяной муки.\nСформировать шарики, обвалять в кунжутных семечках и запечь на 180 градусах 20 минут. Хранить в закрытом контейнере."
+        },
+        "en": {
+          "name": "Oat and green buckwheat dry breakfast",
+          "steps": "Все сухие ингредиенты, кроме кунжута, перемолоть в блендере до мелкой крошки. Банан и масло размять вилкой. Все тщательно перемешать. Если получилось слишком жидко, можно добавить еще немного овсяной муки.\nСформировать шарики, обвалять в кунжутных семечках и запечь на 180 градусах 20 минут. Хранить в закрытом контейнере."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "buckwheat_kernel",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 130,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sesame_seeds_and",
+          "quantity": 15,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_82",
+      "servings": 5,
+      "translations": {
+        "ru": {
+          "name": "Вафли с курицей",
+          "steps": "Куриное филе замариновать на 2-3 часа в смеси из масла, уксуса и травяных специй. Измельчить в блендере.\nСоединить в миске муку, натертый на мелкой терке сыр, яйца, растопленное сливочное масло, молоко, соль и специи, хорошо перемешать.\nОтправить в хорошо разогретую вафельницу, при необходимости смазать поверхности небольшим количеством масла, на 10-12 минут, или до того как поверхность станет золотистой."
+        },
+        "en": {
+          "name": "Chicken waffles",
+          "steps": "Куриное филе замариновать на 2-3 часа в смеси из масла, уксуса и травяных специй. Измельчить в блендере.\nСоединить в миске муку, натертый на мелкой терке сыр, яйца, растопленное сливочное масло, молоко, соль и специи, хорошо перемешать.\nОтправить в хорошо разогретую вафельницу, при необходимости смазать поверхности небольшим количеством масла, на 10-12 минут, или до того как поверхность станет золотистой."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tsyplyata_produkt_udalen",
+          "quantity": 220,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 220,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 4,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "uksus_vinnyy_3",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 5,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_83",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Сырники с тыквой",
+          "steps": "Тыкву запечь до мягкости, смешать блендером с желтком и творогом, добавить остальные ингредиенты и смешать до однородности.\nСформировать шарики (примерно по 50гр) на муке с помощью ножа или стакана.\nВыкладывать на хорошо разогретую сковороду и жарить на огне чуть меньше среднего с двух сторон до готовности, на небольшом количестве сливочного масла."
+        },
+        "en": {
+          "name": "Pumpkin syrniki",
+          "steps": "Тыкву запечь до мягкости, смешать блендером с желтком и творогом, добавить остальные ингредиенты и смешать до однородности.\nСформировать шарики (примерно по 50гр) на муке с помощью ножа или стакана.\nВыкладывать на хорошо разогретую сковороду и жарить на огне чуть меньше среднего с двух сторон до готовности, на небольшом количестве сливочного масла."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 400,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tykva",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 1,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_84",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Салат со свеклой и нутом",
+          "steps": "Нут нужно заранее замочить на 8+ часов и отварить до готовности, примерно 40 минут. Также можно использовать 150 гр консервированного.\nПочистить свеклу и морковь, нарезать на средние кусочки. В емкость для запекания выложить свеклу и отправить в духовке на 10 минут при 200 градусах, затем добавьте морковь и отправьте еще на 35 минут.\nДля соуса соедините: сок лимона, горчицу, мед и масла, перемешайте до однородности.\nКак овощи остынут, добавьте к ним соус, нарезанный укроп, вареный нут, сверху посыпать сыром фета."
+        },
+        "en": {
+          "name": "Beet and chickpea salad",
+          "steps": "Нут нужно заранее замочить на 8+ часов и отварить до готовности, примерно 40 минут. Также можно использовать 150 гр консервированного.\nПочистить свеклу и морковь, нарезать на средние кусочки. В емкость для запекания выложить свеклу и отправить в духовке на 10 минут при 200 градусах, затем добавьте морковь и отправьте еще на 35 минут.\nДля соуса соедините: сок лимона, горчицу, мед и масла, перемешайте до однородности.\nКак овощи остынут, добавьте к ним соус, нарезанный укроп, вареный нут, сверху посыпать сыром фета."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sesame_seeds_and",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "gorchitsa_stolovaya",
+          "quantity": 7,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 7,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "ukrop",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chickpeas_turkish_peas",
+          "quantity": 60,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_85",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Свекольные оладушки",
+          "steps": "Свеклу очистить и отварить до готовности, нарезать средними кусочками.\nОвсянку измолоть в муку. Свеклу, банан, яйцо, молоко и овсянку смешать в блендере. Масло также можно добавить сразу в тесто.\nВыпекать на среднем огне по 3-4 минуты с каждой стороны. Подать с йогуртом, по желанию украсить ягодами."
+        },
+        "en": {
+          "name": "Beet fritters",
+          "steps": "Свеклу очистить и отварить до готовности, нарезать средними кусочками.\nОвсянку измолоть в муку. Свеклу, банан, яйцо, молоко и овсянку смешать в блендере. Масло также можно добавить сразу в тесто.\nВыпекать на среднем огне по 3-4 минуты с каждой стороны. Подать с йогуртом, по желанию украсить ягодами."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "banana",
+          "quantity": 130,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 35,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "coconut_oil_liquid",
+          "quantity": 7,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 120,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_86",
+      "servings": 5,
+      "translations": {
+        "ru": {
+          "name": "Шпинатно-базиликовая паста",
+          "steps": "Приготовить макароны по инструкции, не доварив 1-2 минуты, воду из под макарон оставить.\nВ блендер добавить все ингредиенты, кроме лимонной цедры и макарон. Пюрировать до гладкости.\nПереместить соус в кастрюлю и прогреть его на среднем огне, периодически помешивая.\nДобавить макароны в кастрюлю и перемешать. При необходимости добавить немного воды от макарон. Подавать, посыпав цедрой лимона"
+        },
+        "en": {
+          "name": "Spinach-basil pasta",
+          "steps": "Приготовить макароны по инструкции, не доварив 1-2 минуты, воду из под макарон оставить.\nВ блендер добавить все ингредиенты, кроме лимонной цедры и макарон. Пюрировать до гладкости.\nПереместить соус в кастрюлю и прогреть его на среднем огне, периодически помешивая.\nДобавить макароны в кастрюлю и перемешать. При необходимости добавить немного воды от макарон. Подавать, посыпав цедрой лимона"
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "quantity": 300,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shpinat",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "lim_n",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 5,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_87",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Творожные ватрушки",
+          "steps": "Творог смешать с яйцом, подсластителем и манной крупой. Сделать плоские лепешки и стаканом продавить небольшое углубление; Для начинки смешать мягкий творог и муку. Выложить на лепешки, и сверху выложить ягоду.\nВыпекать в духовке 20-25 минут при 180 градусах."
+        },
+        "en": {
+          "name": "Cottage cheese vatrushki",
+          "steps": "Творог смешать с яйцом, подсластителем и манной крупой. Сделать плоские лепешки и стаканом продавить небольшое углубление; Для начинки смешать мягкий творог и муку. Выложить на лепешки, и сверху выложить ягоду.\nВыпекать в духовке 20-25 минут при 180 градусах."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 500.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "semolina_flour",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 4,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "item_5",
+          "quantity": 50,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_88",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Шпинатные сырники",
+          "steps": "К шпинату добавить яйцо и измельчить все в блендере до однородной массы.\nК творогу добавить шпинатную массу, муку, соль. Пюрировать всю массу погружным блендером до более однородной консистенции, в конце добавить тертый сыр.\nПоверхность присыпать мукой и из полученной массы скатать колбаску, разделить на равные части и сформировать сырники с помощью стакана.\nЖарить на скороде без добавления масла на среднем огне под крышкой с двух сторон.\nПодавать со сметаной и мелко нарезанным зеленым луком."
+        },
+        "en": {
+          "name": "Spinach syrniki",
+          "steps": "К шпинату добавить яйцо и измельчить все в блендере до однородной массы.\nК творогу добавить шпинатную массу, муку, соль. Пюрировать всю массу погружным блендером до более однородной консистенции, в конце добавить тертый сыр.\nПоверхность присыпать мукой и из полученной массы скатать колбаску, разделить на равные части и сформировать сырники с помощью стакана.\nЖарить на скороде без добавления масла на среднем огне под крышкой с двух сторон.\nПодавать со сметаной и мелко нарезанным зеленым луком."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 180,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shpinat",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "green_onion_feather",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_89",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Блины из зеленой гречки",
+          "steps": "Гречку измолоть в муку в кофемолке, или использовать готовую муку из зеленой гречки.\nСмешать яйца с водой, добавить муку, хорошо перемешать венчиком. Влить молоко и добавить масло и снова перемешать.\nДать тесту постоять около 10 минут. Обжарить блинчики с двух сторон на хорошо раскаленной сковороде."
+        },
+        "en": {
+          "name": "Green buckwheat pancakes",
+          "steps": "Гречку измолоть в муку в кофемолке, или использовать готовую муку из зеленой гречки.\nСмешать яйца с водой, добавить муку, хорошо перемешать венчиком. Влить молоко и добавить масло и снова перемешать.\nДать тесту постоять около 10 минут. Обжарить блинчики с двух сторон на хорошо раскаленной сковороде."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "buckwheat_kernel",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "water",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "coconut_oil_liquid",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_90",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Томатно-базиликовая паста",
+          "steps": "Промыть томаты черри, нарезать пополам, выложить в форму, посолить, сбрызнуть оливковым маслом и отправить запекаться на 40 минут при 190 градусах.\nК печеным томатам добавить рикотту, тертый пармезан, базилик и взбить в блендере. Если получается слишком густо можно добавить часть воды от варки макарон.\nСоединить пасту с соусом, и можно подавать."
+        },
+        "en": {
+          "name": "Tomato-basil pasta",
+          "steps": "Промыть томаты черри, нарезать пополам, выложить в форму, посолить, сбрызнуть оливковым маслом и отправить запекаться на 40 минут при 190 градусах.\nК печеным томатам добавить рикотту, тертый пармезан, базилик и взбить в блендере. Если получается слишком густо можно добавить часть воды от варки макарон.\nСоединить пасту с соусом, и можно подавать."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "quantity": 350,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "quantity": 70,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_91",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Сырные булочки",
+          "steps": "<p>Натереть сыр, добавить творог, яйцо и пюрировать блендером.</p>\n<p>Добавить муку и перемешать, можно добавить соль/специи по вкусу.</p>\n<p>Мокрыми руками сформировать шарики, выложить на пергамент и посыпать кунжутом.</p>\n<p>Выпекать в предварительно разогретой до 180 градусов духовке 25 минут.</p>"
+        },
+        "en": {
+          "name": "Cheese buns",
+          "steps": "<p>Натереть сыр, добавить творог, яйцо и пюрировать блендером.</p>\n<p>Добавить муку и перемешать, можно добавить соль/специи по вкусу.</p>\n<p>Мокрыми руками сформировать шарики, выложить на пергамент и посыпать кунжутом.</p>\n<p>Выпекать в предварительно разогретой до 180 градусов духовке 25 минут.</p>"
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sesame_seeds_and",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_92",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Овсяные вафли",
+          "steps": "Овсяную крупу измолоть в блендере в муку. Смешать все сухие ингредиенты.\nПюрировать блендером воду, банан и сок лимона до однородной консистенции. Смешать все ингредиенты. Выпекать до румяной корочки."
+        },
+        "en": {
+          "name": "Oat waffles",
+          "steps": "Овсяную крупу измолоть в блендере в муку. Смешать все сухие ингредиенты.\nПюрировать блендером воду, банан и сок лимона до однородной консистенции. Смешать все ингредиенты. Выпекать до румяной корочки."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 180,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "water",
+          "quantity": 235,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "vanilin",
+          "quantity": 0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 5,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_93",
+      "servings": 10,
+      "translations": {
+        "ru": {
+          "name": "Паштет из говяжьей печени",
+          "steps": "Запечь все вместе под фольгой (она не должна касаться продуктов) около часа на 180, добавить столовую ложку масла (сливочное/топленое), пробить блендером."
+        },
+        "en": {
+          "name": "Beef liver pâté",
+          "steps": "Запечь все вместе под фольгой (она не должна касаться продуктов) около часа на 180, добавить столовую ложку масла (сливочное/топленое), пробить блендером."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "red_sweet_pepper",
+          "quantity": 140,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "beef_liver",
+          "quantity": 500,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_94",
+      "servings": 5,
+      "translations": {
+        "ru": {
+          "name": "Кешью-соус",
+          "steps": "Кешью замочить на ночь или залить кипятком на пару часов. Смешать в блендере все ингредиенты до однородной текстуры.\nВоды добавляйте по необходимости больше или меньше в зависимости от того, какую густоту хотите получить."
+        },
+        "en": {
+          "name": "Cashew sauce",
+          "steps": "Кешью замочить на ночь или залить кипятком на пару часов. Смешать в блендере все ингредиенты до однородной текстуры.\nВоды добавляйте по необходимости больше или меньше в зависимости от того, какую густоту хотите получить."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cashew",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 7,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "water",
+          "quantity": 100,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_95",
+      "servings": 8,
+      "translations": {
+        "ru": {
+          "name": "Кокосовая сгущенка",
+          "steps": "Залить все ингредиенты в высокую кастрюлю и варить на среднем огне, периодически помешивая, до загустения. Масса должна немного пожелтеть и уменьшиться примерно в двое.\nСнять с огня, немного остудить, чтобы масса не была кипящей и эмульгировать (пробить) погружным блендером.\nПерелить в баночку и хранить в холодильнике до 5 дней."
+        },
+        "en": {
+          "name": "Coconut condensed milk",
+          "steps": "Залить все ингредиенты в высокую кастрюлю и варить на среднем огне, периодически помешивая, до загустения. Масса должна немного пожелтеть и уменьшиться примерно в двое.\nСнять с огня, немного остудить, чтобы масса не была кипящей и эмульгировать (пробить) погружным блендером.\nПерелить в баночку и хранить в холодильнике до 5 дней."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "sok_apelsinovyy",
+          "quantity": 30,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_96",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Авокадо-тост с тунцом",
+          "steps": "Смешать все ингредиенты. Подсушить хлеб на сковороде. Намазать массу на хрустящий хлеб."
+        },
+        "en": {
+          "name": "Avocado toast with tuna",
+          "steps": "Смешать все ингредиенты. Подсушить хлеб на сковороде. Намазать массу на хрустящий хлеб."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tuna",
+          "quantity": 135,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "avokado",
+          "quantity": 140,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_myagkiy_produkt_udalen",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bread_pshenichnyy_produkt_udalen",
+          "quantity": 120,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_97",
+      "servings": 3,
+      "translations": {
+        "ru": {
+          "name": "Чечевичные блинчики",
+          "steps": "Чечевицу хорошо промыть, залить водой и оставить на З часа минимум, можно на ночь.\nВысыпать чечевицу вместе с водой в блендер, добавить все остальные ингредиенты и взбить блендером. Специи добавляйте любые по вкусу для соленых завтраков. Для сладких - добавьте любой некалорийный подсластитель.\nВыпекаем блинчики на сковороде по несколько минут с каждой стороны. Чечевичным блинчикам нужно чуть больше времени на приготовление, поэтому не спешите переворачивать, по легкой корочке по краю поймете."
+        },
+        "en": {
+          "name": "Lentil crepes",
+          "steps": "Чечевицу хорошо промыть, залить водой и оставить на З часа минимум, можно на ночь.\nВысыпать чечевицу вместе с водой в блендер, добавить все остальные ингредиенты и взбить блендером. Специи добавляйте любые по вкусу для соленых завтраков. Для сладких - добавьте любой некалорийный подсластитель.\nВыпекаем блинчики на сковороде по несколько минут с каждой стороны. Чечевичным блинчикам нужно чуть больше времени на приготовление, поэтому не спешите переворачивать, по легкой корочке по краю поймете."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "chechevitsa_zerno",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 165,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "water",
+          "quantity": 300,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 4,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_98",
+      "servings": 6,
+      "translations": {
+        "ru": {
+          "name": "Курочка карри с рисом",
+          "steps": "Рис отварить по инструкции.\nФиле бедра нарезать небольшими кубиками, обжарить до золотистой корочки, посолить и поперчить во время жарки. Отложить.\nОбжарить лук на сливочном масле до золотистости. Добавить томатную пасту, обжарить ее, добавить карри и обжарить минуту. Добавить кокосовое молоко, смешать соус до однородности.\nКогда на соусе начнут появляться пузыри - положить курицу в соус и немного прогреть.\nПодавать с рисом."
+        },
+        "en": {
+          "name": "Chicken curry with rice",
+          "steps": "Рис отварить по инструкции.\nФиле бедра нарезать небольшими кубиками, обжарить до золотистой корочки, посолить и поперчить во время жарки. Отложить.\nОбжарить лук на сливочном масле до золотистости. Добавить томатную пасту, обжарить ее, добавить карри и обжарить минуту. Добавить кокосовое молоко, смешать соус до однородности.\nКогда на соусе начнут появляться пузыри - положить курицу в соус и немного прогреть.\nПодавать с рисом."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "chicken_leg",
+          "quantity": 900,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tomatnaya_pasta_konservy",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "white_rice_rice_groats",
+          "quantity": 300,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_99",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Ониги спайси-тунец",
+          "steps": "Отварить рис по инструкции. Из банки с тунцом слить воду, добавить майонез, шрирачу, размять вилкой.\nС помощью пищевой пленки сформировать треугольник из риса, добавить в центр начинку из тунца. Посыпать сверху кунжутом и обернуть треугольнички половинками листа нори."
+        },
+        "en": {
+          "name": "Spicy tuna onigiri",
+          "steps": "Отварить рис по инструкции. Из банки с тунцом слить воду, добавить майонез, шрирачу, размять вилкой.\nС помощью пищевой пленки сформировать треугольник из риса, добавить в центр начинку из тунца. Посыпать сверху кунжутом и обернуть треугольнички половинками листа нори."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tuna",
+          "quantity": 135,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "white_rice_rice_groats",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sesame_seeds_and",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_100",
+      "servings": 6,
+      "translations": {
+        "ru": {
+          "name": "Карбонара на кокосовом молоке",
+          "steps": "<p>Макароны отварить по инструкции, не доварив пару минут - чтобы они смогли впитать больше соуса.</p>\n<p>В это же время обжарить бекон до золотистости, чтобы вытопился жир. Часть его можно слить. Сыр натереть на терке.</p>\n<p>Посыпать бекон перцем и мускатным орехом, немного обжарить, чтобы специи раскрылись. Соль НЕ добавляем, потому что и бекон и сыр дают свою соленость. По готовности - можно по вкусу посолить.</p>\n<p>Бекон залить кокосовым молоком/сливками. Когда немного загустеет - добавить сыр. Когда сыр расплавится - добавить макароны.</p>\n<p>Готовое блюдо можно поперчить дополнительно, для более яркой пряности.</p>"
+        },
+        "en": {
+          "name": "Carbonara with coconut milk",
+          "steps": "<p>Макароны отварить по инструкции, не доварив пару минут - чтобы они смогли впитать больше соуса.</p>\n<p>В это же время обжарить бекон до золотистости, чтобы вытопился жир. Часть его можно слить. Сыр натереть на терке.</p>\n<p>Посыпать бекон перцем и мускатным орехом, немного обжарить, чтобы специи раскрылись. Соль НЕ добавляем, потому что и бекон и сыр дают свою соленость. По готовности - можно по вкусу посолить.</p>\n<p>Бекон залить кокосовым молоком/сливками. Когда немного загустеет - добавить сыр. Когда сыр расплавится - добавить макароны.</p>\n<p>Готовое блюдо можно поперчить дополнительно, для более яркой пряности.</p>"
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "quantity": 300,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 100,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_101",
+      "servings": 3,
+      "translations": {
+        "ru": {
+          "name": "Фасоль в кешью-шпинатном соусе",
+          "steps": "<p>Фасоль предварительно замочить минимум на 4 часа и отварить до мягкости - 1 час. Или использовать консервированную в объеме х2.</p>\n<p>Лук мелко нарезать, обжарить до прозрачности. Вяленые томаты (4-6 штучек, отряхнуть от масла) нарезать мелким кубиком. добавить к луку.</p>\n<p>Шпинат, если используете замороженный - немного разморозить и добавить к овощам обжариваться.</p>\n<p>Кешью залить кипятком на 10 минут, так текстура будет однороднее. Потом вместе с этой водой пюрировать блендером. Добавить к овощной смеси.</p>\n<p>Добавить в соус фасоль.</p>"
+        },
+        "en": {
+          "name": "Beans in cashew-spinach sauce",
+          "steps": "<p>Фасоль предварительно замочить минимум на 4 часа и отварить до мягкости - 1 час. Или использовать консервированную в объеме х2.</p>\n<p>Лук мелко нарезать, обжарить до прозрачности. Вяленые томаты (4-6 штучек, отряхнуть от масла) нарезать мелким кубиком. добавить к луку.</p>\n<p>Шпинат, если используете замороженный - немного разморозить и добавить к овощам обжариваться.</p>\n<p>Кешью залить кипятком на 10 минут, так текстура будет однороднее. Потом вместе с этой водой пюрировать блендером. Добавить к овощной смеси.</p>\n<p>Добавить в соус фасоль.</p>"
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cashew",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "beans",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shpinat",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_102",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Ореховый карри-соус для спринг-роллов",
+          "steps": "Смешать все ингредиенты, по необходимости добавить немного воды для облегчения консистенции.\n<p>Разбавить водой до желаемой консистенции.</p>"
+        },
+        "en": {
+          "name": "Nut curry sauce for spring rolls",
+          "steps": "Смешать все ингредиенты, по необходимости добавить немного воды для облегчения консистенции.\n<p>Разбавить водой до желаемой консистенции.</p>"
+        }
+      },
+      "ingredients": []
+    },
+    {
+      "id": "recipe_103",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Плавленный сыр с беконом",
+          "steps": "Бекон предварительно запечь до хрусткости. Выложить на пергамент отдельными кусочками и выпекать на 180 градусах пока не вытопится жир, время индивидуально.\nСмешать все ингредиенты блендером, переложить в кастрюлю с толстым дном. На маленьком огне загущаем, постоянно перемешивая. Как только масса закипела и стала жидкая - снять с огня.\nРазложить по формам и добавить мелко нарезанный хрустящий бекон или другую начинку. Отправить в холодильник на 30-60 минут для стабилизации и загустения."
+        },
+        "en": {
+          "name": "Melted cheese with bacon",
+          "steps": "Бекон предварительно запечь до хрусткости. Выложить на пергамент отдельными кусочками и выпекать на 180 градусах пока не вытопится жир, время индивидуально.\nСмешать все ингредиенты блендером, переложить в кастрюлю с толстым дном. На маленьком огне загущаем, постоянно перемешивая. Как только масса закипела и стала жидкая - снять с огня.\nРазложить по формам и добавить мелко нарезанный хрустящий бекон или другую начинку. Отправить в холодильник на 30-60 минут для стабилизации и загустения."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 350,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_104",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Панкейки на мягком твороге",
+          "steps": "Смешать блендером творог, яйца, муку, корицу, разрыхлитель и подсластитель. Также можно добавить масло сразу в тесто, или использовать спрей для жарки на небольшом количестве.\nЖарить на среднем огне до золотистой корочки. При подаче украсить ягодами и полить сиропом топинамбура."
+        },
+        "en": {
+          "name": "Soft cottage cheese pancakes",
+          "steps": "Смешать блендером творог, яйца, муку, корицу, разрыхлитель и подсластитель. Также можно добавить масло сразу в тесто, или использовать спрей для жарки на небольшом количестве.\nЖарить на среднем огне до золотистой корочки. При подаче украсить ягодами и полить сиропом топинамбура."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 170,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "item_5",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sunflower_oil",
+          "quantity": 5,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_105",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Венские вафли из мягкого творога",
+          "steps": "Смешать все ингредиенты блендером и выпекать по 7-10 минут на порцию вафель.\nПри подаче можно украсить ягодами и полить сиропом топинамбура."
+        },
+        "en": {
+          "name": "Soft cottage cheese Viennese waffles",
+          "steps": "Смешать все ингредиенты блендером и выпекать по 7-10 минут на порцию вафель.\nПри подаче можно украсить ягодами и полить сиропом топинамбура."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "item_5",
+          "quantity": 30,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_106",
+      "servings": 5,
+      "translations": {
+        "ru": {
+          "name": "Лобио",
+          "steps": "<p>Фасоль предварительно замочить на 4+ часа. Отварить до мягкости, примерно 1 час.</p>\nНа оливковом масле обжарить лук до прозрачности. Добавить томатную пасту и хорошо прогреть ее. Затем добавить специи. Прогреть.\nДобавить фасоль, слегка обжарить ее. В конце приготовления или при подаче добавить мелко нарезанную кинзу и нарезанные на кусочки грецкие орехи."
+        },
+        "en": {
+          "name": "Lobio",
+          "steps": "<p>Фасоль предварительно замочить на 4+ часа. Отварить до мягкости, примерно 1 час.</p>\nНа оливковом масле обжарить лук до прозрачности. Добавить томатную пасту и хорошо прогреть ее. Затем добавить специи. Прогреть.\nДобавить фасоль, слегка обжарить ее. В конце приготовления или при подаче добавить мелко нарезанную кинзу и нарезанные на кусочки грецкие орехи."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tomatnaya_pasta_konservy",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 280,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "walnut",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 6,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 7,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "beans",
+          "quantity": 800,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_107",
+      "servings": 3,
+      "translations": {
+        "ru": {
+          "name": "Протеиновые вафли с яблоком",
+          "steps": "Яблоки очистить от кожуры, порезать небольшими кубиками и обжарить на сливочном масле до мягкости, добавив сахзам и корицу.</p>\nВ миску разбить яйца, добавить кефир, соль, разрыхлитель, протеин, муку и хорошо перемешать. Выпекать вафли 5-7 минут.\nПри подаче положить яблоки на вафли."
+        },
+        "en": {
+          "name": "Protein apple waffles",
+          "steps": "Яблоки очистить от кожуры, порезать небольшими кубиками и обжарить на сливочном масле до мягкости, добавив сахзам и корицу.</p>\nВ миску разбить яйца, добавить кефир, соль, разрыхлитель, протеин, муку и хорошо перемешать. Выпекать вафли 5-7 минут.\nПри подаче положить яблоки на вафли."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yabloko",
+          "quantity": 400,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_108",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Вафли из кабачка с курицей",
+          "steps": "Филе грудки отварить и разделить на волокна.\nКабачок и сыр натереть на терке. Перемешать со всеми остальными ингредиентами и выпекать 10 минут на порцию вафель."
+        },
+        "en": {
+          "name": "Zucchini chicken waffles",
+          "steps": "Филе грудки отварить и разделить на волокна.\nКабачок и сыр натереть на терке. Перемешать со всеми остальными ингредиентами и выпекать 10 минут на порцию вафель."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "courgette",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tsyplyata_produkt_udalen",
+          "quantity": 75,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "fresh_parsley",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_109",
+      "servings": 2,
+      "translations": {
+        "ru": {
+          "name": "Лепешки из киноа",
+          "steps": "Киноа промыть и замочить на 3-4 часа. Затем слить воду, промыть.\nСоединить блендером киноа с водой, солью и специями. Взбить в течении 1-2 минут до получения однородного теста.\nДобавить тертую морковь и мелко нарезанную зелень.\nНа хорошо разогретую сковороду, смазанную маслом, вылить тесто, рассчитанное на одну порцию.\nОбжаривать лепешку 5 минут с одной стороны и 3 с другой на среднем огне."
+        },
+        "en": {
+          "name": "Quinoa flatbreads",
+          "steps": "Киноа промыть и замочить на 3-4 часа. Затем слить воду, промыть.\nСоединить блендером киноа с водой, солью и специями. Взбить в течении 1-2 минут до получения однородного теста.\nДобавить тертую морковь и мелко нарезанную зелень.\nНа хорошо разогретую сковороду, смазанную маслом, вылить тесто, рассчитанное на одну порцию.\nОбжаривать лепешку 5 минут с одной стороны и 3 с другой на среднем огне."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "water",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "green_onion_feather",
+          "quantity": 7,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "fresh_parsley",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "coconut_oil_liquid",
+          "quantity": 5,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_110",
+      "servings": 10,
+      "translations": {
+        "ru": {
+          "name": "«Майонез» из тыквенных семечек",
+          "steps": "Тыквенные семечки хорошо промыть и откинуть на сито.\nРазогреть сковородку и выложить на неё семечки. Подсушить их на небольшом огне, постоянно помешивая до легкой румяности, в течении 5-7 минут. Остудить.\nОбжаренные семечки измельчить в кофемолке. Соединить в высокой чаше со всеми остальными ингредиентами и пробить погружным блендером.\nГотовый соус хранить в холодильнике до 4-5 дней в закрытом герметичном контейнере."
+        },
+        "en": {
+          "name": "Pumpkin seed mayo",
+          "steps": "Тыквенные семечки хорошо промыть и откинуть на сито.\nРазогреть сковородку и выложить на неё семечки. Подсушить их на небольшом огне, постоянно помешивая до легкой румяности, в течении 5-7 минут. Остудить.\nОбжаренные семечки измельчить в кофемолке. Соединить в высокой чаше со всеми остальными ингредиентами и пробить погружным блендером.\nГотовый соус хранить в холодильнике до 4-5 дней в закрытом герметичном контейнере."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "water",
+          "quantity": 160,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sok_limonnyy",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "gorchitsa_stolovaya",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_111",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Банановое печенье с чиа и миндалем",
+          "steps": "Миндаль мелко покрошить и смешать все ингредиенты.\nНа пергаменте сформировать печеньки и выпекать 25 минут в предварительно разогретой духовке на 180 градусах."
+        },
+        "en": {
+          "name": "Banana cookies with chia and almonds",
+          "steps": "Миндаль мелко покрошить и смешать все ингредиенты.\nНа пергаменте сформировать печеньки и выпекать 25 минут в предварительно разогретой духовке на 180 градусах."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "banana",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 15,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_112",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Тофу-йогурт с персиком",
+          "steps": "Смешать все ингредиенты, кроме цельного миндаля, блендером. Миндаль мелко нарезать и посыпать йогурт сверху.\nХранить до трех дней в закрытом контейнере. По желанию можно украсить ягодами."
+        },
+        "en": {
+          "name": "Tofu yogurt with peach",
+          "steps": "Смешать все ингредиенты, кроме цельного миндаля, блендером. Миндаль мелко нарезать и посыпать йогурт сверху.\nХранить до трех дней в закрытом контейнере. По желанию можно украсить ягодами."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "peach",
+          "quantity": 125,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 15,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_113",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Спринг-роллы с креветками и фунчозой",
+          "steps": "Обжарить креветки с солью и перцем на небольшом количестве сливочного масла. Фунчозу заварить кипятком по инструкции. Огурцы нарезать соломкой\nБумажное полотенце размером больше чем лист рисовой бумаги положить на рабочую поверхность, хорошо увлажнить. Лист рисовой бумаги смочить в глубокой тарелке с водой в двух сторон и выложить на полотенце.\nПосыпать кунжутом, выложить креветки, фунчозу и несколько соломинок огурца. Сложить стороны по кругу."
+        },
+        "en": {
+          "name": "Shrimp spring rolls with glass noodles",
+          "steps": "Обжарить креветки с солью и перцем на небольшом количестве сливочного масла. Фунчозу заварить кипятком по инструкции. Огурцы нарезать соломкой\nБумажное полотенце размером больше чем лист рисовой бумаги положить на рабочую поверхность, хорошо увлажнить. Лист рисовой бумаги смочить в глубокой тарелке с водой в двух сторон и выложить на полотенце.\nПосыпать кунжутом, выложить креветки, фунчозу и несколько соломинок огурца. Сложить стороны по кругу."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "ogurets_gruntovyy",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "far_eastern_shrimp_meat",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sesame_seeds_and",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_114",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Ленивые вареники с вишней",
+          "steps": "Муку 2 трети от количества в ингредиентах, яйцо и творог смешать в одну массу.\nМокрыми руками слепить шарики. Внутрь каждого шарика вложить вишню и обкатать шарик в муке.\nКладем шарики в кипящую воду и после того как они всплывут варить еще 2 минуты."
+        },
+        "en": {
+          "name": "Lazy dumplings with cherry",
+          "steps": "Муку 2 трети от количества в ингредиентах, яйцо и творог смешать в одну массу.\nМокрыми руками слепить шарики. Внутрь каждого шарика вложить вишню и обкатать шарик в муке.\nКладем шарики в кипящую воду и после того как они всплывут варить еще 2 минуты."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cherries",
+          "quantity": 200,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_115",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Смузи с овсянкой и орехами",
+          "steps": "Просто смешать все ингредиенты блендером и употребить :)"
+        },
+        "en": {
+          "name": "Oatmeal nut smoothie",
+          "steps": "Просто смешать все ингредиенты блендером и употребить :)"
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "item_5",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_116",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Шоколадный протеиновый смузи",
+          "steps": "Просто смешать все ингредиенты блендером."
+        },
+        "en": {
+          "name": "Chocolate protein smoothie",
+          "steps": "Просто смешать все ингредиенты блендером."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cocoa_powder",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "strawberries",
+          "quantity": 100,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_117",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Смузи с протеином и шпинатом",
+          "steps": ""
+        },
+        "en": {
+          "name": "Protein spinach smoothie",
+          "steps": ""
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shpinat",
+          "quantity": 25,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_118",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Тофу с чечевичным пюре и капустой",
+          "steps": "Обжарить лук с морковью на небольшом количестве подсолнечного масла, Нашинковать капусту и добавить к овощам, добавить томатную пасту, соль перец. Тушить минут 30-40 до мягкости капусты.\nТофу нарезать на ломтики толщиной 1см - обжарить с двух сторон.\nЧечевицу отварить по инструкции на упаковке, кешью залить горячей водой на 5-10 минут. Когда чечевица будет готова - смешать и пюрировать блендером.\nВыложить на тарелку пюре, капуста, тофу, нарезанные на половинки черри."
+        },
+        "en": {
+          "name": "Tofu with lentil puree and cabbage",
+          "steps": "Обжарить лук с морковью на небольшом количестве подсолнечного масла, Нашинковать капусту и добавить к овощам, добавить томатную пасту, соль перец. Тушить минут 30-40 до мягкости капусты.\nТофу нарезать на ломтики толщиной 1см - обжарить с двух сторон.\nЧечевицу отварить по инструкции на упаковке, кешью залить горячей водой на 5-10 минут. Когда чечевица будет готова - смешать и пюрировать блендером.\nВыложить на тарелку пюре, капуста, тофу, нарезанные на половинки черри."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "chechevitsa_zerno",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sunflower_oil",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tomatnaya_pasta_konservy",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 3,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_119",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Блинчики с мягким творогом, манго и миндалем",
+          "steps": "Разогреть блинчики, полить сиропом топинамбура. Съесть совместно с творогом, миндалем и кусочками манго."
+        },
+        "en": {
+          "name": "Crepes with soft cheese, mango and almonds",
+          "steps": "Разогреть блинчики, полить сиропом топинамбура. Съесть совместно с творогом, миндалем и кусочками манго."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 170,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_120",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Ночная овсянка с корицей, кешью и бананом",
+          "steps": "Смешать все ингредиенты кроме банана и кешью. Закрыть крышкой и оставить на ночь в холодильнике.\nПри подаче сверху выложить мелко нарезанный банан и кешью."
+        },
+        "en": {
+          "name": "Overnight oats with cinnamon, cashew and banana",
+          "steps": "Смешать все ингредиенты кроме банана и кешью. Закрыть крышкой и оставить на ночь в холодильнике.\nПри подаче сверху выложить мелко нарезанный банан и кешью."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 85,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 70,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_121",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Макароны с фасолевым соусом",
+          "steps": "Отварить макароны по инструкции на упаковке. Для соуса кешью замочить в горячей воде минут на 5. Фасоль промыть.\nСмешать ингредиенты для соуса: фасоль, молоко, замоченный кешью без жидкости, подсолнечные семечки, и дрожжи. Можно по вкусу добавить соль с черным перцем.\nГотовые макароны полить соусом."
+        },
+        "en": {
+          "name": "Pasta with bean sauce",
+          "steps": "Отварить макароны по инструкции на упаковке. Для соуса кешью замочить в горячей воде минут на 5. Фасоль промыть.\nСмешать ингредиенты для соуса: фасоль, молоко, замоченный кешью без жидкости, подсолнечные семечки, и дрожжи. Можно по вкусу добавить соль с черным перцем.\nГотовые макароны полить соусом."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "beans",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cashew",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sunflower_sunflower_seeds",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "quantity": 70,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_122",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Рис с творогом и печеными яблоками",
+          "steps": "Яблоко нарезать на половинки, очистить, посыпать корицей и запечь до мягкости при температуре 180 градусов.\nРис отварить по инструкции на упаковке. Миндаль по желанию нарезать средними кусочками для удобства. Яблоки после выпекания немного остудить и нарезать на дольки\nСмешать готовый теплый рис, творог, яблоки, посыпать миндалем и полить сиропом топинамбура."
+        },
+        "en": {
+          "name": "Rice with cottage cheese and baked apples",
+          "steps": "Яблоко нарезать на половинки, очистить, посыпать корицей и запечь до мягкости при температуре 180 градусов.\nРис отварить по инструкции на упаковке. Миндаль по желанию нарезать средними кусочками для удобства. Яблоки после выпекания немного остудить и нарезать на дольки\nСмешать готовый теплый рис, творог, яблоки, посыпать миндалем и полить сиропом топинамбура."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "white_rice_rice_groats",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yabloko",
+          "quantity": 130,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tvorog_obezzhirennyy_0_6_zhirnosti",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 15,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_123",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Намазка из тунца с рикоттой и тостами",
+          "steps": "Два ломтика хлеба обжарить на сухой сковороде/в тостере. Вяленые томаты порезать небольшими кусочками, смешать с тунцом и рикоттой, положить сверху на тосты. По вкусу можно посыпать солью/перцем."
+        },
+        "en": {
+          "name": "Tuna ricotta spread with toast",
+          "steps": "Два ломтика хлеба обжарить на сухой сковороде/в тостере. Вяленые томаты порезать небольшими кусочками, смешать с тунцом и рикоттой, положить сверху на тосты. По вкусу можно посыпать солью/перцем."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tuna",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bread_pshenichnyy_produkt_udalen",
+          "quantity": 70,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_124",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Запеченая рыба и овощи с творожным соусом",
+          "steps": "Рыбу предварительно разморозить. Картофель и морковь нарезать дольками, выложить в отдельные емкости для запекания, посолить, поперчить и накрыть фольгой.\nВыпекать рыбу и овощи 50 минут в разогретой до 180градусов духовке.\nДля соуса смешать мягкий творог, перец, немного соли, мелко нарезанные уроп и мелко нарезанные кубиком маринованные огурцы."
+        },
+        "en": {
+          "name": "Baked fish and vegetables with cheese sauce",
+          "steps": "Рыбу предварительно разморозить. Картофель и морковь нарезать дольками, выложить в отдельные емкости для запекания, посолить, поперчить и накрыть фольгой.\nВыпекать рыбу и овощи 50 минут в разогретой до 180градусов духовке.\nДля соуса смешать мягкий творог, перец, немного соли, мелко нарезанные уроп и мелко нарезанные кубиком маринованные огурцы."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "treska",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "potato",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrots_product_removed",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 85,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "ukrop",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 1,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "ogurets_marinovannyy_produkt_udalen",
+          "quantity": 30,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_125",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Овсяноблин с мягким творогом и бананом",
+          "steps": "Смешать все ингредиенты блендером, дать немного постоять и обжарить на хорошо разогретой сковороде с двух сторон.\nНарезать банан маленькими кусочками. Выложить в блинчик мягкий творог, банан и полить сиропом топинамбура. Или заранее смешать банан с сиропом чтобы сделать его более сладким. Рядом выложить миндаль."
+        },
+        "en": {
+          "name": "Oat pancake with soft cheese and banana",
+          "steps": "Смешать все ингредиенты блендером, дать немного постоять и обжарить на хорошо разогретой сковороде с двух сторон.\nНарезать банан маленькими кусочками. Выложить в блинчик мягкий творог, банан и полить сиропом топинамбура. Или заранее смешать банан с сиропом чтобы сделать его более сладким. Рядом выложить миндаль."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_egg_white",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 1,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 1,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sunflower_oil",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 170,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "banana",
+          "quantity": 70,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 15,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_126",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Омлет с ветчиной, сыром и помидорами",
+          "steps": "Нарезать черри половинками или четвертинками, нарезать сыр и ветчину небольшими полосочками. Петрушку мелко покрошить.\nОбжарить помидорки до мягкости, добавить ветчину, еще немного обжарить.\nЗалить помидорки и ветчину яйцами, обжарить до готовности, добавить сыр и обжарить до того как сыр расплавится. При подаче посыпать петрушкой."
+        },
+        "en": {
+          "name": "Omelette with ham, cheese and tomatoes",
+          "steps": "Нарезать черри половинками или четвертинками, нарезать сыр и ветчину небольшими полосочками. Петрушку мелко покрошить.\nОбжарить помидорки до мягкости, добавить ветчину, еще немного обжарить.\nЗалить помидорки и ветчину яйцами, обжарить до готовности, добавить сыр и обжарить до того как сыр расплавится. При подаче посыпать петрушкой."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5_fat_sandwich",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "fresh_parsley",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_127",
+      "servings": 4,
+      "translations": {
+        "ru": {
+          "name": "Котлетки из куриного филе",
+          "steps": "Филе курицы перемолоть в блендере, сыр натереть и смешать со всеми остальными ингредиентами.\nМокрыми руками сформировать котлетки и обжарить на огне ниже среднего 3-4 минуты с каждой стороны под крышкой."
+        },
+        "en": {
+          "name": "Chicken fillet patties",
+          "steps": "Филе курицы перемолоть в блендере, сыр натереть и смешать со всеми остальными ингредиентами.\nМокрыми руками сформировать котлетки и обжарить на огне ниже среднего 3-4 минуты с каждой стороны под крышкой."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "tsyplyata_produkt_udalen",
+          "quantity": 600,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "brokkoli",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sunflower_oil",
+          "quantity": 4,
+          "unit": "gram"
+        }
+      ]
+    },
+    {
+      "id": "recipe_128",
+      "servings": 1,
+      "translations": {
+        "ru": {
+          "name": "Овсяная каша с курагой, орехами и мягким творогом",
+          "steps": "Курагу нарезать мелким кубиком, положить вместе с овсянкой в кастрюлю и залить водой 3 части воды к 1 части крупы. Варить до полного выпаривания воды.\nВыложить на тарелку, сверху посыпать семенами/орехами. Рядом выложить малину, полить ее сиропом топинамбура. Подать вместе с мягким творогом."
+        },
+        "en": {
+          "name": "Oatmeal with dried apricots, nuts and soft cheese",
+          "steps": "Курагу нарезать мелким кубиком, положить вместе с овсянкой в кастрюлю и залить водой 3 части воды к 1 части крупы. Варить до полного выпаривания воды.\nВыложить на тарелку, сверху посыпать семенами/орехами. Рядом выложить малину, полить ее сиропом топинамбура. Подать вместе с мягким творогом."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "dried_apricots_seedless_dried_apricots",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "raspberries",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sugar",
+          "quantity": 1,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "tvorog_5_zhirnosti",
+          "quantity": 170,
           "unit": "gram"
         }
       ]

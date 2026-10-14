@@ -33,6 +33,7 @@ enum FoodCatalogSeeder {
         var ironPer100g: Double?
         var potassiumPer100g: Double?
         var iodinePer100g: Double?
+        var macrosOnly: Bool?
     }
 
     struct Micro {

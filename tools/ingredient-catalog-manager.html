@@ -152,6 +152,7 @@
           <div class="section-title">Микронутриенты (на 100 г)</div>
           <p class="hint unit-hint">мг: Ca, Mg, Zn, C, K; мкг: D3, A, K, B9, B12, Se, Cr, I; г: fiber, E, B6, Fe</p>
           <div class="fields-grid" id="microFields"></div>
+          <p id="macrosOnlyHint" class="hint" hidden>Только КБЖУ: микронутриенты не заполнены (<code>macrosOnly</code>).</p>
 
           <div class="row" style="margin-top: 12px;">
             <button type="submit" class="primary" id="btnSave">Сохранить в список</button>
@@ -172,6 +173,7 @@
                 <th>Б</th>
                 <th>Ж</th>
                 <th>У</th>
+                <th>микро</th>
                 <th></th>
               </tr>
             </thead>
@@ -183,7 +185,20 @@
   </main>
 
   <script>
-    const CATEGORIES = ['vegetables', 'meat', 'fish', 'dairy', 'grains', 'fruits', 'spices', 'other'];
+    const CATEGORIES = [
+      { value: 'vegetables', label: 'Овощи' },
+      { value: 'greens', label: 'Зелень' },
+      { value: 'meat', label: 'Мясо' },
+      { value: 'fish', label: 'Рыба' },
+      { value: 'dairy', label: 'Молочное' },
+      { value: 'grains', label: 'Крупы' },
+      { value: 'fruits', label: 'Фрукты' },
+      { value: 'nuts', label: 'Орехи' },
+      { value: 'seeds', label: 'Семена' },
+      { value: 'spices', label: 'Специи' },
+      { value: 'other', label: 'Прочее' },
+    ];
+    const CATEGORY_VALUES = CATEGORIES.map(c => c.value);
 
     const FIELD_DEFS = [
       { key: 'fiberPer100g', label: 'Клетчатка', unit: 'г' },
@@ -240,26 +255,39 @@
       return Number.isFinite(n) ? n : 0;
     }
 
+    function isMacrosOnly(p) {
+      const hasMacro = MACRO_KEYS.some(k => num(p[k]) > 0);
+      if (!hasMacro) return false;
+      return FIELD_DEFS.every(f => num(p[f.key]) === 0);
+    }
+
+    function applyMacrosOnlyFlag(p) {
+      if (isMacrosOnly(p)) p.macrosOnly = true;
+      else delete p.macrosOnly;
+      return p;
+    }
+
     function normalizeProduct(raw) {
       const p = emptyProduct();
       p.catalogKey = String(raw.catalogKey ?? raw.key ?? '').trim();
       p.displayName = String(raw.displayName ?? raw.name ?? '').trim();
-      p.category = CATEGORIES.includes(raw.category) ? raw.category : 'other';
+      p.category = CATEGORY_VALUES.includes(raw.category) ? raw.category : 'other';
       p.defaultPieceWeightGrams = num(raw.defaultPieceWeightGrams ?? raw.pieceGrams ?? 100);
       ALL_NUMERIC.forEach(k => { p[k] = num(raw[k] ?? 0); });
       if (!p.catalogKey && p.displayName) p.catalogKey = slugify(p.displayName);
-      return p;
+      if (raw.macrosOnly === true) p.macrosOnly = true;
+      return applyMacrosOnlyFlag(p);
     }
 
     function initForm() {
       const cat = $('category');
-      cat.innerHTML = CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('');
+      cat.innerHTML = CATEGORIES.map(c => `<option value="${c.value}">${c.label} (${c.value})</option>`).join('');
 
       const micro = $('microFields');
       micro.innerHTML = FIELD_DEFS.map(f => `
         <div>
           <label>${f.label} <span class="unit-hint">(${f.unit})</span></label>
-          <input type="number" id="${f.key}" step="0.001" min="0" data-field="${f.key}" />
+          <input type="number" id="${f.key}" step="0.000001" min="0" data-field="${f.key}" />
         </div>
       `).join('');
     }
@@ -271,6 +299,8 @@
       $('defaultPieceWeightGrams').value = p.defaultPieceWeightGrams;
       MACRO_KEYS.forEach(k => { $(k).value = p[k]; });
       FIELD_DEFS.forEach(f => { $(f.key).value = p[f.key]; });
+      const hint = $('macrosOnlyHint');
+      hint.hidden = !p.macrosOnly;
     }
 
     function readForm() {
@@ -280,8 +310,8 @@
       p.category = $('category').value;
       p.defaultPieceWeightGrams = num($('defaultPieceWeightGrams').value);
       MACRO_KEYS.forEach(k => { p[k] = num($(k).value); });
-      FIELD_DEFS.forEach(f => { p[k] = num($(f.key).value); });
-      return p;
+      FIELD_DEFS.forEach(f => { p[f.key] = num($(f.key).value); });
+      return applyMacrosOnlyFlag(p);
     }
 
     function renderTable() {
@@ -295,6 +325,7 @@
           <td>${fmt(p.proteinPer100g)}</td>
           <td>${fmt(p.fatPer100g)}</td>
           <td>${fmt(p.carbsPer100g)}</td>
+          <td>${p.macrosOnly ? '—' : '✓'}</td>
           <td>
             <button type="button" data-edit="${i}">Изм.</button>
             <button type="button" class="danger" data-del="${i}">×</button>
@@ -410,34 +441,36 @@
     });
 
     // ——— health-diet.ru parser ———
+    // Note: JS \b does not work after Cyrillic letters — avoid it there.
 
     const NUTRIENT_MAP = [
-      { patterns: [/калорийность/i, /энергетическая ценность/i], field: 'caloriesPer100g', unit: 'kcal' },
-      { patterns: [/белки/i], field: 'proteinPer100g', unit: 'g' },
-      { patterns: [/жиры/i], field: 'fatPer100g', unit: 'g' },
-      { patterns: [/углеводы/i], field: 'carbsPer100g', unit: 'g' },
-      { patterns: [/витамин\s*а\b/i, /vitamin\s*a/i, /ретинол/i], field: 'vitaminAPer100g', unit: 'mcg' },
-      { patterns: [/витамин\s*в6|b6|пиридоксин/i], field: 'vitaminB6Per100g', unit: 'g' },
-      { patterns: [/витамин\s*в12|b12|кобаламин/i], field: 'vitaminB12Per100g', unit: 'mcg' },
-      { patterns: [/витамин\s*с\b|c\b.*витамин|аскорбин/i], field: 'vitaminCPer100g', unit: 'mg' },
-      { patterns: [/витамин\s*d3|витамин\s*d\b|d3\b/i], field: 'vitaminD3Per100g', unit: 'mcg' },
-      { patterns: [/витамин\s*е\b|витамин\s*e\b|токоферол/i], field: 'vitaminEPer100g', unit: 'g' },
-      { patterns: [/витамин\s*к\b|витамин\s*k\b/i], field: 'vitaminKPer100g', unit: 'mcg' },
-      { patterns: [/калий/i, /\bk\b.*мг/i], field: 'potassiumPer100g', unit: 'mg' },
-      { patterns: [/кальций/i, /\bca\b/i], field: 'calciumPer100g', unit: 'mg' },
-      { patterns: [/магний/i, /\bmg\b.*макро/i], field: 'magnesiumPer100g', unit: 'mg' },
-      { patterns: [/железо/i, /\bfe\b/i], field: 'ironPer100g', unit: 'g' },
-      { patterns: [/селен/i, /\bse\b/i], field: 'seleniumPer100g', unit: 'mcg' },
-      { patterns: [/цинк/i, /\bzn\b/i], field: 'zincPer100g', unit: 'mg' },
-      { patterns: [/хром/i, /\bcr\b/i], field: 'chromiumPer100g', unit: 'mcg' },
-      { patterns: [/йод/i, /\bi\b.*мкг/i], field: 'iodinePer100g', unit: 'mcg' },
-      { patterns: [/фолат|витамин\s*в9|b9/i], field: 'vitaminB9Per100g', unit: 'mcg' },
-      { patterns: [/пищевые волокна|клетчатк|fiber/i], field: 'fiberPer100g', unit: 'g' },
+      { patterns: [/^калорийность/i, /энергетическая ценность/i], field: 'caloriesPer100g', unit: 'kcal' },
+      { patterns: [/^белки(?:\s|,|$)/i], field: 'proteinPer100g', unit: 'g' },
+      { patterns: [/^жиры(?:\s|,|$)/i], field: 'fatPer100g', unit: 'g' },
+      { patterns: [/^углеводы(?:\s|,|$)/i], field: 'carbsPer100g', unit: 'g' },
+      { patterns: [/пищевые волокна|клетчатк|^fiber/i], field: 'fiberPer100g', unit: 'g' },
+      { patterns: [/витамин\s*[аa](?:\s|,|$)/i, /retinol|ретинол/i], field: 'vitaminAPer100g', unit: 'mcg' },
+      { patterns: [/витамин\s*[вb]\s*6|пиридоксин/i], field: 'vitaminB6Per100g', unit: 'g' },
+      { patterns: [/витамин\s*[вb]\s*12|кобаламин/i], field: 'vitaminB12Per100g', unit: 'mcg' },
+      { patterns: [/витамин\s*[вb]\s*9|фолат/i], field: 'vitaminB9Per100g', unit: 'mcg' },
+      { patterns: [/витамин\s*[сc](?:\s|,|$)|аскорбин/i], field: 'vitaminCPer100g', unit: 'mg' },
+      { patterns: [/витамин\s*d\s*3|витамин\s*d(?:\s|,|$)/i], field: 'vitaminD3Per100g', unit: 'mcg' },
+      { patterns: [/витамин\s*[еe](?:\s|,|$)|альфа\s*токоферол/i], field: 'vitaminEPer100g', unit: 'g' },
+      { patterns: [/витамин\s*[кk](?:\s|,|$)|филлохинон/i], field: 'vitaminKPer100g', unit: 'mcg' },
+      { patterns: [/^калий(?:\s|,|$)/i], field: 'potassiumPer100g', unit: 'mg' },
+      { patterns: [/^кальций(?:\s|,|$)/i], field: 'calciumPer100g', unit: 'mg' },
+      { patterns: [/^магний(?:\s|,|$)/i], field: 'magnesiumPer100g', unit: 'mg' },
+      { patterns: [/^железо(?:\s|,|$)/i], field: 'ironPer100g', unit: 'g' },
+      { patterns: [/^селен(?:\s|,|$)/i], field: 'seleniumPer100g', unit: 'mcg' },
+      { patterns: [/^цинк(?:\s|,|$)/i], field: 'zincPer100g', unit: 'mg' },
+      { patterns: [/^хром(?:\s|,|$)/i], field: 'chromiumPer100g', unit: 'mcg' },
+      { patterns: [/^йод(?:\s|,|$)/i], field: 'iodinePer100g', unit: 'mcg' },
     ];
 
     function parseAmount(text) {
       const t = text.replace(/\s+/g, ' ').trim().toLowerCase();
-      const m = t.match(/([\d.,]+)\s*(ккал|ккалорий|kcal|г|гр|g|мг|mg|мкг|μg|mcg)?/i);
+      // Longest units first so "мкг" is not captured as "мг"
+      const m = t.match(/([\d.,]+)\s*(ккалорий|ккал|kcal|мкг|μg|mcg|мг|mg|гр|г|g)?/i);
       if (!m) return null;
       let value = parseFloat(m[1].replace(',', '.'));
       let unit = (m[2] || '').toLowerCase();
@@ -454,16 +487,94 @@
       if (fromUnit === 'mg' && targetUnit === 'mcg') return value * 1000;
       if (fromUnit === 'mcg' && targetUnit === 'mg') return value / 1000;
       if (fromUnit === 'g' && targetUnit === 'mg') return value * 1000;
+      if (fromUnit === 'mg' && targetUnit === 'g') return value / 1000;
+      if (fromUnit === 'mcg' && targetUnit === 'g') return value / 1000000;
       return value;
+    }
+
+    function applyNutrientToProduct(product, nutrientName, amountText, appliedFields) {
+      const parsed = parseAmount(amountText);
+      if (!parsed) return;
+
+      const name = nutrientName.replace(/\s+/g, ' ').trim();
+      for (const rule of NUTRIENT_MAP) {
+        if (rule.patterns.some(rx => rx.test(name))) {
+          if (appliedFields.has(rule.field)) return;
+          const val = convertToFieldUnit(parsed.value, parsed.unit, rule.unit);
+          product[rule.field] = val;
+          appliedFields.add(rule.field);
+          return;
+        }
+      }
+    }
+
+    function parseHealthDietMarkdown(raw) {
+      const product = emptyProduct();
+      const appliedFields = new Set();
+      let text = raw.includes('Markdown Content:')
+        ? raw.split('Markdown Content:').slice(1).join('Markdown Content:')
+        : raw;
+
+      // Cut off marketing / related sections that repeat macros without micros
+      const cutAt = text.search(/\n##\s*калькулятор|\n#\s*полезные свойства/i);
+      if (cutAt > 0) text = text.slice(0, cutAt);
+
+      const titleMatch =
+        text.match(/^#\s*Калорийность\s+(.+?)\.\s*Химический состав/im) ||
+        text.match(/^####\s*Пищевая ценность и химический состав\s*["«](.+?)["»]/im) ||
+        text.match(/^#\s*Калорийность\s+(.+)/im);
+      if (titleMatch?.[1]) {
+        product.displayName = titleMatch[1]
+          .replace(/["«»]/g, '')
+          .replace(/\.\s*Химический состав.*/i, '')
+          .trim();
+        product.catalogKey = slugify(product.displayName);
+      }
+
+      const lines = text.split('\n').map(x => x.replace(/\s+/g, ' ').trim()).filter(Boolean);
+      // Name + first amount with unit (ignore following "норма / %" columns)
+      // Do not use \b after Cyrillic units — JS treats Cyrillic as non-word chars.
+      const rowRx = /^(.+?)\s+([\d.,]+)\s*(ккал|kcal|мкг|mcg|μg|мг|mg|гр|г|g)(?=\s|$|[^а-яёa-z0-9])/i;
+      const skipName = /^(нутриент|норма|витамины|макроэлементы|микроэлементы|усвояемые углеводы|незаменимые аминокислоты|заменимые аминокислоты|жирные кислоты|вода|зола)$/i;
+
+      for (const line of lines) {
+        if (
+          line.startsWith('*') ||
+          line.startsWith('[') ||
+          line.startsWith('#') ||
+          /^https?:\/\//i.test(line) ||
+          /^(таблицы калорийности|войти|главная)$/i.test(line)
+        ) {
+          continue;
+        }
+        const m = line.match(rowRx);
+        if (!m) continue;
+        const name = m[1].trim();
+        if (skipName.test(name) || /жирн(?:ые|ая)\s+кислот/i.test(name)) continue;
+        applyNutrientToProduct(product, name, `${m[2]} ${m[3]}`, appliedFields);
+      }
+
+      const calMatch = text.match(/(?:энергетическая ценность|калорийность)[^.\n]*?(\d+[.,]?\d*)\s*ккал/i);
+      if (calMatch && !appliedFields.has('caloriesPer100g')) {
+        product.caloriesPer100g = parseFloat(calMatch[1].replace(',', '.'));
+        appliedFields.add('caloriesPer100g');
+      }
+
+      return applyMacrosOnlyFlag(product);
     }
 
     function parseHealthDietHtml(html) {
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const product = emptyProduct();
+      const appliedFields = new Set();
 
       const h1 = doc.querySelector('h1');
       if (h1) {
-        product.displayName = h1.textContent.replace(/Калорийность\s*/i, '').trim();
+        product.displayName = h1.textContent
+          .replace(/Калорийность\s*/i, '')
+          .replace(/\.\s*Химический состав.*/i, '')
+          .replace(/["«»]/g, '')
+          .trim();
         product.catalogKey = slugify(product.displayName);
       }
 
@@ -475,26 +586,37 @@
         const amount = cells[1].textContent.trim();
         if (!name || !amount || /нутриент|норма/i.test(name)) return;
 
-        const parsed = parseAmount(amount);
-        if (!parsed) return;
-
-        for (const rule of NUTRIENT_MAP) {
-          if (rule.patterns.some(rx => rx.test(name))) {
-            const val = convertToFieldUnit(parsed.value, parsed.unit, rule.unit);
-            product[rule.field] = val;
-            break;
-          }
-        }
+        applyNutrientToProduct(product, name, amount, appliedFields);
       });
 
       // Fallback: текст «48 кКал» в описании
       const bodyText = doc.body?.textContent || '';
       const calMatch = bodyText.match(/(\d+[.,]?\d*)\s*ккал/i);
-      if (calMatch && !product.caloriesPer100g) {
+      if (calMatch && !appliedFields.has('caloriesPer100g')) {
         product.caloriesPer100g = parseFloat(calMatch[1].replace(',', '.'));
+        appliedFields.add('caloriesPer100g');
       }
 
-      return product;
+      const hasMainValues = [
+        product.caloriesPer100g,
+        product.proteinPer100g,
+        product.fatPer100g,
+        product.carbsPer100g,
+      ].some(v => Number.isFinite(v) && v !== 0);
+      // Also fall back when macros parsed but micros missing (markdown paste via DOMParser)
+      const hasMicros = [
+        product.vitaminAPer100g,
+        product.vitaminCPer100g,
+        product.vitaminKPer100g,
+        product.calciumPer100g,
+        product.ironPer100g,
+      ].some(v => Number.isFinite(v) && v !== 0);
+
+      if (!hasMainValues || (!hasMicros && /Markdown Content:|Калорийность\s+.+\s+ккал/i.test(html))) {
+        return parseHealthDietMarkdown(html);
+      }
+
+      return applyMacrosOnlyFlag(product);
     }
 
     function applyParsedToForm(parsed) {
@@ -532,16 +654,12 @@
     function proxyCandidates(sourceUrl) {
       return [
         {
-          name: 'allorigins',
-          url: 'https://api.allorigins.win/raw?url=' + encodeURIComponent(sourceUrl),
+          name: 'r.jina.ai',
+          url: 'https://r.jina.ai/http://' + sourceUrl.replace(/^https?:\/\//i, ''),
         },
         {
           name: 'corsproxy.io',
           url: 'https://corsproxy.io/?' + encodeURIComponent(sourceUrl),
-        },
-        {
-          name: 'r.jina.ai',
-          url: 'https://r.jina.ai/http://' + sourceUrl.replace(/^https?:\/\//i, ''),
         },
       ];
     }

@@ -1204,6 +1204,22 @@
         }
       }
     },
+    "category.greens" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Greens"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зелень"
+          }
+        }
+      }
+    },
     "category.meat" : {
       "localizations" : {
         "en" : {
@@ -1220,6 +1236,22 @@
         }
       }
     },
+    "category.nuts" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuts"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Орехи"
+          }
+        }
+      }
+    },
     "category.other" : {
       "localizations" : {
         "en" : {
@@ -1232,6 +1264,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Прочее"
+          }
+        }
+      }
+    },
+    "category.seeds" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seeds"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Семена"
           }
         }
       }
