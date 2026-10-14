@@ -691,7 +691,6 @@
       }
     },
     "addRecipe.sourceURL" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2081,6 +2080,56 @@
         }
       }
     },
+    "import.debug.button" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импорт"
+          }
+        }
+      }
+    },
+    "import.debug.placeholder" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagram Reel URL"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ссылка на Instagram Reels"
+          }
+        }
+      }
+    },
+    "import.error.instagram" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not load Instagram post. The link may be invalid or private."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось загрузить пост Instagram. Ссылка может быть недействительной или закрытой."
+          }
+        }
+      }
+    },
     "import.error.invalid" : {
       "localizations" : {
         "en" : {
@@ -2097,8 +2146,71 @@
         }
       }
     },
+    "import.error.network" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network error. Check your connection and try again."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка сети. Проверьте подключение и попробуйте снова."
+          }
+        }
+      }
+    },
+    "import.error.openai.auth" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NVIDIA API key is invalid or missing."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неверный или отсутствующий ключ NVIDIA API."
+          }
+        }
+      }
+    },
+    "import.error.openai.quota" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NVIDIA API rate limit reached and the caption could not be parsed."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Превышен лимит NVIDIA API, и описание поста не удалось разобрать."
+          }
+        }
+      }
+    },
+    "import.error.parsing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not parse recipe from the post content."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось разобрать рецепт из содержимого поста."
+          }
+        }
+      }
+    },
     "import.error.title" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2110,6 +2222,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ошибка импорта"
+          }
+        }
+      }
+    },
+    "import.error.transcription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not get video transcript. The reel may be over 2 minutes or have no speech."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось получить транскрипт видео. Reels может быть длиннее 2 минут или без речи."
           }
         }
       }
@@ -2126,6 +2254,118 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось прочитать файл."
+          }
+        }
+      }
+    },
+    "import.progress.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fetching caption, transcript, and parsing recipe…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загружаем описание, транскрипт и разбираем рецепт…"
+          }
+        }
+      }
+    },
+    "import.progress.review" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review and save"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверить и сохранить"
+          }
+        }
+      }
+    },
+    "import.progress.success" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recipe imported"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рецепт импортирован"
+          }
+        }
+      }
+    },
+    "import.progress.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importing recipe"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импорт рецепта"
+          }
+        }
+      }
+    },
+    "import.unresolved.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap an ingredient to match it from the catalog."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите на ингредиент, чтобы выбрать его из каталога."
+          }
+        }
+      }
+    },
+    "import.unresolved.tap" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to resolve"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите для выбора"
+          }
+        }
+      }
+    },
+    "import.unresolved.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unresolved ingredients"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нераспознанные ингредиенты"
           }
         }
       }

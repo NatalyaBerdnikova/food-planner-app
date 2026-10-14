@@ -7,13 +7,28 @@ struct AddRecipeView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name = ""
-    @State private var servings = 1
-    @State private var stepsAttributed = NSAttributedString()
+    @State private var name: String
+    @State private var servings: Int
+    @State private var stepsAttributed: NSAttributedString
     @State private var imageData: Data?
-    @State private var draftIngredients: [DraftIngredient] = []
+    @State private var sourceURL: String
+    @State private var draftIngredients: [DraftIngredient]
+    @State private var unresolvedIngredients: [UnresolvedIngredient]
     @State private var showAddIngredient = false
+    @State private var resolvingUnresolved: UnresolvedIngredient?
     @State private var photoPickerItem: PhotosPickerItem?
+
+    init(prefill: ImportedRecipeDraft? = nil) {
+        _name = State(initialValue: prefill?.name ?? "")
+        _servings = State(initialValue: max(prefill?.servings ?? 1, 1))
+        _stepsAttributed = State(
+            initialValue: RecipeStepsStorage.attributedString(fromPlainSteps: prefill?.steps ?? [])
+        )
+        _imageData = State(initialValue: prefill?.imageData)
+        _sourceURL = State(initialValue: prefill?.sourceURL ?? "")
+        _draftIngredients = State(initialValue: prefill?.ingredients ?? [])
+        _unresolvedIngredients = State(initialValue: prefill?.unresolvedIngredients ?? [])
+    }
 
     private var previewNutritionPerServing: DailyNutrition? {
         guard !draftIngredients.isEmpty else { return nil }
@@ -61,6 +76,17 @@ struct AddRecipeView: View {
                 Text("addRecipe.servingsFooter")
             }
 
+            if !sourceURL.isEmpty {
+                Section("addRecipe.sourceURL") {
+                    if let url = URL(string: sourceURL) {
+                        Link(sourceURL, destination: url)
+                    } else {
+                        Text(sourceURL)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+
             Section {
                 RichTextEditorView(attributedText: $stepsAttributed)
             } header: {
@@ -88,6 +114,33 @@ struct AddRecipeView: View {
                 .buttonStyle(.plain)
             }
 
+            if !unresolvedIngredients.isEmpty {
+                Section {
+                    ForEach(unresolvedIngredients) { item in
+                        Button {
+                            resolvingUnresolved = item
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(item.rawName)
+                                        .foregroundStyle(.primary)
+                                    Text("import.unresolved.tap")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                Text(L10n.amount(quantity: item.suggestedQuantity, unit: item.suggestedUnit))
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                } header: {
+                    Text("import.unresolved.title")
+                } footer: {
+                    Text("import.unresolved.footer")
+                }
+            }
+
             if let nutrition = previewNutritionPerServing {
                 Section("addRecipe.nutrition") {
                     NutritionSummaryView(
@@ -113,6 +166,16 @@ struct AddRecipeView: View {
                 draftIngredients.append(draft)
             }
         }
+        .sheet(item: $resolvingUnresolved) { item in
+            AddIngredientSheet(
+                initialSearchText: item.rawName,
+                initialQuantity: item.suggestedQuantity,
+                initialUnit: item.suggestedUnit
+            ) { draft in
+                draftIngredients.append(draft)
+                unresolvedIngredients.removeAll { $0.id == item.id }
+            }
+        }
         .onChange(of: photoPickerItem) { _, item in
             loadPhoto(from: item)
         }
@@ -128,11 +191,13 @@ struct AddRecipeView: View {
     }
 
     private func saveRecipe() {
+        let trimmedSourceURL = sourceURL.trimmingCharacters(in: .whitespacesAndNewlines)
         let recipe = Recipe(
             name: name.trimmingCharacters(in: .whitespaces),
             userRecipeId: UUID().uuidString,
             servings: servings,
             imageData: imageData,
+            sourceURL: trimmedSourceURL.isEmpty ? nil : trimmedSourceURL,
             steps: RecipeStepsStorage.plainStepLines(from: stepsAttributed),
             stepsRichTextData: RecipeStepsStorage.rtfData(from: stepsAttributed)
         )

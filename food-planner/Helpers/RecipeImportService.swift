@@ -1,22 +1,44 @@
 import Foundation
 import SwiftData
 
-struct ImportedRecipeDraft {
+struct UnresolvedIngredient: Identifiable {
+    let id = UUID()
+    var rawName: String
+    var suggestedQuantity: Double
+    var suggestedUnit: MeasurementUnit
+}
+
+struct ImportedRecipeDraft: Identifiable {
+    let id = UUID()
     var name: String
     var sourceURL: String?
+    var servings: Int?
     var steps: [String]
     var imageData: Data?
     var ingredients: [DraftIngredient]
+    var unresolvedIngredients: [UnresolvedIngredient]
 }
 
 enum RecipeImportError: LocalizedError {
     case unreadableFile
     case invalidFormat
+    case networkFailure
+    case instagramUnavailable
+    case transcriptionFailed
+    case parsingFailed
+    case openAIQuotaExceeded
+    case openAIUnauthorized
 
     var errorDescription: String? {
         switch self {
         case .unreadableFile: String(localized: "import.error.unreadable")
         case .invalidFormat: String(localized: "import.error.invalid")
+        case .networkFailure: String(localized: "import.error.network")
+        case .instagramUnavailable: String(localized: "import.error.instagram")
+        case .transcriptionFailed: String(localized: "import.error.transcription")
+        case .parsingFailed: String(localized: "import.error.parsing")
+        case .openAIQuotaExceeded: String(localized: "import.error.openai.quota")
+        case .openAIUnauthorized: String(localized: "import.error.openai.auth")
         }
     }
 }
@@ -68,8 +90,10 @@ enum RecipeImportService {
         return ImportedRecipeDraft(
             name: decoded.name.trimmingCharacters(in: .whitespaces),
             sourceURL: decoded.sourceURL,
+            servings: nil,
             steps: decoded.steps ?? [],
-            ingredients: ingredients
+            ingredients: ingredients,
+            unresolvedIngredients: []
         )
     }
 
@@ -90,7 +114,8 @@ enum RecipeImportService {
         return ImportedRecipeDraft(
             name: title,
             steps: Array(lines.dropFirst()),
-            ingredients: []
+            ingredients: [],
+            unresolvedIngredients: []
         )
     }
 

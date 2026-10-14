@@ -17,6 +17,25 @@ struct AddIngredientSheet: View {
     @State private var selectedKey: String?
     @State private var gramsText = "100"
     @State private var searchText = ""
+    @State private var quantityText: String
+    @State private var unit: MeasurementUnit
+    @State private var searchText: String
+
+    init(
+        initialSearchText: String = "",
+        initialQuantity: Double = 100,
+        initialUnit: MeasurementUnit = .gram,
+        onAdd: @escaping (DraftIngredient) -> Void
+    ) {
+        self.onAdd = onAdd
+        _quantityText = State(initialValue: Self.formatQuantity(initialQuantity))
+        _unit = State(initialValue: initialUnit)
+        _searchText = State(initialValue: initialSearchText)
+    }
+
+    private static func formatQuantity(_ value: Double) -> String {
+        value == floor(value) ? String(Int(value)) : String(value)
+    }
 
     private var selectedProduct: FoodProduct? {
         guard let key = selectedKey else { return nil }
