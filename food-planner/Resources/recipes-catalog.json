@@ -41,7 +41,8 @@
           "quantity": 80,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_02",
@@ -73,7 +74,8 @@
           "quantity": 25,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_03",
@@ -110,7 +112,8 @@
           "quantity": 100,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_04",
@@ -147,7 +150,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_05",
@@ -189,7 +193,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 30
     },
     {
       "id": "recipe_06",
@@ -231,7 +236,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_07",
@@ -268,7 +274,8 @@
           "quantity": 40,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_08",
@@ -315,7 +322,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_09",
@@ -357,7 +365,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_10",
@@ -399,7 +408,8 @@
           "quantity": 40,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_11",
@@ -436,7 +446,8 @@
           "quantity": 25,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_12",
@@ -473,7 +484,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_13",
@@ -515,7 +527,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_14",
@@ -552,7 +565,8 @@
           "quantity": 20,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_15",
@@ -589,7 +603,8 @@
           "quantity": 20,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_16",
@@ -636,7 +651,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_17",
@@ -683,7 +699,8 @@
           "quantity": 40,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_18",
@@ -730,7 +747,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_19",
@@ -772,7 +790,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_20",
@@ -809,7 +828,8 @@
           "quantity": 60,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_21",
@@ -851,7 +871,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_22",
@@ -888,7 +909,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_23",
@@ -925,7 +947,8 @@
           "quantity": 80,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_24",
@@ -967,7 +990,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_25",
@@ -1014,7 +1038,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_26",
@@ -1056,7 +1081,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_27",
@@ -1103,7 +1129,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_28",
@@ -1145,7 +1172,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_29",
@@ -1196,7 +1224,8 @@
           "quantity": 40,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_30",
@@ -1232,7 +1261,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_31",
@@ -1283,7 +1313,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_32",
@@ -1334,7 +1365,8 @@
           "quantity": 150,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_33",
@@ -1380,7 +1412,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_34",
@@ -1426,7 +1459,8 @@
           "quantity": 40,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_35",
@@ -1462,7 +1496,8 @@
           "quantity": 60,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 20
     },
     {
       "id": "recipe_36",
@@ -1503,7 +1538,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_37",
@@ -1539,7 +1575,8 @@
           "quantity": 2,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 40
     },
     {
       "id": "recipe_38",
@@ -1580,7 +1617,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_39",
@@ -1631,7 +1669,8 @@
           "quantity": 80,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_40",
@@ -1662,7 +1701,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_41",
@@ -1688,7 +1728,8 @@
           "quantity": 100,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_42",
@@ -1739,7 +1780,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_43",
@@ -1780,7 +1822,8 @@
           "quantity": 200,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_44",
@@ -1826,7 +1869,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_45",
@@ -1852,7 +1896,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_46",
@@ -1898,7 +1943,8 @@
           "quantity": 75,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_47",
@@ -1939,7 +1985,8 @@
           "quantity": 30,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_48",
@@ -1975,7 +2022,8 @@
           "quantity": 2,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_49",
@@ -1996,7 +2044,8 @@
           "quantity": 110,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_50",
@@ -2022,7 +2071,8 @@
           "quantity": 140,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_51",
@@ -2063,7 +2113,8 @@
           "quantity": 100,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 40
     },
     {
       "id": "recipe_52",
@@ -2104,7 +2155,8 @@
           "quantity": 5,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_53",
@@ -2155,7 +2207,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_54",
@@ -2196,7 +2249,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_55",
@@ -2252,7 +2306,8 @@
           "quantity": 400,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_56",
@@ -2278,7 +2333,8 @@
           "quantity": 3,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_57",
@@ -2309,7 +2365,8 @@
           "quantity": 5,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_58",
@@ -2340,7 +2397,8 @@
           "quantity": 2,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_59",
@@ -2371,7 +2429,8 @@
           "quantity": 120,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_60",
@@ -2412,7 +2471,8 @@
           "quantity": 1,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_61",
@@ -2478,7 +2538,8 @@
           "quantity": 60,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_62",
@@ -2529,7 +2590,8 @@
           "quantity": 4,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_63",
@@ -2565,7 +2627,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_64",
@@ -2611,7 +2674,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_65",
@@ -2667,7 +2731,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_66",
@@ -2708,7 +2773,8 @@
           "quantity": 70,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_67",
@@ -2744,7 +2810,8 @@
           "quantity": 20,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_68",
@@ -2785,7 +2852,8 @@
           "quantity": 200,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_69",
@@ -2841,7 +2909,8 @@
           "quantity": 5,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_70",
@@ -2882,7 +2951,8 @@
           "quantity": 20,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_71",
@@ -2928,7 +2998,8 @@
           "quantity": 200,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_72",
@@ -2964,7 +3035,8 @@
           "quantity": 250,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 20
     },
     {
       "id": "recipe_73",
@@ -3010,7 +3082,8 @@
           "quantity": 350,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_74",
@@ -3056,7 +3129,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 20
     },
     {
       "id": "recipe_75",
@@ -3112,7 +3186,8 @@
           "quantity": 130,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_76",
@@ -3148,7 +3223,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_77",
@@ -3189,7 +3265,8 @@
           "quantity": 2,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_78",
@@ -3220,7 +3297,8 @@
           "quantity": 2,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_79",
@@ -3256,7 +3334,8 @@
           "quantity": 140,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_80",
@@ -3302,7 +3381,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 40
     },
     {
       "id": "recipe_81",
@@ -3353,7 +3433,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_82",
@@ -3409,7 +3490,8 @@
           "quantity": 5,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_83",
@@ -3445,7 +3527,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_84",
@@ -3501,7 +3584,8 @@
           "quantity": 60,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_85",
@@ -3547,7 +3631,8 @@
           "quantity": 120,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_86",
@@ -3588,7 +3673,8 @@
           "quantity": 5,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_87",
@@ -3629,7 +3715,8 @@
           "quantity": 50,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_88",
@@ -3675,7 +3762,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 50
     },
     {
       "id": "recipe_89",
@@ -3711,7 +3799,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_90",
@@ -3747,7 +3836,8 @@
           "quantity": 70,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_91",
@@ -3783,7 +3873,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_92",
@@ -3824,7 +3915,8 @@
           "quantity": 5,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_93",
@@ -3870,7 +3962,8 @@
           "quantity": 500,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 20
     },
     {
       "id": "recipe_94",
@@ -3911,7 +4004,8 @@
           "quantity": 100,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_95",
@@ -3932,7 +4026,8 @@
           "quantity": 30,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_96",
@@ -3973,7 +4068,8 @@
           "quantity": 120,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 20
     },
     {
       "id": "recipe_97",
@@ -4014,7 +4110,8 @@
           "quantity": 4,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_98",
@@ -4055,7 +4152,8 @@
           "quantity": 300,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_99",
@@ -4086,7 +4184,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_100",
@@ -4112,7 +4211,8 @@
           "quantity": 100,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_101",
@@ -4153,7 +4253,8 @@
           "quantity": 3,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_102",
@@ -4168,7 +4269,8 @@
           "steps": "Смешать все ингредиенты, по необходимости добавить немного воды для облегчения консистенции.\n<p>Разбавить водой до желаемой консистенции.</p>"
         }
       },
-      "ingredients": []
+      "ingredients": [],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_103",
@@ -4204,7 +4306,8 @@
           "quantity": 3,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_104",
@@ -4245,7 +4348,8 @@
           "quantity": 5,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_105",
@@ -4281,7 +4385,8 @@
           "quantity": 30,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_106",
@@ -4327,7 +4432,8 @@
           "quantity": 800,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_107",
@@ -4363,7 +4469,8 @@
           "quantity": 110,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_108",
@@ -4409,7 +4516,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_109",
@@ -4455,7 +4563,8 @@
           "quantity": 5,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_110",
@@ -4491,7 +4600,8 @@
           "quantity": 3,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_111",
@@ -4522,7 +4632,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_112",
@@ -4548,7 +4659,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_113",
@@ -4584,7 +4696,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_114",
@@ -4615,7 +4728,8 @@
           "quantity": 200,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_115",
@@ -4646,7 +4760,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 20
     },
     {
       "id": "recipe_116",
@@ -4677,7 +4792,8 @@
           "quantity": 100,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 20
     },
     {
       "id": "recipe_117",
@@ -4708,7 +4824,8 @@
           "quantity": 25,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 15
     },
     {
       "id": "recipe_118",
@@ -4764,7 +4881,8 @@
           "quantity": 3,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_119",
@@ -4790,7 +4908,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 20
     },
     {
       "id": "recipe_120",
@@ -4836,7 +4955,8 @@
           "quantity": 70,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_121",
@@ -4872,7 +4992,8 @@
           "quantity": 70,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_122",
@@ -4908,7 +5029,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_123",
@@ -4934,7 +5056,8 @@
           "quantity": 70,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_124",
@@ -4985,7 +5108,8 @@
           "quantity": 30,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 45
     },
     {
       "id": "recipe_125",
@@ -5046,7 +5170,8 @@
           "quantity": 15,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_126",
@@ -5087,7 +5212,8 @@
           "quantity": 10,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_127",
@@ -5133,7 +5259,8 @@
           "quantity": 4,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 25
     },
     {
       "id": "recipe_128",
@@ -5179,7 +5306,8 @@
           "quantity": 170,
           "unit": "gram"
         }
-      ]
+      ],
+      "cookTimeMinutes": 35
     }
   ]
 }

@@ -14,12 +14,9 @@ struct HomeView: View {
     @State private var unfavoriteCandidate: Recipe?
     @State private var addMealPresentation: AddMealPresentation?
     @State private var pasteImportRequest: PasteImportRequest?
+    @State private var featuredRecipeOverride: Recipe?
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
-    private let recommendationColumns = [
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12),
-    ]
 
     private var appSettings: AppSettings? { settingsList.first }
 
@@ -27,14 +24,19 @@ struct HomeView: View {
         WeekPlanService.findCurrentWeekPlan(in: weekPlans)
     }
 
+    private var featuredRecipe: Recipe? {
+        featuredRecipeOverride ?? RecipeDiscoveryService.recipeOfTheDay(from: recipes)
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppTheme.sectionSpacing) {
+                recipeOfTheDaySection
+                recommendationsSection
                 todayNutritionCard
-                importCTACard
                 todayMealsSection
                 weekPlanCard
-                recommendationsSection
+                importCTACard
             }
             .padding(AppTheme.contentPadding)
         }
@@ -79,6 +81,37 @@ struct HomeView: View {
         } message: {
             if let recipe = unfavoriteCandidate {
                 Text("favorites.remove.message \(recipe.localizedName)")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var recipeOfTheDaySection: some View {
+        if let recipe = featuredRecipe {
+            VStack(alignment: .leading, spacing: 14) {
+                HStack(alignment: .center, spacing: 12) {
+                    AppSectionHeader(title: "home.recipeOfTheDay", systemImage: "sun.max.fill", fillsWidth: false)
+                    Spacer(minLength: 0)
+                    Button {
+                        featuredRecipeOverride = RecipeDiscoveryService.randomRecipe(
+                            from: catalogRecipes.isEmpty ? recipes : catalogRecipes,
+                            excluding: recipe.persistentModelID
+                        )
+                    } label: {
+                        Label("home.randomRecipe", systemImage: "shuffle")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(AppTheme.accent)
+                    .accessibilityHint("home.randomRecipe")
+                }
+
+                NavigationLink {
+                    RecipeDetailView(recipe: recipe)
+                } label: {
+                    RecipeCardView(recipe: recipe, style: .hero)
+                }
+                .buttonStyle(.plain)
             }
         }
     }
@@ -227,10 +260,14 @@ struct HomeView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             } else {
-                LazyVGrid(columns: recommendationColumns, spacing: 12) {
-                    ForEach(filteredCatalogRecipes) { recipe in
-                        recommendationCard(recipe)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: AppTheme.sectionRailSpacing) {
+                        ForEach(filteredCatalogRecipes) { recipe in
+                            recommendationCard(recipe)
+                                .frame(width: AppTheme.recipeRailCardWidth)
+                        }
                     }
+                    .padding(.vertical, 2)
                 }
             }
         }
@@ -242,7 +279,7 @@ struct HomeView: View {
             NavigationLink {
                 RecipeDetailView(recipe: recipe)
             } label: {
-                RecipeCardView(recipe: recipe)
+                RecipeCardView(recipe: recipe, style: .rail)
             }
             .buttonStyle(.plain)
             .frame(maxWidth: .infinity, alignment: .leading)

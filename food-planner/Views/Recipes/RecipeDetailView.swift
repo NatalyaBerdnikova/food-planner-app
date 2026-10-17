@@ -166,6 +166,16 @@ struct RecipeDetailView: View {
                     .shadow(color: .black.opacity(0.28), radius: 8, y: 4)
 
                 HStack(spacing: 8) {
+                    if recipe.hasCookTime {
+                        heroMetricChip(
+                            icon: "clock.fill",
+                            text: String(localized: "recipe.cookTime \(recipe.cookTimeMinutes)")
+                        )
+                    }
+                    heroMetricChip(
+                        icon: "heart.fill",
+                        text: "\(recipe.communityLikeCount)"
+                    )
                     heroMetricChip(
                         icon: "person.2.fill",
                         text: String(localized: "recipeDetail.servings \(recipe.servings)")
@@ -174,13 +184,16 @@ struct RecipeDetailView: View {
                         icon: "carrot.fill",
                         text: String(localized: "recipeDetail.ingredients \(recipe.ingredients.count)")
                     )
-                    if nutrition.totalWeightGrams > 0 {
-                        heroMetricChip(
-                            icon: "scalemass.fill",
-                            text: L10n.recipeWeight(Int(nutrition.totalWeightGrams.rounded()))
-                        )
-                    }
                 }
+
+                RecipeUserRatingView(rating: recipe.userRating, isInteractive: true) { value in
+                    recipe.setUserRating(value)
+                    LocalPersistence.save(modelContext)
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 8)
+                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .colorScheme(.dark)
 
                 portionsControl
             }

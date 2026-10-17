@@ -9,6 +9,7 @@ struct AddRecipeView: View {
 
     @State private var name: String
     @State private var servings: Int
+    @State private var cookTimeMinutes: Int
     @State private var stepsAttributed: NSAttributedString
     @State private var imageData: Data?
     @State private var sourceURL: String
@@ -21,6 +22,7 @@ struct AddRecipeView: View {
     init(prefill: ImportedRecipeDraft? = nil) {
         _name = State(initialValue: prefill?.name ?? "")
         _servings = State(initialValue: max(prefill?.servings ?? 1, 1))
+        _cookTimeMinutes = State(initialValue: 0)
         _stepsAttributed = State(
             initialValue: RecipeStepsStorage.attributedString(fromPlainSteps: prefill?.steps ?? [])
         )
@@ -69,6 +71,13 @@ struct AddRecipeView: View {
                 TextField("addRecipe.name", text: $name)
                 Stepper(value: $servings, in: 1...99) {
                     Text("addRecipe.servings \(servings)")
+                }
+                Stepper(value: $cookTimeMinutes, in: 0...300, step: 5) {
+                    if cookTimeMinutes > 0 {
+                        Text("addRecipe.cookTime \(cookTimeMinutes)")
+                    } else {
+                        Text("addRecipe.cookTime.unknown")
+                    }
                 }
             } header: {
                 Text("addRecipe.main")
@@ -199,7 +208,8 @@ struct AddRecipeView: View {
             imageData: imageData,
             sourceURL: trimmedSourceURL.isEmpty ? nil : trimmedSourceURL,
             steps: RecipeStepsStorage.plainStepLines(from: stepsAttributed),
-            stepsRichTextData: RecipeStepsStorage.rtfData(from: stepsAttributed)
+            stepsRichTextData: RecipeStepsStorage.rtfData(from: stepsAttributed),
+            cookTimeMinutes: cookTimeMinutes
         )
         modelContext.insert(recipe)
 

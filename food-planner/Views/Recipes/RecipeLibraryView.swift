@@ -160,10 +160,14 @@ struct RecipeLibraryView: View {
         VStack(alignment: .leading, spacing: 14) {
             AppSectionHeader(title: "home.recommendations", systemImage: "sparkles")
 
-            LazyVGrid(columns: columns, spacing: 14) {
-                ForEach(catalogRecipes) { recipe in
-                    libraryCard(recipe)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: AppTheme.sectionRailSpacing) {
+                    ForEach(catalogRecipes) { recipe in
+                        libraryCard(recipe)
+                            .frame(width: AppTheme.recipeRailCardWidth)
+                    }
                 }
+                .padding(.vertical, 2)
             }
         }
     }
@@ -176,7 +180,7 @@ struct RecipeLibraryView: View {
             NavigationLink {
                 RecipeDetailView(recipe: recipe)
             } label: {
-                RecipeCardView(recipe: recipe)
+                RecipeCardView(recipe: recipe, style: .rail)
             }
             .buttonStyle(.plain)
             .frame(maxWidth: .infinity, alignment: .leading)

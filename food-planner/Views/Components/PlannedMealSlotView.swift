@@ -79,18 +79,25 @@ struct PlannedMealSlotView: View {
                 .frame(width: 48, height: 48)
                 .clipped()
 
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(recipe.localizedName)
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.primary)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
 
-                let nutrition = NutritionCalculator.nutritionPerServing(for: recipe)
-                Text(macroSummary(nutrition))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
+                HStack(spacing: 6) {
+                    if recipe.hasCookTime {
+                        Text("recipe.cookTime \(recipe.cookTimeMinutes)")
+                            .font(.caption.weight(.medium))
+                            .foregroundStyle(AppTheme.accent)
+                    }
+                    let nutrition = NutritionCalculator.nutritionPerServing(for: recipe)
+                    Text(macroSummary(nutrition))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
             }
 
             Spacer(minLength: 0)

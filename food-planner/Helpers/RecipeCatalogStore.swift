@@ -25,6 +25,7 @@ enum RecipeCatalogStore {
         var id: String?
         var name: String?
         var servings: Int?
+        var cookTimeMinutes: Int?
         var imageId: String?
         var imageBase64: String?
         var steps: [String]?
@@ -39,6 +40,7 @@ enum RecipeCatalogStore {
     static func seedIfNeeded(in context: ModelContext) async {
         await importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
         await importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
+        syncCatalogCookTimes(in: context)
         LocalPersistence.save(context)
     }
 
@@ -47,6 +49,7 @@ enum RecipeCatalogStore {
     static func seedIfNeeded(in context: ModelContext) {
         importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
         importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
+        syncCatalogCookTimes(in: context)
         LocalPersistence.save(context)
     }
 
@@ -191,7 +194,8 @@ enum RecipeCatalogStore {
             catalogRecipeId: catalogId,
             servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
-            steps: resolvedSteps(from: item)
+            steps: resolvedSteps(from: item),
+            cookTimeMinutes: max(item.cookTimeMinutes ?? 0, 0)
         )
         replaceIngredients(for: recipe, from: item, in: context)
         recipe.recalculateNutrition()
@@ -212,7 +216,8 @@ enum RecipeCatalogStore {
             userRecipeId: userRecipeId,
             servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
-            steps: resolvedSteps(from: item)
+            steps: resolvedSteps(from: item),
+            cookTimeMinutes: max(item.cookTimeMinutes ?? 0, 0)
         )
         replaceIngredients(for: recipe, from: item, in: context)
         recipe.recalculateNutrition()
@@ -270,10 +275,39 @@ enum RecipeCatalogStore {
         return RecipeEntry(
             id: recipeId,
             servings: recipe.servings,
+            cookTimeMinutes: recipe.cookTimeMinutes > 0 ? recipe.cookTimeMinutes : existing?.cookTimeMinutes,
             imageBase64: recipe.imageData?.base64EncodedString(),
             translations: translations,
             ingredients: ingredients
         )
+    }
+
+    @MainActor
+    private static func syncCatalogCookTimes(in context: ModelContext) {
+        guard let url = bundleCatalogURL(),
+              FileManager.default.fileExists(atPath: url.path),
+              let data = try? Data(contentsOf: url),
+              let catalog = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+            return
+        }
+
+        var timesById: [String: Int] = [:]
+        for item in catalog.recipes {
+            let id = resolvedEntryId(for: item)
+            guard !id.isEmpty, let minutes = item.cookTimeMinutes, minutes > 0 else { continue }
+            timesById[id] = minutes
+        }
+
+        let descriptor = FetchDescriptor<Recipe>()
+        guard let all = try? context.fetch(descriptor) else { return }
+        for recipe in all {
+            guard let catalogId = recipe.catalogRecipeId,
+                  let minutes = timesById[catalogId],
+                  recipe.cookTimeMinutes != minutes else {
+                continue
+            }
+            recipe.cookTimeMinutes = minutes
+        }
     }
 
     private static func loadExistingUserEntriesById() -> [String: RecipeEntry] {

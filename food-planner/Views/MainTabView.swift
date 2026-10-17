@@ -2,8 +2,10 @@ import SwiftUI
 import SwiftData
 
 struct MainTabView: View {
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         TabView {
@@ -37,6 +39,14 @@ struct MainTabView: View {
         }
         .tint(AppTheme.accent(for: colorScheme, highContrast: colorSchemeContrast == .increased))
         .tabViewStyle(.sidebarAdaptable)
+        .onAppear {
+            CommunitySocialStatsService.refreshLikeCounts(in: modelContext)
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                CommunitySocialStatsService.refreshLikeCounts(in: modelContext)
+            }
+        }
     }
 }
 

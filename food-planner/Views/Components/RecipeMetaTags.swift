@@ -1,0 +1,93 @@
+import SwiftUI
+
+struct RecipeMetaTag: View {
+    let systemImage: String
+    let text: String
+    var tint: Color = AppTheme.accent
+
+    var body: some View {
+        Label {
+            Text(text)
+                .lineLimit(1)
+        } icon: {
+            Image(systemName: systemImage)
+        }
+        .font(.caption.weight(.medium))
+        .foregroundStyle(tint)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 5)
+        .background(AppTheme.tagChipFill, in: RoundedRectangle(cornerRadius: AppTheme.tagChipRadius, style: .continuous))
+    }
+}
+
+struct RecipeCookTimeTag: View {
+    let minutes: Int
+
+    var body: some View {
+        if minutes > 0 {
+            RecipeMetaTag(
+                systemImage: "clock",
+                text: String(localized: "recipe.cookTime \(minutes)")
+            )
+        }
+    }
+}
+
+struct RecipeCommunityLikesTag: View {
+    let count: Int
+
+    var body: some View {
+        RecipeMetaTag(
+            systemImage: "heart.fill",
+            text: "\(count)",
+            tint: .red.opacity(0.85)
+        )
+        .accessibilityLabel(Text("accessibility.communityLikes \(count)"))
+    }
+}
+
+struct RecipeUserRatingView: View {
+    let rating: Int
+    var isInteractive: Bool = false
+    var onSelect: ((Int) -> Void)?
+
+    var body: some View {
+        HStack(spacing: 4) {
+            ForEach(1...5, id: \.self) { value in
+                Button {
+                    guard isInteractive else { return }
+                    onSelect?(value == rating ? 0 : value)
+                } label: {
+                    Image(systemName: value <= rating ? "star.fill" : "star")
+                        .font(isInteractive ? .title3 : .caption)
+                        .foregroundStyle(value <= rating ? AppTheme.warmFill : .secondary)
+                }
+                .buttonStyle(.plain)
+                .disabled(!isInteractive)
+                .accessibilityLabel(Text("accessibility.ratingStar \(value)"))
+            }
+        }
+        .accessibilityElement(children: isInteractive ? .contain : .ignore)
+        .accessibilityLabel(
+            rating > 0
+                ? Text("accessibility.userRating \(rating)")
+                : Text("accessibility.userRating.none")
+        )
+    }
+}
+
+struct RecipeMetaRow: View {
+    let recipe: Recipe
+    var showsRating: Bool = true
+
+    var body: some View {
+        HStack(spacing: 6) {
+            RecipeCookTimeTag(minutes: recipe.cookTimeMinutes)
+            RecipeCommunityLikesTag(count: recipe.communityLikeCount)
+            if showsRating, recipe.userRating > 0 {
+                RecipeUserRatingView(rating: recipe.userRating)
+            }
+            Spacer(minLength: 0)
+        }
+    }
+}

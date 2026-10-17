@@ -19,13 +19,21 @@ enum AppTheme {
 
     static let cardRadius: CGFloat = 16
     static let controlMinHeight: CGFloat = 52
-    static let sectionSpacing: CGFloat = 20
+    static let sectionSpacing: CGFloat = 24
     static let contentPadding: CGFloat = 16
+    static let sectionRailSpacing: CGFloat = 12
+    static let recipeCardImageAspect: CGFloat = 4.0 / 3.0
+    static let recipeCardImageHeight: CGFloat = 168
+    static let recipeHeroCardHeight: CGFloat = 220
+    static let recipeRailCardWidth: CGFloat = 220
+    static let tagChipRadius: CGFloat = 8
 
     static var warmHighlight: Color { warmFill }
     static var canvas: Color { Color(.systemGroupedBackground) }
     static var card: Color { Color(.secondarySystemGroupedBackground) }
     static var elevated: Color { Color(.systemBackground) }
+    static var tagChipFill: Color { accent.opacity(0.08) }
+    static var cardShadow: Color { Color.black.opacity(0.08) }
 
     static func accent(for colorScheme: ColorScheme, highContrast: Bool) -> Color {
         if highContrast {
