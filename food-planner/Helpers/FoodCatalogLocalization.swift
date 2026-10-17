@@ -78,7 +78,7 @@ enum FoodCatalogLocalization {
             return [:]
         }
 
-        let map = Dictionary(uniqueKeysWithValues: file.products.map { ($0.catalogKey, $0) })
+        let map = Dictionary(file.products.map { ($0.catalogKey, $0) }, uniquingKeysWith: { first, _ in first })
         namesByKey = map
         return map
     }

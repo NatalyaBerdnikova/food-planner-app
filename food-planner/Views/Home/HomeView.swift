@@ -21,8 +21,6 @@ struct HomeView: View {
         GridItem(.flexible(), spacing: 12),
     ]
 
-    private let accentTeal = AppTheme.accent
-
     private var appSettings: AppSettings? { settingsList.first }
 
     private var currentWeekPlan: WeekPlan? {
@@ -31,16 +29,16 @@ struct HomeView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
+            VStack(alignment: .leading, spacing: AppTheme.sectionSpacing) {
                 todayNutritionCard
                 importCTACard
                 todayMealsSection
                 weekPlanCard
                 recommendationsSection
             }
-            .padding()
+            .padding(AppTheme.contentPadding)
         }
-        .background(Color(.systemGroupedBackground))
+        .appScreenBackground()
         .navigationTitle("nav.today")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -48,8 +46,6 @@ struct HomeView: View {
                     SettingsView()
                 } label: {
                     Image(systemName: "gearshape")
-                        .font(.headline)
-                        .foregroundStyle(accentTeal)
                 }
                 .accessibilityLabel("accessibility.settings")
             }
@@ -93,44 +89,52 @@ struct HomeView: View {
         } label: {
             HStack(spacing: 14) {
                 Image(systemName: "square.and.arrow.down.on.square.fill")
-                    .font(.title2)
+                    .font(.title3)
                     .foregroundStyle(AppTheme.warmFill)
+                    .frame(width: 44, height: 44)
+                    .background(AppTheme.warmFill.opacity(0.14), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .accessibilityHidden(true)
+
                 VStack(alignment: .leading, spacing: 4) {
                     Text("home.import.cta.title")
-                        .font(.headline)
-                        .foregroundStyle(.white)
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.primary)
                     Text("home.import.cta.subtitle")
                         .font(.footnote)
-                        .foregroundStyle(.white.opacity(0.8))
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.leading)
                 }
-                Spacer()
+
+                Spacer(minLength: 0)
+
                 Image(systemName: "chevron.right")
-                    .foregroundStyle(.white.opacity(0.7))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.tertiary)
             }
-            .padding(16)
-            .background(AppTheme.heroGradient, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+            .padding(14)
+            .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+            .overlay(alignment: .leading) {
+                RoundedRectangle(cornerRadius: 2, style: .continuous)
+                    .fill(AppTheme.warmFill)
+                    .frame(width: 3)
+                    .padding(.vertical, 12)
+            }
         }
         .buttonStyle(.plain)
         .accessibilityHint("home.import.cta.subtitle")
     }
 
-    // MARK: - Today nutrition card
-
     private var todayNutritionCard: some View {
-        homeSectionCard {
-            VStack(alignment: .leading, spacing: 16) {
+        AppSectionCard {
+            VStack(alignment: .leading, spacing: 14) {
                 Button {
                     withAnimation(.easeInOut(duration: 0.25)) {
                         isTodayExpanded.toggle()
                     }
                 } label: {
                     HStack(spacing: 10) {
-                        sectionIcon("chart.bar.fill")
-                        Text("home.today")
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                        Spacer()
+                        AppSectionHeader(title: "home.today", systemImage: "chart.bar.fill", fillsWidth: false)
+                        Spacer(minLength: 0)
                         Image(systemName: isTodayExpanded ? "chevron.up" : "chevron.down")
                             .font(.caption.weight(.semibold))
                             .foregroundStyle(.secondary)
@@ -160,8 +164,6 @@ struct HomeView: View {
         }
     }
 
-    // MARK: - Today meals
-
     private var todayMealsSection: some View {
         VStack(spacing: 10) {
             ForEach(dayMealTypes, id: \.self) { type in
@@ -175,21 +177,13 @@ struct HomeView: View {
         }
     }
 
-    // MARK: - Week plan card
-
     private var weekPlanCard: some View {
         NavigationLink {
             WeekPlanView()
         } label: {
-            homeSectionCard {
-                VStack(alignment: .leading, spacing: 14) {
-                    HStack(spacing: 10) {
-                        sectionIcon("calendar")
-                        Text("home.weekPlan")
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                        Spacer()
-                    }
+            AppSectionCard {
+                VStack(alignment: .leading, spacing: 12) {
+                    AppSectionHeader(title: "home.weekPlan", systemImage: "calendar")
 
                     if let weekPlan = currentWeekPlan {
                         Text(weekRangeFormatted(for: weekPlan))
@@ -205,8 +199,8 @@ struct HomeView: View {
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                        .background(accentTeal, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .frame(minHeight: 44)
+                        .background(AppTheme.accent, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                 }
             }
             .contentShape(Rectangle())
@@ -215,12 +209,9 @@ struct HomeView: View {
         .accessibilityLabel("home.openWeekPlan")
     }
 
-    // MARK: - Recommendations
-
     private var recommendationsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("home.recommendations")
-                .font(.title2.bold())
+            AppSectionHeader(title: "home.recommendations", systemImage: "sparkles")
 
             if !catalogRecipes.isEmpty {
                 TextField("home.recommendations.search", text: $recommendationSearch)
@@ -266,7 +257,7 @@ struct HomeView: View {
                 Image(systemName: isFavorite ? "heart.fill" : "heart")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(isFavorite ? .red : .secondary)
-                    .frame(width: 34, height: 34)
+                    .frame(width: 36, height: 36)
                     .background(.ultraThinMaterial, in: Circle())
             }
             .buttonStyle(.plain)
@@ -278,8 +269,6 @@ struct HomeView: View {
             )
         }
     }
-
-    // MARK: - Data
 
     private var catalogRecipes: [Recipe] {
         RecipeCollections.catalogRecipes(from: recipes)
@@ -323,27 +312,5 @@ struct HomeView: View {
         let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
         AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
         _ = WeekPlanService.todayDayPlan(from: weekPlans, in: modelContext)
-    }
-
-    // MARK: - Section styling
-
-    private func homeSectionCard<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        content()
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(.secondarySystemGroupedBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
-            }
-    }
-
-    private func sectionIcon(_ systemImage: String) -> some View {
-        Image(systemName: systemImage)
-            .font(.subheadline.weight(.bold))
-            .foregroundStyle(accentTeal)
-            .frame(width: 30, height: 30)
-            .background(accentTeal.opacity(0.1), in: Circle())
     }
 }

@@ -12,8 +12,6 @@ struct PlannedMealSlotView: View {
     var onTap: () -> Void
     var style: PlannedMealSlotStyle = .regular
 
-    private let accentTeal = Color(red: 0.06, green: 0.33, blue: 0.45)
-
     private var recipes: [Recipe] {
         meals.compactMap(\.recipe)
     }
@@ -23,10 +21,10 @@ struct PlannedMealSlotView: View {
             Button(action: onTap) {
                 HStack(spacing: 10) {
                     Image(systemName: iconName)
-                        .foregroundStyle(style == .home ? accentTeal : Color.accentColor)
+                        .foregroundStyle(style == .home ? AppTheme.accent : Color.accentColor)
                         .frame(width: 30, height: 30)
                         .background(
-                            style == .home ? accentTeal.opacity(0.1) : Color.clear,
+                            style == .home ? AppTheme.accent.opacity(0.12) : Color.clear,
                             in: Circle()
                         )
 
@@ -38,7 +36,7 @@ struct PlannedMealSlotView: View {
 
                     Image(systemName: recipes.isEmpty ? "plus.circle.fill" : "pencil.circle.fill")
                         .font(.body)
-                        .foregroundStyle(style == .home ? accentTeal : Color(UIColor.tertiaryLabel))
+                        .foregroundStyle(style == .home ? AppTheme.accent : Color(UIColor.tertiaryLabel))
                 }
                 .contentShape(Rectangle())
             }
@@ -52,8 +50,8 @@ struct PlannedMealSlotView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(12)
                         .background(
-                            Color(.tertiarySystemGroupedBackground),
-                            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            AppTheme.canvas,
+                            in: RoundedRectangle(cornerRadius: 12, style: .continuous)
                         )
                         .contentShape(Rectangle())
                 }
@@ -69,16 +67,10 @@ struct PlannedMealSlotView: View {
                 }
             }
         }
-        .padding(16)
+        .padding(style == .home ? 14 : 12)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(backgroundStyle)
-        .clipShape(RoundedRectangle(cornerRadius: style == .home ? 22 : 10, style: .continuous))
-        .overlay {
-            if style == .home {
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .stroke(Color.black.opacity(0.05), lineWidth: 1)
-            }
-        }
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
     }
 
     private func recipeLine(_ recipe: Recipe) -> some View {
@@ -107,10 +99,10 @@ struct PlannedMealSlotView: View {
                 .font(.caption2.weight(.semibold))
                 .foregroundStyle(Color(UIColor.tertiaryLabel))
         }
-        .padding(12)
+        .padding(10)
         .background(
-            Color(.tertiarySystemGroupedBackground),
-            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+            AppTheme.canvas,
+            in: RoundedRectangle(cornerRadius: 12, style: .continuous)
         )
         .frame(maxWidth: .infinity, alignment: .leading)
         .contentShape(Rectangle())
@@ -137,7 +129,7 @@ struct PlannedMealSlotView: View {
     @ViewBuilder
     private var backgroundStyle: some View {
         if style == .home {
-            Color(.secondarySystemGroupedBackground)
+            AppTheme.elevated
         } else {
             Color(.tertiarySystemBackground)
         }

@@ -34,7 +34,7 @@ struct WeekPlanView: View {
     private var content: some View {
         if let weekPlan = displayedWeekPlan {
             ScrollView {
-                VStack(spacing: 12) {
+                VStack(spacing: AppTheme.sectionSpacing) {
                     weekSwitcher
 
                     WeekDayCarousel(
@@ -43,9 +43,10 @@ struct WeekPlanView: View {
                         onTapEmptyMeal: presentAddMeal
                     )
                 }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 16)
+                .padding(.horizontal, AppTheme.contentPadding)
+                .padding(.bottom, AppTheme.contentPadding)
             }
+            .appScreenBackground()
         } else {
             ProgressView()
         }
@@ -70,12 +71,16 @@ struct WeekPlanView: View {
                 shiftWeek(by: -1)
             } label: {
                 Image(systemName: "chevron.left")
+                    .font(.body.weight(.semibold))
+                    .frame(width: 44, height: 44)
+                    .contentShape(Rectangle())
             }
 
             Spacer()
 
             Text(weekRangeTitle)
                 .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.primary)
 
             Spacer()
 
@@ -83,8 +88,13 @@ struct WeekPlanView: View {
                 shiftWeek(by: 1)
             } label: {
                 Image(systemName: "chevron.right")
+                    .font(.body.weight(.semibold))
+                    .frame(width: 44, height: 44)
+                    .contentShape(Rectangle())
             }
         }
+        .padding(.horizontal, 4)
+        .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
     }
 
     private var weekRangeTitle: String {

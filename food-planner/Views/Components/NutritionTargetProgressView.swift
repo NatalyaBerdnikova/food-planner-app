@@ -12,9 +12,8 @@ struct NutritionTargetProgressView: View {
                 content
             } else {
                 content
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .padding(AppTheme.contentPadding)
+                    .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

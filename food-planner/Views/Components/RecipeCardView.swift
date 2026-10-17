@@ -19,19 +19,23 @@ struct RecipeCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
-                RecipeImageView(imageData: recipe.imageData, cornerRadius: 0)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 118)
-                    .clipped()
-                    .clipShape(
-                        UnevenRoundedRectangle(
-                            topLeadingRadius: 18,
-                            bottomLeadingRadius: 0,
-                            bottomTrailingRadius: 0,
-                            topTrailingRadius: 18,
-                            style: .continuous
-                        )
+                RecipeImageView(
+                    imageData: recipe.imageData,
+                    cornerRadius: 0,
+                    pointSize: CGSize(width: 200, height: 140)
+                )
+                .frame(maxWidth: .infinity)
+                .frame(height: 124)
+                .clipped()
+                .clipShape(
+                    UnevenRoundedRectangle(
+                        topLeadingRadius: AppTheme.cardRadius,
+                        bottomLeadingRadius: 0,
+                        bottomTrailingRadius: 0,
+                        topTrailingRadius: AppTheme.cardRadius,
+                        style: .continuous
                     )
+                )
 
                 HStack(spacing: 4) {
                     if let badge {
@@ -43,8 +47,8 @@ struct RecipeCardView: View {
                         } label: {
                             Image(systemName: isFavorite ? "heart.fill" : "heart")
                                 .font(.subheadline.weight(.semibold))
-                                .foregroundStyle(isFavorite ? .red : .secondary)
-                                .frame(width: 34, height: 34)
+                                .foregroundStyle(isFavorite ? .red : .primary)
+                                .frame(width: 36, height: 36)
                                 .background(.ultraThinMaterial, in: Circle())
                         }
                         .buttonStyle(.plain)
@@ -62,11 +66,10 @@ struct RecipeCardView: View {
                 Text(recipe.localizedName)
                     .font(.subheadline.weight(.semibold))
                     .lineLimit(2)
-                    .minimumScaleFactor(0.9)
                     .foregroundStyle(.primary)
-                    .frame(minHeight: 38, alignment: .topLeading)
+                    .frame(minHeight: 36, alignment: .topLeading)
 
-                HStack(spacing: 4) {
+                HStack(spacing: 6) {
                     macroChip(title: "nutrition.macro.kcal", value: nutritionPerServing.calories)
                     macroChip(title: "nutrition.macro.protein", value: nutritionPerServing.protein)
                     macroChip(title: "nutrition.macro.fat", value: nutritionPerServing.fat)
@@ -76,13 +79,8 @@ struct RecipeCardView: View {
             .padding(12)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .stroke(Color.black.opacity(0.06), lineWidth: 1)
-        }
-        .shadow(color: Color.black.opacity(0.08), radius: 16, x: 0, y: 8)
+        .background(AppTheme.elevated)
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
         .contentShape(Rectangle())
     }
 
@@ -95,10 +93,12 @@ struct RecipeCardView: View {
                 .minimumScaleFactor(0.8)
             Text(formatted(value))
                 .font(.caption.weight(.semibold))
-                .foregroundStyle(.primary)
+                .foregroundStyle(AppTheme.accent)
                 .lineLimit(1)
         }
         .frame(maxWidth: .infinity)
+        .padding(.vertical, 4)
+        .background(AppTheme.accent.opacity(0.08), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
     private func formatted(_ value: Double) -> String {
@@ -114,7 +114,7 @@ struct RecipeCardView: View {
         case .favorite: "heart.fill"
         }
         let color: Color = switch badge {
-        case .userCreated: .secondary
+        case .userCreated: AppTheme.accent
         case .favorite: .red
         }
         Image(systemName: symbol)

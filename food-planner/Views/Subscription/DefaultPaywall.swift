@@ -19,7 +19,7 @@ struct DefaultPaywall: View {
     @State private var hasTrialState = false
     @State private var trialStateDisabled = true
 
-    private let accentTeal = Color(red: 0.06, green: 0.33, blue: 0.45)
+    private let accentTeal = AppTheme.accent
 
     private var hasTrial: Bool {
         guard let selectedProduct else { return false }

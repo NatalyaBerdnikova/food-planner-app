@@ -24,7 +24,7 @@ struct RecipeLibraryView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: AppTheme.sectionSpacing) {
                 importHero
 
                 if userRecipes.isEmpty && catalogRecipes.isEmpty {
@@ -44,9 +44,9 @@ struct RecipeLibraryView: View {
                     }
                 }
             }
-            .padding()
+            .padding(AppTheme.contentPadding)
         }
-        .background(Color(.systemGroupedBackground))
+        .appScreenBackground()
         .navigationTitle("nav.recipes")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -88,18 +88,18 @@ struct RecipeLibraryView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .top, spacing: 12) {
                 Image(systemName: "square.and.arrow.down.on.square.fill")
-                    .font(.system(size: 34))
+                    .font(.system(size: 32))
                     .foregroundStyle(AppTheme.warmFill)
                     .motionSafeSymbolEffect(.pulse)
                     .accessibilityHidden(true)
 
                 VStack(alignment: .leading, spacing: 6) {
                     Text("import.hero.title")
-                        .font(.title2.bold())
+                        .font(.title2.weight(.bold))
                         .foregroundStyle(.white)
                     Text("import.hero.subtitle")
                         .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.85))
+                        .foregroundStyle(.white.opacity(0.88))
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
@@ -109,6 +109,7 @@ struct RecipeLibraryView: View {
                     pasteImportRequest = PasteImportRequest()
                 } label: {
                     Label("import.hero.paste", systemImage: "link")
+                        .font(.body.weight(.semibold))
                         .frame(maxWidth: .infinity)
                         .frame(minHeight: AppTheme.controlMinHeight)
                 }
@@ -129,20 +130,19 @@ struct RecipeLibraryView: View {
 
             Text("import.hero.shareHint")
                 .font(.footnote)
-                .foregroundStyle(.white.opacity(0.75))
+                .foregroundStyle(.white.opacity(0.78))
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppTheme.heroGradient, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+        .background(AppTheme.heroGradient, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
         .accessibilityElement(children: .contain)
     }
 
     private var userRecipesSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("recipeLibrary.myRecipes")
-                .font(.title2.bold())
+            AppSectionHeader(title: "recipeLibrary.myRecipes", systemImage: "person.crop.circle")
 
-            LazyVGrid(columns: columns, spacing: 16) {
+            LazyVGrid(columns: columns, spacing: 14) {
                 ForEach(userRecipes) { recipe in
                     NavigationLink {
                         RecipeDetailView(recipe: recipe)
@@ -158,10 +158,9 @@ struct RecipeLibraryView: View {
 
     private var recommendationsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("home.recommendations")
-                .font(.title2.bold())
+            AppSectionHeader(title: "home.recommendations", systemImage: "sparkles")
 
-            LazyVGrid(columns: columns, spacing: 16) {
+            LazyVGrid(columns: columns, spacing: 14) {
                 ForEach(catalogRecipes) { recipe in
                     libraryCard(recipe)
                 }

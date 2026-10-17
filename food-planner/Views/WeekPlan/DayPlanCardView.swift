@@ -40,12 +40,11 @@ struct DayPlanCardView: View {
                 }
             }
         }
-        .padding()
+        .padding(AppTheme.contentPadding)
         .frame(maxWidth: .infinity, alignment: .topLeading)
-        .background(Color(.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
         .overlay {
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
                 .stroke(borderColor, lineWidth: borderWidth)
         }
     }

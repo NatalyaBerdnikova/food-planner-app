@@ -1,34 +1,76 @@
 import SwiftUI
 
 enum AppTheme {
-    static let accent = Color(red: 0.06, green: 0.33, blue: 0.45)
-    static let accentSoft = Color(red: 0.10, green: 0.45, blue: 0.52)
-    static let warmFill = Color(red: 0.93, green: 0.55, blue: 0.28)
-    static let success = Color(red: 0.20, green: 0.62, blue: 0.45)
-    static let warning = Color(red: 0.85, green: 0.45, blue: 0.20)
+    static let accent = Color(red: 0.11, green: 0.37, blue: 0.29)
+    static let accentMuted = Color(red: 0.22, green: 0.48, blue: 0.40)
+    static let warmFill = Color(red: 0.83, green: 0.47, blue: 0.23)
+    static let success = Color(red: 0.18, green: 0.58, blue: 0.42)
+    static let warning = Color(red: 0.82, green: 0.42, blue: 0.18)
 
     static let heroGradient = LinearGradient(
         colors: [
-            Color(red: 0.04, green: 0.22, blue: 0.32),
-            Color(red: 0.08, green: 0.40, blue: 0.46),
-            Color(red: 0.18, green: 0.52, blue: 0.48),
+            Color(red: 0.07, green: 0.22, blue: 0.20),
+            Color(red: 0.12, green: 0.36, blue: 0.30),
+            Color(red: 0.20, green: 0.45, blue: 0.34),
         ],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
 
-    static let cardRadius: CGFloat = 20
+    static let cardRadius: CGFloat = 16
     static let controlMinHeight: CGFloat = 52
+    static let sectionSpacing: CGFloat = 20
+    static let contentPadding: CGFloat = 16
 
     static var warmHighlight: Color { warmFill }
+    static var canvas: Color { Color(.systemGroupedBackground) }
+    static var card: Color { Color(.secondarySystemGroupedBackground) }
+    static var elevated: Color { Color(.systemBackground) }
 
     static func accent(for colorScheme: ColorScheme, highContrast: Bool) -> Color {
         if highContrast {
             return colorScheme == .dark
-                ? Color(red: 0.45, green: 0.82, blue: 0.92)
-                : Color(red: 0.02, green: 0.22, blue: 0.32)
+                ? Color(red: 0.45, green: 0.88, blue: 0.72)
+                : Color(red: 0.05, green: 0.28, blue: 0.20)
         }
         return accent
+    }
+}
+
+struct AppSectionCard<Content: View>: View {
+    var padding: CGFloat = AppTheme.contentPadding
+    @ViewBuilder var content: Content
+
+    var body: some View {
+        content
+            .padding(padding)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+    }
+}
+
+struct AppSectionHeader: View {
+    let title: LocalizedStringKey
+    var systemImage: String?
+    var fillsWidth: Bool = true
+
+    var body: some View {
+        HStack(spacing: 10) {
+            if let systemImage {
+                Image(systemName: systemImage)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppTheme.accent)
+                    .frame(width: 32, height: 32)
+                    .background(AppTheme.accent.opacity(0.12), in: Circle())
+                    .accessibilityHidden(true)
+            }
+            Text(title)
+                .font(.title3.weight(.semibold))
+                .foregroundStyle(.primary)
+            if fillsWidth {
+                Spacer(minLength: 0)
+            }
+        }
     }
 }
 
@@ -63,5 +105,9 @@ struct MotionSafeSymbolModifier: ViewModifier {
 extension View {
     func motionSafeSymbolEffect(_ kind: MotionSafeSymbolModifier.Kind) -> some View {
         modifier(MotionSafeSymbolModifier(kind: kind))
+    }
+
+    func appScreenBackground() -> some View {
+        background(AppTheme.canvas)
     }
 }

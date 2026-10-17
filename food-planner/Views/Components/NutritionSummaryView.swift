@@ -13,22 +13,19 @@ struct NutritionSummaryView: View {
                 content
             } else {
                 content
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .padding(AppTheme.contentPadding)
+                    .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var content: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 12) {
-                macroChip(title: macroLabelStyle.kcalTitle, value: nutrition.calories, target: target?.calories)
-                macroChip(title: macroLabelStyle.proteinTitle, value: nutrition.protein, target: target?.protein)
-                macroChip(title: macroLabelStyle.fatTitle, value: nutrition.fat, target: target?.fat)
-                macroChip(title: macroLabelStyle.carbsTitle, value: nutrition.carbs, target: target?.carbs)
-            }
+        HStack(spacing: 8) {
+            macroChip(title: macroLabelStyle.kcalTitle, value: nutrition.calories, target: target?.calories)
+            macroChip(title: macroLabelStyle.proteinTitle, value: nutrition.protein, target: target?.protein)
+            macroChip(title: macroLabelStyle.fatTitle, value: nutrition.fat, target: target?.fat)
+            macroChip(title: macroLabelStyle.carbsTitle, value: nutrition.carbs, target: target?.carbs)
         }
     }
 
@@ -37,13 +34,17 @@ struct NutritionSummaryView: View {
 
         return VStack(spacing: 4) {
             Text(title)
-                .font(.caption)
+                .font(.caption2.weight(.medium))
                 .foregroundStyle(.secondary)
             Text(formatted(value))
-                .font(.headline)
+                .font(.subheadline.weight(.semibold).monospacedDigit())
                 .foregroundStyle(status?.color ?? .primary)
         }
         .frame(maxWidth: .infinity)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 4)
+        .background(AppTheme.canvas, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .accessibilityElement(children: .combine)
     }
 
     private func formatted(_ value: Double) -> String {

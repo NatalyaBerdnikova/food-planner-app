@@ -17,9 +17,9 @@ enum NutritionTargetStatus {
     var color: Color {
         switch self {
         case .below:
-            return .yellow
+            return AppTheme.warning
         case .onTarget:
-            return .green
+            return AppTheme.success
         case .above:
             return .red
         }

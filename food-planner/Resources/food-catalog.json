@@ -5091,7 +5091,7 @@
       }
     },
     {
-      "catalogKey": "butterfish",
+      "catalogKey": "oilfish",
       "displayName": "Масляная рыба",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -5118,7 +5118,7 @@
       "iodinePer100g": 50.0,
       "translations": {
         "ru": "Масляная рыба",
-        "en": "Butterfish"
+        "en": "Oilfish"
       }
     },
     {
@@ -15012,33 +15012,6 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
       "macrosOnly": true
-    },
-    {
-      "catalogKey": "abrikosy",
-      "displayName": "Абрикосы",
-      "category": "fruits",
-      "defaultPieceWeightGrams": 100,
-      "caloriesPer100g": 44,
-      "proteinPer100g": 0.9,
-      "fatPer100g": 0.1,
-      "carbsPer100g": 9,
-      "fiberPer100g": 2.1,
-      "vitaminD3Per100g": 0,
-      "vitaminAPer100g": 267,
-      "vitaminB6Per100g": 5e-05,
-      "vitaminB12Per100g": 0,
-      "vitaminCPer100g": 10,
-      "vitaminEPer100g": 0.0011,
-      "vitaminKPer100g": 3.3,
-      "potassiumPer100g": 305,
-      "calciumPer100g": 28,
-      "magnesiumPer100g": 8,
-      "ironPer100g": 0.0007,
-      "seleniumPer100g": 0.1,
-      "zincPer100g": 0.082,
-      "chromiumPer100g": 1,
-      "iodinePer100g": 1,
-      "vitaminB9Per100g": 3
     },
     {
       "catalogKey": "perets_krasnyy_molotyy_ostryy",
