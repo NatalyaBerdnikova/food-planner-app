@@ -2552,6 +2552,7 @@
       }
     },
     "import.hero.openInstagram" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2567,7 +2568,24 @@
         }
       }
     },
+    "import.hero.openSaved" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Instagram Saved"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть сохранённые в Instagram"
+          }
+        }
+      }
+    },
     "import.hero.paste" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

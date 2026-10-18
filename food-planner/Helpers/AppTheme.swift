@@ -17,6 +17,17 @@ enum AppTheme {
         endPoint: .bottomTrailing
     )
 
+    static let instagramGradient = LinearGradient(
+        colors: [
+            Color(red: 0.51, green: 0.23, blue: 0.72),
+            Color(red: 0.88, green: 0.19, blue: 0.42),
+            Color(red: 0.96, green: 0.38, blue: 0.15),
+            Color(red: 0.99, green: 0.75, blue: 0.18),
+        ],
+        startPoint: .topTrailing,
+        endPoint: .bottomLeading
+    )
+
     static let cardRadius: CGFloat = 16
     static let controlMinHeight: CGFloat = 52
     static let sectionSpacing: CGFloat = 24

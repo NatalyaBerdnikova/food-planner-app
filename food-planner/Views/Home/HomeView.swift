@@ -148,11 +148,20 @@ struct HomeView: View {
             pasteImportRequest = PasteImportRequest()
         } label: {
             HStack(spacing: 14) {
-                Image(systemName: "square.and.arrow.down.on.square.fill")
-                    .font(.title3)
-                    .foregroundStyle(AppTheme.warmFill)
+                AppTheme.instagramGradient
+                    .mask {
+                        Image("InstagramLogo")
+                            .renderingMode(.template)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    .frame(width: 22, height: 22)
                     .frame(width: 44, height: 44)
-                    .background(AppTheme.warmFill.opacity(0.14), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .background {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(AppTheme.instagramGradient)
+                            .opacity(0.12)
+                    }
                     .accessibilityHidden(true)
 
                 VStack(alignment: .leading, spacing: 4) {
@@ -172,13 +181,14 @@ struct HomeView: View {
                     .foregroundStyle(.tertiary)
             }
             .padding(14)
-            .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+            .background(Color.white, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
             .overlay(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 2, style: .continuous)
-                    .fill(AppTheme.warmFill)
+                    .fill(AppTheme.instagramGradient)
                     .frame(width: 3)
                     .padding(.vertical, 12)
             }
+            .shadow(color: AppTheme.cardShadow, radius: 12, x: 0, y: 4)
         }
         .buttonStyle(.plain)
         .accessibilityHint("home.import.cta.subtitle")

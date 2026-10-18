@@ -85,57 +85,49 @@ struct RecipeLibraryView: View {
     }
 
     private var importHero: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack(alignment: .top, spacing: 12) {
-                Image(systemName: "square.and.arrow.down.on.square.fill")
-                    .font(.system(size: 32))
-                    .foregroundStyle(AppTheme.warmFill)
-                    .motionSafeSymbolEffect(.pulse)
-                    .accessibilityHidden(true)
+        Button {
+            pasteImportRequest = PasteImportRequest()
+        } label: {
+            HStack(alignment: .center, spacing: 10) {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(alignment: .center, spacing: 10) {
+                        Image(systemName: "square.and.arrow.down.on.square.fill")
+                            .font(.system(size: 24))
+                            .foregroundStyle(AppTheme.warmFill)
+                            .motionSafeSymbolEffect(.pulse)
+                            .accessibilityHidden(true)
 
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("import.hero.title")
-                        .font(.title2.weight(.bold))
-                        .foregroundStyle(.white)
+                        Text("import.hero.title")
+                            .font(.title3.weight(.bold))
+                            .foregroundStyle(.primary)
+                    }
+
                     Text("import.hero.subtitle")
                         .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.88))
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    Text("import.hero.shareHint")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+                    .frame(maxHeight: .infinity)
+                    .accessibilityHidden(true)
             }
-
-            VStack(spacing: 10) {
-                Button {
-                    pasteImportRequest = PasteImportRequest()
-                } label: {
-                    Label("import.hero.paste", systemImage: "link")
-                        .font(.body.weight(.semibold))
-                        .frame(maxWidth: .infinity)
-                        .frame(minHeight: AppTheme.controlMinHeight)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(AppTheme.warmFill)
-                .foregroundStyle(.black)
-
-                Button {
-                    openInstagram()
-                } label: {
-                    Label("import.hero.openInstagram", systemImage: "camera")
-                        .frame(maxWidth: .infinity)
-                        .frame(minHeight: AppTheme.controlMinHeight)
-                }
-                .buttonStyle(.bordered)
-                .tint(.white)
-            }
-
-            Text("import.hero.shareHint")
-                .font(.footnote)
-                .foregroundStyle(.white.opacity(0.78))
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .shadow(color: AppTheme.cardShadow, radius: 12, x: 0, y: 4)
+            .contentShape(Rectangle())
         }
-        .padding(20)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppTheme.heroGradient, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .accessibilityElement(children: .contain)
+        .buttonStyle(.plain)
+        .accessibilityHint("import.hero.shareHint")
     }
 
     private var userRecipesSection: some View {
@@ -209,12 +201,4 @@ struct RecipeLibraryView: View {
         }
     }
 
-    private func openInstagram() {
-        if let url = URL(string: "instagram://"),
-           UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-        } else if let web = URL(string: "https://www.instagram.com") {
-            UIApplication.shared.open(web)
-        }
-    }
 }
