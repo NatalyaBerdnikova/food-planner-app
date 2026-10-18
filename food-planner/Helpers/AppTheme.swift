@@ -35,6 +35,7 @@ enum AppTheme {
     static let sectionRailSpacing: CGFloat = 12
     static let recipeCardImageAspect: CGFloat = 4.0 / 3.0
     static let recipeCardImageHeight: CGFloat = 168
+    static let recipeCardCompactImageHeight: CGFloat = 128
     static let recipeHeroCardHeight: CGFloat = 220
     static let recipeRailCardWidth: CGFloat = 220
     static let tagChipRadius: CGFloat = 8

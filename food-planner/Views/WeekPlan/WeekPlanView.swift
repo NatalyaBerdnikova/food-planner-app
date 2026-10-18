@@ -4,6 +4,8 @@ import SwiftData
 struct WeekPlanView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
+    @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
+    private var settingsList: [AppSettings]
 
     @State private var displayedWeekStart = Calendar.current.startOfWeek(for: .now)
     @State private var selectedDay: Date?
@@ -12,6 +14,10 @@ struct WeekPlanView: View {
     private var displayedWeekPlan: WeekPlan? {
         let normalized = Calendar.current.startOfWeek(for: displayedWeekStart)
         return weekPlans.first { Calendar.current.isSameDay($0.weekStartDate, normalized) }
+    }
+
+    private var targetNutrition: DailyNutrition? {
+        settingsList.first?.targetNutrition
     }
 
     var body: some View {
@@ -39,6 +45,7 @@ struct WeekPlanView: View {
 
                     WeekDayCarousel(
                         dayPlans: sortedDayPlans(weekPlan),
+                        targetNutrition: targetNutrition,
                         selectedDay: $selectedDay,
                         onTapEmptyMeal: presentAddMeal
                     )

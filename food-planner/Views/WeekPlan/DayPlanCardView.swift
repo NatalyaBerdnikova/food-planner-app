@@ -2,7 +2,9 @@ import SwiftUI
 
 struct DayPlanCardView: View {
     let dayPlan: DayPlan
-    let isSelected: Bool
+    let isExpanded: Bool
+    let targetNutrition: DailyNutrition?
+    let onToggleExpanded: () -> Void
     let onTapEmptyMeal: (MealType) -> Void
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
@@ -15,29 +17,52 @@ struct DayPlanCardView: View {
         Calendar.current.isDateInToday(dayPlan.date)
     }
 
+    private var dayNutrition: DailyNutrition {
+        NutritionCalculator.from(dayPlan: dayPlan)
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(dayTitle)
-                        .font(.headline)
-                    if isToday {
-                        Text("weekPlan.today")
-                            .font(.caption)
-                            .foregroundStyle(.tint)
+            Button(action: onToggleExpanded) {
+                HStack(spacing: 10) {
+                    HStack(alignment: .firstTextBaseline, spacing: 8) {
+                        Text(dayTitle)
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+                        if isToday {
+                            Text("weekPlan.today")
+                                .font(.caption)
+                                .foregroundStyle(.tint)
+                        }
+                    }
+
+                    Spacer(minLength: 0)
+
+                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                }
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+
+            if isExpanded {
+                VStack(spacing: 8) {
+                    ForEach(dayMealTypes, id: \.self) { type in
+                        PlannedMealSlotView(
+                            mealType: type,
+                            meals: dayPlan.meals(for: type),
+                            onTap: { onTapEmptyMeal(type) }
+                        )
                     }
                 }
-                Spacer()
-            }
-
-            VStack(spacing: 8) {
-                ForEach(dayMealTypes, id: \.self) { type in
-                    PlannedMealSlotView(
-                        mealType: type,
-                        meals: dayPlan.meals(for: type),
-                        onTap: { onTapEmptyMeal(type) }
-                    )
-                }
+            } else {
+                NutritionSummaryView(
+                    nutrition: dayNutrition,
+                    target: targetNutrition,
+                    embedded: true,
+                    macroLabelStyle: .full
+                )
             }
         }
         .padding(AppTheme.contentPadding)
@@ -47,15 +72,14 @@ struct DayPlanCardView: View {
             RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
                 .stroke(borderColor, lineWidth: borderWidth)
         }
+        .animation(.easeInOut(duration: 0.25), value: isExpanded)
     }
 
     private var borderWidth: CGFloat {
-        isSelected || isToday ? 2 : 0
+        isToday ? 2 : 0
     }
 
     private var borderColor: Color {
-        if isSelected { return .accentColor }
-        if isToday { return .accentColor.opacity(0.5) }
-        return .clear
+        isToday ? .accentColor.opacity(0.5) : .clear
     }
 }

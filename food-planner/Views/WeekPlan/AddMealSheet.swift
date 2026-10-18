@@ -13,7 +13,11 @@ struct AddMealSheet: View {
     @State private var filterTab: RecipeFilterTab = .all
     @State private var selectedRecipeIDs: Set<PersistentIdentifier>
     @State private var searchText = ""
-    @State private var showAddRecipe = false
+
+    private let columns = [
+        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12),
+    ]
 
     init(
         dayPlan: DayPlan,
@@ -28,6 +32,10 @@ struct AddMealSheet: View {
             dayPlan.meals(for: preferredMealType).compactMap(\.recipe?.persistentModelID)
         )
         _selectedRecipeIDs = State(initialValue: existingIDs)
+    }
+
+    private var navigationTitle: LocalizedStringResource {
+        targetMealType == .snack ? "filter.other" : targetMealType.displayName
     }
 
     private var emptyStateHint: String {
@@ -54,50 +62,77 @@ struct AddMealSheet: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                targetMealHeader
-                filterControls
-                recipesSection
-            }
-            .listStyle(.insetGrouped)
-            .searchable(text: $searchText, prompt: "search.recipes")
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                addRecipeFooter
-            }
-            .navigationTitle("addMeal.title")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { toolbarContent }
-            .sheet(isPresented: $showAddRecipe) {
-                NavigationStack {
-                    AddRecipeView()
+            ScrollView {
+                if filteredRecipes.isEmpty {
+                    ContentUnavailableView(
+                        searchText.isEmpty ? "empty.recipes" : "search.noResults",
+                        systemImage: "magnifyingglass",
+                        description: Text(emptyStateHint)
+                    )
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 40)
+                } else {
+                    LazyVGrid(columns: columns, spacing: 12) {
+                        ForEach(filteredRecipes) { recipe in
+                            selectableRecipeCard(recipe)
+                        }
+                    }
+                    .padding(AppTheme.contentPadding)
+                    .padding(.bottom, selectedRecipeIDs.isEmpty ? 0 : 56)
                 }
             }
-        }
-    }
-
-    private var targetMealHeader: some View {
-        Section {
-            HStack(spacing: 10) {
-                Image(systemName: targetMealIcon)
-                    .foregroundStyle(.tint)
-                Text(targetMealTypeLabel)
-                    .font(.subheadline.weight(.medium))
+            .background(AppTheme.canvas)
+            .overlay(alignment: .bottomLeading) {
+                selectedCountTag
             }
-        } footer: {
-            Text("addMeal.targetFooter")
+            .safeAreaInset(edge: .top, spacing: 0) {
+                pinnedFilterChips
+            }
+            .navigationTitle(navigationTitle)
+            .navigationBarTitleDisplayMode(.inline)
+            .searchable(
+                text: $searchText,
+                placement: .navigationBarDrawer(displayMode: .automatic),
+                prompt: "search.recipes"
+            )
+            .toolbar { toolbarContent }
         }
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
     }
 
-    private var filterControls: some View {
+    private var pinnedFilterChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
                 ForEach(RecipeFilterTab.allCases) { tab in
                     filterChip(tab)
                 }
             }
+            .padding(.horizontal, AppTheme.contentPadding)
+            .padding(.vertical, 10)
         }
-        .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-        .listRowBackground(Color.clear)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppTheme.elevated)
+        .overlay(alignment: .bottom) {
+            Divider()
+        }
+    }
+
+    @ViewBuilder
+    private var selectedCountTag: some View {
+        if !selectedRecipeIDs.isEmpty {
+            Text("addMeal.selectedCount \(selectedRecipeIDs.count)")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.primary)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
+                .background(.ultraThinMaterial, in: Capsule())
+                .shadow(color: AppTheme.cardShadow, radius: 8, x: 0, y: 2)
+                .padding(.leading, AppTheme.contentPadding)
+                .padding(.bottom, 16)
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+                .animation(.easeInOut(duration: 0.2), value: selectedRecipeIDs.count)
+        }
     }
 
     private func filterChip(_ tab: RecipeFilterTab) -> some View {
@@ -116,44 +151,31 @@ struct AddMealSheet: View {
         .buttonStyle(.plain)
     }
 
-    private var recipesSection: some View {
-        Section {
-            if filteredRecipes.isEmpty {
-                ContentUnavailableView(
-                    searchText.isEmpty ? "empty.recipes" : "search.noResults",
-                    systemImage: "magnifyingglass",
-                    description: Text(emptyStateHint)
+    private func selectableRecipeCard(_ recipe: Recipe) -> some View {
+        let isSelected = selectedRecipeIDs.contains(recipe.persistentModelID)
+        return Button {
+            toggleSelection(for: recipe)
+        } label: {
+            ZStack(alignment: .topTrailing) {
+                RecipeCardView(
+                    recipe: recipe,
+                    style: .grid,
+                    showsNutrition: true,
+                    showsCommunityLikes: false
                 )
-                .listRowBackground(Color.clear)
-            } else {
-                ForEach(filteredRecipes) { recipe in
-                    recipeRow(recipe)
-                }
-            }
-        } header: {
-            Text("addMeal.recipe")
-        } footer: {
-            if !selectedRecipeIDs.isEmpty {
-                Text("addMeal.selectedCount \(selectedRecipeIDs.count)")
+
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(isSelected ? AppTheme.accent : .primary)
+                    .frame(width: 36, height: 36)
+                    .background(.ultraThinMaterial, in: Circle())
+                    .padding(8)
+                    .accessibilityHidden(true)
             }
         }
-    }
-
-    private var addRecipeFooter: some View {
-        VStack(spacing: 0) {
-            Divider()
-
-            Button {
-                showAddRecipe = true
-            } label: {
-                Label("addRecipe.title", systemImage: "plus.circle.fill")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-        }
-        .background(Color(.systemGroupedBackground))
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityLabel(recipe.localizedName)
     }
 
     @ToolbarContentBuilder
@@ -162,36 +184,10 @@ struct AddMealSheet: View {
             Button("common.cancel") { dismiss() }
         }
         ToolbarItem(placement: .confirmationAction) {
-            Button("common.save") { saveMeals() }
-        }
-    }
-
-    private func recipeRow(_ recipe: Recipe) -> some View {
-        let isSelected = selectedRecipeIDs.contains(recipe.persistentModelID)
-        return Button {
-            toggleSelection(for: recipe)
-        } label: {
-            HStack(spacing: 12) {
-                RecipeImageView(imageData: recipe.imageData, cornerRadius: 8)
-                    .frame(width: 48, height: 48)
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(recipe.localizedName)
-                        .foregroundStyle(.primary)
-                    Text(L10n.kcalPer100g(Int(recipe.caloriesPer100g)))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer()
-
-                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    .foregroundStyle(isSelected ? Color.accentColor : Color(.tertiaryLabel))
+            Button("common.save") {
+                saveMeals()
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
     }
 
     private func toggleSelection(for recipe: Recipe) {
@@ -241,18 +237,5 @@ struct AddMealSheet: View {
         LocalPersistence.save(modelContext)
         onSave()
         dismiss()
-    }
-
-    private var targetMealTypeLabel: LocalizedStringResource {
-        targetMealType == .snack ? "filter.other" : targetMealType.displayName
-    }
-
-    private var targetMealIcon: String {
-        switch targetMealType {
-        case .breakfast: "sunrise.fill"
-        case .lunch: "sun.max.fill"
-        case .dinner: "moon.stars.fill"
-        case .snack: "ellipsis.circle.fill"
-        }
     }
 }

@@ -326,6 +326,7 @@
       }
     },
     "addMeal.recipe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -392,6 +393,7 @@
       }
     },
     "addMeal.targetFooter" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -408,6 +410,7 @@
       }
     },
     "addMeal.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

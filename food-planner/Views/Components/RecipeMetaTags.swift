@@ -48,6 +48,33 @@ struct RecipeCookTimeTag: View {
     }
 }
 
+struct RecipeCaloriesTag: View {
+    let calories: Double
+    var usesMaterial: Bool = false
+
+    private var text: String {
+        String(localized: "nutrition.kcalShort \(Int(calories.rounded()))")
+    }
+
+    var body: some View {
+        if usesMaterial {
+            Label {
+                Text(text)
+                    .lineLimit(1)
+            } icon: {
+                Image(systemName: "flame.fill")
+            }
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(.primary)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(.ultraThinMaterial, in: Capsule())
+        } else {
+            RecipeMetaTag(systemImage: "flame.fill", text: text)
+        }
+    }
+}
+
 struct RecipeCommunityLikesTag: View {
     let count: Int
 

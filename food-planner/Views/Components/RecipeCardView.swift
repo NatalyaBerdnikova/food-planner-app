@@ -16,6 +16,7 @@ struct RecipeCardView: View {
     var badge: RecipeCardBadge?
     var style: RecipeCardStyle = .grid
     var showsNutrition: Bool = false
+    var showsCommunityLikes: Bool = true
     var showsFavoriteControl: Bool = false
     var isFavorite: Bool = false
     var onFavoriteTap: (() -> Void)?
@@ -26,9 +27,12 @@ struct RecipeCardView: View {
 
     private var imageHeight: CGFloat {
         switch style {
-        case .grid: AppTheme.recipeCardImageHeight
-        case .rail: AppTheme.recipeCardImageHeight
-        case .hero: AppTheme.recipeHeroCardHeight
+        case .grid:
+            showsNutrition ? AppTheme.recipeCardCompactImageHeight : AppTheme.recipeCardImageHeight
+        case .rail:
+            AppTheme.recipeCardImageHeight
+        case .hero:
+            AppTheme.recipeHeroCardHeight
         }
     }
 
@@ -71,7 +75,6 @@ struct RecipeCardView: View {
 
                 if showsNutrition {
                     HStack(spacing: 6) {
-                        macroChip(title: "nutrition.macro.kcal", value: nutritionPerServing.calories)
                         macroChip(title: "nutrition.macro.protein", value: nutritionPerServing.protein)
                         macroChip(title: "nutrition.macro.fat", value: nutritionPerServing.fat)
                         macroChip(title: "nutrition.macro.carbs", value: nutritionPerServing.carbs)
@@ -107,7 +110,12 @@ struct RecipeCardView: View {
                 )
             )
 
-            if recipe.hasCookTime {
+            if showsNutrition {
+                RecipeCaloriesTag(calories: nutritionPerServing.calories, usesMaterial: true)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .padding(10)
+                    .allowsHitTesting(false)
+            } else if recipe.hasCookTime {
                 RecipeCookTimeTag(minutes: recipe.cookTimeMinutes, usesMaterial: true)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                     .padding(10)
@@ -154,7 +162,9 @@ struct RecipeCardView: View {
                 .foregroundStyle(.primary)
                 .frame(maxWidth: .infinity, minHeight: titleMinHeight, alignment: .topLeading)
 
-            RecipeCommunityLikesTag(count: recipe.communityLikeCount)
+            if showsCommunityLikes {
+                RecipeCommunityLikesTag(count: recipe.communityLikeCount)
+            }
         }
     }
 
