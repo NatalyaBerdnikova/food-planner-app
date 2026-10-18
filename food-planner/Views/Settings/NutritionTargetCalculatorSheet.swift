@@ -1,30 +1,65 @@
 import SwiftUI
+import SwiftData
 
 struct NutritionTargetCalculatorSheet: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
 
+    private let settings: AppSettings
     let onApply: (DailyNutrition) -> Void
 
-    @State private var sex: BiologicalSex = .female
-    @State private var ageText = ""
-    @State private var heightText = ""
-    @State private var weightText = ""
-    @State private var targetWeightText = ""
-    @State private var activityLevel: ActivityLevel = .moderate
-    @State private var proteinPerKg: Double = 1.6
-    @State private var fatPerKg: Double = 1.0
-    @State private var calculated: DailyNutrition?
-    @State private var showInvalidInput = false
+    @State private var sex: BiologicalSex
+    @State private var age: Int
+    @State private var heightCm: Double
+    @State private var weightKg: Double
+    @State private var targetWeightKg: Double
+    @State private var activityLevel: ActivityLevel
+    @State private var proteinPerKg: Double
+    @State private var fatPerKg: Double
+
+    init(settings: AppSettings, onApply: @escaping (DailyNutrition) -> Void) {
+        self.settings = settings
+        self.onApply = onApply
+        _sex = State(initialValue: settings.profileSex)
+        _age = State(initialValue: min(max(settings.profileAge, 14), 80))
+        _heightCm = State(initialValue: min(max(settings.profileHeightCm, 140), 210))
+        _weightKg = State(initialValue: min(max(settings.profileWeightKg, 40), 180))
+        _targetWeightKg = State(initialValue: min(max(settings.profileTargetWeightKg, 40), 180))
+        _activityLevel = State(initialValue: settings.profileActivity)
+        _proteinPerKg = State(initialValue: settings.profileGoal.proteinGramsPerKg)
+        _fatPerKg = State(initialValue: settings.profileGoal.fatGramsPerKg)
+    }
+
+    private var liveNutrition: DailyNutrition? {
+        NutritionTargetCalculator.calculate(input: currentInput)
+    }
+
+    private var currentInput: NutritionTargetInput {
+        NutritionTargetInput(
+            sex: sex,
+            age: age,
+            heightCm: heightCm,
+            weightKg: weightKg,
+            targetWeightKg: targetWeightKg,
+            activityLevel: activityLevel,
+            proteinGramsPerKg: proteinPerKg,
+            fatGramsPerKg: fatPerKg
+        )
+    }
 
     var body: some View {
         NavigationStack {
-            Form {
-                parametersSection
+            VStack(spacing: 0) {
+                liveTargetsHeader
 
-                if let nutrition = calculated {
-                    resultSection(nutrition)
+                ScrollView {
+                    VStack(spacing: 12) {
+                        inputsCard
+                    }
+                    .padding(AppTheme.contentPadding)
                 }
             }
+            .background(AppTheme.canvas)
             .navigationTitle("calculator.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -32,92 +67,125 @@ struct NutritionTargetCalculatorSheet: View {
                     Button("common.cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("calculator.calculate") {
-                        performCalculation()
+                    Button("common.save") {
+                        save()
                     }
+                    .disabled(liveNutrition == nil)
                 }
-            }
-            .alert("calculator.invalidInput", isPresented: $showInvalidInput) {
-                Button("common.done") { }
             }
         }
     }
 
-    private var parametersSection: some View {
-        Group {
-            Section("calculator.profile") {
-                Picker("calculator.sex", selection: $sex) {
-                    ForEach(BiologicalSex.allCases) { option in
-                        Text(sexLabel(option)).tag(option)
-                    }
-                }
+    private var liveTargetsHeader: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("calculator.result")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.secondary)
 
-                TextField("calculator.age", text: $ageText)
-                    .keyboardType(.numberPad)
-
-                TextField("calculator.height", text: $heightText)
-                    .keyboardType(.decimalPad)
-
-                TextField("calculator.weight", text: $weightText)
-                    .keyboardType(.decimalPad)
-
-                TextField("calculator.targetWeight", text: $targetWeightText)
-                    .keyboardType(.decimalPad)
+            if let nutrition = liveNutrition {
+                NutritionSummaryView(
+                    nutrition: nutrition,
+                    embedded: true,
+                    macroLabelStyle: .full
+                )
             }
-
-            Section("calculator.activity") {
-                Picker("calculator.activityLevel", selection: $activityLevel) {
-                    ForEach(ActivityLevel.allCases) { level in
-                        Text(activityLabel(level)).tag(level)
-                    }
-                }
-            }
-
-            Section {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Text("calculator.proteinPerKg")
-                        Spacer()
-                        Text(formatCoefficient(proteinPerKg))
-                            .foregroundStyle(.secondary)
-                    }
-                    Slider(value: $proteinPerKg, in: 1...3, step: 0.1)
-                }
-            }
-
-            Section {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Text("calculator.fatPerKg")
-                        Spacer()
-                        Text(formatCoefficient(fatPerKg))
-                            .foregroundStyle(.secondary)
-                    }
-                    Slider(value: $fatPerKg, in: 0.8...1.5, step: 0.1)
-                }
-            } footer: {
-                Text("calculator.macrosPerKg.footer")
-            }
+        }
+        .padding(AppTheme.contentPadding)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppTheme.elevated)
+        .overlay(alignment: .bottom) {
+            Divider()
         }
     }
 
-    private func resultSection(_ nutrition: DailyNutrition) -> some View {
-        Section {
-            NutritionSummaryView(
-                nutrition: nutrition,
-                title: "calculator.result",
-                embedded: true,
-                macroLabelStyle: .full
+    private var inputsCard: some View {
+        VStack(spacing: 14) {
+            Picker("onboarding.body.sex", selection: $sex) {
+                Text("calculator.sex.female").tag(BiologicalSex.female)
+                Text("calculator.sex.male").tag(BiologicalSex.male)
+            }
+            .pickerStyle(.segmented)
+
+            ageRow
+
+            sliderRow(
+                title: "onboarding.body.height",
+                valueText: "\(Int(heightCm)) cm",
+                value: $heightCm,
+                range: 140...210,
+                step: 1
+            )
+            sliderRow(
+                title: "onboarding.body.weight",
+                valueText: String(format: "%.1f kg", weightKg),
+                value: $weightKg,
+                range: 40...180,
+                step: 0.5
+            )
+            sliderRow(
+                title: "onboarding.body.targetWeight",
+                valueText: String(format: "%.1f kg", targetWeightKg),
+                value: $targetWeightKg,
+                range: 40...180,
+                step: 0.5
             )
 
-            Button {
-                onApply(nutrition)
-                dismiss()
-            } label: {
-                Text("calculator.use")
-                    .frame(maxWidth: .infinity)
+            Picker("calculator.activityLevel", selection: $activityLevel) {
+                ForEach(ActivityLevel.allCases) { level in
+                    Text(LocalizedStringKey(level.localizationKey)).tag(level)
+                }
             }
-            .buttonStyle(.borderedProminent)
+
+            sliderRow(
+                title: "calculator.proteinPerKg",
+                valueText: formatCoefficient(proteinPerKg),
+                value: $proteinPerKg,
+                range: NutritionTargetCalculator.proteinGramsPerKgRange,
+                step: 0.1
+            )
+            sliderRow(
+                title: "calculator.fatPerKg",
+                valueText: formatCoefficient(fatPerKg),
+                value: $fatPerKg,
+                range: NutritionTargetCalculator.fatGramsPerKgRange,
+                step: 0.1
+            )
+        }
+        .padding(14)
+        .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+    }
+
+    private var ageRow: some View {
+        HStack {
+            Text("onboarding.body.age")
+                .font(.subheadline.weight(.medium))
+            Spacer()
+            Text("\(age)")
+                .font(.subheadline.monospacedDigit())
+                .foregroundStyle(.secondary)
+            Stepper("", value: $age, in: 14...80)
+                .labelsHidden()
+        }
+    }
+
+    private func sliderRow(
+        title: LocalizedStringKey,
+        valueText: String,
+        value: Binding<Double>,
+        range: ClosedRange<Double>,
+        step: Double
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(title)
+                    .font(.subheadline.weight(.medium))
+                Spacer()
+                Text(valueText)
+                    .font(.subheadline.monospacedDigit())
+                    .foregroundStyle(.secondary)
+            }
+            Slider(value: value, in: range, step: step)
+                .tint(AppTheme.accent)
         }
     }
 
@@ -125,59 +193,11 @@ struct NutritionTargetCalculatorSheet: View {
         String(format: "%.1f", value)
     }
 
-    private func sexLabel(_ sex: BiologicalSex) -> LocalizedStringResource {
-        switch sex {
-        case .female: "calculator.sex.female"
-        case .male: "calculator.sex.male"
-        }
-    }
-
-    private func activityLabel(_ level: ActivityLevel) -> LocalizedStringResource {
-        switch level {
-        case .sedentary: "calculator.activity.sedentary"
-        case .light: "calculator.activity.light"
-        case .moderate: "calculator.activity.moderate"
-        case .active: "calculator.activity.active"
-        case .veryActive: "calculator.activity.veryActive"
-        }
-    }
-
-    private func performCalculation() {
-        guard let input = buildInput() else {
-            calculated = nil
-            showInvalidInput = true
-            return
-        }
-        calculated = NutritionTargetCalculator.calculate(input: input)
-        if calculated == nil {
-            showInvalidInput = true
-        }
-    }
-
-    private func buildInput() -> NutritionTargetInput? {
-        guard let age = Int(ageText.trimmingCharacters(in: .whitespaces)),
-              let height = parseDouble(heightText),
-              let weight = parseDouble(weightText),
-              let targetWeight = parseDouble(targetWeightText) else {
-            return nil
-        }
-
-        return NutritionTargetInput(
-            sex: sex,
-            age: age,
-            heightCm: height,
-            weightKg: weight,
-            targetWeightKg: targetWeight,
-            activityLevel: activityLevel,
-            proteinGramsPerKg: proteinPerKg,
-            fatGramsPerKg: fatPerKg
-        )
-    }
-
-    private func parseDouble(_ text: String) -> Double? {
-        let normalized = text.trimmingCharacters(in: .whitespaces)
-            .replacingOccurrences(of: ",", with: ".")
-        guard let value = Double(normalized), value > 0 else { return nil }
-        return value
+    private func save() {
+        guard let nutrition = liveNutrition else { return }
+        settings.apply(calculatorInput: currentInput, nutrition: nutrition)
+        LocalPersistence.save(modelContext)
+        onApply(nutrition)
+        dismiss()
     }
 }

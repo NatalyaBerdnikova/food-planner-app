@@ -130,6 +130,20 @@ extension AppSettings {
         profileDietPreferences = draft.dietPreferences
         profileMicronutrientFocus = Array(draft.micronutrientFocus)
         profileRecipeSource = draft.recipeSource
+        apply(targets: nutrition)
+    }
+
+    func apply(calculatorInput input: NutritionTargetInput, nutrition: DailyNutrition) {
+        profileSex = input.sex
+        profileAge = input.age
+        profileHeightCm = input.heightCm
+        profileWeightKg = input.weightKg
+        profileTargetWeightKg = input.targetWeightKg
+        profileActivity = input.activityLevel
+        apply(targets: nutrition)
+    }
+
+    func apply(targets nutrition: DailyNutrition) {
         targetCalories = nutrition.calories
         targetProtein = nutrition.protein
         targetFat = nutrition.fat

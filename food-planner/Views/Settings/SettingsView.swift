@@ -24,133 +24,166 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section {
-                LabeledContent("settings.subscription.status") {
-                    Text(
-                        subscriptionSession.hasFullAccess
-                            ? "settings.subscription.active"
-                            : "settings.subscription.inactive"
-                    )
-                    .foregroundStyle(subscriptionSession.hasFullAccess ? .green : .secondary)
-                }
-
-                if subscriptionSession.hasFullAccess {
-                    Button {
-                        restorePurchases()
-                    } label: {
-                        Label("settings.subscription.restore", systemImage: "goforward")
-                    }
-                }
-            } header: {
-                Text("settings.subscription.title")
-            }
-
             if let settings {
-                Section {
-                    LabeledContent("onboarding.goal.title") {
-                        Text(LocalizedStringKey(settings.profileGoal.localizationKey))
-                    }
-                    LabeledContent("onboarding.body.age") {
-                        Text("\(settings.profileAge)")
-                    }
-                    LabeledContent("onboarding.body.weight") {
-                        Text(String(format: "%.1f kg", settings.profileWeightKg))
-                    }
-                    LabeledContent("onboarding.body.targetWeight") {
-                        Text(String(format: "%.1f kg", settings.profileTargetWeightKg))
-                    }
-                } header: {
-                    Text("settings.profile.title")
-                } footer: {
-                    Text("settings.profile.footer")
-                }
-
-                Section {
-                    ForEach(MicronutrientKind.allCases) { kind in
-                        Toggle(isOn: Binding(
-                            get: { selectedMicros.contains(kind) },
-                            set: { isOn in
-                                if isOn {
-                                    if selectedMicros.count < 5 {
-                                        selectedMicros.insert(kind)
-                                    }
-                                } else {
-                                    selectedMicros.remove(kind)
-                                }
-                                persistMicronutrientFocus()
-                            }
-                        )) {
-                            Text(LocalizedStringKey(kind.localizationKey))
-                        }
-                    }
-                } header: {
-                    Text("settings.micros.title")
-                } footer: {
-                    Text("settings.micros.footer")
-                }
+                profileSection(settings)
             }
 
-            Section {
-                Picker("settings.language", selection: $appLanguageRaw) {
-                    ForEach(AppLanguage.allCases) { language in
-                        Text(language.displayName)
-                            .tag(language.rawValue)
-                    }
-                }
-            } footer: {
-                Text("settings.appearance.systemFooter")
+            targetsSection
+
+            if settings != nil {
+                micronutrientsSection
             }
 
-            Section {
-                Button {
-                    showNutritionCalculator = true
-                } label: {
-                    Label("settings.calculateTargets", systemImage: "function")
-                }
+            subscriptionSection
 
-                TextField("settings.target.calories", text: $caloriesText)
-                    .keyboardType(.decimalPad)
-                TextField("settings.target.protein", text: $proteinText)
-                    .keyboardType(.decimalPad)
-                TextField("settings.target.fat", text: $fatText)
-                    .keyboardType(.decimalPad)
-                TextField("settings.target.carbs", text: $carbsText)
-                    .keyboardType(.decimalPad)
-            } header: {
-                Text("settings.target.title")
-            } footer: {
-                Text("settings.target.footer")
-            }
+            languageSection
 
-            Section {
-                LabeledContent("settings.storage.recipes") {
-                    Text("\(recipes.count)")
-                }
-                LabeledContent("settings.storage.weekPlans") {
-                    Text("\(weekPlans.count)")
-                }
-                LabeledContent("settings.productDB.count") {
-                    Text("\(foodProducts.count)")
-                }
-                if let active = settings?.activeWeekPlan {
-                    LabeledContent("settings.storage.activePlan") {
-                        Text(active.weekStartDate, format: .dateTime.day().month().year())
-                    }
-                }
-            } header: {
-                Text("settings.storage.title")
-            } footer: {
-                Text("settings.storage.footer")
-            }
+            statisticsSection
         }
         .navigationTitle("nav.settings")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: loadSettings)
         .onDisappear(perform: saveTargets)
         .sheet(isPresented: $showNutritionCalculator) {
-            NutritionTargetCalculatorSheet { nutrition in
+            NutritionTargetCalculatorSheet(
+                settings: AppSettingsService.settings(in: modelContext)
+            ) { nutrition in
                 applyCalculatedTargets(nutrition)
             }
+        }
+    }
+
+    private func profileSection(_ settings: AppSettings) -> some View {
+        Section {
+            LabeledContent("onboarding.goal.title") {
+                Text(LocalizedStringKey(settings.profileGoal.localizationKey))
+            }
+            LabeledContent("onboarding.body.age") {
+                Text("\(settings.profileAge)")
+            }
+            LabeledContent("onboarding.body.weight") {
+                Text(String(format: "%.1f kg", settings.profileWeightKg))
+            }
+            LabeledContent("onboarding.body.targetWeight") {
+                Text(String(format: "%.1f kg", settings.profileTargetWeightKg))
+            }
+        } header: {
+            Text("settings.profile.title")
+        } footer: {
+            Text("settings.profile.footer")
+        }
+    }
+
+    private var targetsSection: some View {
+        Section {
+            targetField(title: "settings.target.calories", text: $caloriesText)
+            targetField(title: "settings.target.protein", text: $proteinText)
+            targetField(title: "settings.target.fat", text: $fatText)
+            targetField(title: "settings.target.carbs", text: $carbsText)
+
+            Button {
+                showNutritionCalculator = true
+            } label: {
+                Label("settings.calculateTargets", systemImage: "function")
+            }
+        } header: {
+            Text("settings.target.title")
+        } footer: {
+            Text("settings.target.footer")
+        }
+    }
+
+    private func targetField(title: LocalizedStringKey, text: Binding<String>) -> some View {
+        LabeledContent(title) {
+            TextField("", text: text)
+                .keyboardType(.decimalPad)
+                .multilineTextAlignment(.trailing)
+                .labelsHidden()
+        }
+    }
+
+    private var micronutrientsSection: some View {
+        Section {
+            ForEach(MicronutrientKind.allCases) { kind in
+                Toggle(isOn: Binding(
+                    get: { selectedMicros.contains(kind) },
+                    set: { isOn in
+                        if isOn {
+                            if selectedMicros.count < 5 {
+                                selectedMicros.insert(kind)
+                            }
+                        } else {
+                            selectedMicros.remove(kind)
+                        }
+                        persistMicronutrientFocus()
+                    }
+                )) {
+                    Text(LocalizedStringKey(kind.localizationKey))
+                }
+            }
+        } header: {
+            Text("settings.micros.title")
+        } footer: {
+            Text("settings.micros.footer")
+        }
+    }
+
+    private var subscriptionSection: some View {
+        Section {
+            LabeledContent("settings.subscription.status") {
+                Text(
+                    subscriptionSession.hasFullAccess
+                        ? "settings.subscription.active"
+                        : "settings.subscription.inactive"
+                )
+                .foregroundStyle(subscriptionSession.hasFullAccess ? .green : .secondary)
+            }
+
+            if subscriptionSession.hasFullAccess {
+                Button {
+                    restorePurchases()
+                } label: {
+                    Label("settings.subscription.restore", systemImage: "goforward")
+                }
+            }
+        } header: {
+            Text("settings.subscription.title")
+        }
+    }
+
+    private var languageSection: some View {
+        Section {
+            Picker("settings.language", selection: $appLanguageRaw) {
+                ForEach(AppLanguage.allCases) { language in
+                    Text(language.displayName)
+                        .tag(language.rawValue)
+                }
+            }
+        } footer: {
+            Text("settings.appearance.systemFooter")
+        }
+    }
+
+    private var statisticsSection: some View {
+        Section {
+            LabeledContent("settings.storage.recipes") {
+                Text("\(recipes.count)")
+            }
+            LabeledContent("settings.storage.weekPlans") {
+                Text("\(weekPlans.count)")
+            }
+            LabeledContent("settings.productDB.count") {
+                Text("\(foodProducts.count)")
+            }
+            if let active = settings?.activeWeekPlan {
+                LabeledContent("settings.storage.activePlan") {
+                    Text(active.weekStartDate, format: .dateTime.day().month().year())
+                }
+            }
+        } header: {
+            Text("settings.storage.title")
+        } footer: {
+            Text("settings.storage.footer")
         }
     }
 
