@@ -11,7 +11,10 @@ struct AddMealSheet: View {
     let onSave: () -> Void
 
     @State private var filterTab: RecipeFilterTab = .all
+    @State private var showFavoritesOnly = false
+    @State private var showMineOnly = false
     @State private var selectedRecipeIDs: Set<PersistentIdentifier>
+    @State private var pinnedSelectedIDs: Set<PersistentIdentifier>
     @State private var searchText = ""
 
     private let columns = [
@@ -32,6 +35,7 @@ struct AddMealSheet: View {
             dayPlan.meals(for: preferredMealType).compactMap(\.recipe?.persistentModelID)
         )
         _selectedRecipeIDs = State(initialValue: existingIDs)
+        _pinnedSelectedIDs = State(initialValue: existingIDs)
     }
 
     private var navigationTitle: LocalizedStringResource {
@@ -39,31 +43,50 @@ struct AddMealSheet: View {
     }
 
     private var emptyStateHint: String {
-        searchText.isEmpty
-            ? String(localized: "empty.recipes.hint")
-            : String(localized: "search.noResults.hint")
+        let hasFilters = !searchText.isEmpty || showFavoritesOnly || showMineOnly || filterTab != .all
+        return hasFilters
+            ? String(localized: "search.noResults.hint")
+            : String(localized: "empty.recipes.hint")
     }
 
-    private var tabFilteredRecipes: [Recipe] {
-        guard let filterMealType = filterTab.mealType else {
-            return recipes
-        }
-        return recipes.filter { recipe in
-            recipe.meals.isEmpty || recipe.meals.contains { $0.mealType == filterMealType }
-        }
+    private var favoriteIds: Set<String> {
+        RecipeFavoritesService.favoriteIds(in: modelContext)
     }
 
     private var filteredRecipes: [Recipe] {
+        var result = recipes
+
+        if showMineOnly {
+            result = result.filter(\.isUserCreated)
+        }
+
+        if showFavoritesOnly {
+            result = RecipeFavoritesService.favoriteRecipes(from: result, favoriteIds: favoriteIds)
+        }
+
+        if let filterMealType = filterTab.mealType {
+            result = result.filter { $0.matchesMealTypeFilter(filterMealType) }
+        }
+
         let query = searchText.trimmingCharacters(in: .whitespaces)
-        let base = tabFilteredRecipes
-        guard !query.isEmpty else { return base }
-        return base.filter { $0.matchesSearch(query) }
+        if !query.isEmpty {
+            result = result.filter { $0.matchesSearch(query) }
+        }
+
+        return result
+    }
+
+    private var displayedRecipes: [Recipe] {
+        let base = filteredRecipes
+        let pinned = base.filter { pinnedSelectedIDs.contains($0.persistentModelID) }
+        let rest = base.filter { !pinnedSelectedIDs.contains($0.persistentModelID) }
+        return pinned + rest
     }
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                if filteredRecipes.isEmpty {
+                if displayedRecipes.isEmpty {
                     ContentUnavailableView(
                         searchText.isEmpty ? "empty.recipes" : "search.noResults",
                         systemImage: "magnifyingglass",
@@ -73,7 +96,7 @@ struct AddMealSheet: View {
                     .padding(.vertical, 40)
                 } else {
                     LazyVGrid(columns: columns, spacing: 12) {
-                        ForEach(filteredRecipes) { recipe in
+                        ForEach(displayedRecipes) { recipe in
                             selectableRecipeCard(recipe)
                         }
                     }
@@ -105,7 +128,28 @@ struct AddMealSheet: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
                 ForEach(RecipeFilterTab.allCases) { tab in
-                    filterChip(tab)
+                    filterChip(
+                        title: tab.displayName,
+                        isSelected: filterTab == tab
+                    ) {
+                        filterTab = tab
+                    }
+                }
+
+                filterChip(
+                    title: "filter.mine",
+                    isSelected: showMineOnly,
+                    systemImage: "person.fill"
+                ) {
+                    showMineOnly.toggle()
+                }
+
+                filterChip(
+                    title: "filter.favorites",
+                    isSelected: showFavoritesOnly,
+                    systemImage: "heart.fill"
+                ) {
+                    showFavoritesOnly.toggle()
                 }
             }
             .padding(.horizontal, AppTheme.contentPadding)
@@ -135,18 +179,26 @@ struct AddMealSheet: View {
         }
     }
 
-    private func filterChip(_ tab: RecipeFilterTab) -> some View {
-        Button {
-            filterTab = tab
-        } label: {
-            Text(tab.displayName)
-                .font(.subheadline.weight(.medium))
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
-                .background(filterTab == tab ? Color.accentColor : Color(.tertiarySystemFill))
-                .foregroundStyle(filterTab == tab ? Color.white : Color.primary)
-                .clipShape(Capsule())
-                .contentShape(Capsule())
+    private func filterChip(
+        title: LocalizedStringResource,
+        isSelected: Bool,
+        systemImage: String? = nil,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            HStack(spacing: 6) {
+                if let systemImage {
+                    Image(systemName: systemImage)
+                }
+                Text(title)
+            }
+            .font(.subheadline.weight(.medium))
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(isSelected ? Color.accentColor : Color(.tertiarySystemFill))
+            .foregroundStyle(isSelected ? Color.white : Color.primary)
+            .clipShape(Capsule())
+            .contentShape(Capsule())
         }
         .buttonStyle(.plain)
     }
@@ -161,7 +213,6 @@ struct AddMealSheet: View {
                     recipe: recipe,
                     style: .grid,
                     showsNutrition: true,
-                    showsCommunityLikes: false,
                     imageMeta: .caloriesTopLeading
                 )
 

@@ -752,6 +752,40 @@
         }
       }
     },
+    "addRecipe.mealTypes" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meal types"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приёмы пищи"
+          }
+        }
+      }
+    },
+    "addRecipe.mealTypes.footer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional. Helps find the recipe under Breakfast, Lunch, Dinner, or Other."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необязательно. Помогает найти рецепт в фильтрах Завтрак, Обед, Ужин или Другое."
+          }
+        }
+      }
+    },
     "addRecipe.name" : {
       "localizations" : {
         "en" : {
@@ -1798,6 +1832,7 @@
       }
     },
     "favorites.remove.message %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1814,6 +1849,7 @@
       }
     },
     "favorites.remove.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2810,7 +2846,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Импортировать"
+            "value" : "Импорт"
           }
         }
       }
@@ -2827,6 +2863,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Работает с Reels и постами, где рецепт есть в подписи или озвучке."
+          }
+        }
+      }
+    },
+    "import.paste.fromClipboard" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste from Clipboard"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вставить из буфера"
           }
         }
       }
@@ -5519,6 +5571,22 @@
         }
       }
     },
+    "recipeDetail.yours" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yours"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш"
+          }
+        }
+      }
+    },
     "recipeLibrary.advancedFilters" : {
       "localizations" : {
         "en" : {
@@ -5680,6 +5748,7 @@
       }
     },
     "recipeLibrary.myRecipes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

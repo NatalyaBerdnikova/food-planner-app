@@ -13,6 +13,7 @@ struct ImportedRecipeDraft: Identifiable {
     var name: String
     var sourceURL: String?
     var servings: Int?
+    var cookTimeMinutes: Int? = nil
     var steps: [String]
     var imageData: Data?
     var ingredients: [DraftIngredient]

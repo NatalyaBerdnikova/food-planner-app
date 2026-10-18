@@ -26,6 +26,7 @@ struct WeekDayCarousel: View {
                         onTapEmptyMeal(dayPlan, mealType)
                     }
                 )
+                .id(dayKey)
             }
         }
         .onAppear {

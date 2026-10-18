@@ -6,6 +6,8 @@ struct IngredientTagSearchField: View {
 
     var excludedCatalogKeys: Set<String> = []
     var placeholder: LocalizedStringKey = "recipeLibrary.filterIngredients.placeholder"
+    var autofocus: Bool = false
+    var onSearchActivity: (() -> Void)? = nil
     var onSelect: (FoodProduct) -> Void
 
     @State private var searchText: String
@@ -15,10 +17,14 @@ struct IngredientTagSearchField: View {
         excludedCatalogKeys: Set<String> = [],
         placeholder: LocalizedStringKey = "recipeLibrary.filterIngredients.placeholder",
         initialSearchText: String = "",
+        autofocus: Bool = false,
+        onSearchActivity: (() -> Void)? = nil,
         onSelect: @escaping (FoodProduct) -> Void
     ) {
         self.excludedCatalogKeys = excludedCatalogKeys
         self.placeholder = placeholder
+        self.autofocus = autofocus
+        self.onSearchActivity = onSearchActivity
         self.onSelect = onSelect
         _searchText = State(initialValue: initialSearchText)
     }
@@ -41,6 +47,11 @@ struct IngredientTagSearchField: View {
                 .submitLabel(.done)
                 .focused($isSearchFocused)
                 .onSubmit(commitFirstSuggestionIfNeeded)
+                .task(id: autofocus) {
+                    guard autofocus else { return }
+                    try? await Task.sleep(for: .milliseconds(150))
+                    isSearchFocused = true
+                }
 
             if !suggestedProducts.isEmpty {
                 IngredientTagFlowLayout(spacing: 8) {
@@ -49,6 +60,23 @@ struct IngredientTagSearchField: View {
                     }
                 }
             }
+        }
+        .onChange(of: searchText) { _, _ in
+            notifySearchActivity()
+        }
+        .onChange(of: isSearchFocused) { _, focused in
+            guard focused else { return }
+            notifySearchActivity()
+        }
+        .onChange(of: suggestedProducts.count) { _, _ in
+            notifySearchActivity()
+        }
+    }
+
+    private func notifySearchActivity() {
+        guard onSearchActivity != nil else { return }
+        DispatchQueue.main.async {
+            onSearchActivity?()
         }
     }
 

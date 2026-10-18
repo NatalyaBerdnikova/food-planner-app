@@ -7,7 +7,6 @@ struct RecipeDetailView: View {
     let recipe: Recipe
 
     @State private var showMicronutrients = false
-    @State private var showUnfavoriteConfirmation = false
     @State private var showDeleteConfirmation = false
     @State private var showHideConfirmation = false
     @State private var displayPortions = 1
@@ -101,14 +100,6 @@ struct RecipeDetailView: View {
                 }
             }
         }
-        .alert("favorites.remove.title", isPresented: $showUnfavoriteConfirmation) {
-            Button("common.cancel", role: .cancel) {}
-            Button("favorites.remove.confirm", role: .destructive) {
-                RecipeFavoritesService.setFavorite(recipe, favorite: false, in: modelContext)
-            }
-        } message: {
-            Text("favorites.remove.message \(recipe.localizedName)")
-        }
         .alert("recipeDetail.delete.title", isPresented: $showDeleteConfirmation) {
             Button("common.cancel", role: .cancel) {}
             Button("recipeDetail.delete.confirm", role: .destructive) {
@@ -182,12 +173,10 @@ struct RecipeDetailView: View {
                     Spacer(minLength: 0)
 
                     if recipe.isUserCreated {
-                        Image(systemName: "person.crop.circle.fill")
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(.white)
-                            .frame(width: 36, height: 36)
-                            .background(.black.opacity(0.24), in: Circle())
-                            .accessibilityLabel("recipeLibrary.myRecipes")
+                        heroMetricChip(
+                            icon: "person.fill",
+                            text: String(localized: "recipeDetail.yours")
+                        )
                     } else {
                         heroMetricChip(
                             icon: "heart.fill",
@@ -210,26 +199,31 @@ struct RecipeDetailView: View {
     }
 
     private var personalRatingControl: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 8) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("recipeDetail.yourRating")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.white)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.82)
                 Text("recipeDetail.yourRating.caption")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.72))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.82)
             }
-
-            Spacer(minLength: 0)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .layoutPriority(1)
 
             RecipeUserRatingView(
                 rating: recipe.userRating,
                 isInteractive: true,
-                starSize: .title2
+                starSize: .title3
             ) { value in
                 recipe.setUserRating(value)
                 LocalPersistence.save(modelContext)
             }
+            .fixedSize(horizontal: true, vertical: false)
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
@@ -286,11 +280,7 @@ struct RecipeDetailView: View {
     @ViewBuilder
     private var favoriteToolbarButton: some View {
         Button {
-            if isFavorite {
-                showUnfavoriteConfirmation = true
-            } else {
-                RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
-            }
+            RecipeFavoritesService.setFavorite(recipe, favorite: !isFavorite, in: modelContext)
         } label: {
             Image(systemName: isFavorite ? "heart.fill" : "heart")
                 .foregroundStyle(isFavorite ? .red : .primary)

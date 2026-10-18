@@ -20,29 +20,43 @@ struct RecipeMetaTag: View {
     }
 }
 
+struct RecipeMaterialMetaTag: View {
+    let systemImage: String
+    var text: String? = nil
+    var tint: Color = .primary
+
+    var body: some View {
+        Group {
+            if let text {
+                Label {
+                    Text(text)
+                        .lineLimit(1)
+                } icon: {
+                    Image(systemName: systemImage)
+                }
+            } else {
+                Image(systemName: systemImage)
+            }
+        }
+        .font(.caption.weight(.semibold))
+        .foregroundStyle(tint)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .background(.ultraThinMaterial, in: Capsule())
+    }
+}
+
 struct RecipeCookTimeTag: View {
     let minutes: Int
     var usesMaterial: Bool = false
 
     var body: some View {
         if minutes > 0 {
+            let text = String(localized: "recipe.cookTime \(minutes)")
             if usesMaterial {
-                Label {
-                    Text(String(localized: "recipe.cookTime \(minutes)"))
-                        .lineLimit(1)
-                } icon: {
-                    Image(systemName: "clock")
-                }
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.primary)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 6)
-                .background(.ultraThinMaterial, in: Capsule())
+                RecipeMaterialMetaTag(systemImage: "clock", text: text)
             } else {
-                RecipeMetaTag(
-                    systemImage: "clock",
-                    text: String(localized: "recipe.cookTime \(minutes)")
-                )
+                RecipeMetaTag(systemImage: "clock", text: text)
             }
         }
     }
@@ -58,17 +72,7 @@ struct RecipeCaloriesTag: View {
 
     var body: some View {
         if usesMaterial {
-            Label {
-                Text(text)
-                    .lineLimit(1)
-            } icon: {
-                Image(systemName: "flame.fill")
-            }
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(.primary)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 6)
-            .background(.ultraThinMaterial, in: Capsule())
+            RecipeMaterialMetaTag(systemImage: "flame.fill", text: text)
         } else {
             RecipeMetaTag(systemImage: "flame.fill", text: text)
         }
@@ -82,17 +86,7 @@ struct RecipeCommunityLikesTag: View {
     var body: some View {
         Group {
             if usesMaterial {
-                Label {
-                    Text("\(count)")
-                        .lineLimit(1)
-                } icon: {
-                    Image(systemName: "heart.fill")
-                }
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.primary)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 6)
-                .background(.ultraThinMaterial, in: Capsule())
+                RecipeMaterialMetaTag(systemImage: "heart.fill", text: "\(count)")
             } else {
                 RecipeMetaTag(
                     systemImage: "heart.fill",
@@ -116,7 +110,7 @@ struct RecipeUserRatingView: View {
     }
 
     var body: some View {
-        HStack(spacing: 6) {
+        HStack(spacing: isInteractive ? 3 : 6) {
             ForEach(1...5, id: \.self) { value in
                 Button {
                     guard isInteractive else { return }
@@ -143,15 +137,11 @@ struct RecipeUserRatingView: View {
 struct RecipeMetaRow: View {
     let recipe: Recipe
     var showsCookTime: Bool = true
-    var showsCommunityLikes: Bool = true
 
     var body: some View {
         HStack(spacing: 6) {
             if showsCookTime {
                 RecipeCookTimeTag(minutes: recipe.cookTimeMinutes)
-            }
-            if showsCommunityLikes, !recipe.isUserCreated {
-                RecipeCommunityLikesTag(count: recipe.communityLikeCount)
             }
             Spacer(minLength: 0)
         }

@@ -52,6 +52,7 @@ enum InstagramImportService {
             name: parsed.name,
             sourceURL: normalizedURL,
             servings: parsed.servings,
+            cookTimeMinutes: parsed.cookTimeMinutes,
             steps: parsed.steps,
             imageData: imageData,
             ingredients: matchResult.resolved,

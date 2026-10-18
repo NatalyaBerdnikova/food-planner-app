@@ -10,7 +10,6 @@ struct HomeView: View {
     private var settingsList: [AppSettings]
 
     @State private var isTodayExpanded = false
-    @State private var unfavoriteCandidate: Recipe?
     @State private var addMealPresentation: AddMealPresentation?
     @State private var pasteImportRequest: PasteImportRequest?
     @State private var featuredRecipeOverride: Recipe?
@@ -72,27 +71,6 @@ struct HomeView: View {
         .sheet(item: $pasteImportRequest) { _ in
             PasteImportSheet()
         }
-        .alert(
-            "favorites.remove.title",
-            isPresented: Binding(
-                get: { unfavoriteCandidate != nil },
-                set: { if !$0 { unfavoriteCandidate = nil } }
-            )
-        ) {
-            Button("common.cancel", role: .cancel) {
-                unfavoriteCandidate = nil
-            }
-            Button("favorites.remove.confirm", role: .destructive) {
-                if let recipe = unfavoriteCandidate {
-                    RecipeFavoritesService.setFavorite(recipe, favorite: false, in: modelContext)
-                }
-                unfavoriteCandidate = nil
-            }
-        } message: {
-            if let recipe = unfavoriteCandidate {
-                Text("favorites.remove.message \(recipe.localizedName)")
-            }
-        }
     }
 
     @ViewBuilder
@@ -120,7 +98,7 @@ struct HomeView: View {
                     NavigationLink {
                         RecipeDetailView(recipe: recipe)
                     } label: {
-                        RecipeCardView(recipe: recipe, style: .hero)
+                        RecipeCardView(recipe: recipe, style: .hero, showsCommunityLikes: true)
                     }
                     .buttonStyle(.plain)
 
@@ -286,7 +264,6 @@ struct HomeView: View {
                     recipe: recipe,
                     style: .grid,
                     showsNutrition: true,
-                    showsCommunityLikes: false,
                     imageMeta: .libraryBottomLeading
                 )
             }
@@ -295,11 +272,7 @@ struct HomeView: View {
 
             if canFavorite {
                 Button {
-                    if isFavorite {
-                        unfavoriteCandidate = recipe
-                    } else {
-                        RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
-                    }
+                    RecipeFavoritesService.setFavorite(recipe, favorite: !isFavorite, in: modelContext)
                 } label: {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.subheadline.weight(.semibold))
@@ -319,11 +292,8 @@ struct HomeView: View {
     }
 
     private func toggleFavorite(for recipe: Recipe) {
-        if RecipeFavoritesService.isFavorite(recipe, in: modelContext) {
-            unfavoriteCandidate = recipe
-        } else {
-            RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
-        }
+        let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
+        RecipeFavoritesService.setFavorite(recipe, favorite: !isFavorite, in: modelContext)
     }
 
     private var catalogRecipes: [Recipe] {

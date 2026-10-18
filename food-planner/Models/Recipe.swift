@@ -22,6 +22,8 @@ final class Recipe {
     var communityLikeCount: Int = 0
     /// Личный рейтинг пользователя; `0` — нет оценки, `1...5` — оценка.
     var userRating: Int = 0
+    /// Теги приёмов пищи (завтрак/обед/…); пусто — без ограничения.
+    var mealTypeTagsStorage: String = ""
 
     /// Калории на 100 г
     var caloriesPer100g: Double
@@ -56,6 +58,7 @@ final class Recipe {
         cookTimeMinutes: Int = 0,
         communityLikeCount: Int = 0,
         userRating: Int = 0,
+        mealTypeTags: Set<MealType> = [],
         caloriesPer100g: Double = 0,
         proteinPer100g: Double = 0,
         fatPer100g: Double = 0,
@@ -73,6 +76,7 @@ final class Recipe {
         self.cookTimeMinutes = max(cookTimeMinutes, 0)
         self.communityLikeCount = max(0, min(communityLikeCount, 100))
         self.userRating = max(0, min(userRating, 5))
+        self.mealTypeTagsStorage = mealTypeTags.map(\.rawValue).sorted().joined(separator: "\u{1F}")
         self.caloriesPer100g = caloriesPer100g
         self.proteinPer100g = proteinPer100g
         self.fatPer100g = fatPer100g
@@ -83,5 +87,29 @@ final class Recipe {
 
     func setUserRating(_ rating: Int) {
         userRating = max(0, min(rating, 5))
+    }
+
+    func matchesMealTypeFilter(_ mealType: MealType) -> Bool {
+        if !mealTypeTags.isEmpty {
+            return mealTypeTags.contains(mealType)
+        }
+        return meals.isEmpty || meals.contains { $0.mealType == mealType }
+    }
+}
+
+extension Recipe {
+    private static let listSeparator = "\u{1F}"
+
+    var mealTypeTags: Set<MealType> {
+        get {
+            Set(
+                mealTypeTagsStorage
+                    .components(separatedBy: Self.listSeparator)
+                    .compactMap(MealType.init(rawValue:))
+            )
+        }
+        set {
+            mealTypeTagsStorage = newValue.map(\.rawValue).sorted().joined(separator: Self.listSeparator)
+        }
     }
 }

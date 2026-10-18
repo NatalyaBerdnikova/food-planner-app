@@ -26,6 +26,7 @@ enum RecipeCatalogStore {
         var name: String?
         var servings: Int?
         var cookTimeMinutes: Int?
+        var mealTypes: [String]?
         var imageId: String?
         var imageBase64: String?
         var steps: [String]?
@@ -199,7 +200,8 @@ enum RecipeCatalogStore {
             servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
             steps: resolvedSteps(from: item),
-            cookTimeMinutes: max(item.cookTimeMinutes ?? 0, 0)
+            cookTimeMinutes: max(item.cookTimeMinutes ?? 0, 0),
+            mealTypeTags: mealTypeTags(from: item)
         )
         replaceIngredients(for: recipe, from: item, in: context)
         recipe.recalculateNutrition()
@@ -221,11 +223,16 @@ enum RecipeCatalogStore {
             servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
             steps: resolvedSteps(from: item),
-            cookTimeMinutes: max(item.cookTimeMinutes ?? 0, 0)
+            cookTimeMinutes: max(item.cookTimeMinutes ?? 0, 0),
+            mealTypeTags: mealTypeTags(from: item)
         )
         replaceIngredients(for: recipe, from: item, in: context)
         recipe.recalculateNutrition()
         return recipe
+    }
+
+    private static func mealTypeTags(from item: RecipeEntry) -> Set<MealType> {
+        Set((item.mealTypes ?? []).compactMap(MealType.init(rawValue:)))
     }
 
     @MainActor
@@ -276,10 +283,12 @@ enum RecipeCatalogStore {
             steps: exportStepsText(from: recipe)
         )
 
+        let mealTypes = recipe.mealTypeTags.map(\.rawValue).sorted()
         return RecipeEntry(
             id: recipeId,
             servings: recipe.servings,
             cookTimeMinutes: recipe.cookTimeMinutes > 0 ? recipe.cookTimeMinutes : existing?.cookTimeMinutes,
+            mealTypes: mealTypes.isEmpty ? existing?.mealTypes : mealTypes,
             imageBase64: recipe.imageData?.base64EncodedString(),
             translations: translations,
             ingredients: ingredients

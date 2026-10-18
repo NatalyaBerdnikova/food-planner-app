@@ -39,23 +39,44 @@ struct WeekPlanView: View {
     @ViewBuilder
     private var content: some View {
         if let weekPlan = displayedWeekPlan {
-            ScrollView {
-                VStack(spacing: AppTheme.sectionSpacing) {
-                    weekSwitcher
+            ScrollViewReader { proxy in
+                ScrollView {
+                    VStack(spacing: AppTheme.sectionSpacing) {
+                        weekSwitcher
 
-                    WeekDayCarousel(
-                        dayPlans: sortedDayPlans(weekPlan),
-                        targetNutrition: targetNutrition,
-                        selectedDay: $selectedDay,
-                        onTapEmptyMeal: presentAddMeal
-                    )
+                        WeekDayCarousel(
+                            dayPlans: sortedDayPlans(weekPlan),
+                            targetNutrition: targetNutrition,
+                            selectedDay: $selectedDay,
+                            onTapEmptyMeal: presentAddMeal
+                        )
+                    }
+                    .padding(.horizontal, AppTheme.contentPadding)
+                    .padding(.bottom, AppTheme.contentPadding)
                 }
-                .padding(.horizontal, AppTheme.contentPadding)
-                .padding(.bottom, AppTheme.contentPadding)
+                .appScreenBackground()
+                .onAppear {
+                    scrollToCurrentDay(using: proxy)
+                }
+                .onChange(of: displayedWeekStart) { _, _ in
+                    scrollToCurrentDay(using: proxy)
+                }
             }
-            .appScreenBackground()
         } else {
             ProgressView()
+        }
+    }
+
+    private func scrollToCurrentDay(using proxy: ScrollViewProxy) {
+        let calendar = Calendar.current
+        guard let todayPlan = displayedWeekPlan?.dayPlans.first(where: { calendar.isDateInToday($0.date) }) else {
+            return
+        }
+        let dayID = calendar.startOfDay(for: todayPlan.date)
+        DispatchQueue.main.async {
+            withAnimation(.easeInOut(duration: 0.35)) {
+                proxy.scrollTo(dayID, anchor: .top)
+            }
         }
     }
 

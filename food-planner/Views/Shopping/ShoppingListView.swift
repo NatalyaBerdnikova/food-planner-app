@@ -93,7 +93,7 @@ struct ShoppingListView: View {
             ShareSheet(items: [shareText])
         }
         .sheet(isPresented: $showAddItem) {
-            AddIngredientSheet { draft in
+            AddIngredientSheet(autofocusSearch: true) { draft in
                 addManualItem(draft)
             }
         }
@@ -146,27 +146,28 @@ struct ShoppingItemRow: View {
             item.isPurchased.toggle()
         } label: {
             HStack(alignment: .center, spacing: 12) {
-                Image(systemName: item.isPurchased ? "checkmark.circle.fill" : "circle")
-                    .foregroundStyle(item.isPurchased ? .green : .secondary)
-
                 VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 6) {
-                        Text(item.displayName)
-                            .strikethrough(item.isPurchased)
-                            .foregroundStyle(item.isPurchased ? .secondary : .primary)
+                    Text(item.displayName)
+                        .strikethrough(item.isPurchased)
+                        .foregroundStyle(item.isPurchased ? .secondary : .primary)
+
+                    HStack(spacing: 4) {
                         if item.isManual {
-                            Image(systemName: "cart.badge.plus")
+                            Image(systemName: "square.and.pencil")
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(AppTheme.accent)
                                 .accessibilityLabel("shopping.manualItem")
                         }
+                        Text(L10n.amount(quantity: item.quantity, unit: item.unit))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
-                    Text(L10n.amount(quantity: item.quantity, unit: item.unit))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
                 }
 
                 Spacer(minLength: 0)
+
+                Image(systemName: item.isPurchased ? "checkmark.circle.fill" : "circle")
+                    .foregroundStyle(item.isPurchased ? .green : .secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .contentShape(Rectangle())

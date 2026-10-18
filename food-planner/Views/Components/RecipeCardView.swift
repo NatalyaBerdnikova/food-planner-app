@@ -1,7 +1,6 @@
 import SwiftUI
 
 enum RecipeCardBadge {
-    case userCreated
     case favorite
 }
 
@@ -22,7 +21,7 @@ struct RecipeCardView: View {
     var badge: RecipeCardBadge?
     var style: RecipeCardStyle = .grid
     var showsNutrition: Bool = false
-    var showsCommunityLikes: Bool = true
+    var showsCommunityLikes: Bool = false
     var imageMeta: RecipeCardImageMeta = .cookTimeTopLeading
     var showsFavoriteControl: Bool = false
     var isFavorite: Bool = false
@@ -57,10 +56,6 @@ struct RecipeCardView: View {
 
     private var titleFont: Font {
         style == .hero ? .title3.weight(.semibold) : .subheadline.weight(.semibold)
-    }
-
-    private var titleMinHeight: CGFloat {
-        style == .hero ? 28 : 36
     }
 
     var body: some View {
@@ -138,18 +133,6 @@ struct RecipeCardView: View {
                 }
                 RecipeCaloriesTag(calories: nutritionPerServing.calories, usesMaterial: true)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-                if recipe.isUserCreated {
-                    Image(systemName: "person.crop.circle.fill")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(AppTheme.accent)
-                        .frame(width: 36, height: 36)
-                        .background(.ultraThinMaterial, in: Circle())
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                        .accessibilityLabel("recipeLibrary.myRecipes")
-                } else {
-                    RecipeCommunityLikesTag(count: recipe.communityLikeCount, usesMaterial: true)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                }
             }
             .padding(10)
             .allowsHitTesting(false)
@@ -186,11 +169,13 @@ struct RecipeCardView: View {
         HStack(alignment: .top, spacing: 10) {
             Text(recipe.localizedName)
                 .font(titleFont)
-                .lineLimit(2)
                 .foregroundStyle(.primary)
-                .frame(maxWidth: .infinity, minHeight: titleMinHeight, alignment: .topLeading)
+                .multilineTextAlignment(.leading)
+                .lineLimit(3)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .topLeading)
 
-            if showsCommunityLikes, !recipe.isUserCreated {
+            if showsCommunityLikes {
                 RecipeCommunityLikesTag(count: recipe.communityLikeCount)
             }
         }
@@ -219,19 +204,14 @@ struct RecipeCardView: View {
 
     @ViewBuilder
     private func badgeIcon(for badge: RecipeCardBadge) -> some View {
-        let symbol: String = switch badge {
-        case .userCreated: "person.crop.circle.fill"
-        case .favorite: "heart.fill"
+        switch badge {
+        case .favorite:
+            Image(systemName: "heart.fill")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(.red)
+                .frame(width: 34, height: 34)
+                .background(.ultraThinMaterial, in: Circle())
+                .accessibilityHidden(true)
         }
-        let color: Color = switch badge {
-        case .userCreated: AppTheme.accent
-        case .favorite: .red
-        }
-        Image(systemName: symbol)
-            .font(.caption.weight(.bold))
-            .foregroundStyle(color)
-            .frame(width: 34, height: 34)
-            .background(.ultraThinMaterial, in: Circle())
-            .accessibilityHidden(true)
     }
 }

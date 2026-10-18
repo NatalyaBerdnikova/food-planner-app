@@ -3,6 +3,7 @@ import Foundation
 struct ParsedRecipe {
     var name: String
     var servings: Int?
+    var cookTimeMinutes: Int?
     var steps: [String]
     var ingredients: [ParsedIngredient]
 }
@@ -45,6 +46,7 @@ enum LLMRecipeParser {
 
         var name: String
         var servings: Int?
+        var cookTimeMinutes: Int?
         var steps: [String]
         var ingredients: [IngredientJSON]
     }
@@ -67,6 +69,7 @@ enum LLMRecipeParser {
         {
           "name": "string",
           "servings": number or null,
+          "cookTimeMinutes": number or null,
           "steps": ["string"],
           "ingredients": [{"catalogKey": "string or null", "rawName": "string", "quantity": number, "unit": "string"}]
         }
@@ -132,9 +135,11 @@ enum LLMRecipeParser {
             )
         }
 
+        let cookTime = decoded.cookTimeMinutes.map { max($0, 0) }
         return ParsedRecipe(
             name: decoded.name.trimmingCharacters(in: .whitespaces),
             servings: decoded.servings,
+            cookTimeMinutes: cookTime,
             steps: decoded.steps,
             ingredients: ingredients
         )

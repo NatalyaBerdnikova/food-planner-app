@@ -9,6 +9,8 @@ struct ImportedRecipeReviewView: View {
 
     @State private var name: String
     @State private var servings: Int
+    @State private var cookTimeMinutes: Int
+    @State private var mealTypeTags: Set<MealType>
     @State private var stepsAttributed: NSAttributedString
     @State private var imageData: Data?
     @State private var sourceURL: String
@@ -21,6 +23,8 @@ struct ImportedRecipeReviewView: View {
     init(draft: ImportedRecipeDraft) {
         _name = State(initialValue: draft.name)
         _servings = State(initialValue: max(draft.servings ?? 1, 1))
+        _cookTimeMinutes = State(initialValue: max(draft.cookTimeMinutes ?? 0, 0))
+        _mealTypeTags = State(initialValue: [])
         _stepsAttributed = State(
             initialValue: RecipeStepsStorage.attributedString(fromPlainSteps: draft.steps)
         )
@@ -51,134 +55,161 @@ struct ImportedRecipeReviewView: View {
         )
     }
 
+    private enum ScrollAnchor {
+        static let ingredientSearch = "importReview.ingredientSearch"
+    }
+
     var body: some View {
-        Form {
-            Section {
-                Label("import.review.aiBadge", systemImage: "sparkles")
-                    .foregroundStyle(AppTheme.accent)
-                    .font(.subheadline.weight(.semibold))
-                Text("import.review.aiHint")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                Text("import.privacy.server")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-            }
-
-            RecipePhotoPickerSection(
-                imageData: $imageData,
-                photoPickerItem: $photoPickerItem
-            )
-
-            Section {
-                TextField("addRecipe.name", text: $name)
-                Stepper(value: $servings, in: 1...99) {
-                    Text("addRecipe.servings \(servings)")
+        ScrollViewReader { proxy in
+            Form {
+                Section {
+                    Label("import.review.aiBadge", systemImage: "sparkles")
+                        .foregroundStyle(AppTheme.accent)
+                        .font(.subheadline.weight(.semibold))
+                    Text("import.review.aiHint")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    Text("import.privacy.server")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                 }
-            } header: {
-                Text("addRecipe.main")
-            }
 
-            if !sourceURL.isEmpty {
-                Section("addRecipe.sourceURL") {
-                    if let url = URL(string: sourceURL) {
-                        Link(destination: url) {
-                            Label(sourceURL, systemImage: "link")
-                                .lineLimit(2)
+                RecipePhotoPickerSection(
+                    imageData: $imageData,
+                    photoPickerItem: $photoPickerItem
+                )
+
+                Section {
+                    TextField("addRecipe.name", text: $name)
+                    Stepper(value: $servings, in: 1...99) {
+                        Text("addRecipe.servings \(servings)")
+                    }
+                    Stepper(value: $cookTimeMinutes, in: 0...300, step: 5) {
+                        if cookTimeMinutes > 0 {
+                            Text("addRecipe.cookTime \(cookTimeMinutes)")
+                        } else {
+                            Text("addRecipe.cookTime.unknown")
                         }
-                    } else {
-                        Text(sourceURL)
-                            .foregroundStyle(.secondary)
+                    }
+                    RecipeMealTypeTagsPicker(selected: $mealTypeTags)
+                } header: {
+                    Text("addRecipe.main")
+                } footer: {
+                    Text("addRecipe.servingsFooter")
+                }
+
+                if !sourceURL.isEmpty {
+                    Section("addRecipe.sourceURL") {
+                        if let url = URL(string: sourceURL) {
+                            Link(destination: url) {
+                                Label(sourceURL, systemImage: "link")
+                                    .lineLimit(2)
+                            }
+                        } else {
+                            Text(sourceURL)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 }
-            }
 
-            Section {
-                RichTextEditorView(attributedText: $stepsAttributed)
-            } header: {
-                Text("addRecipe.steps")
-            }
-
-            Section {
-                ForEach($draftIngredients) { $draft in
-                    DraftIngredientRow(draft: $draft, showsMatchedBadge: true)
-                }
-                .onDelete { draftIngredients.remove(atOffsets: $0) }
-
-                IngredientTagSearchField(
-                    excludedCatalogKeys: Set(draftIngredients.map(\.product.catalogKey)),
-                    placeholder: "addRecipe.addIngredient"
-                ) { product in
-                    draftIngredients.append(
-                        DraftIngredient(product: product, quantity: 100, unit: .gram)
-                    )
-                }
-            } header: {
-                Text("import.review.matched \(draftIngredients.count)")
-            }
-
-            if !unresolvedIngredients.isEmpty {
                 Section {
-                    ForEach(unresolvedIngredients) { item in
-                        Button {
-                            resolvingUnresolved = item
-                        } label: {
-                            HStack {
-                                Image(systemName: "exclamationmark.circle.fill")
-                                    .foregroundStyle(AppTheme.warning)
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(item.rawName)
-                                    Text("import.unresolved.tap")
-                                        .font(.caption)
+                    RichTextEditorView(attributedText: $stepsAttributed)
+                } header: {
+                    Text("addRecipe.steps")
+                }
+
+                Section {
+                    ForEach($draftIngredients) { $draft in
+                        DraftIngredientRow(draft: $draft, showsMatchedBadge: true)
+                    }
+                    .onDelete { draftIngredients.remove(atOffsets: $0) }
+
+                    IngredientTagSearchField(
+                        excludedCatalogKeys: Set(draftIngredients.map(\.product.catalogKey)),
+                        placeholder: "addRecipe.addIngredient",
+                        onSearchActivity: {
+                            scrollIngredientSearchToBottom(proxy)
+                        }
+                    ) { product in
+                        draftIngredients.append(
+                            DraftIngredient(product: product, quantity: 100, unit: .gram)
+                        )
+                        scrollIngredientSearchToBottom(proxy)
+                    }
+                    .id(ScrollAnchor.ingredientSearch)
+                } header: {
+                    Text("import.review.matched \(draftIngredients.count)")
+                }
+
+                if !unresolvedIngredients.isEmpty {
+                    Section {
+                        ForEach(unresolvedIngredients) { item in
+                            Button {
+                                resolvingUnresolved = item
+                            } label: {
+                                HStack {
+                                    Image(systemName: "exclamationmark.circle.fill")
+                                        .foregroundStyle(AppTheme.warning)
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(item.rawName)
+                                        Text("import.unresolved.tap")
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    Spacer()
+                                    Text(L10n.amount(quantity: item.suggestedQuantity, unit: item.suggestedUnit))
                                         .foregroundStyle(.secondary)
                                 }
-                                Spacer()
-                                Text(L10n.amount(quantity: item.suggestedQuantity, unit: item.suggestedUnit))
-                                    .foregroundStyle(.secondary)
                             }
                         }
+                    } header: {
+                        Text("import.unresolved.title")
+                    } footer: {
+                        Text("import.unresolved.footer")
                     }
-                } header: {
-                    Text("import.unresolved.title")
-                } footer: {
-                    Text("import.unresolved.footer")
+                }
+
+                Section("addRecipe.nutrition") {
+                    NutritionSummaryView(
+                        nutrition: previewNutritionPerServing,
+                        title: "nutrition.title.perServing",
+                        embedded: true,
+                        macroLabelStyle: .full
+                    )
+                    .listRowInsets(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
                 }
             }
+            .navigationTitle("import.review.title")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("import.review.discard") { dismiss() }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("common.save") { saveRecipe() }
+                        .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
+                }
+            }
+            .sensoryFeedback(.success, trigger: didSave)
+            .sheet(item: $resolvingUnresolved) { item in
+                AddIngredientSheet(
+                    initialSearchText: item.rawName,
+                    initialQuantity: item.suggestedQuantity,
+                    initialUnit: item.suggestedUnit
+                ) { draft in
+                    draftIngredients.append(draft)
+                    unresolvedIngredients.removeAll { $0.id == item.id }
+                }
+            }
+            .onChange(of: photoPickerItem) { _, item in
+                loadPhoto(from: item)
+            }
+        }
+    }
 
-            Section("addRecipe.nutrition") {
-                NutritionSummaryView(
-                    nutrition: previewNutritionPerServing,
-                    title: "nutrition.title.perServing",
-                    embedded: true,
-                    macroLabelStyle: .full
-                )
-                .listRowInsets(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-            }
-        }
-        .navigationTitle("import.review.title")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("import.review.discard") { dismiss() }
-            }
-            ToolbarItem(placement: .confirmationAction) {
-                Button("common.save") { saveRecipe() }
-                    .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
-            }
-        }
-        .sensoryFeedback(.success, trigger: didSave)
-        .sheet(item: $resolvingUnresolved) { item in
-            AddIngredientSheet(
-                initialSearchText: item.rawName,
-                initialQuantity: item.suggestedQuantity,
-                initialUnit: item.suggestedUnit
-            ) { draft in
-                draftIngredients.append(draft)
-                unresolvedIngredients.removeAll { $0.id == item.id }
-            }
-        }
-        .onChange(of: photoPickerItem) { _, item in
-            loadPhoto(from: item)
+    private func scrollIngredientSearchToBottom(_ proxy: ScrollViewProxy) {
+        withAnimation(.easeOut(duration: 0.2)) {
+            proxy.scrollTo(ScrollAnchor.ingredientSearch, anchor: .bottom)
         }
     }
 
@@ -200,7 +231,9 @@ struct ImportedRecipeReviewView: View {
             imageData: imageData,
             sourceURL: trimmedSourceURL.isEmpty ? nil : trimmedSourceURL,
             steps: RecipeStepsStorage.plainStepLines(from: stepsAttributed),
-            stepsRichTextData: RecipeStepsStorage.rtfData(from: stepsAttributed)
+            stepsRichTextData: RecipeStepsStorage.rtfData(from: stepsAttributed),
+            cookTimeMinutes: cookTimeMinutes,
+            mealTypeTags: mealTypeTags
         )
         modelContext.insert(recipe)
 

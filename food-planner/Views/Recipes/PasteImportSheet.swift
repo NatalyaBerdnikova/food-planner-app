@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct PasteImportRequest: Identifiable {
     let id = UUID()
@@ -22,13 +23,28 @@ struct PasteImportSheet: View {
                         .foregroundStyle(.secondary)
                         .textCase(.uppercase)
 
-                    TextField("import.paste.placeholder", text: $pasteURL)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .keyboardType(.URL)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 14)
-                        .background(AppTheme.canvas, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    HStack(spacing: 8) {
+                        TextField("import.paste.placeholder", text: $pasteURL)
+                            .textInputAutocapitalization(.never)
+                            .autocorrectionDisabled()
+                            .keyboardType(.URL)
+
+                        Button {
+                            pasteFromClipboard()
+                        } label: {
+                            Image(systemName: "doc.on.clipboard")
+                                .font(.body.weight(.semibold))
+                                .foregroundStyle(AppTheme.accent)
+                                .frame(width: 36, height: 36)
+                                .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("import.paste.fromClipboard")
+                    }
+                    .padding(.leading, 14)
+                    .padding(.trailing, 8)
+                    .padding(.vertical, 8)
+                    .background(AppTheme.canvas, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
 
                     Text("import.paste.footer")
                         .font(.footnote)
@@ -86,5 +102,13 @@ struct PasteImportSheet: View {
         }
         .presentationDetents([.medium])
         .presentationBackground(Color.white)
+    }
+
+    private func pasteFromClipboard() {
+        guard let text = UIPasteboard.general.string?
+            .trimmingCharacters(in: .whitespacesAndNewlines),
+            !text.isEmpty
+        else { return }
+        pasteURL = text
     }
 }

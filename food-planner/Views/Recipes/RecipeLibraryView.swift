@@ -12,7 +12,6 @@ struct RecipeLibraryView: View {
     @State private var advancedFilters = RecipeAdvancedFilters()
     @State private var showAdvancedFilters = false
     @State private var pasteImportRequest: PasteImportRequest?
-    @State private var unfavoriteCandidate: Recipe?
 
     private let columns = [
         GridItem(.flexible(), spacing: 12),
@@ -39,9 +38,7 @@ struct RecipeLibraryView: View {
         }
 
         if let mealType = filterTab.mealType {
-            result = result.filter { recipe in
-                recipe.meals.isEmpty || recipe.meals.contains { $0.mealType == mealType }
-            }
+            result = result.filter { $0.matchesMealTypeFilter(mealType) }
         }
 
         let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -156,39 +153,16 @@ struct RecipeLibraryView: View {
         .sheet(isPresented: $showAdvancedFilters) {
             RecipeAdvancedFiltersSheet(filters: $advancedFilters)
         }
-        .alert(
-            "favorites.remove.title",
-            isPresented: Binding(
-                get: { unfavoriteCandidate != nil },
-                set: { if !$0 { unfavoriteCandidate = nil } }
-            )
-        ) {
-            Button("common.cancel", role: .cancel) {
-                unfavoriteCandidate = nil
-            }
-            Button("favorites.remove.confirm", role: .destructive) {
-                if let recipe = unfavoriteCandidate {
-                    RecipeFavoritesService.setFavorite(recipe, favorite: false, in: modelContext)
-                }
-                unfavoriteCandidate = nil
-            }
-        } message: {
-            if let recipe = unfavoriteCandidate {
-                Text("favorites.remove.message \(recipe.localizedName)")
-            }
-        }
     }
 
     private var quickFiltersBar: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
+        HorizontalScrollPeekHint {
             HStack(spacing: 8) {
                 ForEach(RecipeFilterTab.allCases) { tab in
                     filterChip(
                         title: tab.displayName,
-                        isSelected: filterTab == tab && !showFavoritesOnly && !showMineOnly
+                        isSelected: filterTab == tab
                     ) {
-                        showFavoritesOnly = false
-                        showMineOnly = false
                         filterTab = tab
                     }
                 }
@@ -199,9 +173,6 @@ struct RecipeLibraryView: View {
                     systemImage: "person.fill"
                 ) {
                     showMineOnly.toggle()
-                    if showMineOnly {
-                        filterTab = .all
-                    }
                 }
 
                 filterChip(
@@ -210,9 +181,6 @@ struct RecipeLibraryView: View {
                     systemImage: "heart.fill"
                 ) {
                     showFavoritesOnly.toggle()
-                    if showFavoritesOnly {
-                        filterTab = .all
-                    }
                 }
 
                 Button {
@@ -287,7 +255,6 @@ struct RecipeLibraryView: View {
                     recipe: recipe,
                     style: .grid,
                     showsNutrition: true,
-                    showsCommunityLikes: false,
                     imageMeta: .libraryBottomLeading
                 )
             }
@@ -296,11 +263,7 @@ struct RecipeLibraryView: View {
 
             if canFavorite {
                 Button {
-                    if isFavorite {
-                        unfavoriteCandidate = recipe
-                    } else {
-                        RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
-                    }
+                    RecipeFavoritesService.setFavorite(recipe, favorite: !isFavorite, in: modelContext)
                 } label: {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.subheadline.weight(.semibold))

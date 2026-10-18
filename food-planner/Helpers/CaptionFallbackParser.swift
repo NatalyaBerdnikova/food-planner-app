@@ -16,6 +16,7 @@ enum CaptionFallbackParser {
                 return ParsedRecipe(
                     name: recipe.name,
                     servings: recipe.servings,
+                    cookTimeMinutes: recipe.cookTimeMinutes,
                     steps: stepsFromTranscript(transcriptText),
                     ingredients: recipe.ingredients
                 )
@@ -29,6 +30,7 @@ enum CaptionFallbackParser {
             return ParsedRecipe(
                 name: stripLeadingMarkers(title),
                 servings: nil,
+                cookTimeMinutes: nil,
                 steps: Array(lines.dropFirst()),
                 ingredients: []
             )
@@ -62,6 +64,7 @@ enum CaptionFallbackParser {
         return ParsedRecipe(
             name: name,
             servings: nil,
+            cookTimeMinutes: nil,
             steps: steps,
             ingredients: ingredients
         )
