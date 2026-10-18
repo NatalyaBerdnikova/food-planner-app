@@ -10,7 +10,6 @@ struct HomeView: View {
     private var settingsList: [AppSettings]
 
     @State private var isTodayExpanded = false
-    @State private var recommendationSearch = ""
     @State private var unfavoriteCandidate: Recipe?
     @State private var addMealPresentation: AddMealPresentation?
     @State private var pasteImportRequest: PasteImportRequest?
@@ -28,15 +27,21 @@ struct HomeView: View {
         featuredRecipeOverride ?? RecipeDiscoveryService.recipeOfTheDay(from: recipes)
     }
 
+    private var favoriteRecipes: [Recipe] {
+        RecipeFavoritesService.favoriteRecipes(
+            from: catalogRecipes,
+            favoriteIds: Set(appSettings?.favoriteCatalogRecipeIds ?? [])
+        )
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppTheme.sectionSpacing) {
                 recipeOfTheDaySection
-                recommendationsSection
+                importCTACard
                 todayNutritionCard
                 todayMealsSection
-                weekPlanCard
-                importCTACard
+                favoritesSection
             }
             .padding(AppTheme.contentPadding)
         }
@@ -106,12 +111,34 @@ struct HomeView: View {
                     .accessibilityHint("home.randomRecipe")
                 }
 
-                NavigationLink {
-                    RecipeDetailView(recipe: recipe)
-                } label: {
-                    RecipeCardView(recipe: recipe, style: .hero)
+                ZStack(alignment: .topTrailing) {
+                    NavigationLink {
+                        RecipeDetailView(recipe: recipe)
+                    } label: {
+                        RecipeCardView(recipe: recipe, style: .hero)
+                    }
+                    .buttonStyle(.plain)
+
+                    if recipe.isCatalogRecipe {
+                        let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
+                        Button {
+                            toggleFavorite(for: recipe)
+                        } label: {
+                            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(isFavorite ? .red : .primary)
+                                .frame(width: 36, height: 36)
+                                .background(.ultraThinMaterial, in: Circle())
+                        }
+                        .buttonStyle(.plain)
+                        .padding(8)
+                        .accessibilityLabel(
+                            isFavorite
+                                ? String(localized: "accessibility.removeFavorite")
+                                : String(localized: "accessibility.addFavorite")
+                        )
+                    }
                 }
-                .buttonStyle(.plain)
             }
         }
     }
@@ -190,7 +217,7 @@ struct HomeView: View {
                         nutrition: todayNutrition,
                         target: appSettings?.targetNutrition,
                         embedded: true,
-                        macroLabelStyle: .compact
+                        macroLabelStyle: .full
                     )
                 }
             }
@@ -210,60 +237,23 @@ struct HomeView: View {
         }
     }
 
-    private var weekPlanCard: some View {
-        NavigationLink {
-            WeekPlanView()
-        } label: {
-            AppSectionCard {
-                VStack(alignment: .leading, spacing: 12) {
-                    AppSectionHeader(title: "home.weekPlan", systemImage: "calendar")
-
-                    if let weekPlan = currentWeekPlan {
-                        Text(weekRangeFormatted(for: weekPlan))
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    } else {
-                        Text("home.weekNotCreated")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    Text("home.openWeekPlan")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(minHeight: 44)
-                        .background(AppTheme.accent, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-                }
-            }
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel("home.openWeekPlan")
-    }
-
-    private var recommendationsSection: some View {
+    private var favoritesSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            AppSectionHeader(title: "home.recommendations", systemImage: "sparkles")
+            AppSectionHeader(title: "home.favorites", systemImage: "heart.fill")
 
-            if !catalogRecipes.isEmpty {
-                TextField("home.recommendations.search", text: $recommendationSearch)
-                    .textFieldStyle(.roundedBorder)
-            }
-
-            if catalogRecipes.isEmpty {
-                Text("home.catalogEmpty")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            } else if filteredCatalogRecipes.isEmpty {
-                Text("home.recommendations.noResults")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+            if favoriteRecipes.isEmpty {
+                ContentUnavailableView(
+                    "home.favorites.empty",
+                    systemImage: "heart",
+                    description: Text("home.favorites.empty.hint")
+                )
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: AppTheme.sectionRailSpacing) {
-                        ForEach(filteredCatalogRecipes) { recipe in
-                            recommendationCard(recipe)
+                        ForEach(favoriteRecipes) { recipe in
+                            favoriteCard(recipe)
                                 .frame(width: AppTheme.recipeRailCardWidth)
                         }
                     }
@@ -273,9 +263,8 @@ struct HomeView: View {
         }
     }
 
-    private func recommendationCard(_ recipe: Recipe) -> some View {
-        let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
-        return ZStack(alignment: .topTrailing) {
+    private func favoriteCard(_ recipe: Recipe) -> some View {
+        ZStack(alignment: .topTrailing) {
             NavigationLink {
                 RecipeDetailView(recipe: recipe)
             } label: {
@@ -285,36 +274,30 @@ struct HomeView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
 
             Button {
-                if isFavorite {
-                    unfavoriteCandidate = recipe
-                } else {
-                    RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
-                }
+                unfavoriteCandidate = recipe
             } label: {
-                Image(systemName: isFavorite ? "heart.fill" : "heart")
+                Image(systemName: "heart.fill")
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(isFavorite ? .red : .secondary)
+                    .foregroundStyle(.red)
                     .frame(width: 36, height: 36)
                     .background(.ultraThinMaterial, in: Circle())
             }
             .buttonStyle(.plain)
             .padding(8)
-            .accessibilityLabel(
-                isFavorite
-                    ? String(localized: "accessibility.removeFavorite")
-                    : String(localized: "accessibility.addFavorite")
-            )
+            .accessibilityLabel(String(localized: "accessibility.removeFavorite"))
+        }
+    }
+
+    private func toggleFavorite(for recipe: Recipe) {
+        if RecipeFavoritesService.isFavorite(recipe, in: modelContext) {
+            unfavoriteCandidate = recipe
+        } else {
+            RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
         }
     }
 
     private var catalogRecipes: [Recipe] {
         RecipeCollections.catalogRecipes(from: recipes)
-    }
-
-    private var filteredCatalogRecipes: [Recipe] {
-        let query = recommendationSearch.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !query.isEmpty else { return catalogRecipes }
-        return catalogRecipes.filter { $0.matchesSearch(query) }
     }
 
     private var todayDayPlan: DayPlan? {
@@ -335,14 +318,6 @@ struct HomeView: View {
     private func presentAddMeal(for mealType: MealType) {
         let dayPlan = WeekPlanService.todayDayPlan(from: weekPlans, in: modelContext)
         addMealPresentation = AddMealPresentation(dayPlan: dayPlan, mealType: mealType)
-    }
-
-    private func weekRangeFormatted(for weekPlan: WeekPlan) -> String {
-        let calendar = Calendar.current
-        let start = weekPlan.weekStartDate
-        let end = calendar.date(byAdding: .day, value: 6, to: start) ?? start
-        let formatter = Date.FormatStyle(date: .abbreviated, time: .omitted)
-        return "\(start.formatted(formatter)) – \(end.formatted(formatter))"
     }
 
     private func refresh() {

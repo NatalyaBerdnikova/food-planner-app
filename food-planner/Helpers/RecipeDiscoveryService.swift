@@ -3,9 +3,12 @@ import SwiftData
 
 enum RecipeDiscoveryService {
     static func recipeOfTheDay(from recipes: [Recipe], on date: Date = .now) -> Recipe? {
-        let catalog = recipes.filter(\.isCatalogRecipe)
+        let withPhotos = recipes.filter(\.hasImage)
+        let catalog = withPhotos.filter(\.isCatalogRecipe)
         guard !catalog.isEmpty else {
-            return recipes.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }.first
+            return withPhotos
+                .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+                .first
         }
 
         let dayIndex = Calendar.current.ordinality(of: .day, in: .era, for: date) ?? 0
@@ -18,10 +21,11 @@ enum RecipeDiscoveryService {
     }
 
     static func randomRecipe(from recipes: [Recipe], excluding excludedID: PersistentIdentifier? = nil) -> Recipe? {
-        let pool = recipes.filter { recipe in
+        let withPhotos = recipes.filter(\.hasImage)
+        let pool = withPhotos.filter { recipe in
             guard let excludedID else { return true }
             return recipe.persistentModelID != excludedID
         }
-        return pool.randomElement() ?? recipes.randomElement()
+        return pool.randomElement() ?? withPhotos.randomElement()
     }
 }

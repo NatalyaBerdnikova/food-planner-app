@@ -41,60 +41,33 @@ struct RecipeCardView: View {
         }
     }
 
+    private var titleFont: Font {
+        style == .hero ? .title3.weight(.semibold) : .subheadline.weight(.semibold)
+    }
+
+    private var titleMinHeight: CGFloat {
+        style == .hero ? 28 : 36
+    }
+
+    private var showsRating: Bool {
+        style != .rail && recipe.userRating > 0
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ZStack(alignment: .topTrailing) {
-                RecipeImageView(
-                    imageData: recipe.imageData,
-                    cornerRadius: 0,
-                    pointSize: imagePointSize
-                )
-                .frame(maxWidth: .infinity)
-                .frame(height: imageHeight)
-                .clipped()
-                .clipShape(
-                    UnevenRoundedRectangle(
-                        topLeadingRadius: AppTheme.cardRadius,
-                        bottomLeadingRadius: 0,
-                        bottomTrailingRadius: 0,
-                        topTrailingRadius: AppTheme.cardRadius,
-                        style: .continuous
-                    )
-                )
-
-                HStack(spacing: 4) {
-                    if let badge {
-                        badgeIcon(for: badge)
-                    }
-                    if showsFavoriteControl {
-                        Button {
-                            onFavoriteTap?()
-                        } label: {
-                            Image(systemName: isFavorite ? "heart.fill" : "heart")
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundStyle(isFavorite ? .red : .primary)
-                                .frame(width: 36, height: 36)
-                                .background(.ultraThinMaterial, in: Circle())
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel(
-                            isFavorite
-                                ? String(localized: "accessibility.removeFavorite")
-                                : String(localized: "accessibility.addFavorite")
-                        )
-                    }
-                }
-                .padding(8)
-            }
+            imageSection
 
             VStack(alignment: .leading, spacing: 8) {
-                Text(recipe.localizedName)
-                    .font(style == .hero ? .title3.weight(.semibold) : .subheadline.weight(.semibold))
-                    .lineLimit(2)
-                    .foregroundStyle(.primary)
-                    .frame(minHeight: style == .hero ? 28 : 36, alignment: .topLeading)
+                titleRow
 
-                RecipeMetaRow(recipe: recipe, showsRating: style != .rail)
+                if showsRating {
+                    RecipeMetaRow(
+                        recipe: recipe,
+                        showsCookTime: false,
+                        showsCommunityLikes: false,
+                        showsRating: true
+                    )
+                }
 
                 if showsNutrition {
                     HStack(spacing: 6) {
@@ -112,6 +85,77 @@ struct RecipeCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
         .shadow(color: AppTheme.cardShadow, radius: 12, x: 0, y: 4)
         .contentShape(Rectangle())
+    }
+
+    private var imageSection: some View {
+        ZStack {
+            RecipeImageView(
+                imageData: recipe.imageData,
+                cornerRadius: 0,
+                pointSize: imagePointSize
+            )
+            .frame(maxWidth: .infinity)
+            .frame(height: imageHeight)
+            .clipped()
+            .clipShape(
+                UnevenRoundedRectangle(
+                    topLeadingRadius: AppTheme.cardRadius,
+                    bottomLeadingRadius: 0,
+                    bottomTrailingRadius: 0,
+                    topTrailingRadius: AppTheme.cardRadius,
+                    style: .continuous
+                )
+            )
+
+            if recipe.hasCookTime {
+                RecipeCookTimeTag(minutes: recipe.cookTimeMinutes, usesMaterial: true)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .padding(10)
+                    .allowsHitTesting(false)
+            }
+
+            overlayTrailingControls
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                .padding(8)
+        }
+    }
+
+    @ViewBuilder
+    private var overlayTrailingControls: some View {
+        HStack(spacing: 4) {
+            if let badge {
+                badgeIcon(for: badge)
+            }
+            if showsFavoriteControl {
+                Button {
+                    onFavoriteTap?()
+                } label: {
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(isFavorite ? .red : .primary)
+                        .frame(width: 36, height: 36)
+                        .background(.ultraThinMaterial, in: Circle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(
+                    isFavorite
+                        ? String(localized: "accessibility.removeFavorite")
+                        : String(localized: "accessibility.addFavorite")
+                )
+            }
+        }
+    }
+
+    private var titleRow: some View {
+        HStack(alignment: .top, spacing: 10) {
+            Text(recipe.localizedName)
+                .font(titleFont)
+                .lineLimit(2)
+                .foregroundStyle(.primary)
+                .frame(maxWidth: .infinity, minHeight: titleMinHeight, alignment: .topLeading)
+
+            RecipeCommunityLikesTag(count: recipe.communityLikeCount)
+        }
     }
 
     private func macroChip(title: LocalizedStringResource, value: Double) -> some View {

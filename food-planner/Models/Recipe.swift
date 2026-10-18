@@ -42,6 +42,7 @@ final class Recipe {
     var isUserCreated: Bool { catalogRecipeId == nil }
 
     var hasCookTime: Bool { cookTimeMinutes > 0 }
+    var hasImage: Bool { imageData.map { !$0.isEmpty } ?? false }
 
     init(
         name: String,

@@ -26,6 +26,18 @@ enum RecipeFavoritesService {
         settings.favoriteCatalogRecipeIds = ids.sorted()
         LocalPersistence.save(context)
     }
+
+    static func favoriteRecipes(from recipes: [Recipe], favoriteIds: Set<String>) -> [Recipe] {
+        guard !favoriteIds.isEmpty else { return [] }
+        return recipes
+            .filter { recipe in
+                guard let id = recipe.catalogRecipeId else { return false }
+                return favoriteIds.contains(id)
+            }
+            .sorted {
+                $0.localizedName.localizedCaseInsensitiveCompare($1.localizedName) == .orderedAscending
+            }
+    }
 }
 
 enum RecipeCollections {

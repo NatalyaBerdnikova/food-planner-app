@@ -22,13 +22,28 @@ struct RecipeMetaTag: View {
 
 struct RecipeCookTimeTag: View {
     let minutes: Int
+    var usesMaterial: Bool = false
 
     var body: some View {
         if minutes > 0 {
-            RecipeMetaTag(
-                systemImage: "clock",
-                text: String(localized: "recipe.cookTime \(minutes)")
-            )
+            if usesMaterial {
+                Label {
+                    Text(String(localized: "recipe.cookTime \(minutes)"))
+                        .lineLimit(1)
+                } icon: {
+                    Image(systemName: "clock")
+                }
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.primary)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(.ultraThinMaterial, in: Capsule())
+            } else {
+                RecipeMetaTag(
+                    systemImage: "clock",
+                    text: String(localized: "recipe.cookTime \(minutes)")
+                )
+            }
         }
     }
 }
@@ -78,12 +93,18 @@ struct RecipeUserRatingView: View {
 
 struct RecipeMetaRow: View {
     let recipe: Recipe
+    var showsCookTime: Bool = true
+    var showsCommunityLikes: Bool = true
     var showsRating: Bool = true
 
     var body: some View {
         HStack(spacing: 6) {
-            RecipeCookTimeTag(minutes: recipe.cookTimeMinutes)
-            RecipeCommunityLikesTag(count: recipe.communityLikeCount)
+            if showsCookTime {
+                RecipeCookTimeTag(minutes: recipe.cookTimeMinutes)
+            }
+            if showsCommunityLikes {
+                RecipeCommunityLikesTag(count: recipe.communityLikeCount)
+            }
             if showsRating, recipe.userRating > 0 {
                 RecipeUserRatingView(rating: recipe.userRating)
             }
