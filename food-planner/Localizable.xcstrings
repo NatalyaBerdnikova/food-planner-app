@@ -1604,6 +1604,22 @@
         }
       }
     },
+    "common.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загрузка"
+          }
+        }
+      }
+    },
     "common.done" : {
       "localizations" : {
         "en" : {
@@ -2936,13 +2952,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caption and transcript are sent to our recipe parser to extract ingredients. Nothing is posted back to Instagram."
+            "value" : "Caption is sent to the recipe parser. Nothing is posted to Instagram."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Подпись и транскрипт отправляются в парсер рецептов для извлечения ингредиентов. В Instagram ничего не публикуется."
+            "value" : "Текст поста уходит в парсер рецептов. В Instagram ничего не публикуется."
           }
         }
       }
@@ -2952,13 +2968,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI may misread quantities. You'll review everything before saving."
+            "value" : "AI may misread quantities — review before saving."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ИИ может ошибиться в количествах. Перед сохранением всё можно проверить."
+            "value" : "ИИ может ошибиться — перед сохранением всё можно проверить."
           }
         }
       }

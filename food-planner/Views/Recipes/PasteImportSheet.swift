@@ -44,7 +44,7 @@ struct PasteImportSheet: View {
                     .padding(.leading, 14)
                     .padding(.trailing, 8)
                     .padding(.vertical, 8)
-                    .background(AppTheme.canvas, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .background(AppTheme.nestedFill, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
 
                     Text("import.paste.footer")
                         .font(.footnote)
@@ -81,10 +81,10 @@ struct PasteImportSheet: View {
                 .padding(AppTheme.contentPadding)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .background(Color.white)
+            .background(AppTheme.elevated)
             .navigationTitle("import.paste.nav")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Color.white, for: .navigationBar)
+            .toolbarBackground(AppTheme.elevated, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -101,7 +101,7 @@ struct PasteImportSheet: View {
             }
         }
         .presentationDetents([.medium])
-        .presentationBackground(Color.white)
+        .presentationBackground(AppTheme.elevated)
     }
 
     private func pasteFromClipboard() {

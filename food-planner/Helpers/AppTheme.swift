@@ -1,8 +1,14 @@
 import SwiftUI
+import UIKit
 
 enum AppTheme {
-    /// Мягкая оранжевая заливка
-    static let accentSoft = Color(red: 255 / 255, green: 210 / 255, blue: 170 / 255)
+    /// Мягкая оранжевая заливка (светлая тема); в тёмной — приглушённый акцент
+    static let accentSoft = Color(uiColor: UIColor { traits in
+        if traits.userInterfaceStyle == .dark {
+            return UIColor(red: 255 / 255, green: 149 / 255, blue: 0 / 255, alpha: 0.28)
+        }
+        return UIColor(red: 255 / 255, green: 210 / 255, blue: 170 / 255, alpha: 1)
+    })
     /// Яркий оранжевый для текста, иконок и tint
     static let accent = Color(red: 255 / 255, green: 149 / 255, blue: 0 / 255)
     static let accentMuted = Color(red: 255 / 255, green: 170 / 255, blue: 50 / 255)
@@ -14,7 +20,7 @@ enum AppTheme {
         colors: [
             Color(red: 0.55, green: 0.28, blue: 0.02),
             Color(red: 0.95, green: 0.48, blue: 0.05),
-            accentSoft,
+            Color(red: 255 / 255, green: 210 / 255, blue: 170 / 255),
         ],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
@@ -47,11 +53,22 @@ enum AppTheme {
     static let tagChipRadius: CGFloat = 8
 
     static var warmHighlight: Color { warmFill }
+    /// Page / grouped canvas (base in Dark Mode).
     static var canvas: Color { Color(.systemGroupedBackground) }
+    /// Primary cards on the canvas.
     static var card: Color { Color(.secondarySystemGroupedBackground) }
-    static var elevated: Color { Color(.systemBackground) }
-    static var tagChipFill: Color { accentSoft.opacity(0.28) }
-    static var cardShadow: Color { Color.black.opacity(0.08) }
+    /// Same elevation as cards — use for surfaces that must lift off the canvas.
+    static var elevated: Color { Color(.secondarySystemGroupedBackground) }
+    /// Nested chips / fills inside elevated cards.
+    static var nestedFill: Color { Color(.tertiarySystemGroupedBackground) }
+    static var tagChipFill: Color { accentSoft }
+    static var cardShadow: Color {
+        Color(uiColor: UIColor { traits in
+            traits.userInterfaceStyle == .dark
+                ? UIColor.black.withAlphaComponent(0.45)
+                : UIColor.black.withAlphaComponent(0.08)
+        })
+    }
 
     static func accent(for colorScheme: ColorScheme, highContrast: Bool) -> Color {
         if highContrast {
@@ -87,7 +104,7 @@ struct AppSectionHeader: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(AppTheme.accent)
                     .frame(width: 32, height: 32)
-                    .background(AppTheme.accent.opacity(0.12), in: Circle())
+                    .background(AppTheme.accentSoft, in: Circle())
                     .accessibilityHidden(true)
             }
             Text(title)

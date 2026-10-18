@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ImportProgressView: View {
     @Bindable var coordinator: ImportCoordinator
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         NavigationStack {
@@ -15,7 +14,7 @@ struct ImportProgressView: View {
                 case .ready:
                     successContent
                 case .idle:
-                    ProgressView()
+                    SparklesLoader()
                 }
             }
             .navigationTitle("import.progress.title")
@@ -38,52 +37,42 @@ struct ImportProgressView: View {
     }
 
     private func loadingContent(stage: ImportStage) -> some View {
-        VStack(spacing: 28) {
-            ZStack {
-                Circle()
-                    .stroke(AppTheme.accent.opacity(0.15), lineWidth: 8)
-                    .frame(width: 88, height: 88)
-                Circle()
-                    .trim(from: 0, to: progress(for: stage))
-                    .stroke(AppTheme.accent, style: StrokeStyle(lineWidth: 8, lineCap: .round))
-                    .frame(width: 88, height: 88)
-                    .rotationEffect(.degrees(-90))
-                    .animation(reduceMotion ? nil : .easeInOut(duration: 0.35), value: stage)
-                Image(systemName: "sparkles")
-                    .font(.title)
-                    .foregroundStyle(AppTheme.accent)
-                    .motionSafeSymbolEffect(.variableColor)
-                    .accessibilityHidden(true)
-            }
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel(Text(LocalizedStringKey(stage.localizationKey)))
+        ScrollView {
+            VStack(spacing: 28) {
+                SparklesLoader(
+                    accessibilityLabel: LocalizedStringKey(stage.localizationKey)
+                )
 
-            VStack(spacing: 8) {
-                Text(LocalizedStringKey(stage.localizationKey))
-                    .font(.title3.bold())
-                    .multilineTextAlignment(.center)
+                VStack(spacing: 8) {
+                    Text(LocalizedStringKey(stage.localizationKey))
+                        .font(.title3.bold())
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
 
-                Text("import.progress.aiDisclosure")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
+                    Text("import.progress.aiDisclosure")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
 
-                Text("import.privacy.server")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(ImportStage.allCases.filter { $0 != .ready }) { item in
-                    stageRow(item, current: stage)
+                    Text("import.privacy.server")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
+
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(ImportStage.allCases.filter { $0 != .ready }) { item in
+                        stageRow(item, current: stage)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 8)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top, 8)
+            .padding(24)
+            .frame(maxWidth: .infinity)
         }
-        .padding(24)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private func stageRow(_ stage: ImportStage, current: ImportStage) -> some View {
@@ -100,11 +89,6 @@ struct ImportProgressView: View {
         }
         .accessibilityElement(children: .combine)
         .accessibilityAddTraits(isCurrent ? .isSelected : [])
-    }
-
-    private func progress(for stage: ImportStage) -> CGFloat {
-        let total = CGFloat(max(ImportStage.allCases.count - 1, 1))
-        return CGFloat(stage.rawValue + 1) / total
     }
 
     private func errorContent(message: String) -> some View {

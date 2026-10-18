@@ -3,11 +3,9 @@ import SwiftUI
 struct SubscriptionLoader: View {
     var body: some View {
         ZStack {
-            Color.black.opacity(0.1)
+            Color.black.opacity(0.28)
                 .ignoresSafeArea()
-            ProgressView()
-                .progressViewStyle(.circular)
-                .scaleEffect(2)
+            SparklesLoader()
         }
     }
 }

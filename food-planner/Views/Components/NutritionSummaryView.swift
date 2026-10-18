@@ -54,7 +54,7 @@ struct NutritionSummaryView: View {
         .padding(.vertical, 8)
         .padding(.horizontal, 4)
         .background(
-            AppTheme.canvas,
+            AppTheme.nestedFill,
             in: RoundedRectangle(cornerRadius: AppTheme.nestedCardRadius, style: .continuous)
         )
         .accessibilityElement(children: .combine)

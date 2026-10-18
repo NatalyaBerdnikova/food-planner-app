@@ -32,9 +32,7 @@ struct ContentView: View {
             } else {
                 ZStack {
                     AppTheme.heroGradient.ignoresSafeArea()
-                    ProgressView()
-                        .controlSize(.large)
-                        .tint(.white)
+                    SparklesLoader(tint: .white)
                 }
             }
         }

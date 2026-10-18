@@ -53,7 +53,7 @@ struct PlannedMealSlotView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(12)
                         .background(
-                            AppTheme.canvas,
+                            AppTheme.nestedFill,
                             in: RoundedRectangle(cornerRadius: 12, style: .continuous)
                         )
                         .contentShape(Rectangle())
@@ -111,7 +111,7 @@ struct PlannedMealSlotView: View {
         }
         .padding(10)
         .background(
-            AppTheme.canvas,
+            AppTheme.nestedFill,
             in: RoundedRectangle(cornerRadius: 12, style: .continuous)
         )
         .frame(maxWidth: .infinity, alignment: .leading)
