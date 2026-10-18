@@ -10,14 +10,13 @@ struct DraftIngredient: Identifiable {
 
 struct AddIngredientSheet: View {
     @Environment(\.dismiss) private var dismiss
-    @Query(sort: \FoodProduct.catalogKey) private var products: [FoodProduct]
 
     let onAdd: (DraftIngredient) -> Void
 
-    @State private var selectedKey: String?
+    @State private var selectedProduct: FoodProduct?
     @State private var quantityText: String
     @State private var unit: MeasurementUnit
-    @State private var searchText: String
+    @State private var initialSearchText: String
 
     init(
         initialSearchText: String = "",
@@ -28,62 +27,63 @@ struct AddIngredientSheet: View {
         self.onAdd = onAdd
         _quantityText = State(initialValue: Self.formatQuantity(initialQuantity))
         _unit = State(initialValue: initialUnit)
-        _searchText = State(initialValue: initialSearchText)
+        _initialSearchText = State(initialValue: initialSearchText)
     }
 
     private static func formatQuantity(_ value: Double) -> String {
         value == floor(value) ? String(Int(value)) : String(value)
     }
 
-    private var selectedProduct: FoodProduct? {
-        guard let key = selectedKey else { return nil }
-        return products.first { $0.catalogKey == key }
-    }
-
-    private var filteredProducts: [FoodProduct] {
-        let query = searchText.trimmingCharacters(in: .whitespaces)
-        guard !query.isEmpty else { return products }
-        return products.filter { product in
-            FoodCatalogLocalization.matchesSearch(catalogKey: product.catalogKey, query: query)
-        }
-    }
-
     var body: some View {
         NavigationStack {
-            List {
-                Section("addIngredient.product") {
-                    if filteredProducts.isEmpty {
-                        ContentUnavailableView(
-                            "search.noResults",
-                            systemImage: "magnifyingglass",
-                            description: Text("search.noResults.hint")
-                        )
-                        .listRowBackground(Color.clear)
+            Form {
+                Section {
+                    if let selectedProduct {
+                        HStack {
+                            Text(selectedProduct.displayName)
+                                .font(.body.weight(.medium))
+                            Spacer()
+                            Button {
+                                self.selectedProduct = nil
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundStyle(.secondary)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel("common.cancel")
+                        }
                     } else {
-                        ForEach(filteredProducts, id: \.catalogKey) { product in
-                            productRow(product)
+                        IngredientTagSearchField(
+                            placeholder: "search.products",
+                            initialSearchText: initialSearchText
+                        ) { product in
+                            selectedProduct = product
+                            initialSearchText = ""
                         }
                     }
+                } header: {
+                    Text("addIngredient.product")
                 }
 
-                Section("addIngredient.amount") {
-                    HStack {
-                        Text("addIngredient.grams")
-                        Spacer()
-                        TextField("0", text: $quantityText)
-                            .keyboardType(.decimalPad)
-                            .multilineTextAlignment(.trailing)
-                            .frame(maxWidth: 120)
-                    }
+                if selectedProduct != nil {
+                    Section("addIngredient.amount") {
+                        HStack {
+                            Text("addIngredient.grams")
+                            Spacer()
+                            TextField("0", text: $quantityText)
+                                .keyboardType(.decimalPad)
+                                .multilineTextAlignment(.trailing)
+                                .frame(maxWidth: 120)
+                        }
 
-                    Picker("unit.gram", selection: $unit) {
-                        ForEach(MeasurementUnit.allCases, id: \.self) { item in
-                            Text(item.displayName).tag(item)
+                        Picker("unit.gram", selection: $unit) {
+                            ForEach(MeasurementUnit.allCases, id: \.self) { item in
+                                Text(item.displayName).tag(item)
+                            }
                         }
                     }
                 }
             }
-            .searchable(text: $searchText, prompt: "search.products")
             .navigationTitle("addIngredient.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -96,27 +96,6 @@ struct AddIngredientSheet: View {
                 }
             }
         }
-    }
-
-    private func productRow(_ product: FoodProduct) -> some View {
-        Button {
-            selectedKey = product.catalogKey
-        } label: {
-            HStack {
-                Text(product.displayName)
-                    .foregroundStyle(.primary)
-                Spacer()
-                if selectedKey == product.catalogKey {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(.tint)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .contentShape(Rectangle())
     }
 
     private var canAdd: Bool {

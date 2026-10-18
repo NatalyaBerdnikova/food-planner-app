@@ -29,6 +29,9 @@ enum AppTheme {
     )
 
     static let cardRadius: CGFloat = 16
+    static let cardPadding: CGFloat = 8
+    /// Nested shape radius = outer radius − padding (Apple concentric corners).
+    static var nestedCardRadius: CGFloat { max(cardRadius - cardPadding, 4) }
     static let controlMinHeight: CGFloat = 52
     static let sectionSpacing: CGFloat = 24
     static let contentPadding: CGFloat = 16

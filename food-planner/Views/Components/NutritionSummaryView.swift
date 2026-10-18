@@ -11,17 +11,21 @@ struct NutritionSummaryView: View {
         Group {
             if embedded {
                 content
+                    .padding(AppTheme.cardPadding)
             } else {
                 content
-                    .padding(AppTheme.contentPadding)
-                    .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+                    .padding(AppTheme.cardPadding)
+                    .background(
+                        AppTheme.elevated,
+                        in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
+                    )
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var content: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: AppTheme.cardPadding) {
             macroChip(title: macroLabelStyle.kcalTitle, value: nutrition.calories, target: target?.calories)
             macroChip(title: macroLabelStyle.proteinTitle, value: nutrition.protein, target: target?.protein)
             macroChip(title: macroLabelStyle.fatTitle, value: nutrition.fat, target: target?.fat)
@@ -32,18 +36,25 @@ struct NutritionSummaryView: View {
     private func macroChip(title: LocalizedStringResource, value: Double, target: Double?) -> some View {
         let status = target.flatMap { NutritionTargetStatus.from(actual: value, target: $0) }
 
-        return VStack(spacing: 4) {
+        return VStack(spacing: 2) {
             Text(title)
                 .font(.caption2.weight(.medium))
                 .foregroundStyle(.secondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
             Text(formatted(value))
                 .font(.subheadline.weight(.semibold).monospacedDigit())
                 .foregroundStyle(status?.color ?? .primary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 10)
+        .padding(.vertical, 8)
         .padding(.horizontal, 4)
-        .background(AppTheme.canvas, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .background(
+            AppTheme.canvas,
+            in: RoundedRectangle(cornerRadius: AppTheme.nestedCardRadius, style: .continuous)
+        )
         .accessibilityElement(children: .combine)
     }
 

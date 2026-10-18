@@ -60,7 +60,6 @@ struct RecipeAdvancedFiltersSheet: View {
     @Binding var filters: RecipeAdvancedFilters
 
     @State private var draft: RecipeAdvancedFilters
-    @State private var ingredientSearch = ""
 
     init(filters: Binding<RecipeAdvancedFilters>) {
         _filters = filters
@@ -73,17 +72,6 @@ struct RecipeAdvancedFiltersSheet: View {
                 ?? L10n.productName(catalogKey: key)
             return (key: key, name: name)
         }
-    }
-
-    private var suggestedProducts: [FoodProduct] {
-        let query = ingredientSearch.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !query.isEmpty else { return [] }
-        let selected = Set(draft.ingredientCatalogKeys)
-        return products
-            .filter { !selected.contains($0.catalogKey) }
-            .filter { FoodCatalogLocalization.matchesSearch(catalogKey: $0.catalogKey, query: query) }
-            .prefix(12)
-            .map { $0 }
     }
 
     var body: some View {
@@ -134,9 +122,8 @@ struct RecipeAdvancedFiltersSheet: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("recipeLibrary.resetFilters") {
                         draft.reset()
-                        ingredientSearch = ""
                     }
-                    .disabled(!draft.isActive && ingredientSearch.isEmpty)
+                    .disabled(!draft.isActive)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("common.done") {
@@ -159,21 +146,11 @@ struct RecipeAdvancedFiltersSheet: View {
                 }
             }
 
-            TextField(
-                "recipeLibrary.filterIngredients.placeholder",
-                text: $ingredientSearch
-            )
-            .textInputAutocapitalization(.never)
-            .autocorrectionDisabled()
-            .submitLabel(.done)
-            .onSubmit(commitFirstSuggestionIfNeeded)
-
-            if !suggestedProducts.isEmpty {
-                IngredientTagFlowLayout(spacing: 8) {
-                    ForEach(suggestedProducts, id: \.catalogKey) { product in
-                        suggestionChip(product)
-                    }
-                }
+            IngredientTagSearchField(
+                excludedCatalogKeys: Set(draft.ingredientCatalogKeys)
+            ) { product in
+                guard !draft.ingredientCatalogKeys.contains(product.catalogKey) else { return }
+                draft.ingredientCatalogKeys.append(product.catalogKey)
             }
         }
         .padding(.vertical, 4)
@@ -202,34 +179,6 @@ struct RecipeAdvancedFiltersSheet: View {
         .accessibilityHint(Text("recipeLibrary.removeIngredientTag"))
     }
 
-    private func suggestionChip(_ product: FoodProduct) -> some View {
-        Button {
-            addIngredient(product)
-        } label: {
-            Text(product.displayName)
-                .font(.subheadline.weight(.medium))
-                .lineLimit(1)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 7)
-                .background(Color(.tertiarySystemFill))
-                .foregroundStyle(.primary)
-                .clipShape(Capsule())
-                .contentShape(Capsule())
-        }
-        .buttonStyle(.plain)
-    }
-
-    private func addIngredient(_ product: FoodProduct) {
-        guard !draft.ingredientCatalogKeys.contains(product.catalogKey) else { return }
-        draft.ingredientCatalogKeys.append(product.catalogKey)
-        ingredientSearch = ""
-    }
-
-    private func commitFirstSuggestionIfNeeded() {
-        guard let first = suggestedProducts.first else { return }
-        addIngredient(first)
-    }
-
     private var caloriesLabel: String {
         if draft.isCaloriesLimited {
             String(localized: "recipeLibrary.maxCalories \(Int(draft.maxCalories.rounded()))")
@@ -243,58 +192,6 @@ struct RecipeAdvancedFiltersSheet: View {
             String(localized: "recipeLibrary.maxCookTime \(draft.maxCookTimeMinutes)")
         } else {
             String(localized: "recipeLibrary.anyCookTime")
-        }
-    }
-}
-
-private struct IngredientTagFlowLayout: Layout {
-    var spacing: CGFloat = 8
-
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
-        let maxWidth = proposal.width ?? .infinity
-        var currentX: CGFloat = 0
-        var currentY: CGFloat = 0
-        var rowHeight: CGFloat = 0
-        var totalHeight: CGFloat = 0
-        var totalWidth: CGFloat = 0
-
-        for subview in subviews {
-            let size = subview.sizeThatFits(.unspecified)
-            if currentX + size.width > maxWidth, currentX > 0 {
-                currentX = 0
-                currentY += rowHeight + spacing
-                rowHeight = 0
-            }
-            currentX += size.width + spacing
-            rowHeight = max(rowHeight, size.height)
-            totalWidth = max(totalWidth, currentX - spacing)
-            totalHeight = currentY + rowHeight
-        }
-
-        return CGSize(
-            width: proposal.width ?? totalWidth,
-            height: totalHeight
-        )
-    }
-
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-        var currentX = bounds.minX
-        var currentY = bounds.minY
-        var rowHeight: CGFloat = 0
-
-        for subview in subviews {
-            let size = subview.sizeThatFits(.unspecified)
-            if currentX + size.width > bounds.maxX, currentX > bounds.minX {
-                currentX = bounds.minX
-                currentY += rowHeight + spacing
-                rowHeight = 0
-            }
-            subview.place(
-                at: CGPoint(x: currentX, y: currentY),
-                proposal: ProposedViewSize(size)
-            )
-            currentX += size.width + spacing
-            rowHeight = max(rowHeight, size.height)
         }
     }
 }

@@ -15,7 +15,6 @@ struct AddRecipeView: View {
     @State private var sourceURL: String
     @State private var draftIngredients: [DraftIngredient]
     @State private var unresolvedIngredients: [UnresolvedIngredient]
-    @State private var showAddIngredient = false
     @State private var resolvingUnresolved: UnresolvedIngredient?
     @State private var photoPickerItem: PhotosPickerItem?
 
@@ -32,8 +31,8 @@ struct AddRecipeView: View {
         _unresolvedIngredients = State(initialValue: prefill?.unresolvedIngredients ?? [])
     }
 
-    private var previewNutritionPerServing: DailyNutrition? {
-        guard !draftIngredients.isEmpty else { return nil }
+    private var previewNutritionPerServing: DailyNutrition {
+        guard !draftIngredients.isEmpty else { return .zero }
         var totals = NutrientTotals.zero
         for draft in draftIngredients {
             let grams = UnitConverter.grams(
@@ -44,7 +43,6 @@ struct AddRecipeView: View {
             guard grams > 0 else { continue }
             totals = totals + draft.product.nutrientsPer100g.scaled(by: grams / 100.0)
         }
-        guard totals.calories > 0 || totals.protein > 0 else { return nil }
         let divisor = max(Double(servings), 1)
         return DailyNutrition(
             calories: totals.calories / divisor,
@@ -56,16 +54,10 @@ struct AddRecipeView: View {
 
     var body: some View {
         Form {
-            Section("addRecipe.photo") {
-                PhotosPicker(selection: $photoPickerItem, matching: .images) {
-                    Label("addRecipe.pickPhoto", systemImage: "photo.on.rectangle")
-                }
-
-                if imageData != nil {
-                    RecipeImageView(imageData: imageData, cornerRadius: 8)
-                        .frame(height: 120)
-                }
-            }
+            RecipePhotoPickerSection(
+                imageData: $imageData,
+                photoPickerItem: $photoPickerItem
+            )
 
             Section {
                 TextField("addRecipe.name", text: $name)
@@ -102,25 +94,22 @@ struct AddRecipeView: View {
                 Text("addRecipe.steps")
             }
 
-            Section("addRecipe.ingredients") {
-                ForEach(draftIngredients) { draft in
-                    HStack {
-                        Text(draft.product.displayName)
-                        Spacer()
-                        Text(L10n.amount(quantity: draft.quantity, unit: draft.unit))
-                            .foregroundStyle(.secondary)
-                    }
+            Section {
+                ForEach($draftIngredients) { $draft in
+                    DraftIngredientRow(draft: $draft)
                 }
                 .onDelete { draftIngredients.remove(atOffsets: $0) }
 
-                Button {
-                    showAddIngredient = true
-                } label: {
-                    Label("addRecipe.addIngredient", systemImage: "plus.circle")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .contentShape(Rectangle())
+                IngredientTagSearchField(
+                    excludedCatalogKeys: Set(draftIngredients.map(\.product.catalogKey)),
+                    placeholder: "addRecipe.addIngredient"
+                ) { product in
+                    draftIngredients.append(
+                        DraftIngredient(product: product, quantity: 100, unit: .gram)
+                    )
                 }
-                .buttonStyle(.plain)
+            } header: {
+                Text("addRecipe.ingredients")
             }
 
             if !unresolvedIngredients.isEmpty {
@@ -150,13 +139,14 @@ struct AddRecipeView: View {
                 }
             }
 
-            if let nutrition = previewNutritionPerServing {
-                Section("addRecipe.nutrition") {
-                    NutritionSummaryView(
-                        nutrition: nutrition,
-                        title: "nutrition.title.perServing"
-                    )
-                }
+            Section("addRecipe.nutrition") {
+                NutritionSummaryView(
+                    nutrition: previewNutritionPerServing,
+                    title: "nutrition.title.perServing",
+                    embedded: true,
+                    macroLabelStyle: .full
+                )
+                .listRowInsets(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
             }
         }
         .navigationTitle("addRecipe.title")
@@ -168,11 +158,6 @@ struct AddRecipeView: View {
             ToolbarItem(placement: .confirmationAction) {
                 Button("common.save") { saveRecipe() }
                     .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
-            }
-        }
-        .sheet(isPresented: $showAddIngredient) {
-            AddIngredientSheet { draft in
-                draftIngredients.append(draft)
             }
         }
         .sheet(item: $resolvingUnresolved) { item in

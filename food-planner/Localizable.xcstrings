@@ -225,6 +225,38 @@
         }
       }
     },
+    "addIngredient.decreaseQuantity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decrease quantity"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уменьшить количество"
+          }
+        }
+      }
+    },
+    "addIngredient.editQuantity.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens exact quantity picker"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открывает точный выбор количества"
+          }
+        }
+      }
+    },
     "addIngredient.grams" : {
       "localizations" : {
         "en" : {
@@ -237,6 +269,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Граммы"
+          }
+        }
+      }
+    },
+    "addIngredient.increaseQuantity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Increase quantity"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увеличить количество"
           }
         }
       }
@@ -258,7 +306,6 @@
       }
     },
     "addIngredient.quantity" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -765,6 +812,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выбрать фото"
+          }
+        }
+      }
+    },
+    "addRecipe.replacePhoto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace photo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заменить фото"
           }
         }
       }
@@ -5357,22 +5420,6 @@
         }
       }
     },
-    "recipeLibrary.removeIngredientTag" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove ingredient"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Удалить ингредиент"
-          }
-        }
-      }
-    },
     "recipeLibrary.filters" : {
       "localizations" : {
         "en" : {
@@ -5434,6 +5481,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Мои рецепты"
+          }
+        }
+      }
+    },
+    "recipeLibrary.removeIngredientTag" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove ingredient"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить ингредиент"
           }
         }
       }
