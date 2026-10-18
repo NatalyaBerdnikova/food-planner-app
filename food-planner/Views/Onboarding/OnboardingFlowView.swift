@@ -1,9 +1,11 @@
 import SwiftUI
 import SwiftData
+import UIKit
 
 struct OnboardingFlowView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.colorScheme) private var colorScheme
 
     let onFinished: () -> Void
 
@@ -20,9 +22,17 @@ struct OnboardingFlowView: View {
         case reveal
     }
 
+    private var isWelcome: Bool { step == .welcome }
+    private var isDark: Bool { colorScheme == .dark }
+
+    private var onPhotoChrome: Color { isDark ? .white : Color(white: 0.08) }
+    private var onPhotoSecondary: Color {
+        isDark ? Color.white.opacity(0.88) : Color(white: 0.22)
+    }
+
     var body: some View {
         ZStack {
-            AppTheme.heroGradient
+            backgroundLayer
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
@@ -39,9 +49,48 @@ struct OnboardingFlowView: View {
                     .padding(.bottom, 20)
             }
         }
-        .tint(.white)
+        .tint(AppTheme.accent)
         .animation(reduceMotion ? nil : .easeInOut(duration: 0.28), value: step)
         .sensoryFeedback(.selection, trigger: step)
+    }
+
+    @ViewBuilder
+    private var backgroundLayer: some View {
+        if isWelcome {
+            welcomeBackground
+        } else {
+            AppTheme.canvas
+        }
+    }
+
+    private var welcomeBackground: some View {
+        ZStack {
+            if UIImage(named: "OnboardingWelcome") != nil {
+                Image("OnboardingWelcome")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .clipped()
+            } else {
+                AppTheme.heroGradient
+            }
+
+            LinearGradient(
+                colors: isDark
+                    ? [
+                        Color.black.opacity(0.45),
+                        Color.black.opacity(0.55),
+                        Color.black.opacity(0.82),
+                    ]
+                    : [
+                        Color.white.opacity(0.35),
+                        Color.white.opacity(0.72),
+                        Color.white.opacity(0.94),
+                    ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        }
     }
 
     private var progressHeader: some View {
@@ -53,6 +102,7 @@ struct OnboardingFlowView: View {
                     } label: {
                         Image(systemName: "chevron.left")
                             .font(.body.weight(.semibold))
+                            .foregroundStyle(.primary)
                             .frame(width: 44, height: 44)
                             .contentShape(Rectangle())
                     }
@@ -63,17 +113,17 @@ struct OnboardingFlowView: View {
                 Spacer()
                 Text("onboarding.progress \(step.rawValue + 1) \(Step.allCases.count)")
                     .font(.subheadline.weight(.medium))
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(isWelcome ? onPhotoSecondary : Color.secondary)
                 Spacer()
                 Color.clear.frame(width: 44, height: 44)
             }
 
             GeometryReader { geo in
                 Capsule()
-                    .fill(.white.opacity(0.2))
+                    .fill(isWelcome ? onPhotoChrome.opacity(0.22) : Color.primary.opacity(0.12))
                     .overlay(alignment: .leading) {
                         Capsule()
-                            .fill(AppTheme.warmFill)
+                            .fill(AppTheme.accent)
                             .frame(width: geo.size.width * progressFraction)
                     }
             }
@@ -132,16 +182,19 @@ struct OnboardingFlowView: View {
         VStack(alignment: .leading, spacing: 24) {
             Image(systemName: "fork.knife.circle.fill")
                 .font(.system(size: 64))
-                .foregroundStyle(AppTheme.warmFill)
+                .foregroundStyle(AppTheme.accent)
+                .symbolRenderingMode(.hierarchical)
                 .motionSafeSymbolEffect(.pulse)
+                .shadow(color: isDark ? .black.opacity(0.35) : .clear, radius: 8, y: 2)
 
             Text("onboarding.welcome.title")
                 .font(.largeTitle.bold())
-                .foregroundStyle(.white)
+                .foregroundStyle(onPhotoChrome)
+                .shadow(color: isDark ? .black.opacity(0.4) : .clear, radius: 6, y: 1)
 
             Text("onboarding.welcome.subtitle")
                 .font(.title3)
-                .foregroundStyle(.white.opacity(0.9))
+                .foregroundStyle(onPhotoSecondary)
                 .fixedSize(horizontal: false, vertical: true)
 
             VStack(alignment: .leading, spacing: 14) {
@@ -199,12 +252,10 @@ struct OnboardingFlowView: View {
 
             if revealProgress < 3 {
                 VStack(spacing: 16) {
-                    ProgressView()
-                        .controlSize(.large)
-                        .tint(AppTheme.warmFill)
+                    SparklesLoader(tint: AppTheme.accent)
                     Text(revealStatusKey)
                         .font(.headline)
-                        .foregroundStyle(.white.opacity(0.9))
+                        .foregroundStyle(.secondary)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 40)
@@ -219,7 +270,7 @@ struct OnboardingFlowView: View {
 
                 Text("onboarding.reveal.disclaimer")
                     .font(.footnote)
-                    .foregroundStyle(.white.opacity(0.8))
+                    .foregroundStyle(.secondary)
                     .padding(.top, 4)
             }
         }
@@ -242,21 +293,21 @@ struct OnboardingFlowView: View {
             Button(action: advance) {
                 Text(primaryButtonTitle)
                     .font(.headline)
+                    .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .frame(minHeight: AppTheme.controlMinHeight)
             }
             .buttonStyle(.borderedProminent)
-            .tint(AppTheme.warmFill)
-            .foregroundStyle(.black)
+            .tint(AppTheme.accent)
             .disabled(!canAdvance)
-            .opacity(canAdvance ? 1 : 0.5)
+            .opacity(canAdvance ? 1 : 0.55)
 
             if step == .welcome {
                 Button("onboarding.cta.defaults") {
                     applyDefaultsAndReveal()
                 }
                 .font(.body.weight(.semibold))
-                .foregroundStyle(.white)
+                .foregroundStyle(onPhotoSecondary)
                 .frame(minHeight: 44)
             }
         }
@@ -336,10 +387,10 @@ struct OnboardingFlowView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
                 .font(.largeTitle.bold())
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
             Text(subtitle)
                 .font(.body)
-                .foregroundStyle(.white.opacity(0.9))
+                .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
@@ -353,22 +404,25 @@ struct OnboardingFlowView: View {
             HStack {
                 Text(LocalizedStringKey(titleKey))
                     .font(.body.weight(.semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
                     .multilineTextAlignment(.leading)
                 Spacer(minLength: 8)
                 Image(systemName: selected ? "checkmark.circle.fill" : "circle")
-                    .foregroundStyle(selected ? AppTheme.warmFill : .white.opacity(0.55))
+                    .foregroundStyle(selected ? AppTheme.accent : Color.secondary)
                     .accessibilityHidden(true)
             }
             .padding(16)
             .frame(minHeight: AppTheme.controlMinHeight)
             .background(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(.white.opacity(selected ? 0.22 : 0.10))
+                    .fill(selected ? AppTheme.accentSoft : AppTheme.elevated)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .strokeBorder(.white.opacity(selected ? 0.55 : 0.12), lineWidth: 1)
+                    .strokeBorder(
+                        selected ? AppTheme.accent.opacity(0.55) : Color.primary.opacity(0.08),
+                        lineWidth: selected ? 1.5 : 1
+                    )
             )
         }
         .buttonStyle(.plain)
@@ -378,11 +432,12 @@ struct OnboardingFlowView: View {
     private func featureBullet(icon: String, text: LocalizedStringKey) -> some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: icon)
-                .foregroundStyle(AppTheme.warmFill)
+                .font(.body.weight(.semibold))
+                .foregroundStyle(AppTheme.accent)
                 .frame(width: 28)
                 .accessibilityHidden(true)
             Text(text)
-                .foregroundStyle(.white.opacity(0.92))
+                .foregroundStyle(onPhotoChrome)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
@@ -390,16 +445,16 @@ struct OnboardingFlowView: View {
     private func stepperRow(title: LocalizedStringKey, value: String, @ViewBuilder control: () -> some View) -> some View {
         HStack {
             Text(title)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
             Spacer()
             Text(value)
-                .foregroundStyle(.white.opacity(0.9))
+                .foregroundStyle(.secondary)
                 .monospacedDigit()
             control()
-                .tint(.white)
+                .tint(AppTheme.accent)
         }
         .padding(16)
-        .background(.white.opacity(0.12), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
     private func sliderRow(
@@ -411,30 +466,30 @@ struct OnboardingFlowView: View {
     ) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(title).foregroundStyle(.white)
+                Text(title).foregroundStyle(.primary)
                 Spacer()
                 Text(valueText)
-                    .foregroundStyle(.white.opacity(0.9))
+                    .foregroundStyle(.secondary)
                     .monospacedDigit()
             }
             Slider(value: value, in: range, step: step)
-                .tint(AppTheme.warmFill)
+                .tint(AppTheme.accent)
         }
         .padding(16)
-        .background(.white.opacity(0.12), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
     private func macroRevealRow(title: LocalizedStringKey, value: Double, unit: String) -> some View {
         HStack {
             Text(title)
-                .foregroundStyle(.white.opacity(0.92))
+                .foregroundStyle(.secondary)
             Spacer()
             Text("\(Int(value.rounded())) \(unit)")
                 .font(.title3.bold().monospacedDigit())
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
         }
         .padding(16)
-        .background(.white.opacity(0.14), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .background(AppTheme.elevated, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
         .accessibilityElement(children: .combine)
     }
 }

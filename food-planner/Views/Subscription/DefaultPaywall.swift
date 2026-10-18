@@ -2,13 +2,18 @@ import SwiftUI
 import Adapty
 import SwiftData
 
+enum PaywallChrome {
+    case standard
+    case onHero
+}
+
 struct DefaultPaywall: View {
     @Environment(SubscriptionSession.self) private var subscriptionSession
     @Environment(\.modelContext) private var modelContext
 
     let placement: Placements
+    var chrome: PaywallChrome = .standard
     let successPurchaseCallback: () -> Void
-    let successFreeCallback: () -> Void
 
     @State private var showPayment = false
     @State private var products: [AdaptyPaywallProduct] = []
@@ -19,7 +24,11 @@ struct DefaultPaywall: View {
     @State private var hasTrialState = false
     @State private var trialStateDisabled = true
 
-    private let accentTeal = AppTheme.accent
+    private let accent = AppTheme.accent
+    private var onHero: Bool { chrome == .onHero }
+    private var primaryText: Color { onHero ? .white : .primary }
+    private var secondaryText: Color { onHero ? Color.white.opacity(0.85) : .secondary }
+    private var accentIcon: Color { onHero ? AppTheme.accentSoft : accent }
 
     private var hasTrial: Bool {
         guard let selectedProduct else { return false }
@@ -28,23 +37,26 @@ struct DefaultPaywall: View {
 
     var body: some View {
         VStack {
-            VStack {
-                Text("home.proOffer.bannerTitle")
-                    .multilineTextAlignment(.center)
-                    .font(.title.bold())
-                    .opacity(showPayment ? 1 : 0)
-                    .scaleEffect(showPayment ? 1 : 0.6)
-                    .animation(.easeOut(duration: 0.4).delay(0.2), value: showPayment)
+            if !onHero {
+                VStack {
+                    Text("home.proOffer.bannerTitle")
+                        .multilineTextAlignment(.center)
+                        .font(.title.bold())
+                        .foregroundStyle(primaryText)
+                        .opacity(showPayment ? 1 : 0)
+                        .scaleEffect(showPayment ? 1 : 0.6)
+                        .animation(.easeOut(duration: 0.4).delay(0.2), value: showPayment)
 
-                VStack(alignment: .leading, spacing: 15) {
-                    featureRow(icon: "wand.and.stars", text: "home.proOffer.feature.ai")
-                    featureRow(icon: "chart.line.uptrend.xyaxis", text: "home.proOffer.feature.insights")
-                    featureRow(icon: "calendar.badge.clock", text: "home.proOffer.feature.plan")
+                    VStack(alignment: .leading, spacing: 15) {
+                        featureRow(icon: "wand.and.stars", text: "home.proOffer.feature.ai")
+                        featureRow(icon: "chart.line.uptrend.xyaxis", text: "home.proOffer.feature.insights")
+                        featureRow(icon: "calendar.badge.clock", text: "home.proOffer.feature.plan")
+                    }
+                    .font(.title3.bold())
+                    .padding(.top)
+                    .opacity(showPayment ? 1 : 0)
+                    .animation(.easeOut(duration: 0.4).delay(0.3), value: showPayment)
                 }
-                .font(.title3.bold())
-                .padding(.top)
-                .opacity(showPayment ? 1 : 0)
-                .animation(.easeOut(duration: 0.4).delay(0.3), value: showPayment)
             }
 
             if haveRestoredSub {
@@ -52,7 +64,7 @@ struct DefaultPaywall: View {
                 Text("subscription.alreadyActive")
                     .multilineTextAlignment(.center)
                     .font(.title2)
-                    .foregroundStyle(accentTeal)
+                    .foregroundStyle(accentIcon)
                     .padding()
             }
 
@@ -63,13 +75,12 @@ struct DefaultPaywall: View {
             if !haveRestoredSub {
                 VStack(alignment: .leading, spacing: 15) {
                     if products.isEmpty {
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                            .scaleEffect(2)
+                        SparklesLoader(tint: accentIcon)
                             .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
                     } else {
                         if let trialDescription = eligibleProduct.flatMap({ SubscriptionProductDisplay.trialDescription(for: $0) }) {
-                            SubscriptionHContainer {
+                            SubscriptionHContainer(onHero: onHero) {
                                 Toggle(isOn: Binding(
                                     get: { hasTrialState },
                                     set: { newValue in
@@ -79,8 +90,9 @@ struct DefaultPaywall: View {
                                 )) {
                                     Text("subscription.enableTrial \(trialDescription)")
                                         .font(.title3)
-                                        .foregroundStyle(accentTeal)
+                                        .foregroundStyle(onHero ? primaryText : accent)
                                 }
+                                .tint(accent)
                                 .disabled(trialStateDisabled)
                             }
                         }
@@ -90,33 +102,37 @@ struct DefaultPaywall: View {
                                 selectedProduct = product
                                 hasTrialState = hasTrial
                             } label: {
-                                SubscriptionHContainer {
+                                SubscriptionHContainer(onHero: onHero) {
                                     ZStack {
                                         Image(systemName: "circle")
-                                            .foregroundStyle(accentTeal)
+                                            .foregroundStyle(accentIcon)
                                             .imageScale(.large)
 
                                         if selectedProduct?.vendorProductId == product.vendorProductId {
                                             Image(systemName: "checkmark.circle.fill")
-                                                .foregroundStyle(accentTeal)
+                                                .foregroundStyle(accentIcon)
                                                 .imageScale(.large)
                                         }
                                     }
 
                                     Text(SubscriptionProductDisplay.title(for: product))
                                         .font(.title3)
-                                        .foregroundStyle(.primary)
+                                        .foregroundStyle(primaryText)
                                         .padding(.horizontal, 5)
 
                                     Spacer()
 
                                     Text(SubscriptionProductDisplay.price(for: product))
                                         .font(.title2)
+                                        .foregroundStyle(primaryText)
                                 }
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                        .stroke(accentTeal, lineWidth: selectedProduct?.vendorProductId == product.vendorProductId ? 2 : 0)
-                                        .opacity(0.5)
+                                        .stroke(
+                                            accentIcon,
+                                            lineWidth: selectedProduct?.vendorProductId == product.vendorProductId ? 2 : 0
+                                        )
+                                        .opacity(0.7)
                                 }
                             }
                             .buttonStyle(.plain)
@@ -128,37 +144,32 @@ struct DefaultPaywall: View {
 
             Spacer()
 
-            VStack(spacing: 16) {
-                Button(action: startPayment) {
-                    Text(haveRestoredSub ? "common.done" : (hasTrial ? "subscription.startTrial" : "subscription.startSubscribe"))
-                        .font(.title2.bold())
-                        .foregroundStyle(.white)
-                        .frame(width: 300, height: 50)
-                        .background(accentTeal.opacity(0.9), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                }
-                .disabled(products.isEmpty && !haveRestoredSub)
-
-                Button(action: startFree) {
-                    Text("subscription.startFree")
-                        .font(.title2.bold())
-                        .foregroundStyle(.white)
-                        .frame(width: 300, height: 50)
-                        .background(Color.secondary.opacity(0.9), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                }
+            Button(action: startPayment) {
+                Text(haveRestoredSub ? "common.done" : (hasTrial ? "subscription.startTrial" : "subscription.startSubscribe"))
+                    .font(.title2.bold())
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .background(accent, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
+            .disabled(products.isEmpty && !haveRestoredSub)
             .padding(.vertical, 30)
 
-            HStack(alignment: .firstTextBaseline, spacing: 15) {
+            HStack(spacing: 12) {
                 Link("subscription.terms", destination: URL(string: AppVars.termsUrl)!)
                 Link("subscription.privacy", destination: URL(string: AppVars.privacyUrl)!)
                 Button("subscription.restore", action: restorePayments)
             }
+            .font(.footnote.weight(.medium))
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
+            .minimumScaleFactor(0.85)
             .padding(.bottom, 40)
-            .foregroundStyle(.secondary)
-            .opacity(0.8)
+            .foregroundStyle(secondaryText)
         }
-        .padding()
-        .tint(accentTeal)
+        .padding(.horizontal, onHero ? 0 : 16)
+        .padding(.vertical, onHero ? 0 : 16)
+        .tint(accent)
         .onAppear {
             showPayment = true
             loadParams()
@@ -169,10 +180,11 @@ struct DefaultPaywall: View {
     private func featureRow(icon: String, text: LocalizedStringResource) -> some View {
         HStack(spacing: 10) {
             Image(systemName: icon)
-                .foregroundStyle(accentTeal)
+                .foregroundStyle(accentIcon)
                 .imageScale(.large)
                 .frame(width: 30)
             Text(text)
+                .foregroundStyle(primaryText)
         }
     }
 
@@ -193,10 +205,6 @@ struct DefaultPaywall: View {
                 startPurchase()
             }
         }
-    }
-
-    private func startFree() {
-        successFreeCallback()
     }
 
     private func startPurchase() {

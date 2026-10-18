@@ -40,11 +40,11 @@ struct MainTabView: View {
         .tint(AppTheme.accent(for: colorScheme, highContrast: colorSchemeContrast == .increased))
         .tabViewStyle(.sidebarAdaptable)
         .onAppear {
-            CommunitySocialStatsService.refreshLikeCounts(in: modelContext)
+            CommunitySocialStatsService.refreshLikeCountsIfNeeded(in: modelContext)
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
-                CommunitySocialStatsService.refreshLikeCounts(in: modelContext)
+                CommunitySocialStatsService.refreshLikeCountsIfNeeded(in: modelContext)
             }
         }
     }

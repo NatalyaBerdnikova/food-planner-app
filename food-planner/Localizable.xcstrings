@@ -1604,22 +1604,6 @@
         }
       }
     },
-    "common.loading" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Loading"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Загрузка"
-          }
-        }
-      }
-    },
     "common.done" : {
       "localizations" : {
         "en" : {
@@ -1632,6 +1616,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Готово"
+          }
+        }
+      }
+    },
+    "common.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загрузка"
           }
         }
       }
@@ -6614,13 +6614,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Privacy Policy"
+            "value" : "Privacy"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Политика конфиденциальности"
+            "value" : "Конфиденциальность"
           }
         }
       }
@@ -6691,6 +6691,7 @@
       }
     },
     "subscription.startFree" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6711,7 +6712,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Subscribe"
+            "value" : "Unlock plan"
           }
         },
         "ru" : {
@@ -6743,13 +6744,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Terms of Use"
+            "value" : "Terms"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Условия использования"
+            "value" : "Условия"
           }
         }
       }

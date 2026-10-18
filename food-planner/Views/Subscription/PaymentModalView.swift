@@ -11,8 +11,7 @@ struct PaymentModalView: View {
             ScrollView {
                 DefaultPaywall(
                     placement: .basic,
-                    successPurchaseCallback: upgradeUser,
-                    successFreeCallback: upgradeUserToFree
+                    successPurchaseCallback: upgradeUser
                 )
                 .padding(.top)
                 .frame(minHeight: geometry.size.height)
@@ -23,12 +22,6 @@ struct PaymentModalView: View {
     private func upgradeUser() {
         let settings = AppSettingsService.settings(in: modelContext)
         subscriptionSession.upgradeToPro(settings: settings, in: modelContext)
-        dismiss()
-    }
-
-    private func upgradeUserToFree() {
-        let settings = AppSettingsService.settings(in: modelContext)
-        subscriptionSession.upgradeToFree(settings: settings, in: modelContext)
         dismiss()
     }
 }
@@ -42,8 +35,7 @@ struct PaywallView: View {
             ScrollView {
                 DefaultPaywall(
                     placement: .basic,
-                    successPurchaseCallback: upgradeUser,
-                    successFreeCallback: upgradeUserToFree
+                    successPurchaseCallback: upgradeUser
                 )
                 .padding(.top)
                 .frame(minHeight: geometry.size.height)
@@ -54,10 +46,5 @@ struct PaywallView: View {
     private func upgradeUser() {
         let settings = AppSettingsService.settings(in: modelContext)
         subscriptionSession.upgradeToPro(settings: settings, in: modelContext)
-    }
-
-    private func upgradeUserToFree() {
-        let settings = AppSettingsService.settings(in: modelContext)
-        subscriptionSession.upgradeToFree(settings: settings, in: modelContext)
     }
 }
