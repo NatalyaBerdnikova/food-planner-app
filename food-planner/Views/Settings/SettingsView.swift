@@ -6,6 +6,8 @@ struct SettingsView: View {
     @Environment(SubscriptionSession.self) private var subscriptionSession
 
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
+    @AppStorage(MacroDisplaySettings.showFractionsKey) private var showMacroFractions =
+        MacroDisplaySettings.showFractionsDefault
 
     @Query private var recipes: [Recipe]
     @Query private var weekPlans: [WeekPlan]
@@ -159,8 +161,10 @@ struct SettingsView: View {
                         .tag(language.rawValue)
                 }
             }
+
+            Toggle("settings.showMacroFractions", isOn: $showMacroFractions)
         } footer: {
-            Text("settings.appearance.systemFooter")
+            Text("settings.showMacroFractions.footer")
         }
     }
 

@@ -6,6 +6,9 @@ struct NutritionTargetProgressView: View {
     var macroLabelStyle: MacroLabelStyle = .full
     var embedded: Bool = false
 
+    @AppStorage(MacroDisplaySettings.showFractionsKey) private var showMacroFractions =
+        MacroDisplaySettings.showFractionsDefault
+
     var body: some View {
         Group {
             if embedded {
@@ -84,8 +87,6 @@ struct NutritionTargetProgressView: View {
     }
 
     private func formatted(_ value: Double) -> String {
-        value.truncatingRemainder(dividingBy: 1) == 0
-            ? String(format: "%.0f", value)
-            : String(format: "%.1f", value)
+        MacroDisplaySettings.format(value, showFractions: showMacroFractions)
     }
 }

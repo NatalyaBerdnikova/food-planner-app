@@ -28,6 +28,9 @@ struct RecipeCardView: View {
     var isFavorite: Bool = false
     var onFavoriteTap: (() -> Void)?
 
+    @AppStorage(MacroDisplaySettings.showFractionsKey) private var showMacroFractions =
+        MacroDisplaySettings.showFractionsDefault
+
     private var nutritionPerServing: DailyNutrition {
         NutritionCalculator.nutritionPerServing(for: recipe)
     }
@@ -211,9 +214,7 @@ struct RecipeCardView: View {
     }
 
     private func formatted(_ value: Double) -> String {
-        value.truncatingRemainder(dividingBy: 1) == 0
-            ? String(format: "%.0f", value)
-            : String(format: "%.1f", value)
+        MacroDisplaySettings.format(value, showFractions: showMacroFractions)
     }
 
     @ViewBuilder

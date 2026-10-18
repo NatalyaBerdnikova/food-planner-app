@@ -12,6 +12,9 @@ struct PlannedMealSlotView: View {
     var onTap: () -> Void
     var style: PlannedMealSlotStyle = .regular
 
+    @AppStorage(MacroDisplaySettings.showFractionsKey) private var showMacroFractions =
+        MacroDisplaySettings.showFractionsDefault
+
     private var recipes: [Recipe] {
         meals.compactMap(\.recipe)
     }
@@ -124,9 +127,7 @@ struct PlannedMealSlotView: View {
     }
 
     private func formatted(_ value: Double) -> String {
-        value.truncatingRemainder(dividingBy: 1) == 0
-            ? String(format: "%.0f", value)
-            : String(format: "%.1f", value)
+        MacroDisplaySettings.format(value, showFractions: showMacroFractions)
     }
 
     private var mealTypeLabel: LocalizedStringResource {

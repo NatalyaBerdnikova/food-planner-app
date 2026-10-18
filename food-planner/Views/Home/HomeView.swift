@@ -27,16 +27,21 @@ struct HomeView: View {
         featuredRecipeOverride ?? RecipeDiscoveryService.recipeOfTheDay(from: recipes)
     }
 
+    private let favoriteColumns = [
+        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12),
+    ]
+
     private var favoriteRecipes: [Recipe] {
         RecipeFavoritesService.favoriteRecipes(
-            from: catalogRecipes,
+            from: recipes,
             favoriteIds: Set(appSettings?.favoriteCatalogRecipeIds ?? [])
         )
     }
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: AppTheme.sectionSpacing) {
+            LazyVStack(alignment: .leading, spacing: AppTheme.sectionSpacing) {
                 recipeOfTheDaySection
                 importCTACard
                 todayNutritionCard
@@ -260,41 +265,56 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
             } else {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: AppTheme.sectionRailSpacing) {
-                        ForEach(favoriteRecipes) { recipe in
-                            favoriteCard(recipe)
-                                .frame(width: AppTheme.recipeRailCardWidth)
-                        }
+                LazyVGrid(columns: favoriteColumns, spacing: 12) {
+                    ForEach(favoriteRecipes) { recipe in
+                        favoriteCard(recipe)
                     }
-                    .padding(.vertical, 2)
                 }
             }
         }
     }
 
     private func favoriteCard(_ recipe: Recipe) -> some View {
-        ZStack(alignment: .topTrailing) {
+        let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
+        let canFavorite = RecipeFavoritesService.canFavorite(recipe)
+
+        return ZStack(alignment: .topTrailing) {
             NavigationLink {
                 RecipeDetailView(recipe: recipe)
             } label: {
-                RecipeCardView(recipe: recipe, style: .rail)
+                RecipeCardView(
+                    recipe: recipe,
+                    style: .grid,
+                    showsNutrition: true,
+                    showsCommunityLikes: false,
+                    imageMeta: .libraryBottomLeading
+                )
             }
             .buttonStyle(.plain)
             .frame(maxWidth: .infinity, alignment: .leading)
 
-            Button {
-                unfavoriteCandidate = recipe
-            } label: {
-                Image(systemName: "heart.fill")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.red)
-                    .frame(width: 36, height: 36)
-                    .background(.ultraThinMaterial, in: Circle())
+            if canFavorite {
+                Button {
+                    if isFavorite {
+                        unfavoriteCandidate = recipe
+                    } else {
+                        RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
+                    }
+                } label: {
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(isFavorite ? .red : .primary)
+                        .frame(width: 36, height: 36)
+                        .background(.ultraThinMaterial, in: Circle())
+                }
+                .buttonStyle(.plain)
+                .padding(8)
+                .accessibilityLabel(
+                    isFavorite
+                        ? String(localized: "accessibility.removeFavorite")
+                        : String(localized: "accessibility.addFavorite")
+                )
             }
-            .buttonStyle(.plain)
-            .padding(8)
-            .accessibilityLabel(String(localized: "accessibility.removeFavorite"))
         }
     }
 

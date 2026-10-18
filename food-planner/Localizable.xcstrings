@@ -5291,74 +5291,6 @@
         }
       }
     },
-    "recipeDetail.energy" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Energy"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Энергия"
-          }
-        }
-      }
-    },
-    "recipeDetail.ingredients %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld ingredients"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld ингредиентов"
-          }
-        }
-      }
-    },
-    "recipeDetail.portionWeight" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Portion weight"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вес порции"
-          }
-        }
-      }
-    },
-    "recipeDetail.servings %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld servings"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld порций"
-          }
-        }
-      }
-    },
     "recipeDetail.delete" : {
       "localizations" : {
         "en" : {
@@ -5423,6 +5355,23 @@
         }
       }
     },
+    "recipeDetail.energy" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Energy"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Энергия"
+          }
+        }
+      }
+    },
     "recipeDetail.hide" : {
       "localizations" : {
         "en" : {
@@ -5483,6 +5432,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скрыть рецепт?"
+          }
+        }
+      }
+    },
+    "recipeDetail.ingredients %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ingredients"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ингредиентов"
+          }
+        }
+      }
+    },
+    "recipeDetail.portionWeight" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portion weight"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вес порции"
+          }
+        }
+      }
+    },
+    "recipeDetail.servings %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld servings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld порций"
           }
         }
       }
@@ -5843,6 +5843,7 @@
       }
     },
     "settings.appearance.systemFooter" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6017,6 +6018,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ваш профиль"
+          }
+        }
+      }
+    },
+    "settings.showMacroFractions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show macro decimals"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дроби в КБЖУ"
+          }
+        }
+      }
+    },
+    "settings.showMacroFractions.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When off, calories and macros are shown as whole numbers."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если выключено, калории и БЖУ показываются целыми числами."
           }
         }
       }
