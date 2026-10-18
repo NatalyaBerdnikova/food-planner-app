@@ -105,6 +105,7 @@ enum RecipeCatalogStore {
 
         let existingCatalogIds = existingCatalogIds(in: context)
         let existingUserIds = existingUserIds(in: context)
+        let hiddenCatalogIds = RecipeVisibilityService.hiddenCatalogRecipeIds(in: context)
 
         for (index, item) in catalog.recipes.enumerated() {
             let entryId = resolvedEntryId(for: item)
@@ -118,6 +119,7 @@ enum RecipeCatalogStore {
                 context.insert(recipe)
             } else {
                 guard !existingCatalogIds.contains(entryId),
+                      !hiddenCatalogIds.contains(entryId),
                       let recipe = makeRecipe(from: item, catalogId: entryId, in: context) else {
                     continue
                 }
@@ -145,6 +147,7 @@ enum RecipeCatalogStore {
 
         let existingCatalogIds = existingCatalogIds(in: context)
         let existingUserIds = existingUserIds(in: context)
+        let hiddenCatalogIds = RecipeVisibilityService.hiddenCatalogRecipeIds(in: context)
 
         for item in catalog.recipes {
             let entryId = resolvedEntryId(for: item)
@@ -158,6 +161,7 @@ enum RecipeCatalogStore {
                 context.insert(recipe)
             } else {
                 guard !existingCatalogIds.contains(entryId),
+                      !hiddenCatalogIds.contains(entryId),
                       let recipe = makeRecipe(from: item, catalogId: entryId, in: context) else {
                     continue
                 }

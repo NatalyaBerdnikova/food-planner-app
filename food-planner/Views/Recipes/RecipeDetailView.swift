@@ -3,10 +3,13 @@ import SwiftData
 
 struct RecipeDetailView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     let recipe: Recipe
 
     @State private var showMicronutrients = false
     @State private var showUnfavoriteConfirmation = false
+    @State private var showDeleteConfirmation = false
+    @State private var showHideConfirmation = false
     @State private var displayPortions = 1
 
     private var nutrition: RecipeNutrition {
@@ -83,6 +86,8 @@ struct RecipeDetailView: View {
                             .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
                     }
                 }
+
+                recipeLifecycleButton
             }
             .padding()
         }
@@ -104,6 +109,24 @@ struct RecipeDetailView: View {
         } message: {
             Text("favorites.remove.message \(recipe.localizedName)")
         }
+        .alert("recipeDetail.delete.title", isPresented: $showDeleteConfirmation) {
+            Button("common.cancel", role: .cancel) {}
+            Button("recipeDetail.delete.confirm", role: .destructive) {
+                RecipeVisibilityService.deleteUserRecipe(recipe, in: modelContext)
+                dismiss()
+            }
+        } message: {
+            Text("recipeDetail.delete.message \(recipe.localizedName)")
+        }
+        .alert("recipeDetail.hide.title", isPresented: $showHideConfirmation) {
+            Button("common.cancel", role: .cancel) {}
+            Button("recipeDetail.hide.confirm", role: .destructive) {
+                RecipeVisibilityService.hideCatalogRecipe(recipe, in: modelContext)
+                dismiss()
+            }
+        } message: {
+            Text("recipeDetail.hide.message \(recipe.localizedName)")
+        }
         .sheet(isPresented: $showMicronutrients) {
             MicronutrientDetailSheet(recipe: recipe)
         }
@@ -112,6 +135,28 @@ struct RecipeDetailView: View {
             recipe.recalculateNutrition()
             LocalPersistence.save(modelContext)
         }
+    }
+
+    private var recipeLifecycleButton: some View {
+        Button(role: .destructive) {
+            if recipe.isUserCreated {
+                showDeleteConfirmation = true
+            } else {
+                showHideConfirmation = true
+            }
+        } label: {
+            Label {
+                Text(recipe.isUserCreated ? "recipeDetail.delete" : "recipeDetail.hide")
+            } icon: {
+                Image(systemName: recipe.isUserCreated ? "trash" : "eye.slash")
+            }
+            .font(.subheadline.weight(.semibold))
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(.red)
     }
 
     private var heroSection: some View {

@@ -13,6 +13,7 @@ final class AppSettings {
     var activeWeekPlan: WeekPlan?
 
     var favoriteCatalogRecipeIdsStorage: String = ""
+    var hiddenCatalogRecipeIdsStorage: String = ""
 
     var isPro: Bool = false
     var isFree: Bool = false
@@ -38,7 +39,8 @@ final class AppSettings {
         targetFat: Double = 70,
         targetCarbs: Double = 250,
         activeWeekPlan: WeekPlan? = nil,
-        favoriteCatalogRecipeIds: [String] = []
+        favoriteCatalogRecipeIds: [String] = [],
+        hiddenCatalogRecipeIds: [String] = []
     ) {
         self.singletonKey = singletonKey
         self.targetCalories = targetCalories
@@ -47,6 +49,7 @@ final class AppSettings {
         self.targetCarbs = targetCarbs
         self.activeWeekPlan = activeWeekPlan
         self.favoriteCatalogRecipeIds = favoriteCatalogRecipeIds
+        self.hiddenCatalogRecipeIds = hiddenCatalogRecipeIds
     }
 
     var targetNutrition: DailyNutrition {
@@ -71,6 +74,18 @@ extension AppSettings {
         }
         set {
             favoriteCatalogRecipeIdsStorage = newValue.joined(separator: Self.listSeparator)
+        }
+    }
+
+    var hiddenCatalogRecipeIds: [String] {
+        get {
+            guard !hiddenCatalogRecipeIdsStorage.isEmpty else { return [] }
+            return hiddenCatalogRecipeIdsStorage
+                .components(separatedBy: Self.listSeparator)
+                .filter { !$0.isEmpty }
+        }
+        set {
+            hiddenCatalogRecipeIdsStorage = newValue.joined(separator: Self.listSeparator)
         }
     }
 

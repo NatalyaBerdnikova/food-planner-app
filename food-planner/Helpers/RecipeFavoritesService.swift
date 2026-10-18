@@ -26,13 +26,25 @@ enum RecipeFavoritesService {
         guard let key = favoriteKey(for: recipe) else { return }
         let settings = AppSettingsService.settings(in: context)
         var ids = Set(settings.favoriteCatalogRecipeIds)
-        if favorite {
+        let wasFavorite = ids.contains(key)
+
+        if favorite, !wasFavorite {
             ids.insert(key)
-        } else {
+            adjustCommunityLikeCount(for: recipe, delta: 1)
+        } else if !favorite, wasFavorite {
             ids.remove(key)
+            adjustCommunityLikeCount(for: recipe, delta: -1)
+        } else {
+            return
         }
+
         settings.favoriteCatalogRecipeIds = ids.sorted()
         LocalPersistence.save(context)
+    }
+
+    private static func adjustCommunityLikeCount(for recipe: Recipe, delta: Int) {
+        guard !recipe.isUserCreated else { return }
+        recipe.communityLikeCount = max(0, min(recipe.communityLikeCount + delta, 100))
     }
 
     static func favoriteRecipes(from recipes: [Recipe], favoriteIds: Set<String>) -> [Recipe] {
