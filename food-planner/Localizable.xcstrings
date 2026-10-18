@@ -816,22 +816,6 @@
         }
       }
     },
-    "addRecipe.replacePhoto" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Replace photo"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Заменить фото"
-          }
-        }
-      }
-    },
     "addRecipe.protein" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -845,6 +829,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Белки"
+          }
+        }
+      }
+    },
+    "addRecipe.replacePhoto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace photo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заменить фото"
           }
         }
       }
@@ -1857,6 +1857,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Лайки"
+          }
+        }
+      }
+    },
+    "filter.mine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mine"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свои"
           }
         }
       }
@@ -4143,6 +4159,22 @@
         }
       }
     },
+    "nutrition.servingGrams %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(%lld g)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(%lld г)"
+          }
+        }
+      }
+    },
     "nutrition.title.day" : {
       "localizations" : {
         "en" : {
@@ -5178,7 +5210,24 @@
         }
       }
     },
+    "recipe.micronutrients" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Micronutrients"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Микронутриенты"
+          }
+        }
+      }
+    },
     "recipe.moreDetails" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5260,6 +5309,7 @@
       }
     },
     "recipeDetail.ingredients %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5293,6 +5343,7 @@
       }
     },
     "recipeDetail.servings %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5304,6 +5355,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld порций"
+          }
+        }
+      }
+    },
+    "recipeDetail.yourRating" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Did you like it?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вам понравилось?"
+          }
+        }
+      }
+    },
+    "recipeDetail.yourRating.caption" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your personal rating"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш личный рейтинг"
           }
         }
       }
@@ -5469,7 +5552,6 @@
       }
     },
     "recipeLibrary.myRecipes" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

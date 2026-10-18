@@ -8,6 +8,7 @@ struct RecipeLibraryView: View {
     @State private var searchText = ""
     @State private var filterTab: RecipeFilterTab = .all
     @State private var showFavoritesOnly = false
+    @State private var showMineOnly = false
     @State private var advancedFilters = RecipeAdvancedFilters()
     @State private var showAdvancedFilters = false
     @State private var pasteImportRequest: PasteImportRequest?
@@ -28,6 +29,10 @@ struct RecipeLibraryView: View {
 
     private var filteredRecipes: [Recipe] {
         var result = libraryRecipes
+
+        if showMineOnly {
+            result = result.filter(\.isUserCreated)
+        }
 
         if showFavoritesOnly {
             result = RecipeFavoritesService.favoriteRecipes(from: result, favoriteIds: favoriteIds)
@@ -52,7 +57,11 @@ struct RecipeLibraryView: View {
     }
 
     private var hasActiveQuickFilter: Bool {
-        showFavoritesOnly || filterTab != .all || advancedFilters.isActive || !searchText.isEmpty
+        showFavoritesOnly
+            || showMineOnly
+            || filterTab != .all
+            || advancedFilters.isActive
+            || !searchText.isEmpty
     }
 
     private var emptyStateHint: String {
@@ -87,6 +96,7 @@ struct RecipeLibraryView: View {
         searchText = ""
         filterTab = .all
         showFavoritesOnly = false
+        showMineOnly = false
         advancedFilters.reset()
     }
 
@@ -175,10 +185,22 @@ struct RecipeLibraryView: View {
                 ForEach(RecipeFilterTab.allCases) { tab in
                     filterChip(
                         title: tab.displayName,
-                        isSelected: filterTab == tab && !showFavoritesOnly
+                        isSelected: filterTab == tab && !showFavoritesOnly && !showMineOnly
                     ) {
                         showFavoritesOnly = false
+                        showMineOnly = false
                         filterTab = tab
+                    }
+                }
+
+                filterChip(
+                    title: "filter.mine",
+                    isSelected: showMineOnly,
+                    systemImage: "person.fill"
+                ) {
+                    showMineOnly.toggle()
+                    if showMineOnly {
+                        filterTab = .all
                     }
                 }
 
@@ -254,8 +276,8 @@ struct RecipeLibraryView: View {
     }
 
     private func libraryCard(_ recipe: Recipe) -> some View {
-        let isFavorite = recipe.isCatalogRecipe
-            && RecipeFavoritesService.isFavorite(recipe, in: modelContext)
+        let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
+        let canFavorite = RecipeFavoritesService.canFavorite(recipe)
 
         return ZStack(alignment: .topTrailing) {
             NavigationLink {
@@ -263,7 +285,6 @@ struct RecipeLibraryView: View {
             } label: {
                 RecipeCardView(
                     recipe: recipe,
-                    badge: recipe.isUserCreated ? .userCreated : nil,
                     style: .grid,
                     showsNutrition: true,
                     showsCommunityLikes: false,
@@ -273,7 +294,7 @@ struct RecipeLibraryView: View {
             .buttonStyle(.plain)
             .frame(maxWidth: .infinity, alignment: .leading)
 
-            if recipe.isCatalogRecipe {
+            if canFavorite {
                 Button {
                     if isFavorite {
                         unfavoriteCandidate = recipe

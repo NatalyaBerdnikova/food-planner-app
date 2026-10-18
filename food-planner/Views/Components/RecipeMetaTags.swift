@@ -108,17 +108,22 @@ struct RecipeCommunityLikesTag: View {
 struct RecipeUserRatingView: View {
     let rating: Int
     var isInteractive: Bool = false
+    var starSize: Font?
     var onSelect: ((Int) -> Void)?
 
+    private var resolvedStarSize: Font {
+        starSize ?? (isInteractive ? .title3 : .caption)
+    }
+
     var body: some View {
-        HStack(spacing: 4) {
+        HStack(spacing: 6) {
             ForEach(1...5, id: \.self) { value in
                 Button {
                     guard isInteractive else { return }
                     onSelect?(value == rating ? 0 : value)
                 } label: {
                     Image(systemName: value <= rating ? "star.fill" : "star")
-                        .font(isInteractive ? .title3 : .caption)
+                        .font(resolvedStarSize)
                         .foregroundStyle(value <= rating ? AppTheme.warmFill : .secondary)
                 }
                 .buttonStyle(.plain)
@@ -139,18 +144,14 @@ struct RecipeMetaRow: View {
     let recipe: Recipe
     var showsCookTime: Bool = true
     var showsCommunityLikes: Bool = true
-    var showsRating: Bool = true
 
     var body: some View {
         HStack(spacing: 6) {
             if showsCookTime {
                 RecipeCookTimeTag(minutes: recipe.cookTimeMinutes)
             }
-            if showsCommunityLikes {
+            if showsCommunityLikes, !recipe.isUserCreated {
                 RecipeCommunityLikesTag(count: recipe.communityLikeCount)
-            }
-            if showsRating, recipe.userRating > 0 {
-                RecipeUserRatingView(rating: recipe.userRating)
             }
             Spacer(minLength: 0)
         }

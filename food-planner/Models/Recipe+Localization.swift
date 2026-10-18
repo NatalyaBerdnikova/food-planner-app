@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 extension Recipe {
     var localizedName: String {
@@ -12,37 +13,44 @@ extension Recipe {
         return name
     }
 
-    var localizedStepsText: String? {
+    var localizedStepsAttributed: NSAttributedString? {
         if isUserCreated {
             if let data = stepsRichTextData,
                let attributed = RecipeStepsStorage.attributedString(from: data),
                !attributed.string.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                return attributed.string
+                return attributed
             }
             let joined = steps
                 .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
                 .filter { !$0.isEmpty }
                 .joined(separator: "\n")
-            return joined.isEmpty ? nil : joined
+            guard !joined.isEmpty else { return nil }
+            return NSAttributedString(string: joined, attributes: RecipeStepsStorage.defaultBodyAttributes())
         }
 
         if let catalogRecipeId,
            let steps = RecipeCatalogLocalization.steps(
             for: catalogRecipeId,
             languageCode: L10n.currentLanguageCode
-           ) {
-            return steps
+           ),
+           !steps.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return NSAttributedString(string: steps, attributes: RecipeStepsStorage.defaultBodyAttributes())
         }
 
         let joined = steps
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
             .joined(separator: "\n")
-        return joined.isEmpty ? nil : joined
+        guard !joined.isEmpty else { return nil }
+        return NSAttributedString(string: joined, attributes: RecipeStepsStorage.defaultBodyAttributes())
+    }
+
+    var localizedStepsText: String? {
+        localizedStepsAttributed?.string
     }
 
     var hasLocalizedSteps: Bool {
-        localizedStepsText != nil
+        localizedStepsAttributed != nil
     }
 
     func matchesSearch(_ query: String) -> Bool {

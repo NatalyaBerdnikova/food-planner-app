@@ -16,9 +16,6 @@ struct RecipePhotoPickerSection: View {
                             cornerRadius: 0,
                             pointSize: CGSize(width: 780, height: height * 2)
                         )
-                        .frame(maxWidth: .infinity)
-                        .frame(height: height)
-                        .clipped()
 
                         Label("addRecipe.replacePhoto", systemImage: "photo.on.rectangle")
                             .font(.subheadline.weight(.semibold))
@@ -29,6 +26,8 @@ struct RecipePhotoPickerSection: View {
                             .padding(.bottom, 14)
                     }
                     .frame(maxWidth: .infinity)
+                    .frame(height: height)
+                    .clipped()
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)

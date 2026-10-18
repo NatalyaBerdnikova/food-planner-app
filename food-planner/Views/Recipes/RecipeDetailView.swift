@@ -22,60 +22,16 @@ struct RecipeDetailView: View {
             VStack(alignment: .leading, spacing: 18) {
                 heroSection
 
-                if nutrition.totalWeightGrams > 0 {
-                    sectionCard {
-                        VStack(alignment: .leading, spacing: 16) {
-                            sectionHeader(
-                                title: "nutrition.title.perServing",
-                                systemImage: "chart.bar.fill"
-                            )
+                sectionCard {
+                    VStack(alignment: .leading, spacing: 16) {
+                        nutritionSectionHeader
 
-                            NutritionSummaryView(
-                                nutrition: nutritionPerServing,
-                                title: "nutrition.title.perServing",
-                                embedded: true,
-                                macroLabelStyle: .full
-                            )
-
-                            // HStack(spacing: 10) {
-                            //     detailMetricChip(
-                            //         icon: "flame.fill",
-                            //         title: "recipeDetail.energy",
-                            //         value: L10n.recipeCaloriesPerServing(Int(nutritionPerServing.calories.rounded()))
-                            //     )
-                            //     detailMetricChip(
-                            //         icon: "scalemass.fill",
-                            //         title: "recipeDetail.portionWeight",
-                            //         value: L10n.recipeWeightPerServing(Int(weightPerServing.rounded()))
-                            //     )
-                            // }
-
-                            Button {
-                                showMicronutrients = true
-                            } label: {
-                                Label("recipe.moreDetails", systemImage: "list.bullet.rectangle")
-                                    .font(.subheadline.weight(.semibold))
-                                    .frame(maxWidth: .infinity)
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .tint(Color(red: 0.06, green: 0.33, blue: 0.45))
-                        }
-                    }
-                } else {
-                    sectionCard {
-                        VStack(alignment: .leading, spacing: 16) {
-                            sectionHeader(
-                                title: "nutrition.title.perServing",
-                                systemImage: "chart.bar.fill"
-                            )
-
-                            NutritionSummaryView(
-                                nutrition: nutritionPerServing,
-                                title: "nutrition.title.perServing",
-                                embedded: true,
-                                macroLabelStyle: .full
-                            )
-                        }
+                        NutritionSummaryView(
+                            nutrition: nutritionPerServing,
+                            title: "nutrition.title.perServing",
+                            embedded: true,
+                            macroLabelStyle: .full
+                        )
                     }
                 }
 
@@ -87,6 +43,19 @@ struct RecipeDetailView: View {
                                 systemImage: "leaf.fill",
                                 subtitle: "\(recipe.ingredients.count)"
                             )
+
+                            HStack(spacing: 12) {
+                                Text("recipeDetail.calculateFor")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                Spacer(minLength: 0)
+                                Text("recipe.displayPortions \(displayPortions)")
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundStyle(.primary)
+                                Stepper("", value: $displayPortions, in: 1...99)
+                                    .labelsHidden()
+                            }
+
                             VStack(spacing: 10) {
                                 ForEach(recipe.ingredients) { ingredient in
                                     ingredientRow(ingredient)
@@ -121,7 +90,7 @@ struct RecipeDetailView: View {
         .navigationTitle(recipe.localizedName)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if recipe.isCatalogRecipe {
+            if RecipeFavoritesService.canFavorite(recipe) {
                 ToolbarItem(placement: .topBarTrailing) {
                     favoriteToolbarButton
                 }
@@ -139,86 +108,83 @@ struct RecipeDetailView: View {
             MicronutrientDetailSheet(recipe: recipe)
         }
         .onAppear {
+            displayPortions = max(recipe.servings, 1)
             recipe.recalculateNutrition()
             LocalPersistence.save(modelContext)
         }
     }
 
     private var heroSection: some View {
-        ZStack(alignment: .bottomLeading) {
-            RecipeImageView(imageData: recipe.imageData, cornerRadius: 26)
-                .frame(height: 300)
-                .frame(maxWidth: .infinity)
+        ZStack {
+            RecipeImageView(imageData: recipe.imageData, cornerRadius: 0)
                 .overlay {
                     LinearGradient(
-                        colors: [.clear, .black.opacity(0.18), .black.opacity(0.74)],
+                        colors: [.clear, .black.opacity(0.12), .black.opacity(0.7)],
                         startPoint: .top,
                         endPoint: .bottom
                     )
-                    .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
                 }
 
-            VStack(alignment: .leading, spacing: 14) {
-                Text(recipe.localizedName)
-                    .font(.system(.largeTitle, design: .rounded).weight(.bold))
-                    .foregroundStyle(.white)
-                    .lineLimit(3)
-                    .shadow(color: .black.opacity(0.28), radius: 8, y: 4)
-
-                HStack(spacing: 8) {
+            VStack(spacing: 0) {
+                HStack(alignment: .top) {
                     if recipe.hasCookTime {
                         heroMetricChip(
                             icon: "clock.fill",
                             text: String(localized: "recipe.cookTime \(recipe.cookTimeMinutes)")
                         )
                     }
-                    heroMetricChip(
-                        icon: "heart.fill",
-                        text: "\(recipe.communityLikeCount)"
-                    )
-                    heroMetricChip(
-                        icon: "person.2.fill",
-                        text: String(localized: "recipeDetail.servings \(recipe.servings)")
-                    )
-                    heroMetricChip(
-                        icon: "carrot.fill",
-                        text: String(localized: "recipeDetail.ingredients \(recipe.ingredients.count)")
-                    )
+
+                    Spacer(minLength: 0)
+
+                    if recipe.isUserCreated {
+                        Image(systemName: "person.crop.circle.fill")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.white)
+                            .frame(width: 36, height: 36)
+                            .background(.black.opacity(0.24), in: Circle())
+                            .accessibilityLabel("recipeLibrary.myRecipes")
+                    } else {
+                        heroMetricChip(
+                            icon: "heart.fill",
+                            text: "\(recipe.communityLikeCount)"
+                        )
+                    }
                 }
 
-                RecipeUserRatingView(rating: recipe.userRating, isInteractive: true) { value in
-                    recipe.setUserRating(value)
-                    LocalPersistence.save(modelContext)
-                }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 8)
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .colorScheme(.dark)
+                Spacer(minLength: 0)
 
-                portionsControl
+                personalRatingControl
             }
             .padding(18)
         }
+        .frame(maxWidth: .infinity)
+        .frame(height: 300)
+        .clipped()
         .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
         .shadow(color: Color.black.opacity(0.16), radius: 22, x: 0, y: 12)
     }
 
-    private var portionsControl: some View {
-        HStack(spacing: 14) {
+    private var personalRatingControl: some View {
+        HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 2) {
-                Text("recipeDetail.calculateFor")
-                    .font(.caption.weight(.medium))
-                    .foregroundStyle(.white.opacity(0.72))
-                Text("recipe.displayPortions \(displayPortions)")
-                    .font(.headline.weight(.semibold))
+                Text("recipeDetail.yourRating")
+                    .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.white)
+                Text("recipeDetail.yourRating.caption")
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.72))
             }
 
-            Spacer()
+            Spacer(minLength: 0)
 
-            Stepper("", value: $displayPortions, in: 1...99)
-                .labelsHidden()
-                .tint(.white)
+            RecipeUserRatingView(
+                rating: recipe.userRating,
+                isInteractive: true,
+                starSize: .title2
+            ) { value in
+                recipe.setUserRating(value)
+                LocalPersistence.save(modelContext)
+            }
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
@@ -293,17 +259,53 @@ struct RecipeDetailView: View {
 
     @ViewBuilder
     private var recipeStepsContent: some View {
-        if let stepsText = recipe.localizedStepsText {
-            Text(stepsText)
-                .font(.subheadline)
-                .foregroundStyle(.primary)
-                .lineSpacing(4)
+        if let attributed = recipe.localizedStepsAttributed {
+            RecipeStepsTextView(attributedText: attributed)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 
     private var weightPerServing: Double {
         NutritionCalculator.weightPerServingGrams(for: recipe)
+    }
+
+    private var nutritionSectionHeader: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "chart.bar.fill")
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(Color(red: 0.06, green: 0.33, blue: 0.45))
+                .frame(width: 30, height: 30)
+                .background(Color(red: 0.06, green: 0.33, blue: 0.45).opacity(0.1), in: Circle())
+
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                Text("nutrition.title.perServing")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+
+                if weightPerServing > 0 {
+                    Text("nutrition.servingGrams \(Int(weightPerServing.rounded()))")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .lineLimit(1)
+            .minimumScaleFactor(0.85)
+
+            Spacer(minLength: 8)
+
+            Button {
+                showMicronutrients = true
+            } label: {
+                Text("recipe.micronutrients")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 9)
+                    .padding(.vertical, 5)
+                    .background(Color(.tertiarySystemGroupedBackground), in: Capsule())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("recipe.micronutrients")
+        }
     }
 
     private func sectionCard<Content: View>(@ViewBuilder content: () -> Content) -> some View {

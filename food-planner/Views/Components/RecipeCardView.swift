@@ -60,25 +60,12 @@ struct RecipeCardView: View {
         style == .hero ? 28 : 36
     }
 
-    private var showsRating: Bool {
-        style != .rail && recipe.userRating > 0
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             imageSection
 
             VStack(alignment: .leading, spacing: 8) {
                 titleRow
-
-                if showsRating {
-                    RecipeMetaRow(
-                        recipe: recipe,
-                        showsCookTime: false,
-                        showsCommunityLikes: false,
-                        showsRating: true
-                    )
-                }
 
                 if showsNutrition {
                     HStack(spacing: 6) {
@@ -104,18 +91,6 @@ struct RecipeCardView: View {
                 cornerRadius: 0,
                 pointSize: imagePointSize
             )
-            .frame(maxWidth: .infinity)
-            .frame(height: imageHeight)
-            .clipped()
-            .clipShape(
-                UnevenRoundedRectangle(
-                    topLeadingRadius: AppTheme.cardRadius,
-                    bottomLeadingRadius: 0,
-                    bottomTrailingRadius: 0,
-                    topTrailingRadius: AppTheme.cardRadius,
-                    style: .continuous
-                )
-            )
 
             imageMetaOverlay
 
@@ -123,6 +98,18 @@ struct RecipeCardView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                 .padding(8)
         }
+        .frame(maxWidth: .infinity)
+        .frame(height: imageHeight)
+        .clipped()
+        .clipShape(
+            UnevenRoundedRectangle(
+                topLeadingRadius: AppTheme.cardRadius,
+                bottomLeadingRadius: 0,
+                bottomTrailingRadius: 0,
+                topTrailingRadius: AppTheme.cardRadius,
+                style: .continuous
+            )
+        )
     }
 
     @ViewBuilder
@@ -148,8 +135,18 @@ struct RecipeCardView: View {
                 }
                 RecipeCaloriesTag(calories: nutritionPerServing.calories, usesMaterial: true)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-                RecipeCommunityLikesTag(count: recipe.communityLikeCount, usesMaterial: true)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                if recipe.isUserCreated {
+                    Image(systemName: "person.crop.circle.fill")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(AppTheme.accent)
+                        .frame(width: 36, height: 36)
+                        .background(.ultraThinMaterial, in: Circle())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                        .accessibilityLabel("recipeLibrary.myRecipes")
+                } else {
+                    RecipeCommunityLikesTag(count: recipe.communityLikeCount, usesMaterial: true)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                }
             }
             .padding(10)
             .allowsHitTesting(false)
@@ -190,7 +187,7 @@ struct RecipeCardView: View {
                 .foregroundStyle(.primary)
                 .frame(maxWidth: .infinity, minHeight: titleMinHeight, alignment: .topLeading)
 
-            if showsCommunityLikes {
+            if showsCommunityLikes, !recipe.isUserCreated {
                 RecipeCommunityLikesTag(count: recipe.communityLikeCount)
             }
         }

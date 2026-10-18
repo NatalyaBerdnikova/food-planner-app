@@ -11,7 +11,6 @@ struct NutritionSummaryView: View {
         Group {
             if embedded {
                 content
-                    .padding(AppTheme.cardPadding)
             } else {
                 content
                     .padding(AppTheme.cardPadding)

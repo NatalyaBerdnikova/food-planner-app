@@ -119,7 +119,7 @@ struct HomeView: View {
                     }
                     .buttonStyle(.plain)
 
-                    if recipe.isCatalogRecipe {
+                    if RecipeFavoritesService.canFavorite(recipe) {
                         let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
                         Button {
                             toggleFavorite(for: recipe)

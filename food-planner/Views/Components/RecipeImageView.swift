@@ -10,38 +10,34 @@ struct RecipeImageView: View {
     @State private var processedImage: UIImage?
 
     var body: some View {
-        Group {
-            if let processedImage {
-                Image(uiImage: processedImage)
-                    .resizable()
-                    .scaledToFill()
-            } else if imageData != nil {
-                ZStack {
-                    Color(.secondarySystemBackground)
+        Color(.secondarySystemBackground)
+            .overlay {
+                if let processedImage {
+                    Image(uiImage: processedImage)
+                        .resizable()
+                        .scaledToFill()
+                } else if imageData != nil {
                     ProgressView()
-                }
-            } else {
-                ZStack {
-                    Color(.secondarySystemBackground)
+                } else {
                     Image(systemName: "fork.knife")
                         .font(.title2)
                         .foregroundStyle(.secondary)
                 }
             }
-        }
-        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-        .task(id: imageData) {
-            guard let imageData else {
-                processedImage = nil
-                return
+            .clipped()
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            .task(id: imageData) {
+                guard let imageData else {
+                    processedImage = nil
+                    return
+                }
+                let scale = displayScale
+                let size = pointSize
+                processedImage = await ImageProcessor.shared.downsample(
+                    data: imageData,
+                    pointSize: size,
+                    scale: scale
+                )
             }
-            let scale = displayScale
-            let size = pointSize
-            processedImage = await ImageProcessor.shared.downsample(
-                data: imageData,
-                pointSize: size,
-                scale: scale
-            )
-        }
     }
 }
