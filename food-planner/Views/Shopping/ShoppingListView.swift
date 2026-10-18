@@ -157,7 +157,7 @@ struct ShoppingItemRow: View {
                         if item.isManual {
                             Image(systemName: "cart.badge.plus")
                                 .font(.caption.weight(.semibold))
-                                .foregroundStyle(Color(red: 0.06, green: 0.33, blue: 0.45))
+                                .foregroundStyle(AppTheme.accent)
                                 .accessibilityLabel("shopping.manualItem")
                         }
                     }

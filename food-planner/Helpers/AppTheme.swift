@@ -1,17 +1,20 @@
 import SwiftUI
 
 enum AppTheme {
-    static let accent = Color(red: 0.11, green: 0.37, blue: 0.29)
-    static let accentMuted = Color(red: 0.22, green: 0.48, blue: 0.40)
+    /// Мягкая оранжевая заливка
+    static let accentSoft = Color(red: 255 / 255, green: 210 / 255, blue: 170 / 255)
+    /// Яркий оранжевый для текста, иконок и tint
+    static let accent = Color(red: 255 / 255, green: 149 / 255, blue: 0 / 255)
+    static let accentMuted = Color(red: 255 / 255, green: 170 / 255, blue: 50 / 255)
     static let warmFill = Color(red: 0.83, green: 0.47, blue: 0.23)
     static let success = Color(red: 0.18, green: 0.58, blue: 0.42)
     static let warning = Color(red: 0.82, green: 0.42, blue: 0.18)
 
     static let heroGradient = LinearGradient(
         colors: [
-            Color(red: 0.07, green: 0.22, blue: 0.20),
-            Color(red: 0.12, green: 0.36, blue: 0.30),
-            Color(red: 0.20, green: 0.45, blue: 0.34),
+            Color(red: 0.55, green: 0.28, blue: 0.02),
+            Color(red: 0.95, green: 0.48, blue: 0.05),
+            accentSoft,
         ],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
@@ -47,14 +50,14 @@ enum AppTheme {
     static var canvas: Color { Color(.systemGroupedBackground) }
     static var card: Color { Color(.secondarySystemGroupedBackground) }
     static var elevated: Color { Color(.systemBackground) }
-    static var tagChipFill: Color { accent.opacity(0.08) }
+    static var tagChipFill: Color { accentSoft.opacity(0.28) }
     static var cardShadow: Color { Color.black.opacity(0.08) }
 
     static func accent(for colorScheme: ColorScheme, highContrast: Bool) -> Color {
         if highContrast {
             return colorScheme == .dark
-                ? Color(red: 0.45, green: 0.88, blue: 0.72)
-                : Color(red: 0.05, green: 0.28, blue: 0.20)
+                ? Color(red: 1.0, green: 0.72, blue: 0.35)
+                : Color(red: 0.78, green: 0.38, blue: 0.0)
         }
         return accent
     }

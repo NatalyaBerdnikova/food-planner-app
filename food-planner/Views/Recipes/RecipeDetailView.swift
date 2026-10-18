@@ -246,9 +246,9 @@ struct RecipeDetailView: View {
         return HStack(spacing: 12) {
             Image(systemName: "circle.fill")
                 .font(.system(size: 9))
-                .foregroundStyle(Color(red: 0.18, green: 0.54, blue: 0.36))
+                .foregroundStyle(AppTheme.accent)
                 .frame(width: 24, height: 24)
-                .background(Color(red: 0.18, green: 0.54, blue: 0.36).opacity(0.12), in: Circle())
+                .background(AppTheme.accent.opacity(0.12), in: Circle())
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(ingredient.displayName)
@@ -269,10 +269,10 @@ struct RecipeDetailView: View {
                 let kcal = product.nutrientsPer100g.calories * grams / 100
                 Text(L10n.kcalShort(Int(kcal.rounded())))
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(Color(red: 0.06, green: 0.33, blue: 0.45))
+                    .foregroundStyle(AppTheme.accent)
                     .padding(.horizontal, 9)
                     .padding(.vertical, 6)
-                    .background(Color(red: 0.06, green: 0.33, blue: 0.45).opacity(0.1), in: Capsule())
+                    .background(AppTheme.accent.opacity(0.1), in: Capsule())
             }
         }
         .padding(12)
@@ -318,9 +318,9 @@ struct RecipeDetailView: View {
         HStack(spacing: 10) {
             Image(systemName: "chart.bar.fill")
                 .font(.subheadline.weight(.bold))
-                .foregroundStyle(Color(red: 0.06, green: 0.33, blue: 0.45))
+                .foregroundStyle(AppTheme.accent)
                 .frame(width: 30, height: 30)
-                .background(Color(red: 0.06, green: 0.33, blue: 0.45).opacity(0.1), in: Circle())
+                .background(AppTheme.accent.opacity(0.1), in: Circle())
 
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Text("nutrition.title.perServing")
@@ -373,9 +373,9 @@ struct RecipeDetailView: View {
         HStack(spacing: 10) {
             Image(systemName: systemImage)
                 .font(.subheadline.weight(.bold))
-                .foregroundStyle(Color(red: 0.06, green: 0.33, blue: 0.45))
+                .foregroundStyle(AppTheme.accent)
                 .frame(width: 30, height: 30)
-                .background(Color(red: 0.06, green: 0.33, blue: 0.45).opacity(0.1), in: Circle())
+                .background(AppTheme.accent.opacity(0.1), in: Circle())
             Text(title)
                 .font(.headline)
             Spacer()
