@@ -161,7 +161,8 @@ struct AddMealSheet: View {
                     recipe: recipe,
                     style: .grid,
                     showsNutrition: true,
-                    showsCommunityLikes: false
+                    showsCommunityLikes: false,
+                    imageMeta: .caloriesTopLeading
                 )
 
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")

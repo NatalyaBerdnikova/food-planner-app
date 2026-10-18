@@ -3,53 +3,135 @@ import SwiftData
 
 struct RecipeLibraryView: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(ImportCoordinator.self) private var importCoordinator
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
 
+    @State private var searchText = ""
+    @State private var filterTab: RecipeFilterTab = .all
+    @State private var showFavoritesOnly = false
+    @State private var advancedFilters = RecipeAdvancedFilters()
+    @State private var showAdvancedFilters = false
     @State private var pasteImportRequest: PasteImportRequest?
     @State private var unfavoriteCandidate: Recipe?
 
     private let columns = [
-        GridItem(.flexible(), spacing: 16),
-        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12),
     ]
 
-    private var userRecipes: [Recipe] {
-        RecipeCollections.userRecipes(from: recipes)
+    private var favoriteIds: Set<String> {
+        RecipeFavoritesService.favoriteIds(in: modelContext)
     }
 
-    private var catalogRecipes: [Recipe] {
-        RecipeCollections.sortedCatalogRecipes(from: recipes)
+    private var libraryRecipes: [Recipe] {
+        RecipeCollections.libraryRecipes(from: recipes)
+    }
+
+    private var filteredRecipes: [Recipe] {
+        var result = libraryRecipes
+
+        if showFavoritesOnly {
+            result = RecipeFavoritesService.favoriteRecipes(from: result, favoriteIds: favoriteIds)
+        }
+
+        if let mealType = filterTab.mealType {
+            result = result.filter { recipe in
+                recipe.meals.isEmpty || recipe.meals.contains { $0.mealType == mealType }
+            }
+        }
+
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !query.isEmpty {
+            result = result.filter { $0.matchesSearch(query) }
+        }
+
+        if advancedFilters.isActive {
+            result = result.filter { advancedFilters.matches($0) }
+        }
+
+        return result
+    }
+
+    private var hasActiveQuickFilter: Bool {
+        showFavoritesOnly || filterTab != .all || advancedFilters.isActive || !searchText.isEmpty
+    }
+
+    private var emptyStateHint: String {
+        hasActiveQuickFilter
+            ? String(localized: "empty.recipesFiltered.hint")
+            : String(localized: "empty.recipesLibrary.hint")
+    }
+
+    @ViewBuilder
+    private var emptyState: some View {
+        if hasActiveQuickFilter {
+            ContentUnavailableView {
+                Label("empty.recipesFiltered", systemImage: "magnifyingglass")
+            } description: {
+                Text(emptyStateHint)
+            } actions: {
+                Button("recipeLibrary.resetFilters") {
+                    resetFilters()
+                }
+                .buttonStyle(.borderedProminent)
+            }
+        } else {
+            ContentUnavailableView(
+                "empty.recipesLibrary",
+                systemImage: "magnifyingglass",
+                description: Text(emptyStateHint)
+            )
+        }
+    }
+
+    private func resetFilters() {
+        searchText = ""
+        filterTab = .all
+        showFavoritesOnly = false
+        advancedFilters.reset()
     }
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: AppTheme.sectionSpacing) {
-                importHero
-
-                if userRecipes.isEmpty && catalogRecipes.isEmpty {
-                    ContentUnavailableView(
-                        "empty.recipesLibrary",
-                        systemImage: "book.closed",
-                        description: Text("empty.recipesLibrary.hint")
-                    )
+            if filteredRecipes.isEmpty {
+                emptyState
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 40)
-                } else {
-                    if !userRecipes.isEmpty {
-                        userRecipesSection
-                    }
-                    if !catalogRecipes.isEmpty {
-                        recommendationsSection
+            } else {
+                LazyVGrid(columns: columns, spacing: 12) {
+                    ForEach(filteredRecipes) { recipe in
+                        libraryCard(recipe)
                     }
                 }
+                .padding(AppTheme.contentPadding)
             }
-            .padding(AppTheme.contentPadding)
         }
         .appScreenBackground()
+        .safeAreaInset(edge: .top, spacing: 0) {
+            quickFiltersBar
+        }
         .navigationTitle("nav.recipes")
+        .navigationBarTitleDisplayMode(.inline)
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: .automatic),
+            prompt: "search.recipes"
+        )
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button {
+                    pasteImportRequest = PasteImportRequest()
+                } label: {
+                    AppTheme.instagramGradient
+                        .mask {
+                            Image("InstagramLogo")
+                                .renderingMode(.template)
+                                .resizable()
+                                .scaledToFit()
+                        }
+                        .frame(width: 20, height: 20)
+                }
+                .accessibilityLabel("accessibility.importRecipe")
+
                 NavigationLink {
                     AddRecipeView()
                 } label: {
@@ -60,6 +142,9 @@ struct RecipeLibraryView: View {
         }
         .sheet(item: $pasteImportRequest) { _ in
             PasteImportSheet()
+        }
+        .sheet(isPresented: $showAdvancedFilters) {
+            RecipeAdvancedFiltersSheet(filters: $advancedFilters)
         }
         .alert(
             "favorites.remove.title",
@@ -84,84 +169,88 @@ struct RecipeLibraryView: View {
         }
     }
 
-    private var importHero: some View {
-        Button {
-            pasteImportRequest = PasteImportRequest()
-        } label: {
-            HStack(alignment: .center, spacing: 10) {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack(alignment: .center, spacing: 10) {
-                        Image(systemName: "square.and.arrow.down.on.square.fill")
-                            .font(.system(size: 24))
-                            .foregroundStyle(AppTheme.warmFill)
-                            .motionSafeSymbolEffect(.pulse)
-                            .accessibilityHidden(true)
-
-                        Text("import.hero.title")
-                            .font(.title3.weight(.bold))
-                            .foregroundStyle(.primary)
+    private var quickFiltersBar: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+                ForEach(RecipeFilterTab.allCases) { tab in
+                    filterChip(
+                        title: tab.displayName,
+                        isSelected: filterTab == tab && !showFavoritesOnly
+                    ) {
+                        showFavoritesOnly = false
+                        filterTab = tab
                     }
-
-                    Text("import.hero.subtitle")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    Text("import.hero.shareHint")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
 
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-                    .frame(maxHeight: .infinity)
-                    .accessibilityHidden(true)
+                filterChip(
+                    title: "filter.favorites",
+                    isSelected: showFavoritesOnly,
+                    systemImage: "heart.fill"
+                ) {
+                    showFavoritesOnly.toggle()
+                    if showFavoritesOnly {
+                        filterTab = .all
+                    }
+                }
+
+                Button {
+                    showAdvancedFilters = true
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "slider.horizontal.3")
+                        Text("recipeLibrary.filters")
+                        if advancedFilters.isActive {
+                            Circle()
+                                .fill(Color.accentColor)
+                                .frame(width: 6, height: 6)
+                        }
+                    }
+                    .font(.subheadline.weight(.medium))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        advancedFilters.isActive
+                            ? Color.accentColor.opacity(0.15)
+                            : Color(.tertiarySystemFill)
+                    )
+                    .foregroundStyle(advancedFilters.isActive ? Color.accentColor : Color.primary)
+                    .clipShape(Capsule())
+                    .contentShape(Capsule())
+                }
+                .buttonStyle(.plain)
             }
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .shadow(color: AppTheme.cardShadow, radius: 12, x: 0, y: 4)
-            .contentShape(Rectangle())
+            .padding(.horizontal, AppTheme.contentPadding)
+            .padding(.vertical, 10)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppTheme.elevated)
+        .overlay(alignment: .bottom) {
+            Divider()
+        }
+    }
+
+    private func filterChip(
+        title: LocalizedStringResource,
+        isSelected: Bool,
+        systemImage: String? = nil,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            HStack(spacing: 6) {
+                if let systemImage {
+                    Image(systemName: systemImage)
+                }
+                Text(title)
+            }
+            .font(.subheadline.weight(.medium))
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(isSelected ? Color.accentColor : Color(.tertiarySystemFill))
+            .foregroundStyle(isSelected ? Color.white : Color.primary)
+            .clipShape(Capsule())
+            .contentShape(Capsule())
         }
         .buttonStyle(.plain)
-        .accessibilityHint("import.hero.shareHint")
-    }
-
-    private var userRecipesSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            AppSectionHeader(title: "recipeLibrary.myRecipes", systemImage: "person.crop.circle")
-
-            LazyVGrid(columns: columns, spacing: 14) {
-                ForEach(userRecipes) { recipe in
-                    NavigationLink {
-                        RecipeDetailView(recipe: recipe)
-                    } label: {
-                        RecipeCardView(recipe: recipe, badge: .userCreated)
-                    }
-                    .buttonStyle(.plain)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                }
-            }
-        }
-    }
-
-    private var recommendationsSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            AppSectionHeader(title: "home.recommendations", systemImage: "sparkles")
-
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: AppTheme.sectionRailSpacing) {
-                    ForEach(catalogRecipes) { recipe in
-                        libraryCard(recipe)
-                            .frame(width: AppTheme.recipeRailCardWidth)
-                    }
-                }
-                .padding(.vertical, 2)
-            }
-        }
     }
 
     private func libraryCard(_ recipe: Recipe) -> some View {
@@ -172,33 +261,40 @@ struct RecipeLibraryView: View {
             NavigationLink {
                 RecipeDetailView(recipe: recipe)
             } label: {
-                RecipeCardView(recipe: recipe, style: .rail)
+                RecipeCardView(
+                    recipe: recipe,
+                    badge: recipe.isUserCreated ? .userCreated : nil,
+                    style: .grid,
+                    showsNutrition: true,
+                    showsCommunityLikes: false,
+                    imageMeta: .libraryBottomLeading
+                )
             }
             .buttonStyle(.plain)
             .frame(maxWidth: .infinity, alignment: .leading)
 
-            Button {
-                if isFavorite {
-                    unfavoriteCandidate = recipe
-                } else {
-                    RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
+            if recipe.isCatalogRecipe {
+                Button {
+                    if isFavorite {
+                        unfavoriteCandidate = recipe
+                    } else {
+                        RecipeFavoritesService.setFavorite(recipe, favorite: true, in: modelContext)
+                    }
+                } label: {
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(isFavorite ? .red : .primary)
+                        .frame(width: 36, height: 36)
+                        .background(.ultraThinMaterial, in: Circle())
                 }
-            } label: {
-                Image(systemName: isFavorite ? "heart.fill" : "heart")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(isFavorite ? .red : .secondary)
-                    .frame(width: 44, height: 44)
-                    .contentShape(Rectangle())
-                    .background(.ultraThinMaterial, in: Circle())
+                .buttonStyle(.plain)
+                .padding(8)
+                .accessibilityLabel(
+                    isFavorite
+                        ? String(localized: "accessibility.removeFavorite")
+                        : String(localized: "accessibility.addFavorite")
+                )
             }
-            .buttonStyle(.plain)
-            .padding(8)
-            .accessibilityLabel(
-                isFavorite
-                    ? String(localized: "accessibility.removeFavorite")
-                    : String(localized: "accessibility.addFavorite")
-            )
         }
     }
-
 }

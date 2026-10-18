@@ -77,13 +77,30 @@ struct RecipeCaloriesTag: View {
 
 struct RecipeCommunityLikesTag: View {
     let count: Int
+    var usesMaterial: Bool = false
 
     var body: some View {
-        RecipeMetaTag(
-            systemImage: "heart.fill",
-            text: "\(count)",
-            tint: .red.opacity(0.85)
-        )
+        Group {
+            if usesMaterial {
+                Label {
+                    Text("\(count)")
+                        .lineLimit(1)
+                } icon: {
+                    Image(systemName: "heart.fill")
+                }
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.primary)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(.ultraThinMaterial, in: Capsule())
+            } else {
+                RecipeMetaTag(
+                    systemImage: "heart.fill",
+                    text: "\(count)",
+                    tint: .red.opacity(0.85)
+                )
+            }
+        }
         .accessibilityLabel(Text("accessibility.communityLikes \(count)"))
     }
 }

@@ -11,12 +11,19 @@ enum RecipeCardStyle {
     case hero
 }
 
+enum RecipeCardImageMeta {
+    case cookTimeTopLeading
+    case caloriesTopLeading
+    case libraryBottomLeading
+}
+
 struct RecipeCardView: View {
     let recipe: Recipe
     var badge: RecipeCardBadge?
     var style: RecipeCardStyle = .grid
     var showsNutrition: Bool = false
     var showsCommunityLikes: Bool = true
+    var imageMeta: RecipeCardImageMeta = .cookTimeTopLeading
     var showsFavoriteControl: Bool = false
     var isFavorite: Bool = false
     var onFavoriteTap: (() -> Void)?
@@ -110,21 +117,42 @@ struct RecipeCardView: View {
                 )
             )
 
-            if showsNutrition {
-                RecipeCaloriesTag(calories: nutritionPerServing.calories, usesMaterial: true)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                    .padding(10)
-                    .allowsHitTesting(false)
-            } else if recipe.hasCookTime {
+            imageMetaOverlay
+
+            overlayTrailingControls
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                .padding(8)
+        }
+    }
+
+    @ViewBuilder
+    private var imageMetaOverlay: some View {
+        switch imageMeta {
+        case .cookTimeTopLeading:
+            if recipe.hasCookTime {
                 RecipeCookTimeTag(minutes: recipe.cookTimeMinutes, usesMaterial: true)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                     .padding(10)
                     .allowsHitTesting(false)
             }
-
-            overlayTrailingControls
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                .padding(8)
+        case .caloriesTopLeading:
+            RecipeCaloriesTag(calories: nutritionPerServing.calories, usesMaterial: true)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .padding(10)
+                .allowsHitTesting(false)
+        case .libraryBottomLeading:
+            ZStack {
+                if recipe.hasCookTime {
+                    RecipeCookTimeTag(minutes: recipe.cookTimeMinutes, usesMaterial: true)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                }
+                RecipeCaloriesTag(calories: nutritionPerServing.calories, usesMaterial: true)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+                RecipeCommunityLikesTag(count: recipe.communityLikeCount, usesMaterial: true)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+            }
+            .padding(10)
+            .allowsHitTesting(false)
         }
     }
 
