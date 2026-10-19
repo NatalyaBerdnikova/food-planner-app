@@ -1636,6 +1636,22 @@
         }
       }
     },
+    "common.more" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ещё"
+          }
+        }
+      }
+    },
     "common.save" : {
       "localizations" : {
         "en" : {
@@ -4047,6 +4063,22 @@
         }
       }
     },
+    "nutrition.microDailyReference.day" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scale shows share of average daily intake for an adult."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шкала показывает долю среднесуточной нормы для взрослого."
+          }
+        }
+      }
+    },
     "nutrition.microDetail" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -4327,7 +4359,6 @@
       }
     },
     "nutrition.unit.kcal" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6541,6 +6572,38 @@
         }
       }
     },
+    "subscription.cta.subscribeHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel anytime in Settings."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить можно в любой момент в Настройках."
+          }
+        }
+      }
+    },
+    "subscription.cta.trialHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No charge today. After 14 days, $69.99/year. Cancel anytime."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сегодня бесплатно. Через 14 дней — $69.99/год. Отмена в любой момент."
+          }
+        }
+      }
+    },
     "subscription.enableTrial" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -6673,22 +6736,6 @@
         }
       }
     },
-    "subscription.plan.monthly.subtitle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Flexible · cancel anytime"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Гибко · отмена в любой момент"
-          }
-        }
-      }
-    },
     "subscription.plan.lifetime.subtitle" : {
       "localizations" : {
         "en" : {
@@ -6701,6 +6748,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Один платёж · вернём деньги, если не понравится"
+          }
+        }
+      }
+    },
+    "subscription.plan.monthly.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flexible · cancel anytime"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гибко · отмена в любой момент"
           }
         }
       }
@@ -6749,38 +6812,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "в год"
-          }
-        }
-      }
-    },
-    "subscription.cta.subscribeHint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel anytime in Settings."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отменить можно в любой момент в Настройках."
-          }
-        }
-      }
-    },
-    "subscription.cta.trialHint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No charge today. After 14 days, $69.99/year. Cancel anytime."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сегодня бесплатно. Через 14 дней — $69.99/год. Отмена в любой момент."
           }
         }
       }

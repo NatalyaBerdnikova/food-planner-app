@@ -4,8 +4,11 @@ struct DayPlanCardView: View {
     let dayPlan: DayPlan
     let isExpanded: Bool
     let targetNutrition: DailyNutrition?
+    let micronutrientFocus: [MicronutrientKind]
     let onToggleExpanded: () -> Void
     let onTapEmptyMeal: (MealType) -> Void
+
+    @State private var showMicronutrients = false
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
 
@@ -21,33 +24,52 @@ struct DayPlanCardView: View {
         NutritionCalculator.from(dayPlan: dayPlan)
     }
 
+    private var dayTotals: NutrientTotals {
+        NutritionCalculator.totals(from: dayPlan)
+    }
+
+    private var focusedMicronutrients: [MicronutrientKind] {
+        micronutrientFocus.isEmpty
+            ? [.fiber, .vitaminD3, .iron]
+            : micronutrientFocus
+    }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 0) {
             Button(action: onToggleExpanded) {
-                HStack(spacing: 10) {
+                HStack(spacing: 12) {
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
                         Text(dayTitle)
                             .font(.headline)
                             .foregroundStyle(.primary)
                         if isToday {
                             Text("weekPlan.today")
-                                .font(.caption)
+                                .font(.caption.weight(.semibold))
                                 .foregroundStyle(.tint)
                         }
                     }
 
-                    Spacer(minLength: 0)
+                    Spacer(minLength: 8)
 
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
+                        .frame(width: 28, height: 28)
                 }
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
 
+            NutritionSummaryView(
+                nutrition: dayNutrition,
+                target: targetNutrition,
+                embedded: true,
+                macroLabelStyle: .full
+            )
+            .padding(.top, 12)
+
             if isExpanded {
-                VStack(spacing: 8) {
+                VStack(spacing: 16) {
                     ForEach(dayMealTypes, id: \.self) { type in
                         PlannedMealSlotView(
                             mealType: type,
@@ -56,13 +78,10 @@ struct DayPlanCardView: View {
                         )
                     }
                 }
-            } else {
-                NutritionSummaryView(
-                    nutrition: dayNutrition,
-                    target: targetNutrition,
-                    embedded: true,
-                    macroLabelStyle: .full
-                )
+                .padding(.top, 16)
+
+                micronutrientsSection
+                    .padding(.top, 16)
             }
         }
         .padding(AppTheme.contentPadding)
@@ -73,6 +92,42 @@ struct DayPlanCardView: View {
                 .stroke(borderColor, lineWidth: borderWidth)
         }
         .animation(.easeInOut(duration: 0.25), value: isExpanded)
+        .sheet(isPresented: $showMicronutrients) {
+            MicronutrientDetailSheet(
+                totals: dayTotals,
+                micronutrientFocus: micronutrientFocus
+            )
+        }
+    }
+
+    private var micronutrientsSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 12) {
+                Text("recipe.micronutrients")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+                Spacer(minLength: 8)
+                Button {
+                    showMicronutrients = true
+                } label: {
+                    Text("common.more")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .background(AppTheme.nestedFill, in: Capsule())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("recipe.micronutrients")
+            }
+
+            ForEach(focusedMicronutrients) { kind in
+                MicronutrientProgressRow(
+                    kind: kind,
+                    actual: dayTotals.value(for: kind)
+                )
+            }
+        }
     }
 
     private var borderWidth: CGFloat {

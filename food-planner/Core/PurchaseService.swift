@@ -88,15 +88,58 @@ enum PurchaseService {
         }
     }
 
-    static func checkAccess(onUpdate: @escaping @MainActor (_ isPro: Bool) -> Void) {
-        Adapty.getProfile { result in
-            Task { @MainActor in
-                if let profile = try? result.get(),
-                   profile.accessLevels[AccessLevels.pro.rawValue]?.isActive ?? false {
-                    onUpdate(true)
-                } else {
-                    onUpdate(false)
+    enum AccessCheckResult: Equatable {
+        case active
+        case inactive
+        case unknown
+    }
+
+    static func checkAccess() async -> AccessCheckResult {
+        await withCheckedContinuation { continuation in
+            Adapty.getProfile { result in
+                switch result {
+                case let .success(profile):
+                    let isActive = profile.accessLevels[AccessLevels.pro.rawValue]?.isActive ?? false
+                    continuation.resume(returning: isActive ? .active : .inactive)
+                case .failure:
+                    continuation.resume(returning: .unknown)
                 }
+            }
+        }
+    }
+
+    static func checkAccessWithRetry(
+        attempts: Int = 4,
+        initialDelayNanoseconds: UInt64 = 400_000_000
+    ) async -> AccessCheckResult {
+        var delay = initialDelayNanoseconds
+        for attempt in 1...attempts {
+            let result = await checkAccess()
+            if result != .unknown || attempt == attempts {
+                return result
+            }
+            try? await Task.sleep(nanoseconds: delay)
+            delay = min(delay * 2, 2_000_000_000)
+        }
+        return .unknown
+    }
+
+    @MainActor
+    static var onProfileAccessChanged: ((Bool) -> Void)?
+
+    static func isProAccessActive(in profile: AdaptyProfile) -> Bool {
+        profile.accessLevels[AccessLevels.pro.rawValue]?.isActive ?? false
+    }
+
+    static func checkAccess(onUpdate: @escaping @MainActor (_ isPro: Bool) -> Void) {
+        Task { @MainActor in
+            switch await checkAccess() {
+            case .active:
+                onUpdate(true)
+            case .inactive:
+                onUpdate(false)
+            case .unknown:
+                break
             }
         }
     }

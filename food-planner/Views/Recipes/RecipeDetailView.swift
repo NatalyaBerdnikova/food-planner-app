@@ -117,7 +117,10 @@ struct RecipeDetailView: View {
             Text("recipeDetail.hide.message \(recipe.localizedName)")
         }
         .sheet(isPresented: $showMicronutrients) {
-            MicronutrientDetailSheet(recipe: recipe)
+            MicronutrientDetailSheet(
+                recipe: recipe,
+                micronutrientFocus: AppSettingsService.settings(in: modelContext).profileMicronutrientFocus
+            )
         }
         .onAppear {
             displayPortions = max(recipe.servings, 1)

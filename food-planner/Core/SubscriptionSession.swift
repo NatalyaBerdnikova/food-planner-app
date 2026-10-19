@@ -7,6 +7,7 @@ import SwiftData
 final class SubscriptionSession {
     var isPro = false
     var isFree = false
+    var isAccessResolved = false
     var loaderPresented = false
     var alertPresented = false
     var alertText = ""
@@ -17,6 +18,18 @@ final class SubscriptionSession {
     func load(from settings: AppSettings) {
         isPro = settings.isPro
         isFree = settings.isFree
+    }
+
+    func applyAccessCheck(_ result: PurchaseService.AccessCheckResult) {
+        switch result {
+        case .active:
+            isPro = true
+        case .inactive:
+            isPro = false
+        case .unknown:
+            break
+        }
+        isAccessResolved = true
     }
 
     func persist(to settings: AppSettings, in context: ModelContext) {

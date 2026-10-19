@@ -193,12 +193,12 @@ struct RecipeCardView: View {
                 .minimumScaleFactor(0.8)
             Text(formatted(value))
                 .font(.caption.weight(.semibold))
-                .foregroundStyle(AppTheme.accent)
+                .foregroundStyle(AppTheme.warmFill)
                 .lineLimit(1)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 4)
-        .background(AppTheme.tagChipFill, in: RoundedRectangle(cornerRadius: AppTheme.tagChipRadius, style: .continuous))
+        .background(AppTheme.nestedFill, in: RoundedRectangle(cornerRadius: AppTheme.tagChipRadius, style: .continuous))
     }
 
     private func formatted(_ value: Double) -> String {

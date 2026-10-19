@@ -187,6 +187,14 @@ struct HomeView: View {
                 } label: {
                     HStack(spacing: 10) {
                         AppSectionHeader(title: "home.today", systemImage: "chart.bar.fill", fillsWidth: false)
+                        if isTodayExpanded {
+                            Text("home.targetProgress")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.85)
+                                .transition(.opacity.combined(with: .move(edge: .top)))
+                        }
                         Spacer(minLength: 0)
                         Image(systemName: isTodayExpanded ? "chevron.up" : "chevron.down")
                             .font(.caption.weight(.semibold))
@@ -202,7 +210,8 @@ struct HomeView: View {
                             actual: todayNutrition,
                             target: settings.targetNutrition,
                             macroLabelStyle: .full,
-                            embedded: true
+                            embedded: true,
+                            showsHeader: false
                         )
                     }
                 } else {

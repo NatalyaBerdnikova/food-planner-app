@@ -14,6 +14,15 @@ enum NutritionTargetStatus {
         return .above
     }
 
+    /// Для микронутриентов: жёлтый < 81%, зелёный 81–200%, красный > 200%.
+    static func fromMicronutrient(actual: Double, target: Double) -> NutritionTargetStatus? {
+        guard target > 0 else { return nil }
+        let ratio = actual / target
+        if ratio < 0.81 { return .below }
+        if ratio <= 2.05 { return .onTarget }
+        return .above
+    }
+
     var color: Color {
         switch self {
         case .below:

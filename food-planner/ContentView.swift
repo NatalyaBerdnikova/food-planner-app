@@ -8,7 +8,7 @@ struct ContentView: View {
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
     private var settingsList: [AppSettings]
 
-    @State private var isDatabaseReady = false
+    @State private var isBootstrapReady = false
     @State private var importCoordinator = ImportCoordinator()
 
     private var appLanguage: AppLanguage {
@@ -25,7 +25,7 @@ struct ContentView: View {
         @Bindable var subscriptionSession = subscriptionSession
 
         Group {
-            if isDatabaseReady {
+            if isBootstrapReady && subscriptionSession.isAccessResolved {
                 gatedRoot
                     .environment(importCoordinator)
                     .applyAppLanguage(appLanguage)
@@ -38,7 +38,9 @@ struct ContentView: View {
         }
         .task {
             await bootstrapIfNeeded()
-            isDatabaseReady = true
+        }
+        .onAppear {
+            bindProfileAccessUpdates()
         }
         .alert(
             subscriptionSession.alertText,
@@ -57,7 +59,9 @@ struct ContentView: View {
     private var gatedRoot: some View {
         if !hasCompletedOnboarding {
             OnboardingFlowView {
-                refreshSubscriptionStatus()
+                Task {
+                    await refreshSubscriptionStatus()
+                }
             }
         } else if !subscriptionSession.hasFullAccess {
             HardPaywallView()
@@ -98,16 +102,25 @@ struct ContentView: View {
         await RecipeCatalogStore.seedIfNeeded(in: modelContext)
         let settings = AppSettingsService.settings(in: modelContext)
         subscriptionSession.load(from: settings)
-        refreshSubscriptionStatus()
+        await refreshSubscriptionStatus()
+        isBootstrapReady = true
     }
 
-    private func refreshSubscriptionStatus() {
-        PurchaseService.checkAccess { isPro in
-            Task { @MainActor in
-                subscriptionSession.isPro = isPro
-                let settings = AppSettingsService.settings(in: modelContext)
-                subscriptionSession.persist(to: settings, in: modelContext)
-            }
+    private func refreshSubscriptionStatus() async {
+        let result = await PurchaseService.checkAccessWithRetry()
+        subscriptionSession.applyAccessCheck(result)
+        let settings = AppSettingsService.settings(in: modelContext)
+        subscriptionSession.persist(to: settings, in: modelContext)
+    }
+
+    private func bindProfileAccessUpdates() {
+        let session = subscriptionSession
+        let context = modelContext
+        PurchaseService.onProfileAccessChanged = { isPro in
+            session.isPro = isPro
+            session.isAccessResolved = true
+            let settings = AppSettingsService.settings(in: context)
+            session.persist(to: settings, in: context)
         }
     }
 }

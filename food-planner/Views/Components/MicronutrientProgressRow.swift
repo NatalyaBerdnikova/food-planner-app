@@ -7,17 +7,19 @@ struct MicronutrientProgressRow: View {
     private var target: Double { kind.dailyTarget }
 
     var body: some View {
-        let status = NutritionTargetStatus.from(actual: actual, target: target)
+        let status = NutritionTargetStatus.fromMicronutrient(actual: actual, target: target)
 
         VStack(alignment: .leading, spacing: 6) {
-            HStack(alignment: .firstTextBaseline) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
                 Text(kind.displayName)
                     .font(.subheadline)
-                Spacer(minLength: 12)
+                Spacer(minLength: 8)
                 Text(valueLabel)
                     .font(.caption)
                     .foregroundStyle(status?.color ?? .secondary)
                     .multilineTextAlignment(.trailing)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
             }
 
             GeometryReader { geometry in

@@ -3,6 +3,7 @@ import SwiftUI
 struct WeekDayCarousel: View {
     let dayPlans: [DayPlan]
     let targetNutrition: DailyNutrition?
+    var micronutrientFocus: [MicronutrientKind] = []
     @Binding var selectedDay: Date?
     let onTapEmptyMeal: (DayPlan, MealType) -> Void
 
@@ -18,6 +19,7 @@ struct WeekDayCarousel: View {
                     dayPlan: dayPlan,
                     isExpanded: expandedDates.contains(dayKey),
                     targetNutrition: targetNutrition,
+                    micronutrientFocus: micronutrientFocus,
                     onToggleExpanded: {
                         toggleExpanded(dayKey)
                         selectedDay = dayPlan.date

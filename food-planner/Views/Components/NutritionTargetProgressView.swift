@@ -5,6 +5,7 @@ struct NutritionTargetProgressView: View {
     let target: DailyNutrition
     var macroLabelStyle: MacroLabelStyle = .full
     var embedded: Bool = false
+    var showsHeader: Bool = true
 
     @AppStorage(MacroDisplaySettings.showFractionsKey) private var showMacroFractions =
         MacroDisplaySettings.showFractionsDefault
@@ -24,9 +25,11 @@ struct NutritionTargetProgressView: View {
 
     private var content: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("home.targetProgress")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+            if showsHeader {
+                Text("home.targetProgress")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
 
             progressRow(
                 title: macroLabelStyle.kcalTitle,

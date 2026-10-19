@@ -1,38 +1,78 @@
 import SwiftUI
 
 struct MicronutrientDetailSheet: View {
-    let recipe: Recipe
+    let totals: NutrientTotals
+    var micronutrientFocus: [MicronutrientKind] = []
+    private let showsEmptyState: Bool
+    private let footerText: LocalizedStringResource?
+
     @Environment(\.dismiss) private var dismiss
 
-    private var nutrition: RecipeNutrition {
-        NutritionCalculator.recipeNutrition(recipe)
+    init(
+        totals: NutrientTotals,
+        micronutrientFocus: [MicronutrientKind] = [],
+        showsEmptyState: Bool = false,
+        footerText: LocalizedStringResource? = "nutrition.microDailyReference.day"
+    ) {
+        self.totals = totals
+        self.micronutrientFocus = micronutrientFocus
+        self.showsEmptyState = showsEmptyState
+        self.footerText = footerText
     }
 
-    private var perServing: NutrientTotals {
+    init(recipe: Recipe, micronutrientFocus: [MicronutrientKind] = []) {
+        let nutrition = NutritionCalculator.recipeNutrition(recipe)
         let servings = max(Double(recipe.servings), 1)
-        return nutrition.total.scaled(by: 1 / servings)
+        self.totals = nutrition.total.scaled(by: 1 / servings)
+        self.micronutrientFocus = micronutrientFocus
+        self.showsEmptyState = nutrition.totalWeightGrams <= 0
+        self.footerText = "nutrition.microDailyReference"
+    }
+
+    private var focusedKinds: [MicronutrientKind] {
+        micronutrientFocus.filter { MicronutrientKind.allCases.contains($0) }
+    }
+
+    private var otherKinds: [MicronutrientKind] {
+        let focused = Set(focusedKinds)
+        return MicronutrientKind.allCases.filter { !focused.contains($0) }
     }
 
     var body: some View {
         NavigationStack {
-            List {
-                if nutrition.totalWeightGrams > 0 {
-                    Section {
-                        ForEach(MicronutrientKind.allCases) { kind in
-                            MicronutrientProgressRow(
-                                kind: kind,
-                                actual: perServing.value(for: kind)
-                            )
-                        }
-                    } footer: {
-                        Text("nutrition.microDailyReference")
-                    }
-                } else {
+            Group {
+                if showsEmptyState {
                     ContentUnavailableView(
                         "nutrition.noIngredients",
                         systemImage: "leaf",
                         description: Text("nutrition.noIngredients.hint")
                     )
+                } else {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(focusedKinds) { kind in
+                                row(for: kind)
+                            }
+
+                            if !focusedKinds.isEmpty, !otherKinds.isEmpty {
+                                Divider()
+                                    .padding(.vertical, 4)
+                            }
+
+                            ForEach(otherKinds) { kind in
+                                row(for: kind)
+                            }
+
+                            if let footerText {
+                                Text(footerText)
+                                    .font(.footnote)
+                                    .foregroundStyle(.secondary)
+                                    .padding(.top, 4)
+                            }
+                        }
+                        .padding(AppTheme.contentPadding)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
             }
             .navigationTitle("nutrition.microTitle")
@@ -43,5 +83,12 @@ struct MicronutrientDetailSheet: View {
                 }
             }
         }
+    }
+
+    private func row(for kind: MicronutrientKind) -> some View {
+        MicronutrientProgressRow(
+            kind: kind,
+            actual: totals.value(for: kind)
+        )
     }
 }

@@ -18,13 +18,13 @@ struct RecipeNutrition {
 
 enum NutritionCalculator {
     static func from(dayPlan: DayPlan) -> DailyNutrition {
-        dayPlan.meals.reduce(into: DailyNutrition()) { totals, meal in
+        totals(from: dayPlan).macros
+    }
+
+    static func totals(from dayPlan: DayPlan) -> NutrientTotals {
+        dayPlan.meals.reduce(into: NutrientTotals.zero) { totals, meal in
             guard let recipe = meal.recipe else { return }
-            let nutrition = recipeNutrition(recipe)
-            totals.calories += nutrition.total.calories
-            totals.protein += nutrition.total.protein
-            totals.fat += nutrition.total.fat
-            totals.carbs += nutrition.total.carbs
+            totals = totals + recipeNutrition(recipe).total
         }
     }
 

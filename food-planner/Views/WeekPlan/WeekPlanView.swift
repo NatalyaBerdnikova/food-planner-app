@@ -20,6 +20,10 @@ struct WeekPlanView: View {
         settingsList.first?.targetNutrition
     }
 
+    private var micronutrientFocus: [MicronutrientKind] {
+        settingsList.first?.profileMicronutrientFocus ?? []
+    }
+
     var body: some View {
         content
             .navigationTitle("nav.weekPlan")
@@ -47,6 +51,7 @@ struct WeekPlanView: View {
                         WeekDayCarousel(
                             dayPlans: sortedDayPlans(weekPlan),
                             targetNutrition: targetNutrition,
+                            micronutrientFocus: micronutrientFocus,
                             selectedDay: $selectedDay,
                             onTapEmptyMeal: presentAddMeal
                         )

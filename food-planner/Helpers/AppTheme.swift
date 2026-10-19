@@ -2,12 +2,13 @@ import SwiftUI
 import UIKit
 
 enum AppTheme {
-    /// Мягкая оранжевая заливка (светлая тема); в тёмной — приглушённый акцент
+    /// Мягкая оранжевая заливка для иконок и чипов (как у приёмов пищи в дне)
     static let accentSoft = Color(uiColor: UIColor { traits in
+        let orange = UIColor(red: 255 / 255, green: 149 / 255, blue: 0 / 255, alpha: 1)
         if traits.userInterfaceStyle == .dark {
-            return UIColor(red: 255 / 255, green: 149 / 255, blue: 0 / 255, alpha: 0.28)
+            return orange.withAlphaComponent(0.14)
         }
-        return UIColor(red: 255 / 255, green: 210 / 255, blue: 170 / 255, alpha: 1)
+        return UIColor(red: 1.0, green: 0.93, blue: 0.86, alpha: 1)
     })
     /// Яркий оранжевый для текста, иконок и tint
     static let accent = Color(red: 255 / 255, green: 149 / 255, blue: 0 / 255)
@@ -104,7 +105,7 @@ struct AppSectionHeader: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(AppTheme.accent)
                     .frame(width: 32, height: 32)
-                    .background(AppTheme.accentSoft, in: Circle())
+                    .background(AppTheme.accent.opacity(0.12), in: Circle())
                     .accessibilityHidden(true)
             }
             Text(title)

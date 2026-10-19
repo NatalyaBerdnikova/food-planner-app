@@ -2,7 +2,7 @@ import Foundation
 
 enum MacroDisplaySettings {
     static let showFractionsKey = "showMacroFractions"
-    static let showFractionsDefault = true
+    static let showFractionsDefault = false
 
     static func format(_ value: Double, showFractions: Bool) -> String {
         if showFractions {

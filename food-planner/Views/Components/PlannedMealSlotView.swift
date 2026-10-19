@@ -20,27 +20,25 @@ struct PlannedMealSlotView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: style == .home ? 10 : 8) {
             Button(action: onTap) {
                 HStack(spacing: 10) {
                     Image(systemName: iconName)
-                        .foregroundStyle(style == .home ? AppTheme.accent : Color.accentColor)
-                        .frame(width: 30, height: 30)
-                        .background(
-                            style == .home ? AppTheme.accent.opacity(0.12) : Color.clear,
-                            in: Circle()
-                        )
+                        .foregroundStyle(AppTheme.accent)
+                        .frame(width: 28, height: 28)
+                        .background(AppTheme.accent.opacity(0.12), in: Circle())
 
                     Text(mealTypeLabel)
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.primary)
 
-                    Spacer()
+                    Spacer(minLength: 8)
 
                     Image(systemName: recipes.isEmpty ? "plus.circle.fill" : "pencil.circle.fill")
                         .font(.body)
                         .foregroundStyle(style == .home ? AppTheme.accent : Color(UIColor.tertiaryLabel))
                 }
+                .frame(minHeight: 28)
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
@@ -51,35 +49,42 @@ struct PlannedMealSlotView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(12)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 14)
                         .background(
                             AppTheme.nestedFill,
-                            in: RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            in: RoundedRectangle(cornerRadius: nestedRowRadius, style: .continuous)
                         )
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
             } else {
-                ForEach(recipes) { recipe in
-                    NavigationLink {
-                        RecipeDetailView(recipe: recipe)
-                    } label: {
-                        recipeLine(recipe)
+                VStack(spacing: 8) {
+                    ForEach(recipes) { recipe in
+                        NavigationLink {
+                            RecipeDetailView(recipe: recipe)
+                        } label: {
+                            recipeLine(recipe)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
             }
         }
-        .padding(style == .home ? 14 : 12)
+        .padding(style == .home ? 14 : 0)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(backgroundStyle)
         .clipShape(RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
     }
 
+    private var nestedRowRadius: CGFloat {
+        style == .home ? 12 : AppTheme.nestedCardRadius
+    }
+
     private func recipeLine(_ recipe: Recipe) -> some View {
         HStack(spacing: 12) {
             RecipeImageView(imageData: recipe.imageData, cornerRadius: 10)
-                .frame(width: 48, height: 48)
+                .frame(width: 52, height: 52)
                 .clipped()
 
             VStack(alignment: .leading, spacing: 4) {
@@ -100,29 +105,34 @@ struct PlannedMealSlotView: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
+                        .minimumScaleFactor(0.85)
                 }
             }
 
-            Spacer(minLength: 0)
+            Spacer(minLength: 8)
 
             Image(systemName: "chevron.right")
                 .font(.caption2.weight(.semibold))
                 .foregroundStyle(Color(UIColor.tertiaryLabel))
         }
-        .padding(10)
+        .padding(12)
         .background(
             AppTheme.nestedFill,
-            in: RoundedRectangle(cornerRadius: 12, style: .continuous)
+            in: RoundedRectangle(cornerRadius: nestedRowRadius, style: .continuous)
         )
         .frame(maxWidth: .infinity, alignment: .leading)
         .contentShape(Rectangle())
     }
 
     private func macroSummary(_ nutrition: DailyNutrition) -> String {
-        let kcal = formatted(nutrition.calories)
-        let protein = formatted(nutrition.protein)
-        let fat = formatted(nutrition.fat)
-        let carbs = formatted(nutrition.carbs)
+        let kcalUnit = String(localized: "nutrition.unit.kcal")
+        let proteinLabel = String(localized: "nutrition.macro.protein").lowercased()
+        let fatLabel = String(localized: "nutrition.macro.fat").lowercased()
+        let carbsLabel = String(localized: "nutrition.macro.carbs").lowercased()
+        let kcal = "\(formatted(nutrition.calories)) \(kcalUnit)"
+        let protein = "\(formatted(nutrition.protein)) \(proteinLabel)"
+        let fat = "\(formatted(nutrition.fat)) \(fatLabel)"
+        let carbs = "\(formatted(nutrition.carbs)) \(carbsLabel)"
         return "\(kcal) · \(protein) · \(fat) · \(carbs)"
     }
 
@@ -139,7 +149,7 @@ struct PlannedMealSlotView: View {
         if style == .home {
             AppTheme.elevated
         } else {
-            Color(.tertiarySystemBackground)
+            Color.clear
         }
     }
 
