@@ -3424,13 +3424,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matching ingredients to catalog"
+            "value" : "Picking ingredients"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сопоставляем ингредиенты с каталогом"
+            "value" : "Подбираем ингредиенты"
           }
         }
       }

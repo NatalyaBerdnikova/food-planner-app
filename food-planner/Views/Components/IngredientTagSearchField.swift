@@ -41,17 +41,32 @@ struct IngredientTagSearchField: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            TextField(placeholder, text: $searchText)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-                .submitLabel(.done)
-                .focused($isSearchFocused)
-                .onSubmit(commitFirstSuggestionIfNeeded)
-                .task(id: autofocus) {
-                    guard autofocus else { return }
-                    try? await Task.sleep(for: .milliseconds(150))
-                    isSearchFocused = true
+            HStack(spacing: 8) {
+                TextField(placeholder, text: $searchText)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .submitLabel(.done)
+                    .focused($isSearchFocused)
+                    .onSubmit(commitFirstSuggestionIfNeeded)
+
+                if !searchText.isEmpty {
+                    Button {
+                        searchText = ""
+                        isSearchFocused = true
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(Text("common.clear"))
+                    .minTapTarget()
                 }
+            }
+            .task(id: autofocus) {
+                guard autofocus else { return }
+                try? await Task.sleep(for: .milliseconds(150))
+                isSearchFocused = true
+            }
 
             if !suggestedProducts.isEmpty {
                 IngredientTagFlowLayout(spacing: 8) {

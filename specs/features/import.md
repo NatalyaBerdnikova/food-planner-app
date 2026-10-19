@@ -12,7 +12,7 @@
 
 | Вход | Механизм |
 | --- | --- |
-| Share Extension | URL → App Group `pendingImportURL` → `foodplanner://import` |
+| Share Extension | Без compose: URL → App Group + `foodplanner://import?url=` → прогресс на root ContentView |
 | Paste in-app | `PasteImportSheet` → `startImport(urlString:)` |
 | Deep link | `onOpenURL` / query `url=` |
 | Файл (сервис) | `RecipeImportService.importFromFile` (JSON / plain text) |

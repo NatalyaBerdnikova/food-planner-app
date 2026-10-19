@@ -20,11 +20,14 @@ enum UnitNormalizer {
             return .milliliter
         case "l", "liter", "liters", "litre", "litres", "л", "литр", "литра", "литры":
             return .liter
-        case "pc", "pcs", "piece", "pieces", "шт", "штука", "штуки", "штук":
+        case "pc", "pcs", "piece", "pieces", "шт", "штука", "штуки", "штук",
+             "stick", "sticks", "стик", "стика", "стиков", "стики":
             return .piece
-        case "tbsp", "tablespoon", "tablespoons", "ст.л", "ст.л.", "ст л", "столовая ложка", "столовые ложки":
+        case "tbsp", "tablespoon", "tablespoons", "стл", "ст.л", "ст.л.", "ст л",
+             "столовая ложка", "столовые ложки":
             return .tablespoon
-        case "tsp", "teaspoon", "teaspoons", "ч.л", "ч.л.", "ч л", "чайная ложка", "чайные ложки":
+        case "tsp", "teaspoon", "teaspoons", "чл", "ч.л", "ч.л.", "ч л",
+             "чайная ложка", "чайные ложки":
             return .teaspoon
         default:
             return .gram

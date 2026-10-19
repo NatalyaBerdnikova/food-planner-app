@@ -3,6 +3,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(SubscriptionSession.self) private var subscriptionSession
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
@@ -10,6 +11,7 @@ struct ContentView: View {
 
     @State private var isBootstrapReady = false
     @State private var importCoordinator = ImportCoordinator()
+    @State private var pendingOpenURL: URL?
 
     private var appLanguage: AppLanguage {
         AppLanguage(rawValue: appLanguageRaw) ?? .system
@@ -21,8 +23,16 @@ struct ContentView: View {
         settings?.hasCompletedOnboarding == true
     }
 
+    private var canPresentImport: Bool {
+        isBootstrapReady
+            && subscriptionSession.isAccessResolved
+            && hasCompletedOnboarding
+            && subscriptionSession.hasFullAccess
+    }
+
     var body: some View {
         @Bindable var subscriptionSession = subscriptionSession
+        @Bindable var importCoordinator = importCoordinator
 
         Group {
             if isBootstrapReady && subscriptionSession.isAccessResolved {
@@ -38,9 +48,34 @@ struct ContentView: View {
         }
         .task {
             await bootstrapIfNeeded()
+            processPendingImportIfNeeded()
         }
         .onAppear {
             bindProfileAccessUpdates()
+        }
+        .onChange(of: canPresentImport) { _, isReady in
+            if isReady {
+                processPendingImportIfNeeded()
+            }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                processPendingImportIfNeeded()
+            }
+        }
+        .onOpenURL { url in
+            pendingOpenURL = url
+            processPendingImportIfNeeded()
+        }
+        .sheet(item: $importCoordinator.progressPresentation) { _ in
+            ImportProgressView(coordinator: importCoordinator)
+        }
+        .sheet(item: $importCoordinator.editingDraft, onDismiss: {
+            importCoordinator.clearDraft()
+        }) { draft in
+            NavigationStack {
+                ImportedRecipeReviewView(draft: draft)
+            }
         }
         .alert(
             subscriptionSession.alertText,
@@ -78,22 +113,21 @@ struct ContentView: View {
                 FoodCatalogSeeder.seedIfNeeded(in: modelContext)
                 RecipeCatalogStore.seedIfNeeded(in: modelContext)
                 _ = AppSettingsService.settings(in: modelContext)
-                importCoordinator.checkPendingImport()
+                processPendingImportIfNeeded()
             }
-            .onOpenURL { url in
-                importCoordinator.attach(modelContext: modelContext)
-                importCoordinator.handleOpenURL(url)
-            }
-            .sheet(item: $importCoordinator.progressPresentation) { _ in
-                ImportProgressView(coordinator: importCoordinator)
-            }
-            .sheet(item: $importCoordinator.editingDraft, onDismiss: {
-                importCoordinator.clearDraft()
-            }) { draft in
-                NavigationStack {
-                    ImportedRecipeReviewView(draft: draft)
-                }
-            }
+    }
+
+    private func processPendingImportIfNeeded() {
+        guard canPresentImport else { return }
+        importCoordinator.attach(modelContext: modelContext)
+
+        if let url = pendingOpenURL {
+            pendingOpenURL = nil
+            importCoordinator.handleOpenURL(url)
+            return
+        }
+
+        importCoordinator.checkPendingImport()
     }
 
     private func bootstrapIfNeeded() async {

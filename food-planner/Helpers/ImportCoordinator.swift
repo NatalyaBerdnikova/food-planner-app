@@ -66,23 +66,32 @@ final class ImportCoordinator {
 
     func handleOpenURL(_ url: URL) {
         guard url.scheme == ImportAppGroup.importURLScheme else { return }
-        if let pending = ImportAppGroup.consumePendingImportURL() {
-            startImport(urlString: pending)
-        } else if let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
-                  let queryURL = components.queryItems?.first(where: { $0.name == "url" })?.value {
+
+        if let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+           let queryURL = components.queryItems?.first(where: { $0.name == "url" })?.value,
+           !queryURL.isEmpty {
+            _ = ImportAppGroup.consumePendingImportURL()
             startImport(urlString: queryURL)
+            return
         }
+
+        checkPendingImport()
     }
 
     func checkPendingImport() {
-        guard case .idle = state,
-              let pending = ImportAppGroup.consumePendingImportURL() else {
+        guard case .idle = state else { return }
+        guard let pending = ImportAppGroup.consumePendingImportURL(), !pending.isEmpty else {
             return
         }
         startImport(urlString: pending)
     }
 
     func startImport(urlString: String) {
+        guard modelContext != nil else {
+            ImportAppGroup.savePendingImportURL(urlString)
+            return
+        }
+
         importTask?.cancel()
         lastAttemptedURL = urlString
         state = .loading(.fetchingPost)

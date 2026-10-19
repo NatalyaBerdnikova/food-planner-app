@@ -57,12 +57,15 @@ enum LLMRecipeParser {
             throw RecipeImportError.apiUnauthorized
         }
 
-        let catalogSnippet = IngredientCatalogPrompt.compactCatalogForPrompt()
+        let languageCode = L10n.currentLanguageCode.hasPrefix("ru") ? "ru" : "en"
+        let catalogSnippet = IngredientCatalogPrompt.compactCatalogForPrompt(languageCode: languageCode)
+        let catalogLanguageName = languageCode == "ru" ? "Russian" : "English"
         let systemPrompt = """
         You extract structured recipes from Instagram Reel captions and transcripts.
         Prefer ingredient quantities from CAPTION when both sources exist.
         Do not invent ingredients that are not mentioned in the text.
-        When an ingredient matches the food catalog, set catalogKey to that key; otherwise set catalogKey to null and keep rawName.
+        When an ingredient matches the food catalog, set catalogKey to that exact key from the list; otherwise set catalogKey to null and keep rawName.
+        Write rawName in \(catalogLanguageName).
         Ingredient units must be one of: gram, kilogram, milliliter, liter, piece, tablespoon, teaspoon.
         Reply with JSON only, no markdown and no extra text.
         JSON schema:
@@ -74,7 +77,7 @@ enum LLMRecipeParser {
           "ingredients": [{"catalogKey": "string or null", "rawName": "string", "quantity": number, "unit": "string"}]
         }
 
-        Food catalog (catalogKey | ru | en), use only keys from this list:
+        Food catalog (catalogKey | \(catalogLanguageName) name). Use only catalogKey values from this list:
         \(catalogSnippet)
         """
 

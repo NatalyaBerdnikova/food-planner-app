@@ -11,32 +11,33 @@ enum IngredientCatalogPrompt {
         var translations: [String: String]?
     }
 
-    private static var cachedPrompt: String?
+    private static var cachedPrompts: [String: String] = [:]
+    private static var cachedKeys: [String]?
     private static let maxPromptCharacters = 24_000
 
-    static func compactCatalog() -> String {
-        if let cachedPrompt { return cachedPrompt }
+    static func compactCatalog(languageCode: String = L10n.currentLanguageCode) -> String {
+        let code = normalizedLanguageCode(languageCode)
+        if let cached = cachedPrompts[code] {
+            return cached
+        }
 
         guard let url = Bundle.main.url(forResource: "food-catalog", withExtension: "json"),
               let data = try? Data(contentsOf: url),
               let file = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
-            cachedPrompt = ""
+            cachedPrompts[code] = ""
             return ""
         }
 
-        let lines = file.products.map { entry -> String in
-            let ruName = localizedName(for: entry, languageCode: "ru")
-            let enName = localizedName(for: entry, languageCode: "en")
-            return "\(entry.catalogKey) | \(ruName) | \(enName)"
-        }
+        let prompt = file.products.map { entry in
+            "\(entry.catalogKey) | \(localizedName(for: entry, languageCode: code))"
+        }.joined(separator: "\n")
 
-        let prompt = lines.joined(separator: "\n")
-        cachedPrompt = prompt
+        cachedPrompts[code] = prompt
         return prompt
     }
 
-    static func compactCatalogForPrompt() -> String {
-        let full = compactCatalog()
+    static func compactCatalogForPrompt(languageCode: String = L10n.currentLanguageCode) -> String {
+        let full = compactCatalog(languageCode: languageCode)
         guard full.count > maxPromptCharacters else { return full }
         let truncated = String(full.prefix(maxPromptCharacters))
         if let lastNewline = truncated.lastIndex(of: "\n") {
@@ -46,12 +47,24 @@ enum IngredientCatalogPrompt {
     }
 
     static func allCatalogKeys() -> [String] {
+        if let cachedKeys {
+            return cachedKeys
+        }
+
         guard let url = Bundle.main.url(forResource: "food-catalog", withExtension: "json"),
               let data = try? Data(contentsOf: url),
               let file = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+            cachedKeys = []
             return []
         }
-        return file.products.map(\.catalogKey)
+
+        let keys = file.products.map(\.catalogKey)
+        cachedKeys = keys
+        return keys
+    }
+
+    private static func normalizedLanguageCode(_ languageCode: String) -> String {
+        languageCode.hasPrefix("ru") ? "ru" : "en"
     }
 
     private static func localizedName(for entry: ProductEntry, languageCode: String) -> String {

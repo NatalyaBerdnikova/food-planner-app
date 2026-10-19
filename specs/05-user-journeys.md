@@ -19,7 +19,7 @@
 ### Из Share Sheet
 
 1. В Instagram: Share → Food Planner.
-2. Extension пишет URL в App Group, открывает `foodplanner://import`.
+2. Extension без ввода текста пишет URL в App Group и открывает `foodplanner://import` (экран прогресса импорта).
 3. Main app: `ImportCoordinator` поднимает progress sheet (стадии fetch → read → parse → match → ready).
 4. Пользователь правит draft в `ImportedRecipeReviewView`, сохраняет.
 5. Рецепт появляется в «Мои рецепты».
