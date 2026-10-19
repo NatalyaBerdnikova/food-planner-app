@@ -75,7 +75,7 @@ struct DraftIngredientRow: View {
             Button(action: decrementQuantity) {
                 Image(systemName: "minus")
                     .font(.body.weight(.semibold))
-                    .frame(width: 32, height: 32)
+                    .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
                     .contentShape(Rectangle())
             }
             .disabled(draft.quantity <= minimumQuantity)
@@ -84,7 +84,7 @@ struct DraftIngredientRow: View {
             Button(action: incrementQuantity) {
                 Image(systemName: "plus")
                     .font(.body.weight(.semibold))
-                    .frame(width: 32, height: 32)
+                    .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
                     .contentShape(Rectangle())
             }
             .disabled(draft.quantity >= maximumQuantity)

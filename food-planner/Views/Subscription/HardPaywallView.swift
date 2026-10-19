@@ -116,7 +116,7 @@ struct HardPaywallView: View {
                 .opacity(0.9)
                 .overlay {
                     RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
-                        .fill(Color.white.opacity(0.06))
+                        .fill(Color.black.opacity(0.12))
                 }
         }
     }

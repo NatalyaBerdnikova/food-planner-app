@@ -114,7 +114,7 @@ struct OnboardingFlowView: View {
                             .frame(width: 44, height: 44)
                             .contentShape(Rectangle())
                     }
-                    .accessibilityLabel("common.back")
+                    .accessibilityLabel(Text("common.back"))
                 } else {
                     Color.clear.frame(width: 44, height: 44)
                 }

@@ -170,12 +170,12 @@ struct AddMealSheet: View {
                 .foregroundStyle(.primary)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)
-                .background(.ultraThinMaterial, in: Capsule())
+                .background(AppTheme.elevated, in: Capsule())
                 .shadow(color: AppTheme.cardShadow, radius: 8, x: 0, y: 2)
                 .padding(.leading, AppTheme.contentPadding)
                 .padding(.bottom, 16)
                 .transition(.move(edge: .bottom).combined(with: .opacity))
-                .animation(.easeInOut(duration: 0.2), value: selectedRecipeIDs.count)
+                .motionSafeAnimation(.easeInOut(duration: 0.2), value: selectedRecipeIDs.count)
         }
     }
 
@@ -195,12 +195,14 @@ struct AddMealSheet: View {
             .font(.subheadline.weight(.medium))
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
+            .frame(minHeight: AppTheme.minTapTarget)
             .background(isSelected ? Color.accentColor : Color(.tertiarySystemFill))
             .foregroundStyle(isSelected ? Color.white : Color.primary)
             .clipShape(Capsule())
             .contentShape(Capsule())
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? [.isSelected, .isButton] : .isButton)
     }
 
     private func selectableRecipeCard(_ recipe: Recipe) -> some View {
@@ -219,8 +221,8 @@ struct AddMealSheet: View {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(isSelected ? AppTheme.accent : .primary)
-                    .frame(width: 36, height: 36)
-                    .background(.ultraThinMaterial, in: Circle())
+                    .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                    .background(AppTheme.contentOverlayFill, in: Circle())
                     .padding(8)
                     .accessibilityHidden(true)
             }

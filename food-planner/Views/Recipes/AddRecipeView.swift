@@ -6,6 +6,7 @@ import UIKit
 struct AddRecipeView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     @State private var name: String
     @State private var servings: Int
@@ -201,7 +202,7 @@ struct AddRecipeView: View {
     }
 
     private func scrollIngredientSearchToTop(_ proxy: ScrollViewProxy) {
-        withAnimation(.easeOut(duration: 0.2)) {
+        withAnimation(reduceMotion ? nil : .easeOut(duration: 0.2)) {
             proxy.scrollTo(ScrollAnchor.ingredientSearch, anchor: .top)
         }
     }

@@ -54,11 +54,15 @@ struct DayPlanCardView: View {
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
-                        .frame(width: 28, height: 28)
+                        .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                        .contentShape(Rectangle())
                 }
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(Text(dayTitle))
+            .accessibilityValue(Text(isExpanded ? "accessibility.expanded" : "accessibility.collapsed"))
+            .accessibilityHint("accessibility.toggleDay")
 
             NutritionSummaryView(
                 nutrition: dayNutrition,
@@ -91,7 +95,7 @@ struct DayPlanCardView: View {
             RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
                 .stroke(borderColor, lineWidth: borderWidth)
         }
-        .animation(.easeInOut(duration: 0.25), value: isExpanded)
+        .motionSafeAnimation(.easeInOut(duration: 0.25), value: isExpanded)
         .sheet(isPresented: $showMicronutrients) {
             MicronutrientDetailSheet(
                 totals: dayTotals,

@@ -5,13 +5,25 @@ enum AppTheme {
     /// Мягкая оранжевая заливка для иконок и чипов (как у приёмов пищи в дне)
     static let accentSoft = Color(uiColor: UIColor { traits in
         let orange = UIColor(red: 255 / 255, green: 149 / 255, blue: 0 / 255, alpha: 1)
+        let highContrast = traits.accessibilityContrast == .high
         if traits.userInterfaceStyle == .dark {
-            return orange.withAlphaComponent(0.14)
+            return orange.withAlphaComponent(highContrast ? 0.28 : 0.14)
+        }
+        if highContrast {
+            return UIColor(red: 1.0, green: 0.88, blue: 0.72, alpha: 1)
         }
         return UIColor(red: 1.0, green: 0.93, blue: 0.86, alpha: 1)
     })
     /// Яркий оранжевый для текста, иконок и tint
-    static let accent = Color(red: 255 / 255, green: 149 / 255, blue: 0 / 255)
+    static let accent = Color(uiColor: UIColor { traits in
+        let base = UIColor(red: 255 / 255, green: 149 / 255, blue: 0 / 255, alpha: 1)
+        if traits.accessibilityContrast == .high {
+            return traits.userInterfaceStyle == .dark
+                ? UIColor(red: 1.0, green: 0.72, blue: 0.35, alpha: 1)
+                : UIColor(red: 0.78, green: 0.38, blue: 0.0, alpha: 1)
+        }
+        return base
+    })
     static let accentMuted = Color(red: 255 / 255, green: 170 / 255, blue: 50 / 255)
     static let warmFill = Color(red: 0.83, green: 0.47, blue: 0.23)
     static let success = Color(red: 0.18, green: 0.58, blue: 0.42)
@@ -43,6 +55,9 @@ enum AppTheme {
     /// Nested shape radius = outer radius − padding (Apple concentric corners).
     static var nestedCardRadius: CGFloat { max(cardRadius - cardPadding, 4) }
     static let controlMinHeight: CGFloat = 52
+    static let minTapTarget: CGFloat = 44
+    /// Solid overlay on photos / content (not Liquid Glass).
+    static var contentOverlayFill: Color { Color(.tertiarySystemGroupedBackground).opacity(0.92) }
     static let sectionSpacing: CGFloat = 24
     static let contentPadding: CGFloat = 16
     static let sectionRailSpacing: CGFloat = 12
@@ -153,5 +168,24 @@ extension View {
 
     func appScreenBackground() -> some View {
         background(AppTheme.canvas)
+    }
+
+    func motionSafeAnimation<V: Equatable>(_ animation: Animation?, value: V) -> some View {
+        modifier(MotionSafeAnimationModifier(animation: animation, value: value))
+    }
+
+    func minTapTarget(_ size: CGFloat = AppTheme.minTapTarget) -> some View {
+        frame(minWidth: size, minHeight: size)
+            .contentShape(Rectangle())
+    }
+}
+
+private struct MotionSafeAnimationModifier<V: Equatable>: ViewModifier {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    let animation: Animation?
+    let value: V
+
+    func body(content: Content) -> some View {
+        content.animation(reduceMotion ? nil : animation, value: value)
     }
 }

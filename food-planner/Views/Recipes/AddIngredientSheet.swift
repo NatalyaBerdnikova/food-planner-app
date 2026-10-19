@@ -10,6 +10,7 @@ struct DraftIngredient: Identifiable {
 
 struct AddIngredientSheet: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     let onAdd: (DraftIngredient) -> Void
     var autofocusSearch: Bool = false
@@ -58,7 +59,8 @@ struct AddIngredientSheet: View {
                                         .foregroundStyle(.secondary)
                                 }
                                 .buttonStyle(.plain)
-                                .accessibilityLabel("common.cancel")
+                                .accessibilityLabel(Text("common.clear"))
+                                .minTapTarget()
                             }
                         } else {
                             IngredientTagSearchField(
@@ -66,7 +68,7 @@ struct AddIngredientSheet: View {
                                 initialSearchText: initialSearchText,
                                 autofocus: autofocusSearch,
                                 onSearchActivity: {
-                                    withAnimation(.easeOut(duration: 0.2)) {
+                                    withAnimation(reduceMotion ? nil : .easeOut(duration: 0.2)) {
                                         proxy.scrollTo(ScrollAnchor.productSearch, anchor: .top)
                                     }
                                 }

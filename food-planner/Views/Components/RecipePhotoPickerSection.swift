@@ -22,7 +22,7 @@ struct RecipePhotoPickerSection: View {
                             .foregroundStyle(.primary)
                             .padding(.horizontal, 14)
                             .padding(.vertical, 10)
-                            .background(.ultraThinMaterial, in: Capsule())
+                            .background(AppTheme.contentOverlayFill, in: Capsule())
                             .padding(.bottom, 14)
                     }
                     .frame(maxWidth: .infinity)

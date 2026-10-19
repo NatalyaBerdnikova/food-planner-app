@@ -26,9 +26,13 @@ struct DefaultPaywall: View {
     var chrome: PaywallChrome = .standard
     let successPurchaseCallback: () -> Void
 
-    /// Temporary mock until Adapty products are wired for review.
+    #if DEBUG
     private let useMockPlans = true
+    #else
+    private let useMockPlans = false
+    #endif
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var showPayment = false
     @State private var isLoadingPlans = true
     @State private var planOptions: [PaywallPlanOption] = []
@@ -124,9 +128,9 @@ struct DefaultPaywall: View {
                         .multilineTextAlignment(.center)
                         .font(.title.bold())
                         .foregroundStyle(primaryText)
-                        .opacity(showPayment ? 1 : 0)
-                        .scaleEffect(showPayment ? 1 : 0.6)
-                        .animation(.easeOut(duration: 0.4).delay(0.2), value: showPayment)
+                        .opacity(showPayment || reduceMotion ? 1 : 0)
+                        .scaleEffect((showPayment || reduceMotion) ? 1 : 0.6)
+                        .animation(reduceMotion ? nil : .easeOut(duration: 0.4).delay(0.2), value: showPayment)
 
                     VStack(alignment: .leading, spacing: 15) {
                         featureRow(icon: "wand.and.stars", text: "home.proOffer.feature.ai")
@@ -135,8 +139,8 @@ struct DefaultPaywall: View {
                     }
                     .font(.title3.bold())
                     .padding(.top)
-                    .opacity(showPayment ? 1 : 0)
-                    .animation(.easeOut(duration: 0.4).delay(0.3), value: showPayment)
+                    .opacity(showPayment || reduceMotion ? 1 : 0)
+                    .animation(reduceMotion ? nil : .easeOut(duration: 0.4).delay(0.3), value: showPayment)
                 }
             }
 

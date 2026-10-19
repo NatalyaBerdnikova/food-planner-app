@@ -78,7 +78,9 @@ struct RecipeLibraryView: View {
                 Button("recipeLibrary.resetFilters") {
                     resetFilters()
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bordered)
+                .tint(AppTheme.accent)
+                .controlSize(.regular)
             }
         } else {
             ContentUnavailableView(
@@ -193,11 +195,13 @@ struct RecipeLibraryView: View {
                             Circle()
                                 .fill(Color.accentColor)
                                 .frame(width: 6, height: 6)
+                                .accessibilityHidden(true)
                         }
                     }
                     .font(.subheadline.weight(.medium))
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
+                    .frame(minHeight: AppTheme.minTapTarget)
                     .background(
                         advancedFilters.isActive
                             ? Color.accentColor.opacity(0.15)
@@ -208,6 +212,10 @@ struct RecipeLibraryView: View {
                     .contentShape(Capsule())
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel("recipeLibrary.advancedFilters")
+                .accessibilityValue(
+                    Text(advancedFilters.isActive ? "accessibility.filtersActive" : "accessibility.filtersInactive")
+                )
             }
             .padding(.horizontal, AppTheme.contentPadding)
             .padding(.vertical, 10)
@@ -235,12 +243,14 @@ struct RecipeLibraryView: View {
             .font(.subheadline.weight(.medium))
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
+            .frame(minHeight: AppTheme.minTapTarget)
             .background(isSelected ? Color.accentColor : Color(.tertiarySystemFill))
             .foregroundStyle(isSelected ? Color.white : Color.primary)
             .clipShape(Capsule())
             .contentShape(Capsule())
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? [.isSelected, .isButton] : .isButton)
     }
 
     private func libraryCard(_ recipe: Recipe) -> some View {
@@ -268,8 +278,8 @@ struct RecipeLibraryView: View {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(isFavorite ? .red : .primary)
-                        .frame(width: 36, height: 36)
-                        .background(.ultraThinMaterial, in: Circle())
+                        .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                        .background(AppTheme.contentOverlayFill, in: Circle())
                 }
                 .buttonStyle(.plain)
                 .padding(8)

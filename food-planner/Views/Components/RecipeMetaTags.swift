@@ -42,7 +42,7 @@ struct RecipeMaterialMetaTag: View {
         .foregroundStyle(tint)
         .padding(.horizontal, 10)
         .padding(.vertical, 6)
-        .background(.ultraThinMaterial, in: Capsule())
+        .background(AppTheme.contentOverlayFill, in: Capsule())
     }
 }
 

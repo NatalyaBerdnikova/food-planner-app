@@ -1,7 +1,7 @@
 # F-SUB — Подписка
 
 **Status:** shipped  
-**Primary:** `HardPaywallView`, `DefaultPaywall`, `PaymentModalView`, `PurchaseService`, `SubscriptionSession`, Adapty  
+**Primary:** `HardPaywallView`, `DefaultPaywall`, `PurchaseService`, `SubscriptionSession`, Adapty  
 **Related:** [onboarding.md](onboarding.md), [settings.md](settings.md)
 
 ## Цель

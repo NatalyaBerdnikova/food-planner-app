@@ -3,6 +3,7 @@ import SwiftData
 
 struct WeekPlanView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
     private var settingsList: [AppSettings]
@@ -79,7 +80,7 @@ struct WeekPlanView: View {
         }
         let dayID = calendar.startOfDay(for: todayPlan.date)
         DispatchQueue.main.async {
-            withAnimation(.easeInOut(duration: 0.35)) {
+            withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.35)) {
                 proxy.scrollTo(dayID, anchor: .top)
             }
         }

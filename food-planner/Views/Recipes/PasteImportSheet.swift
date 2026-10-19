@@ -35,7 +35,7 @@ struct PasteImportSheet: View {
                             Image(systemName: "doc.on.clipboard")
                                 .font(.body.weight(.semibold))
                                 .foregroundStyle(AppTheme.accent)
-                                .frame(width: 36, height: 36)
+                                .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
                                 .contentShape(Rectangle())
                         }
                         .buttonStyle(.plain)

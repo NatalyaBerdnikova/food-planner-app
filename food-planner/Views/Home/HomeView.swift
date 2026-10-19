@@ -65,7 +65,7 @@ struct HomeView: View {
             }
         }
         .onAppear { refresh() }
-        .animation(.easeInOut(duration: 0.25), value: isTodayExpanded)
+        .motionSafeAnimation(.easeInOut(duration: 0.25), value: isTodayExpanded)
         .sheet(item: $addMealPresentation) { item in
             AddMealSheet(dayPlan: item.dayPlan, preferredMealType: item.mealType) {
                 refresh()
@@ -140,8 +140,8 @@ struct HomeView: View {
                             Image(systemName: isFavorite ? "heart.fill" : "heart")
                                 .font(.subheadline.weight(.semibold))
                                 .foregroundStyle(isFavorite ? .red : .primary)
-                                .frame(width: 36, height: 36)
-                                .background(.ultraThinMaterial, in: Circle())
+                                .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                                .background(AppTheme.contentOverlayFill, in: Circle())
                         }
                         .buttonStyle(.plain)
                         .padding(8)
@@ -201,9 +201,9 @@ struct HomeView: View {
                     .frame(width: 3)
                     .padding(.vertical, 12)
             }
-            .shadow(color: AppTheme.cardShadow, radius: 12, x: 0, y: 4)
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("home.import.cta.title")
         .accessibilityHint("home.import.cta.subtitle")
     }
 
@@ -211,7 +211,7 @@ struct HomeView: View {
         AppSectionCard {
             VStack(alignment: .leading, spacing: 14) {
                 Button {
-                    withAnimation(.easeInOut(duration: 0.25)) {
+                    withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.25)) {
                         isTodayExpanded.toggle()
                     }
                 } label: {
@@ -229,10 +229,16 @@ struct HomeView: View {
                         Image(systemName: isTodayExpanded ? "chevron.up" : "chevron.down")
                             .font(.caption.weight(.semibold))
                             .foregroundStyle(.secondary)
+                            .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                            .contentShape(Rectangle())
                     }
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel("home.today")
+                .accessibilityValue(Text(isTodayExpanded ? "accessibility.expanded" : "accessibility.collapsed"))
+                .accessibilityHint("home.targetProgress")
+                .accessibilityAddTraits(.isButton)
 
                 if isTodayExpanded {
                     if let settings = appSettings {
@@ -316,8 +322,8 @@ struct HomeView: View {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(isFavorite ? .red : .primary)
-                        .frame(width: 36, height: 36)
-                        .background(.ultraThinMaterial, in: Circle())
+                        .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                        .background(AppTheme.contentOverlayFill, in: Circle())
                 }
                 .buttonStyle(.plain)
                 .padding(8)
@@ -367,11 +373,16 @@ struct HomeView: View {
 }
 
 private struct SurpriseMeButtonStyle: ButtonStyle {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.94 : 1)
+            .scaleEffect((!reduceMotion && configuration.isPressed) ? 0.94 : 1)
             .opacity(configuration.isPressed ? 0.92 : 1)
-            .animation(.spring(response: 0.28, dampingFraction: 0.72), value: configuration.isPressed)
+            .animation(
+                reduceMotion ? nil : .spring(response: 0.28, dampingFraction: 0.72),
+                value: configuration.isPressed
+            )
     }
 }
 

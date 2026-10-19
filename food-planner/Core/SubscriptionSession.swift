@@ -11,7 +11,6 @@ final class SubscriptionSession {
     var loaderPresented = false
     var alertPresented = false
     var alertText = ""
-    var paymentPresented = false
 
     var hasFullAccess: Bool { isPro || isFree }
 
@@ -59,9 +58,5 @@ final class SubscriptionSession {
     func showAlert(_ text: String) {
         alertText = text
         alertPresented = true
-    }
-
-    func showPayment() {
-        paymentPresented = true
     }
 }

@@ -25,7 +25,7 @@ struct PlannedMealSlotView: View {
                 HStack(spacing: 10) {
                     Image(systemName: iconName)
                         .foregroundStyle(AppTheme.accent)
-                        .frame(width: 28, height: 28)
+                        .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
                         .background(AppTheme.accent.opacity(0.12), in: Circle())
 
                     Text(mealTypeLabel)
@@ -37,11 +37,14 @@ struct PlannedMealSlotView: View {
                     Image(systemName: recipes.isEmpty ? "plus.circle.fill" : "pencil.circle.fill")
                         .font(.body)
                         .foregroundStyle(style == .home ? AppTheme.accent : Color(UIColor.tertiaryLabel))
+                        .frame(minWidth: AppTheme.minTapTarget, minHeight: AppTheme.minTapTarget)
                 }
-                .frame(minHeight: 28)
+                .frame(minHeight: AppTheme.minTapTarget)
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(mealTypeLabel)
+            .accessibilityHint(Text(recipes.isEmpty ? "accessibility.addMeal" : "accessibility.editMeal"))
 
             if recipes.isEmpty {
                 Button(action: onTap) {

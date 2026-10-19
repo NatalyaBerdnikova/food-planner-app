@@ -6,6 +6,7 @@ struct RecipeAdvancedFilters: Equatable {
     var maxCalories: Double = Self.caloriesUpperBound
     var maxCookTimeMinutes: Int = Self.cookTimeUpperBound
     var ingredientCatalogKeys: [String] = []
+    var matchAnyIngredient: Bool = true
 
     static let caloriesUpperBound: Double = 1200
     static let cookTimeUpperBound: Int = 180
@@ -45,7 +46,12 @@ struct RecipeAdvancedFilters: Equatable {
 
         if hasIngredientFilter {
             let recipeKeys = Set(recipe.ingredients.compactMap(\.foodProduct?.catalogKey))
-            for key in ingredientCatalogKeys where !recipeKeys.contains(key) {
+            let selected = Set(ingredientCatalogKeys)
+            if matchAnyIngredient {
+                if selected.isDisjoint(with: recipeKeys) {
+                    return false
+                }
+            } else if !selected.isSubset(of: recipeKeys) {
                 return false
             }
         }
@@ -112,8 +118,21 @@ struct RecipeAdvancedFiltersSheet: View {
 
                 Section {
                     ingredientTagEditor
+
+                    Toggle(isOn: $draft.matchAnyIngredient) {
+                        Text("recipeLibrary.matchAnyIngredient")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                    .disabled(draft.ingredientCatalogKeys.isEmpty)
                 } header: {
                     Text("recipeLibrary.filterIngredients")
+                } footer: {
+                    Text(
+                        draft.matchAnyIngredient
+                            ? "recipeLibrary.matchAnyIngredient.footer"
+                            : "recipeLibrary.matchAllIngredients.footer"
+                    )
                 }
             }
             .navigationTitle("recipeLibrary.advancedFilters")

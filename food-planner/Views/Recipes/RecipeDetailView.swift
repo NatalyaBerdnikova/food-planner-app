@@ -242,7 +242,7 @@ struct RecipeDetailView: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .background(AppTheme.contentOverlayFill, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         .colorScheme(.dark)
     }
 

@@ -152,8 +152,8 @@ struct RecipeCardView: View {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(isFavorite ? .red : .primary)
-                        .frame(width: 36, height: 36)
-                        .background(.ultraThinMaterial, in: Circle())
+                        .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                        .background(AppTheme.contentOverlayFill, in: Circle())
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel(
@@ -212,8 +212,8 @@ struct RecipeCardView: View {
             Image(systemName: "heart.fill")
                 .font(.caption.weight(.bold))
                 .foregroundStyle(.red)
-                .frame(width: 34, height: 34)
-                .background(.ultraThinMaterial, in: Circle())
+                .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                .background(AppTheme.contentOverlayFill, in: Circle())
                 .accessibilityHidden(true)
         }
     }

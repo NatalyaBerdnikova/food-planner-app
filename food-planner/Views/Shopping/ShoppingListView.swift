@@ -67,7 +67,7 @@ struct ShoppingListView: View {
                                         Button(role: .destructive) {
                                             deleteItem(item)
                                         } label: {
-                                            Label("favorites.remove.confirm", systemImage: "trash")
+                                                Label("shopping.deleteItem", systemImage: "trash")
                                         }
                                     }
                                 }
@@ -200,6 +200,13 @@ struct ShoppingItemRow: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(item.displayName)
+        .accessibilityValue(
+            Text(item.isPurchased ? "accessibility.purchased" : "accessibility.notPurchased")
+        )
+        .accessibilityHint("accessibility.togglePurchased")
+        .accessibilityAddTraits(.isButton)
     }
 }
 
