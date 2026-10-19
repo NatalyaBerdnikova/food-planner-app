@@ -16,9 +16,8 @@ struct RecipeImageView: View {
                     Image(uiImage: processedImage)
                         .resizable()
                         .scaledToFill()
-                } else if imageData != nil {
-                    ProgressView()
-                } else {
+                        .transaction { $0.animation = nil }
+                } else if imageData == nil {
                     Image(systemName: "fork.knife")
                         .font(.title2)
                         .foregroundStyle(.secondary)
@@ -33,11 +32,16 @@ struct RecipeImageView: View {
                 }
                 let scale = displayScale
                 let size = pointSize
-                processedImage = await ImageProcessor.shared.downsample(
+                let image = await ImageProcessor.shared.downsample(
                     data: imageData,
                     pointSize: size,
                     scale: scale
                 )
+                var transaction = Transaction()
+                transaction.disablesAnimations = true
+                withTransaction(transaction) {
+                    processedImage = image
+                }
             }
     }
 }

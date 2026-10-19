@@ -54,7 +54,7 @@ struct AddMealSheet: View {
     }
 
     private var filteredRecipes: [Recipe] {
-        var result = recipes
+        var result = RecipeCollections.visible(recipes)
 
         if showMineOnly {
             result = result.filter(\.isUserCreated)

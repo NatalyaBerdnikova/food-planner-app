@@ -103,8 +103,7 @@ struct RecipeDetailView: View {
         .alert("recipeDetail.delete.title", isPresented: $showDeleteConfirmation) {
             Button("common.cancel", role: .cancel) {}
             Button("recipeDetail.delete.confirm", role: .destructive) {
-                RecipeVisibilityService.deleteUserRecipe(recipe, in: modelContext)
-                dismiss()
+                removeRecipeFromDevice(hidingCatalog: false)
             }
         } message: {
             Text("recipeDetail.delete.message \(recipe.localizedName)")
@@ -112,8 +111,7 @@ struct RecipeDetailView: View {
         .alert("recipeDetail.hide.title", isPresented: $showHideConfirmation) {
             Button("common.cancel", role: .cancel) {}
             Button("recipeDetail.hide.confirm", role: .destructive) {
-                RecipeVisibilityService.hideCatalogRecipe(recipe, in: modelContext)
-                dismiss()
+                removeRecipeFromDevice(hidingCatalog: true)
             }
         } message: {
             Text("recipeDetail.hide.message \(recipe.localizedName)")
@@ -148,6 +146,20 @@ struct RecipeDetailView: View {
         }
         .buttonStyle(.plain)
         .foregroundStyle(.red)
+    }
+
+    private func removeRecipeFromDevice(hidingCatalog: Bool) {
+        let context = modelContext
+        let recipeToRemove = recipe
+        dismiss()
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(350))
+            if hidingCatalog {
+                RecipeVisibilityService.hideCatalogRecipe(recipeToRemove, in: context)
+            } else {
+                RecipeVisibilityService.deleteUserRecipe(recipeToRemove, in: context)
+            }
+        }
     }
 
     private var heroSection: some View {

@@ -7,8 +7,12 @@ struct RecipePickerView: View {
 
     @Binding var selectedRecipe: Recipe?
 
+    private var visibleRecipes: [Recipe] {
+        RecipeCollections.visible(recipes)
+    }
+
     var body: some View {
-        List(recipes) { recipe in
+        List(visibleRecipes) { recipe in
             Button {
                 selectedRecipe = recipe
                 dismiss()

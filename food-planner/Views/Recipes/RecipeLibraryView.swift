@@ -14,8 +14,8 @@ struct RecipeLibraryView: View {
     @State private var pasteImportRequest: PasteImportRequest?
 
     private let columns = [
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12, alignment: .top),
+        GridItem(.flexible(), spacing: 12, alignment: .top),
     ]
 
     private var favoriteIds: Set<String> {
@@ -104,8 +104,8 @@ struct RecipeLibraryView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 40)
             } else {
-                LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(filteredRecipes) { recipe in
+                LazyVGrid(columns: columns, alignment: .center, spacing: 12) {
+                    ForEach(filteredRecipes, id: \.persistentModelID) { recipe in
                         libraryCard(recipe)
                     }
                 }

@@ -67,7 +67,7 @@ struct AddIngredientSheet: View {
                                 autofocus: autofocusSearch,
                                 onSearchActivity: {
                                     withAnimation(.easeOut(duration: 0.2)) {
-                                        proxy.scrollTo(ScrollAnchor.productSearch, anchor: .bottom)
+                                        proxy.scrollTo(ScrollAnchor.productSearch, anchor: .top)
                                     }
                                 }
                             ) { product in

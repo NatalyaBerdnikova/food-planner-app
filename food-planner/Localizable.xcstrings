@@ -6888,13 +6888,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unlock plan"
+            "value" : "Continue"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Оформить подписку"
+            "value" : "Продолжить"
           }
         }
       }

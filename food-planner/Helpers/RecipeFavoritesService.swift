@@ -49,7 +49,7 @@ enum RecipeFavoritesService {
 
     static func favoriteRecipes(from recipes: [Recipe], favoriteIds: Set<String>) -> [Recipe] {
         guard !favoriteIds.isEmpty else { return [] }
-        return recipes
+        return RecipeCollections.visible(recipes)
             .filter { recipe in
                 guard let key = favoriteKey(for: recipe) else { return false }
                 return favoriteIds.contains(key)
@@ -61,18 +61,22 @@ enum RecipeFavoritesService {
 }
 
 enum RecipeCollections {
+    static func visible(_ recipes: [Recipe]) -> [Recipe] {
+        recipes.filter(\.isVisibleInApp)
+    }
+
     static func catalogRecipes(from recipes: [Recipe]) -> [Recipe] {
-        recipes.filter(\.isCatalogRecipe)
+        visible(recipes).filter(\.isCatalogRecipe)
     }
 
     static func userRecipes(from recipes: [Recipe]) -> [Recipe] {
-        recipes
+        visible(recipes)
             .filter(\.isUserCreated)
             .sorted { $0.localizedName.localizedCaseInsensitiveCompare($1.localizedName) == .orderedAscending }
     }
 
     static func sortedCatalogRecipes(from recipes: [Recipe]) -> [Recipe] {
-        recipes
+        visible(recipes)
             .filter(\.isCatalogRecipe)
             .sorted { $0.localizedName.localizedCaseInsensitiveCompare($1.localizedName) == .orderedAscending }
     }

@@ -20,10 +20,10 @@ struct ImportProgressView: View {
             .navigationTitle("import.progress.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                if case .loading = coordinator.state {
+                if showsToolbarCancel {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button("common.cancel") {
-                            coordinator.cancelImport()
+                        Button("common.cancel", role: .cancel) {
+                            cancelFromToolbar()
                         }
                     }
                 }
@@ -34,6 +34,26 @@ struct ImportProgressView: View {
             return false
         }())
         .presentationDetents([.medium, .large])
+    }
+
+    private var showsToolbarCancel: Bool {
+        switch coordinator.state {
+        case .loading, .failed:
+            true
+        default:
+            false
+        }
+    }
+
+    private func cancelFromToolbar() {
+        switch coordinator.state {
+        case .loading:
+            coordinator.cancelImport()
+        case .failed:
+            coordinator.dismissError()
+        default:
+            break
+        }
     }
 
     private func loadingContent(stage: ImportStage) -> some View {
@@ -93,18 +113,38 @@ struct ImportProgressView: View {
 
     private func errorContent(message: String) -> some View {
         ContentUnavailableView {
-            Label("import.error.title", systemImage: "exclamationmark.triangle")
+            Label {
+                Text("import.error.title")
+            } icon: {
+                Image(systemName: errorSymbolName(for: message))
+                    .symbolRenderingMode(.hierarchical)
+            }
         } description: {
             Text(message)
+                .multilineTextAlignment(.center)
         } actions: {
-            Button("import.progress.retry") {
+            Button {
                 coordinator.retryImport()
+            } label: {
+                Text("import.progress.retry")
+                    .frame(minWidth: 160)
             }
             .buttonStyle(.borderedProminent)
-            Button("common.cancel") {
-                coordinator.dismissError()
-            }
+            .controlSize(.large)
+            .tint(AppTheme.accent)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 24)
+    }
+
+    private func errorSymbolName(for message: String) -> String {
+        if message == String(localized: "import.error.network") {
+            return "wifi.exclamationmark"
+        }
+        if message == String(localized: "import.error.instagram") {
+            return "link.badge.exclamationmark"
+        }
+        return "exclamationmark.triangle"
     }
 
     private var successContent: some View {

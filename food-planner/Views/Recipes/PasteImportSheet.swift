@@ -81,11 +81,8 @@ struct PasteImportSheet: View {
                 .padding(AppTheme.contentPadding)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .background(AppTheme.elevated)
             .navigationTitle("import.paste.nav")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(AppTheme.elevated, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("common.cancel") { dismiss() }
@@ -101,7 +98,6 @@ struct PasteImportSheet: View {
             }
         }
         .presentationDetents([.medium])
-        .presentationBackground(AppTheme.elevated)
     }
 
     private func pasteFromClipboard() {

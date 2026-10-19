@@ -27,8 +27,8 @@ struct HomeView: View {
     }
 
     private let favoriteColumns = [
-        GridItem(.flexible(), spacing: 12),
-        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12, alignment: .top),
+        GridItem(.flexible(), spacing: 12, alignment: .top),
     ]
 
     private var favoriteRecipes: [Recipe] {
@@ -243,8 +243,8 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
             } else {
-                LazyVGrid(columns: favoriteColumns, spacing: 12) {
-                    ForEach(favoriteRecipes) { recipe in
+                LazyVGrid(columns: favoriteColumns, alignment: .center, spacing: 12) {
+                    ForEach(favoriteRecipes, id: \.persistentModelID) { recipe in
                         favoriteCard(recipe)
                     }
                 }

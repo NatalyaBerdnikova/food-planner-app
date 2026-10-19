@@ -3,10 +3,10 @@ import SwiftData
 
 enum RecipeDiscoveryService {
     static func recipeOfTheDay(from recipes: [Recipe], on date: Date = .now) -> Recipe? {
-        let withPhotos = recipes.filter(\.hasImage)
-        let catalog = withPhotos.filter(\.isCatalogRecipe)
+        let visible = RecipeCollections.visible(recipes)
+        let catalog = visible.filter(\.isCatalogRecipe)
         guard !catalog.isEmpty else {
-            return withPhotos
+            return visible
                 .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
                 .first
         }
@@ -21,11 +21,11 @@ enum RecipeDiscoveryService {
     }
 
     static func randomRecipe(from recipes: [Recipe], excluding excludedID: PersistentIdentifier? = nil) -> Recipe? {
-        let withPhotos = recipes.filter(\.hasImage)
-        let pool = withPhotos.filter { recipe in
+        let visible = RecipeCollections.visible(recipes)
+        let pool = visible.filter { recipe in
             guard let excludedID else { return true }
             return recipe.persistentModelID != excludedID
         }
-        return pool.randomElement() ?? withPhotos.randomElement()
+        return pool.randomElement() ?? visible.randomElement()
     }
 }

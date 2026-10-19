@@ -9,14 +9,21 @@ enum RecipeVisibilityService {
 
     @MainActor
     static func hideCatalogRecipe(_ recipe: Recipe, in context: ModelContext) {
-        guard let catalogId = recipe.catalogRecipeId else { return }
+        guard !recipe.isDeleted else { return }
+        guard let catalogId = recipe.catalogRecipeId, !catalogId.isEmpty else { return }
 
         let settings = AppSettingsService.settings(in: context)
         var hidden = Set(settings.hiddenCatalogRecipeIds)
         hidden.insert(catalogId)
         settings.hiddenCatalogRecipeIds = hidden.sorted()
 
-        RecipeFavoritesService.setFavorite(recipe, favorite: false, in: context)
+        if let key = RecipeFavoritesService.favoriteKey(for: recipe) {
+            var favorites = Set(settings.favoriteCatalogRecipeIds)
+            if favorites.remove(key) != nil {
+                settings.favoriteCatalogRecipeIds = favorites.sorted()
+            }
+        }
+
         deleteMeals(of: recipe, in: context)
         context.delete(recipe)
         LocalPersistence.save(context)
@@ -24,9 +31,17 @@ enum RecipeVisibilityService {
 
     @MainActor
     static func deleteUserRecipe(_ recipe: Recipe, in context: ModelContext) {
+        guard !recipe.isDeleted else { return }
         guard recipe.isUserCreated else { return }
 
-        RecipeFavoritesService.setFavorite(recipe, favorite: false, in: context)
+        if let key = RecipeFavoritesService.favoriteKey(for: recipe) {
+            let settings = AppSettingsService.settings(in: context)
+            var favorites = Set(settings.favoriteCatalogRecipeIds)
+            if favorites.remove(key) != nil {
+                settings.favoriteCatalogRecipeIds = favorites.sorted()
+            }
+        }
+
         deleteMeals(of: recipe, in: context)
         context.delete(recipe)
         RecipeCatalogStore.persistUserRecipes(in: context)
@@ -34,7 +49,9 @@ enum RecipeVisibilityService {
 
     @MainActor
     private static func deleteMeals(of recipe: Recipe, in context: ModelContext) {
-        for meal in Array(recipe.meals) {
+        let meals = Array(recipe.meals)
+        for meal in meals {
+            meal.recipe = nil
             context.delete(meal)
         }
     }

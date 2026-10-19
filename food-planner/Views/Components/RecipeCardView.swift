@@ -78,7 +78,7 @@ struct RecipeCardView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppTheme.elevated)
         .clipShape(RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
-        .shadow(color: AppTheme.cardShadow, radius: 12, x: 0, y: 4)
+        .shadow(color: AppTheme.cardShadow, radius: 8, x: 0, y: 3)
         .contentShape(Rectangle())
     }
 
@@ -165,14 +165,17 @@ struct RecipeCardView: View {
         }
     }
 
+    private var titleLineLimit: Int {
+        style == .hero ? 3 : 2
+    }
+
     private var titleRow: some View {
         HStack(alignment: .top, spacing: 10) {
             Text(recipe.localizedName)
                 .font(titleFont)
                 .foregroundStyle(.primary)
                 .multilineTextAlignment(.leading)
-                .lineLimit(3)
-                .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(titleLineLimit, reservesSpace: style != .hero)
                 .frame(maxWidth: .infinity, alignment: .topLeading)
 
             if showsCommunityLikes {

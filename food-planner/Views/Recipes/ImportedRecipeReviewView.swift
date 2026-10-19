@@ -128,13 +128,13 @@ struct ImportedRecipeReviewView: View {
                         excludedCatalogKeys: Set(draftIngredients.map(\.product.catalogKey)),
                         placeholder: "addRecipe.addIngredient",
                         onSearchActivity: {
-                            scrollIngredientSearchToBottom(proxy)
+                            scrollIngredientSearchToTop(proxy)
                         }
                     ) { product in
                         draftIngredients.append(
                             DraftIngredient(product: product, quantity: 100, unit: .gram)
                         )
-                        scrollIngredientSearchToBottom(proxy)
+                        scrollIngredientSearchToTop(proxy)
                     }
                     .id(ScrollAnchor.ingredientSearch)
                 } header: {
@@ -207,9 +207,9 @@ struct ImportedRecipeReviewView: View {
         }
     }
 
-    private func scrollIngredientSearchToBottom(_ proxy: ScrollViewProxy) {
+    private func scrollIngredientSearchToTop(_ proxy: ScrollViewProxy) {
         withAnimation(.easeOut(duration: 0.2)) {
-            proxy.scrollTo(ScrollAnchor.ingredientSearch, anchor: .bottom)
+            proxy.scrollTo(ScrollAnchor.ingredientSearch, anchor: .top)
         }
     }
 
