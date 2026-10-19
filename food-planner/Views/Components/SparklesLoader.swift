@@ -27,7 +27,7 @@ struct SparklesLoader: View {
             return
         }
         isBright = true
-        withAnimation(.easeInOut(duration: 0.28).repeatForever(autoreverses: true)) {
+        withAnimation(.easeInOut(duration: 0.48).repeatForever(autoreverses: true)) {
             isBright = false
         }
     }

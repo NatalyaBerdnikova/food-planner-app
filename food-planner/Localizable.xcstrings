@@ -5155,13 +5155,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your meals, planned around you"
+            "value" : "Your meals,\nplanned around you"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Питание, собранное вокруг вас"
+            "value" : "Питание,\nсобранное вокруг вас"
           }
         }
       }
@@ -6577,6 +6577,22 @@
         }
       }
     },
+    "subscription.period.lifetime" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lifetime"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожизненная"
+          }
+        }
+      }
+    },
     "subscription.period.monthly" : {
       "localizations" : {
         "en" : {
@@ -6609,12 +6625,172 @@
         }
       }
     },
+    "subscription.plan.annual.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Then $69.99/year · about $5.83/mo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далее $69.99/год · ≈ $5.83/мес"
+          }
+        }
+      }
+    },
+    "subscription.plan.badge.bestValue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Best value"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выгоднее"
+          }
+        }
+      }
+    },
+    "subscription.plan.badge.trial14" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 days free"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 дней бесплатно"
+          }
+        }
+      }
+    },
+    "subscription.plan.monthly.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flexible · cancel anytime"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гибко · отмена в любой момент"
+          }
+        }
+      }
+    },
+    "subscription.plan.lifetime.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pay once · money-back if you don’t like it"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Один платёж · вернём деньги, если не понравится"
+          }
+        }
+      }
+    },
+    "subscription.plan.period.month" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per month"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "в месяц"
+          }
+        }
+      }
+    },
+    "subscription.plan.period.once" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "one-time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "разово"
+          }
+        }
+      }
+    },
+    "subscription.plan.period.year" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per year"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "в год"
+          }
+        }
+      }
+    },
+    "subscription.cta.subscribeHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel anytime in Settings."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить можно в любой момент в Настройках."
+          }
+        }
+      }
+    },
+    "subscription.cta.trialHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No charge today. After 14 days, $69.99/year. Cancel anytime."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сегодня бесплатно. Через 14 дней — $69.99/год. Отмена в любой момент."
+          }
+        }
+      }
+    },
     "subscription.privacy" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Privacy"
+            "value" : "Privacy policy"
           }
         },
         "ru" : {
@@ -6744,7 +6920,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Terms"
+            "value" : "Terms of use"
           }
         },
         "ru" : {

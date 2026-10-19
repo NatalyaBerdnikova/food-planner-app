@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import UIKit
 
 struct HardPaywallView: View {
     @Environment(\.modelContext) private var modelContext
@@ -11,25 +12,17 @@ struct HardPaywallView: View {
 
     var body: some View {
         ZStack {
-            AppTheme.heroGradient
+            paywallBackground
                 .ignoresSafeArea()
 
             ScrollView {
-                VStack(spacing: 28) {
+                VStack(spacing: 20) {
                     VStack(spacing: 12) {
-                        Image(systemName: "lock.open.fill")
-                            .font(.system(size: 44))
-                            .foregroundStyle(AppTheme.accentSoft)
-                            .accessibilityHidden(true)
+                        BlinkingLockIcon(size: 44, tint: AppTheme.accent)
 
                         Text("paywall.hard.title")
                             .font(.largeTitle.bold())
                             .foregroundStyle(.white)
-                            .multilineTextAlignment(.center)
-
-                        Text("paywall.hard.subtitle")
-                            .font(.body)
-                            .foregroundStyle(.white.opacity(0.88))
                             .multilineTextAlignment(.center)
                     }
                     .padding(.top, 28)
@@ -37,6 +30,12 @@ struct HardPaywallView: View {
                     if let settings {
                         planSummary(settings)
                     }
+
+                    Text("paywall.hard.subtitle")
+                        .font(.footnote)
+                        .foregroundStyle(.white.opacity(0.82))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 4)
 
                     DefaultPaywall(
                         placement: .basic,
@@ -48,7 +47,32 @@ struct HardPaywallView: View {
                 .padding(.horizontal, 20)
             }
         }
+        .preferredColorScheme(.dark)
         .interactiveDismissDisabled(true)
+    }
+
+    private var paywallBackground: some View {
+        ZStack {
+            if UIImage(named: "PaywallHero") != nil {
+                Image("PaywallHero")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .clipped()
+            } else {
+                AppTheme.heroGradient
+            }
+
+            LinearGradient(
+                colors: [
+                    Color.black.opacity(0.45),
+                    Color.black.opacity(0.55),
+                    Color.black.opacity(0.82),
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        }
     }
 
     private func planSummary(_ settings: AppSettings) -> some View {
@@ -86,7 +110,15 @@ struct HardPaywallView: View {
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white.opacity(0.14), in: RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous))
+        .background {
+            RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
+                .fill(.ultraThinMaterial)
+                .opacity(0.9)
+                .overlay {
+                    RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
+                        .fill(Color.white.opacity(0.06))
+                }
+        }
     }
 
     private func macroChip(_ title: LocalizedStringKey, value: String) -> some View {

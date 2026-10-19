@@ -5,8 +5,6 @@ import UIKit
 struct OnboardingFlowView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.colorScheme) private var colorScheme
-
     let onFinished: () -> Void
 
     @State private var step: Step = .welcome
@@ -23,12 +21,9 @@ struct OnboardingFlowView: View {
     }
 
     private var isWelcome: Bool { step == .welcome }
-    private var isDark: Bool { colorScheme == .dark }
 
-    private var onPhotoChrome: Color { isDark ? .white : Color(white: 0.08) }
-    private var onPhotoSecondary: Color {
-        isDark ? Color.white.opacity(0.88) : Color(white: 0.22)
-    }
+    private var onPhotoChrome: Color { .white }
+    private var onPhotoSecondary: Color { Color.white.opacity(0.88) }
 
     var body: some View {
         ZStack {
@@ -37,21 +32,40 @@ struct OnboardingFlowView: View {
 
             VStack(spacing: 0) {
                 progressHeader
-                ScrollView {
-                    stepContent
+                if isWelcome {
+                    welcomeLayout
+                } else {
+                    ScrollView {
+                        stepContent
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 20)
+                            .frame(maxWidth: 560)
+                            .frame(maxWidth: .infinity)
+                    }
+                    footer
                         .padding(.horizontal, 24)
-                        .padding(.vertical, 20)
-                        .frame(maxWidth: 560)
-                        .frame(maxWidth: .infinity)
+                        .padding(.bottom, 20)
                 }
-                footer
-                    .padding(.horizontal, 24)
-                    .padding(.bottom, 20)
             }
         }
         .tint(AppTheme.accent)
+        .preferredColorScheme(isWelcome ? .dark : nil)
         .animation(reduceMotion ? nil : .easeInOut(duration: 0.28), value: step)
         .sensoryFeedback(.selection, trigger: step)
+    }
+
+    private var welcomeLayout: some View {
+        VStack(spacing: 0) {
+            Spacer(minLength: 16)
+            stepContent
+                .padding(.horizontal, 24)
+                .frame(maxWidth: 560)
+                .frame(maxWidth: .infinity)
+            footer
+                .padding(.horizontal, 24)
+                .padding(.top, 28)
+                .padding(.bottom, 20)
+        }
     }
 
     @ViewBuilder
@@ -76,17 +90,11 @@ struct OnboardingFlowView: View {
             }
 
             LinearGradient(
-                colors: isDark
-                    ? [
-                        Color.black.opacity(0.45),
-                        Color.black.opacity(0.55),
-                        Color.black.opacity(0.82),
-                    ]
-                    : [
-                        Color.white.opacity(0.35),
-                        Color.white.opacity(0.72),
-                        Color.white.opacity(0.94),
-                    ],
+                colors: [
+                    Color.black.opacity(0.45),
+                    Color.black.opacity(0.55),
+                    Color.black.opacity(0.82),
+                ],
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -180,17 +188,12 @@ struct OnboardingFlowView: View {
 
     private var welcomeStep: some View {
         VStack(alignment: .leading, spacing: 24) {
-            Image(systemName: "fork.knife.circle.fill")
-                .font(.system(size: 64))
-                .foregroundStyle(AppTheme.accent)
-                .symbolRenderingMode(.hierarchical)
-                .motionSafeSymbolEffect(.pulse)
-                .shadow(color: isDark ? .black.opacity(0.35) : .clear, radius: 8, y: 2)
-
             Text("onboarding.welcome.title")
                 .font(.largeTitle.bold())
                 .foregroundStyle(onPhotoChrome)
-                .shadow(color: isDark ? .black.opacity(0.4) : .clear, radius: 6, y: 1)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
+                .shadow(color: .black.opacity(0.4), radius: 6, y: 1)
 
             Text("onboarding.welcome.subtitle")
                 .font(.title3)
