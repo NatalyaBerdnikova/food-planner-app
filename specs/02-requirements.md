@@ -10,7 +10,8 @@
 | --- | --- | --- | --- |
 | FR-01 | До основного UI пользователь проходит онбординг (цель, тело, активность) и получает рассчитанные дневные цели КБЖУ | must | F-ONB |
 | FR-02 | После онбординга без активной подписки / free-флага показывается hard paywall | must | F-SUB |
-| FR-03 | Статус доступа Pro сохраняется в `AppSettings` и сверяется с Adapty | must | F-SUB |
+| FR-03 | Статус доступа Pro сохраняется в `AppSettings` и сверяется с Adapty (или mock-unlock при `AppVars.useSubscriptionMocks`) | must | F-SUB |
+| FR-04 | Для TestFlight/pre-release: mock-тарифы на paywall; Continue и Restore выдают Pro без StoreKit | must | F-SUB |
 
 ### Сегодня (Home)
 
@@ -54,9 +55,11 @@
 
 | ID | Требование | Priority | Feature |
 | --- | --- | --- | --- |
-| FR-50 | Импорт по URL Instagram (in-app paste и Share Extension) | must | F-IMP |
-| FR-51 | Пайплайн: fetch post → caption/transcript → LLM parse → match каталога → review draft | must | F-IMP |
+| FR-50 | Импорт по URL Instagram (in-app paste и Share Extension без compose) | must | F-IMP |
+| FR-51 | Пайплайн: fetch post → caption/transcript → LLM parse → amount normalize → match каталога → review draft | must | F-IMP |
 | FR-52 | Пользователь может править draft перед сохранением в библиотеку | must | F-IMP |
+| FR-53 | Deep link `foodplanner://import?url=` и App Group pending переживают cold start / bootstrap | must | F-IMP |
+| FR-54 | LLM-каталог в промпте на языке UI (ru\|en); матчинг со стеммингом; quantity/unit из названия подставляются при ручном сопоставлении | must | F-IMP |
 
 ### Питание
 
@@ -80,11 +83,12 @@
 | --- | --- | --- |
 | NFR-01 | Основной UX работает offline (план, библиотека, shopping, nutrition из локальных данных) | must |
 | NFR-02 | Сеть: импорт Instagram, LLM, Adapty; ошибки импорта показываются с retry | must |
-| NFR-03 | Accessibility: VoiceOver labels на ключевых контролах; уважение Reduce Motion | should |
+| NFR-03 | Accessibility: VoiceOver labels на ключевых контролах; уважение Reduce Motion; hit targets ≥ 44pt | should |
 | NFR-04 | Контраст и Dynamic Type через системные стили SwiftUI где применимо | should |
 | NFR-05 | При битой локальной БД — recovery reset store (DEBUG-лог) и пересоздание контейнера | must |
 | NFR-06 | Секреты API импорта не коммитятся (`ImportAPIConfig.example.swift`) | must |
 | NFR-07 | Preview на симуляторе без обязательной подписи development team | should |
+| NFR-08 | Layout адаптируется по size class (readable columns, adaptive grids, form sheets на iPad) | must |
 
 ## Ограничения
 

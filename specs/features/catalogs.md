@@ -12,7 +12,8 @@
 
 - Файл: `food-planner/Resources/food-catalog.json` (~492).
 - Seed в SwiftData при старте, если пусто.
-- Локализация имён: ключи `product.*` / `FoodCatalogLocalization` / `Products.xcstrings`.
+- Локализация имён: `FoodCatalogLocalization` / translations en+ru в JSON.
+- Для LLM-импорта: `IngredientCatalogPrompt.compactCatalogForPrompt(languageCode:)` — **один** язык UI (`catalogKey | name`), чтобы весь каталог помещался в лимит промпта.
 - Редактор контента: `tools/ingredient-catalog-manager.html` + парсеры health-diet.ru.
 
 ## Рецепты
@@ -25,7 +26,8 @@
 
 ## Формат единиц
 
-`gram` | `kilogram` | `milliliter` | `liter` | `piece` | `tablespoon` | `teaspoon` — как `MeasurementUnit`.
+`gram` | `kilogram` | `milliliter` | `liter` | `piece` | `tablespoon` | `teaspoon` — как `MeasurementUnit`.  
+Нормализация сырых строк (г, мл, стик, ст.л, …) — `UnitNormalizer`.
 
 ## Acceptance
 
@@ -33,3 +35,4 @@
 - [ ] Новый user recipe переживает перезапуск (SwiftData + user JSON).
 - [ ] Каталоговый рецепт идентифицируется стабильным `catalogRecipeId`.
 - [ ] Матчинг импорта использует те же `catalogKey`, что в food-catalog.
+- [ ] Промпт импорта на ru/en содержит полный (или почти полный) одноязычный список без критичной обрезки базовых продуктов.

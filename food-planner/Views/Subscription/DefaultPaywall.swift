@@ -26,11 +26,7 @@ struct DefaultPaywall: View {
     var chrome: PaywallChrome = .standard
     let successPurchaseCallback: () -> Void
 
-    #if DEBUG
-    private let useMockPlans = true
-    #else
-    private let useMockPlans = false
-    #endif
+    private var useMockPlans: Bool { AppVars.useSubscriptionMocks }
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var showPayment = false
@@ -374,14 +370,14 @@ struct DefaultPaywall: View {
 
     private func restorePayments() {
         if useMockPlans {
-            successPurchaseCallback()
+            subscriptionSession.showLoader()
+            Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(400))
+                subscriptionSession.hideLoader()
+                successPurchaseCallback()
+            }
             return
         }
-
-        #if DEBUG
-        successPurchaseCallback()
-        return
-        #endif
 
         subscriptionSession.showLoader()
 

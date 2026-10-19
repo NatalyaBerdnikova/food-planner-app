@@ -14,7 +14,7 @@
 - Sync: агрегация ингредиентов всех meals недели по ключу `name|unit`, сумма quantity, категория продукта.
 - UI: переключатель недели как в плане; секции по `IngredientCategory.shoppingListOrder`; купленные ниже некупленных внутри сортировки.
 - Toggle purchased на row.
-- `+` — ручной item (`isManual`); swipe delete только для manual.
+- `+` — ручной item через `AddIngredientSheet` (form sheet на iPad; clear в поиске); swipe delete только для manual.
 - Share sheet — текстовый экспорт списка.
 
 ## Empty state

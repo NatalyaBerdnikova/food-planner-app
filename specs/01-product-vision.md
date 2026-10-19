@@ -54,7 +54,7 @@ URL scheme импорта: `foodplanner://`
 
 ## Платформа
 
-- **iOS** (SwiftUI + SwiftData).
-- Share Extension для передачи URL из Instagram.
-- Локализация: система / English / Русский.
-- Монетизация: подписка Pro через Adapty (`premium`), hard paywall до доступа.
+- **iOS / iPadOS** (SwiftUI + SwiftData); layout по size class (readable columns, adaptive grids, form sheets).
+- Share Extension (без compose): URL → App Group + deep link → импорт в main app.
+- Локализация: система / English / Русский (каталог в LLM-промпте — на языке UI).
+- Монетизация: подписка Pro через Adapty (`premium`), hard paywall до доступа; pre-release mocks через `AppVars.useSubscriptionMocks`.

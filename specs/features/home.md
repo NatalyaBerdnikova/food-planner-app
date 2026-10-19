@@ -6,23 +6,24 @@
 
 ## Цель
 
-Дневной хаб: питание сегодня, быстрый импорт, слоты еды, мост к недельному плану, рекомендации рецептов.
+Дневной хаб: питание сегодня, быстрый импорт, слоты еды, рекомендации рецептов.
 
 ## Секции экрана
 
-1. **Today nutrition** — expandable карточка прогресса к целям (`NutritionTargetProgressView`).
-2. **Import CTA** — открывает `PasteImportSheet`.
-3. **Today meals** — слоты `breakfast/lunch/dinner/snack`; тап по пустому → `AddMealSheet`.
-4. **Week plan card** — переход/превью к плану.
-5. **Recommendations** — сетка рецептов (избранное / каталог), снятие favorite с confirm.
+1. **Recipe of the day** — featured + «Surprise me» (`RecipeDiscoveryService`).
+2. **Import CTA** — открывает `PasteImportSheet` (form sheet на iPad).
+3. **Today nutrition** — expandable карточка прогресса к целям (`NutritionTargetProgressView` / summary).
+4. **Today meals** — слоты `breakfast/lunch/dinner/snack`; тап → `AddMealSheet`.
+5. **Favorites** — adaptive grid карточек.
 
-Toolbar: Settings.
+Контент в `readableContentWidth` на regular width. Toolbar: Settings.
 
 ## Сервисы
 
 - `WeekPlanService` — текущая неделя / сегодня.
 - `RecipeFavoritesService` — избранное.
-- `RecipeDiscoveryService` — recipe of the day / random (логика готова; UI на Home может быть partial относительно roadmap).
+- `RecipeDiscoveryService` — recipe of the day / random.
+- `ImportCoordinator` — импорт из paste (progress на root ContentView).
 
 ## Acceptance
 
@@ -30,3 +31,4 @@ Toolbar: Settings.
 - [ ] Добавление meal с Home обновляет отображение слотов и nutrition.
 - [ ] CTA импорта открывает paste-sheet без ухода с вкладки.
 - [ ] Settings доступны с Home.
+- [ ] На iPad контент не растянут на всю ширину; избранное — adaptive columns.

@@ -3,26 +3,38 @@
 Источник идей: корневой `todo.md` + gaps относительно specs.  
 Статусы: `planned` | `in-model` | `partial-ui` | `done`.
 
+## Недавно закрыто (спека ↔ код)
+
+| Item | Notes |
+| --- | --- |
+| Share Extension auto-open + cold-start import | App Group + `?url=`; sheets на root ContentView |
+| Матчинг ингредиентов | Stemming, одноязычный каталог в LLM, amount parser |
+| iPad layout | Readable widths, adaptive grids, 2-col week, form sheets |
+| TestFlight paywall mocks | `AppVars.useSubscriptionMocks` |
+
 ## Ближайший бэклог
 
 | ID | Item | Status | Notes |
 | --- | --- | --- | --- |
-| R-01 | Рецепт дня на главной | planned / in-model | `RecipeDiscoveryService.recipeOfTheDay` есть; нужна явная секция на Home |
-| R-02 | Случайный рецепт | planned / in-model | `randomRecipe` есть; нужен UI CTA |
+| R-01 | Рецепт дня / Surprise me на Home | done / polish | UI есть; следить за copy/a11y |
+| R-02 | Случайный рецепт | done | CTA на Home |
 | R-03 | Надиктовка рецепта | planned | Voice → тот же import/parse pipeline |
 | R-04 | Генерация картинки для рецепта | planned | Для user recipes без фото |
-| R-05 | Обновить дизайн: Kitchen Stories × текущий бренд | partial-ui | Токены и карточки частично; полный audit по [06-design-system.md](06-design-system.md) |
-| R-06 | Лайки / community visibility | partial-ui | `CommunitySocialStatsService` рандом 0…100 при заходе в tabs; добить отображение везде |
-| R-07 | Личный рейтинг рецептов | in-model | `Recipe.userRating` 1…5; нужен UI на detail/card |
-| R-08 | Время готовки | partial | Поле + AddRecipe + catalog; единый meta на всех карточках |
-| R-09 | Кнопка «Сегодня» в week switcher | planned | Из memory.md |
-| R-10 | Reverse-engineering паттернов Kitchen Stories | planned | Исследование UX; не код |
+| R-05 | Обновить дизайн: Kitchen Stories × текущий бренд | partial-ui | Токены и карточки; audit по [06-design-system.md](06-design-system.md) |
+| R-06 | Лайки / community visibility | partial-ui | Рандом 0…100; добить отображение везде |
+| R-07 | Личный рейтинг рецептов | in-model | `Recipe.userRating` 1…5; UI на detail/card |
+| R-08 | Время готовки на всех карточках | partial | Поле есть; единый meta |
+| R-09 | Кнопка «Сегодня» в week switcher | planned | |
+| R-10 | Reverse-engineering паттернов Kitchen Stories | planned | Исследование UX |
+| R-11 | Выключить mock-тарифы перед App Store | planned | `AppVars.useSubscriptionMocks = false` + реальные Adapty products |
+| R-12 | Аналитика (Firebase / Google) | planned | Из `todo.md` |
+| R-13 | Качество импорта (больше ключей каталога / курица и т.п.) | planned | Gaps в food-catalog |
 
 ## Принцип приоритизации
 
-1. Закрыть **partial** (рейтинг, cook time на карточках, recipe of the day) — высокий ROI, модель уже есть.
-2. Дизайн-проход Library/Home под KS без ломки planner.
-3. Новые входы контента (voice, image gen).
+1. Закрыть **partial** (рейтинг, cook time на карточках) — высокий ROI.
+2. Перед релизом: **R-11** (убрать mocks).
+3. Дизайн-проход Library/Home; затем voice / image gen.
 
 ## Definition of Done для roadmap-item
 

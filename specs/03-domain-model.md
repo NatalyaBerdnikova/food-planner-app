@@ -111,7 +111,11 @@ Bundled seed: `recipes-catalog.json` (~128 рецептов).
 
 ### ImportedRecipeDraft (не SwiftData)
 
-Временный объект импорта до сохранения: имя, URL, порции, шаги, image, matched ingredients, unresolved ingredients.
+Временный объект импорта до сохранения: имя, URL, порции, cook time, шаги, image, matched ingredients, unresolved ingredients.
+
+### UnresolvedIngredient (не SwiftData)
+
+`rawName` (без вшитых единиц), `suggestedQuantity`, `suggestedUnit` — префилл для `AddIngredientSheet`.
 
 ## Границы контекстов
 
@@ -121,5 +125,5 @@ Bundled seed: `recipes-catalog.json` (~128 рецептов).
 | Planning | Week/Day/Meal CRUD, активная неделя |
 | Shopping | Sync из плана, manual items, share |
 | Nutrition | Calculator, progress, micro focus |
-| Import | Instagram/scrape/LLM/match/review |
-| Subscription | Adapty placement, paywall, persist access |
+| Import | Instagram/scrape/LLM/amount parse/stem match/review |
+| Subscription | Adapty placement, paywall (или mocks), persist access |

@@ -14,15 +14,29 @@
 
 | Token | Значение / роль |
 | --- | --- |
-| `accent` | Зелёный `#1C5E4A`-диапазон — primary brand |
-| `warmFill` | Тёплый оранжево-терракотовый акцент CTA / highlights |
-| `heroGradient` | Тёмно-зелёный градиент онбординга / hero блоков |
+| `accent` | Оранжевый brand tint (high-contrast вариант через `accent(for:highContrast:)`) |
+| `accentSoft` | Мягкая заливка чипов / CTA |
+| `warmFill` | Тёплый акцент highlights |
+| `heroGradient` | Градиент онбординга / hero / bootstrap |
 | `cardRadius` | 16 continuous |
-| `sectionSpacing` | 20 |
+| `sectionSpacing` | 24 |
 | `contentPadding` | 16 |
-| `canvas` / `elevated` | System grouped / system background |
+| `minTapTarget` | 44 |
+| `canvas` / `elevated` / `nestedFill` | System grouped surfaces |
+| `readableContentWidth` | 720 — колонка контента на regular width |
+| `formContentWidth` | 560 — onboarding / paywall / import progress |
+| `wideContentWidth` | 1100 — библиотека / план |
 
-High contrast: отдельный `accent(for:highContrast:)`.
+High contrast: `accent(for:highContrast:)`.
+
+## Адаптив (iPad / multitasking)
+
+- Решения по `horizontalSizeClass`, не по idiom устройства (`layout.md` HIG).
+- `appReadableWidth` / `appWideReadableWidth` / `appFormWidth` — центрирование и cap ширины.
+- Рецептные сетки: `recipeGridColumns` (adaptive min width).
+- План: `dayPlanColumns` — 1 колонка compact, 2 regular.
+- Sheets: `appFormSheetPresentation()` → `presentationSizing(.form)`.
+- Tabs: `.sidebarAdaptable`.
 
 ## Компоненты
 
@@ -33,6 +47,8 @@ High contrast: отдельный `accent(for:highContrast:)`.
 | `AppSectionHeader` | Title + optional glyph в soft circle |
 | `NutritionSummaryView` / progress | Макросы без dashboard-шума |
 | `PlannedMealSlotView` | Слот приёма пищи в дне |
+| `IngredientTagSearchField` | Поиск + clear (`×`) при непустом тексте |
+| `WeekRangeSwitcher` | Общий переключатель недель (план / покупки) |
 | Empty states | SF Symbol + short copy + один CTA |
 
 ## Правила (must)
@@ -40,9 +56,11 @@ High contrast: отдельный `accent(for:highContrast:)`.
 1. Первое, что видит глаз на карточке рецепта — **еда**, не chrome.
 2. Не вешать floating badges / promo chips поверх hero-фото.
 3. Home не превращать в dashboard из виджетов: секции с одной идеей.
-4. Один primary accent бренда; не копировать коралл KS буквально.
+4. Один primary accent бренда.
 5. Motion: спокойный fade/slide; `MotionSafeSymbolModifier` чтит Reduce Motion.
-6. Шаги готовки — читаемый body (на будущее cook-mode).
+6. Материалы поверх контента — solid overlays (`contentOverlayFill`), не glass на еде.
+7. Hit targets ≥ 44pt.
+8. На wide layout не растягивать текстовые формы на всю ширину экрана.
 
 ## Audit перед UI-мержем
 
@@ -50,3 +68,4 @@ High contrast: отдельный `accent(for:highContrast:)`.
 2. Можно ли убрать рамку/тень/бейдж без потери смысла?
 3. Есть ли понятное время готовки на карточке (если известно)?
 4. Не стал ли первый экран dashboard?
+5. Regular width: колонка читаемая? Сетка использует место? Sheet — form?

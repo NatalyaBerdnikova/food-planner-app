@@ -10,12 +10,14 @@
 
 ## Поведение
 
-- Переключатель недель: стрелки ←/→; в заголовке диапазон дат.
+- Переключатель недель: `WeekRangeSwitcher` (общий с покупками).
 - `WeekPlanService.weekPlan(forWeekStarting:)` создаёт неделю и 7 `DayPlan`, если нет.
 - Активная неделя пишется в `AppSettings.activeWeekPlan`.
-- Карусель дней: слоты meal types; пустой слот → `AddMealSheet` с preferred type.
+- Дни: `WeekDayCarousel` — 1 колонка на compact, **2 колонки** на regular width; expandable `DayPlanCardView`.
+- Пустой слот → `AddMealSheet` (form sheet на iPad) с preferred type.
 - Фильтр рецептов в sheet: все / по типу приёма (`RecipeFilterTab`).
 - После добавления meal — `syncShoppingItems` для displayed week.
+- Контент ограничен `wideContentWidth` на больших экранах.
 
 ## Out of scope (planned)
 
@@ -27,3 +29,4 @@
 - [ ] У каждого дня есть 4 концептуальных слота meal types (UI).
 - [ ] Изменение состава meals обновляет shopping list той же недели.
 - [ ] Повторный вход на ту же неделю не дублирует day plans.
+- [ ] На iPad (regular) дни отображаются в две колонки.

@@ -21,15 +21,29 @@
 
 Paywall копирайт фич (маркетинг): AI-импорт, insights, plan — см. localization keys `home.proOffer.feature.*`.
 
-## Поведение
+## Режим тестовых тарифов (TestFlight / pre-release)
+
+Флаг: `AppVars.useSubscriptionMocks` (сейчас `true` для всех конфигураций).
+
+Когда включён:
+
+- `DefaultPaywall` показывает mock-планы (месяц / год с trial / lifetime) без загрузки продуктов StoreKit/Adapty.
+- Кнопка подписки / trial → короткий loader → `upgradeToPro` (полный доступ).
+- «Восстановить» → тот же unlock без реальных покупок.
+
+Перед релизом в App Store выставить `useSubscriptionMocks = false` и полагаться на Adapty/StoreKit.
+
+## Поведение (production, mocks off)
 
 - Загрузка paywall/products/eligibilities через Adapty.
 - Purchase / restore → `PurchaseService.checkAccess` → persist в settings.
+- При старте paywall — silent restore, если уже есть доступ.
 - Settings: статус active/inactive; кнопка restore при наличии доступа.
 
 ## Acceptance
 
 - [ ] Без доступа основной Tab UI скрыт.
-- [ ] Успешная покупка/restore открывает app без переустановки.
+- [ ] При `useSubscriptionMocks == true`: mock-тарифы видны; Continue и Restore открывают app без StoreKit.
+- [ ] При `useSubscriptionMocks == false`: успешная покупка/restore открывает app без переустановки.
 - [ ] `isFree` (если выставлен) обходит paywall так же, как Pro.
-- [ ] Ошибки покупки показываются alert'ом сессии.
+- [ ] Ошибки покупки (production) показываются alert'ом сессии.

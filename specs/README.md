@@ -43,3 +43,9 @@
 - Код: `food-planner/`, `FoodPlannerShareExtension/`, `Shared/`, `tools/`
 - Дизайн-референс: корневой `design.md` (Kitchen Stories)
 - Рабочий бэклог: корневой `todo.md`
+
+## Недавние обновления спек (канон)
+
+- Share / deep link / cold-start импорт; стемминг и amount-parser; copy «Подбираем ингредиенты»
+- iPad: readable widths, adaptive grids, form sheets, 2-col week plan
+- Подписка: `AppVars.useSubscriptionMocks` для TestFlight (Continue + Restore)
