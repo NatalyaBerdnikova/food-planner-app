@@ -10,6 +10,7 @@ struct HomeView: View {
     private var settingsList: [AppSettings]
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     @State private var isTodayExpanded = false
     @State private var addMealPresentation: AddMealPresentation?
@@ -29,10 +30,9 @@ struct HomeView: View {
         featuredRecipeOverride ?? RecipeDiscoveryService.recipeOfTheDay(from: recipes)
     }
 
-    private let favoriteColumns = [
-        GridItem(.flexible(), spacing: 12, alignment: .top),
-        GridItem(.flexible(), spacing: 12, alignment: .top),
-    ]
+    private var favoriteColumns: [GridItem] {
+        AppTheme.recipeGridColumns(horizontalSizeClass: horizontalSizeClass)
+    }
 
     private var favoriteRecipes: [Recipe] {
         RecipeFavoritesService.favoriteRecipes(
@@ -51,6 +51,7 @@ struct HomeView: View {
                 favoritesSection
             }
             .padding(AppTheme.contentPadding)
+            .appReadableWidth()
         }
         .appScreenBackground()
         .navigationTitle("nav.today")
@@ -70,9 +71,11 @@ struct HomeView: View {
             AddMealSheet(dayPlan: item.dayPlan, preferredMealType: item.mealType) {
                 refresh()
             }
+            .appFormSheetPresentation()
         }
         .sheet(item: $pasteImportRequest) { _ in
             PasteImportSheet()
+                .appFormSheetPresentation()
         }
     }
 

@@ -39,12 +39,12 @@ struct OnboardingFlowView: View {
                         stepContent
                             .padding(.horizontal, 24)
                             .padding(.vertical, 20)
-                            .frame(maxWidth: 560)
-                            .frame(maxWidth: .infinity)
+                            .appFormWidth()
                     }
                     footer
                         .padding(.horizontal, 24)
                         .padding(.bottom, 20)
+                        .appFormWidth()
                 }
             }
         }
@@ -59,12 +59,12 @@ struct OnboardingFlowView: View {
             Spacer(minLength: 16)
             stepContent
                 .padding(.horizontal, 24)
-                .frame(maxWidth: 560)
-                .frame(maxWidth: .infinity)
+                .appFormWidth()
             footer
                 .padding(.horizontal, 24)
                 .padding(.top, 28)
                 .padding(.bottom, 20)
+                .appFormWidth()
         }
     }
 

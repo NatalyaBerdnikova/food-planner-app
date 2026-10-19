@@ -38,6 +38,7 @@ struct WeekPlanView: View {
                 AddMealSheet(dayPlan: item.dayPlan, preferredMealType: item.mealType) {
                     syncShoppingList()
                 }
+                .appFormSheetPresentation()
             }
     }
 
@@ -59,6 +60,7 @@ struct WeekPlanView: View {
                     }
                     .padding(.horizontal, AppTheme.contentPadding)
                     .padding(.bottom, AppTheme.contentPadding)
+                    .appWideReadableWidth()
                 }
                 .appScreenBackground()
                 .onAppear {

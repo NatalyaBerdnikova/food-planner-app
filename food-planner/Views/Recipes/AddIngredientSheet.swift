@@ -114,6 +114,7 @@ struct AddIngredientSheet: View {
                 }
             }
         }
+        .appFormSheetPresentation()
     }
 
     private var canAdd: Bool {

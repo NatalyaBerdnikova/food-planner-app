@@ -52,6 +52,7 @@ struct SettingsView: View {
             ) { nutrition in
                 applyCalculatedTargets(nutrition)
             }
+            .appFormSheetPresentation()
         }
     }
 

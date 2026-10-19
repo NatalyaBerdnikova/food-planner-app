@@ -34,6 +34,7 @@ struct ImportProgressView: View {
             return false
         }())
         .presentationDetents([.medium, .large])
+        .appFormSheetPresentation()
     }
 
     private var showsToolbarCancel: Bool {
@@ -91,7 +92,7 @@ struct ImportProgressView: View {
                 .padding(.top, 8)
             }
             .padding(24)
-            .frame(maxWidth: .infinity)
+            .appFormWidth()
         }
     }
 
@@ -133,8 +134,9 @@ struct ImportProgressView: View {
             .controlSize(.large)
             .tint(AppTheme.accent)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, 24)
+        .appFormWidth()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private func errorSymbolName(for message: String) -> String {
@@ -177,6 +179,7 @@ struct ImportProgressView: View {
             .controlSize(.large)
         }
         .padding(24)
+        .appFormWidth()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

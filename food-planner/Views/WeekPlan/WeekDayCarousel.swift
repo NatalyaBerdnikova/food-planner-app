@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct WeekDayCarousel: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
     let dayPlans: [DayPlan]
     let targetNutrition: DailyNutrition?
     var micronutrientFocus: [MicronutrientKind] = []
@@ -11,8 +13,12 @@ struct WeekDayCarousel: View {
 
     private let daySpacing: CGFloat = 12
 
+    private var columns: [GridItem] {
+        AppTheme.dayPlanColumns(horizontalSizeClass: horizontalSizeClass, spacing: daySpacing)
+    }
+
     var body: some View {
-        LazyVStack(spacing: daySpacing) {
+        LazyVGrid(columns: columns, alignment: .center, spacing: daySpacing) {
             ForEach(dayPlans, id: \.date) { dayPlan in
                 let dayKey = dayKey(for: dayPlan.date)
                 DayPlanCardView(

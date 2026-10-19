@@ -69,6 +69,7 @@ struct ContentView: View {
         }
         .sheet(item: $importCoordinator.progressPresentation) { _ in
             ImportProgressView(coordinator: importCoordinator)
+                .appFormSheetPresentation()
         }
         .sheet(item: $importCoordinator.editingDraft, onDismiss: {
             importCoordinator.clearDraft()
@@ -76,6 +77,7 @@ struct ContentView: View {
             NavigationStack {
                 ImportedRecipeReviewView(draft: draft)
             }
+            .appFormSheetPresentation()
         }
         .alert(
             subscriptionSession.alertText,

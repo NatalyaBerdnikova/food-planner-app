@@ -153,6 +153,7 @@ struct RecipeAdvancedFiltersSheet: View {
             }
         }
         .presentationDetents([.medium, .large])
+        .appFormSheetPresentation()
     }
 
     private var ingredientTagEditor: some View {

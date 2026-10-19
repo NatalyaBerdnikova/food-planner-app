@@ -68,6 +68,32 @@ enum AppTheme {
     static let recipeRailCardWidth: CGFloat = 220
     static let tagChipRadius: CGFloat = 8
 
+    static let readableContentWidth: CGFloat = 720
+    static let formContentWidth: CGFloat = 560
+    static let wideContentWidth: CGFloat = 1100
+    static let recipeGridMinCardWidth: CGFloat = 168
+
+    static func recipeGridColumns(
+        horizontalSizeClass: UserInterfaceSizeClass?,
+        spacing: CGFloat = 12
+    ) -> [GridItem] {
+        let minimum = horizontalSizeClass == .regular ? 200 : recipeGridMinCardWidth
+        return [GridItem(.adaptive(minimum: minimum), spacing: spacing, alignment: .top)]
+    }
+
+    static func dayPlanColumns(
+        horizontalSizeClass: UserInterfaceSizeClass?,
+        spacing: CGFloat = 12
+    ) -> [GridItem] {
+        if horizontalSizeClass == .regular {
+            return [
+                GridItem(.flexible(), spacing: spacing, alignment: .top),
+                GridItem(.flexible(), spacing: spacing, alignment: .top),
+            ]
+        }
+        return [GridItem(.flexible(), spacing: spacing, alignment: .top)]
+    }
+
     static var warmHighlight: Color { warmFill }
     /// Page / grouped canvas (base in Dark Mode).
     static var canvas: Color { Color(.systemGroupedBackground) }
@@ -168,6 +194,23 @@ extension View {
 
     func appScreenBackground() -> some View {
         background(AppTheme.canvas)
+    }
+
+    func appReadableWidth(_ maxWidth: CGFloat = AppTheme.readableContentWidth) -> some View {
+        frame(maxWidth: maxWidth)
+            .frame(maxWidth: .infinity)
+    }
+
+    func appFormWidth() -> some View {
+        appReadableWidth(AppTheme.formContentWidth)
+    }
+
+    func appWideReadableWidth() -> some View {
+        appReadableWidth(AppTheme.wideContentWidth)
+    }
+
+    func appFormSheetPresentation() -> some View {
+        presentationSizing(.form)
     }
 
     func motionSafeAnimation<V: Equatable>(_ animation: Animation?, value: V) -> some View {

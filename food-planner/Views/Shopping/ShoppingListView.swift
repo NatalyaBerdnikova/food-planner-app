@@ -113,6 +113,7 @@ struct ShoppingListView: View {
             AddIngredientSheet(autofocusSearch: true) { draft in
                 addManualItem(draft)
             }
+            .appFormSheetPresentation()
         }
     }
 

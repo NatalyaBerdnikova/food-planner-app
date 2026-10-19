@@ -13,10 +13,11 @@ struct RecipeLibraryView: View {
     @State private var showAdvancedFilters = false
     @State private var pasteImportRequest: PasteImportRequest?
 
-    private let columns = [
-        GridItem(.flexible(), spacing: 12, alignment: .top),
-        GridItem(.flexible(), spacing: 12, alignment: .top),
-    ]
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var columns: [GridItem] {
+        AppTheme.recipeGridColumns(horizontalSizeClass: horizontalSizeClass)
+    }
 
     private var favoriteIds: Set<String> {
         RecipeFavoritesService.favoriteIds(in: modelContext)
@@ -112,6 +113,7 @@ struct RecipeLibraryView: View {
                     }
                 }
                 .padding(AppTheme.contentPadding)
+                .appWideReadableWidth()
             }
         }
         .appScreenBackground()
@@ -151,9 +153,11 @@ struct RecipeLibraryView: View {
         }
         .sheet(item: $pasteImportRequest) { _ in
             PasteImportSheet()
+                .appFormSheetPresentation()
         }
         .sheet(isPresented: $showAdvancedFilters) {
             RecipeAdvancedFiltersSheet(filters: $advancedFilters)
+                .appFormSheetPresentation()
         }
     }
 

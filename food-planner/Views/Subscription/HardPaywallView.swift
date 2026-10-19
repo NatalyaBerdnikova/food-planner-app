@@ -45,6 +45,7 @@ struct HardPaywallView: View {
                     .padding(.bottom, 24)
                 }
                 .padding(.horizontal, 20)
+                .appFormWidth()
             }
         }
         .preferredColorScheme(.dark)

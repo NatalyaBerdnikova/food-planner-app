@@ -122,6 +122,7 @@ struct AddMealSheet: View {
         }
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
+        .appFormSheetPresentation()
     }
 
     private var pinnedFilterChips: some View {

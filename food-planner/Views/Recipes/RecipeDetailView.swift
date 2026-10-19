@@ -89,6 +89,7 @@ struct RecipeDetailView: View {
                 recipeLifecycleButton
             }
             .padding()
+            .appReadableWidth()
         }
         .background(Color(.systemGroupedBackground))
         .navigationTitle(recipe.localizedName)

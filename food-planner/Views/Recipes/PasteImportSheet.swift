@@ -98,6 +98,7 @@ struct PasteImportSheet: View {
             }
         }
         .presentationDetents([.medium])
+        .appFormSheetPresentation()
     }
 
     private func pasteFromClipboard() {
