@@ -112,6 +112,38 @@
         }
       }
     },
+    "accessibility.nextWeek" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next week"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следующая неделя"
+          }
+        }
+      }
+    },
+    "accessibility.previousWeek" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous week"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предыдущая неделя"
+          }
+        }
+      }
+    },
     "accessibility.removeFavorite" : {
       "localizations" : {
         "en" : {

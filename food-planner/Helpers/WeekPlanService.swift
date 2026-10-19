@@ -33,17 +33,24 @@ enum WeekPlanService {
     }
 
     @MainActor
-    static func weekPlan(forWeekStarting weekStart: Date, from weekPlans: [WeekPlan], in context: ModelContext) -> WeekPlan {
+    static func weekPlan(
+        forWeekStarting weekStart: Date,
+        from weekPlans: [WeekPlan],
+        in context: ModelContext,
+        setAsActive: Bool = true
+    ) -> WeekPlan {
         let normalized = Calendar.current.startOfWeek(for: weekStart)
 
         if let existing = weekPlans.first(where: {
             Calendar.current.isSameDay($0.weekStartDate, normalized)
         }) {
             var needsSave = ensureDayPlansExist(for: existing, weekStart: normalized, in: context)
-            let settings = AppSettingsService.settings(in: context)
-            if settings.activeWeekPlan?.persistentModelID != existing.persistentModelID {
-                settings.activeWeekPlan = existing
-                needsSave = true
+            if setAsActive {
+                let settings = AppSettingsService.settings(in: context)
+                if settings.activeWeekPlan?.persistentModelID != existing.persistentModelID {
+                    settings.activeWeekPlan = existing
+                    needsSave = true
+                }
             }
             if needsSave {
                 LocalPersistence.save(context)
@@ -54,7 +61,9 @@ enum WeekPlanService {
         let plan = WeekPlan(weekStartDate: normalized)
         context.insert(plan)
         ensureDayPlansExist(for: plan, weekStart: normalized, in: context)
-        AppSettingsService.settings(in: context).activeWeekPlan = plan
+        if setAsActive {
+            AppSettingsService.settings(in: context).activeWeekPlan = plan
+        }
         LocalPersistence.save(context)
         return plan
     }

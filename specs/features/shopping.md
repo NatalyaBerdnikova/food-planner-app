@@ -6,13 +6,13 @@
 
 ## Цель
 
-Чеклист продуктов на активную (текущую) неделю: из рецептов плана + ручные позиции.
+Чеклист продуктов на выбранную неделю: из рецептов плана + ручные позиции. Можно переключиться на следующую неделю и закупиться заранее.
 
 ## Поведение
 
-- Источник: `WeekPlan.shoppingItems` текущей недели (`WeekPlanService.findCurrentWeekPlan`).
+- Источник: `WeekPlan.shoppingItems` выбранной недели (`WeekRangeSwitcher` + `WeekPlanService.weekPlan(..., setAsActive: false)`).
 - Sync: агрегация ингредиентов всех meals недели по ключу `name|unit`, сумма quantity, категория продукта.
-- UI: секции по `IngredientCategory.shoppingListOrder`; купленные ниже некупленных внутри сортировки.
+- UI: переключатель недели как в плане; секции по `IngredientCategory.shoppingListOrder`; купленные ниже некупленных внутри сортировки.
 - Toggle purchased на row.
 - `+` — ручной item (`isManual`); swipe delete только для manual.
 - Share sheet — текстовый экспорт списка.

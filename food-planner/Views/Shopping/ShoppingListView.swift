@@ -5,15 +5,17 @@ struct ShoppingListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
 
+    @State private var displayedWeekStart = Calendar.current.startOfWeek(for: .now)
     @State private var showShareSheet = false
     @State private var showAddItem = false
 
-    private var currentWeekPlan: WeekPlan? {
-        WeekPlanService.findCurrentWeekPlan(in: weekPlans)
+    private var displayedWeekPlan: WeekPlan? {
+        let normalized = Calendar.current.startOfWeek(for: displayedWeekStart)
+        return weekPlans.first { Calendar.current.isSameDay($0.weekStartDate, normalized) }
     }
 
     private var groupedItems: [(category: IngredientCategory, items: [ShoppingItem])] {
-        guard currentWeekPlan != nil else { return [] }
+        guard displayedWeekPlan != nil else { return [] }
 
         let grouped = Dictionary(grouping: sortedItems, by: \.category)
         return IngredientCategory.shoppingListOrder.compactMap { category in
@@ -23,7 +25,7 @@ struct ShoppingListView: View {
     }
 
     private var sortedItems: [ShoppingItem] {
-        guard let plan = currentWeekPlan else { return [] }
+        guard let plan = displayedWeekPlan else { return [] }
         return plan.shoppingItems.sorted { lhs, rhs in
             if lhs.isPurchased != rhs.isPurchased {
                 return !lhs.isPurchased
@@ -36,38 +38,51 @@ struct ShoppingListView: View {
     }
 
     var body: some View {
-        Group {
+        List {
+            Section {
+                WeekRangeSwitcher(weekStart: $displayedWeekStart)
+                    .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+            }
+
             if groupedItems.isEmpty {
-                ContentUnavailableView(
-                    "empty.shopping",
-                    systemImage: "cart",
-                    description: Text("empty.shopping.hint")
-                )
+                Section {
+                    ContentUnavailableView(
+                        "empty.shopping",
+                        systemImage: "cart",
+                        description: Text("empty.shopping.hint")
+                    )
+                    .frame(maxWidth: .infinity, minHeight: 280)
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                }
             } else {
-                List {
-                    ForEach(groupedItems, id: \.category) { section in
-                        Section {
-                            ForEach(section.items) { item in
-                                ShoppingItemRow(item: item)
-                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                        if item.isManual {
-                                            Button(role: .destructive) {
-                                                deleteItem(item)
-                                            } label: {
-                                                Label("favorites.remove.confirm", systemImage: "trash")
-                                            }
+                ForEach(groupedItems, id: \.category) { section in
+                    Section {
+                        ForEach(section.items) { item in
+                            ShoppingItemRow(item: item)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    if item.isManual {
+                                        Button(role: .destructive) {
+                                            deleteItem(item)
+                                        } label: {
+                                            Label("favorites.remove.confirm", systemImage: "trash")
                                         }
                                     }
-                            }
-                        } header: {
-                            Text(section.category.displayName)
+                                }
                         }
+                    } header: {
+                        Text(section.category.displayName)
                     }
                 }
-                .listStyle(.insetGrouped)
             }
         }
+        .listStyle(.insetGrouped)
+        .scrollContentBackground(.hidden)
+        .appScreenBackground()
         .navigationTitle("nav.shopping")
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -87,7 +102,9 @@ struct ShoppingListView: View {
                 .accessibilityLabel("accessibility.share")
             }
         }
-        .onAppear { syncShoppingList() }
+        .task(id: displayedWeekStart) {
+            syncShoppingList()
+        }
         .onChange(of: weekPlans.count) { _, _ in syncShoppingList() }
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(items: [shareText])
@@ -117,12 +134,22 @@ struct ShoppingListView: View {
     }
 
     private func syncShoppingList() {
-        let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+        let plan = WeekPlanService.weekPlan(
+            forWeekStarting: displayedWeekStart,
+            from: weekPlans,
+            in: modelContext,
+            setAsActive: false
+        )
         WeekPlanService.syncShoppingItems(for: plan, in: modelContext)
     }
 
     private func addManualItem(_ draft: DraftIngredient) {
-        let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
+        let plan = WeekPlanService.weekPlan(
+            forWeekStarting: displayedWeekStart,
+            from: weekPlans,
+            in: modelContext,
+            setAsActive: false
+        )
         WeekPlanService.addManualShoppingItem(
             product: draft.product,
             quantity: draft.quantity,
