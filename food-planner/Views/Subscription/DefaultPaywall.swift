@@ -15,6 +15,7 @@ private struct PaywallPlanOption: Identifiable, Equatable {
     var subtitle: String? = nil
     var badge: String? = nil
     var includesTrial: Bool = false
+    var trialPeriodDescription: String? = nil
 }
 
 struct DefaultPaywall: View {
@@ -54,32 +55,66 @@ struct DefaultPaywall: View {
         return PurchaseService.hasTrial(product: selectedProduct, eligibilities: eligibilities)
     }
 
-    private static let mockPlans: [PaywallPlanOption] = [
-        PaywallPlanOption(
-            id: "monthly",
-            title: String(localized: "subscription.period.monthly"),
-            price: "$9.99",
-            periodLabel: String(localized: "subscription.plan.period.month"),
-            subtitle: String(localized: "subscription.plan.monthly.subtitle")
-        ),
-        PaywallPlanOption(
-            id: "annual",
-            title: String(localized: "subscription.period.annual"),
-            price: "$69.99",
-            periodLabel: String(localized: "subscription.plan.period.year"),
-            subtitle: String(localized: "subscription.plan.annual.subtitle"),
-            badge: String(localized: "subscription.plan.badge.trial14"),
-            includesTrial: true
-        ),
-        PaywallPlanOption(
-            id: "lifetime",
-            title: String(localized: "subscription.period.lifetime"),
-            price: "$99.99",
-            periodLabel: String(localized: "subscription.plan.period.once"),
-            subtitle: String(localized: "subscription.plan.lifetime.subtitle"),
-            badge: String(localized: "subscription.plan.badge.bestValue")
-        ),
-    ]
+    private static let mockTrialDays = 14
+
+    private static var mockTrialPeriodDescription: String {
+        SubscriptionProductDisplay.periodDescription(dayCount: mockTrialDays)
+    }
+
+    private static var mockPlans: [PaywallPlanOption] {
+        let trialPeriod = mockTrialPeriodDescription
+        return [
+            PaywallPlanOption(
+                id: "monthly",
+                title: String(localized: "subscription.period.monthly"),
+                price: "$9.99",
+                periodLabel: String(localized: "subscription.plan.period.month"),
+                subtitle: String(localized: "subscription.plan.monthly.subtitle")
+            ),
+            PaywallPlanOption(
+                id: "annual",
+                title: String(localized: "subscription.period.annual"),
+                price: "$69.99",
+                periodLabel: String(localized: "subscription.plan.period.year"),
+                subtitle: String(localized: "subscription.plan.annual.subtitle"),
+                badge: SubscriptionProductDisplay.trialBadge(periodDescription: trialPeriod),
+                includesTrial: true,
+                trialPeriodDescription: trialPeriod
+            ),
+            PaywallPlanOption(
+                id: "lifetime",
+                title: String(localized: "subscription.period.lifetime"),
+                price: "$99.99",
+                periodLabel: String(localized: "subscription.plan.period.once"),
+                subtitle: String(localized: "subscription.plan.lifetime.subtitle"),
+                badge: String(localized: "subscription.plan.badge.bestValue")
+            ),
+        ]
+    }
+
+    private var trialFooterHint: String {
+        guard hasTrial else {
+            return String(localized: "subscription.cta.subscribeHint")
+        }
+
+        if useMockPlans {
+            guard let plan = planOptions.first(where: { $0.id == selectedPlanId }),
+                  let period = plan.trialPeriodDescription else {
+                return String(localized: "subscription.cta.subscribeHint")
+            }
+            let priceLine = [plan.price, plan.periodLabel].compactMap { $0 }.joined(separator: " ")
+            return SubscriptionProductDisplay.trialHint(periodDescription: period, priceLine: priceLine)
+        }
+
+        guard let product = selectedProduct,
+              let period = SubscriptionProductDisplay.trialDescription(for: product) else {
+            return String(localized: "subscription.cta.subscribeHint")
+        }
+        return SubscriptionProductDisplay.trialHint(
+            periodDescription: period,
+            priceLine: SubscriptionProductDisplay.price(for: product)
+        )
+    }
 
     var body: some View {
         VStack {
@@ -166,7 +201,7 @@ struct DefaultPaywall: View {
                 .disabled((isLoadingPlans || selectedPlanId == nil) && !haveRestoredSub)
 
                 if !haveRestoredSub {
-                    Text(hasTrial ? "subscription.cta.trialHint" : "subscription.cta.subscribeHint")
+                    Text(trialFooterHint)
                         .font(.footnote)
                         .foregroundStyle(secondaryText)
                         .multilineTextAlignment(.center)
@@ -395,10 +430,16 @@ struct DefaultPaywall: View {
                     await StoreKitProductCatalog.load(productIds: loadedProducts.map(\.vendorProductId))
                     products = loadedProducts
                     planOptions = loadedProducts.map { product in
-                        PaywallPlanOption(
+                        let trialPeriod = SubscriptionProductDisplay.trialDescription(for: product)
+                        return PaywallPlanOption(
                             id: product.vendorProductId,
                             title: SubscriptionProductDisplay.title(for: product),
-                            price: SubscriptionProductDisplay.price(for: product)
+                            price: SubscriptionProductDisplay.price(for: product),
+                            badge: trialPeriod.map {
+                                SubscriptionProductDisplay.trialBadge(periodDescription: $0)
+                            },
+                            includesTrial: trialPeriod != nil,
+                            trialPeriodDescription: trialPeriod
                         )
                     }
 

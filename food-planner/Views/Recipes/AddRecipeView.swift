@@ -159,7 +159,18 @@ struct AddRecipeView: View {
                         embedded: true,
                         macroLabelStyle: .full
                     )
-                    .listRowInsets(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+                    .listRowInsets(
+                        EdgeInsets(
+                            top: AppTheme.cardPadding,
+                            leading: AppTheme.cardPadding,
+                            bottom: AppTheme.cardPadding,
+                            trailing: AppTheme.cardPadding
+                        )
+                    )
+                    .listRowBackground(
+                        RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
+                            .fill(AppTheme.elevated)
+                    )
                 }
             }
             .navigationTitle("addRecipe.title")

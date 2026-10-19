@@ -33,6 +33,22 @@ enum SubscriptionProductDisplay {
         return product.localizedPrice ?? ""
     }
 
+    static func periodDescription(dayCount: Int) -> String {
+        "\(dayCount) \(SubscriptionPlural.dayUnit(count: dayCount))"
+    }
+
+    static func trialBadge(periodDescription: String) -> String {
+        String(localized: "subscription.plan.badge.trial \(periodDescription)")
+    }
+
+    static func trialHint(periodDescription: String, priceLine: String) -> String {
+        String(localized: "subscription.cta.trialHint \(periodDescription) \(priceLine)")
+    }
+
+    static func priceHint(periodDescription: String) -> String {
+        String(localized: "home.proOffer.priceHint \(periodDescription)")
+    }
+
     static func trialDescription(for product: AdaptyPaywallProduct) -> String? {
         if let storeProduct = StoreKitProductCatalog.product(for: product.vendorProductId),
            let offer = storeProduct.subscription?.introductoryOffer {

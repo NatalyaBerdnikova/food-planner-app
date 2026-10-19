@@ -2017,13 +2017,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Catalog recipes will appear here after you add them to recipes-catalog.json"
+            "value" : "Add recipes to see recommendations here"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Рекомендации появятся после добавления рецептов в recipes-catalog.json"
+            "value" : "Добавьте рецепты, чтобы увидеть рекомендации"
           }
         }
       }
@@ -2230,13 +2230,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI Chef recommends recipes and snacks balanced to your goals."
+            "value" : "Paste a Reel — get a recipe matched to your goals."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI-шеф подбирает блюда и перекусы с учетом ваших целей."
+            "value" : "Вставьте Reel — получите рецепт под ваши цели."
           }
         }
       }
@@ -2246,13 +2246,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Advanced nutrition insights for calories, macros, and micronutrients."
+            "value" : "See calories, macros, and your focus micronutrients in one place."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Расширенная аналитика по калориям, макро- и микронутриентам."
+            "value" : "Калории, макросы и фокусные микронутриенты — в одном месте."
           }
         }
       }
@@ -2262,13 +2262,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Smart weekly planning that saves your time every day."
+            "value" : "Fill the week from your recipes in a few taps."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Умное недельное планирование, которое экономит время каждый день."
+            "value" : "Соберите неделю из своих рецептов за пару касаний."
           }
         }
       }
@@ -2313,13 +2313,29 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cancel anytime. 7-day free trial for new users."
+            "value" : "Cancel anytime. %@ free trial for new users."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Отмена в любой момент. 7 дней бесплатно для новых пользователей."
+            "value" : "Отмена в любой момент. %@ бесплатно для новых пользователей."
+          }
+        }
+      }
+    },
+    "home.proOffer.priceHint %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel anytime. %@ free trial for new users."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена в любой момент. %@ бесплатно для новых пользователей."
           }
         }
       }
@@ -2336,7 +2352,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Начать бесплатный период"
+            "value" : "Начать бесплатно"
           }
         }
       }
@@ -2362,13 +2378,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unlock Pro"
+            "value" : "Start free trial"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Открыть Pro"
+            "value" : "Начать бесплатно"
           }
         }
       }
@@ -2378,13 +2394,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI Chef recommends a perfectly balanced snack"
+            "value" : "AI Chef suggests a snack that fits today's macros"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AI-шеф предложит идеально сбалансированный перекус"
+            "value" : "AI-шеф предложит перекус под макросы на сегодня"
           }
         }
       }
@@ -2400,7 +2416,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Plan with Pro AI"
+            "value" : "Планируйте с Pro AI"
           }
         }
       }
@@ -2493,13 +2509,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Progress vs target"
+            "value" : "vs goals"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Прогресс к цели"
+            "value" : "к цели"
           }
         }
       }
@@ -2593,13 +2609,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import service authorization failed. Check API configuration."
+            "value" : "Import is temporarily unavailable. Try again later."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ошибка авторизации сервиса импорта. Проверьте конфигурацию API."
+            "value" : "Импорт временно недоступен. Попробуйте позже."
           }
         }
       }
@@ -2674,13 +2690,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import service authorization failed. Check API configuration."
+            "value" : "Import is temporarily unavailable. Try again later."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ошибка авторизации сервиса импорта. Проверьте конфигурацию API."
+            "value" : "Импорт временно недоступен. Попробуйте позже."
           }
         }
       }
@@ -3294,13 +3310,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unresolved ingredients"
+            "value" : "Ingredients to match"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нераспознанные ингредиенты"
+            "value" : "Нужно сопоставить"
           }
         }
       }
@@ -4413,13 +4429,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This adjusts your daily energy needs."
+            "value" : "More movement → higher calorie target."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "От этого зависит суточная норма энергии."
+            "value" : "Больше движения — выше норма калорий."
           }
         }
       }
@@ -4525,13 +4541,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "About your body"
+            "value" : "A few numbers"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "О вашем теле"
+            "value" : "Пара цифр"
           }
         }
       }
@@ -4595,7 +4611,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Персонализировать"
+            "value" : "Настроить под себя"
           }
         }
       }
@@ -4605,13 +4621,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unlock my plan"
+            "value" : "See my plan"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Открыть мой план"
+            "value" : "Смотреть мой план"
           }
         }
       }
@@ -4775,13 +4791,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Which micronutrients matter most?"
+            "value" : "Which nutrients do you want to watch?"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Какие микронутриенты важнее всего?"
+            "value" : "За какими нутриентами следить?"
           }
         }
       }
@@ -4943,13 +4959,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Instagram import is our superpower — tell us how you cook."
+            "value" : "So we know where to start — Instagram import is built for Reels."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Импорт из Instagram — наша сильная сторона."
+            "value" : "Чтобы понять старт — импорт заточен под Reels."
           }
         }
       }
@@ -5074,13 +5090,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Finalizing your personal plan…"
+            "value" : "Locking in your daily targets…"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Финализируем персональный план…"
+            "value" : "Фиксируем дневные цели…"
           }
         }
       }
@@ -5090,13 +5106,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Macros first, then micronutrient focus — personalized for you."
+            "value" : "Macros first. Then the micronutrients you picked."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сначала макросы, потом фокус по микронутриентам."
+            "value" : "Сначала макросы. Потом выбранные микронутриенты."
           }
         }
       }
@@ -5138,13 +5154,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Targets calculated for your body and goal"
+            "value" : "Daily calories and macros from your goal"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Цели КБЖУ под ваш телосложение и цель"
+            "value" : "Калории и макросы из вашей цели"
           }
         }
       }
@@ -5154,13 +5170,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Micronutrient focus chosen with you"
+            "value" : "Pick up to 5 micronutrients to track"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Фокус на микронутриентах, которые вы выберете"
+            "value" : "До 5 микронутриентов в фокусе"
           }
         }
       }
@@ -5170,13 +5186,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import recipes from Instagram, build a personal plan, and track macros with micronutrients that matter."
+            "value" : "Paste an Instagram Reel. Get a recipe with macros. Plan the week around your goals."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Импортируйте рецепты из Instagram, соберите персональный план и следите за КБЖУ и важными микронутриентами."
+            "value" : "Вставьте Reel — получите рецепт с КБЖУ и план под ваши цели."
           }
         }
       }
@@ -5234,13 +5250,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Subscribe to unlock Instagram import, meal planning, shopping lists, and micronutrient tracking."
+            "value" : "Instagram import, weekly plan, shopping list, and micronutrient tracking."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Оформите подписку, чтобы открыть импорт из Instagram, план питания, список покупок и микронутриенты."
+            "value" : "Импорт из Instagram, недельный план, список покупок и микронутриенты."
           }
         }
       }
@@ -6561,13 +6577,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You already have an active subscription!"
+            "value" : "You already have an active subscription."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "У вас уже есть активная подписка!"
+            "value" : "У вас уже есть активная подписка."
           }
         }
       }
@@ -6589,17 +6605,34 @@
       }
     },
     "subscription.cta.trialHint" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No charge today. After 14 days, $69.99/year. Cancel anytime."
+            "value" : "No charge today. After %@. Then %@. Cancel anytime."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сегодня бесплатно. Через 14 дней — $69.99/год. Отмена в любой момент."
+            "value" : "Сегодня бесплатно. Через %@. Далее %@. Отмена в любой момент."
+          }
+        }
+      }
+    },
+    "subscription.cta.trialHint %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No charge today. After %1$@. Then %2$@. Cancel anytime."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сегодня бесплатно. Через %1$@. Далее %2$@. Отмена в любой момент."
           }
         }
       }
@@ -6720,18 +6753,35 @@
         }
       }
     },
-    "subscription.plan.badge.trial14" : {
+    "subscription.plan.badge.trial" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "14 days free"
+            "value" : "%@ free"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "14 дней бесплатно"
+            "value" : "%@ бесплатно"
+          }
+        }
+      }
+    },
+    "subscription.plan.badge.trial %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ free"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ бесплатно"
           }
         }
       }
@@ -6741,13 +6791,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pay once · money-back if you don’t like it"
+            "value" : "Pay once"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Один платёж · вернём деньги, если не понравится"
+            "value" : "Один платёж"
           }
         }
       }
@@ -6935,13 +6985,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Start with Free Trial"
+            "value" : "Start free trial"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Начать с пробного периода"
+            "value" : "Начать бесплатно"
           }
         }
       }

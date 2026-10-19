@@ -3,6 +3,10 @@ import Foundation
 import StoreKit
 
 enum SubscriptionPlural {
+    static func dayUnit(count: Int) -> String {
+        pluralized(word: "day", count: count)
+    }
+
     static func unit(_ unit: AdaptyPeriodUnit, count: Int) -> String {
         let word: String = {
             switch unit {
