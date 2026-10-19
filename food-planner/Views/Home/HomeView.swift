@@ -9,10 +9,13 @@ struct HomeView: View {
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
     private var settingsList: [AppSettings]
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     @State private var isTodayExpanded = false
     @State private var addMealPresentation: AddMealPresentation?
     @State private var pasteImportRequest: PasteImportRequest?
     @State private var featuredRecipeOverride: Recipe?
+    @State private var surpriseNonce = 0
 
     private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
 
@@ -81,16 +84,34 @@ struct HomeView: View {
                     AppSectionHeader(title: "home.recipeOfTheDay", systemImage: "sun.max.fill", fillsWidth: false)
                     Spacer(minLength: 0)
                     Button {
-                        featuredRecipeOverride = RecipeDiscoveryService.randomRecipe(
+                        surpriseNonce &+= 1
+                        let next = RecipeDiscoveryService.randomRecipe(
                             from: catalogRecipes.isEmpty ? recipes : catalogRecipes,
                             excluding: recipe.persistentModelID
                         )
+                        withAnimation(reduceMotion ? nil : .snappy(duration: 0.32)) {
+                            featuredRecipeOverride = next
+                        }
                     } label: {
-                        Label("home.randomRecipe", systemImage: "shuffle")
-                            .font(.subheadline.weight(.semibold))
+                        HStack(spacing: 6) {
+                            Image(systemName: "shuffle")
+                                .symbolRenderingMode(.hierarchical)
+                                .modifier(SurpriseShuffleSymbolModifier(trigger: surpriseNonce))
+                            Text("home.randomRecipe")
+                        }
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(AppTheme.accent)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 8)
+                        .background(AppTheme.accentSoft, in: Capsule(style: .continuous))
+                        .overlay {
+                            Capsule(style: .continuous)
+                                .strokeBorder(AppTheme.accent.opacity(0.28), lineWidth: 1)
+                        }
+                        .contentShape(Capsule(style: .continuous))
                     }
-                    .buttonStyle(.bordered)
-                    .tint(AppTheme.accent)
+                    .buttonStyle(SurpriseMeButtonStyle())
+                    .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.75), trigger: surpriseNonce)
                     .accessibilityHint("home.randomRecipe")
                 }
 
@@ -99,6 +120,15 @@ struct HomeView: View {
                         RecipeDetailView(recipe: recipe)
                     } label: {
                         RecipeCardView(recipe: recipe, style: .hero, showsCommunityLikes: true)
+                            .id(recipe.persistentModelID)
+                            .transition(
+                                reduceMotion
+                                    ? .opacity
+                                    : .asymmetric(
+                                        insertion: .opacity.combined(with: .scale(scale: 0.98)),
+                                        removal: .opacity
+                                    )
+                            )
                     }
                     .buttonStyle(.plain)
 
@@ -333,5 +363,29 @@ struct HomeView: View {
         let plan = WeekPlanService.currentWeekPlan(from: weekPlans, in: modelContext)
         AppSettingsService.setActiveWeekPlan(plan, in: modelContext)
         _ = WeekPlanService.todayDayPlan(from: weekPlans, in: modelContext)
+    }
+}
+
+private struct SurpriseMeButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.94 : 1)
+            .opacity(configuration.isPressed ? 0.92 : 1)
+            .animation(.spring(response: 0.28, dampingFraction: 0.72), value: configuration.isPressed)
+    }
+}
+
+private struct SurpriseShuffleSymbolModifier: ViewModifier {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    let trigger: Int
+
+    func body(content: Content) -> some View {
+        Group {
+            if reduceMotion {
+                content
+            } else {
+                content.symbolEffect(.bounce, value: trigger)
+            }
+        }
     }
 }
