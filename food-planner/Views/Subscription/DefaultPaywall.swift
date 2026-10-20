@@ -74,7 +74,7 @@ struct DefaultPaywall: View {
             PaywallPlanOption(
                 id: "annual",
                 title: String(localized: "subscription.period.annual"),
-                price: "$69.99",
+                price: "$49.99",
                 periodLabel: String(localized: "subscription.plan.period.year"),
                 subtitle: String(localized: "subscription.plan.annual.subtitle"),
                 badge: SubscriptionProductDisplay.trialBadge(periodDescription: trialPeriod),
@@ -84,7 +84,7 @@ struct DefaultPaywall: View {
             PaywallPlanOption(
                 id: "lifetime",
                 title: String(localized: "subscription.period.lifetime"),
-                price: "$99.99",
+                price: "$149.99",
                 periodLabel: String(localized: "subscription.plan.period.once"),
                 subtitle: String(localized: "subscription.plan.lifetime.subtitle"),
                 badge: String(localized: "subscription.plan.badge.bestValue")

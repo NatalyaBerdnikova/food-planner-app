@@ -7004,13 +7004,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Then $69.99/year · about $5.83/mo"
+            "value" : "58% off monthly · about $4.17/mo"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Далее $69.99/год · ≈ $5.83/мес"
+            "value" : "−58% от месячного · ≈ $4.17/мес"
           }
         }
       }
