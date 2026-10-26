@@ -496,3 +496,15 @@ struct OnboardingFlowView: View {
         .accessibilityElement(children: .combine)
     }
 }
+
+#Preview("Onboarding") {
+    OnboardingFlowView(onFinished: {})
+        .environment(SubscriptionSession())
+        .modelContainer(FoodPlannerSchema.previewContainer)
+}
+
+#Preview("Paywall") {
+    HardPaywallView()
+        .environment(SubscriptionSession())
+        .modelContainer(FoodPlannerSchema.previewContainer)
+}

@@ -6999,6 +6999,22 @@
         }
       }
     },
+    "subscription.plan.annual.savings %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld%% off monthly · about %2$@/mo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "−%1$lld%% от месячного · ≈ %2$@/мес"
+          }
+        }
+      }
+    },
     "subscription.plan.annual.subtitle" : {
       "localizations" : {
         "en" : {
@@ -7015,7 +7031,24 @@
         }
       }
     },
+    "subscription.plan.badge.best" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SALE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТОП"
+          }
+        }
+      }
+    },
     "subscription.plan.badge.bestValue" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7027,6 +7060,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выгоднее"
+          }
+        }
+      }
+    },
+    "subscription.plan.badge.fourteenDayTrial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 days trial"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 days trial"
           }
         }
       }
@@ -7069,13 +7118,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pay once"
+            "value" : "Pay once · keep full access forever"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Один платёж"
+            "value" : "Pay once · keep full access forever"
           }
         }
       }

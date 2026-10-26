@@ -9,5 +9,10 @@ enum AppVars {
     static let privacyUrl = "https://example.com/food-planner/privacy"
 
     /// TestFlight / pre-release: mock plans; Continue and Restore unlock Pro without StoreKit.
-    static let useSubscriptionMocks = false
+    static var useSubscriptionMocks: Bool {
+        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
+            return true
+        }
+        return false
+    }
 }

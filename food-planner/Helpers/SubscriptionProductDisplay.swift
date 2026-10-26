@@ -89,11 +89,50 @@ enum SubscriptionProductDisplay {
         }
     }
 
+    static func subtitle(
+        for product: AdaptyPaywallProduct,
+        among products: [AdaptyPaywallProduct]
+    ) -> String? {
+        switch kind(for: product) {
+        case .monthly:
+            return String(localized: "subscription.plan.monthly.subtitle")
+        case .annual:
+            return annualSavingsSubtitle(among: products)
+                ?? String(localized: "subscription.plan.annual.subtitle")
+        case .lifetime:
+            return String(localized: "subscription.plan.lifetime.subtitle")
+        case .other:
+            return nil
+        }
+    }
+
     static func price(for product: AdaptyPaywallProduct) -> String {
         if let storeProduct = StoreKitProductCatalog.product(for: product.vendorProductId) {
             return storeProduct.displayPrice
         }
         return product.localizedPrice ?? ""
+    }
+
+    private static func annualSavingsSubtitle(among products: [AdaptyPaywallProduct]) -> String? {
+        guard
+            let monthly = products.first(where: { kind(for: $0) == .monthly }),
+            let annual = products.first(where: { kind(for: $0) == .annual }),
+            let monthlyStore = StoreKitProductCatalog.product(for: monthly.vendorProductId),
+            let annualStore = StoreKitProductCatalog.product(for: annual.vendorProductId)
+        else {
+            return nil
+        }
+
+        let yearlyIfMonthly = monthlyStore.price * 12
+        guard yearlyIfMonthly > 0, annualStore.price < yearlyIfMonthly else { return nil }
+
+        let savingsRatio = (yearlyIfMonthly - annualStore.price) / yearlyIfMonthly
+        let percent = Int((savingsRatio as NSDecimalNumber).doubleValue * 100.0)
+        guard percent > 0 else { return nil }
+
+        let perMonth = annualStore.price / 12
+        let perMonthText = perMonth.formatted(annualStore.priceFormatStyle)
+        return String(localized: "subscription.plan.annual.savings \(percent) \(perMonthText)")
     }
 
     static func periodDescription(dayCount: Int) -> String {

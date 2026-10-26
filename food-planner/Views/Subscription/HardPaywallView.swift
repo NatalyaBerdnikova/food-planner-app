@@ -143,3 +143,9 @@ struct HardPaywallView: View {
         subscriptionSession.upgradeToPro(settings: settings, in: modelContext)
     }
 }
+
+#Preview("Paywall") {
+    HardPaywallView()
+        .environment(SubscriptionSession())
+        .modelContainer(FoodPlannerSchema.previewContainer)
+}

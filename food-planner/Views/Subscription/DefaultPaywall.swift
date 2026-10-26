@@ -14,6 +14,7 @@ private struct PaywallPlanOption: Identifiable, Equatable {
     var periodLabel: String? = nil
     var subtitle: String? = nil
     var badge: String? = nil
+    var showsBestValueRibbon: Bool = false
     var includesTrial: Bool = false
     var trialPeriodDescription: String? = nil
 }
@@ -77,7 +78,8 @@ struct DefaultPaywall: View {
                 price: "$49.99",
                 periodLabel: String(localized: "subscription.plan.period.year"),
                 subtitle: String(localized: "subscription.plan.annual.subtitle"),
-                badge: SubscriptionProductDisplay.trialBadge(periodDescription: trialPeriod),
+                badge: String(localized: "subscription.plan.badge.fourteenDayTrial"),
+                showsBestValueRibbon: true,
                 includesTrial: true,
                 trialPeriodDescription: trialPeriod
             ),
@@ -86,8 +88,7 @@ struct DefaultPaywall: View {
                 title: String(localized: "subscription.period.lifetime"),
                 price: "$149.99",
                 periodLabel: String(localized: "subscription.plan.period.once"),
-                subtitle: String(localized: "subscription.plan.lifetime.subtitle"),
-                badge: String(localized: "subscription.plan.badge.bestValue")
+                subtitle: String(localized: "subscription.plan.lifetime.subtitle")
             ),
         ]
     }
@@ -246,8 +247,11 @@ struct DefaultPaywall: View {
         }
     }
 
+    private var planRibbonTrailingInset: CGFloat { 14 }
+
     private func planRow(_ plan: PaywallPlanOption) -> some View {
         let isSelected = selectedPlanId == plan.id
+        let isFeatured = plan.showsBestValueRibbon
         return Button {
             selectedPlanId = plan.id
             if !useMockPlans {
@@ -297,7 +301,8 @@ struct DefaultPaywall: View {
                     .font(.body)
                     .foregroundStyle(isSelected ? accent : secondaryText.opacity(0.65))
             }
-            .padding(.horizontal, 12)
+            .padding(.leading, 12)
+            .padding(.trailing, isFeatured ? 12 + planRibbonTrailingInset : 12)
             .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -310,9 +315,48 @@ struct DefaultPaywall: View {
                         lineWidth: isSelected ? 1.5 : 1
                     )
             }
+            .overlay(alignment: .topTrailing) {
+                if isFeatured {
+                    bestValueRibbon
+                }
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityLabel(planAccessibilityLabel(plan))
+    }
+
+    private func planAccessibilityLabel(_ plan: PaywallPlanOption) -> Text {
+        var parts = [plan.title]
+        if plan.showsBestValueRibbon {
+            parts.append(String(localized: "subscription.plan.badge.best"))
+        }
+        if let badge = plan.badge {
+            parts.append(badge)
+        }
+        if let subtitle = plan.subtitle {
+            parts.append(subtitle)
+        }
+        parts.append(plan.price)
+        if let periodLabel = plan.periodLabel {
+            parts.append(periodLabel)
+        }
+        return Text(parts.joined(separator: ", "))
+    }
+
+    private var bestValueRibbon: some View {
+        Text("subscription.plan.badge.best")
+            .font(.system(size: 8, weight: .bold))
+            .foregroundStyle(.white)
+            .lineLimit(1)
+            .padding(.vertical, 2.5)
+            .frame(width: 68)
+            .background(accent)
+            .rotationEffect(.degrees(45))
+            .offset(x: 20, y: 8)
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
     }
 
     private func startPayment() {
@@ -444,24 +488,16 @@ struct DefaultPaywall: View {
                     }
 
                     products = sortedProducts
-                    planOptions = sortedProducts.map { product in
-                        let trialPeriod = SubscriptionProductDisplay.trialDescription(for: product)
-                        return PaywallPlanOption(
-                            id: product.vendorProductId,
-                            title: SubscriptionProductDisplay.title(for: product),
-                            price: SubscriptionProductDisplay.price(for: product),
-                            periodLabel: SubscriptionProductDisplay.periodLabel(for: product),
-                            badge: trialPeriod.map {
-                                SubscriptionProductDisplay.trialBadge(periodDescription: $0)
-                            },
-                            includesTrial: trialPeriod != nil,
-                            trialPeriodDescription: trialPeriod
-                        )
-                    }
+                    planOptions = makePlanOptions(from: sortedProducts, eligibilities: [:])
 
                     PurchaseService.getEligibilities(products: sortedProducts) { loadedEligibilities in
                         Task { @MainActor in
                             eligibilities = loadedEligibilities
+                            planOptions = makePlanOptions(
+                                from: sortedProducts,
+                                eligibilities: loadedEligibilities
+                            )
+
                             let eligProduct = PurchaseService.getFirstEligibleProduct(
                                 products: sortedProducts,
                                 eligibilities: loadedEligibilities
@@ -516,5 +552,33 @@ struct DefaultPaywall: View {
             selectedProduct = products.last { $0.vendorProductId != eligibleProduct?.vendorProductId }
         }
         selectedPlanId = selectedProduct?.vendorProductId
+    }
+
+    private func makePlanOptions(
+        from products: [AdaptyPaywallProduct],
+        eligibilities: [String: AdaptyEligibility]
+    ) -> [PaywallPlanOption] {
+        products.map { product in
+            let kind = SubscriptionProductDisplay.kind(for: product)
+            let isAnnual = kind == .annual
+            let trialPeriod = isAnnual
+                ? SubscriptionProductDisplay.periodDescription(dayCount: Self.mockTrialDays)
+                : SubscriptionProductDisplay.trialDescription(for: product)
+            let trialEligible = PurchaseService.hasTrial(product: product, eligibilities: eligibilities)
+
+            return PaywallPlanOption(
+                id: product.vendorProductId,
+                title: SubscriptionProductDisplay.title(for: product),
+                price: SubscriptionProductDisplay.price(for: product),
+                periodLabel: SubscriptionProductDisplay.periodLabel(for: product),
+                subtitle: SubscriptionProductDisplay.subtitle(for: product, among: products),
+                badge: isAnnual
+                    ? String(localized: "subscription.plan.badge.fourteenDayTrial")
+                    : nil,
+                showsBestValueRibbon: isAnnual,
+                includesTrial: isAnnual ? trialEligible || trialPeriod != nil : (trialPeriod != nil && trialEligible),
+                trialPeriodDescription: trialPeriod
+            )
+        }
     }
 }

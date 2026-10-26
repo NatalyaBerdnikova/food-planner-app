@@ -11,7 +11,13 @@ enum PreviewSampleData {
 
         FoodCatalogSeeder.seedIfNeeded(in: context)
         RecipeCatalogStore.seedIfNeeded(in: context)
-        _ = AppSettingsService.settings(in: context)
+        let settings = AppSettingsService.settings(in: context)
+        settings.hasCompletedOnboarding = true
+        settings.targetCalories = 2100
+        settings.targetProtein = 130
+        settings.targetFat = 70
+        settings.targetCarbs = 220
+        settings.profileMicronutrientFocus = [.fiber, .vitaminD3, .iron]
 
         guard let breakfastRecipe = catalogRecipe(id: "recipe_01", in: context),
               let lunchRecipe = catalogRecipe(id: "recipe_10", in: context),
