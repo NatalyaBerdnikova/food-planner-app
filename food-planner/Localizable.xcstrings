@@ -7160,6 +7160,38 @@
         }
       }
     },
+    "subscription.paywallIncomplete %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adapty paywall has only %lld product(s). Add monthly, annual, and lifetime to placement onboarding.placement."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В paywall Adapty только %lld продукт(ов). Добавьте месяц, год и lifetime в placement onboarding.placement."
+          }
+        }
+      }
+    },
+    "subscription.productsIncomplete %lld %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loaded %1$lld of %2$lld products. StoreKit could not resolve: %3$@. Check App Store Connect (Ready to Submit, Paid Apps Agreement) and product IDs in Adapty."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загружено %1$lld из %2$lld продуктов. StoreKit не нашёл: %3$@. Проверьте App Store Connect (Ready to Submit, Paid Apps Agreement) и ID продуктов в Adapty."
+          }
+        }
+      }
+    },
     "subscription.purchaseError" : {
       "localizations" : {
         "en" : {

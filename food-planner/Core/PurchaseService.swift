@@ -3,7 +3,7 @@ import SwiftUI
 import Adapty
 
 enum Placements: String {
-    case basic = "basic_placement"
+    case basic = "onboarding.placement"
 }
 
 enum AccessLevels: String {

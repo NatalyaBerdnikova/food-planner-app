@@ -425,16 +425,32 @@ struct DefaultPaywall: View {
 
         isLoadingPlans = true
         PurchaseService.getPaywall(placement: placement) { paywall in
+            let expectedIds = paywall.vendorProductIds
+            print("Adapty paywall \"\(paywall.name)\" products: \(expectedIds)")
+
             PurchaseService.getProducts(paywall: paywall) { loadedProducts in
                 Task { @MainActor in
-                    await StoreKitProductCatalog.load(productIds: loadedProducts.map(\.vendorProductId))
-                    products = loadedProducts
-                    planOptions = loadedProducts.map { product in
+                    let unresolvedFromStore = await StoreKitProductCatalog.load(productIds: expectedIds)
+                    let sortedProducts = SubscriptionProductDisplay.sortedProducts(loadedProducts)
+                    let loadedIds = sortedProducts.map(\.vendorProductId)
+                    let missingFromAdapty = expectedIds.filter { !loadedIds.contains($0) }
+
+                    print("Adapty getPaywallProducts returned: \(loadedIds)")
+                    if !missingFromAdapty.isEmpty {
+                        print("Adapty/StoreKit missing products: \(missingFromAdapty)")
+                    }
+                    if !unresolvedFromStore.isEmpty {
+                        print("StoreKit unresolved IDs: \(unresolvedFromStore)")
+                    }
+
+                    products = sortedProducts
+                    planOptions = sortedProducts.map { product in
                         let trialPeriod = SubscriptionProductDisplay.trialDescription(for: product)
                         return PaywallPlanOption(
                             id: product.vendorProductId,
                             title: SubscriptionProductDisplay.title(for: product),
                             price: SubscriptionProductDisplay.price(for: product),
+                            periodLabel: SubscriptionProductDisplay.periodLabel(for: product),
                             badge: trialPeriod.map {
                                 SubscriptionProductDisplay.trialBadge(periodDescription: $0)
                             },
@@ -443,11 +459,11 @@ struct DefaultPaywall: View {
                         )
                     }
 
-                    PurchaseService.getEligibilities(products: loadedProducts) { loadedEligibilities in
+                    PurchaseService.getEligibilities(products: sortedProducts) { loadedEligibilities in
                         Task { @MainActor in
                             eligibilities = loadedEligibilities
                             let eligProduct = PurchaseService.getFirstEligibleProduct(
-                                products: loadedProducts,
+                                products: sortedProducts,
                                 eligibilities: loadedEligibilities
                             )
 
@@ -455,14 +471,32 @@ struct DefaultPaywall: View {
                                 selectedProduct = eligProduct
                                 eligibleProduct = eligProduct
                                 selectedPlanId = eligProduct.vendorProductId
-                            } else {
-                                selectedProduct = loadedProducts.last
-                                selectedPlanId = loadedProducts.last?.vendorProductId
+                            } else if let preferred = sortedProducts.first(where: {
+                                SubscriptionProductDisplay.kind(for: $0) == .annual
+                            }) ?? sortedProducts.first {
+                                selectedProduct = preferred
+                                selectedPlanId = preferred.vendorProductId
                             }
 
                             hasTrialState = hasTrial
                             trialStateDisabled = !PurchaseService.canToggleTrial(loadedEligibilities)
                             isLoadingPlans = false
+
+                            if expectedIds.count >= 3, loadedIds.count < expectedIds.count {
+                                let missing = (missingFromAdapty.isEmpty
+                                    ? unresolvedFromStore
+                                    : missingFromAdapty)
+                                    .joined(separator: ", ")
+                                subscriptionSession.showAlert(
+                                    String(
+                                        localized: "subscription.productsIncomplete \(loadedIds.count) \(expectedIds.count) \(missing)"
+                                    )
+                                )
+                            } else if expectedIds.count < 3 {
+                                subscriptionSession.showAlert(
+                                    String(localized: "subscription.paywallIncomplete \(expectedIds.count)")
+                                )
+                            }
                         }
                     }
                 }
