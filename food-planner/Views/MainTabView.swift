@@ -54,5 +54,6 @@ struct MainTabView: View {
     MainTabView()
         .environment(ImportCoordinator())
         .environment(WeekPlanGenerationCoordinator())
+        .environment(WeekPlanTransferCoordinator())
         .modelContainer(FoodPlannerSchema.previewContainer)
 }

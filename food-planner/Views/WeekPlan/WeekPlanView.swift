@@ -1,10 +1,12 @@
 import SwiftUI
 import SwiftData
+import UniformTypeIdentifiers
 
 struct WeekPlanView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(WeekPlanGenerationCoordinator.self) private var weekPlanGeneration
+    @Environment(WeekPlanTransferCoordinator.self) private var weekPlanTransfer
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
     private var settingsList: [AppSettings]
@@ -12,6 +14,8 @@ struct WeekPlanView: View {
     @State private var displayedWeekStart = Calendar.current.startOfWeek(for: .now)
     @State private var selectedDay: Date?
     @State private var addMealPresentation: AddMealPresentation?
+    @State private var isImportingFile = false
+    @State private var showClearConfirmation = false
 
     private var displayedWeekPlan: WeekPlan? {
         let normalized = Calendar.current.startOfWeek(for: displayedWeekStart)
@@ -26,21 +30,51 @@ struct WeekPlanView: View {
         settingsList.first?.profileMicronutrientFocus ?? []
     }
 
+    private var canClearDisplayedPlan: Bool {
+        guard let plan = displayedWeekPlan else { return false }
+        let hasMeals = plan.dayPlans.contains { !$0.meals.isEmpty }
+        return hasMeals || !plan.shoppingItems.isEmpty
+    }
+
     var body: some View {
         @Bindable var weekPlanGeneration = weekPlanGeneration
         content
             .navigationTitle("nav.weekPlan")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItemGroup(placement: .topBarTrailing) {
                     Button {
                         weekPlanGeneration.presentCompose()
                     } label: {
                         Image(systemName: "sparkles")
-                            .font(.body.weight(.semibold))
-                            .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
-                            .contentShape(Rectangle())
                     }
                     .accessibilityLabel("weekPlan.generate.title")
+
+                    Menu {
+                        Button {
+                            shareDisplayedWeek()
+                        } label: {
+                            Label("weekPlan.share", systemImage: "square.and.arrow.up")
+                        }
+                        .disabled(displayedWeekPlan == nil)
+
+                        Button {
+                            isImportingFile = true
+                        } label: {
+                            Label("weekPlan.import", systemImage: "square.and.arrow.down")
+                        }
+
+                        Divider()
+
+                        Button(role: .destructive) {
+                            showClearConfirmation = true
+                        } label: {
+                            Label("weekPlan.clear", systemImage: "trash")
+                        }
+                        .disabled(!canClearDisplayedPlan)
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
+                    .accessibilityLabel("weekPlan.actions")
                 }
             }
             .task(id: displayedWeekStart) {
@@ -57,6 +91,31 @@ struct WeekPlanView: View {
             }
             .sheet(item: $weekPlanGeneration.composePresentation) { _ in
                 GenerateWeekPlanSheet()
+            }
+            .alert("weekPlan.clear.title", isPresented: $showClearConfirmation) {
+                Button("common.cancel", role: .cancel) {}
+                Button("weekPlan.clear.confirm", role: .destructive) {
+                    clearDisplayedPlan()
+                }
+            } message: {
+                Text("weekPlan.clear.message")
+            }
+            .fileImporter(
+                isPresented: $isImportingFile,
+                allowedContentTypes: [FoodPlanUTType.utType, .json, .data],
+                allowsMultipleSelection: false
+            ) { result in
+                switch result {
+                case .success(let urls):
+                    guard let url = urls.first else { return }
+                    weekPlanTransfer.importFromFile(
+                        url: url,
+                        targetWeekStart: displayedWeekStart
+                    )
+                case .failure(let error):
+                    weekPlanTransfer.errorMessage = error.localizedDescription
+                    weekPlanTransfer.showsError = true
+                }
             }
     }
 
@@ -91,6 +150,16 @@ struct WeekPlanView: View {
         } else {
             ProgressView()
         }
+    }
+
+    private func shareDisplayedWeek() {
+        guard let weekPlan = displayedWeekPlan else { return }
+        weekPlanTransfer.beginExport(weekPlan: weekPlan, targets: targetNutrition)
+    }
+
+    private func clearDisplayedPlan() {
+        guard let weekPlan = displayedWeekPlan else { return }
+        WeekPlanService.clearPlan(weekPlan, in: modelContext)
     }
 
     private func scrollToCurrentDay(using proxy: ScrollViewProxy) {

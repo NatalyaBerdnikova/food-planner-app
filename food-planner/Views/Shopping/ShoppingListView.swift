@@ -84,15 +84,14 @@ struct ShoppingListView: View {
         .navigationTitle("nav.shopping")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
                 Button {
                     showAddItem = true
                 } label: {
                     Image(systemName: "plus")
                 }
                 .accessibilityLabel("shopping.addItem")
-            }
-            ToolbarItem(placement: .topBarTrailing) {
+
                 Button {
                     showShareSheet = true
                 } label: {

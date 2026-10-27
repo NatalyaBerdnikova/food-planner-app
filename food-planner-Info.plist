@@ -19,5 +19,41 @@
 	<array>
 		<string>instagram</string>
 	</array>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Food Planner Week Plan</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.mikhail-chugaev.food-planner.foodplan</string>
+			</array>
+		</dict>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.mikhail-chugaev.food-planner.foodplan</string>
+			<key>UTTypeDescription</key>
+			<string>Food Planner Week Plan</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.content</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>foodplan</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

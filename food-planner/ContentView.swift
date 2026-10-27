@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var isBootstrapReady = false
     @State private var importCoordinator = ImportCoordinator()
     @State private var weekPlanGeneration = WeekPlanGenerationCoordinator()
+    @State private var weekPlanTransfer = WeekPlanTransferCoordinator()
     @State private var pendingOpenURL: URL?
 
     private var appLanguage: AppLanguage {
@@ -35,12 +36,11 @@ struct ContentView: View {
         @Bindable var subscriptionSession = subscriptionSession
         @Bindable var importCoordinator = importCoordinator
         @Bindable var weekPlanGeneration = weekPlanGeneration
+        @Bindable var weekPlanTransfer = weekPlanTransfer
 
         Group {
             if isBootstrapReady && subscriptionSession.isAccessResolved {
                 gatedRoot
-                    .environment(importCoordinator)
-                    .environment(weekPlanGeneration)
                     .applyAppLanguage(appLanguage)
             } else {
                 ZStack {
@@ -49,6 +49,9 @@ struct ContentView: View {
                 }
             }
         }
+        .environment(importCoordinator)
+        .environment(weekPlanGeneration)
+        .environment(weekPlanTransfer)
         .task {
             await bootstrapIfNeeded()
             processPendingImportIfNeeded()
@@ -72,6 +75,7 @@ struct ContentView: View {
         }
         .sheet(item: $importCoordinator.progressPresentation) { _ in
             ImportProgressView(coordinator: importCoordinator)
+                .environment(importCoordinator)
                 .appFormSheetPresentation()
         }
         .sheet(item: $importCoordinator.editingDraft, onDismiss: {
@@ -80,17 +84,49 @@ struct ContentView: View {
             NavigationStack {
                 ImportedRecipeReviewView(draft: draft)
             }
+            .environment(importCoordinator)
             .appFormSheetPresentation()
         }
         .sheet(item: $weekPlanGeneration.progressPresentation) { _ in
             WeekPlanGenerationProgressView(coordinator: weekPlanGeneration)
+                .environment(weekPlanGeneration)
                 .appFormSheetPresentation()
+        }
+        .sheet(item: $weekPlanTransfer.exportPresentation, onDismiss: {
+            weekPlanTransfer.dismissExport()
+        }) { presentation in
+            ExportWeekPlanSheet(presentation: presentation)
+                .environment(weekPlanTransfer)
+        }
+        .sheet(item: $weekPlanTransfer.sharePresentation, onDismiss: {
+            weekPlanTransfer.dismissShare()
+        }) { presentation in
+            ShareSheet(items: [presentation.fileURL])
+        }
+        .sheet(item: $weekPlanTransfer.importPresentation, onDismiss: {
+            weekPlanTransfer.dismissImport()
+        }) { presentation in
+            ImportWeekPlanSheet(
+                document: presentation.document,
+                initialWeekStart: presentation.targetWeekStart
+                    ?? Calendar.current.startOfWeek(for: .now)
+            )
+            .environment(weekPlanTransfer)
         }
         .alert(
             subscriptionSession.alertText,
             isPresented: $subscriptionSession.alertPresented
         ) {
             Button("common.done", role: .cancel) {}
+        }
+        .alert(
+            "weekPlan.transfer.error.title",
+            isPresented: $weekPlanTransfer.showsError,
+            presenting: weekPlanTransfer.errorMessage
+        ) { _ in
+            Button("common.done", role: .cancel) {}
+        } message: { message in
+            Text(message)
         }
         .overlay {
             if subscriptionSession.loaderPresented {
@@ -120,6 +156,7 @@ struct ContentView: View {
             .task {
                 importCoordinator.attach(modelContext: modelContext)
                 weekPlanGeneration.attach(modelContext: modelContext)
+                weekPlanTransfer.attach(modelContext: modelContext)
                 FoodCatalogSeeder.seedIfNeeded(in: modelContext)
                 RecipeCatalogStore.seedIfNeeded(in: modelContext)
                 _ = AppSettingsService.settings(in: modelContext)
@@ -131,9 +168,13 @@ struct ContentView: View {
     private func processPendingImportIfNeeded() {
         guard canPresentImport else { return }
         importCoordinator.attach(modelContext: modelContext)
+        weekPlanTransfer.attach(modelContext: modelContext)
 
         if let url = pendingOpenURL {
             pendingOpenURL = nil
+            if weekPlanTransfer.handleOpenURL(url) {
+                return
+            }
             importCoordinator.handleOpenURL(url)
             return
         }

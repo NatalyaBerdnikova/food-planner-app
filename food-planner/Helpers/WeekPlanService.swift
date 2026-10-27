@@ -113,6 +113,18 @@ enum WeekPlanService {
     }
 
     @MainActor
+    static func clearPlan(_ weekPlan: WeekPlan, in context: ModelContext) {
+        for dayPlan in weekPlan.dayPlans {
+            MealPlanGenerator.removeMeals(from: dayPlan, in: context)
+        }
+        for item in weekPlan.shoppingItems {
+            context.delete(item)
+        }
+        weekPlan.shoppingItems = []
+        LocalPersistence.save(context)
+    }
+
+    @MainActor
     static func syncShoppingItems(for weekPlan: WeekPlan, in context: ModelContext) {
         let aggregated = weekPlan.aggregatedShoppingList
         let aggregatedByKey = Dictionary(
