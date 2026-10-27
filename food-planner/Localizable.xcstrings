@@ -3066,6 +3066,22 @@
         }
       }
     },
+    "import.paste.shareHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No link needed: in Instagram tap Share → Food Planner — the recipe opens here."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Можно без ссылки: в Instagram нажмите Поделиться → Food Planner — рецепт откроется здесь."
+          }
+        }
+      }
+    },
     "import.hero.subtitle" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -6309,6 +6325,38 @@
         }
       }
     },
+    "search.byIngredient.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recipes with this name — here are ones with a matching ingredient."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По названию ничего нет — вот рецепты с похожим ингредиентом."
+          }
+        }
+      }
+    },
+    "search.byIngredient.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Similar by ingredient"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Похожие по ингредиенту"
+          }
+        }
+      }
+    },
     "search.noResults" : {
       "localizations" : {
         "en" : {
@@ -6485,6 +6533,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выберите до 5 нутриентов для акцента в плане. Пустой список — значения по умолчанию."
+          }
+        }
+      }
+    },
+    "settings.micros.limit.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can track up to 5 micronutrients. Turn one off to add another."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Можно выбрать не больше 5 микронутриентов. Выключите один, чтобы добавить другой."
+          }
+        }
+      }
+    },
+    "settings.micros.limit.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limit reached"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лимит достигнут"
           }
         }
       }

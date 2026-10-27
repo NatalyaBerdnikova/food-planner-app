@@ -37,6 +37,7 @@ struct WeekDayCarousel: View {
                 .id(dayKey)
             }
         }
+        .scrollTargetLayout()
         .onAppear {
             seedExpandedDatesIfNeeded()
         }

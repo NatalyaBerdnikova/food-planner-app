@@ -53,8 +53,12 @@ struct AddMealSheet: View {
         RecipeFavoritesService.favoriteIds(in: modelContext)
     }
 
-    private var filteredRecipes: [Recipe] {
-        var result = RecipeCollections.visible(recipes)
+    private var searchQuery: String {
+        searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private var baseFilteredRecipes: [Recipe] {
+        var result = RecipeCollections.libraryRecipes(from: recipes)
 
         if showMineOnly {
             result = result.filter(\.isUserCreated)
@@ -68,25 +72,29 @@ struct AddMealSheet: View {
             result = result.filter { $0.matchesMealTypeFilter(filterMealType) }
         }
 
-        let query = searchText.trimmingCharacters(in: .whitespaces)
-        if !query.isEmpty {
-            result = result.filter { $0.matchesSearch(query) }
-        }
-
         return result
     }
 
-    private var displayedRecipes: [Recipe] {
-        let base = filteredRecipes
-        let pinned = base.filter { pinnedSelectedIDs.contains($0.persistentModelID) }
-        let rest = base.filter { !pinnedSelectedIDs.contains($0.persistentModelID) }
+    private var nameMatchedRecipes: [Recipe] {
+        guard !searchQuery.isEmpty else { return baseFilteredRecipes }
+        return baseFilteredRecipes.filter { $0.matchesNameSearch(searchQuery) }
+    }
+
+    private var ingredientMatchedRecipes: [Recipe] {
+        guard !searchQuery.isEmpty, nameMatchedRecipes.isEmpty else { return [] }
+        return baseFilteredRecipes.filter { $0.matchesIngredientSearch(searchQuery) }
+    }
+
+    private func pinnedFirst(_ recipes: [Recipe]) -> [Recipe] {
+        let pinned = recipes.filter { pinnedSelectedIDs.contains($0.persistentModelID) }
+        let rest = recipes.filter { !pinnedSelectedIDs.contains($0.persistentModelID) }
         return pinned + rest
     }
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                if displayedRecipes.isEmpty {
+                if nameMatchedRecipes.isEmpty && ingredientMatchedRecipes.isEmpty {
                     ContentUnavailableView(
                         searchText.isEmpty ? "empty.recipes" : "search.noResults",
                         systemImage: "magnifyingglass",
@@ -94,11 +102,23 @@ struct AddMealSheet: View {
                     )
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 40)
+                } else if !nameMatchedRecipes.isEmpty {
+                    recipeGrid(pinnedFirst(nameMatchedRecipes))
                 } else {
-                    LazyVGrid(columns: columns, spacing: 12) {
-                        ForEach(displayedRecipes) { recipe in
-                            selectableRecipeCard(recipe)
+                    VStack(alignment: .leading, spacing: 16) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("search.byIngredient.title")
+                                .font(.headline)
+                            Text("search.byIngredient.subtitle")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
+
+                        recipeGrid(
+                            pinnedFirst(ingredientMatchedRecipes),
+                            includesOuterPadding: false
+                        )
                     }
                     .padding(AppTheme.contentPadding)
                     .padding(.bottom, selectedRecipeIDs.isEmpty ? 0 : 56)
@@ -204,6 +224,23 @@ struct AddMealSheet: View {
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(isSelected ? [.isSelected, .isButton] : .isButton)
+    }
+
+    @ViewBuilder
+    private func recipeGrid(_ recipes: [Recipe], includesOuterPadding: Bool = true) -> some View {
+        let grid = LazyVGrid(columns: columns, spacing: 12) {
+            ForEach(recipes) { recipe in
+                selectableRecipeCard(recipe)
+            }
+        }
+
+        if includesOuterPadding {
+            grid
+                .padding(AppTheme.contentPadding)
+                .padding(.bottom, selectedRecipeIDs.isEmpty ? 0 : 56)
+        } else {
+            grid
+        }
     }
 
     private func selectableRecipeCard(_ recipe: Recipe) -> some View {

@@ -241,10 +241,8 @@ enum MealPlanGenerator {
 
     private static func candidateRecipes(in context: ModelContext) -> [Recipe] {
         let all = (try? context.fetch(FetchDescriptor<Recipe>())) ?? []
-        return all.filter { recipe in
-            guard recipe.isCatalogRecipe, recipe.isVisibleInApp else { return false }
-            return NutritionCalculator.nutritionPerServing(for: recipe).calories > 50
-        }
+        return RecipeCollections.deduplicatedCatalogRecipes(from: all.filter(\.isVisibleInApp))
+            .filter { NutritionCalculator.nutritionPerServing(for: $0).calories > 50 }
     }
 
     private static func buildDay(

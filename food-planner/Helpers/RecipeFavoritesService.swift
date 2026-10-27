@@ -49,7 +49,7 @@ enum RecipeFavoritesService {
 
     static func favoriteRecipes(from recipes: [Recipe], favoriteIds: Set<String>) -> [Recipe] {
         guard !favoriteIds.isEmpty else { return [] }
-        return RecipeCollections.visible(recipes)
+        return RecipeCollections.libraryRecipes(from: recipes)
             .filter { recipe in
                 guard let key = favoriteKey(for: recipe) else { return false }
                 return favoriteIds.contains(key)
@@ -66,7 +66,7 @@ enum RecipeCollections {
     }
 
     static func catalogRecipes(from recipes: [Recipe]) -> [Recipe] {
-        visible(recipes).filter(\.isCatalogRecipe)
+        deduplicatedCatalogRecipes(from: visible(recipes))
     }
 
     static func userRecipes(from recipes: [Recipe]) -> [Recipe] {
@@ -76,12 +76,36 @@ enum RecipeCollections {
     }
 
     static func sortedCatalogRecipes(from recipes: [Recipe]) -> [Recipe] {
-        visible(recipes)
-            .filter(\.isCatalogRecipe)
+        catalogRecipes(from: recipes)
             .sorted { $0.localizedName.localizedCaseInsensitiveCompare($1.localizedName) == .orderedAscending }
     }
 
     static func libraryRecipes(from recipes: [Recipe]) -> [Recipe] {
         userRecipes(from: recipes) + sortedCatalogRecipes(from: recipes)
+    }
+
+    /// Plan generation clones share `catalogRecipeId` with the seed recipe; keep one library row.
+    static func deduplicatedCatalogRecipes(from recipes: [Recipe]) -> [Recipe] {
+        var bestByCatalogId: [String: Recipe] = [:]
+        for recipe in recipes where recipe.isCatalogRecipe {
+            guard let catalogId = recipe.catalogRecipeId else { continue }
+            if let existing = bestByCatalogId[catalogId] {
+                if prefersCatalogInstance(recipe, over: existing) {
+                    bestByCatalogId[catalogId] = recipe
+                }
+            } else {
+                bestByCatalogId[catalogId] = recipe
+            }
+        }
+        return Array(bestByCatalogId.values)
+    }
+
+    private static func prefersCatalogInstance(_ recipe: Recipe, over existing: Recipe) -> Bool {
+        let recipeIsCanonical = recipe.meals.isEmpty
+        let existingIsCanonical = existing.meals.isEmpty
+        if recipeIsCanonical != existingIsCanonical {
+            return recipeIsCanonical
+        }
+        return false
     }
 }

@@ -32,24 +32,25 @@ enum RecipeCatalogLocalization {
     }
 
     static func matchesSearch(catalogRecipeId: String, query: String) -> Bool {
+        matchesNameSearch(catalogRecipeId: catalogRecipeId, query: query)
+    }
+
+    static func matchesNameSearch(catalogRecipeId: String, query: String) -> Bool {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return true }
 
-        return searchableTexts(for: catalogRecipeId).contains {
+        return searchableNameTexts(for: catalogRecipeId).contains {
             $0.localizedCaseInsensitiveContains(trimmed)
         }
     }
 
-    static func searchableTexts(for catalogRecipeId: String) -> [String] {
+    static func searchableNameTexts(for catalogRecipeId: String) -> [String] {
         guard let entry = loadEntries()[catalogRecipeId] else { return [] }
 
         var texts: Set<String> = [catalogRecipeId]
         entry.translations?.values.forEach { translation in
             if !translation.name.isEmpty {
                 texts.insert(translation.name)
-            }
-            if !translation.steps.isEmpty {
-                texts.insert(translation.steps)
             }
         }
         return Array(texts)

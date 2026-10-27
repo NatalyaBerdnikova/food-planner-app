@@ -21,6 +21,9 @@ struct SettingsView: View {
     @State private var carbsText = ""
     @State private var showNutritionCalculator = false
     @State private var selectedMicros: Set<MicronutrientKind> = []
+    @State private var showMicronutrientLimitHint = false
+
+    private static let maxMicronutrientFocus = 5
 
     private var settings: AppSettings? { settingsList.first }
 
@@ -53,6 +56,11 @@ struct SettingsView: View {
                 applyCalculatedTargets(nutrition)
             }
             .appFormSheetPresentation()
+        }
+        .alert("settings.micros.limit.title", isPresented: $showMicronutrientLimitHint) {
+            Button("common.done", role: .cancel) {}
+        } message: {
+            Text("settings.micros.limit.message")
         }
     }
 
@@ -112,9 +120,11 @@ struct SettingsView: View {
                     get: { selectedMicros.contains(kind) },
                     set: { isOn in
                         if isOn {
-                            if selectedMicros.count < 5 {
-                                selectedMicros.insert(kind)
+                            guard selectedMicros.count < Self.maxMicronutrientFocus else {
+                                showMicronutrientLimitHint = true
+                                return
                             }
+                            selectedMicros.insert(kind)
                         } else {
                             selectedMicros.remove(kind)
                         }

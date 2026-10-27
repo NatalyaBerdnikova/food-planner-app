@@ -54,22 +54,42 @@ extension Recipe {
     }
 
     func matchesSearch(_ query: String) -> Bool {
+        matchesNameSearch(query)
+    }
+
+    func matchesNameSearch(_ query: String) -> Bool {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return true }
 
-        if localizedName.localizedCaseInsensitiveContains(trimmed) {
+        if localizedName.localizedCaseInsensitiveContains(trimmed)
+            || name.localizedCaseInsensitiveContains(trimmed) {
             return true
         }
 
         if let catalogRecipeId {
-            return RecipeCatalogLocalization.matchesSearch(catalogRecipeId: catalogRecipeId, query: trimmed)
+            return RecipeCatalogLocalization.matchesNameSearch(
+                catalogRecipeId: catalogRecipeId,
+                query: trimmed
+            )
         }
 
-        if let stepsText = localizedStepsText,
-           stepsText.localizedCaseInsensitiveContains(trimmed) {
-            return true
-        }
+        return false
+    }
 
+    func matchesIngredientSearch(_ query: String) -> Bool {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return false }
+
+        for ingredient in ingredients {
+            if ingredient.displayName.localizedCaseInsensitiveContains(trimmed)
+                || ingredient.name.localizedCaseInsensitiveContains(trimmed) {
+                return true
+            }
+            if let catalogKey = ingredient.foodProduct?.catalogKey,
+               FoodCatalogLocalization.matchesSearch(catalogKey: catalogKey, query: trimmed) {
+                return true
+            }
+        }
         return false
     }
 }

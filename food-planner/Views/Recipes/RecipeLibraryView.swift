@@ -27,7 +27,11 @@ struct RecipeLibraryView: View {
         RecipeCollections.libraryRecipes(from: recipes)
     }
 
-    private var filteredRecipes: [Recipe] {
+    private var searchQuery: String {
+        searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private var baseFilteredRecipes: [Recipe] {
         var result = libraryRecipes
 
         if showMineOnly {
@@ -42,16 +46,21 @@ struct RecipeLibraryView: View {
             result = result.filter { $0.matchesMealTypeFilter(mealType) }
         }
 
-        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        if !query.isEmpty {
-            result = result.filter { $0.matchesSearch(query) }
-        }
-
         if advancedFilters.isActive {
             result = result.filter { advancedFilters.matches($0) }
         }
 
         return result
+    }
+
+    private var nameMatchedRecipes: [Recipe] {
+        guard !searchQuery.isEmpty else { return baseFilteredRecipes }
+        return baseFilteredRecipes.filter { $0.matchesNameSearch(searchQuery) }
+    }
+
+    private var ingredientMatchedRecipes: [Recipe] {
+        guard !searchQuery.isEmpty, nameMatchedRecipes.isEmpty else { return [] }
+        return baseFilteredRecipes.filter { $0.matchesIngredientSearch(searchQuery) }
     }
 
     private var hasActiveQuickFilter: Bool {
@@ -102,15 +111,24 @@ struct RecipeLibraryView: View {
 
     var body: some View {
         ScrollView {
-            if filteredRecipes.isEmpty {
+            if nameMatchedRecipes.isEmpty && ingredientMatchedRecipes.isEmpty {
                 emptyState
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 40)
+            } else if !nameMatchedRecipes.isEmpty {
+                recipeGrid(nameMatchedRecipes)
             } else {
-                LazyVGrid(columns: columns, alignment: .center, spacing: 12) {
-                    ForEach(filteredRecipes, id: \.persistentModelID) { recipe in
-                        libraryCard(recipe)
+                VStack(alignment: .leading, spacing: 16) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("search.byIngredient.title")
+                            .font(.headline)
+                        Text("search.byIngredient.subtitle")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
+
+                    recipeGrid(ingredientMatchedRecipes, includesOuterPadding: false)
                 }
                 .padding(AppTheme.contentPadding)
                 .appWideReadableWidth()
@@ -255,6 +273,23 @@ struct RecipeLibraryView: View {
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(isSelected ? [.isSelected, .isButton] : .isButton)
+    }
+
+    @ViewBuilder
+    private func recipeGrid(_ recipes: [Recipe], includesOuterPadding: Bool = true) -> some View {
+        let grid = LazyVGrid(columns: columns, alignment: .center, spacing: 12) {
+            ForEach(recipes, id: \.persistentModelID) { recipe in
+                libraryCard(recipe)
+            }
+        }
+
+        if includesOuterPadding {
+            grid
+                .padding(AppTheme.contentPadding)
+                .appWideReadableWidth()
+        } else {
+            grid
+        }
     }
 
     private func libraryCard(_ recipe: Recipe) -> some View {

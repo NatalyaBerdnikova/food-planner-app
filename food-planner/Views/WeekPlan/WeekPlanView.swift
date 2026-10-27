@@ -13,6 +13,7 @@ struct WeekPlanView: View {
 
     @State private var displayedWeekStart = Calendar.current.startOfWeek(for: .now)
     @State private var selectedDay: Date?
+    @State private var scrollPosition = ScrollPosition(idType: Date.self)
     @State private var addMealPresentation: AddMealPresentation?
     @State private var isImportingFile = false
     @State private var showClearConfirmation = false
@@ -40,6 +41,7 @@ struct WeekPlanView: View {
         @Bindable var weekPlanGeneration = weekPlanGeneration
         content
             .navigationTitle("nav.weekPlan")
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button {
@@ -122,33 +124,34 @@ struct WeekPlanView: View {
     @ViewBuilder
     private var content: some View {
         if let weekPlan = displayedWeekPlan {
-            ScrollViewReader { proxy in
-                ScrollView {
-                    VStack(spacing: AppTheme.sectionSpacing) {
-                        WeekRangeSwitcher(weekStart: $displayedWeekStart)
+            ScrollView {
+                VStack(spacing: AppTheme.sectionSpacing) {
+                    WeekRangeSwitcher(weekStart: $displayedWeekStart)
 
-                        WeekDayCarousel(
-                            dayPlans: sortedDayPlans(weekPlan),
-                            targetNutrition: targetNutrition,
-                            micronutrientFocus: micronutrientFocus,
-                            selectedDay: $selectedDay,
-                            onTapEmptyMeal: presentAddMeal
-                        )
-                    }
-                    .padding(.horizontal, AppTheme.contentPadding)
-                    .padding(.bottom, AppTheme.contentPadding)
-                    .appWideReadableWidth()
+                    WeekDayCarousel(
+                        dayPlans: sortedDayPlans(weekPlan),
+                        targetNutrition: targetNutrition,
+                        micronutrientFocus: micronutrientFocus,
+                        selectedDay: $selectedDay,
+                        onTapEmptyMeal: presentAddMeal
+                    )
                 }
-                .appScreenBackground()
-                .onAppear {
-                    scrollToCurrentDay(using: proxy)
-                }
-                .onChange(of: displayedWeekStart) { _, _ in
-                    scrollToCurrentDay(using: proxy)
-                }
+                .padding(.horizontal, AppTheme.contentPadding)
+                .padding(.bottom, AppTheme.contentPadding)
+                .appWideReadableWidth()
+            }
+            .scrollPosition($scrollPosition)
+            .appScreenBackground()
+            .onAppear {
+                scrollToCurrentDayIfNeeded()
+            }
+            .onChange(of: displayedWeekStart) { _, _ in
+                scrollToCurrentDayIfNeeded()
             }
         } else {
             ProgressView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .appScreenBackground()
         }
     }
 
@@ -162,15 +165,20 @@ struct WeekPlanView: View {
         WeekPlanService.clearPlan(weekPlan, in: modelContext)
     }
 
-    private func scrollToCurrentDay(using proxy: ScrollViewProxy) {
+    private func scrollToCurrentDayIfNeeded() {
         let calendar = Calendar.current
         guard let todayPlan = displayedWeekPlan?.dayPlans.first(where: { calendar.isDateInToday($0.date) }) else {
             return
         }
         let dayID = calendar.startOfDay(for: todayPlan.date)
-        DispatchQueue.main.async {
-            withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.35)) {
-                proxy.scrollTo(dayID, anchor: .top)
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(50))
+            if reduceMotion {
+                scrollPosition.scrollTo(id: dayID, anchor: .top)
+            } else {
+                withAnimation(.easeInOut(duration: 0.35)) {
+                    scrollPosition.scrollTo(id: dayID, anchor: .top)
+                }
             }
         }
     }
