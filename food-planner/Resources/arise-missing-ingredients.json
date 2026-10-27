@@ -1,0 +1,2680 @@
+{
+  "description": "Ingredients from ARISE COOKBOOK not found in food-catalog.json. They ARE still listed in arise-recipes-catalog.json under suggestedKey. Add them to food-catalog.json using suggestedKey as catalogKey.",
+  "count": 113,
+  "ingredients": [
+    {
+      "name": "protein powder",
+      "suggestedKey": "protein_powder",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "protein coffee",
+        "summer smoothie bowl",
+        "chocolate berry ice cream",
+        "berry smoothie bowl",
+        "chocolate smoothie",
+        "summer purple ice cream",
+        "chocolate chip mini pancakes",
+        "chocolate truffles",
+        "cranberry white chocolate cake",
+        "strawberry chia pudding",
+        "berry ice pops",
+        "carrot pancakes",
+        "chocolate rice crispies"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_001",
+          "recipeName": "protein coffee",
+          "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_002",
+          "recipeName": "summer smoothie bowl",
+          "quantity": 25.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_003",
+          "recipeName": "chocolate berry ice cream",
+          "quantity": 25.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_004",
+          "recipeName": "berry smoothie bowl",
+          "quantity": 25.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_005",
+          "recipeName": "chocolate smoothie",
+          "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_006",
+          "recipeName": "summer purple ice cream",
+          "quantity": 25.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_076",
+          "recipeName": "chocolate chip mini pancakes",
+          "quantity": 20.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_077",
+          "recipeName": "chocolate truffles",
+          "quantity": 40.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_078",
+          "recipeName": "cranberry white chocolate cake",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_085",
+          "recipeName": "strawberry chia pudding",
+          "quantity": 25.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_092",
+          "recipeName": "berry ice pops",
+          "quantity": 25.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_097",
+          "recipeName": "carrot pancakes",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_098",
+          "recipeName": "chocolate rice crispies",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "30 g of protein powder",
+        "25 g of protein powder",
+        "30 g of protein powder (chocolate flavor)",
+        "20 g of protein powder",
+        "40 g of protein powder",
+        "15 g of protein powder (used chocolate flavour)",
+        "15 g of protein powder"
+      ]
+    },
+    {
+      "name": "slices of sourdough",
+      "suggestedKey": "slices_of_sourdough",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "fig toast",
+        "poached eggs toast",
+        "caramelized mango cottage toast",
+        "italian toast",
+        "lupin hummus",
+        "cottage autumn toast",
+        "hummus toast",
+        "pizza toast",
+        "egg skillet",
+        "truffle toast",
+        "fresh avocado toast",
+        "savory french toast",
+        "caprese toast"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_009",
+          "recipeName": "fig toast",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_010",
+          "recipeName": "poached eggs toast",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_012",
+          "recipeName": "caramelized mango cottage toast",
+          "quantity": 90.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_014",
+          "recipeName": "italian toast",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_017",
+          "recipeName": "lupin hummus",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_019",
+          "recipeName": "cottage autumn toast",
+          "quantity": 90.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_021",
+          "recipeName": "hummus toast",
+          "quantity": 90.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_022",
+          "recipeName": "pizza toast",
+          "quantity": 90.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_023",
+          "recipeName": "egg skillet",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_024",
+          "recipeName": "truffle toast",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_025",
+          "recipeName": "fresh avocado toast",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_029",
+          "recipeName": "savory french toast",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_031",
+          "recipeName": "caprese toast",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 slices of sourdough",
+        "3 slices of sourdough"
+      ]
+    },
+    {
+      "name": "sweetener",
+      "suggestedKey": "sweetener",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "mini apple pie",
+        "chocolate chip mini pancakes",
+        "filled protein crepes with chocolate",
+        "tropicalia cake",
+        "lemon blueberry cake",
+        "apple spices cake",
+        "orange and chocolate cake",
+        "carrot pancakes"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_075",
+          "recipeName": "mini apple pie",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_076",
+          "recipeName": "chocolate chip mini pancakes",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_079",
+          "recipeName": "filled protein crepes with chocolate",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_082",
+          "recipeName": "tropicalia cake",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_089",
+          "recipeName": "lemon blueberry cake",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_091",
+          "recipeName": "apple spices cake",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_094",
+          "recipeName": "orange and chocolate cake",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_097",
+          "recipeName": "carrot pancakes",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of sweetener",
+        "1 tsp of sweetener in a bowl add the protein yogurt the protein and mix"
+      ]
+    },
+    {
+      "name": "tortilla wraps",
+      "suggestedKey": "tortilla_wraps",
+      "exampleQuantityGrams": 100.0,
+      "seenInRecipes": [
+        "egg salad wrap",
+        "jamon piadina",
+        "spinach feta wrap",
+        "tuna paste wrap",
+        "burger wrap"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_011",
+          "recipeName": "egg salad wrap",
+          "quantity": 100.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_015",
+          "recipeName": "jamon piadina",
+          "quantity": 100.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_018",
+          "recipeName": "spinach feta wrap",
+          "quantity": 100.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_050",
+          "recipeName": "tuna paste wrap",
+          "quantity": 100.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_069",
+          "recipeName": "burger wrap",
+          "quantity": 100.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 tortilla wraps"
+      ]
+    },
+    {
+      "name": "oml of white wine",
+      "suggestedKey": "oml_of_white_wine",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "one pan roasted fish",
+        "bolognese spaghetti",
+        "wedges nachos",
+        "crispy meat pies"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_048",
+          "recipeName": "one pan roasted fish",
+          "quantity": 150.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_057",
+          "recipeName": "bolognese spaghetti",
+          "quantity": 150.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_063",
+          "recipeName": "wedges nachos",
+          "quantity": 150.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_064",
+          "recipeName": "crispy meat pies",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "5 oml of white wine",
+        "5 oml of white wine (optional)",
+        "5 oml of white wine (optional"
+      ]
+    },
+    {
+      "name": "protein cheese",
+      "suggestedKey": "protein_cheese",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "cheese and ham bites",
+        "pizza toast",
+        "breakfast cups",
+        "cheesy taquitos"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_016",
+          "recipeName": "cheese and ham bites",
+          "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_022",
+          "recipeName": "pizza toast",
+          "quantity": 20.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_028",
+          "recipeName": "breakfast cups",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_068",
+          "recipeName": "cheesy taquitos",
+          "quantity": 20.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "30 g of protein cheese",
+        "20 g of protein cheese salt and black pepper qb italian seasoning qb add the protein cheese on top, season with salt; black pepper; italian seasoning to your taste and put it in the ovenfor",
+        "10 g of protein cheese",
+        "20 g of protein cheese add the chicken breast and let it slow cooked until fully cooked remove from the frying pan; and shred everything put = everything back together in the frying pan and stir well and letit cook for"
+      ]
+    },
+    {
+      "name": "zucchini",
+      "suggestedKey": "zucchini",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "mushroom creamy soup",
+        "comfort lentil soup",
+        "ratatouille",
+        "zucchini boats"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_035",
+          "recipeName": "mushroom creamy soup",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_041",
+          "recipeName": "comfort lentil soup",
+          "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_043",
+          "recipeName": "ratatouille",
+          "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_054",
+          "recipeName": "zucchini boats",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1/2 zucchini",
+        "1 zucchini"
+      ]
+    },
+    {
+      "name": "balsamic vinegar",
+      "suggestedKey": "balsamic_vinegar",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "lupin hummus",
+        "hummus toast",
+        "summer burrata"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_017",
+          "recipeName": "lupin hummus",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_021",
+          "recipeName": "hummus toast",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_045",
+          "recipeName": "summer burrata",
+          "quantity": 15.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tbsp of balsamic vinegar parsley to garnish",
+        "1 tbsp of balsamic vinegar season with salt black pepper; italian seasoning to your taste; finish by adding the olive oilon top and put itin the oven for",
+        "1 tbsp of balsamic vinegar"
+      ]
+    },
+    {
+      "name": "bellpepper yellow",
+      "suggestedKey": "bellpepper_yellow",
+      "exampleQuantityGrams": 420.0,
+      "seenInRecipes": [
+        "one pan roasted fish",
+        "one pan roasted salmon",
+        "bolognese spaghetti"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_048",
+          "recipeName": "one pan roasted fish",
+          "quantity": 420.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_055",
+          "recipeName": "one pan roasted salmon",
+          "quantity": 420.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_057",
+          "recipeName": "bolognese spaghetti",
+          "quantity": 7.5,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "14 bellpepper yellow",
+        "1/4 bellpepper yellow"
+      ]
+    },
+    {
+      "name": "phyllo sheets",
+      "suggestedKey": "phyllo_sheets",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "cheese and ham bites",
+        "mini apple pie",
+        "mini pumpkin pie"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_016",
+          "recipeName": "cheese and ham bites",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_075",
+          "recipeName": "mini apple pie",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_099",
+          "recipeName": "mini pumpkin pie",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 phyllo sheets"
+      ]
+    },
+    {
+      "name": "protein",
+      "suggestedKey": "protein",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "banana split",
+        "tropicalia cake",
+        "lemon blueberry cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_081",
+          "recipeName": "banana split",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_082",
+          "recipeName": "tropicalia cake",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_089",
+          "recipeName": "lemon blueberry cake",
+          "quantity": 10.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "15 g of protein",
+        "10 g of protein"
+      ]
+    },
+    {
+      "name": "yellow",
+      "suggestedKey": "yellow",
+      "exampleQuantityGrams": 420.0,
+      "seenInRecipes": [
+        "chicken fajitas",
+        "dinner bowl",
+        "cheesy taquitos"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_060",
+          "recipeName": "chicken fajitas",
+          "quantity": 420.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_065",
+          "recipeName": "dinner bowl",
+          "quantity": 420.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_068",
+          "recipeName": "cheesy taquitos",
+          "quantity": 7.5,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "14 yellow pepper",
+        "1/4 yellow pepper"
+      ]
+    },
+    {
+      "name": "bell yellow",
+      "suggestedKey": "bell_yellow",
+      "exampleQuantityGrams": 420.0,
+      "seenInRecipes": [
+        "mashed potatoes meat pie",
+        "wedges nachos"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_058",
+          "recipeName": "mashed potatoes meat pie",
+          "quantity": 420.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_063",
+          "recipeName": "wedges nachos",
+          "quantity": 420.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "14 bell pepper yellow"
+      ]
+    },
+    {
+      "name": "cranberries",
+      "suggestedKey": "cranberries",
+      "exampleQuantityGrams": 10.0,
+      "seenInRecipes": [
+        "cranberry white chocolate cake",
+        "gingerbread granola"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_078",
+          "recipeName": "cranberry white chocolate cake",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_087",
+          "recipeName": "gingerbread granola",
+          "quantity": 240.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "10 g of cranberries",
+        "1 cup of cranberries place the previous mixture on a baking dish lined with parchment paper; spreading it out well bake in the oven for"
+      ]
+    },
+    {
+      "name": "eggand",
+      "suggestedKey": "eggand",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "spinach feta wrap",
+        "mini pumpkin pie"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_018",
+          "recipeName": "spinach feta wrap",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_099",
+          "recipeName": "mini pumpkin pie",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 eggand",
+        "1 eggand"
+      ]
+    },
+    {
+      "name": "eggsand",
+      "suggestedKey": "eggsand",
+      "exampleQuantityGrams": 90.0,
+      "seenInRecipes": [
+        "spanish tortilla",
+        "breakfast cups"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_013",
+          "recipeName": "spanish tortilla",
+          "quantity": 90.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_028",
+          "recipeName": "breakfast cups",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "3 eggsand",
+        "2 eggsand"
+      ]
+    },
+    {
+      "name": "feta cheese",
+      "suggestedKey": "feta_cheese",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "lupin hummus",
+        "spinach feta wrap"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_017",
+          "recipeName": "lupin hummus",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_018",
+          "recipeName": "spinach feta wrap",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "5 g of feta cheese",
+        "30 g of feta cheese"
+      ]
+    },
+    {
+      "name": "light cream cheese",
+      "suggestedKey": "light_cream_cheese",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "nourishing bagel",
+        "fresh avocado toast"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_000",
+          "recipeName": "nourishing bagel",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_025",
+          "recipeName": "fresh avocado toast",
+          "quantity": 20.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tbsp of light cream cheese",
+        "20 g of light cream cheese"
+      ]
+    },
+    {
+      "name": "light mozzarella",
+      "suggestedKey": "light_mozzarella",
+      "exampleQuantityGrams": 50.0,
+      "seenInRecipes": [
+        "caprese toast",
+        "eggplant pizza"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_031",
+          "recipeName": "caprese toast",
+          "quantity": 50.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_071",
+          "recipeName": "eggplant pizza",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "50 g of light mozzarella",
+        "60 g of light mozzarella"
+      ]
+    },
+    {
+      "name": "linguini",
+      "suggestedKey": "linguini",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "tometo mushroom pasta",
+        "carbonara"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_056",
+          "recipeName": "tometo mushroom pasta",
+          "quantity": 150.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_061",
+          "recipeName": "carbonara",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "150 g of cooked linguini"
+      ]
+    },
+    {
+      "name": "low fat cream cheese",
+      "suggestedKey": "low_fat_cream_cheese",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "cinnamon roll pancake",
+        "raspberries chocolate cream cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_080",
+          "recipeName": "cinnamon roll pancake",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_083",
+          "recipeName": "raspberries chocolate cream cake",
+          "quantity": 15.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tbsp of low fat cream cheese"
+      ]
+    },
+    {
+      "name": "oml white wine",
+      "suggestedKey": "oml_white_wine",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "asparagus risotto",
+        "stuffed cheesy potato"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_049",
+          "recipeName": "asparagus risotto",
+          "quantity": 150.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_066",
+          "recipeName": "stuffed cheesy potato",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "5 oml white wine",
+        "5 oml white wine optional"
+      ]
+    },
+    {
+      "name": "peanut powder",
+      "suggestedKey": "peanut_powder",
+      "exampleQuantityGrams": 10.0,
+      "seenInRecipes": [
+        "summer smoothie bowl",
+        "berry smoothie bowl"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_002",
+          "recipeName": "summer smoothie bowl",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_004",
+          "recipeName": "berry smoothie bowl",
+          "quantity": 10.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "10 g of peanut powder"
+      ]
+    },
+    {
+      "name": "penne",
+      "suggestedKey": "penne",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "creamy shrimp pasta",
+        "roasted creamy chicken penne"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_053",
+          "recipeName": "creamy shrimp pasta",
+          "quantity": 150.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_067",
+          "recipeName": "roasted creamy chicken penne",
+          "quantity": 100.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "150 g of cooked penne",
+        "100 g of cooked penne"
+      ]
+    },
+    {
+      "name": "quinoa",
+      "suggestedKey": "quinoa",
+      "exampleQuantityGrams": 100.0,
+      "seenInRecipes": [
+        "shrimp edamame salad",
+        "shirazi salad"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_036",
+          "recipeName": "shrimp edamame salad",
+          "quantity": 100.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_039",
+          "recipeName": "shirazi salad",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "100 g of quinoa cooked",
+        "150 g of cooked quinoa"
+      ]
+    },
+    {
+      "name": "reen",
+      "suggestedKey": "reen",
+      "exampleQuantityGrams": 0.2,
+      "seenInRecipes": [
+        "dinner bowl",
+        "cheesy taquitos"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_065",
+          "recipeName": "dinner bowl",
+          "quantity": 0.2,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_068",
+          "recipeName": "cheesy taquitos",
+          "quantity": 0.2,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1/4 green pepper"
+      ]
+    },
+    {
+      "name": "truffle",
+      "suggestedKey": "truffle",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "truffle toast",
+        "fresh avocado toast"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_024",
+          "recipeName": "truffle toast",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_025",
+          "recipeName": "fresh avocado toast",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of truffle spread salt and black pepper italian seasoning qb",
+        "1 tsp of truffle spread salt and black pepper italian seasoning"
+      ]
+    },
+    {
+      "name": "vanilla extract",
+      "suggestedKey": "vanilla_extract",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "chocolate chip banana bread",
+        "mini pumpkin pie"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_090",
+          "recipeName": "chocolate chip banana bread",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_099",
+          "recipeName": "mini pumpkin pie",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of vanilla extract"
+      ]
+    },
+    {
+      "name": "vanilla protein pudding",
+      "suggestedKey": "vanilla_protein_pudding",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "custard cream tarts",
+        "mini pumpkin pie"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_093",
+          "recipeName": "custard cream tarts",
+          "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "recipeId": "arise_099",
+          "recipeName": "mini pumpkin pie",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 vanilla protein pudding",
+        "150 g of vanilla protein pudding"
+      ]
+    },
+    {
+      "name": "0% sugar strawberryjam zog of low fat cream cheese put in the oven for about",
+      "suggestedKey": "0_sugar_strawberryjam_zog_of_low_fat_cream_cheese_put_in_the_oven_for_about",
+      "exampleQuantityGrams": 20.0,
+      "seenInRecipes": [
+        "custard yogurt toast"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_030",
+          "recipeName": "custard yogurt toast",
+          "quantity": 20.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "20 g of 0% sugar strawberryjam zog of low fat cream cheese put in the oven for about"
+      ]
+    },
+    {
+      "name": "100% hummus",
+      "suggestedKey": "100_hummus",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "hummus toast"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_021",
+          "recipeName": "hummus toast",
+          "quantity": 15.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tbsp of 100% hummus salt and black pepper qb italian seasoning qb"
+      ]
+    },
+    {
+      "name": "arlic clove and_",
+      "suggestedKey": "arlic_clove_and",
+      "exampleQuantityGrams": 1.0,
+      "seenInRecipes": [
+        "creamy shrimp pasta"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_053",
+          "recipeName": "creamy shrimp pasta",
+          "quantity": 1.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 garlic clove and_ saute the shrimps"
+      ]
+    },
+    {
+      "name": "arlic cloves",
+      "suggestedKey": "arlic_cloves",
+      "exampleQuantityGrams": 3.0,
+      "seenInRecipes": [
+        "one pan roasted fish"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_048",
+          "recipeName": "one pan roasted fish",
+          "quantity": 3.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "3 garlic cloves"
+      ]
+    },
+    {
+      "name": "arugula limejuice",
+      "suggestedKey": "arugula_limejuice",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "burrito bowl"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_070",
+          "recipeName": "burrito bowl",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "30 g of arugula limejuice qb cilantro to garnish"
+      ]
+    },
+    {
+      "name": "avocado limejuice",
+      "suggestedKey": "avocado_limejuice",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "pico de salmon galette"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_051",
+          "recipeName": "pico de salmon galette",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "60 g of avocado limejuice qb"
+      ]
+    },
+    {
+      "name": "bagel",
+      "suggestedKey": "bagel",
+      "exampleQuantityGrams": 90.0,
+      "seenInRecipes": [
+        "nourishing bagel"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_000",
+          "recipeName": "nourishing bagel",
+          "quantity": 90.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "bagel"
+      ]
+    },
+    {
+      "name": "baking powder well",
+      "suggestedKey": "baking_powder_well",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "apple spices cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_091",
+          "recipeName": "apple spices cake",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of baking powder well until obtain a cream"
+      ]
+    },
+    {
+      "name": "balls",
+      "suggestedKey": "balls",
+      "exampleQuantityGrams": 300.0,
+      "seenInRecipes": [
+        "fudge brownie cookies"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_084",
+          "recipeName": "fudge brownie cookies",
+          "quantity": 300.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "10 balls; add the chocolate chips and bake for"
+      ]
+    },
+    {
+      "name": "bananas mashed overripe",
+      "suggestedKey": "bananas_mashed_overripe",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "chocolate chip banana bread"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_090",
+          "recipeName": "chocolate chip banana bread",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 medium bananas mashed overripe"
+      ]
+    },
+    {
+      "name": "basmatirice",
+      "suggestedKey": "basmatirice",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "pico de salmon galette"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_051",
+          "recipeName": "pico de salmon galette",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "150 g of cooked basmatirice"
+      ]
+    },
+    {
+      "name": "beatenegg place parchment paper on a baking tray",
+      "suggestedKey": "beatenegg_place_parchment_paper_on_a_baking_tray",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "cheese and ham bites"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_016",
+          "recipeName": "cheese and ham bites",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 beatenegg place parchment paper on a baking tray add the phyllo sheets; place the ham and cheese mixture in the middle and close asyou prefer Brush with beaten egg and bake for"
+      ]
+    },
+    {
+      "name": "bell green",
+      "suggestedKey": "bell_green",
+      "exampleQuantityGrams": 420.0,
+      "seenInRecipes": [
+        "one pan roasted fish"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_048",
+          "recipeName": "one pan roasted fish",
+          "quantity": 420.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "14 bell pepper green"
+      ]
+    },
+    {
+      "name": "bellpepper",
+      "suggestedKey": "bellpepper",
+      "exampleQuantityGrams": 420.0,
+      "seenInRecipes": [
+        "spring rolls"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_052",
+          "recipeName": "spring rolls",
+          "quantity": 420.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "14 of bellpepper"
+      ]
+    },
+    {
+      "name": "bellpepper green",
+      "suggestedKey": "bellpepper_green",
+      "exampleQuantityGrams": 7.5,
+      "seenInRecipes": [
+        "one pan roasted salmon"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_055",
+          "recipeName": "one pan roasted salmon",
+          "quantity": 7.5,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1/4 bellpepper green"
+      ]
+    },
+    {
+      "name": "burrata",
+      "suggestedKey": "burrata",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "summer burrata"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_045",
+          "recipeName": "summer burrata",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 burrata"
+      ]
+    },
+    {
+      "name": "canned lentils",
+      "suggestedKey": "canned_lentils",
+      "exampleQuantityGrams": 200.0,
+      "seenInRecipes": [
+        "comfort lentil soup"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_041",
+          "recipeName": "comfort lentil soup",
+          "quantity": 200.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "200 g of cooked canned lentils"
+      ]
+    },
+    {
+      "name": "chilli tablespoons of soy sauce",
+      "suggestedKey": "chilli_tablespoons_of_soy_sauce",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "ramen"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_038",
+          "recipeName": "ramen",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of chilli tablespoons of soy sauce"
+      ]
+    },
+    {
+      "name": "cinnamon a bowl",
+      "suggestedKey": "cinnamon_a_bowl",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "yogurt bars"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_095",
+          "recipeName": "yogurt bars",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of cinnamon a bowl add the protein yogurt the protein and mix"
+      ]
+    },
+    {
+      "name": "edamame",
+      "suggestedKey": "edamame",
+      "exampleQuantityGrams": 100.0,
+      "seenInRecipes": [
+        "shrimp edamame salad"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_036",
+          "recipeName": "shrimp edamame salad",
+          "quantity": 100.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "100 g of cooked edamame parsley to taste oregano, salt"
+      ]
+    },
+    {
+      "name": "ginger grated",
+      "suggestedKey": "ginger_grated",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "ramen"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_038",
+          "recipeName": "ramen",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of ginger grated"
+      ]
+    },
+    {
+      "name": "gingerbread granola",
+      "suggestedKey": "gingerbread_granola",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "yogurt parfait"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_088",
+          "recipeName": "yogurt parfait",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "30 g of gingerbread granola recipe n?"
+      ]
+    },
+    {
+      "name": "gingerbread spice",
+      "suggestedKey": "gingerbread_spice",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "gingerbread granola"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_087",
+          "recipeName": "gingerbread granola",
+          "quantity": 15.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tbsp of gingerbread spice"
+      ]
+    },
+    {
+      "name": "gingerbread spices",
+      "suggestedKey": "gingerbread_spices",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "apple spices cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_091",
+          "recipeName": "apple spices cake",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of gingerbread spices"
+      ]
+    },
+    {
+      "name": "imejuice",
+      "suggestedKey": "imejuice",
+      "exampleQuantityGrams": 500.0,
+      "seenInRecipes": [
+        "shirazi salad"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_039",
+          "recipeName": "shirazi salad",
+          "quantity": 500.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1/2 limejuice"
+      ]
+    },
+    {
+      "name": "lean ground beefin patties zog of low fat cheese Y",
+      "suggestedKey": "lean_ground_beefin_patties_zog_of_low_fat_cheese_y",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "burger wrap"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_069",
+          "recipeName": "burger wrap",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "150 g of lean ground beefin patties zog of low fat cheese Y"
+      ]
+    },
+    {
+      "name": "light grated cheese",
+      "suggestedKey": "light_grated_cheese",
+      "exampleQuantityGrams": 20.0,
+      "seenInRecipes": [
+        "zucchini boats"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_054",
+          "recipeName": "zucchini boats",
+          "quantity": 20.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "20 g light grated cheese"
+      ]
+    },
+    {
+      "name": "low fat sheredded cheese",
+      "suggestedKey": "low_fat_sheredded_cheese",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "savory french toast"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_029",
+          "recipeName": "savory french toast",
+          "quantity": 15.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "15 g of low fat sheredded cheese"
+      ]
+    },
+    {
+      "name": "lupin",
+      "suggestedKey": "lupin",
+      "exampleQuantityGrams": 200.0,
+      "seenInRecipes": [
+        "lupin hummus"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_017",
+          "recipeName": "lupin hummus",
+          "quantity": 200.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "200 g of lupin"
+      ]
+    },
+    {
+      "name": "mini slices of sourdough",
+      "suggestedKey": "mini_slices_of_sourdough",
+      "exampleQuantityGrams": 120.0,
+      "seenInRecipes": [
+        "4mini sweet and salty toasts"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_032",
+          "recipeName": "4mini sweet and salty toasts",
+          "quantity": 120.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "4 mini slices of sourdough"
+      ]
+    },
+    {
+      "name": "mixed nuts",
+      "suggestedKey": "mixed_nuts",
+      "exampleQuantityGrams": 240.0,
+      "seenInRecipes": [
+        "gingerbread granola"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_087",
+          "recipeName": "gingerbread granola",
+          "quantity": 240.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 cup of mixed nuts"
+      ]
+    },
+    {
+      "name": "naan bread",
+      "suggestedKey": "naan_bread",
+      "exampleQuantityGrams": 90.0,
+      "seenInRecipes": [
+        "jamon naan"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_007",
+          "recipeName": "jamon naan",
+          "quantity": 90.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 naan bread"
+      ]
+    },
+    {
+      "name": "noodles",
+      "suggestedKey": "noodles",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "ramen"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_038",
+          "recipeName": "ramen",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "150 g cooked noodles"
+      ]
+    },
+    {
+      "name": "o% greekyogurt skyr",
+      "suggestedKey": "o_greekyogurt_skyr",
+      "exampleQuantityGrams": 100.0,
+      "seenInRecipes": [
+        "mac and cheese"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_059",
+          "recipeName": "mac and cheese",
+          "quantity": 100.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "100 g of o% greekyogurt or skyr"
+      ]
+    },
+    {
+      "name": "o% sugar maple syrup",
+      "suggestedKey": "o_sugar_maple_syrup",
+      "exampleQuantityGrams": 10.0,
+      "seenInRecipes": [
+        "fudge brownie cookies"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_084",
+          "recipeName": "fudge brownie cookies",
+          "quantity": 10.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "10 g of o% sugar maple syrup"
+      ]
+    },
+    {
+      "name": "oflow calorie nacho salsa dip add into the cups bake in the oven for about",
+      "suggestedKey": "oflow_calorie_nacho_salsa_dip_add_into_the_cups_bake_in_the_oven_for_about",
+      "exampleQuantityGrams": 480.0,
+      "seenInRecipes": [
+        "breakfast cups"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_028",
+          "recipeName": "breakfast cups",
+          "quantity": 480.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 cup oflow calorie nacho salsa dip add into the cups and bake in the oven for about"
+      ]
+    },
+    {
+      "name": "ofmilk",
+      "suggestedKey": "ofmilk",
+      "exampleQuantityGrams": 240.0,
+      "seenInRecipes": [
+        "chocolate chip banana bread"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_090",
+          "recipeName": "chocolate chip banana bread",
+          "quantity": 240.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 cup ofmilk"
+      ]
+    },
+    {
+      "name": "ofredonion",
+      "suggestedKey": "ofredonion",
+      "exampleQuantityGrams": 420.0,
+      "seenInRecipes": [
+        "tuna paste wrap"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_050",
+          "recipeName": "tuna paste wrap",
+          "quantity": 420.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "14 ofredonion"
+      ]
+    },
+    {
+      "name": "og avocado limejuiceqb",
+      "suggestedKey": "og_avocado_limejuiceqb",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "tacos"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_072",
+          "recipeName": "tacos",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "5 og avocado limejuiceqb cilantro to garnish"
+      ]
+    },
+    {
+      "name": "og of chickpeas",
+      "suggestedKey": "og_of_chickpeas",
+      "exampleQuantityGrams": 270.0,
+      "seenInRecipes": [
+        "fudge brownie cookies"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_084",
+          "recipeName": "fudge brownie cookies",
+          "quantity": 270.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "9 og of chickpeas"
+      ]
+    },
+    {
+      "name": "og of light mozzarella",
+      "suggestedKey": "og_of_light_mozzarella",
+      "exampleQuantityGrams": 180.0,
+      "seenInRecipes": [
+        "pizza wrap"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_073",
+          "recipeName": "pizza wrap",
+          "quantity": 180.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "6 og of light mozzarella"
+      ]
+    },
+    {
+      "name": "omlof white wine",
+      "suggestedKey": "omlof_white_wine",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "mashed potatoes meat pie"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_058",
+          "recipeName": "mashed potatoes meat pie",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "5 omlof white wine (optional)"
+      ]
+    },
+    {
+      "name": "oOmlof whites preparation add letit",
+      "suggestedKey": "oomlof_whites_preparation_add_letit",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "yogurt bars"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_095",
+          "recipeName": "yogurt bars",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 oOmlof whites preparation add letit cook for about"
+      ]
+    },
+    {
+      "name": "oreo cookie",
+      "suggestedKey": "oreo_cookie",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "oreo mousse"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_100",
+          "recipeName": "oreo mousse",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 oreo cookie"
+      ]
+    },
+    {
+      "name": "oreo cookies",
+      "suggestedKey": "oreo_cookies",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "raspberries chocolate cream cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_083",
+          "recipeName": "raspberries chocolate cream cake",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 oreo cookies"
+      ]
+    },
+    {
+      "name": "papaya",
+      "suggestedKey": "papaya",
+      "exampleQuantityGrams": 100.0,
+      "seenInRecipes": [
+        "summer smoothie bowl"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_002",
+          "recipeName": "summer smoothie bowl",
+          "quantity": 100.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "100 g of papaya"
+      ]
+    },
+    {
+      "name": "parmesan basilto gamish",
+      "suggestedKey": "parmesan_basilto_gamish",
+      "exampleQuantityGrams": 10.0,
+      "seenInRecipes": [
+        "tometo mushroom pasta"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_056",
+          "recipeName": "tometo mushroom pasta",
+          "quantity": 10.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "10 g of parmesan basilto gamish"
+      ]
+    },
+    {
+      "name": "parmesan inanother frying pan",
+      "suggestedKey": "parmesan_inanother_frying_pan",
+      "exampleQuantityGrams": 20.0,
+      "seenInRecipes": [
+        "creamy shrimp pasta"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_053",
+          "recipeName": "creamy shrimp pasta",
+          "quantity": 20.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "20 g of parmesan inanother frying pan, add the olive oil the onion; the garlic and the tomatoesand let it saute Finally add the spinach; mix welland then add the pasta and the sauteed shrimps add"
+      ]
+    },
+    {
+      "name": "parmesan to gamish",
+      "suggestedKey": "parmesan_to_gamish",
+      "exampleQuantityGrams": 10.0,
+      "seenInRecipes": [
+        "roasted creamy chicken penne"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_067",
+          "recipeName": "roasted creamy chicken penne",
+          "quantity": 10.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "10 g of parmesan basil to gamish"
+      ]
+    },
+    {
+      "name": "pasta",
+      "suggestedKey": "pasta",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "mac and cheese"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_059",
+          "recipeName": "mac and cheese",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "150 g of cooked pasta"
+      ]
+    },
+    {
+      "name": "peeledapple",
+      "suggestedKey": "peeledapple",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "orange and chocolate cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_094",
+          "recipeName": "orange and chocolate cake",
+          "quantity": 15.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1/2 peeledapple"
+      ]
+    },
+    {
+      "name": "peeledapple preparation",
+      "suggestedKey": "peeledapple_preparation",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "peach and cottage cheese cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_086",
+          "recipeName": "peach and cottage cheese cake",
+          "quantity": 15.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1/2 peeledapple preparation, and let it cook for about"
+      ]
+    },
+    {
+      "name": "pesto mint",
+      "suggestedKey": "pesto_mint",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "pumpkin garden"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_034",
+          "recipeName": "pumpkin garden",
+          "quantity": 15.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tbsp of pesto mint to garnish salt and pepper"
+      ]
+    },
+    {
+      "name": "pesto sauce",
+      "suggestedKey": "pesto_sauce",
+      "exampleQuantityGrams": 15.0,
+      "seenInRecipes": [
+        "parmesan egg cups"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_020",
+          "recipeName": "parmesan egg cups",
+          "quantity": 15.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tbsp of pesto sauce parsley to taste salt and pepper"
+      ]
+    },
+    {
+      "name": "pickles zog of corn",
+      "suggestedKey": "pickles_zog_of_corn",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "russian salad"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_042",
+          "recipeName": "russian salad",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 pickles chopped zog of corn"
+      ]
+    },
+    {
+      "name": "plain protein yogutr lemonjuice to tastet",
+      "suggestedKey": "plain_protein_yogutr_lemonjuice_to_tastet",
+      "exampleQuantityGrams": 100.0,
+      "seenInRecipes": [
+        "jamon piadina"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_015",
+          "recipeName": "jamon piadina",
+          "quantity": 100.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "100 g of plain protein yogutr lemonjuice to tastet"
+      ]
+    },
+    {
+      "name": "protein lemonjuice",
+      "suggestedKey": "protein_lemonjuice",
+      "exampleQuantityGrams": 10.0,
+      "seenInRecipes": [
+        "yogurt bars"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_095",
+          "recipeName": "yogurt bars",
+          "quantity": 10.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "10 g of protein lemonjuice qb"
+      ]
+    },
+    {
+      "name": "reen pepper limejuice chili powder",
+      "suggestedKey": "reen_pepper_limejuice_chili_powder",
+      "exampleQuantityGrams": 0.2,
+      "seenInRecipes": [
+        "chicken fajitas"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_060",
+          "recipeName": "chicken fajitas",
+          "quantity": 0.2,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1/4 green pepper limejuice to taste chili powder"
+      ]
+    },
+    {
+      "name": "risotto zog parmesan cheese",
+      "suggestedKey": "risotto_zog_parmesan_cheese",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "asparagus risotto"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_049",
+          "recipeName": "asparagus risotto",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "150 g of cooked risotto zog parmesan cheese"
+      ]
+    },
+    {
+      "name": "shredded coconut @rise cookbook NICOLNA NUNES",
+      "suggestedKey": "shredded_coconut_rise_cookbook_nicolna_nunes",
+      "exampleQuantityGrams": 3.0,
+      "seenInRecipes": [
+        "4mini sweet and salty toasts"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_032",
+          "recipeName": "4mini sweet and salty toasts",
+          "quantity": 3.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "3 g of shredded coconut @rise cookbook NICOLNA NUNES"
+      ]
+    },
+    {
+      "name": "slice of sourdough",
+      "suggestedKey": "slice_of_sourdough",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "gazpacho"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_040",
+          "recipeName": "gazpacho",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 slice of sourdough"
+      ]
+    },
+    {
+      "name": "slice of zucchini",
+      "suggestedKey": "slice_of_zucchini",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "ratatouille"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_043",
+          "recipeName": "ratatouille",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 slice of zucchini"
+      ]
+    },
+    {
+      "name": "slices of protein light cheese",
+      "suggestedKey": "slices_of_protein_light_cheese",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "jamon piadina"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_015",
+          "recipeName": "jamon piadina",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 slices of protein or light cheese oregano, salt"
+      ]
+    },
+    {
+      "name": "small pita",
+      "suggestedKey": "small_pita",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "pita breakfast"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_026",
+          "recipeName": "pita breakfast",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 small pita"
+      ]
+    },
+    {
+      "name": "small tortilla wraps",
+      "suggestedKey": "small_tortilla_wraps",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "chicken fajitas"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_060",
+          "recipeName": "chicken fajitas",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 small tortilla wraps"
+      ]
+    },
+    {
+      "name": "smallbases",
+      "suggestedKey": "smallbases",
+      "exampleQuantityGrams": 120.0,
+      "seenInRecipes": [
+        "breakfast cups"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_028",
+          "recipeName": "breakfast cups",
+          "quantity": 120.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "4 smallbases; place the phyllo sheets in a bowl add the eggs and egg whites; add the cheese; the chopped tomatoes; mushrooms; olives; oregano, salt and pepper to taste phyllo sheets"
+      ]
+    },
+    {
+      "name": "smalltaco tortillas",
+      "suggestedKey": "smalltaco_tortillas",
+      "exampleQuantityGrams": 90.0,
+      "seenInRecipes": [
+        "cheesy taquitos"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_068",
+          "recipeName": "cheesy taquitos",
+          "quantity": 90.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "3 smalltaco tortillas"
+      ]
+    },
+    {
+      "name": "spaghetti",
+      "suggestedKey": "spaghetti",
+      "exampleQuantityGrams": 150.0,
+      "seenInRecipes": [
+        "bolognese spaghetti"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_057",
+          "recipeName": "bolognese spaghetti",
+          "quantity": 150.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "150 g of cooked spaghetti"
+      ]
+    },
+    {
+      "name": "spirulina",
+      "suggestedKey": "spirulina",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "summer purple ice cream"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_006",
+          "recipeName": "summer purple ice cream",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of spirulina"
+      ]
+    },
+    {
+      "name": "squashpumpkin",
+      "suggestedKey": "squashpumpkin",
+      "exampleQuantityGrams": 200.0,
+      "seenInRecipes": [
+        "mac and cheese"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_059",
+          "recipeName": "mac and cheese",
+          "quantity": 200.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "200 g of squashpumpkin"
+      ]
+    },
+    {
+      "name": "stp of baking powder",
+      "suggestedKey": "stp_of_baking_powder",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "peach and cottage cheese cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_086",
+          "recipeName": "peach and cottage cheese cake",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 stp of baking powder"
+      ]
+    },
+    {
+      "name": "sunny sideegg",
+      "suggestedKey": "sunny_sideegg",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "4mini sweet and salty toasts"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_032",
+          "recipeName": "4mini sweet and salty toasts",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 sunny sideegg"
+      ]
+    },
+    {
+      "name": "sweetener cinnamon roll mixture",
+      "suggestedKey": "sweetener_cinnamon_roll_mixture",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "cinnamon roll pancake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_080",
+          "recipeName": "cinnamon roll pancake",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of sweetener cinnamon roll mixture:"
+      ]
+    },
+    {
+      "name": "sweetener put the dough in the molds",
+      "suggestedKey": "sweetener_put_the_dough_in_the_molds",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "mini pumpkin pie"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_099",
+          "recipeName": "mini pumpkin pie",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of sweetener put the dough in the molds and bake for about"
+      ]
+    },
+    {
+      "name": "sweetener well",
+      "suggestedKey": "sweetener_well",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "yogurt bars"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_095",
+          "recipeName": "yogurt bars",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of sweetener well until obtain a cream lemon zest lemonjuice"
+      ]
+    },
+    {
+      "name": "sweetener while the cake is baking",
+      "suggestedKey": "sweetener_while_the_cake_is_baking",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "peach and cottage cheese cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_086",
+          "recipeName": "peach and cottage cheese cake",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp of sweetener while the cake is baking; cut the peach into slices and"
+      ]
+    },
+    {
+      "name": "taco tortillas",
+      "suggestedKey": "taco_tortillas",
+      "exampleQuantityGrams": 60.0,
+      "seenInRecipes": [
+        "parmesan egg cups"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_020",
+          "recipeName": "parmesan egg cups",
+          "quantity": 60.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "2 taco tortillas"
+      ]
+    },
+    {
+      "name": "tacos tortillas",
+      "suggestedKey": "tacos_tortillas",
+      "exampleQuantityGrams": 90.0,
+      "seenInRecipes": [
+        "tacos"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_072",
+          "recipeName": "tacos",
+          "quantity": 90.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "3 tacos tortillas"
+      ]
+    },
+    {
+      "name": "tbsp",
+      "suggestedKey": "tbsp",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "cheesy chicken sandwich"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_074",
+          "recipeName": "cheesy chicken sandwich",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tbsp"
+      ]
+    },
+    {
+      "name": "the white wine",
+      "suggestedKey": "the_white_wine",
+      "exampleQuantityGrams": 5.0,
+      "seenInRecipes": [
+        "one pan roasted fish"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_048",
+          "recipeName": "one pan roasted fish",
+          "quantity": 5.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tsp; the white wine and mix well"
+      ]
+    },
+    {
+      "name": "tortilla wrap",
+      "suggestedKey": "tortilla_wrap",
+      "exampleQuantityGrams": 50.0,
+      "seenInRecipes": [
+        "pizza wrap"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_073",
+          "recipeName": "pizza wrap",
+          "quantity": 50.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "1 tortilla wrap"
+      ]
+    },
+    {
+      "name": "use a napkin to",
+      "suggestedKey": "use_a_napkin_to",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "apple spices cake"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_091",
+          "recipeName": "apple spices cake",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "30 g use a napkin to spread it out well Place the cake"
+      ]
+    },
+    {
+      "name": "use napkin to",
+      "suggestedKey": "use_napkin_to",
+      "exampleQuantityGrams": 30.0,
+      "seenInRecipes": [
+        "yogurt bars"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_095",
+          "recipeName": "yogurt bars",
+          "quantity": 30.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "30 g use napkin to spread it out well Place the cake"
+      ]
+    },
+    {
+      "name": "zog of cornstarch",
+      "suggestedKey": "zog_of_cornstarch",
+      "exampleQuantityGrams": 200.0,
+      "seenInRecipes": [
+        "custard cream tarts"
+      ],
+      "usages": [
+        {
+          "recipeId": "arise_093",
+          "recipeName": "custard cream tarts",
+          "quantity": 200.0,
+          "unit": "gram"
+        }
+      ],
+      "rawExamples": [
+        "200 g zog of cornstarch"
+      ]
+    }
+  ]
+}

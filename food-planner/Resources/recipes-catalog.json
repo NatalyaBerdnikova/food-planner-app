@@ -308,7 +308,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "chesnok",
+          "catalogKey": "garlic_clove",
           "quantity": 10,
           "unit": "gram"
         },
@@ -351,7 +351,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "red_sweet_pepper",
+          "catalogKey": "bell_red",
           "quantity": 100,
           "unit": "gram"
         },
@@ -561,7 +561,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "lim_n",
+          "catalogKey": "lemon",
           "quantity": 20,
           "unit": "gram"
         }
@@ -637,12 +637,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cut_corn",
+          "catalogKey": "corn",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "avokado",
+          "catalogKey": "avocado",
           "quantity": 80,
           "unit": "gram"
         },
@@ -776,7 +776,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cut_corn",
+          "catalogKey": "corn",
           "quantity": 60,
           "unit": "gram"
         },
@@ -1067,7 +1067,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "red_sweet_pepper",
+          "catalogKey": "bell_red",
           "quantity": 100,
           "unit": "gram"
         },
@@ -1441,12 +1441,7 @@
         },
         {
           "catalogKey": "vanilin",
-          "quantity": 2,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "vanilin",
-          "quantity": 4,
+          "quantity": 6,
           "unit": "gram"
         },
         {
@@ -2151,7 +2146,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 5,
           "unit": "gram"
         }
@@ -2267,7 +2262,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "red_sweet_pepper",
+          "catalogKey": "bell_red",
           "quantity": 600,
           "unit": "gram"
         },
@@ -2292,7 +2287,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 30,
           "unit": "gram"
         },
@@ -2356,12 +2351,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 15,
           "unit": "gram"
         },
         {
-          "catalogKey": "lim_n",
+          "catalogKey": "lemon",
           "quantity": 5,
           "unit": "gram"
         }
@@ -2885,7 +2880,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cut_corn",
+          "catalogKey": "corn",
           "quantity": 50,
           "unit": "gram"
         },
@@ -2900,7 +2895,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 10,
           "unit": "gram"
         },
@@ -2937,7 +2932,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "red_sweet_pepper",
+          "catalogKey": "bell_red",
           "quantity": 70,
           "unit": "gram"
         },
@@ -3063,7 +3058,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "red_sweet_pepper",
+          "catalogKey": "bell_red",
           "quantity": 400,
           "unit": "gram"
         },
@@ -3162,7 +3157,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "lim_n",
+          "catalogKey": "lemon",
           "quantity": 10,
           "unit": "gram"
         },
@@ -3256,7 +3251,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 10,
           "unit": "gram"
         },
@@ -3560,7 +3555,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 15,
           "unit": "gram"
         },
@@ -3659,12 +3654,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 20,
           "unit": "gram"
         },
         {
-          "catalogKey": "lim_n",
+          "catalogKey": "lemon",
           "quantity": 5,
           "unit": "gram"
         },
@@ -3911,7 +3906,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 5,
           "unit": "gram"
         }
@@ -3938,7 +3933,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "red_sweet_pepper",
+          "catalogKey": "bell_red",
           "quantity": 140,
           "unit": "gram"
         },
@@ -3990,7 +3985,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 7,
           "unit": "gram"
         },
@@ -4049,7 +4044,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "avokado",
+          "catalogKey": "avocado",
           "quantity": 140,
           "unit": "gram"
         },
@@ -4106,7 +4101,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 4,
           "unit": "gram"
         }
@@ -4586,7 +4581,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sok_limonnyy",
+          "catalogKey": "lemon_juice",
           "quantity": 20,
           "unit": "gram"
         },
