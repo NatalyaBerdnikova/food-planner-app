@@ -4798,6 +4798,22 @@
         }
       }
     },
+    "onboarding.cta.dayPreview" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today's Meal Plan"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рацион на сегодня"
+          }
+        }
+      }
+    },
     "onboarding.cta.defaults" : {
       "localizations" : {
         "en" : {
@@ -4842,6 +4858,172 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Смотреть мой план"
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.fit %lld %lld %lld %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Built for your %1$lld kcal · %2$lldg protein · %3$lldg fat · %4$lldg carbs"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Собрано под ваши %1$lld ккал · %2$lldг белка · %3$lldг жира · %4$lldг углеводов"
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.meal.breakfast" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yogurt with granola and berries"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Йогурт с гранолой и ягодами"
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.meal.dinner" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baked salmon with vegetables"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запечённый лосось с овощами"
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.meal.lunch" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chicken bowl with quinoa"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Боул с курицей и киноа"
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.mealMacros %lld %lld %lld %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld kcal · P %2$lld · F %3$lld · C %4$lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld ккал · Б %2$lld · Ж %3$lld · У %4$lld"
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.personalized.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories and macros match your personal targets."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Калории и нутриенты совпадают с личными целями."
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.personalized.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Built around your targets"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Собрали специально под ваши параметры"
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.summary" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day total vs your targets"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Итого за день рядом с вашими целями"
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today's Meal Plan"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рацион на сегодня"
+          }
+        }
+      }
+    },
+    "onboarding.dayPreview.unlockHint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock access first"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сначала разблокируйте доступ"
           }
         }
       }
@@ -5444,6 +5626,7 @@
       }
     },
     "paywall.hard.planReady" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5460,6 +5643,7 @@
       }
     },
     "paywall.hard.subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5976,6 +6160,22 @@
         }
       }
     },
+    "recipeLibrary.filters" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ещё"
+          }
+        }
+      }
+    },
     "recipeLibrary.matchAllIngredients.footer" : {
       "localizations" : {
         "en" : {
@@ -6020,22 +6220,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Показывает рецепты, где есть любой из выбранных ингредиентов."
-          }
-        }
-      }
-    },
-    "recipeLibrary.filters" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "More"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ещё"
           }
         }
       }
@@ -6935,6 +7119,22 @@
     "subscription.enableTrial %@" : {
 
     },
+    "subscription.paywallIncomplete %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adapty paywall has only %lld product(s). Add monthly, annual, and lifetime to placement onboarding.placement."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В paywall Adapty только %lld продукт(ов). Добавьте месяц, год и lifetime в placement onboarding.placement."
+          }
+        }
+      }
+    },
     "subscription.period.annual" : {
       "localizations" : {
         "en" : {
@@ -7205,22 +7405,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Конфиденциальность"
-          }
-        }
-      }
-    },
-    "subscription.paywallIncomplete %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adapty paywall has only %lld product(s). Add monthly, annual, and lifetime to placement onboarding.placement."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "В paywall Adapty только %lld продукт(ов). Добавьте месяц, год и lifetime в placement onboarding.placement."
           }
         }
       }

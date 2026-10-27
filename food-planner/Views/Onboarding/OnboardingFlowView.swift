@@ -11,6 +11,9 @@ struct OnboardingFlowView: View {
     @State private var draft = OnboardingDraft()
     @State private var revealProgress = 0
     @State private var revealedNutrition: DailyNutrition?
+    @State private var hasCompletedReveal = false
+    @State private var showDayPreview = false
+    @State private var previewDayPlan: DayPlan?
 
     private enum Step: Int, CaseIterable {
         case welcome
@@ -52,6 +55,35 @@ struct OnboardingFlowView: View {
         .preferredColorScheme(isWelcome ? .dark : nil)
         .animation(reduceMotion ? nil : .easeInOut(duration: 0.28), value: step)
         .sensoryFeedback(.selection, trigger: step)
+        .sheet(isPresented: $showDayPreview, onDismiss: discardPreviewDayPlan) {
+            if let nutrition = revealedNutrition, let previewDayPlan {
+                NavigationStack {
+                    ScrollView {
+                        OnboardingDayPreviewStep(
+                            dayPlan: previewDayPlan,
+                            target: nutrition,
+                            micronutrientFocus: Array(draft.micronutrientFocus)
+                        )
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 20)
+                        .appFormWidth()
+                    }
+                    .background(AppTheme.canvas.ignoresSafeArea())
+                    .navigationTitle("onboarding.dayPreview.title")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button("common.done") {
+                                showDayPreview = false
+                            }
+                            .fontWeight(.semibold)
+                        }
+                    }
+                }
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+            }
+        }
     }
 
     private var welcomeLayout: some View {
@@ -275,11 +307,24 @@ struct OnboardingFlowView: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                     .padding(.top, 4)
+
+                Button(action: openDayPreview) {
+                    Text("onboarding.cta.dayPreview")
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(AppTheme.accent)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 6)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .padding(.top, 4)
+                .accessibilityHint(Text("onboarding.dayPreview.title"))
             }
         }
         .task(id: step) {
-            guard step == .reveal else { return }
+            guard step == .reveal, !hasCompletedReveal else { return }
             await runReveal()
+            hasCompletedReveal = revealedNutrition != nil
         }
     }
 
@@ -343,13 +388,39 @@ struct OnboardingFlowView: View {
 
     private func goBack() {
         guard let previous = Step(rawValue: step.rawValue - 1) else { return }
+        if step == .reveal {
+            hasCompletedReveal = false
+            revealedNutrition = nil
+            revealProgress = 0
+        }
         step = previous
     }
 
     private func applyDefaultsAndReveal() {
         draft = OnboardingDraft()
         draft.micronutrientFocus = [.fiber, .vitaminD3, .iron]
+        hasCompletedReveal = false
+        revealedNutrition = nil
+        revealProgress = 0
         step = .reveal
+    }
+
+    private func openDayPreview() {
+        guard let nutrition = revealedNutrition else { return }
+        previewDayPlan = OnboardingDayPreviewFactory.makeDayPlan(
+            in: modelContext,
+            matching: nutrition,
+            micronutrientFocus: Array(draft.micronutrientFocus)
+        )
+        guard previewDayPlan != nil else { return }
+        showDayPreview = true
+    }
+
+    private func discardPreviewDayPlan() {
+        if let previewDayPlan {
+            OnboardingDayPreviewFactory.discard(previewDayPlan, in: modelContext)
+        }
+        previewDayPlan = nil
     }
 
     private func finishOnboarding() {
@@ -501,6 +572,28 @@ struct OnboardingFlowView: View {
     OnboardingFlowView(onFinished: {})
         .environment(SubscriptionSession())
         .modelContainer(FoodPlannerSchema.previewContainer)
+}
+
+#Preview("Day preview") {
+    let container = FoodPlannerSchema.previewContainer
+    let dayPlan = OnboardingDayPreviewFactory.makeDayPlan(
+        in: container.mainContext,
+        matching: DailyNutrition(calories: 1994, protein: 130, fat: 70, carbs: 220),
+        micronutrientFocus: [.fiber, .vitaminD3, .iron]
+    ) ?? DayPlan(date: .now)
+
+    return NavigationStack {
+        ScrollView {
+            OnboardingDayPreviewStep(
+                dayPlan: dayPlan,
+                target: DailyNutrition(calories: 1994, protein: 130, fat: 70, carbs: 220),
+                micronutrientFocus: [.fiber, .vitaminD3, .iron]
+            )
+            .padding(24)
+        }
+        .background(AppTheme.canvas)
+    }
+    .modelContainer(container)
 }
 
 #Preview("Paywall") {

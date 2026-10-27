@@ -8,6 +8,9 @@ struct HardPaywallView: View {
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
     private var settingsList: [AppSettings]
 
+    @State private var showDayPreview = false
+    @State private var previewDayPlan: DayPlan?
+
     private var settings: AppSettings? { settingsList.first }
 
     var body: some View {
@@ -31,12 +34,6 @@ struct HardPaywallView: View {
                         planSummary(settings)
                     }
 
-                    Text("paywall.hard.subtitle")
-                        .font(.footnote)
-                        .foregroundStyle(.white.opacity(0.82))
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 4)
-
                     DefaultPaywall(
                         placement: .basic,
                         chrome: .onHero,
@@ -50,6 +47,41 @@ struct HardPaywallView: View {
         }
         .preferredColorScheme(.dark)
         .interactiveDismissDisabled(true)
+        .sheet(isPresented: $showDayPreview, onDismiss: discardPreviewDayPlan) {
+            dayPreviewSheet
+        }
+    }
+
+    @ViewBuilder
+    private var dayPreviewSheet: some View {
+        if let settings, let previewDayPlan {
+            NavigationStack {
+                ScrollView {
+                    OnboardingDayPreviewStep(
+                        dayPlan: previewDayPlan,
+                        target: settings.targetNutrition,
+                        micronutrientFocus: settings.profileMicronutrientFocus
+                    )
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 20)
+                    .appFormWidth()
+                }
+                .background(AppTheme.canvas.ignoresSafeArea())
+                .navigationTitle("onboarding.dayPreview.title")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("common.done") {
+                            showDayPreview = false
+                        }
+                        .fontWeight(.semibold)
+                    }
+                }
+            }
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
+            .preferredColorScheme(.light)
+        }
     }
 
     private var paywallBackground: some View {
@@ -77,15 +109,14 @@ struct HardPaywallView: View {
     }
 
     private func planSummary(_ settings: AppSettings) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("paywall.hard.planReady")
-                .font(.headline)
-                .foregroundStyle(.white)
-
-            HStack(alignment: .top, spacing: 8) {
+        VStack(spacing: 10) {
+            HStack(alignment: .top) {
                 macroChip("nutrition.macro.kcal.full", value: "\(Int(settings.targetCalories))")
+                Spacer(minLength: 8)
                 macroChip("nutrition.macro.protein.full", value: "\(Int(settings.targetProtein))g")
+                Spacer(minLength: 8)
                 macroChip("nutrition.macro.fat.full", value: "\(Int(settings.targetFat))g")
+                Spacer(minLength: 8)
                 macroChip("nutrition.macro.carbs.full", value: "\(Int(settings.targetCarbs))g")
             }
 
@@ -108,9 +139,21 @@ struct HardPaywallView: View {
                 .frame(maxWidth: .infinity)
                 .multilineTextAlignment(.center)
             }
+
+            Button(action: openDayPreview) {
+                Text("onboarding.cta.dayPreview")
+                    .font(.body.weight(.medium))
+                    .foregroundStyle(AppTheme.accent)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint(Text("onboarding.dayPreview.title"))
         }
-        .padding(18)
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 14)
+        .frame(maxWidth: .infinity)
         .background {
             RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
                 .fill(.ultraThinMaterial)
@@ -123,7 +166,7 @@ struct HardPaywallView: View {
     }
 
     private func macroChip(_ title: LocalizedStringKey, value: String) -> some View {
-        VStack(spacing: 4) {
+        VStack(alignment: .center, spacing: 4) {
             Text(title)
                 .font(.caption2.weight(.medium))
                 .foregroundStyle(.white.opacity(0.75))
@@ -135,7 +178,25 @@ struct HardPaywallView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
         }
-        .frame(maxWidth: .infinity)
+        .multilineTextAlignment(.center)
+    }
+
+    private func openDayPreview() {
+        guard let settings else { return }
+        previewDayPlan = OnboardingDayPreviewFactory.makeDayPlan(
+            in: modelContext,
+            matching: settings.targetNutrition,
+            micronutrientFocus: settings.profileMicronutrientFocus
+        )
+        guard previewDayPlan != nil else { return }
+        showDayPreview = true
+    }
+
+    private func discardPreviewDayPlan() {
+        if let previewDayPlan {
+            OnboardingDayPreviewFactory.discard(previewDayPlan, in: modelContext)
+        }
+        previewDayPlan = nil
     }
 
     private func upgradeToPro() {

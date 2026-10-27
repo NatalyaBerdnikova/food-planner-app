@@ -7,10 +7,23 @@ struct DayPlanCardView: View {
     let micronutrientFocus: [MicronutrientKind]
     let onToggleExpanded: () -> Void
     let onTapEmptyMeal: (MealType) -> Void
+    var isCollapsible: Bool = true
+    var showsSnackSlot: Bool = true
+    var allowsMealEditing: Bool = true
+    var opensRecipeInPreviewMode: Bool = false
+    var lockedEditHint: LocalizedStringKey? = nil
 
     @State private var showMicronutrients = false
 
-    private let dayMealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
+    private var dayMealTypes: [MealType] {
+        showsSnackSlot
+            ? [.breakfast, .lunch, .dinner, .snack]
+            : [.breakfast, .lunch, .dinner]
+    }
+
+    private var showsExpandedContent: Bool {
+        !isCollapsible || isExpanded
+    }
 
     private var dayTitle: String {
         dayPlan.date.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated))
@@ -36,33 +49,7 @@ struct DayPlanCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Button(action: onToggleExpanded) {
-                HStack(spacing: 12) {
-                    HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        Text(dayTitle)
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                        if isToday {
-                            Text("weekPlan.today")
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(.tint)
-                        }
-                    }
-
-                    Spacer(minLength: 8)
-
-                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                        .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
-                        .contentShape(Rectangle())
-                }
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(Text(dayTitle))
-            .accessibilityValue(Text(isExpanded ? "accessibility.expanded" : "accessibility.collapsed"))
-            .accessibilityHint("accessibility.toggleDay")
+            dayHeader
 
             NutritionSummaryView(
                 nutrition: dayNutrition,
@@ -72,13 +59,16 @@ struct DayPlanCardView: View {
             )
             .padding(.top, 12)
 
-            if isExpanded {
+            if showsExpandedContent {
                 VStack(spacing: 16) {
                     ForEach(dayMealTypes, id: \.self) { type in
                         PlannedMealSlotView(
                             mealType: type,
                             meals: dayPlan.meals(for: type),
-                            onTap: { onTapEmptyMeal(type) }
+                            onTap: { onTapEmptyMeal(type) },
+                            allowsEditing: allowsMealEditing,
+                            opensRecipeInPreviewMode: opensRecipeInPreviewMode,
+                            lockedEditHint: lockedEditHint
                         )
                     }
                 }
@@ -95,12 +85,53 @@ struct DayPlanCardView: View {
             RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
                 .stroke(borderColor, lineWidth: borderWidth)
         }
-        .motionSafeAnimation(.easeInOut(duration: 0.25), value: isExpanded)
+        .motionSafeAnimation(isCollapsible ? .easeInOut(duration: 0.25) : nil, value: isExpanded)
         .sheet(isPresented: $showMicronutrients) {
             MicronutrientDetailSheet(
                 totals: dayTotals,
                 micronutrientFocus: micronutrientFocus
             )
+        }
+    }
+
+    @ViewBuilder
+    private var dayHeader: some View {
+        let titleRow = HStack(spacing: 12) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(dayTitle)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                if isToday {
+                    Text("weekPlan.today")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.tint)
+                }
+            }
+
+            Spacer(minLength: 8)
+
+            if isCollapsible {
+                Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                    .contentShape(Rectangle())
+            }
+        }
+
+        if isCollapsible {
+            Button(action: onToggleExpanded) {
+                titleRow
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text(dayTitle))
+            .accessibilityValue(Text(isExpanded ? "accessibility.expanded" : "accessibility.collapsed"))
+            .accessibilityHint("accessibility.toggleDay")
+        } else {
+            titleRow
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel(Text(dayTitle))
         }
     }
 

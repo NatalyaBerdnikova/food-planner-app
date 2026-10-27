@@ -5,6 +5,7 @@ struct RecipeDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     let recipe: Recipe
+    var isPreviewPresentation: Bool = false
 
     @State private var showMicronutrients = false
     @State private var showDeleteConfirmation = false
@@ -86,7 +87,9 @@ struct RecipeDetailView: View {
                     }
                 }
 
-                recipeLifecycleButton
+                if !isPreviewPresentation {
+                    recipeLifecycleButton
+                }
             }
             .padding()
             .appReadableWidth()
@@ -95,7 +98,7 @@ struct RecipeDetailView: View {
         .navigationTitle(recipe.localizedName)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if RecipeFavoritesService.canFavorite(recipe) {
+            if !isPreviewPresentation, RecipeFavoritesService.canFavorite(recipe) {
                 ToolbarItem(placement: .topBarTrailing) {
                     favoriteToolbarButton
                 }
@@ -196,7 +199,7 @@ struct RecipeDetailView: View {
                     } else {
                         heroMetricChip(
                             icon: "heart.fill",
-                            text: "\(recipe.communityLikeCount)"
+                            text: "\(displayedCommunityLikeCount)"
                         )
                     }
                 }
@@ -212,6 +215,14 @@ struct RecipeDetailView: View {
         .clipped()
         .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
         .shadow(color: Color.black.opacity(0.16), radius: 22, x: 0, y: 12)
+    }
+
+    private var displayedCommunityLikeCount: Int {
+        guard isPreviewPresentation else { return recipe.communityLikeCount }
+        var hasher = Hasher()
+        hasher.combine(recipe.catalogRecipeId ?? recipe.name)
+        let seed = abs(hasher.finalize())
+        return 36 + (seed % 420)
     }
 
     private var personalRatingControl: some View {
@@ -232,14 +243,16 @@ struct RecipeDetailView: View {
             .layoutPriority(1)
 
             RecipeUserRatingView(
-                rating: recipe.userRating,
-                isInteractive: true,
+                rating: isPreviewPresentation ? 0 : recipe.userRating,
+                isInteractive: !isPreviewPresentation,
                 starSize: .title3
             ) { value in
+                guard !isPreviewPresentation else { return }
                 recipe.setUserRating(value)
                 LocalPersistence.save(modelContext)
             }
             .fixedSize(horizontal: true, vertical: false)
+            .allowsHitTesting(!isPreviewPresentation)
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
