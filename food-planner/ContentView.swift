@@ -6,6 +6,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(SubscriptionSession.self) private var subscriptionSession
+    @Environment(AppNavigation.self) private var appNavigation
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
     private var settingsList: [AppSettings]
@@ -71,15 +72,29 @@ struct ContentView: View {
         .onAppear {
             ReviewPromptService.noteAppOpen()
             bindProfileAccessUpdates()
+            DeepLinkBridge.openHandler = { url in
+                pendingOpenURL = url
+                processPendingImportIfNeeded()
+            }
         }
         .onChange(of: canPresentImport) { _, isReady in
             if isReady {
                 processPendingImportIfNeeded()
             }
         }
+        .onChange(of: subscriptionSession.hasFullAccess) { _, hasAccess in
+            if hasAccess {
+                TrialEngagementNotifications.refreshFromAdapty()
+            } else {
+                Task { await TrialEngagementNotifications.cancelAll() }
+            }
+        }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
                 processPendingImportIfNeeded()
+                if subscriptionSession.hasFullAccess {
+                    TrialEngagementNotifications.refreshFromAdapty()
+                }
             }
         }
         .onOpenURL { url in
@@ -179,6 +194,11 @@ struct ContentView: View {
     }
 
     private func processPendingImportIfNeeded() {
+        if let url = pendingOpenURL, appNavigation.handleURL(url) {
+            pendingOpenURL = nil
+            return
+        }
+
         guard canPresentImport else { return }
         importCoordinator.attach(modelContext: modelContext)
         weekPlanTransfer.attach(modelContext: modelContext)
@@ -220,6 +240,11 @@ struct ContentView: View {
             session.isAccessResolved = true
             let settings = AppSettingsService.settings(in: context)
             session.persist(to: settings, in: context)
+            if isPro {
+                TrialEngagementNotifications.refreshFromAdapty()
+            } else {
+                Task { await TrialEngagementNotifications.cancelAll() }
+            }
         }
     }
 }
@@ -227,5 +252,6 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environment(SubscriptionSession())
+        .environment(AppNavigation())
         .modelContainer(FoodPlannerSchema.previewContainer)
 }

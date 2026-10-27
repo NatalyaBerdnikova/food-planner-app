@@ -199,6 +199,11 @@ struct HardPaywallView: View {
         let settings = AppSettingsService.settings(in: modelContext)
         MealPlanGenerationPending.markNeedsGeneration()
         subscriptionSession.upgradeToPro(settings: settings, in: modelContext)
+        if AppVars.allowsContinueWithoutSubscription {
+            TrialEngagementNotifications.scheduleSyntheticTrial()
+        } else {
+            TrialEngagementNotifications.refreshFromAdapty()
+        }
     }
 }
 

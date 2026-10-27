@@ -6,15 +6,19 @@ struct MainTabView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(AppNavigation.self) private var navigation
 
     var body: some View {
-        TabView {
+        @Bindable var navigation = navigation
+
+        TabView(selection: $navigation.selectedTab) {
             NavigationStack {
                 HomeView()
             }
             .tabItem {
                 Label("tab.today", systemImage: "sun.max.fill")
             }
+            .tag(AppTab.today)
 
             NavigationStack {
                 WeekPlanView()
@@ -22,6 +26,7 @@ struct MainTabView: View {
             .tabItem {
                 Label("tab.plan", systemImage: "calendar")
             }
+            .tag(AppTab.plan)
 
             NavigationStack {
                 ShoppingListView()
@@ -29,6 +34,7 @@ struct MainTabView: View {
             .tabItem {
                 Label("tab.shopping", systemImage: "cart.fill")
             }
+            .tag(AppTab.shopping)
 
             NavigationStack {
                 RecipeLibraryView()
@@ -36,6 +42,7 @@ struct MainTabView: View {
             .tabItem {
                 Label("tab.recipes", systemImage: "book.fill")
             }
+            .tag(AppTab.recipes)
         }
         .tint(AppTheme.accent(for: colorScheme, highContrast: colorSchemeContrast == .increased))
         .tabViewStyle(.sidebarAdaptable)
@@ -45,6 +52,7 @@ struct MainTabView: View {
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
                 CommunitySocialStatsService.refreshLikeCountsIfNeeded(in: modelContext)
+                TrialEngagementNotifications.refreshFromAdapty()
             }
         }
     }
@@ -55,5 +63,6 @@ struct MainTabView: View {
         .environment(ImportCoordinator())
         .environment(WeekPlanGenerationCoordinator())
         .environment(WeekPlanTransferCoordinator())
+        .environment(AppNavigation())
         .modelContainer(FoodPlannerSchema.previewContainer)
 }
