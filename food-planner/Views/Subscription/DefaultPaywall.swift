@@ -212,15 +212,22 @@ struct DefaultPaywall: View {
             .padding(.top, 8)
             .padding(.bottom, 16)
 
-            HStack(spacing: 12) {
-                Link("subscription.terms", destination: URL(string: AppVars.termsUrl)!)
-                Link("subscription.privacy", destination: URL(string: AppVars.privacyUrl)!)
-                Button("subscription.restore", action: restorePayments)
+            VStack(spacing: 12) {
+                HStack(spacing: 12) {
+                    Link("subscription.terms", destination: URL(string: AppVars.termsUrl)!)
+                    Link("subscription.privacy", destination: URL(string: AppVars.privacyUrl)!)
+                    Button("subscription.restore", action: restorePayments)
+                }
+                .lineLimit(2)
+                .minimumScaleFactor(0.85)
+
+                if AppVars.allowsContinueWithoutSubscription {
+                    Button("subscription.continueWithoutSubscription", action: continueWithoutSubscription)
+                        .buttonStyle(.plain)
+                }
             }
             .font(.caption.weight(.medium))
             .multilineTextAlignment(.center)
-            .lineLimit(2)
-            .minimumScaleFactor(0.85)
             .padding(.bottom, 28)
             .foregroundStyle(secondaryText.opacity(0.9))
         }
@@ -410,6 +417,12 @@ struct DefaultPaywall: View {
                 subscriptionSession.showAlert(String(localized: "subscription.purchaseError"))
             }
         }
+    }
+
+    private func continueWithoutSubscription() {
+        let settings = AppSettingsService.settings(in: modelContext)
+        MealPlanGenerationPending.markNeedsGeneration()
+        subscriptionSession.upgradeToFree(settings: settings, in: modelContext)
     }
 
     private func restorePayments() {

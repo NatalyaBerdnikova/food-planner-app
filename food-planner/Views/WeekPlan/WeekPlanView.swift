@@ -4,6 +4,7 @@ import SwiftData
 struct WeekPlanView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(WeekPlanGenerationCoordinator.self) private var weekPlanGeneration
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
     private var settingsList: [AppSettings]
@@ -26,8 +27,22 @@ struct WeekPlanView: View {
     }
 
     var body: some View {
+        @Bindable var weekPlanGeneration = weekPlanGeneration
         content
             .navigationTitle("nav.weekPlan")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        weekPlanGeneration.presentCompose()
+                    } label: {
+                        Image(systemName: "sparkles")
+                            .font(.body.weight(.semibold))
+                            .frame(width: AppTheme.minTapTarget, height: AppTheme.minTapTarget)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel("weekPlan.generate.title")
+                }
+            }
             .task(id: displayedWeekStart) {
                 ensureDisplayedWeekPlan()
             }
@@ -39,6 +54,9 @@ struct WeekPlanView: View {
                     syncShoppingList()
                 }
                 .appFormSheetPresentation()
+            }
+            .sheet(item: $weekPlanGeneration.composePresentation) { _ in
+                GenerateWeekPlanSheet()
             }
     }
 

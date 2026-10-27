@@ -15,4 +15,16 @@ enum AppVars {
         }
         return false
     }
+
+    /// Debug and TestFlight only: skip hard paywall without a purchase.
+    static var allowsContinueWithoutSubscription: Bool {
+        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
+            return true
+        }
+        #if DEBUG
+        return true
+        #else
+        return Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
+        #endif
+    }
 }

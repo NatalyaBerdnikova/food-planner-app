@@ -110,13 +110,10 @@ struct HardPaywallView: View {
 
     private func planSummary(_ settings: AppSettings) -> some View {
         VStack(spacing: 10) {
-            HStack(alignment: .top) {
+            HStack(alignment: .top, spacing: 8) {
                 macroChip("nutrition.macro.kcal.full", value: "\(Int(settings.targetCalories))")
-                Spacer(minLength: 8)
                 macroChip("nutrition.macro.protein.full", value: "\(Int(settings.targetProtein))g")
-                Spacer(minLength: 8)
                 macroChip("nutrition.macro.fat.full", value: "\(Int(settings.targetFat))g")
-                Spacer(minLength: 8)
                 macroChip("nutrition.macro.carbs.full", value: "\(Int(settings.targetCarbs))g")
             }
 
@@ -151,8 +148,7 @@ struct HardPaywallView: View {
             .buttonStyle(.plain)
             .accessibilityHint(Text("onboarding.dayPreview.title"))
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 14)
+        .padding(16)
         .frame(maxWidth: .infinity)
         .background {
             RoundedRectangle(cornerRadius: AppTheme.cardRadius, style: .continuous)
@@ -166,7 +162,7 @@ struct HardPaywallView: View {
     }
 
     private func macroChip(_ title: LocalizedStringKey, value: String) -> some View {
-        VStack(alignment: .center, spacing: 4) {
+        VStack(spacing: 4) {
             Text(title)
                 .font(.caption2.weight(.medium))
                 .foregroundStyle(.white.opacity(0.75))
@@ -178,7 +174,7 @@ struct HardPaywallView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
         }
-        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity)
     }
 
     private func openDayPreview() {
@@ -201,6 +197,7 @@ struct HardPaywallView: View {
 
     private func upgradeToPro() {
         let settings = AppSettingsService.settings(in: modelContext)
+        MealPlanGenerationPending.markNeedsGeneration()
         subscriptionSession.upgradeToPro(settings: settings, in: modelContext)
     }
 }

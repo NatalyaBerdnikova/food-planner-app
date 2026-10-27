@@ -11,6 +11,7 @@ struct ContentView: View {
 
     @State private var isBootstrapReady = false
     @State private var importCoordinator = ImportCoordinator()
+    @State private var weekPlanGeneration = WeekPlanGenerationCoordinator()
     @State private var pendingOpenURL: URL?
 
     private var appLanguage: AppLanguage {
@@ -33,11 +34,13 @@ struct ContentView: View {
     var body: some View {
         @Bindable var subscriptionSession = subscriptionSession
         @Bindable var importCoordinator = importCoordinator
+        @Bindable var weekPlanGeneration = weekPlanGeneration
 
         Group {
             if isBootstrapReady && subscriptionSession.isAccessResolved {
                 gatedRoot
                     .environment(importCoordinator)
+                    .environment(weekPlanGeneration)
                     .applyAppLanguage(appLanguage)
             } else {
                 ZStack {
@@ -79,6 +82,10 @@ struct ContentView: View {
             }
             .appFormSheetPresentation()
         }
+        .sheet(item: $weekPlanGeneration.progressPresentation) { _ in
+            WeekPlanGenerationProgressView(coordinator: weekPlanGeneration)
+                .appFormSheetPresentation()
+        }
         .alert(
             subscriptionSession.alertText,
             isPresented: $subscriptionSession.alertPresented
@@ -112,10 +119,12 @@ struct ContentView: View {
             .tint(AppTheme.accent)
             .task {
                 importCoordinator.attach(modelContext: modelContext)
+                weekPlanGeneration.attach(modelContext: modelContext)
                 FoodCatalogSeeder.seedIfNeeded(in: modelContext)
                 RecipeCatalogStore.seedIfNeeded(in: modelContext)
                 _ = AppSettingsService.settings(in: modelContext)
                 processPendingImportIfNeeded()
+                weekPlanGeneration.startPendingGenerationIfNeeded()
             }
     }
 
