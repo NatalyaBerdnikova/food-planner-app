@@ -1,8 +1,11 @@
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct RecipeLibraryView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.requestReview) private var requestReview
+    @Environment(SubscriptionSession.self) private var subscriptionSession
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
 
     @State private var searchText = ""
@@ -312,7 +315,17 @@ struct RecipeLibraryView: View {
 
             if canFavorite {
                 Button {
-                    RecipeFavoritesService.setFavorite(recipe, favorite: !isFavorite, in: modelContext)
+                    let becameFavorite = RecipeFavoritesService.setFavorite(
+                        recipe,
+                        favorite: !isFavorite,
+                        in: modelContext
+                    )
+                    if becameFavorite {
+                        ReviewPromptService.considerAfterRecipeAppreciation(
+                            requestReview,
+                            hasFullAccess: subscriptionSession.hasFullAccess
+                        )
+                    }
                 } label: {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.subheadline.weight(.semibold))

@@ -4,6 +4,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(SubscriptionSession.self) private var subscriptionSession
     @AppStorage(AppLanguage.storageKey) private var appLanguageRaw = AppLanguage.system.rawValue
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
@@ -25,9 +26,12 @@ struct ContentView: View {
         settings?.hasCompletedOnboarding == true
     }
 
+    private var isSessionReady: Bool {
+        isBootstrapReady && subscriptionSession.isAccessResolved
+    }
+
     private var canPresentImport: Bool {
-        isBootstrapReady
-            && subscriptionSession.isAccessResolved
+        isSessionReady
             && hasCompletedOnboarding
             && subscriptionSession.hasFullAccess
     }
@@ -38,17 +42,25 @@ struct ContentView: View {
         @Bindable var weekPlanGeneration = weekPlanGeneration
         @Bindable var weekPlanTransfer = weekPlanTransfer
 
-        Group {
-            if isBootstrapReady && subscriptionSession.isAccessResolved {
+        ZStack {
+            if isSessionReady {
                 gatedRoot
                     .applyAppLanguage(appLanguage)
+                    .transition(.opacity)
             } else {
                 ZStack {
                     AppTheme.heroGradient.ignoresSafeArea()
                     SparklesLoader(tint: .white)
                 }
+                .transition(.opacity)
             }
         }
+        .motionSafeAnimation(
+            reduceMotion
+                ? .easeOut(duration: 0.2)
+                : .easeInOut(duration: 0.45),
+            value: isSessionReady
+        )
         .environment(importCoordinator)
         .environment(weekPlanGeneration)
         .environment(weekPlanTransfer)
@@ -57,6 +69,7 @@ struct ContentView: View {
             processPendingImportIfNeeded()
         }
         .onAppear {
+            ReviewPromptService.noteAppOpen()
             bindProfileAccessUpdates()
         }
         .onChange(of: canPresentImport) { _, isReady in

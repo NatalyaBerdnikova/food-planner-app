@@ -21,25 +21,30 @@ enum RecipeFavoritesService {
         favoriteKey(for: recipe) != nil
     }
 
+    /// Returns `true` when the recipe newly becomes a favorite.
     @MainActor
-    static func setFavorite(_ recipe: Recipe, favorite: Bool, in context: ModelContext) {
-        guard let key = favoriteKey(for: recipe) else { return }
+    @discardableResult
+    static func setFavorite(_ recipe: Recipe, favorite: Bool, in context: ModelContext) -> Bool {
+        guard let key = favoriteKey(for: recipe) else { return false }
         let settings = AppSettingsService.settings(in: context)
         var ids = Set(settings.favoriteCatalogRecipeIds)
         let wasFavorite = ids.contains(key)
+        var becameFavorite = false
 
         if favorite, !wasFavorite {
             ids.insert(key)
             adjustCommunityLikeCount(for: recipe, delta: 1)
+            becameFavorite = true
         } else if !favorite, wasFavorite {
             ids.remove(key)
             adjustCommunityLikeCount(for: recipe, delta: -1)
         } else {
-            return
+            return false
         }
 
         settings.favoriteCatalogRecipeIds = ids.sorted()
         LocalPersistence.save(context)
+        return becameFavorite
     }
 
     private static func adjustCommunityLikeCount(for recipe: Recipe, delta: Int) {

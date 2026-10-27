@@ -1,9 +1,12 @@
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.requestReview) private var requestReview
     @Environment(ImportCoordinator.self) private var importCoordinator
+    @Environment(SubscriptionSession.self) private var subscriptionSession
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
     @Query(sort: \Recipe.name) private var recipes: [Recipe]
     @Query(filter: #Predicate<AppSettings> { $0.singletonKey == "main" })
@@ -320,7 +323,7 @@ struct HomeView: View {
 
             if canFavorite {
                 Button {
-                    RecipeFavoritesService.setFavorite(recipe, favorite: !isFavorite, in: modelContext)
+                    toggleFavorite(for: recipe)
                 } label: {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.subheadline.weight(.semibold))
@@ -341,7 +344,17 @@ struct HomeView: View {
 
     private func toggleFavorite(for recipe: Recipe) {
         let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
-        RecipeFavoritesService.setFavorite(recipe, favorite: !isFavorite, in: modelContext)
+        let becameFavorite = RecipeFavoritesService.setFavorite(
+            recipe,
+            favorite: !isFavorite,
+            in: modelContext
+        )
+        if becameFavorite {
+            ReviewPromptService.considerAfterRecipeAppreciation(
+                requestReview,
+                hasFullAccess: subscriptionSession.hasFullAccess
+            )
+        }
     }
 
     private var catalogRecipes: [Recipe] {

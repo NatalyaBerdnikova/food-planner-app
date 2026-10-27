@@ -1,9 +1,12 @@
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct RecipeDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.requestReview) private var requestReview
+    @Environment(SubscriptionSession.self) private var subscriptionSession
     let recipe: Recipe
     var isPreviewPresentation: Bool = false
 
@@ -248,8 +251,15 @@ struct RecipeDetailView: View {
                 starSize: .title3
             ) { value in
                 guard !isPreviewPresentation else { return }
+                let previous = recipe.userRating
                 recipe.setUserRating(value)
                 LocalPersistence.save(modelContext)
+                if value > 0, value != previous {
+                    ReviewPromptService.considerAfterRecipeAppreciation(
+                        requestReview,
+                        hasFullAccess: subscriptionSession.hasFullAccess
+                    )
+                }
             }
             .fixedSize(horizontal: true, vertical: false)
             .allowsHitTesting(!isPreviewPresentation)
@@ -309,7 +319,17 @@ struct RecipeDetailView: View {
     @ViewBuilder
     private var favoriteToolbarButton: some View {
         Button {
-            RecipeFavoritesService.setFavorite(recipe, favorite: !isFavorite, in: modelContext)
+            let becameFavorite = RecipeFavoritesService.setFavorite(
+                recipe,
+                favorite: !isFavorite,
+                in: modelContext
+            )
+            if becameFavorite {
+                ReviewPromptService.considerAfterRecipeAppreciation(
+                    requestReview,
+                    hasFullAccess: subscriptionSession.hasFullAccess
+                )
+            }
         } label: {
             Image(systemName: isFavorite ? "heart.fill" : "heart")
                 .foregroundStyle(isFavorite ? .red : .primary)
