@@ -303,7 +303,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100,
           "unit": "gram"
         },
@@ -399,7 +399,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 80,
           "unit": "gram"
         },
@@ -632,7 +632,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "ogurets_gruntovyy",
+          "catalogKey": "cucumber",
           "quantity": 80,
           "unit": "gram"
         },
@@ -857,7 +857,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 80,
           "unit": "gram"
         },
@@ -943,7 +943,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "ogurets_gruntovyy",
+          "catalogKey": "cucumber",
           "quantity": 80,
           "unit": "gram"
         }
@@ -1393,7 +1393,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "ogurets_gruntovyy",
+          "catalogKey": "cucumber",
           "quantity": 50,
           "unit": "gram"
         },
@@ -1645,7 +1645,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "ogurets_gruntovyy",
+          "catalogKey": "cucumber",
           "quantity": 200,
           "unit": "gram"
         },
@@ -2267,7 +2267,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 400,
           "unit": "gram"
         },
@@ -2499,7 +2499,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 120,
           "unit": "gram"
         },
@@ -2764,7 +2764,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 70,
           "unit": "gram"
         }
@@ -2937,7 +2937,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 40,
           "unit": "gram"
         },
@@ -3073,7 +3073,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 350,
           "unit": "gram"
         }
@@ -3812,7 +3812,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 350,
           "unit": "gram"
         },
@@ -4672,7 +4672,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "ogurets_gruntovyy",
+          "catalogKey": "cucumber",
           "quantity": 50,
           "unit": "gram"
         },
@@ -4857,7 +4857,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 50,
           "unit": "gram"
         },
@@ -5193,7 +5193,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 50,
           "unit": "gram"
         },

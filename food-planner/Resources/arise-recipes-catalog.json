@@ -298,11 +298,11 @@
       "translations": {
         "ru": {
           "name": "Jamon naan",
-          "steps": "Preheat the oven to 2508C.\nBrush the naan with water to moisten the dough. Then spread the tomato sauce all over the naan, add the sliced tomato, the jamon, the olives and finally the egg carefully.\nBake for 15 minutes; until the egg is cooked as you like.\nRemove, season with salt, pepper and Italian seasoning."
+          "steps": "Pre-heat the oven to 250C.\nBrush the naan with water to moisten the dough. Then spread the tomato sauce all over the naan, add the sliced tomato, the jamon, the olives and finally the egg carefully.\nBake for 15 minutes; until the egg is cooked as you like.\nRemove, season with salt, pepper and Italian seasoning."
         },
         "en": {
           "name": "Jamon naan",
-          "steps": "Preheat the oven to 2508C.\nBrush the naan with water to moisten the dough. Then spread the tomato sauce all over the naan, add the sliced tomato, the jamon, the olives and finally the egg carefully.\nBake for 15 minutes; until the egg is cooked as you like.\nRemove, season with salt, pepper and Italian seasoning."
+          "steps": "Pre-heat the oven to 250C.\nBrush the naan with water to moisten the dough. Then spread the tomato sauce all over the naan, add the sliced tomato, the jamon, the olives and finally the egg carefully.\nBake for 15 minutes; until the egg is cooked as you like.\nRemove, season with salt, pepper and Italian seasoning."
         }
       },
       "ingredients": [
@@ -317,7 +317,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -380,7 +380,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -439,7 +439,7 @@
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 60.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -477,7 +477,7 @@
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 60.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -594,7 +594,7 @@
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 120.0,
+          "quantity": 150.0,
           "unit": "gram"
         },
         {
@@ -632,11 +632,11 @@
       "translations": {
         "ru": {
           "name": "Spanish tortilla",
-          "steps": "Preheat the oven to 180-200C\nPeel and slice the potatoes place on a baking tray lined with parchment paper and bake for about 15 minutes until cooked. In a non-stick frying pan put the olive oil and the sliced onion and let it saute until golden.\nIn a bowl add the eggs and egg whites and beat, add salt and pepper, the potatoes and the onion, mix well.\nPour the tortilla batter into a frying pan and cook for about 6-8 minutes on the first side. Grab a large plate, put the plate on top of the pan and flip, slide the tortilla back into the pan and let the other side cook for 6-8 minutes. Then flip back out onto a clean plate."
+          "steps": "Pre-heat the oven to 180-200C\nPeel and slice the potatoes place on a baking tray lined with parchment paper and bake for about 15 minutes until cooked. In a non-stick frying pan put the olive oil and the sliced onion and let it saute until golden.\nIn a bowl add the eggs and egg whites and beat, add salt and pepper, the potatoes and the onion, mix well.\nPour the tortilla batter into a frying pan and cook for about 6-8 minutes on the first side. Grab a large plate, put the plate on top of the pan and flip, slide the tortilla back into the pan and let the other side cook for 6-8 minutes. Then flip back out onto a clean plate."
         },
         "en": {
           "name": "Spanish tortilla",
-          "steps": "Preheat the oven to 180-200C\nPeel and slice the potatoes place on a baking tray lined with parchment paper and bake for about 15 minutes until cooked. In a non-stick frying pan put the olive oil and the sliced onion and let it saute until golden.\nIn a bowl add the eggs and egg whites and beat, add salt and pepper, the potatoes and the onion, mix well.\nPour the tortilla batter into a frying pan and cook for about 6-8 minutes on the first side. Grab a large plate, put the plate on top of the pan and flip, slide the tortilla back into the pan and let the other side cook for 6-8 minutes. Then flip back out onto a clean plate."
+          "steps": "Pre-heat the oven to 180-200C\nPeel and slice the potatoes place on a baking tray lined with parchment paper and bake for about 15 minutes until cooked. In a non-stick frying pan put the olive oil and the sliced onion and let it saute until golden.\nIn a bowl add the eggs and egg whites and beat, add salt and pepper, the potatoes and the onion, mix well.\nPour the tortilla batter into a frying pan and cook for about 6-8 minutes on the first side. Grab a large plate, put the plate on top of the pan and flip, slide the tortilla back into the pan and let the other side cook for 6-8 minutes. Then flip back out onto a clean plate."
         }
       },
       "ingredients": [
@@ -695,7 +695,7 @@
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 80.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -709,7 +709,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -721,8 +721,7 @@
         {
           "catalogKey": "italian_seasoning",
           "quantity": 10.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
           "catalogKey": "black_pepper",
@@ -779,7 +778,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -814,11 +813,11 @@
       "translations": {
         "ru": {
           "name": "Cheese and ham bites",
-          "steps": "Preheat the oven at 200C.\nIn a bowl add the plain yogurt, the protein cheese; the turkey ham, salt oregano and black pepper and mix well.\nPlace parchment paper on a baking tray add the phyllo sheets, place the ham and cheese mixture in the middle and close as you prefer. Brush with beaten egg and bake for 20 minutes until crispy."
+          "steps": "Pre-heat the oven at 200C.\nIn a bowl add the plain yogurt, the protein cheese; the turkey ham, salt oregano and black pepper and mix well.\nPlace parchment paper on a baking tray add the phyllo sheets, place the ham and cheese mixture in the middle and close as you prefer. Brush with beaten egg and bake for 20 minutes until crispy."
         },
         "en": {
           "name": "Cheese and ham bites",
-          "steps": "Preheat the oven at 200C.\nIn a bowl add the plain yogurt, the protein cheese; the turkey ham, salt oregano and black pepper and mix well.\nPlace parchment paper on a baking tray add the phyllo sheets, place the ham and cheese mixture in the middle and close as you prefer. Brush with beaten egg and bake for 20 minutes until crispy."
+          "steps": "Pre-heat the oven at 200C.\nIn a bowl add the plain yogurt, the protein cheese; the turkey ham, salt oregano and black pepper and mix well.\nPlace parchment paper on a baking tray add the phyllo sheets, place the ham and cheese mixture in the middle and close as you prefer. Brush with beaten egg and bake for 20 minutes until crispy."
         }
       },
       "ingredients": [
@@ -920,7 +919,7 @@
         },
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 80.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -1032,7 +1031,7 @@
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 120.0,
+          "quantity": 150.0,
           "unit": "gram"
         },
         {
@@ -1046,7 +1045,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "granat",
+          "catalogKey": "pomegranate",
           "quantity": 40.0,
           "unit": "gram"
         },
@@ -1080,11 +1079,11 @@
       "translations": {
         "ru": {
           "name": "Parmesan egg cups",
-          "steps": "Preheat the oven to 180-200C\nOn two small bases, place the taco tortillas.\nSpread the tomato sauce, add the previously cut tomato and finally the previously cut mushroomsas well.\nAdd the eggs on top add the parsley, oregano, salt and pepper to taste and finally the parmesan. Bake in the oven for about 30 minutes until fully cooked.\nRemove let it cool and put the pesto sauce on top."
+          "steps": "Pre-heat the oven to 180-200C\nOn two small bases, place the taco tortillas.\nSpread the tomato sauce, add the previously cut tomato and finally the previously cut mushroomsas well.\nAdd the eggs on top add the parsley, oregano, salt and pepper to taste and finally the parmesan. Bake in the oven for about 30 minutes until fully cooked.\nRemove let it cool and put the pesto sauce on top."
         },
         "en": {
           "name": "Parmesan egg cups",
-          "steps": "Preheat the oven to 180-200C\nOn two small bases, place the taco tortillas.\nSpread the tomato sauce, add the previously cut tomato and finally the previously cut mushroomsas well.\nAdd the eggs on top add the parsley, oregano, salt and pepper to taste and finally the parmesan. Bake in the oven for about 30 minutes until fully cooked.\nRemove let it cool and put the pesto sauce on top."
+          "steps": "Pre-heat the oven to 180-200C\nOn two small bases, place the taco tortillas.\nSpread the tomato sauce, add the previously cut tomato and finally the previously cut mushroomsas well.\nAdd the eggs on top add the parsley, oregano, salt and pepper to taste and finally the parmesan. Bake in the oven for about 30 minutes until fully cooked.\nRemove let it cool and put the pesto sauce on top."
         }
       },
       "ingredients": [
@@ -1099,7 +1098,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -1148,22 +1147,22 @@
       "translations": {
         "ru": {
           "name": "Hummus toast",
-          "steps": "Pre-heat your oven at 2008C.\nOna baking tray = add parchment paper and the toast.\nSpread the hummus and add the cherry tomatoes.\nSeason with salt black pepper; italian seasoning to your taste; finish by adding the olive oilon top and put itin the oven for 10 t0 15 minutes."
+          "steps": "Pre-heat your oven at 200C.\nOn a baking tray add parchment paper and the toast.\nSpread the hummus and add the cherry tomatoes.\nSeason with salt, black pepper, italian seasoning to your taste, finish by adding the olive oil on top, and put it in the oven for 10 to 15 minutes."
         },
         "en": {
           "name": "Hummus toast",
-          "steps": "Pre-heat your oven at 2008C.\nOna baking tray = add parchment paper and the toast.\nSpread the hummus and add the cherry tomatoes.\nSeason with salt black pepper; italian seasoning to your taste; finish by adding the olive oilon top and put itin the oven for 10 t0 15 minutes."
+          "steps": "Pre-heat your oven at 200C.\nOn a baking tray add parchment paper and the toast.\nSpread the hummus and add the cherry tomatoes.\nSeason with salt, black pepper, italian seasoning to your taste, finish by adding the olive oil on top, and put it in the oven for 10 to 15 minutes."
         }
       },
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 90.0,
+          "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 300.0,
+          "catalogKey": "pomidor_tomat",
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -1192,37 +1191,52 @@
       "translations": {
         "ru": {
           "name": "Pizza toast",
-          "steps": "Pre-heat your oven at 2008C.\nOn abaking tray add parchment paper and the toast.\nSpread the avocado and add the sliced mushrooms and cherry tomatoes.\n3 slices of sourdough 6 cherry tomatoes 6og ofavocado 3 mushrooms 20g of protein cheese salt and black pepper qb italian seasoning qb.\nAdd the protein cheese on top, season with salt; black pepper; italian seasoning to your taste and put it in the ovenfor 10 to 15 minutes; until the cheese melt."
+          "steps": "Pre-heat your oven at 200C.\nOn a baking tray add parchment paper and the toast.\nSpread the avocado and add the sliced mushrooms and cherry tomatoes.\nAdd the protein cheese on top, season with salt, black pepper, italian seasoning to your taste and put it in the oven for 10 to 15 minutes, until the cheese melt."
         },
         "en": {
           "name": "Pizza toast",
-          "steps": "Pre-heat your oven at 2008C.\nOn abaking tray add parchment paper and the toast.\nSpread the avocado and add the sliced mushrooms and cherry tomatoes.\n3 slices of sourdough 6 cherry tomatoes 6og ofavocado 3 mushrooms 20g of protein cheese salt and black pepper qb italian seasoning qb.\nAdd the protein cheese on top, season with salt; black pepper; italian seasoning to your taste and put it in the ovenfor 10 to 15 minutes; until the cheese melt."
+          "steps": "Pre-heat your oven at 200C.\nOn a baking tray add parchment paper and the toast.\nSpread the avocado and add the sliced mushrooms and cherry tomatoes.\nAdd the protein cheese on top, season with salt, black pepper, italian seasoning to your taste and put it in the oven for 10 to 15 minutes, until the cheese melt."
         }
       },
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 90.0,
+          "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 180.0,
+          "catalogKey": "pomidor_tomat",
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
           "catalogKey": "avocado",
-          "quantity": 180.0,
+          "quantity": 60.0,
           "unit": "gram"
         },
         {
           "catalogKey": "shampinony",
-          "quantity": 45.0,
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
           "catalogKey": "protein_cheese",
           "quantity": 20.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "italian_seasoning",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
           "unit": "gram"
         }
       ],
@@ -1235,22 +1249,22 @@
       "translations": {
         "ru": {
           "name": "Egg skillet",
-          "steps": "In a frying pan add the olive oil the chopped onion and the chopped tomato Letit cook untilit becomes more creamy and cooked.\nCut theham into squares and addit to the stew along with the cheese; mixing well.\n2 slices of sourdough 2eggs 1 tbsp of olive oil 1 tomato sliced 1 onion chopped 4og of low fat ham 15g of low fat cheese salt and pepper basilto garish.\nFinally  break the eggs over the mixture; placea lidon the panand let them cook for about 4 minutes; depending on whether you likeyour eggsmore or less cooked:.\nFinish with toasted sourdough."
+          "steps": "In a frying pan add the olive oil, the chopped onion and the chopped tomato. Let it cook until it becomes more creamy and cooked.\nCut the ham into squares and addit to the stew along with the cheese, mixing well.\nFinally break the eggs over the mixture, place a lidon the pan and let them cook for about 4 minutes, depending on whether you like your eggs more or less cooked.\nFinish with toasted sourdough."
         },
         "en": {
           "name": "Egg skillet",
-          "steps": "In a frying pan add the olive oil the chopped onion and the chopped tomato Letit cook untilit becomes more creamy and cooked.\nCut theham into squares and addit to the stew along with the cheese; mixing well.\n2 slices of sourdough 2eggs 1 tbsp of olive oil 1 tomato sliced 1 onion chopped 4og of low fat ham 15g of low fat cheese salt and pepper basilto garish.\nFinally  break the eggs over the mixture; placea lidon the panand let them cook for about 4 minutes; depending on whether you likeyour eggsmore or less cooked:.\nFinish with toasted sourdough."
+          "steps": "In a frying pan add the olive oil, the chopped onion and the chopped tomato. Let it cook until it becomes more creamy and cooked.\nCut the ham into squares and addit to the stew along with the cheese, mixing well.\nFinally break the eggs over the mixture, place a lidon the pan and let them cook for about 4 minutes, depending on whether you like your eggs more or less cooked.\nFinish with toasted sourdough."
         }
       },
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 60.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
           "catalogKey": "yaytso_kurinoe",
-          "quantity": 115.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -1259,18 +1273,38 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
           "catalogKey": "bulb_onion",
-          "quantity": 100.0,
+          "quantity": 70.0,
           "unit": "gram"
         },
         {
           "catalogKey": "okorok_vareno_kopchyonyy_produkt_udalen",
-          "quantity": 120.0,
+          "quantity": 40.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "protein_cheese",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "basil",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
           "unit": "gram"
         }
       ],
@@ -1283,22 +1317,22 @@
       "translations": {
         "ru": {
           "name": "Truffle toast",
-          "steps": "Toast the sourdough.\nStart by sauteing the sliced mushrooms in a non-stick frying pan with olive oil and season with salt and black pepper and Italian seasoning to your taste.\nThen make the scrambled eggs in the non-stick frying pan and season with salt and black pepper and Italian seasoning to your taste.\nAdd by layers in the sourdough, the avocado, the spinach; the scrambled eggs.\nFinish by adding the truffle  spread and the sauteed mushrooms."
+          "steps": "Toast the sourdough.\nStart by sauteing the sliced mushrooms in a non-stick frying pan with olive oil and season with salt and black pepper and Italian seasoning to your taste.\nThen make the scrambled eggs in the non-stick frying pan and season with salt and black pepper and Italian seasoning to your taste.\nAdd by layers in the sourdough, the avocado, the spinach, the scrambled eggs.\nFinish by adding the truffle spread and the sauteed mushrooms."
         },
         "en": {
           "name": "Truffle toast",
-          "steps": "Toast the sourdough.\nStart by sauteing the sliced mushrooms in a non-stick frying pan with olive oil and season with salt and black pepper and Italian seasoning to your taste.\nThen make the scrambled eggs in the non-stick frying pan and season with salt and black pepper and Italian seasoning to your taste.\nAdd by layers in the sourdough, the avocado, the spinach; the scrambled eggs.\nFinish by adding the truffle  spread and the sauteed mushrooms."
+          "steps": "Toast the sourdough.\nStart by sauteing the sliced mushrooms in a non-stick frying pan with olive oil and season with salt and black pepper and Italian seasoning to your taste.\nThen make the scrambled eggs in the non-stick frying pan and season with salt and black pepper and Italian seasoning to your taste.\nAdd by layers in the sourdough, the avocado, the spinach, the scrambled eggs.\nFinish by adding the truffle spread and the sauteed mushrooms."
         }
       },
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 60.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
           "catalogKey": "shpinat",
-          "quantity": 240.0,
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
@@ -1313,18 +1347,32 @@
         },
         {
           "catalogKey": "shampinony",
-          "quantity": 75.0,
+          "quantity": 60.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "truffle",
+          "catalogKey": "truffle_spread",
           "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
           "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "italian_seasoning",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
           "unit": "gram"
         }
       ],
@@ -1337,17 +1385,17 @@
       "translations": {
         "ru": {
           "name": "Fresh avocado toast",
-          "steps": "Toast the sourdough.\nStart by making the poached eggs in a pan: let the pan with water bubble; lower the temperature; add a spoon of vinegar; create a whirlpool with a spoon and carefully add the eggs Let it cook for 2-3 minutes; remove and reserve.\nThen saute the sliced mushrooms in a non-stick frying pan with olive oil and season with salt; black pepper and Italian seasoning to your taste.\nAdd by layers in the sourdough; the cream cheese; the avocado,  the sliced cucumber in one side and the mushrroms with the truffle spread in the other."
+          "steps": "Toast the sourdough.\nStart by making the poached eggs in a pan: let the pan with water bubble, lower the temperature, add a spoon of vinegar, create a whirlpool with a spoon and carefully add the eggs Let it cook for 2-3 minutes, remove and reserve.\nThen saute the sliced mushrooms in a non-stick frying pan with olive oil and season with salt, black pepper and Italian seasoning to your taste.\nAdd by layers in the sourdough, the cream cheese, the avocado, the sliced cucumber in one side and the mushrroms with the truffle spread in the other."
         },
         "en": {
           "name": "Fresh avocado toast",
-          "steps": "Toast the sourdough.\nStart by making the poached eggs in a pan: let the pan with water bubble; lower the temperature; add a spoon of vinegar; create a whirlpool with a spoon and carefully add the eggs Let it cook for 2-3 minutes; remove and reserve.\nThen saute the sliced mushrooms in a non-stick frying pan with olive oil and season with salt; black pepper and Italian seasoning to your taste.\nAdd by layers in the sourdough; the cream cheese; the avocado,  the sliced cucumber in one side and the mushrroms with the truffle spread in the other."
+          "steps": "Toast the sourdough.\nStart by making the poached eggs in a pan: let the pan with water bubble, lower the temperature, add a spoon of vinegar, create a whirlpool with a spoon and carefully add the eggs Let it cook for 2-3 minutes, remove and reserve.\nThen saute the sliced mushrooms in a non-stick frying pan with olive oil and season with salt, black pepper and Italian seasoning to your taste.\nAdd by layers in the sourdough, the cream cheese, the avocado, the sliced cucumber in one side and the mushrroms with the truffle spread in the other."
         }
       },
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 60.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -1361,20 +1409,19 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
+          "catalogKey": "cucumber",
           "quantity": 6.0,
           "unit": "gram"
         },
         {
           "catalogKey": "shampinony",
-          "quantity": 75.0,
+          "quantity": 60.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "truffle",
+          "catalogKey": "truffle_spread",
           "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
           "catalogKey": "vinegar",
@@ -1391,48 +1438,52 @@
       "translations": {
         "ru": {
           "name": "Pita breakfast",
-          "steps": "Slice the tomatoand the olives.\nInafrying pan make the sunny sideeggs.\nToast the pita.\n1small pita 1/2avocado 10g of plainyogurt cherry tomatoes 4 olives 2eggs salt and pepper 1 tsp of italian seasoning.\nAfter the pita toasted, spread the avocado, theyogurt; add the sliced tomato, theolives and the sunny sideegg."
+          "steps": "Slice the tomato and the olives.\nIn a frying pan make the sunny side eggs.\nToast the pita.\nAfter the pita toasted, spread the avocado, the yogurt, add the sliced tomato, the olives and the sunny side egg."
         },
         "en": {
           "name": "Pita breakfast",
-          "steps": "Slice the tomatoand the olives.\nInafrying pan make the sunny sideeggs.\nToast the pita.\n1small pita 1/2avocado 10g of plainyogurt cherry tomatoes 4 olives 2eggs salt and pepper 1 tsp of italian seasoning.\nAfter the pita toasted, spread the avocado, theyogurt; add the sliced tomato, theolives and the sunny sideegg."
+          "steps": "Slice the tomato and the olives.\nIn a frying pan make the sunny side eggs.\nToast the pita.\nAfter the pita toasted, spread the avocado, the yogurt, add the sliced tomato, the olives and the sunny side egg."
         }
       },
       "ingredients": [
         {
           "catalogKey": "small_pita",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "avocado",
-          "quantity": 75.0,
+          "quantity": 60.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 10.0,
+          "catalogKey": "avocado",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cherry_tomatoes",
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
           "catalogKey": "olives",
-          "quantity": 120.0,
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "sol_povarennaya_pischevaya",
-          "quantity": 5.0,
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "italian_seasoning",
+          "quantity": 2.0,
           "unit": "gram"
         },
         {
           "catalogKey": "yaytso_kurinoe",
           "quantity": 100.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "oregano_sushenyy",
-          "quantity": 5.0,
           "unit": "gram"
         }
       ],
@@ -1445,34 +1496,27 @@
       "translations": {
         "ru": {
           "name": "Breakfast cups",
-          "steps": "Preheat the oven to 180-2008C.\nIn a bowl add the eggs and egg whites; add the cheese; the chopped tomatoes; mushrooms; olives; oregano, salt and pepper to taste.\nPhyllo sheets 2 eggsand 2egg whites 10g of protein cheese 2 mushrooms sliced 10 cherry tomatoes 5 olives salt and pepper 1 cup of spinach y2cup oflow calorie nacho salsa dip.\nAdd into the cups and bake in the oven for about 30 minutes until fully cooked.\nRemove; let it cooland eatit with the nacho salsa dip."
+          "steps": "Pre-heat the oven to 180-200C.\nIn a bowl add the eggs and egg whites, add the cheese, the chopped tomatoes, mushrooms, olives, oregano, salt and pepper to taste.\nAdd into the cups and bake in the oven for about 30 minutes until fully cooked.\nRemove, let it cool and eat it with the nacho salsa dip."
         },
         "en": {
           "name": "Breakfast cups",
-          "steps": "Preheat the oven to 180-2008C.\nIn a bowl add the eggs and egg whites; add the cheese; the chopped tomatoes; mushrooms; olives; oregano, salt and pepper to taste.\nPhyllo sheets 2 eggsand 2egg whites 10g of protein cheese 2 mushrooms sliced 10 cherry tomatoes 5 olives salt and pepper 1 cup of spinach y2cup oflow calorie nacho salsa dip.\nAdd into the cups and bake in the oven for about 30 minutes until fully cooked.\nRemove; let it cooland eatit with the nacho salsa dip."
+          "steps": "Pre-heat the oven to 180-200C.\nIn a bowl add the eggs and egg whites, add the cheese, the chopped tomatoes, mushrooms, olives, oregano, salt and pepper to taste.\nAdd into the cups and bake in the oven for about 30 minutes until fully cooked.\nRemove, let it cool and eat it with the nacho salsa dip."
         }
       },
       "ingredients": [
         {
-          "catalogKey": "sol_povarennaya_pischevaya",
-          "quantity": 5.0,
+          "catalogKey": "phyllo_sheets",
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "smallbases",
-          "quantity": 120.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "eggsand",
-          "quantity": 60.0,
-          "unit": "gram",
-          "tempMissing": true
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 100.0,
+          "unit": "gram"
         },
         {
           "catalogKey": "chicken_egg_white",
-          "quantity": 100.0,
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
@@ -1486,25 +1530,34 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 300.0,
+          "catalogKey": "pomidor_tomat",
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
           "catalogKey": "olives",
-          "quantity": 150.0,
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
           "catalogKey": "shpinat",
-          "quantity": 240.0,
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "oflow_calorie_nacho_salsa_dip_add_into_the_cups_bake_in_the_oven_for_about",
-          "quantity": 480.0,
-          "unit": "gram",
-          "tempMissing": true
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "low_calorie_nacho_salsa_dip",
+          "quantity": 50.0,
+          "unit": "gram"
         }
       ],
       "cookTimeMinutes": 30
@@ -1516,17 +1569,17 @@
       "translations": {
         "ru": {
           "name": "Savory french toast",
-          "steps": "Cut the sourdough in slices.\nA bowl mix the eggs and egg whites with salt and pepper and finally the sheredded cheese.\n2 slices of sourdough 2eggs 2egg whites 15g of low fat sheredded cheese 1 tbsp of olive oil 4 mushrooms sliced cherry tomatoes chopped valsamic vinegar qb salt and pepper arugula to gamish.\nDip the slices of bread in this mixture and let it absorb:.\nIn a frying pan saute the sliced mushrooms; the chopped tomatoes; with salt and pepper and balsamic vinegar.\nIn another frying pan; place the slices of bread soaked in the egg; frying on one side and on the other until they are crispy: Finish on the plate with arugula; mushrooms and sauteed tomatoes.\n@rise cookbook."
+          "steps": "Cut the sourdough in slices.\nIn a bowl mix the eggs and egg whites with salt and pepper and finally the sheredded cheese.\nDip the slices of bread in this mixture and let it absorb.\nIn a frying pan saute the sliced mushrooms, the chopped tomatoes, with salt and pepper and balsamic vinegar.\nIn another frying pan, place the slices of bread soaked in the egg, frying on one side and on the other until they are crispy. Finish on the plate with arugula, mushrooms and sautéed tomatoes."
         },
         "en": {
           "name": "Savory french toast",
-          "steps": "Cut the sourdough in slices.\nA bowl mix the eggs and egg whites with salt and pepper and finally the sheredded cheese.\n2 slices of sourdough 2eggs 2egg whites 15g of low fat sheredded cheese 1 tbsp of olive oil 4 mushrooms sliced cherry tomatoes chopped valsamic vinegar qb salt and pepper arugula to gamish.\nDip the slices of bread in this mixture and let it absorb:.\nIn a frying pan saute the sliced mushrooms; the chopped tomatoes; with salt and pepper and balsamic vinegar.\nIn another frying pan; place the slices of bread soaked in the egg; frying on one side and on the other until they are crispy: Finish on the plate with arugula; mushrooms and sauteed tomatoes.\n@rise cookbook."
+          "steps": "Cut the sourdough in slices.\nIn a bowl mix the eggs and egg whites with salt and pepper and finally the sheredded cheese.\nDip the slices of bread in this mixture and let it absorb.\nIn a frying pan saute the sliced mushrooms, the chopped tomatoes, with salt and pepper and balsamic vinegar.\nIn another frying pan, place the slices of bread soaked in the egg, frying on one side and on the other until they are crispy. Finish on the plate with arugula, mushrooms and sautéed tomatoes."
         }
       },
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 60.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -1536,14 +1589,13 @@
         },
         {
           "catalogKey": "chicken_egg_white",
-          "quantity": 100.0,
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "low_fat_sheredded_cheese",
+          "catalogKey": "protein_cheese",
           "quantity": 15.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
@@ -1551,13 +1603,38 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sol_povarennaya_pischevaya",
+          "catalogKey": "shampinony",
+          "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cherry_tomatoes",
+          "quantity": 50.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "italian_seasoning",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "balsamic_vinegar",
           "quantity": 5.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
-          "quantity": 60.0,
+          "catalogKey": "arugula",
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -1570,14 +1647,19 @@
       "translations": {
         "ru": {
           "name": "Custard yogurt toast",
-          "steps": "Pre heat the ovenat 200*C.\nIn a small bowl add the egg; yogurt; cinnamon and syrup: Whisk together to form a liquid custard.\nUse the back of a spoon and, press into the centre of the sourdough to indent Spoon in the custard mixture into the indented well and add your cherries on top.\nPut in the oven for about 10 minutes Meanwhile; on the last slice of bread, add the cream cheese and strawberryjam."
+          "steps": "Pre-heat the oven at 200C.\nIn a small bowl add the egg, yogurt, cinnamon and syrup. Whisk together to form a liquid custard.\nUse the back of a spoon and, press into the centre of the sourdough to indent. Spoon in the custard mixture into the indented well and add your cherries on top.\nPut in the oven for about 10 minutes. Meanwhile, on the last slice of bread, add the cream cheese and strawberry jam."
         },
         "en": {
           "name": "Custard yogurt toast",
-          "steps": "Pre heat the ovenat 200*C.\nIn a small bowl add the egg; yogurt; cinnamon and syrup: Whisk together to form a liquid custard.\nUse the back of a spoon and, press into the centre of the sourdough to indent Spoon in the custard mixture into the indented well and add your cherries on top.\nPut in the oven for about 10 minutes Meanwhile; on the last slice of bread, add the cream cheese and strawberryjam."
+          "steps": "Pre-heat the oven at 200C.\nIn a small bowl add the egg, yogurt, cinnamon and syrup. Whisk together to form a liquid custard.\nUse the back of a spoon and, press into the centre of the sourdough to indent. Spoon in the custard mixture into the indented well and add your cherries on top.\nPut in the oven for about 10 minutes. Meanwhile, on the last slice of bread, add the cream cheese and strawberry jam."
         }
       },
       "ingredients": [
+        {
+          "catalogKey": "slices_of_sourdough",
+          "quantity": 150.0,
+          "unit": "gram"
+        },
         {
           "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 150.0,
@@ -1589,20 +1671,24 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sugar_syrup_product_removed",
+          "catalogKey": "zero_sugar_syrup",
           "quantity": 15.0,
           "unit": "gram"
         },
         {
           "catalogKey": "cherries",
-          "quantity": 150.0,
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "0_sugar_strawberryjam_zog_of_low_fat_cream_cheese_put_in_the_oven_for_about",
+          "catalogKey": "zero_sugar_strawberry_jam",
           "quantity": 20.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "light_cream_cheese",
+          "quantity": 20.0,
+          "unit": "gram"
         }
       ],
       "cookTimeMinutes": 20
@@ -1614,17 +1700,17 @@
       "translations": {
         "ru": {
           "name": "Caprese toast",
-          "steps": "Preheat the oven to 2508C.\nSpread the avocado over two slices of sourdough; slice the mozzarella and tomato and place alternately on top ofit.\nPut itinthe oven for 5-10 minutes so that the mozzarella melts.\nWhile beating the eggsand egg whitesandinanon-stick frying pan makean omelette and fold it into an envelope.\nRemove the sourdough from the oven, season with salt; pepper; balsamic vinegar and Italian seasoning; add the omelette and the basil.\n@rise cookbook."
+          "steps": "Pre-heat the oven to 250C.\nSpread the avocado over two slices of sourdough, slice the mozzarella and tomato and place alternately on top of it.\nPut it in the oven for 5-10 minutes so that the mozzarella melts.\nWhile beating the eggs and egg whites and in a non-stick frying pan make an omelette and fold it into an envelope.\nRemove the sourdough from the oven, season with salt, pepper, balsamic vinegar and Italian seasoning, add the omelette and the basil.\n"
         },
         "en": {
           "name": "Caprese toast",
-          "steps": "Preheat the oven to 2508C.\nSpread the avocado over two slices of sourdough; slice the mozzarella and tomato and place alternately on top ofit.\nPut itinthe oven for 5-10 minutes so that the mozzarella melts.\nWhile beating the eggsand egg whitesandinanon-stick frying pan makean omelette and fold it into an envelope.\nRemove the sourdough from the oven, season with salt; pepper; balsamic vinegar and Italian seasoning; add the omelette and the basil.\n@rise cookbook."
+          "steps": "Pre-heat the oven to 250C.\nSpread the avocado over two slices of sourdough, slice the mozzarella and tomato and place alternately on top of it.\nPut it in the oven for 5-10 minutes so that the mozzarella melts.\nWhile beating the eggs and egg whites and in a non-stick frying pan make an omelette and fold it into an envelope.\nRemove the sourdough from the oven, season with salt, pepper, balsamic vinegar and Italian seasoning, add the omelette and the basil.\n"
         }
       },
       "ingredients": [
         {
           "catalogKey": "slices_of_sourdough",
-          "quantity": 60.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -1634,7 +1720,7 @@
         },
         {
           "catalogKey": "chicken_egg_white",
-          "quantity": 100.0,
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
@@ -1645,8 +1731,7 @@
         {
           "catalogKey": "light_mozzarella",
           "quantity": 50.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
@@ -1654,78 +1739,37 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 100.0,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 20
-    },
-    {
-      "id": "arise_032",
-      "servings": 1,
-      "imageId": "97",
-      "translations": {
-        "ru": {
-          "name": "4mini sweet and salty toasts",
-          "steps": "Start by toasting the sourdough.\nIn the first tast add the yogurt, the sliced kiwi and coconut on top In the second one spread 1/4 of avocado and the tomato on top.\nIn the third one spread the peanut butter and the raspberries on top And in the last one spread the 1/4 of avocado and 1 sunny sideegg.\n@rise cookbook."
-        },
-        "en": {
-          "name": "4mini sweet and salty toasts",
-          "steps": "Start by toasting the sourdough.\nIn the first tast add the yogurt, the sliced kiwi and coconut on top In the second one spread 1/4 of avocado and the tomato on top.\nIn the third one spread the peanut butter and the raspberries on top And in the last one spread the 1/4 of avocado and 1 sunny sideegg.\n@rise cookbook."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 127.5,
+          "catalogKey": "pomidor_tomat",
+          "quantity": 80.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "avocado",
-          "quantity": 37.5,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "sunny_sideegg",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "mini_slices_of_sourdough",
-          "quantity": 120.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
-          "quantity": 50.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "kiwi",
-          "quantity": 75.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "basil",
           "quantity": 10.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "raspberries",
-          "quantity": 35.0,
+          "catalogKey": "salt",
+          "quantity": 2.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "shredded_coconut_rise_cookbook_nicolna_nunes",
-          "quantity": 3.0,
-          "unit": "gram",
-          "tempMissing": true
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "balsamic_vinegar",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "italian_seasoning",
+          "quantity": 2.0,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 4
+      "cookTimeMinutes": 20
     },
     {
       "id": "arise_033",
@@ -1734,11 +1778,11 @@
       "translations": {
         "ru": {
           "name": "Tomato creamy soup",
-          "steps": "Preheat your oven to 2008C.\nPlace parchment paper ona tray and distribute the tomato, the bell pepper; the onion; the garlic; previously chopped.\nAdd salt black pepper and olive oiland bake for 30 minutes until browned.\nFinish blending everything and add the creamy soup, some basilto the bowl."
+          "steps": "Pre-heat your oven to 200C.\nPlace parchment paper ona tray and distribute the tomato, the bell pepper, the onion, the garlic, previously chopped.\nAdd salt, black pepper and olive oil and bake for 30 minutes until browned.\nFinish blending everything and add the creamy soup, some basilto the bowl."
         },
         "en": {
           "name": "Tomato creamy soup",
-          "steps": "Preheat your oven to 2008C.\nPlace parchment paper ona tray and distribute the tomato, the bell pepper; the onion; the garlic; previously chopped.\nAdd salt black pepper and olive oiland bake for 30 minutes until browned.\nFinish blending everything and add the creamy soup, some basilto the bowl."
+          "steps": "Pre-heat your oven to 200C.\nPlace parchment paper ona tray and distribute the tomato, the bell pepper, the onion, the garlic, previously chopped.\nAdd salt, black pepper and olive oil and bake for 30 minutes until browned.\nFinish blending everything and add the creamy soup, some basilto the bowl."
         }
       },
       "ingredients": [
@@ -1753,8 +1797,8 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 60.0,
+          "catalogKey": "pomidor_tomat",
+          "quantity": 300.0,
           "unit": "gram"
         },
         {
@@ -1766,6 +1810,21 @@
           "catalogKey": "bell_red",
           "quantity": 7.5,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "basil",
+          "quantity": 10.0,
+          "unit": "gram"
         }
       ],
       "cookTimeMinutes": 30
@@ -1776,12 +1835,12 @@
       "imageId": "102",
       "translations": {
         "ru": {
-          "name": "Pumpkin garden",
-          "steps": "Preheat the oven to 2508C.\nChop the pumpkin and addtoa pan with parchment paper;add olive oil salt black pepper and italian seasoning on top Bake itin theoven until they are roasted.\nInaplate add the pumpkinthe cottage cheese on top, the raspberries; walnuts and pomegranate."
+          "name": "Pumpkin garden bowl",
+          "steps": "Pre-heat the oven to 250C.\nChop the pumpkin and add to a pan with parchment paper, add olive oil, salt, black pepper and italian seasoning on top. Bake it in the oven until they are roasted.\nIn a plate add the pumpkin, the cottage cheese on top, the raspberries, walnuts andpomegranate."
         },
         "en": {
           "name": "Pumpkin garden",
-          "steps": "Preheat the oven to 2508C.\nChop the pumpkin and addtoa pan with parchment paper;add olive oil salt black pepper and italian seasoning on top Bake itin theoven until they are roasted.\nInaplate add the pumpkinthe cottage cheese on top, the raspberries; walnuts and pomegranate."
+          "steps": "Pre-heat the oven to 250C.\nChop the pumpkin and add to a pan with parchment paper, add olive oil, salt, black pepper and italian seasoning on top. Bake it in the oven until they are roasted.\nIn a plate add the pumpkin, the cottage cheese on top, the raspberries, walnuts andpomegranate."
         }
       },
       "ingredients": [
@@ -1801,8 +1860,13 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "walnut",
+          "catalogKey": "pomegranate",
           "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "walnut",
+          "quantity": 20.0,
           "unit": "gram"
         },
         {
@@ -1816,14 +1880,23 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pesto_mint",
+          "catalogKey": "pesto_sauce",
           "quantity": 15.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "italian_seasoning",
           "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
           "unit": "gram"
         }
       ],
@@ -1836,19 +1909,14 @@
       "translations": {
         "ru": {
           "name": "Mushroom creamy soup",
-          "steps": "Inafrying pan add the olive oil the chopped onion and garlic and let it saute After add the chopped zucchini and the sliced mushrooms.\nLet everything simmer and after they are translucent add the broth and water untilall the vegetablesare covered Add salt and pepper and let it cook for about 20 minutes on low heat.\nFinish blending everything and add the creamy soup; some cilantro and some mushrooms to thebowl."
+          "steps": "In a frying pan add the olive oil the chopped onion and garlic and let it saute. After add the chopped zucchini and the sliced mushrooms.\nLet everything simmer and after they are translucent add the broth and water until all the vegetables are covered. Add salt and pepper and let it cook for about 20 minutes on low heat.\nFinish blending everything and add the creamy soup, some cilantro and some mushrooms to the bowl."
         },
         "en": {
           "name": "Mushroom creamy soup",
-          "steps": "Inafrying pan add the olive oil the chopped onion and garlic and let it saute After add the chopped zucchini and the sliced mushrooms.\nLet everything simmer and after they are translucent add the broth and water untilall the vegetablesare covered Add salt and pepper and let it cook for about 20 minutes on low heat.\nFinish blending everything and add the creamy soup; some cilantro and some mushrooms to thebowl."
+          "steps": "In a frying pan add the olive oil the chopped onion and garlic and let it saute. After add the chopped zucchini and the sliced mushrooms.\nLet everything simmer and after they are translucent add the broth and water until all the vegetables are covered. Add salt and pepper and let it cook for about 20 minutes on low heat.\nFinish blending everything and add the creamy soup, some cilantro and some mushrooms to the bowl."
         }
       },
       "ingredients": [
-        {
-          "catalogKey": "sol_povarennaya_pischevaya",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
         {
           "catalogKey": "bulb_onion",
           "quantity": 100.0,
@@ -1861,9 +1929,8 @@
         },
         {
           "catalogKey": "zucchini",
-          "quantity": 15.0,
-          "unit": "gram",
-          "tempMissing": true
+          "quantity": 150.0,
+          "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
@@ -1876,8 +1943,23 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "chicken_broth",
           "quantity": 250.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sol_povarennaya_pischevaya",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cilantro",
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -1890,19 +1972,18 @@
       "translations": {
         "ru": {
           "name": "Shrimp edamame salad",
-          "steps": "Start by cutting the celery  the cucumber; the pineapple and the parsley.\nIn a bowl start by adding the cooked quinoa; the cooked edamame; the celery; the cucumber; the pineapple and the shrimps.\nSeason with the olive oil balsamic vinegar; oregano, salt and black pepper,and parsley to garnish."
+          "steps": "Start by cooking quinoa acording to the package instructions. Then cutting the celery, the cucumber, the pineapple and the parsley.\nIn a bowl start by adding the cooked quinoa, the cooked edamame, the celery, the cucumber, the pineapple and the shrimps.\nSeason with the olive oil, balsamic vinegar, oregano, salt and black pepper, and parsley to garnish."
         },
         "en": {
           "name": "Shrimp edamame salad",
-          "steps": "Start by cutting the celery  the cucumber; the pineapple and the parsley.\nIn a bowl start by adding the cooked quinoa; the cooked edamame; the celery; the cucumber; the pineapple and the shrimps.\nSeason with the olive oil balsamic vinegar; oregano, salt and black pepper,and parsley to garnish."
+          "steps": "Start by cooking quinoa acording to the package instructions. Then cutting the celery, the cucumber, the pineapple and the parsley.\nIn a bowl start by adding the cooked quinoa, the cooked edamame, the celery, the cucumber, the pineapple and the shrimps.\nSeason with the olive oil, balsamic vinegar, oregano, salt and black pepper, and parsley to garnish."
         }
       },
       "ingredients": [
         {
           "catalogKey": "quinoa",
-          "quantity": 100.0,
-          "unit": "gram",
-          "tempMissing": true
+          "quantity": 50.0,
+          "unit": "gram"
         },
         {
           "catalogKey": "far_eastern_shrimp_meat",
@@ -1915,8 +1996,8 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
-          "quantity": 7.5,
+          "catalogKey": "cucumber",
+          "quantity": 20.0,
           "unit": "gram"
         },
         {
@@ -1927,8 +2008,32 @@
         {
           "catalogKey": "edamame",
           "quantity": 100.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "parsley",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "balsamic_vinegar",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "oregano",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
         }
       ],
       "cookTimeMinutes": 15
@@ -1940,11 +2045,11 @@
       "translations": {
         "ru": {
           "name": "Roasted pumpkin creamy soup",
-          "steps": "Preheat your oven to 2008C.\nPlace parchment paper ona tray and distribute the pumpkin; the ginger; the onion; the garlic; previously chopped.\nAdd salt black pepper and olive oil and bake for 30 minutes until browned.\nFinish blending everything and add the creamy soup, some parsley to the bowl."
+          "steps": "Pre-heat your oven to 200C.\nPlace parchment paper ona tray and distribute the pumpkin, the ginger, the onion, the garlic, previously chopped.\nAdd salt, black pepper and olive oil and bake for 30 minutes until browned.\nFinish blending everything and add the creamy soup, some parsley to the bowl."
         },
         "en": {
           "name": "Roasted pumpkin creamy soup",
-          "steps": "Preheat your oven to 2008C.\nPlace parchment paper ona tray and distribute the pumpkin; the ginger; the onion; the garlic; previously chopped.\nAdd salt black pepper and olive oil and bake for 30 minutes until browned.\nFinish blending everything and add the creamy soup, some parsley to the bowl."
+          "steps": "Pre-heat your oven to 200C.\nPlace parchment paper ona tray and distribute the pumpkin, the ginger, the onion, the garlic, previously chopped.\nAdd salt, black pepper and olive oil and bake for 30 minutes until browned.\nFinish blending everything and add the creamy soup, some parsley to the bowl."
         }
       },
       "ingredients": [
@@ -1972,66 +2077,20 @@
           "catalogKey": "tykva",
           "quantity": 300.0,
           "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 30
-    },
-    {
-      "id": "arise_038",
-      "servings": 1,
-      "imageId": "110",
-      "translations": {
-        "ru": {
-          "name": "Ramen",
-          "steps": "Start by chopping theonion; the garlic, the ginger and add into a pan with olive oiland let it saute, then add the mushrooms.\nCook the noodles inthe pan with water and salt Ina frying pangrill the steak and in another pan hard boil your egg.\nAfter the vegetablesare soft add the soy sauce and the chicken broth and let it cook.\nFinally, in a bowladd the boiled noodles; transfer the broth on top, add the sliced meat; the egg cut in half and finally the scallions."
         },
-        "en": {
-          "name": "Ramen",
-          "steps": "Start by chopping theonion; the garlic, the ginger and add into a pan with olive oiland let it saute, then add the mushrooms.\nCook the noodles inthe pan with water and salt Ina frying pangrill the steak and in another pan hard boil your egg.\nAfter the vegetablesare soft add the soy sauce and the chicken broth and let it cook.\nFinally, in a bowladd the boiled noodles; transfer the broth on top, add the sliced meat; the egg cut in half and finally the scallions."
-        }
-      },
-      "ingredients": [
         {
-          "catalogKey": "beef_cat_1",
-          "quantity": 130.0,
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
-          "quantity": 30.0,
+          "catalogKey": "salt",
+          "quantity": 2.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "noodles",
-          "quantity": 150.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "olive_oil",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "ginger_grated",
-          "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "chilli_tablespoons_of_soy_sauce",
-          "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "tsyplyata_produkt_udalen",
-          "quantity": 720.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shampinony",
-          "quantity": 30.0,
+          "catalogKey": "parsley",
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -2044,19 +2103,18 @@
       "translations": {
         "ru": {
           "name": "Shirazi salad",
-          "steps": "Start by cooking your quinoa.\nInafrying pan add the garlic cloves; the shrimps, salt and black pepper and paprika Saute everything until brown.\nFinely chop the strawberries; the cucumber; the mango, the bell pepper.\nIn a bowladd the cooked quinoa; the saute shrimps; the strawberries; the cucumber; the mango, the bell pepper and the feta cheese.\nFinish with the sauce; by smashing the mango until obtain a cream, adding the limejuice; salt z and the olive oil mix everything together and addon top of your salad."
+          "steps": "Start by cooking your quinoa.\nIn a frying pan add the garlic cloves, the shrimps, salt and black pepper and paprika. Saute everything until brown.\nFinely chop the strawberries, the cucumber, the mango, the bell pepper.\nIn a bowl add the cooked quinoa, the saute shrimps, the strawberries, the cucumber, the mango, the bell pepper and the feta cheese.\nFinish with the sauce by smashing the mango until obtain a cream, adding the limejuice, salt and add the olive oil mix everything together and add on top of your salad."
         },
         "en": {
           "name": "Shirazi salad",
-          "steps": "Start by cooking your quinoa.\nInafrying pan add the garlic cloves; the shrimps, salt and black pepper and paprika Saute everything until brown.\nFinely chop the strawberries; the cucumber; the mango, the bell pepper.\nIn a bowladd the cooked quinoa; the saute shrimps; the strawberries; the cucumber; the mango, the bell pepper and the feta cheese.\nFinish with the sauce; by smashing the mango until obtain a cream, adding the limejuice; salt z and the olive oil mix everything together and addon top of your salad."
+          "steps": "Start by cooking your quinoa.\nIn a frying pan add the garlic cloves, the shrimps, salt and black pepper and paprika. Saute everything until brown.\nFinely chop the strawberries, the cucumber, the mango, the bell pepper.\nIn a bowl add the cooked quinoa, the saute shrimps, the strawberries, the cucumber, the mango, the bell pepper and the feta cheese.\nFinish with the sauce by smashing the mango until obtain a cream, adding the limejuice, salt and add the olive oil mix everything together and add on top of your salad."
         }
       },
       "ingredients": [
         {
           "catalogKey": "quinoa",
-          "quantity": 150.0,
-          "unit": "gram",
-          "tempMissing": true
+          "quantity": 75.0,
+          "unit": "gram"
         },
         {
           "catalogKey": "far_eastern_shrimp_meat",
@@ -2069,13 +2127,13 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
-          "quantity": 30.0,
+          "catalogKey": "cucumber",
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
           "catalogKey": "mango",
-          "quantity": 50.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -2084,15 +2142,39 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "olive_oil",
-          "quantity": 10.0,
+          "catalogKey": "feta_cheese",
+          "quantity": 20.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "imejuice",
-          "quantity": 500.0,
-          "unit": "gram",
-          "tempMissing": true
+          "catalogKey": "garlic_clove",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 20.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "paprika_perets_sladkiy_molotyy",
+          "quantity": 3.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "lime_juice",
+          "quantity": 30.0,
+          "unit": "gram"
         }
       ],
       "cookTimeMinutes": 15
@@ -2104,33 +2186,37 @@
       "translations": {
         "ru": {
           "name": "Gazpacho",
-          "steps": "Start by cooking your eggs in water around 10-15 minutes.\nChopall the vegetablesand additinablender.\n2 hard boiled eggs 1slice of sourdough 2 tomatoes 1/2red bell pepper peeled cucumber 1 tbsp of olive oil 1 garlic clove salt and black pepper to taste.\nBlend until smooth and add intoabowl adding the chopped hard oiledeggs on top = and the sourdough.\n@rise cookbook."
+          "steps": "Start by cooking your eggs in water around 10-15 minutes.\nChop all the vegetables and add it in a blender.\nBlend until smooth and add into a bowl adding the chopped hard boiled eggs on top and the sourdough."
         },
         "en": {
           "name": "Gazpacho",
-          "steps": "Start by cooking your eggs in water around 10-15 minutes.\nChopall the vegetablesand additinablender.\n2 hard boiled eggs 1slice of sourdough 2 tomatoes 1/2red bell pepper peeled cucumber 1 tbsp of olive oil 1 garlic clove salt and black pepper to taste.\nBlend until smooth and add intoabowl adding the chopped hard oiledeggs on top = and the sourdough.\n@rise cookbook."
+          "steps": "Start by cooking your eggs in water around 10-15 minutes.\nChop all the vegetables and add it in a blender.\nBlend until smooth and add into a bowl adding the chopped hard boiled eggs on top and the sourdough."
         }
       },
       "ingredients": [
         {
           "catalogKey": "yaytso_kurinoe",
-          "quantity": 60.0,
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "slice_of_sourdough",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 60.0,
+          "catalogKey": "slices_of_sourdough",
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
-          "quantity": 15.0,
+          "catalogKey": "pomidor_tomat",
+          "quantity": 150.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bell_red",
+          "quantity": 100.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cucumber",
+          "quantity": 100.0,
           "unit": "gram"
         },
         {
@@ -2140,7 +2226,17 @@
         },
         {
           "catalogKey": "garlic_clove",
-          "quantity": 1.0,
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
           "unit": "gram"
         }
       ],
@@ -2153,11 +2249,11 @@
       "translations": {
         "ru": {
           "name": "Comfort lentil soup",
-          "steps": "Add intoa pan; olive oil the chopped onion and the garlic and let it saute.\nAfter sauteing; add the chopped pumpkin; chopped zucchini and mix well.\nAdd salt black pepper; the chicken broth; water until covering the vegetables; cook for about 30 minutes.\nFinish by adding the cooked lentils and parsley to garnish."
+          "steps": "Start by coocking lentis or use canned one. Add into a pan olive oilб the chopped onion and the garlic and let it saute.\nAfter sauteing add the chopped pumpkin, chopped zucchini and mix well.\nAdd salt, black pepper, the chicken broth, water until covering the vegetables, cook for about 30 minutes.\nFinish by adding the cooked lentils and parsley to garnish."
         },
         "en": {
           "name": "Comfort lentil soup",
-          "steps": "Add intoa pan; olive oil the chopped onion and the garlic and let it saute.\nAfter sauteing; add the chopped pumpkin; chopped zucchini and mix well.\nAdd salt black pepper; the chicken broth; water until covering the vegetables; cook for about 30 minutes.\nFinish by adding the cooked lentils and parsley to garnish."
+          "steps": "Start by coocking lentis or use canned one. Add into a pan olive oilб the chopped onion and the garlic and let it saute.\nAfter sauteing add the chopped pumpkin, chopped zucchini and mix well.\nAdd salt, black pepper, the chicken broth, water until covering the vegetables, cook for about 30 minutes.\nFinish by adding the cooked lentils and parsley to garnish."
         }
       },
       "ingredients": [
@@ -2168,7 +2264,7 @@
         },
         {
           "catalogKey": "garlic_clove",
-          "quantity": 5.0,
+          "quantity": 10.0,
           "unit": "gram"
         },
         {
@@ -2183,19 +2279,32 @@
         },
         {
           "catalogKey": "zucchini",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "canned_lentils",
           "quantity": 200.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
-          "quantity": 240.0,
+          "catalogKey": "chechevitsa_zerno",
+          "quantity": 200.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_broth",
+          "quantity": 200.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "parsley",
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -2208,11 +2317,11 @@
       "translations": {
         "ru": {
           "name": "Russian salad",
-          "steps": "Cook the peeled potatoes with water and salt In another pan cook the hard boiledegg.\nChop the onion; the tomatoes; the pickles; the cooked carrot; slice the hard boiled egg and the olives.\nIn a bowladd the cooked potatoes; the egg; the canned tuna the carrot; the pickles; the onion; the corn; the cherry tomatoesand finally the olives Add olive oil salt and black pepper and limejuice on top and mix well."
+          "steps": "Cook the peeled potatoes with water and salt. In another pan cook the hard boiled egg.\nChop the onion, the tomatoes, the pickles, the cooked carrot, slice the hard boiled egg and the olives.\nIn a bowl add the cooked potatoes, the egg, the canned tuna, the carrot, the pickles, the onion, the corn, the cherry tomatoes, and finally the olives. Add olive oil, salt and black pepper and lime juice on top and mix well."
         },
         "en": {
           "name": "Russian salad",
-          "steps": "Cook the peeled potatoes with water and salt In another pan cook the hard boiledegg.\nChop the onion; the tomatoes; the pickles; the cooked carrot; slice the hard boiled egg and the olives.\nIn a bowladd the cooked potatoes; the egg; the canned tuna the carrot; the pickles; the onion; the corn; the cherry tomatoesand finally the olives Add olive oil salt and black pepper and limejuice on top and mix well."
+          "steps": "Cook the peeled potatoes with water and salt. In another pan cook the hard boiled egg.\nChop the onion, the tomatoes, the pickles, the cooked carrot, slice the hard boiled egg and the olives.\nIn a bowl add the cooked potatoes, the egg, the canned tuna, the carrot, the pickles, the onion, the corn, the cherry tomatoes, and finally the olives. Add olive oil, salt and black pepper and lime juice on top and mix well."
         }
       },
       "ingredients": [
@@ -2228,38 +2337,57 @@
         },
         {
           "catalogKey": "yaytso_kurinoe",
-          "quantity": 30.0,
+          "quantity": 60.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bulb_onion",
-          "quantity": 7.5,
+          "catalogKey": "redonion",
+          "quantity": 25,
           "unit": "gram"
         },
         {
           "catalogKey": "carrots_product_removed",
-          "quantity": 15.0,
+          "quantity": 60.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pickles_zog_of_corn",
-          "quantity": 60.0,
-          "unit": "gram",
-          "tempMissing": true
+          "catalogKey": "corn",
+          "quantity": 20.0,
+          "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 150.0,
+          "catalogKey": "pickled_cucumber",
+          "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cherry_tomatoes",
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
           "catalogKey": "olives",
-          "quantity": 150.0,
+          "quantity": 30.0,
           "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
-          "quantity": 5.0,
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "lime_juice",
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -2272,27 +2400,31 @@
       "translations": {
         "ru": {
           "name": "Ratatouille",
-          "steps": "Pre heat your oven at 2008C.\nStart by finely slicing the zucchini; the onion; the eggplant and the tomatoes.\nInaovenproof container add the tomato sauce and on top 1slice of zucchini, 1 slice of tomato, 1 slice of eggplant; 1slice onion and so on Finish by adding oregano, olive oil salt and blackpepper on top.\nBake around 45 minutes until cooked Finish by adding a poachedeggon top."
+          "steps": "Pre-heat your oven at 200C.\nStart by finely slicing the zucchini, the onion, the eggplant and the tomatoes.\nIn a oven-proof container add the tomato sauce and on top 1 slice of zucchini, 1 slice of tomato, 1 slice of eggplant, 1 slice onion and so on. Finish by adding oregano, olive oil salt and black pepper on top.\nBake around 45 minutes until cooked. Finish by adding a poached egg on top."
         },
         "en": {
           "name": "Ratatouille",
-          "steps": "Pre heat your oven at 2008C.\nStart by finely slicing the zucchini; the onion; the eggplant and the tomatoes.\nInaovenproof container add the tomato sauce and on top 1slice of zucchini, 1 slice of tomato, 1 slice of eggplant; 1slice onion and so on Finish by adding oregano, olive oil salt and blackpepper on top.\nBake around 45 minutes until cooked Finish by adding a poachedeggon top."
+          "steps": "Pre-heat your oven at 200C.\nStart by finely slicing the zucchini, the onion, the eggplant and the tomatoes.\nIn a oven-proof container add the tomato sauce and on top 1 slice of zucchini, 1 slice of tomato, 1 slice of eggplant, 1 slice onion and so on. Finish by adding oregano, olive oil salt and black pepper on top.\nBake around 45 minutes until cooked. Finish by adding a poached egg on top."
         }
       },
       "ingredients": [
         {
           "catalogKey": "zucchini",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 90.0,
+          "quantity": 200.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bulb_onion",
+          "catalogKey": "pomidor_tomat",
+          "quantity": 120.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "redonion",
+          "quantity": 70.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -2302,19 +2434,28 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
-          "quantity": 240.0,
+          "catalogKey": "eggplant",
+          "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "slice_of_zucchini",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
+          "catalogKey": "tomatnaya_pasta_konservy",
+          "quantity": 70.0,
+          "unit": "gram"
         },
         {
-          "catalogKey": "baklazhan",
-          "quantity": 30.0,
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "oregano",
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -2327,17 +2468,17 @@
       "translations": {
         "ru": {
           "name": "Egg salad bites",
-          "steps": "Chop your tomato and your onion and additin a bowl Then add the eggs; crush them with thehelp ofafork andadd the salt; oregano; parsley and black pepper to your taste; add the plainhigh protein yogurt and mix everything together.\nFinish by slicinga cucumber and add the egg salad on top.\n@rise cookbook."
+          "steps": "Start by hard boiling your eggs in a pan for 12 minutes. Chop your tomato and your onion and add it in a bowl. Then add the eggs, crush them with the help of a fork and add the salt, oregano, parsley and black pepper to your taste, add the plain high protein yogurt and mix everything together.\nFinish by slicing a cucumber and add the egg salad on top."
         },
         "en": {
           "name": "Egg salad bites",
-          "steps": "Chop your tomato and your onion and additin a bowl Then add the eggs; crush them with thehelp ofafork andadd the salt; oregano; parsley and black pepper to your taste; add the plainhigh protein yogurt and mix everything together.\nFinish by slicinga cucumber and add the egg salad on top.\n@rise cookbook."
+          "steps": "Start by hard boiling your eggs in a pan for 12 minutes. Chop your tomato and your onion and add it in a bowl. Then add the eggs, crush them with the help of a fork and add the salt, oregano, parsley and black pepper to your taste, add the plain high protein yogurt and mix everything together.\nFinish by slicing a cucumber and add the egg salad on top."
         }
       },
       "ingredients": [
         {
           "catalogKey": "yaytso_kurinoe",
-          "quantity": 60.0,
+          "quantity": 120.0,
           "unit": "gram"
         },
         {
@@ -2346,18 +2487,38 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
-          "quantity": 30.0,
+          "catalogKey": "cucumber",
+          "quantity": 120.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
           "catalogKey": "bulb_onion",
           "quantity": 50.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "oregano",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "parsley",
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -2370,17 +2531,17 @@
       "translations": {
         "ru": {
           "name": "Summer burrata",
-          "steps": "Pre-heat a frying pan; add the balsamic vinegar and then the cherry tomatoes.\nLet them cookin low heat until they dehydrate and caramelize.\nInaplate add the cherry tomatoes; the sliced strawberries; finally the burrata and finish by adding the walnuts on top."
+          "steps": "Pre-heat a frying pan, add the balsamic vinegar and then the cherry tomatoes.\nLet them cookin low heat until they dehydrate and caramelize.\nIn a plate add the cherry tomatoes, the sliced strawberries, finally the burrata and finish by adding the walnuts on top."
         },
         "en": {
           "name": "Summer burrata",
-          "steps": "Pre-heat a frying pan; add the balsamic vinegar and then the cherry tomatoes.\nLet them cookin low heat until they dehydrate and caramelize.\nInaplate add the cherry tomatoes; the sliced strawberries; finally the burrata and finish by adding the walnuts on top."
+          "steps": "Pre-heat a frying pan, add the balsamic vinegar and then the cherry tomatoes.\nLet them cookin low heat until they dehydrate and caramelize.\nIn a plate add the cherry tomatoes, the sliced strawberries, finally the burrata and finish by adding the walnuts on top."
         }
       },
       "ingredients": [
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 30.0,
+          "catalogKey": "cherry_tomatoes",
+          "quantity": 80.0,
           "unit": "gram"
         },
         {
@@ -2395,13 +2556,18 @@
         },
         {
           "catalogKey": "burrata",
-          "quantity": 30.0,
+          "quantity": 200.0,
           "unit": "gram",
           "tempMissing": true
         },
         {
           "catalogKey": "walnut",
           "quantity": 60.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "parsley",
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -2414,47 +2580,47 @@
       "translations": {
         "ru": {
           "name": "Zucchini cheese rolls",
-          "steps": "Start by cooking your rice.\nInafrying pan add the garlic cloves; the shrimps, salt and black pepper and paprika Saute everything until brown.\nFinely chop the bell pepper; the red onion, and add intoa bowl with the corn; add limejuice and mix everything together.\nIn each lettuce leaf,add the cooked rice; the shrimps; the avocadoand the pico de gallo by layers Add some lime juice and cilantro on top."
+          "steps": "Start by slicing the zuchinni and add them into the toaster.\nAfter it is brown, add by layers the cheese, the canned roasted pepper or tomato and finish with salt, black pepper and basil leaf.\nRoll the zuchinni and add olive oil if necessary."
         },
         "en": {
           "name": "Zucchini cheese rolls",
-          "steps": "Start by cooking your rice.\nInafrying pan add the garlic cloves; the shrimps, salt and black pepper and paprika Saute everything until brown.\nFinely chop the bell pepper; the red onion, and add intoa bowl with the corn; add limejuice and mix everything together.\nIn each lettuce leaf,add the cooked rice; the shrimps; the avocadoand the pico de gallo by layers Add some lime juice and cilantro on top."
+          "steps": "Start by slicing the zuchinni and add them into the toaster.\nAfter it is brown, add by layers the cheese, the canned roasted pepper or tomato and finish with salt, black pepper and basil leaf.\nRoll the zuchinni and add olive oil if necessary."
         }
       },
       "ingredients": [
         {
-          "catalogKey": "white_rice_rice_groats",
-          "quantity": 150.0,
+          "catalogKey": "zucchini",
+          "quantity": 200.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "far_eastern_shrimp_meat",
-          "quantity": 150.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "avocado",
-          "quantity": 60.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "bulb_onion",
-          "quantity": 5000.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "corn",
-          "quantity": 20.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "bell_red",
-          "quantity": 7.5,
+          "catalogKey": "sun_dried_tomatoes",
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
-          "quantity": 5.0,
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "light_mozzarella",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "basil",
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -2467,23 +2633,23 @@
       "translations": {
         "ru": {
           "name": "One pan roasted fish",
-          "steps": "Preheat the oven t0 180-2008C.\nIn a bowladd the olive oil the smashed garlic cloves; the laurel the paprika ~1 tsp; the white wine and mix well.\nSlice the onions; the bell peppers; the peeled potatoesand organize into an ovenproof container.\nAfter add the fish on top; thechopped lemons; add salt and pepper and then the wine mixture over everything.\nBake around 60-70 minutes until cooked."
+          "steps": "Pre-heat the oven t0 180-200C.\nIn a bowl add the olive oil, the smashed garlic cloves, the laurel, the paprika, the white wine and mix well.\nSlice the onions, the bell peppers, the peeled potatoes and organize into an oven-proof container.\nAfter add the fish on top, the chopped lemons, add salt and pepper and then the wine mixture over everything.\nBake around 60-70 minutes until cooked."
         },
         "en": {
           "name": "One pan roasted fish",
-          "steps": "Preheat the oven t0 180-2008C.\nIn a bowladd the olive oil the smashed garlic cloves; the laurel the paprika ~1 tsp; the white wine and mix well.\nSlice the onions; the bell peppers; the peeled potatoesand organize into an ovenproof container.\nAfter add the fish on top; thechopped lemons; add salt and pepper and then the wine mixture over everything.\nBake around 60-70 minutes until cooked."
+          "steps": "Pre-heat the oven t0 180-200C.\nIn a bowl add the olive oil, the smashed garlic cloves, the laurel, the paprika, the white wine and mix well.\nSlice the onions, the bell peppers, the peeled potatoes and organize into an oven-proof container.\nAfter add the fish on top, the chopped lemons, add salt and pepper and then the wine mixture over everything.\nBake around 60-70 minutes until cooked."
         }
       },
       "ingredients": [
         {
-          "catalogKey": "the_white_wine",
-          "quantity": 5.0,
+          "catalogKey": "white_wine",
+          "quantity": 50.0,
           "unit": "gram",
           "tempMissing": true
         },
         {
           "catalogKey": "bream",
-          "quantity": 30.0,
+          "quantity": 300.0,
           "unit": "gram"
         },
         {
@@ -2493,69 +2659,71 @@
         },
         {
           "catalogKey": "redonion",
+          "quantity": 70.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "garlic_clove",
           "quantity": 30.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "arlic_cloves",
-          "quantity": 3.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "bellpepper_yellow",
-          "quantity": 420.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
           "catalogKey": "bell_red",
-          "quantity": 420.0,
+          "quantity": 150.0,
           "unit": "gram"
-        },
-        {
-          "catalogKey": "bell_green",
-          "quantity": 420.0,
-          "unit": "gram",
-          "tempMissing": true
         },
         {
           "catalogKey": "lemon",
-          "quantity": 1000.0,
+          "quantity": 100.0,
           "unit": "gram"
-        },
-        {
-          "catalogKey": "oml_of_white_wine",
-          "quantity": 150.0,
-          "unit": "gram",
-          "tempMissing": true
         },
         {
           "catalogKey": "olive_oil",
           "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "laurel",
+          "quantity": 10.0,
+          "unit": "gram",
+          "tempMissing": true
+        },
+        {
+          "catalogKey": "paprika_perets_sladkiy_molotyy",
+          "quantity": 1.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
           "unit": "gram"
         }
       ],
       "cookTimeMinutes": 90
     },
     {
-      "id": "arise_049_1",
+      "id": "arise_049",
       "servings": 1,
       "imageId": "133",
       "translations": {
         "ru": {
           "name": "Asparagus risotto",
-          "steps": "Start by adding in a pan 1 tsp of olive oil the chopped onion and garloc and letit saute.\nAfter add the risotto rice; let it cook untilit becomes transparent add the wine and let it evaporate completely.\nSeason with salt and pepper, and add half the broth and let the rice absorb completely, stirring during the process: Once absorbed; add the other half of the broth again, stir well until completely absorbed again.\nInafrying pan add the chopped asparagus; the shrimp  1 clove of crushed garlic and let everything saute until golden Remove the rice and serve together with the asparagus and shrimp and finish with the parmesan cheese on top."
+          "steps": "Start by adding in a pan 1 tsp of olive oil the chopped onion and garlic and let it saute.\nAfter add the risotto rice, let it cook until it becomes transparent add the wine and let it evaporate completely.\nSeason with salt and pepper, and add half the broth and let the rice absorb completely, stirring during the process. Once absorbed, add the other half of the broth again, stir well until completely absorbed again.\nIn a frying pan add the chopped asparagus, the shrimp, 1 clove of crushed garlic and let everything saute until golden. Remove the rice and serve together with the asparagus and shrimp and finish with the parmesan cheese on top."
         },
         "en": {
           "name": "Asparagus risotto",
-          "steps": "Start by adding in a pan 1 tsp of olive oil the chopped onion and garloc and letit saute.\nAfter add the risotto rice; let it cook untilit becomes transparent add the wine and let it evaporate completely.\nSeason with salt and pepper, and add half the broth and let the rice absorb completely, stirring during the process: Once absorbed; add the other half of the broth again, stir well until completely absorbed again.\nInafrying pan add the chopped asparagus; the shrimp  1 clove of crushed garlic and let everything saute until golden Remove the rice and serve together with the asparagus and shrimp and finish with the parmesan cheese on top."
+          "steps": "Start by adding in a pan 1 tsp of olive oil the chopped onion and garlic and let it saute.\nAfter add the risotto rice, let it cook until it becomes transparent add the wine and let it evaporate completely.\nSeason with salt and pepper, and add half the broth and let the rice absorb completely, stirring during the process. Once absorbed, add the other half of the broth again, stir well until completely absorbed again.\nIn a frying pan add the chopped asparagus, the shrimp, 1 clove of crushed garlic and let everything saute until golden. Remove the rice and serve together with the asparagus and shrimp and finish with the parmesan cheese on top."
         }
       },
       "ingredients": [
         {
-          "catalogKey": "risotto_zog_parmesan_cheese",
-          "quantity": 150.0,
+          "catalogKey": "rice_risotto",
+          "quantity": 50.0,
           "unit": "gram",
           "tempMissing": true
         },
@@ -2565,13 +2733,18 @@
           "unit": "gram"
         },
         {
+          "catalogKey": "parmesan",
+          "quantity": 20.0,
+          "unit": "gram"
+        },
+        {
           "catalogKey": "olive_oil",
           "quantity": 5.0,
           "unit": "gram"
         },
         {
           "catalogKey": "bulb_onion",
-          "quantity": 100.0,
+          "quantity": 80.0,
           "unit": "gram"
         },
         {
@@ -2580,19 +2753,29 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oml_white_wine",
-          "quantity": 150.0,
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "white_wine",
+          "quantity": 50.0,
           "unit": "gram",
           "tempMissing": true
         },
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
-          "quantity": 1680.0,
+          "catalogKey": "asparagus",
+          "quantity": 200.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "sparzha",
-          "quantity": 200.0,
+          "catalogKey": "chicken_broth",
+          "quantity": 300.0,
           "unit": "gram"
         }
       ],
@@ -2605,17 +2788,17 @@
       "translations": {
         "ru": {
           "name": "Tuna paste wrap",
-          "steps": "In a bowladd the tuna; yogurt tomatoes; onion; pepper; cucumber; avocado and parsley previously chopped Mix welland season with salt; pepper; oregano and olive oil.\nMake envelope-shaped wraps; add the lettuce and finally the tuna paste."
+          "steps": "In a bowl add the tuna, yogurt, tomatoes, onion, pepper, cucumber, avocado and parsley previously chopped. Mix well and season with salt, pepper, oregano and olive oil.\nMake envelope-shaped wraps, add the lettuce and finally the tuna paste."
         },
         "en": {
           "name": "Tuna paste wrap",
-          "steps": "In a bowladd the tuna; yogurt tomatoes; onion; pepper; cucumber; avocado and parsley previously chopped Mix welland season with salt; pepper; oregano and olive oil.\nMake envelope-shaped wraps; add the lettuce and finally the tuna paste."
+          "steps": "In a bowl add the tuna, yogurt, tomatoes, onion, pepper, cucumber, avocado and parsley previously chopped. Mix well and season with salt, pepper, oregano and olive oil.\nMake envelope-shaped wraps, add the lettuce and finally the tuna paste."
         }
       },
       "ingredients": [
         {
           "catalogKey": "tortilla_wraps",
-          "quantity": 100.0,
+          "quantity": 160.0,
           "unit": "gram"
         },
         {
@@ -2634,29 +2817,53 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
-          "quantity": 420.0,
+          "catalogKey": "bulb_onion",
+          "quantity": 70.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cucumber",
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
           "catalogKey": "avocado",
-          "quantity": 75.0,
+          "quantity": 70.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "ofredonion",
-          "quantity": 420.0,
-          "unit": "gram",
-          "tempMissing": true
+          "catalogKey": "redonion",
+          "quantity": 40.0,
+          "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 150.0,
+          "catalogKey": "cherry_tomatoes",
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
-          "quantity": 5.0,
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "oregano",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "parsley",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
           "unit": "gram"
         }
       ],
@@ -2669,17 +2876,17 @@
       "translations": {
         "ru": {
           "name": "Pico de salmon galette",
-          "steps": "Cook the basmati ricein a pan with water and salt.\nChop the onion; the tomatoes; the cucumber; the mango and the cilantro and add everything intoa bowl.\nInafrying pan grill the salmon until browned and season with black pepper and salt.\nFinish by adding into a bowl the basmatirice; the grilled salmon; the pico de gallo, and finally the avocado Finish with lemonjuice and cilantro on top."
+          "steps": "Cook the basmati rice in a pan with water and salt.\nChop the onion, the tomatoes, the cucumber, the mango and the cilantro and add everything into a bowl.\nIn a frying pan grill the salmon until browned and season with black pepper and salt.\nFinish by adding into a bowl the basmati rice, the grilled salmon, the pico de gallo, and finally the avocado. Finish with lemon juice and cilantro on top."
         },
         "en": {
           "name": "Pico de salmon galette",
-          "steps": "Cook the basmati ricein a pan with water and salt.\nChop the onion; the tomatoes; the cucumber; the mango and the cilantro and add everything intoa bowl.\nInafrying pan grill the salmon until browned and season with black pepper and salt.\nFinish by adding into a bowl the basmatirice; the grilled salmon; the pico de gallo, and finally the avocado Finish with lemonjuice and cilantro on top."
+          "steps": "Cook the basmati rice in a pan with water and salt.\nChop the onion, the tomatoes, the cucumber, the mango and the cilantro and add everything into a bowl.\nIn a frying pan grill the salmon until browned and season with black pepper and salt.\nFinish by adding into a bowl the basmati rice, the grilled salmon, the pico de gallo, and finally the avocado. Finish with lemon juice and cilantro on top."
         }
       },
       "ingredients": [
         {
-          "catalogKey": "basmatirice",
-          "quantity": 150.0,
+          "catalogKey": "basmati_rice",
+          "quantity": 60.0,
           "unit": "gram",
           "tempMissing": true
         },
@@ -2689,13 +2896,18 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bulb_onion",
-          "quantity": 7.5,
+          "catalogKey": "redonion",
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
-          "quantity": 7.5,
+          "catalogKey": "cucumber",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidor_tomat",
+          "quantity": 100,
           "unit": "gram"
         },
         {
@@ -2709,10 +2921,29 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "avocado_limejuice",
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cilantro",
+          "quantity": 10.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "avocado",
           "quantity": 60.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "lime_juice",
+          "quantity": 60.0,
+          "unit": "gram"
         }
       ],
       "cookTimeMinutes": 20
@@ -2724,17 +2955,17 @@
       "translations": {
         "ru": {
           "name": "Spring rolls",
-          "steps": "Inanon-stick frying pan put - the oil then the shrimps and let them brown for about 5 minutes on medium heat Add the spices; salt and pepper; stir well for 3 minutes; remove and set aside.\nPrepare the rice sheets: in deep dish, place warm water, soak for about 10 seconds on each side so that the sheet softens; when it is more gelatinous itis ready to vork place them on a base or board and stuff them with the peppers; onion; cilantro, celery; mango; finely sliced and the shrimp and sesame seeds.\nA small bowl add the peanut butter; soy sauce and cilantro and mix very well until obtaining a homogeneous sauce Serve with spring rolls.\nShrimps seasoning: 1 1 tsp of curry; cumin; cinnamon; saffron; garlic powder; pepper, salt and1 tsp of olive oil."
+          "steps": "In a non-stick frying pan put the oil then the shrimps and let them brown for about 5 minutes on medium heat Add the spices, salt and pepper, stir well for 3 minutes, remove and set aside.\nPrepare the rice sheets: in deep dish, place warm water, soak for about 10 seconds on each side so that the sheet softens, when it is more gelatinous it is ready to work place them on a base or board and stuff them with the peppers, onion, cilantro, celery, mango, finely sliced and the shrimp and sesame seeds.\nA small bowl add the peanut butter, soy sauce and cilantro and mix very well until obtaining a homogeneous sauce. Serve with spring rolls."
         },
         "en": {
           "name": "Spring rolls",
-          "steps": "Inanon-stick frying pan put - the oil then the shrimps and let them brown for about 5 minutes on medium heat Add the spices; salt and pepper; stir well for 3 minutes; remove and set aside.\nPrepare the rice sheets: in deep dish, place warm water, soak for about 10 seconds on each side so that the sheet softens; when it is more gelatinous itis ready to vork place them on a base or board and stuff them with the peppers; onion; cilantro, celery; mango; finely sliced and the shrimp and sesame seeds.\nA small bowl add the peanut butter; soy sauce and cilantro and mix very well until obtaining a homogeneous sauce Serve with spring rolls.\nShrimps seasoning: 1 1 tsp of curry; cumin; cinnamon; saffron; garlic powder; pepper, salt and1 tsp of olive oil."
+          "steps": "In a non-stick frying pan put the oil then the shrimps and let them brown for about 5 minutes on medium heat Add the spices, salt and pepper, stir well for 3 minutes, remove and set aside.\nPrepare the rice sheets: in deep dish, place warm water, soak for about 10 seconds on each side so that the sheet softens, when it is more gelatinous it is ready to work place them on a base or board and stuff them with the peppers, onion, cilantro, celery, mango, finely sliced and the shrimp and sesame seeds.\nA small bowl add the peanut butter, soy sauce and cilantro and mix very well until obtaining a homogeneous sauce. Serve with spring rolls."
         }
       },
       "ingredients": [
         {
-          "catalogKey": "white_rice_rice_groats",
-          "quantity": 150.0,
+          "catalogKey": "risovaya_bumaga_aroy_d",
+          "quantity": 50.0,
           "unit": "gram"
         },
         {
@@ -2743,44 +2974,86 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bellpepper",
-          "quantity": 420.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "bulb_onion",
-          "quantity": 100.0,
+          "catalogKey": "bell_red",
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
-          "quantity": 30.0,
+          "catalogKey": "bulb_onion",
+          "quantity": 80.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cucumber",
+          "quantity": 120.0,
           "unit": "gram"
         },
         {
           "catalogKey": "mango",
-          "quantity": 15.0,
+          "quantity": 120.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cilantro",
+          "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "celery",
+          "quantity": 40.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sesame_seeds_and",
+          "quantity": 10.0,
           "unit": "gram"
         },
         {
           "catalogKey": "peanut_butter_liquid",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "water",
           "quantity": 15.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "garlic_clove",
-          "quantity": 5.0,
+          "catalogKey": "soevyy_sous",
+          "quantity": 20.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "curry_spice",
+          "quantity": 3.0,
+          "unit": "gram",
+          "tempMissing": true
+        },
+        {
+          "catalogKey": "cinnamon",
+          "quantity": 1.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "saffron_spice",
+          "quantity": 1.0,
+          "unit": "gram",
+          "tempMissing": true
+        },
+        {
+          "catalogKey": "garlic_powder",
+          "quantity": 3.0,
+          "unit": "gram",
+          "tempMissing": true
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
           "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
-          "quantity": 5.0,
+          "quantity": 10.0,
           "unit": "gram"
         }
       ],
@@ -2793,23 +3066,22 @@
       "translations": {
         "ru": {
           "name": "Creamy shrimp pasta",
-          "steps": "Start by chopping the onion; the garlic and the tomato.\nCook the penne in the pan with water and salt Ina frying panadd the oil1garlic clove and_ saute the shrimps.\nInanother frying pan, add the olive oil the onion; the garlic and the tomatoesand let it saute Finally add the spinach; mix welland then add the pasta and the sauteed shrimps.\nAdd1 cup of the cooking pasta water; involves welland then add the parmesan on top, salt; oregano and black pepper."
+          "steps": "Start by chopping the onion, the garlic and the tomato.\nCook the penne in the pan with water and salt. In a frying pan add the oil, 1 garlic clove and saute the shrimps.\nIn another frying pan, add the olive oil, the onion, the garlic and the tomatoes and let it saute. Finally add the spinach; mix well and then add the pasta and the sauteed shrimps.\nAdd 1 cup of the cooking pasta water; involves well and then add the parmesan on top, salt, oregano and black pepper."
         },
         "en": {
           "name": "Creamy shrimp pasta",
-          "steps": "Start by chopping the onion; the garlic and the tomato.\nCook the penne in the pan with water and salt Ina frying panadd the oil1garlic clove and_ saute the shrimps.\nInanother frying pan, add the olive oil the onion; the garlic and the tomatoesand let it saute Finally add the spinach; mix welland then add the pasta and the sauteed shrimps.\nAdd1 cup of the cooking pasta water; involves welland then add the parmesan on top, salt; oregano and black pepper."
+          "steps": "Start by chopping the onion, the garlic and the tomato.\nCook the penne in the pan with water and salt. In a frying pan add the oil, 1 garlic clove and saute the shrimps.\nIn another frying pan, add the olive oil, the onion, the garlic and the tomatoes and let it saute. Finally add the spinach; mix well and then add the pasta and the sauteed shrimps.\nAdd 1 cup of the cooking pasta water; involves well and then add the parmesan on top, salt, oregano and black pepper."
         }
       },
       "ingredients": [
         {
-          "catalogKey": "arlic_clove_and",
+          "catalogKey": "garlic_clove",
           "quantity": 1.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
           "catalogKey": "penne",
-          "quantity": 150.0,
+          "quantity": 60.0,
           "unit": "gram",
           "tempMissing": true
         },
@@ -2820,28 +3092,37 @@
         },
         {
           "catalogKey": "garlic_clove",
-          "quantity": 30.0,
+          "quantity": 10.0,
           "unit": "gram"
         },
         {
           "catalogKey": "shpinat",
-          "quantity": 240.0,
+          "quantity": 80.0,
           "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
-          "quantity": 5.0,
+          "quantity": 15.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "parmesan_inanother_frying_pan",
+          "catalogKey": "parmesan",
           "quantity": 20.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
-          "catalogKey": "water",
-          "quantity": 240.0,
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "oregano",
+          "quantity": 1.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
           "unit": "gram"
         }
       ],
@@ -2854,25 +3135,23 @@
       "translations": {
         "ru": {
           "name": "Zucchini boats",
-          "steps": "Preheat the oven to 180-2008C.\nCut the zucchini into halves and remove the interior.\nIn a bowladd the tuna; yogurt tomatoes; onion; olives; cucumber and celery previously chopped Mix welland season.\nStuff the inside of the boats with this mixture; put = cheese on topand bake in the oven for about 15 minutes until browned on top.\nRemove from oven and let cool before eating."
+          "steps": "Pre-heat the oven to 180-200C.\nCut the zucchini into halves and remove the interior.\nIn a bowl add the tuna, yogurt, tomatoes, onion, olives, cucumber and celery previously chopped Mix well and season.\nStuff the inside of the boats with this mixture; put = cheese on top and bake in the oven for about 15 minutes until browned on top.\nRemove from oven and let cool before eating."
         },
         "en": {
           "name": "Zucchini boats",
-          "steps": "Preheat the oven to 180-2008C.\nCut the zucchini into halves and remove the interior.\nIn a bowladd the tuna; yogurt tomatoes; onion; olives; cucumber and celery previously chopped Mix welland season.\nStuff the inside of the boats with this mixture; put = cheese on topand bake in the oven for about 15 minutes until browned on top.\nRemove from oven and let cool before eating."
+          "steps": "Pre-heat the oven to 180-200C.\nCut the zucchini into halves and remove the interior.\nIn a bowl add the tuna, yogurt, tomatoes, onion, olives, cucumber and celery previously chopped Mix well and season.\nStuff the inside of the boats with this mixture; put = cheese on top and bake in the oven for about 15 minutes until browned on top.\nRemove from oven and let cool before eating."
         }
       },
       "ingredients": [
         {
           "catalogKey": "zucchini",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
+          "quantity": 200.0,
+          "unit": "gram"
         },
         {
-          "catalogKey": "light_grated_cheese",
+          "catalogKey": "parmesan",
           "quantity": 20.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
           "catalogKey": "tuna",
@@ -2885,28 +3164,48 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
-          "quantity": 7.5,
+          "catalogKey": "bulb_onion",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "redonion",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cucumber",
+          "quantity": 30,
           "unit": "gram"
         },
         {
           "catalogKey": "olives",
-          "quantity": 150.0,
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bulb_onion",
-          "quantity": 7.5,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
-          "quantity": 150.0,
+          "catalogKey": "cherry_tomatoes",
+          "quantity": 40.0,
           "unit": "gram"
         },
         {
           "catalogKey": "olive_oil",
           "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "oregano",
+          "quantity": 3.0,
           "unit": "gram"
         }
       ],
@@ -2919,11 +3218,11 @@
       "translations": {
         "ru": {
           "name": "One pan roasted salmon",
-          "steps": "Preheat the oven to 180-2008C.\nPlacea sheet of parchment paper on a baking tray; place the salmon; the sliced bellpeppers; the cherry tomato, the red onion; the garlic cloves; the potatoes cut into quarters; season with oregano, salt black pepper and finish with the olive oil.\nBake in the oven for about 30 minutesuntil everything is cooked and roasted.\nAfter cooking finish by adding limejuice and chopped coriander over the salmon."
+          "steps": "Pre-heat the oven to 180-200C.\nPlacea sheet of parchment paper on a baking tray; place the salmon; the sliced bellpeppers; the cherry tomato, the red onion; the garlic cloves; the potatoes cut into quarters; season with oregano, salt black pepper and finish with the olive oil.\nBake in the oven for about 30 minutesuntil everything is cooked and roasted.\nAfter cooking finish by adding limejuice and chopped coriander over the salmon."
         },
         "en": {
           "name": "One pan roasted salmon",
-          "steps": "Preheat the oven to 180-2008C.\nPlacea sheet of parchment paper on a baking tray; place the salmon; the sliced bellpeppers; the cherry tomato, the red onion; the garlic cloves; the potatoes cut into quarters; season with oregano, salt black pepper and finish with the olive oil.\nBake in the oven for about 30 minutesuntil everything is cooked and roasted.\nAfter cooking finish by adding limejuice and chopped coriander over the salmon."
+          "steps": "Pre-heat the oven to 180-200C.\nPlacea sheet of parchment paper on a baking tray; place the salmon; the sliced bellpeppers; the cherry tomato, the red onion; the garlic cloves; the potatoes cut into quarters; season with oregano, salt black pepper and finish with the olive oil.\nBake in the oven for about 30 minutesuntil everything is cooked and roasted.\nAfter cooking finish by adding limejuice and chopped coriander over the salmon."
         }
       },
       "ingredients": [
@@ -2960,7 +3259,7 @@
           "tempMissing": true
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 1000.0,
           "unit": "gram"
         },
@@ -3004,7 +3303,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 300.0,
           "unit": "gram"
         },
@@ -3069,7 +3368,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -3115,11 +3414,11 @@
       "translations": {
         "ru": {
           "name": "Mashed potatoes meat pie",
-          "steps": "Start by cooking the poatoes peeledin a pan with water and salt until cooked and pre-heat your ovenat 2008C.\nChop the onion; the garlic; the bellpeppersand the tomato Ina frying pan add the oil and saute the all the vegetables.\nAdd the white wine; the tomato sauce and season with salt; black pepper; cilantro, oregano, paprika; cumin; garlic powder to your taste Mix everything welland let the wine evaporate; only then willyouadd the lean ground beef; the tomato sauce; mixit again and letit cook for about 10 minutes."
+          "steps": "Start by cooking the poatoes peeledin a pan with water and salt until cooked and pre-heat your ovenat 200C.\nChop the onion; the garlic; the bellpeppersand the tomato Ina frying pan add the oil and saute the all the vegetables.\nAdd the white wine; the tomato sauce and season with salt; black pepper; cilantro, oregano, paprika; cumin; garlic powder to your taste Mix everything welland let the wine evaporate; only then willyouadd the lean ground beef; the tomato sauce; mixit again and letit cook for about 10 minutes."
         },
         "en": {
           "name": "Mashed potatoes meat pie",
-          "steps": "Start by cooking the poatoes peeledin a pan with water and salt until cooked and pre-heat your ovenat 2008C.\nChop the onion; the garlic; the bellpeppersand the tomato Ina frying pan add the oil and saute the all the vegetables.\nAdd the white wine; the tomato sauce and season with salt; black pepper; cilantro, oregano, paprika; cumin; garlic powder to your taste Mix everything welland let the wine evaporate; only then willyouadd the lean ground beef; the tomato sauce; mixit again and letit cook for about 10 minutes."
+          "steps": "Start by cooking the poatoes peeledin a pan with water and salt until cooked and pre-heat your ovenat 200C.\nChop the onion; the garlic; the bellpeppersand the tomato Ina frying pan add the oil and saute the all the vegetables.\nAdd the white wine; the tomato sauce and season with salt; black pepper; cilantro, oregano, paprika; cumin; garlic powder to your taste Mix everything welland let the wine evaporate; only then willyouadd the lean ground beef; the tomato sauce; mixit again and letit cook for about 10 minutes."
         }
       },
       "ingredients": [
@@ -3412,7 +3711,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -3431,11 +3730,11 @@
       "translations": {
         "ru": {
           "name": "Wedges nachos",
-          "steps": "Add the potatoes sliced into a baking tray with parchment paper, salt and black pepper and put in the ovenat2008C for about 20 minutes until they are crispy.\nChop the onion; the garlic; the bell peppersand the tomato Ina frying panadd the oiland saute theall the vegetables.\nAdd the white wine; the tomato sauce and season with salt black pepper; cilantro, oregano; paprika; cumin; garlic powder to your taste Mix everything well and let the wine evaporate; only then will youadd the lean ground beef; the tomato sauce; mixit again and letit cook for about 10 minutes.\nInaplate add the potatoes; the meat mixture; the com; the beans; the avocado, lime; cilantro salt; pepper and finally the cheese."
+          "steps": "Add the potatoes sliced into a baking tray with parchment paper, salt and black pepper and put in the ovenat200C for about 20 minutes until they are crispy.\nChop the onion; the garlic; the bell peppersand the tomato Ina frying panadd the oiland saute theall the vegetables.\nAdd the white wine; the tomato sauce and season with salt black pepper; cilantro, oregano; paprika; cumin; garlic powder to your taste Mix everything well and let the wine evaporate; only then will youadd the lean ground beef; the tomato sauce; mixit again and letit cook for about 10 minutes.\nInaplate add the potatoes; the meat mixture; the com; the beans; the avocado, lime; cilantro salt; pepper and finally the cheese."
         },
         "en": {
           "name": "Wedges nachos",
-          "steps": "Add the potatoes sliced into a baking tray with parchment paper, salt and black pepper and put in the ovenat2008C for about 20 minutes until they are crispy.\nChop the onion; the garlic; the bell peppersand the tomato Ina frying panadd the oiland saute theall the vegetables.\nAdd the white wine; the tomato sauce and season with salt black pepper; cilantro, oregano; paprika; cumin; garlic powder to your taste Mix everything well and let the wine evaporate; only then will youadd the lean ground beef; the tomato sauce; mixit again and letit cook for about 10 minutes.\nInaplate add the potatoes; the meat mixture; the com; the beans; the avocado, lime; cilantro salt; pepper and finally the cheese."
+          "steps": "Add the potatoes sliced into a baking tray with parchment paper, salt and black pepper and put in the ovenat200C for about 20 minutes until they are crispy.\nChop the onion; the garlic; the bell peppersand the tomato Ina frying panadd the oiland saute theall the vegetables.\nAdd the white wine; the tomato sauce and season with salt black pepper; cilantro, oregano; paprika; cumin; garlic powder to your taste Mix everything well and let the wine evaporate; only then will youadd the lean ground beef; the tomato sauce; mixit again and letit cook for about 10 minutes.\nInaplate add the potatoes; the meat mixture; the com; the beans; the avocado, lime; cilantro salt; pepper and finally the cheese."
         }
       },
       "ingredients": [
@@ -3455,7 +3754,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -3535,7 +3834,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -3646,11 +3945,11 @@
       "translations": {
         "ru": {
           "name": "Stuffed cheesy potato",
-          "steps": "Preheat the oven to 180-2008C.\nInapan; cook the potatoes with the skin on, as soonas they are cooked, remove the inside and reserve.\n150g boiled potato (large) zog light grated cheese 150g minced beef teaspoons of olive oil Yz medium onion; minced 1clove of garlic; minced 2 tablespoons of tomato pulp oregano, salt; black pepper to taste 1pepper chopped 5oml white wine optional 5 cherry tomatoes.\nInafrying pan or skillet place the olive oil onion; garlic; oregano and saute Thenadd the meat; chopped pepper; tomatoesand mix very well.\nThen the tomato pulp, white wine; salt and pepper to taste: Allow to cooluntil cooked Add water if necessary.\nStuff the potatoes with the meat mixture; place the grated cheese and oregano on top  put itin the oven for 15-2omin."
+          "steps": "Pre-heat the oven to 180-200C.\nInapan; cook the potatoes with the skin on, as soonas they are cooked, remove the inside and reserve.\n150g boiled potato (large) zog light grated cheese 150g minced beef teaspoons of olive oil Yz medium onion; minced 1clove of garlic; minced 2 tablespoons of tomato pulp oregano, salt; black pepper to taste 1pepper chopped 5oml white wine optional 5 cherry tomatoes.\nInafrying pan or skillet place the olive oil onion; garlic; oregano and saute Thenadd the meat; chopped pepper; tomatoesand mix very well.\nThen the tomato pulp, white wine; salt and pepper to taste: Allow to cooluntil cooked Add water if necessary.\nStuff the potatoes with the meat mixture; place the grated cheese and oregano on top  put itin the oven for 15-2omin."
         },
         "en": {
           "name": "Stuffed cheesy potato",
-          "steps": "Preheat the oven to 180-2008C.\nInapan; cook the potatoes with the skin on, as soonas they are cooked, remove the inside and reserve.\n150g boiled potato (large) zog light grated cheese 150g minced beef teaspoons of olive oil Yz medium onion; minced 1clove of garlic; minced 2 tablespoons of tomato pulp oregano, salt; black pepper to taste 1pepper chopped 5oml white wine optional 5 cherry tomatoes.\nInafrying pan or skillet place the olive oil onion; garlic; oregano and saute Thenadd the meat; chopped pepper; tomatoesand mix very well.\nThen the tomato pulp, white wine; salt and pepper to taste: Allow to cooluntil cooked Add water if necessary.\nStuff the potatoes with the meat mixture; place the grated cheese and oregano on top  put itin the oven for 15-2omin."
+          "steps": "Pre-heat the oven to 180-200C.\nInapan; cook the potatoes with the skin on, as soonas they are cooked, remove the inside and reserve.\n150g boiled potato (large) zog light grated cheese 150g minced beef teaspoons of olive oil Yz medium onion; minced 1clove of garlic; minced 2 tablespoons of tomato pulp oregano, salt; black pepper to taste 1pepper chopped 5oml white wine optional 5 cherry tomatoes.\nInafrying pan or skillet place the olive oil onion; garlic; oregano and saute Thenadd the meat; chopped pepper; tomatoesand mix very well.\nThen the tomato pulp, white wine; salt and pepper to taste: Allow to cooluntil cooked Add water if necessary.\nStuff the potatoes with the meat mixture; place the grated cheese and oregano on top  put itin the oven for 15-2omin."
         }
       },
       "ingredients": [
@@ -3670,7 +3969,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 180.0,
           "unit": "gram"
         },
@@ -3690,11 +3989,11 @@
       "translations": {
         "ru": {
           "name": "Roasted creamy chicken penne",
-          "steps": "Preheat the oven to 180-2008C.\nCut the onion; pepper; tomatoesand pumpkin and put itin the oven for about 20 minutes with salt until cooked _ roasted.\nCook pennein the pan with water and salt inafrying pan add the oiland grilled the chicken breasts with spices to taste Remove and shred everything.\nRemove the vegetables from the oven and put everything in the blender (with a little water if necessary) untilyou get acream."
+          "steps": "Pre-heat the oven to 180-200C.\nCut the onion; pepper; tomatoesand pumpkin and put itin the oven for about 20 minutes with salt until cooked _ roasted.\nCook pennein the pan with water and salt inafrying pan add the oiland grilled the chicken breasts with spices to taste Remove and shred everything.\nRemove the vegetables from the oven and put everything in the blender (with a little water if necessary) untilyou get acream."
         },
         "en": {
           "name": "Roasted creamy chicken penne",
-          "steps": "Preheat the oven to 180-2008C.\nCut the onion; pepper; tomatoesand pumpkin and put itin the oven for about 20 minutes with salt until cooked _ roasted.\nCook pennein the pan with water and salt inafrying pan add the oiland grilled the chicken breasts with spices to taste Remove and shred everything.\nRemove the vegetables from the oven and put everything in the blender (with a little water if necessary) untilyou get acream."
+          "steps": "Pre-heat the oven to 180-200C.\nCut the onion; pepper; tomatoesand pumpkin and put itin the oven for about 20 minutes with salt until cooked _ roasted.\nCook pennein the pan with water and salt inafrying pan add the oiland grilled the chicken breasts with spices to taste Remove and shred everything.\nRemove the vegetables from the oven and put everything in the blender (with a little water if necessary) untilyou get acream."
         }
       },
       "ingredients": [
@@ -3726,7 +4025,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 300.0,
           "unit": "gram"
         },
@@ -3927,7 +4226,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -3957,11 +4256,11 @@
       "translations": {
         "ru": {
           "name": "Eggplant pizza",
-          "steps": "Preheat the oven to 180-2008C.\nSlice the eggplant.\nPlacea sheet of parchment paper ona baking tray; place the eggplant slices; spread the tomato sauce over each one add the sliced tomato, sliced mushrooms and finally the chicken breast sliced and sliced mozzarella; season.\nBake in the oven for about 15-20 minutes until cooked through and the cheese is melted."
+          "steps": "Pre-heat the oven to 180-200C.\nSlice the eggplant.\nPlacea sheet of parchment paper ona baking tray; place the eggplant slices; spread the tomato sauce over each one add the sliced tomato, sliced mushrooms and finally the chicken breast sliced and sliced mozzarella; season.\nBake in the oven for about 15-20 minutes until cooked through and the cheese is melted."
         },
         "en": {
           "name": "Eggplant pizza",
-          "steps": "Preheat the oven to 180-2008C.\nSlice the eggplant.\nPlacea sheet of parchment paper ona baking tray; place the eggplant slices; spread the tomato sauce over each one add the sliced tomato, sliced mushrooms and finally the chicken breast sliced and sliced mozzarella; season.\nBake in the oven for about 15-20 minutes until cooked through and the cheese is melted."
+          "steps": "Pre-heat the oven to 180-200C.\nSlice the eggplant.\nPlacea sheet of parchment paper ona baking tray; place the eggplant slices; spread the tomato sauce over each one add the sliced tomato, sliced mushrooms and finally the chicken breast sliced and sliced mozzarella; season.\nBake in the oven for about 15-20 minutes until cooked through and the cheese is melted."
         }
       },
       "ingredients": [
@@ -3973,8 +4272,7 @@
         {
           "catalogKey": "light_mozzarella",
           "quantity": 60.0,
-          "unit": "gram",
-          "tempMissing": true
+          "unit": "gram"
         },
         {
           "catalogKey": "tsyplyata_produkt_udalen",
@@ -4057,11 +4355,11 @@
       "translations": {
         "ru": {
           "name": "Pizza wrap",
-          "steps": "Preheat the oven to 180-2008C.\nPlacea sheet of parchment paper on a baking tray; place the tortilla wrap; spread the tomato sauce over; add the sliced tomato, the chicken breast grilled  and sliced mozzarella , season with oregano, salt; black pepper and basil.\n1 tortilla wrap 200g of tomato sauce 6og of light mozzarella 150g chicken breast grilled 1 tomato sliced basilqb oregano, salt; black pepper to taste.\nBake in the oven for about 15-20 minutes until cooked through and the cheeseis melted."
+          "steps": "Pre-heat the oven to 180-200C.\nPlacea sheet of parchment paper on a baking tray; place the tortilla wrap; spread the tomato sauce over; add the sliced tomato, the chicken breast grilled  and sliced mozzarella , season with oregano, salt; black pepper and basil.\n1 tortilla wrap 200g of tomato sauce 6og of light mozzarella 150g chicken breast grilled 1 tomato sliced basilqb oregano, salt; black pepper to taste.\nBake in the oven for about 15-20 minutes until cooked through and the cheeseis melted."
         },
         "en": {
           "name": "Pizza wrap",
-          "steps": "Preheat the oven to 180-2008C.\nPlacea sheet of parchment paper on a baking tray; place the tortilla wrap; spread the tomato sauce over; add the sliced tomato, the chicken breast grilled  and sliced mozzarella , season with oregano, salt; black pepper and basil.\n1 tortilla wrap 200g of tomato sauce 6og of light mozzarella 150g chicken breast grilled 1 tomato sliced basilqb oregano, salt; black pepper to taste.\nBake in the oven for about 15-20 minutes until cooked through and the cheeseis melted."
+          "steps": "Pre-heat the oven to 180-200C.\nPlacea sheet of parchment paper on a baking tray; place the tortilla wrap; spread the tomato sauce over; add the sliced tomato, the chicken breast grilled  and sliced mozzarella , season with oregano, salt; black pepper and basil.\n1 tortilla wrap 200g of tomato sauce 6og of light mozzarella 150g chicken breast grilled 1 tomato sliced basilqb oregano, salt; black pepper to taste.\nBake in the oven for about 15-20 minutes until cooked through and the cheeseis melted."
         }
       },
       "ingredients": [
@@ -4088,7 +4386,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat_produkt_udalen",
+          "catalogKey": "pomidor_tomat",
           "quantity": 100.0,
           "unit": "gram"
         }
@@ -4146,11 +4444,11 @@
       "translations": {
         "ru": {
           "name": "Mini apple pie",
-          "steps": "Pre-heatyour oven at 2008C.\nCut squares on the phyllo sheet and place on a baking sheet lined with parchment paper.\nFinely chop the apple and distribute it over each square of dough; add the syrup on top; the cinnamon and finally brush with a beaten egg; bake for about 25 minutes until itis crispy.\nRemove; let it cooL put the sweetener on top and finally add theyogurt on top."
+          "steps": "Pre-heatyour oven at 200C.\nCut squares on the phyllo sheet and place on a baking sheet lined with parchment paper.\nFinely chop the apple and distribute it over each square of dough; add the syrup on top; the cinnamon and finally brush with a beaten egg; bake for about 25 minutes until itis crispy.\nRemove; let it cooL put the sweetener on top and finally add theyogurt on top."
         },
         "en": {
           "name": "Mini apple pie",
-          "steps": "Pre-heatyour oven at 2008C.\nCut squares on the phyllo sheet and place on a baking sheet lined with parchment paper.\nFinely chop the apple and distribute it over each square of dough; add the syrup on top; the cinnamon and finally brush with a beaten egg; bake for about 25 minutes until itis crispy.\nRemove; let it cooL put the sweetener on top and finally add theyogurt on top."
+          "steps": "Pre-heatyour oven at 200C.\nCut squares on the phyllo sheet and place on a baking sheet lined with parchment paper.\nFinely chop the apple and distribute it over each square of dough; add the syrup on top; the cinnamon and finally brush with a beaten egg; bake for about 25 minutes until itis crispy.\nRemove; let it cooL put the sweetener on top and finally add theyogurt on top."
         }
       },
       "ingredients": [
@@ -4307,11 +4605,11 @@
       "translations": {
         "ru": {
           "name": "Cranberry white chocolate cake",
-          "steps": "Preheat the oven at 200*C.\nA blender add the banana, the oats; the protein powder; the milk; the egg; the cinnamon; the baking powder; the vinegar and the sugar syrup.\nBlend everything until everything is smooth and reserve.\nIn a previously greased or non-stick cake pan add the mixture and then the cranberries and the white chocolate.\nPut in the oven for arounf 30-40 minutes;  watching carefully during this time Remove and let cool Add the yogurt o top, the raspberries ad some remaining chocolate to decorate."
+          "steps": "Pre-heat the oven at 200*C.\nA blender add the banana, the oats; the protein powder; the milk; the egg; the cinnamon; the baking powder; the vinegar and the sugar syrup.\nBlend everything until everything is smooth and reserve.\nIn a previously greased or non-stick cake pan add the mixture and then the cranberries and the white chocolate.\nPut in the oven for arounf 30-40 minutes;  watching carefully during this time Remove and let cool Add the yogurt o top, the raspberries ad some remaining chocolate to decorate."
         },
         "en": {
           "name": "Cranberry white chocolate cake",
-          "steps": "Preheat the oven at 200*C.\nA blender add the banana, the oats; the protein powder; the milk; the egg; the cinnamon; the baking powder; the vinegar and the sugar syrup.\nBlend everything until everything is smooth and reserve.\nIn a previously greased or non-stick cake pan add the mixture and then the cranberries and the white chocolate.\nPut in the oven for arounf 30-40 minutes;  watching carefully during this time Remove and let cool Add the yogurt o top, the raspberries ad some remaining chocolate to decorate."
+          "steps": "Pre-heat the oven at 200*C.\nA blender add the banana, the oats; the protein powder; the milk; the egg; the cinnamon; the baking powder; the vinegar and the sugar syrup.\nBlend everything until everything is smooth and reserve.\nIn a previously greased or non-stick cake pan add the mixture and then the cranberries and the white chocolate.\nPut in the oven for arounf 30-40 minutes;  watching carefully during this time Remove and let cool Add the yogurt o top, the raspberries ad some remaining chocolate to decorate."
         }
       },
       "ingredients": [
@@ -4719,11 +5017,11 @@
       "translations": {
         "ru": {
           "name": "Fudge brownie cookies",
-          "steps": "Pre heat the oven at 2008C.\nIn a blender add the peanut butter; the chickpeas; the syrup, milk cocoa; protein powder and blend everything.\nOn baking tray; place a sheet of parchment paper; divide into 10 balls; add the chocolate chips and bake for 10-12 minutes; remove, let cool and serve with Greek yogurt."
+          "steps": "Pre heat the oven at 200C.\nIn a blender add the peanut butter; the chickpeas; the syrup, milk cocoa; protein powder and blend everything.\nOn baking tray; place a sheet of parchment paper; divide into 10 balls; add the chocolate chips and bake for 10-12 minutes; remove, let cool and serve with Greek yogurt."
         },
         "en": {
           "name": "Fudge brownie cookies",
-          "steps": "Pre heat the oven at 2008C.\nIn a blender add the peanut butter; the chickpeas; the syrup, milk cocoa; protein powder and blend everything.\nOn baking tray; place a sheet of parchment paper; divide into 10 balls; add the chocolate chips and bake for 10-12 minutes; remove, let cool and serve with Greek yogurt."
+          "steps": "Pre heat the oven at 200C.\nIn a blender add the peanut butter; the chickpeas; the syrup, milk cocoa; protein powder and blend everything.\nOn baking tray; place a sheet of parchment paper; divide into 10 balls; add the chocolate chips and bake for 10-12 minutes; remove, let cool and serve with Greek yogurt."
         }
       },
       "ingredients": [
@@ -5079,11 +5377,11 @@
       "translations": {
         "ru": {
           "name": "Chocolate chip banana bread",
-          "steps": "Preheat the oven at 200*C.\nIn a bowl add your mashed bananas; milk; vinegar; and vanilla extract and mix until combined Next, add the dry ingredients and mix   until smooth; fold   through the chocolate chips.\nTransfer the mixture into the lined pan and bake for 45- 50 minutes; remove the bread from the oven and let it cool completely, before removing from the pan and slicing."
+          "steps": "Pre-heat the oven at 200*C.\nIn a bowl add your mashed bananas; milk; vinegar; and vanilla extract and mix until combined Next, add the dry ingredients and mix   until smooth; fold   through the chocolate chips.\nTransfer the mixture into the lined pan and bake for 45- 50 minutes; remove the bread from the oven and let it cool completely, before removing from the pan and slicing."
         },
         "en": {
           "name": "Chocolate chip banana bread",
-          "steps": "Preheat the oven at 200*C.\nIn a bowl add your mashed bananas; milk; vinegar; and vanilla extract and mix until combined Next, add the dry ingredients and mix   until smooth; fold   through the chocolate chips.\nTransfer the mixture into the lined pan and bake for 45- 50 minutes; remove the bread from the oven and let it cool completely, before removing from the pan and slicing."
+          "steps": "Pre-heat the oven at 200*C.\nIn a bowl add your mashed bananas; milk; vinegar; and vanilla extract and mix until combined Next, add the dry ingredients and mix   until smooth; fold   through the chocolate chips.\nTransfer the mixture into the lined pan and bake for 45- 50 minutes; remove the bread from the oven and let it cool completely, before removing from the pan and slicing."
         }
       },
       "ingredients": [
@@ -5260,11 +5558,11 @@
       "translations": {
         "ru": {
           "name": "Custard cream tarts",
-          "steps": "Pre-heatyour oven at 2008C.\nIm bowl add the eggs; the protein pudding; the sweetener; the corn scratch; the cinnamon and the lemon zest mix welluntil smooth.\nPlace on a baking tray lined with parchment paper and bake for 30 minutes Letitcoolbefore eating."
+          "steps": "Pre-heatyour oven at 200C.\nIm bowl add the eggs; the protein pudding; the sweetener; the corn scratch; the cinnamon and the lemon zest mix welluntil smooth.\nPlace on a baking tray lined with parchment paper and bake for 30 minutes Letitcoolbefore eating."
         },
         "en": {
           "name": "Custard cream tarts",
-          "steps": "Pre-heatyour oven at 2008C.\nIm bowl add the eggs; the protein pudding; the sweetener; the corn scratch; the cinnamon and the lemon zest mix welluntil smooth.\nPlace on a baking tray lined with parchment paper and bake for 30 minutes Letitcoolbefore eating."
+          "steps": "Pre-heatyour oven at 200C.\nIm bowl add the eggs; the protein pudding; the sweetener; the corn scratch; the cinnamon and the lemon zest mix welluntil smooth.\nPlace on a baking tray lined with parchment paper and bake for 30 minutes Letitcoolbefore eating."
         }
       },
       "ingredients": [
@@ -5297,367 +5595,6 @@
         }
       ],
       "cookTimeMinutes": 40
-    },
-    {
-      "id": "arise_094",
-      "servings": 1,
-      "imageId": "225",
-      "translations": {
-        "ru": {
-          "name": "Orange and chocolate cake",
-          "steps": "In blender add the oats, eggs and egg whites; the peeled apple; the orange juice and zest; the sweetener and baking powder.\nIn a non-stick skillet; place a drop of extra virgin oil and use a napkin to spread it out well Place the cake preparation; addlet it cook for about 20 minutes covered.\nInacup add the protein powder and the cocoa; and with afew 5 ml of water mix well until obtain a cream.\nRemove the cake; put the chocolate mixture on top, the orange and the dark chocolate.\n@rise cookbook."
-        },
-        "en": {
-          "name": "Orange and chocolate cake",
-          "steps": "In blender add the oats, eggs and egg whites; the peeled apple; the orange juice and zest; the sweetener and baking powder.\nIn a non-stick skillet; place a drop of extra virgin oil and use a napkin to spread it out well Place the cake preparation; addlet it cook for about 20 minutes covered.\nInacup add the protein powder and the cocoa; and with afew 5 ml of water mix well until obtain a cream.\nRemove the cake; put the chocolate mixture on top, the orange and the dark chocolate.\n@rise cookbook."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "oatmeal",
-          "quantity": 30.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "yaytso_kurinoe",
-          "quantity": 100.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "chicken_egg_white",
-          "quantity": 100.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "peeledapple",
-          "quantity": 15.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "cinnamon",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "sweetener",
-          "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "orange",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cocoa_powder",
-          "quantity": 15.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shokolad_gorkiy",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "water",
-          "quantity": 5.0,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 20
-    },
-    {
-      "id": "arise_095",
-      "servings": 1,
-      "imageId": "227",
-      "translations": {
-        "ru": {
-          "name": "Yogurt bars",
-          "steps": "Blender add the oats; eggs and egg whites; the peeledapple; the cinnamon; the lemonjuice; and zest the sweetener and baking powder."
-        },
-        "en": {
-          "name": "Yogurt bars",
-          "steps": "Blender add the oats; eggs and egg whites; the peeledapple; the cinnamon; the lemonjuice; and zest the sweetener and baking powder."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "use_napkin_to",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "yaytso_kurinoe",
-          "quantity": 100.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "oomlof_whites_preparation_add_letit",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "yabloko",
-          "quantity": 75.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cinnamon_a_bowl",
-          "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "sweetener_well",
-          "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shokolad_gorkiy",
-          "quantity": 155.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "protein_lemonjuice",
-          "quantity": 10.0,
-          "unit": "gram",
-          "tempMissing": true
-        }
-      ],
-      "cookTimeMinutes": 15
-    },
-    {
-      "id": "arise_097",
-      "servings": 1,
-      "imageId": "231",
-      "translations": {
-        "ru": {
-          "name": "Carrot pancakes",
-          "steps": "Blender add the oats; eggs and egg whites; the grated , carrot the cinnamon; the lemonjuice; and zest the sweetener and baking powder.\nIn a non-stick skillet; place a drop of extra virgin oil and use napkin to spread it out well Place the pancake preparation add let it cook for about 2 minute each side.\nIn a bowl add the protein powder and some 5 ml of water and mix very well until obtain a cream.\nRemove the pancakes; add the protein cream on top and the chocolate."
-        },
-        "en": {
-          "name": "Carrot pancakes",
-          "steps": "Blender add the oats; eggs and egg whites; the grated , carrot the cinnamon; the lemonjuice; and zest the sweetener and baking powder.\nIn a non-stick skillet; place a drop of extra virgin oil and use napkin to spread it out well Place the pancake preparation add let it cook for about 2 minute each side.\nIn a bowl add the protein powder and some 5 ml of water and mix very well until obtain a cream.\nRemove the pancakes; add the protein cream on top and the chocolate."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "oatmeal",
-          "quantity": 30.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "yaytso_kurinoe",
-          "quantity": 100.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "chicken_egg_white",
-          "quantity": 100.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "carrots_product_removed",
-          "quantity": 0.5,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cinnamon",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "sweetener",
-          "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "baking_powder",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "protein_powder",
-          "quantity": 15.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shokolad_gorkiy",
-          "quantity": 15.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "water",
-          "quantity": 5.0,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 15
-    },
-    {
-      "id": "arise_098",
-      "servings": 1,
-      "imageId": "233",
-      "translations": {
-        "ru": {
-          "name": "Chocolate rice crispies",
-          "steps": "In a bowl add the protein powder and the cocoa, add some 5 ml of water and mix well until obtain a smooth cream.\nSmash the rice cakes and transfer to the previous bowl mixing everything well.\nAdd the mixture t0 a silicone container add spread the peanut butter on top and take it to the freezer for 1-2h untilitis more solidified and fudgy.\nRemove it from the freezer; melt the dark chocolate, add salt on top and put it in the freezer for 5 minutes to cool down."
-        },
-        "en": {
-          "name": "Chocolate rice crispies",
-          "steps": "In a bowl add the protein powder and the cocoa, add some 5 ml of water and mix well until obtain a smooth cream.\nSmash the rice cakes and transfer to the previous bowl mixing everything well.\nAdd the mixture t0 a silicone container add spread the peanut butter on top and take it to the freezer for 1-2h untilitis more solidified and fudgy.\nRemove it from the freezer; melt the dark chocolate, add salt on top and put it in the freezer for 5 minutes to cool down."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "protein_powder",
-          "quantity": 30.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cocoa_powder",
-          "quantity": 30.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "white_rice_rice_groats",
-          "quantity": 120.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shokolad_gorkiy",
-          "quantity": 20.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "peanut_butter_liquid",
-          "quantity": 10.0,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 20
-    },
-    {
-      "id": "arise_099",
-      "servings": 1,
-      "imageId": "235",
-      "translations": {
-        "ru": {
-          "name": "Mini pumpkin pie",
-          "steps": "Pre-heat your oven at 2008C.\nIn cupcake molds add the phyllo sheet Ina bowladd all the wet ingredients; mix well and then the dry ones; stirring constantly to avoid creating lumps.\nPut the dough in the molds and bake for about 40 minutes until they are fully cooked Finish by adding powdered sweetener on top."
-        },
-        "en": {
-          "name": "Mini pumpkin pie",
-          "steps": "Pre-heat your oven at 2008C.\nIn cupcake molds add the phyllo sheet Ina bowladd all the wet ingredients; mix well and then the dry ones; stirring constantly to avoid creating lumps.\nPut the dough in the molds and bake for about 40 minutes until they are fully cooked Finish by adding powdered sweetener on top."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "eggand",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "chicken_egg_white",
-          "quantity": 30.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "phyllo_sheets",
-          "quantity": 60.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "tykva",
-          "quantity": 240.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "vanilla_protein_pudding",
-          "quantity": 150.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "cornstarch",
-          "quantity": 20.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cinnamon",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "vanilla_extract",
-          "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "sweetener_put_the_dough_in_the_molds",
-          "quantity": 5.0,
-          "unit": "gram",
-          "tempMissing": true
-        }
-      ],
-      "cookTimeMinutes": 50
-    },
-    {
-      "id": "arise_100",
-      "servings": 1,
-      "imageId": "237",
-      "translations": {
-        "ru": {
-          "name": "Oreo mousse",
-          "steps": "In a blender add the frozen banana; the protein powder; the cocoa powder; the milk the Oreo cookie,  blend everything for 1 minute until obtain a cream.\nFrozen banana 25g of chocolate protein powder 10g of 100% cocoa powder 1oreo cookie 1oomlof milk.\nIn a container add one layer of the high protein plain yogurt then the Oreo cream and finally smashed cookie on top.\nToppings: 1 Oreo cookie 100g ofhigh protein plain yogurt.\n@rise cookbook."
-        },
-        "en": {
-          "name": "Oreo mousse",
-          "steps": "In a blender add the frozen banana; the protein powder; the cocoa powder; the milk the Oreo cookie,  blend everything for 1 minute until obtain a cream.\nFrozen banana 25g of chocolate protein powder 10g of 100% cocoa powder 1oreo cookie 1oomlof milk.\nIn a container add one layer of the high protein plain yogurt then the Oreo cream and finally smashed cookie on top.\nToppings: 1 Oreo cookie 100g ofhigh protein plain yogurt.\n@rise cookbook."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "shokolad_gorkiy",
-          "quantity": 25.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cocoa_powder",
-          "quantity": 10.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "oreo_cookie",
-          "quantity": 30.0,
-          "unit": "gram",
-          "tempMissing": true
-        },
-        {
-          "catalogKey": "milk_3_5_fat_sterilized",
-          "quantity": 30.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
-          "quantity": 100.0,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 10
     }
   ]
 }

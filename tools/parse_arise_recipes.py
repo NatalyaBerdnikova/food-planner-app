@@ -50,9 +50,9 @@ ALIASES: dict[str, str] = {
     "ofjamon": "okorok_vareno_kopchyonyy_produkt_udalen",
     "ham": "okorok_vareno_kopchyonyy_produkt_udalen",
     # produce
-    "tomato": "pomidor_tomat_produkt_udalen",
-    "tomatoes": "pomidor_tomat_produkt_udalen",
-    "cherry tomatoes": "pomidor_tomat_produkt_udalen",
+    "tomato": "pomidor_tomat",
+    "tomatoes": "pomidor_tomat",
+    "cherry tomatoes": "pomidor_tomat",
     "tomato sauce": "tomatnaya_pasta_konservy",
     "onion": "bulb_onion",
     "medium onion": "bulb_onion",
