@@ -21,6 +21,18 @@ struct OnboardingFlowView: View {
         case body
         case activity
         case reveal
+
+        var analyticsName: String {
+            switch self {
+            case .welcome: "welcome"
+            case .goal: "goal"
+            case .body: "weight"
+            case .activity: "activity"
+            case .reveal: "reveal"
+            }
+        }
+
+        var analyticsIndex: Int { rawValue + 1 }
     }
 
     private var isWelcome: Bool { step == .welcome }
@@ -55,6 +67,19 @@ struct OnboardingFlowView: View {
         .preferredColorScheme(isWelcome ? .dark : nil)
         .animation(reduceMotion ? nil : .easeInOut(duration: 0.28), value: step)
         .sensoryFeedback(.selection, trigger: step)
+        .onAppear {
+            AppAnalytics.logTutorialBegin()
+            AppAnalytics.logOnboardingStepView(
+                stepName: step.analyticsName,
+                stepIndex: step.analyticsIndex
+            )
+        }
+        .onChange(of: step) { _, newStep in
+            AppAnalytics.logOnboardingStepView(
+                stepName: newStep.analyticsName,
+                stepIndex: newStep.analyticsIndex
+            )
+        }
         .sheet(isPresented: $showDayPreview, onDismiss: discardPreviewDayPlan) {
             if let nutrition = revealedNutrition, let previewDayPlan {
                 NavigationStack {
@@ -82,6 +107,12 @@ struct OnboardingFlowView: View {
                 }
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
+                .onAppear {
+                    AppAnalytics.logPlanPreviewView(
+                        calories: Int(nutrition.calories.rounded()),
+                        mealsCount: previewDayPlan.meals.count
+                    )
+                }
             }
         }
     }
@@ -194,6 +225,7 @@ struct OnboardingFlowView: View {
                         selected: draft.goal == goal
                     ) {
                         draft.goal = goal
+                        AppAnalytics.logOnboardingGoalSet(goalType: goal.rawValue)
                     }
                 }
             }
@@ -381,6 +413,10 @@ struct OnboardingFlowView: View {
             finishOnboarding()
             return
         }
+        AppAnalytics.logOnboardingStepComplete(
+            stepName: step.analyticsName,
+            stepIndex: step.analyticsIndex
+        )
         if let next = Step(rawValue: step.rawValue + 1) {
             step = next
         }
@@ -428,6 +464,12 @@ struct OnboardingFlowView: View {
             draft.micronutrientFocus = [.fiber, .vitaminD3, .iron]
         }
         guard let nutrition = revealedNutrition ?? draft.calculatedNutrition() else { return }
+        AppAnalytics.logOnboardingStepComplete(
+            stepName: step.analyticsName,
+            stepIndex: step.analyticsIndex
+        )
+        AppAnalytics.logTutorialComplete(stepsCompleted: Step.allCases.count)
+        AppAnalytics.setGoalType(draft.goal.rawValue)
         let settings = AppSettingsService.settings(in: modelContext)
         settings.apply(onboarding: draft, nutrition: nutrition)
         LocalPersistence.save(modelContext)
@@ -442,8 +484,15 @@ struct OnboardingFlowView: View {
             try? await Task.sleep(for: delay)
             revealProgress = tick + 1
         }
-        revealedNutrition = draft.calculatedNutrition()
+        let nutrition = draft.calculatedNutrition()
             ?? DailyNutrition(calories: 2000, protein: 90, fat: 70, carbs: 250)
+        revealedNutrition = nutrition
+        AppAnalytics.logOnboardingTargetsReady(
+            calories: Int(nutrition.calories.rounded()),
+            proteinG: Int(nutrition.protein.rounded()),
+            fatG: Int(nutrition.fat.rounded()),
+            carbsG: Int(nutrition.carbs.rounded())
+        )
     }
 
     private func choiceStep<Content: View>(

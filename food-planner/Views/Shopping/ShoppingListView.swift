@@ -104,6 +104,9 @@ struct ShoppingListView: View {
         .task(id: displayedWeekStart) {
             syncShoppingList()
         }
+        .onAppear {
+            AppAnalytics.logShoppingListOpen(itemsCount: sortedItems.count)
+        }
         .onChange(of: weekPlans.count) { _, _ in syncShoppingList() }
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(items: [shareText])

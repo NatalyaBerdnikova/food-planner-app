@@ -327,6 +327,7 @@ struct AddMealSheet: View {
         }
 
         LocalPersistence.save(modelContext)
+        AppAnalytics.logPlanEdit(editType: "add")
         onSave()
         dismiss()
     }

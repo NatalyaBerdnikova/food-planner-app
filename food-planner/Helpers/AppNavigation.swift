@@ -12,9 +12,16 @@ enum AppTab: String, Hashable, CaseIterable {
 @Observable
 final class AppNavigation {
     var selectedTab: AppTab = .today
+    var pendingPlanWeekSource: String?
 
     func open(_ tab: AppTab) {
         selectedTab = tab
+    }
+
+    func consumePlanWeekSource(default defaultSource: String = "home") -> String {
+        let source = pendingPlanWeekSource ?? defaultSource
+        pendingPlanWeekSource = nil
+        return source
     }
 
     @discardableResult
@@ -27,6 +34,7 @@ final class AppNavigation {
         if host == "tab" {
             switch path {
             case "plan":
+                pendingPlanWeekSource = "push"
                 open(.plan)
                 return true
             case "shopping":
@@ -45,6 +53,7 @@ final class AppNavigation {
 
         switch host {
         case "plan":
+            pendingPlanWeekSource = "push"
             open(.plan)
             return true
         case "shopping":

@@ -8,7 +8,7 @@
 | --- | --- |
 | Discover / Library / Recipe cards | Photo-first, воздух, секции-рельсы (Kitchen Stories) |
 | Week plan / Nutrition / Shopping | Утилитарная ясность planner; карточки блюд внутри слотов — KS-style |
-| Onboarding / Paywall | Hero gradient бренда, короткие тексты |
+| Onboarding / Paywall / Bootstrap | Hero gradient бренда, короткие тексты; loader → opacity crossfade |
 
 ## Бренд-токены (`AppTheme`)
 
@@ -46,10 +46,13 @@ High contrast: `accent(for:highContrast:)`.
 | `AppSectionCard` | Elevated surface, radius 16 |
 | `AppSectionHeader` | Title + optional glyph в soft circle |
 | `NutritionSummaryView` / progress | Макросы без dashboard-шума |
+| `MealPlanTargetsCard` | Карточка целей / средних КБЖУ (генерация, экспорт, импорт) |
 | `PlannedMealSlotView` | Слот приёма пищи в дне |
 | `IngredientTagSearchField` | Поиск + clear (`×`) при непустом тексте |
-| `WeekRangeSwitcher` | Общий переключатель недель (план / покупки) |
+| `WeekRangeSwitcher` | Общий переключатель недель (план / покупки / импорт плана) |
+| Hints card (import paste) | Одна nested-карточка с 3 hint-rows в едином стиле |
 | Empty states | SF Symbol + short copy + один CTA |
+| `SparklesLoader` | Bootstrap; переход на app — только opacity (HIG motion) |
 
 ## Правила (must)
 
@@ -57,10 +60,12 @@ High contrast: `accent(for:highContrast:)`.
 2. Не вешать floating badges / promo chips поверх hero-фото.
 3. Home не превращать в dashboard из виджетов: секции с одной идеей.
 4. Один primary accent бренда.
-5. Motion: спокойный fade/slide; `MotionSafeSymbolModifier` чтит Reduce Motion.
+5. Motion: спокойный fade/slide; `MotionSafeSymbolModifier` / `motionSafeAnimation` чтят Reduce Motion.
 6. Материалы поверх контента — solid overlays (`contentOverlayFill`), не glass на еде.
 7. Hit targets ≥ 44pt.
 8. На wide layout не растягивать текстовые формы на всю ширину экрана.
+9. Modal sheets с формой: `.scrollBounceBehavior(.basedOnSize)` + `.presentationContentInteraction(.scrolls)` — без rubber-band «двойного» скролла.
+10. Trial notifications и review copy — без pushy marketing / dark patterns.
 
 ## Audit перед UI-мержем
 

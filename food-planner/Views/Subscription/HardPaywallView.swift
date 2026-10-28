@@ -37,6 +37,7 @@ struct HardPaywallView: View {
                     DefaultPaywall(
                         placement: .basic,
                         chrome: .onHero,
+                        trigger: "onboarding",
                         successPurchaseCallback: upgradeToPro
                     )
                     .padding(.bottom, 24)
@@ -81,6 +82,12 @@ struct HardPaywallView: View {
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)
             .preferredColorScheme(.light)
+            .onAppear {
+                AppAnalytics.logPlanPreviewView(
+                    calories: Int(settings.targetCalories.rounded()),
+                    mealsCount: previewDayPlan.meals.count
+                )
+            }
         }
     }
 

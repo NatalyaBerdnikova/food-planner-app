@@ -344,15 +344,20 @@ struct HomeView: View {
 
     private func toggleFavorite(for recipe: Recipe) {
         let isFavorite = RecipeFavoritesService.isFavorite(recipe, in: modelContext)
-        let becameFavorite = RecipeFavoritesService.setFavorite(
+        let turningOn = !isFavorite
+        let changed = RecipeFavoritesService.setFavorite(
             recipe,
-            favorite: !isFavorite,
+            favorite: turningOn,
             in: modelContext
         )
-        if becameFavorite {
+        if changed, let key = RecipeFavoritesService.favoriteKey(for: recipe) {
+            AppAnalytics.logRecipeFavorite(catalogRecipeID: key, on: turningOn)
+        }
+        if changed, turningOn {
             ReviewPromptService.considerAfterRecipeAppreciation(
                 requestReview,
-                hasFullAccess: subscriptionSession.hasFullAccess
+                hasFullAccess: subscriptionSession.hasFullAccess,
+                trigger: "recipe_favorite"
             )
         }
     }

@@ -35,6 +35,17 @@ enum TrialEngagementNotifications {
                 URL(string: "foodplanner://tab/shopping")!
             }
         }
+
+        var analyticsDay: Int {
+            switch self {
+            case .day1: 1
+            case .day3: 3
+            case .day7: 7
+            case .renewalMinus2: 12
+            }
+        }
+
+        var campaignID: String { rawValue }
     }
 
     struct TrialWindow {
@@ -44,6 +55,13 @@ enum TrialEngagementNotifications {
 
     private static let categoryID = "trial.engagement"
     private static let deepLinkKey = "deepLink"
+    private static let campaignIDKey = "campaign_id"
+    private static let campaignDayKey = "day"
+
+    struct AnalyticsCampaign {
+        let id: String
+        let day: Int
+    }
 
     static func refreshFromAdapty() {
         PurchaseService.getProfile { profile in
@@ -126,6 +144,21 @@ enum TrialEngagementNotifications {
         return URL(string: raw)
     }
 
+    static func analyticsCampaign(from userInfo: [AnyHashable: Any]) -> AnalyticsCampaign? {
+        guard let id = userInfo[campaignIDKey] as? String else { return nil }
+        let day: Int
+        if let intDay = userInfo[campaignDayKey] as? Int {
+            day = intDay
+        } else if let number = userInfo[campaignDayKey] as? NSNumber {
+            day = number.intValue
+        } else if let stringDay = userInfo[campaignDayKey] as? String, let parsed = Int(stringDay) {
+            day = parsed
+        } else {
+            return AnalyticsCampaign(id: id, day: 0)
+        }
+        return AnalyticsCampaign(id: id, day: day)
+    }
+
     private static func registerCategoryIfNeeded() {
         let category = UNNotificationCategory(
             identifier: categoryID,
@@ -144,7 +177,11 @@ enum TrialEngagementNotifications {
         content.sound = .default
         content.categoryIdentifier = categoryID
         content.interruptionLevel = .active
-        content.userInfo = [deepLinkKey: kind.deepLink.absoluteString]
+        content.userInfo = [
+            deepLinkKey: kind.deepLink.absoluteString,
+            campaignIDKey: kind.campaignID,
+            campaignDayKey: kind.analyticsDay,
+        ]
 
         let components = Calendar.current.dateComponents(
             [.year, .month, .day, .hour, .minute, .second],
@@ -155,6 +192,7 @@ enum TrialEngagementNotifications {
 
         do {
             try await UNUserNotificationCenter.current().add(request)
+            AppAnalytics.logTrialReminderScheduled(day: kind.analyticsDay)
         } catch {
             print("TrialEngagementNotifications: failed to schedule \(kind.rawValue): \(error)")
         }

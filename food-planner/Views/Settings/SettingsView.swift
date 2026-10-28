@@ -122,6 +122,7 @@ struct SettingsView: View {
                         if isOn {
                             guard selectedMicros.count < Self.maxMicronutrientFocus else {
                                 showMicronutrientLimitHint = true
+                                AppAnalytics.logMicronutrientLimitHit()
                                 return
                             }
                             selectedMicros.insert(kind)
@@ -171,6 +172,17 @@ struct SettingsView: View {
                     Text(language.displayName)
                         .tag(language.rawValue)
                 }
+            }
+            .onChange(of: appLanguageRaw) { _, newValue in
+                let language = AppLanguage(rawValue: newValue) ?? .system
+                let code: String
+                switch language {
+                case .english: code = "en"
+                case .russian: code = "ru"
+                case .system:
+                    code = Locale.current.language.languageCode?.identifier ?? "en"
+                }
+                AppAnalytics.setAppLanguage(code)
             }
 
             Toggle("settings.showMacroFractions", isOn: $showMacroFractions)

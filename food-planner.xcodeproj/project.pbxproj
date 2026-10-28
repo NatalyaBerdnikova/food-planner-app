@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FPADAPTY001 /* Adapty in Frameworks */ = {isa = PBXBuildFile; productRef = FPADAPTY003 /* Adapty */; };
+		FPFIR001 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FPFIR003 /* FirebaseAnalytics */; };
 		FPSE0001 /* FoodPlannerShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FPSE0002 /* FoodPlannerShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FPFIR004 /* Exceptions for "food-planner" folder in "food-planner" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"GoogleService-Info.example.plist",
+			);
+			target = C16787C52FB70F8E00DA5BC9 /* food-planner */;
+		};
 		FPSE0006 /* Exceptions for "FoodPlannerShareExtension" folder in "FoodPlannerShareExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -69,6 +77,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C16787C82FB70F8E00DA5BC9 /* food-planner */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FPFIR004 /* Exceptions for "food-planner" folder in "food-planner" target */,
+			);
 			path = "food-planner";
 			sourceTree = "<group>";
 		};
@@ -103,6 +114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FPADAPTY001 /* Adapty in Frameworks */,
+				FPFIR001 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +189,7 @@
 			name = "food-planner";
 			packageProductDependencies = (
 				FPADAPTY003 /* Adapty */,
+				FPFIR003 /* FirebaseAnalytics */,
 			);
 			productName = "food-planner";
 			productReference = C16787C62FB70F8E00DA5BC9 /* food-planner.app */;
@@ -289,6 +302,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				FPADAPTY002 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */,
+				FPFIR002 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C16787C72FB70F8E00DA5BC9 /* Products */;
@@ -800,6 +814,14 @@
 				minimumVersion = 2.11.3;
 			};
 		};
+		FPFIR002 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -807,6 +829,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FPADAPTY002 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
 			productName = Adapty;
+		};
+		FPFIR003 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FPFIR002 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

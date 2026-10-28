@@ -2,11 +2,11 @@
 
 **Status:** shipped  
 **Primary views:** `ShoppingListView`  
-**Related:** [week-plan.md](week-plan.md), [catalogs.md](catalogs.md)
+**Related:** [week-plan.md](week-plan.md), [catalogs.md](catalogs.md), [engagement.md](engagement.md)
 
 ## Цель
 
-Чеклист продуктов на выбранную неделю: из рецептов плана + ручные позиции. Можно переключиться на следующую неделю и закупиться заранее.
+Чеклист продуктов на выбранную неделю: из рецептов плана + ручные позиции. Можно переключиться на следующую неделю и закупиться заранее. Trial-пуши D3 / renewal−2 ведут на эту вкладку.
 
 ## Поведение
 
@@ -16,10 +16,11 @@
 - Toggle purchased на row.
 - `+` — ручной item через `AddIngredientSheet` (form sheet на iPad; clear в поиске); swipe delete только для manual.
 - Share sheet — текстовый экспорт списка.
+- Очистка плана на вкладке План удаляет и shopping items той недели.
 
 ## Empty state
 
-Нет items → `ContentUnavailableView` с подсказкой заполнить план.
+Нет items → `ContentUnavailableView` с подсказкой заполнить план (или сгенерировать).
 
 ## Acceptance
 
@@ -28,3 +29,4 @@
 - [ ] Ручная позиция не исчезает при следующем sync авто-агрегации (политика sync должна сохранять purchased/manual — проверять в `WeekPlanService.syncShoppingItems`).
 - [ ] Share доступен при непустом списке.
 - [ ] Переключатель недели меняет список без смены active week plan.
+- [ ] Deep link `foodplanner://tab/shopping` открывает эту вкладку.

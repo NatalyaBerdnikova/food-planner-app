@@ -9,7 +9,7 @@
 Прогнать TestFlight на отказ от paywall — замерить: % дошли до paywall, % стартовали триал, D1 retention; отдельно почитать отзывы «нельзя попробовать».
 
 Актуальное:
-1. Добавить аналитику firebase и прочую от гугла
+1. Аналитика Firebase — код v1 wired (`AppAnalytics` + call sites). Локальный `GoogleService-Info.plist` есть (gitignore). При первом открытии Xcode — Resolve Package Versions (Firebase). Проверить DebugView: `-FIRDebugEnabled`.
 2. Обновить базу ингредиентов и рецептов
 3. Поработать над качеством импорта
 

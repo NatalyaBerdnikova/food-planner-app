@@ -15,11 +15,11 @@ enum ReviewPromptService {
         defaults.set(Calendar.current.startOfDay(for: .now), forKey: firstOpenDayKey)
     }
 
-    /// After a positive recipe signal (favorite on / star rating). Not on the first usage day.
     @MainActor
     static func considerAfterRecipeAppreciation(
         _ requestReview: RequestReviewAction,
-        hasFullAccess: Bool
+        hasFullAccess: Bool,
+        trigger: String = "recipe_favorite"
     ) {
         guard hasFullAccess else { return }
         noteAppOpen()
@@ -28,6 +28,7 @@ enum ReviewPromptService {
 
         Task {
             try? await Task.sleep(for: .seconds(1.2))
+            AppAnalytics.logRatePromptView(trigger: trigger)
             await requestReview()
             recordPromptShown()
         }

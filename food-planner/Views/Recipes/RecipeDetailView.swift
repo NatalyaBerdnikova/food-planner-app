@@ -255,9 +255,11 @@ struct RecipeDetailView: View {
                 recipe.setUserRating(value)
                 LocalPersistence.save(modelContext)
                 if value > 0, value != previous {
+                    AppAnalytics.logRecipeRate(rating: value)
                     ReviewPromptService.considerAfterRecipeAppreciation(
                         requestReview,
-                        hasFullAccess: subscriptionSession.hasFullAccess
+                        hasFullAccess: subscriptionSession.hasFullAccess,
+                        trigger: "recipe_rate"
                     )
                 }
             }
@@ -319,15 +321,20 @@ struct RecipeDetailView: View {
     @ViewBuilder
     private var favoriteToolbarButton: some View {
         Button {
-            let becameFavorite = RecipeFavoritesService.setFavorite(
+            let turningOn = !isFavorite
+            let changed = RecipeFavoritesService.setFavorite(
                 recipe,
-                favorite: !isFavorite,
+                favorite: turningOn,
                 in: modelContext
             )
-            if becameFavorite {
+            if changed, let key = RecipeFavoritesService.favoriteKey(for: recipe) {
+                AppAnalytics.logRecipeFavorite(catalogRecipeID: key, on: turningOn)
+            }
+            if changed, turningOn {
                 ReviewPromptService.considerAfterRecipeAppreciation(
                     requestReview,
-                    hasFullAccess: subscriptionSession.hasFullAccess
+                    hasFullAccess: subscriptionSession.hasFullAccess,
+                    trigger: "recipe_favorite"
                 )
             }
         } label: {

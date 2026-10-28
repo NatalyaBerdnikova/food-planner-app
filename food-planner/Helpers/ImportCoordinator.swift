@@ -98,6 +98,7 @@ final class ImportCoordinator {
         progressPresentation = ImportProgressPresentation()
         importedDraft = nil
         editingDraft = nil
+        AppAnalytics.logInstagramImportStart(source: "instagram")
 
         importTask = Task {
             await performImport(urlString: urlString)
@@ -149,12 +150,15 @@ final class ImportCoordinator {
             guard !Task.isCancelled else { return }
             importedDraft = draft
             state = .ready(draft)
+            AppAnalytics.logInstagramImportSuccess(itemsCount: draft.ingredients.count)
         } catch let error as RecipeImportError {
             guard !Task.isCancelled else { return }
             state = .failed(error.localizedDescription)
+            AppAnalytics.logInstagramImportError(errorCode: error.analyticsCode)
         } catch {
             guard !Task.isCancelled else { return }
             state = .failed(RecipeImportError.networkFailure.localizedDescription)
+            AppAnalytics.logInstagramImportError(errorCode: "network_failure")
         }
     }
 }

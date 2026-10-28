@@ -83,11 +83,18 @@ struct ContentView: View {
             }
         }
         .onChange(of: subscriptionSession.hasFullAccess) { _, hasAccess in
+            syncSubscriptionUserProperties()
             if hasAccess {
                 TrialEngagementNotifications.refreshFromAdapty()
             } else {
                 Task { await TrialEngagementNotifications.cancelAll() }
             }
+        }
+        .onChange(of: hasCompletedOnboarding) { _, completed in
+            AppAnalytics.setOnboardingCompleted(completed)
+        }
+        .onChange(of: appLanguageRaw) { _, _ in
+            AppAnalytics.syncPersistedUserProperties()
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
@@ -222,6 +229,9 @@ struct ContentView: View {
         let settings = AppSettingsService.settings(in: modelContext)
         subscriptionSession.load(from: settings)
         await refreshSubscriptionStatus()
+        AppAnalytics.setOnboardingCompleted(settings.hasCompletedOnboarding)
+        AppAnalytics.setGoalType(settings.profileGoal.rawValue)
+        syncSubscriptionUserProperties()
         isBootstrapReady = true
     }
 
@@ -230,6 +240,17 @@ struct ContentView: View {
         subscriptionSession.applyAccessCheck(result)
         let settings = AppSettingsService.settings(in: modelContext)
         subscriptionSession.persist(to: settings, in: modelContext)
+        syncSubscriptionUserProperties()
+    }
+
+    private func syncSubscriptionUserProperties() {
+        if subscriptionSession.isPro {
+            AppAnalytics.setSubscriptionStatus("active", planID: "none")
+        } else if subscriptionSession.isFree {
+            AppAnalytics.setSubscriptionStatus("none", planID: "none")
+        } else {
+            AppAnalytics.setSubscriptionStatus("none", planID: "none")
+        }
     }
 
     private func bindProfileAccessUpdates() {
@@ -241,8 +262,10 @@ struct ContentView: View {
             let settings = AppSettingsService.settings(in: context)
             session.persist(to: settings, in: context)
             if isPro {
+                AppAnalytics.setSubscriptionStatus("active", planID: "none")
                 TrialEngagementNotifications.refreshFromAdapty()
             } else {
+                AppAnalytics.setSubscriptionStatus("none", planID: "none")
                 Task { await TrialEngagementNotifications.cancelAll() }
             }
         }

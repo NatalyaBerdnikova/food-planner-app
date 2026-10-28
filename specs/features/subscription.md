@@ -2,11 +2,11 @@
 
 **Status:** shipped  
 **Primary:** `HardPaywallView`, `DefaultPaywall`, `PurchaseService`, `SubscriptionSession`, Adapty  
-**Related:** [onboarding.md](onboarding.md), [settings.md](settings.md)
+**Related:** [onboarding.md](onboarding.md), [settings.md](settings.md), [engagement.md](engagement.md), [week-plan.md](week-plan.md)
 
 ## Цель
 
-Ограничить полный доступ приложения подпиской Pro; дать restore и отображение статуса.
+Ограничить полный доступ приложения подпиской Pro; дать restore и отображение статуса; после unlock — опционально продолжить генерацию недели из превью.
 
 ## Модель доступа
 
@@ -19,31 +19,37 @@
 
 После онбординга без `hasFullAccess` → только `HardPaywallView` (не tabs).
 
-Paywall копирайт фич (маркетинг): AI-импорт, insights, plan — см. localization keys `home.proOffer.feature.*`.
+Paywall показывает превью «День 1» (`OnboardingDayPreviewStep`) и маркетинговые фичи (AI-импорт, insights, plan) — ключи `home.proOffer.feature.*`.
 
-## Режим тестовых тарифов (TestFlight / pre-release)
+Успешный unlock / Continue:
 
-Флаг: `AppVars.useSubscriptionMocks` (сейчас `true` для всех конфигураций).
+- `MealPlanGenerationPending.markNeedsGeneration()` — чтобы после входа в tabs достроить неделю.
+- При free trial (Adapty) — `TrialEngagementNotifications.refreshFromAdapty` (см. [engagement.md](engagement.md)).
 
-Когда включён:
+## Режимы разблокировки
 
-- `DefaultPaywall` показывает mock-планы (месяц / год с trial / lifetime) без загрузки продуктов StoreKit/Adapty.
-- Кнопка подписки / trial → короткий loader → `upgradeToPro` (полный доступ).
-- «Восстановить» → тот же unlock без реальных покупок.
+| Режим | Флаг / условие | Поведение |
+| --- | --- | --- |
+| Production | `useSubscriptionMocks == false` (default) | Реальные продукты Adapty/StoreKit |
+| Xcode Previews | `useSubscriptionMocks == true` | Mock-тарифы; Continue/Restore → Pro без StoreKit |
+| Debug / TestFlight sandbox | `allowsContinueWithoutSubscription` | CTA Continue без покупки; synthetic trial schedule при необходимости |
 
-Перед релизом в App Store выставить `useSubscriptionMocks = false` и полагаться на Adapty/StoreKit.
+Перед App Store релизом убедиться: mocks только в Previews; sandbox Continue не попадает в App Store build без sandbox receipt.
 
-## Поведение (production, mocks off)
+## Поведение (production)
 
 - Загрузка paywall/products/eligibilities через Adapty.
 - Purchase / restore → `PurchaseService.checkAccess` → persist в settings.
 - При старте paywall — silent restore, если уже есть доступ.
 - Settings: статус active/inactive; кнопка restore при наличии доступа.
+- Profile updates через `AppDelegate` / `AdaptyDelegate` → session + trial notifications sync.
 
 ## Acceptance
 
 - [ ] Без доступа основной Tab UI скрыт.
-- [ ] При `useSubscriptionMocks == true`: mock-тарифы видны; Continue и Restore открывают app без StoreKit.
-- [ ] При `useSubscriptionMocks == false`: успешная покупка/restore открывает app без переустановки.
+- [ ] При `useSubscriptionMocks == true` (Previews): mock-тарифы; Continue и Restore открывают app без StoreKit.
+- [ ] При production: успешная покупка/restore открывает app без переустановки.
 - [ ] `isFree` (если выставлен) обходит paywall так же, как Pro.
 - [ ] Ошибки покупки (production) показываются alert'ом сессии.
+- [ ] После unlock с preview snapshot планируется генерация текущей недели.
+- [ ] Активный free trial приводит к schedule engagement notifications.

@@ -5,6 +5,7 @@ import UniformTypeIdentifiers
 struct WeekPlanView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(AppNavigation.self) private var appNavigation
     @Environment(WeekPlanGenerationCoordinator.self) private var weekPlanGeneration
     @Environment(WeekPlanTransferCoordinator.self) private var weekPlanTransfer
     @Query(sort: \WeekPlan.weekStartDate, order: .reverse) private var weekPlans: [WeekPlan]
@@ -45,7 +46,7 @@ struct WeekPlanView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button {
-                        weekPlanGeneration.presentCompose()
+                        weekPlanGeneration.presentCompose(forWeekStarting: displayedWeekStart)
                     } label: {
                         Image(systemName: "sparkles")
                     }
@@ -143,6 +144,7 @@ struct WeekPlanView: View {
             .scrollPosition($scrollPosition)
             .appScreenBackground()
             .onAppear {
+                AppAnalytics.logPlanWeekView(source: appNavigation.consumePlanWeekSource())
                 scrollToCurrentDayIfNeeded()
             }
             .onChange(of: displayedWeekStart) { _, _ in
@@ -163,6 +165,7 @@ struct WeekPlanView: View {
     private func clearDisplayedPlan() {
         guard let weekPlan = displayedWeekPlan else { return }
         WeekPlanService.clearPlan(weekPlan, in: modelContext)
+        AppAnalytics.logPlanEdit(editType: "clear")
     }
 
     private func scrollToCurrentDayIfNeeded() {

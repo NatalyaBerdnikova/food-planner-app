@@ -12,7 +12,7 @@
 
 1. **Subscription** — статус, restore.
 2. **Profile** — goal, age, weight, target weight (из онбординга).
-3. **Micronutrient focus** — toggles до 5 видов.
+3. **Micronutrient focus** — toggles до 5 видов; при попытке включить 6-й — alert `settings.micros.limit.*` без изменения selection.
 4. **Language** — system / en / ru (`AppLanguage`, `@AppStorage`); также влияет на язык каталога в LLM-импорте.
 5. **Targets** — калькулятор (form sheet) + ручные поля calories/protein/fat/carbs.
 
@@ -21,4 +21,5 @@
 - [ ] Смена языка сразу влияет на UI (`applyAppLanguage`).
 - [ ] Сохранение targets пишет в `AppSettings` и отражается на Home.
 - [ ] Микро-фокус персистится в `profileMicronutrientFocusStorage`.
-- [ ] Restore подписки в Settings работает (при mocks — как unlock, если доступен путь).
+- [ ] Нельзя держать больше 5 микро включёнными.
+- [ ] Restore подписки в Settings работает (при Previews mocks — как unlock, если доступен путь).

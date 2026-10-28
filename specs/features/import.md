@@ -2,7 +2,8 @@
 
 **Status:** shipped  
 **Primary:** `ImportCoordinator`, `InstagramImportService`, `PasteImportSheet`, `ImportProgressView`, `ImportedRecipeReviewView`, Share Extension (`ShareViewController`)  
-**Related:** [recipes.md](recipes.md), [catalogs.md](catalogs.md)
+**Related:** [recipes.md](recipes.md), [catalogs.md](catalogs.md)  
+**Не путать с** импортом **плана** (`.foodplan`) — см. [week-plan.md](week-plan.md).
 
 ## Цель
 
@@ -18,6 +19,16 @@
 | Файл (сервис) | `RecipeImportService.importFromFile` (JSON / plain text) |
 
 Share Extension: `UIViewController` + spinner (не `SLComposeServiceViewController`). Принимает URL/plain text с `instagram.com` / `instagr.am`. Extension завершается после `open` host app.
+
+### PasteImportSheet UX
+
+- URL field + paste from clipboard.
+- Единая nested-карточка подсказок (3 ряда):
+  - общий footer copy;
+  - privacy / server processing;
+  - как шарить из Instagram (Share → Food Planner).
+- Кнопка открыть сохранённые в Instagram (`InstagramAppLauncher.openSaved`).
+- Sheet: `.scrollBounceBehavior(.basedOnSize)` + `.presentationContentInteraction(.scrolls)` — без «двойного» скролла контента.
 
 ### Холодный старт / race
 
@@ -57,13 +68,15 @@ UI: `ImportProgressView` sheet (на iPad — form sizing); ошибки → fai
 - Иначе стемминг (RU/EN) + score по токенам (порог ≥ 70); короткие токены только exact; производные («рисовая мука» при запросе «рис») штрафуются.
 - Unresolved: `rawName` (без единиц) + suggested amount.
 
+Известный gap (roadmap): ручное сопоставление unresolved всё ещё friction; качество caption/transcript нестабильно.
+
 ## Review
 
 `ImportedRecipeReviewView`:
 
 - правка имени, шагов, matched ingredients;
 - секция unresolved → tap → `AddIngredientSheet` с `initialSearchText` = очищенное имя и предзаполненными quantity/unit;
-- в поиске продукта — кнопка clear (`×`), чтобы быстро стереть префилл и ввести своё;
+- в поиске продукта — кнопка clear (`×`);
 - сохранение в библиотеку (`sourceURL` сохраняется).
 
 ## Ошибки
@@ -79,6 +92,7 @@ UI: `ImportProgressView` sheet (на iPad — form sizing); ошибки → fai
 - [ ] Pending URL из App Group обрабатывается один раз (`consume`); deep link с `url=` тоже стартует импорт.
 - [ ] После Share приложение открывается и показывает progress sheet (в т.ч. cold start после bootstrap/paywall).
 - [ ] Пользователь видит стадии прогресса до review.
+- [ ] Paste sheet показывает три подсказки в одной карточке, включая Share из Instagram.
 - [ ] «Молоко 100 мл» в unresolved → имя «Молоко», справа «100 мл»; при ручном выборе те же значения в sheet.
 - [ ] Unresolved не блокируют review (дозаполнение вручную).
 - [ ] Успешный save создаёт user recipe с `sourceURL`.

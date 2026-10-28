@@ -41,6 +41,10 @@ final class WeekPlanTransferCoordinator {
     func beginExport(weekPlan: WeekPlan, targets: DailyNutrition?) {
         do {
             let document = try WeekPlanTransferService.makeDocument(from: weekPlan, targets: targets)
+            AppAnalytics.logPlanExportStart(
+                mealsCount: document.mealCount,
+                filledDays: document.filledDayCount
+            )
             exportPresentation = WeekPlanExportPresentation(
                 document: document,
                 suggestedFileName: WeekPlanTransferService.suggestedFileName(for: document),
@@ -55,9 +59,12 @@ final class WeekPlanTransferCoordinator {
 
     func confirmExport(fileName: String, document: FoodPlanDocument) {
         do {
+            let suggested = WeekPlanTransferService.suggestedFileName(for: document)
+            let hasCustomFilename = fileName.trimmingCharacters(in: .whitespacesAndNewlines) != suggested
             let url = try WeekPlanTransferService.writeTemporaryFile(document, fileName: fileName)
             exportPresentation = nil
             sharePresentation = WeekPlanSharePresentation(fileURL: url)
+            AppAnalytics.logPlanExportShare(hasCustomFilename: hasCustomFilename)
         } catch {
             presentError(error)
         }
@@ -84,10 +91,13 @@ final class WeekPlanTransferCoordinator {
     func applyImport(
         document: FoodPlanDocument,
         to weekPlan: WeekPlan,
-        mode: WeekPlanImportMode
+        mode: WeekPlanImportMode,
+        targetWeekOffset: Int = 0
     ) {
         guard let context = modelContext else { return }
         WeekPlanTransferService.apply(document, to: weekPlan, mode: mode, in: context)
+        let analyticsMode = mode == .replaceWeek ? "replace" : "fill_empty"
+        AppAnalytics.logPlanImportApply(mode: analyticsMode, targetWeekOffset: targetWeekOffset)
         importPresentation = nil
     }
 

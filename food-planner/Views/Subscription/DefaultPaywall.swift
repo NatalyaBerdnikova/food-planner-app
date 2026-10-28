@@ -25,7 +25,10 @@ struct DefaultPaywall: View {
 
     let placement: Placements
     var chrome: PaywallChrome = .standard
+    var trigger: String = "onboarding"
     let successPurchaseCallback: () -> Void
+
+    @State private var didLogPaywallView = false
 
     private var useMockPlans: Bool { AppVars.useSubscriptionMocks }
 
@@ -215,7 +218,13 @@ struct DefaultPaywall: View {
             VStack(spacing: 12) {
                 HStack(spacing: 12) {
                     Link("subscription.terms", destination: URL(string: AppVars.termsUrl)!)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AppAnalytics.logPaywallLinkTap(linkType: "terms")
+                        })
                     Link("subscription.privacy", destination: URL(string: AppVars.privacyUrl)!)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AppAnalytics.logPaywallLinkTap(linkType: "privacy")
+                        })
                     Button("subscription.restore", action: restorePayments)
                 }
                 .lineLimit(2)
@@ -265,6 +274,10 @@ struct DefaultPaywall: View {
                 selectedProduct = products.first { $0.vendorProductId == plan.id }
                 hasTrialState = hasTrial
             }
+            AppAnalytics.logPaywallPlanSelect(
+                planID: AppAnalytics.analyticsPlanID(forVendorProductID: plan.id),
+                hasTrial: plan.includesTrial
+            )
         } label: {
             HStack(alignment: .center, spacing: 10) {
                 VStack(alignment: .leading, spacing: 3) {
@@ -367,6 +380,12 @@ struct DefaultPaywall: View {
     }
 
     private func startPayment() {
+        let planID = selectedPlanAnalyticsID
+        let ctaText = haveRestoredSub
+            ? "done"
+            : (hasTrial ? "start_trial" : "start_subscribe")
+        AppAnalytics.logPaywallCTATap(planID: planID, ctaText: ctaText)
+
         if haveRestoredSub {
             successPurchaseCallback()
             return
@@ -378,6 +397,7 @@ struct DefaultPaywall: View {
             Task { @MainActor in
                 try? await Task.sleep(for: .milliseconds(500))
                 subscriptionSession.hideLoader()
+                logSuccessfulPurchase(planID: planID, isTrial: hasTrial)
                 successPurchaseCallback()
             }
             return
@@ -403,19 +423,56 @@ struct DefaultPaywall: View {
 
     private func startPurchase() {
         guard let selectedProduct else { return }
+        let planID = AppAnalytics.analyticsPlanID(forVendorProductID: selectedProduct.vendorProductId)
+        let startingTrial = PurchaseService.hasTrial(product: selectedProduct, eligibilities: eligibilities)
+
+        let storeProduct = StoreKitProductCatalog.product(for: selectedProduct.vendorProductId)
+        AppAnalytics.logBeginCheckout(
+            itemID: selectedProduct.vendorProductId,
+            value: storeProduct.map { NSDecimalNumber(decimal: $0.price).doubleValue },
+            currency: Locale.current.currency?.identifier
+        )
 
         subscriptionSession.showLoader()
 
         PurchaseService.makePurchase(product: selectedProduct) { _ in
             Task { @MainActor in
+                logSuccessfulPurchase(planID: planID, isTrial: startingTrial, itemID: selectedProduct.vendorProductId)
                 successPurchaseCallback()
                 subscriptionSession.hideLoader()
             }
-        } errorCallback: { _ in
+        } errorCallback: { error in
             Task { @MainActor in
                 subscriptionSession.hideLoader()
+                AppAnalytics.logPurchaseError(
+                    planID: planID,
+                    errorCode: String(error.prefix(100)),
+                    isUserCancelled: AppAnalytics.isUserCancelledPurchaseError(error)
+                )
                 subscriptionSession.showAlert(String(localized: "subscription.purchaseError"))
             }
+        }
+    }
+
+    private var selectedPlanAnalyticsID: String {
+        guard let selectedPlanId else { return "none" }
+        return AppAnalytics.analyticsPlanID(forVendorProductID: selectedPlanId)
+    }
+
+    private func logSuccessfulPurchase(planID: String, isTrial: Bool, itemID: String? = nil) {
+        if isTrial {
+            AppAnalytics.logTrialStart(planID: planID)
+        } else {
+            AppAnalytics.logPurchase(
+                itemID: itemID ?? planID,
+                value: nil,
+                currency: nil,
+                transactionID: nil
+            )
+            AppAnalytics.setSubscriptionStatus(
+                planID == "lifetime" ? "lifetime" : "active",
+                planID: planID
+            )
         }
     }
 
@@ -426,11 +483,14 @@ struct DefaultPaywall: View {
     }
 
     private func restorePayments() {
+        AppAnalytics.logPaywallRestoreTap()
+
         if useMockPlans {
             subscriptionSession.showLoader()
             Task { @MainActor in
                 try? await Task.sleep(for: .milliseconds(400))
                 subscriptionSession.hideLoader()
+                AppAnalytics.logRestoreResult(success: true, hasActiveEntitlement: true)
                 successPurchaseCallback()
             }
             return
@@ -441,6 +501,7 @@ struct DefaultPaywall: View {
         PurchaseService.restorePurchases { purchased in
             Task { @MainActor in
                 subscriptionSession.hideLoader()
+                AppAnalytics.logRestoreResult(success: true, hasActiveEntitlement: purchased)
 
                 if purchased {
                     successPurchaseCallback()
@@ -451,6 +512,7 @@ struct DefaultPaywall: View {
         } errorCallback: { _ in
             Task { @MainActor in
                 subscriptionSession.hideLoader()
+                AppAnalytics.logRestoreResult(success: false, hasActiveEntitlement: false)
             }
         }
     }
@@ -476,6 +538,7 @@ struct DefaultPaywall: View {
                 selectedPlanId = Self.mockPlans.first(where: \.includesTrial)?.id
                     ?? Self.mockPlans.first?.id
                 isLoadingPlans = false
+                logPaywallViewIfNeeded()
             }
             return
         }
@@ -530,6 +593,7 @@ struct DefaultPaywall: View {
                             hasTrialState = hasTrial
                             trialStateDisabled = !PurchaseService.canToggleTrial(loadedEligibilities)
                             isLoadingPlans = false
+                            logPaywallViewIfNeeded()
 
                             if expectedIds.count >= 3, loadedIds.count < expectedIds.count {
                                 let missing = (missingFromAdapty.isEmpty
@@ -553,6 +617,7 @@ struct DefaultPaywall: View {
         } errorCallback: { error in
             Task { @MainActor in
                 isLoadingPlans = false
+                logPaywallViewIfNeeded()
                 subscriptionSession.showAlert(error)
             }
         }
@@ -565,6 +630,13 @@ struct DefaultPaywall: View {
             selectedProduct = products.last { $0.vendorProductId != eligibleProduct?.vendorProductId }
         }
         selectedPlanId = selectedProduct?.vendorProductId
+    }
+
+    private func logPaywallViewIfNeeded() {
+        guard !didLogPaywallView else { return }
+        didLogPaywallView = true
+        let defaultPlan = selectedPlanId.map { AppAnalytics.analyticsPlanID(forVendorProductID: $0) } ?? "none"
+        AppAnalytics.logPaywallView(trigger: trigger, defaultPlan: defaultPlan)
     }
 
     private func makePlanOptions(

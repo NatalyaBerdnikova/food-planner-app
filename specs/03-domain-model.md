@@ -18,6 +18,8 @@ Recipe
 FoodProduct  (каталог продуктов)
 ```
 
+Файловый обмен (не SwiftData): `FoodPlanDocument` → `.foodplan`.
+
 ## Сущности
 
 ### AppSettings
@@ -62,6 +64,7 @@ Bundled seed: `food-planner/Resources/food-catalog.json` (~492 продукта)
 
 - `isCatalogRecipe` ⇔ `catalogRecipeId != nil`
 - `isUserCreated` ⇔ `catalogRecipeId == nil`
+- Генерация плана может создать **клон** каталогового рецепта с тем же `catalogRecipeId` (привязка к meal). В библиотеке показывается один ряд на id (`RecipeCollections.deduplicatedCatalogRecipes`).
 
 Bundled seed: `recipes-catalog.json` (~128 рецептов).
 
@@ -92,6 +95,7 @@ Bundled seed: `recipes-catalog.json` (~128 рецептов).
 - `dayPlans` — 7 дней (создаются лениво через `WeekPlanService`).
 - `shoppingItems` — материализованный список покупок.
 - `aggregatedShoppingList` — вычисляемая агрегация из ингредиентов рецептов (для sync).
+- `clearPlan` — удаляет meals всех дней и shopping items.
 
 ### ShoppingItem
 
@@ -117,13 +121,35 @@ Bundled seed: `recipes-catalog.json` (~128 рецептов).
 
 `rawName` (без вшитых единиц), `suggestedQuantity`, `suggestedUnit` — префилл для `AddIngredientSheet`.
 
+### FoodPlanDocument (не SwiftData)
+
+Файловый снимок плана для обмена (`formatVersion`, `createdAt`, `targets?`, `days[]`).
+
+| DTO | Смысл |
+| --- | --- |
+| `FoodPlanTargetsDTO` | КБЖУ экспортера |
+| `FoodPlanDayDTO` | `dayOffset` 0…6 от week start + meals |
+| `FoodPlanMealDTO` | mealType + вложенный recipe |
+| `FoodPlanRecipeDTO` | каталог-id / полное тело рецепта + ингредиенты + optional JPEG base64 |
+| `FoodPlanIngredientDTO` | name, qty, unit, category, optional `foodProductCatalogKey` |
+
+`WeekPlanImportMode`: `replaceWeek` | `fillEmptyDaysOnly`.
+
+UTType: `com.mikhail-chugaev.food-planner.foodplan`, расширение `.foodplan`.
+
+### MealPlanDaySnapshot / MealPlanGenerationPending (UserDefaults)
+
+Снимок превью-дня онбординга/paywall и флаг `needsGeneration` для автозаполнения текущей недели после unlock.
+
 ## Границы контекстов
 
 | Контекст | Ответственность |
 | --- | --- |
-| Catalog | Seed, локализация ключей, favorites catalog ids |
-| Planning | Week/Day/Meal CRUD, активная неделя |
+| Catalog | Seed, локализация ключей, favorites catalog ids, дедуп клонов |
+| Planning | Week/Day/Meal CRUD, генерация, clear, активная неделя |
+| Plan transfer | Export/import `.foodplan`, openURL file |
 | Shopping | Sync из плана, manual items, share |
-| Nutrition | Calculator, progress, micro focus |
+| Nutrition | Calculator, progress, micro focus (≤5) |
 | Import | Instagram/scrape/LLM/amount parse/stem match/review |
-| Subscription | Adapty placement, paywall (или mocks), persist access |
+| Subscription | Adapty placement, paywall, persist access |
+| Engagement | Trial local notifications, review prompt gating, tab deep links |

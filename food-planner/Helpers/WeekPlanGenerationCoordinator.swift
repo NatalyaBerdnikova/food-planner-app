@@ -27,12 +27,14 @@ final class WeekPlanGenerationCoordinator {
     private var generationTask: Task<Void, Never>?
     private var modelContext: ModelContext?
     private var replaceExisting = true
+    private var targetWeekStart: Date?
 
     func attach(modelContext: ModelContext) {
         self.modelContext = modelContext
     }
 
-    func presentCompose() {
+    func presentCompose(forWeekStarting weekStart: Date) {
+        targetWeekStart = Calendar.current.startOfWeek(for: weekStart)
         composePresentation = GenerateWeekPlanPresentation()
     }
 
@@ -40,14 +42,18 @@ final class WeekPlanGenerationCoordinator {
         composePresentation = nil
     }
 
-    func startGeneration(replaceExisting: Bool = true) {
+    func startGeneration(replaceExisting: Bool = true, forWeekStarting weekStart: Date? = nil) {
         guard let context = modelContext else { return }
 
         generationTask?.cancel()
         self.replaceExisting = replaceExisting
+        if let weekStart {
+            targetWeekStart = Calendar.current.startOfWeek(for: weekStart)
+        }
         composePresentation = nil
         state = .loading(.pickingRecipes)
         progressPresentation = WeekPlanGenerationPresentation()
+        AppAnalytics.logPlanGenerateStart(replaceExisting: replaceExisting)
 
         generationTask = Task {
             await performGeneration(in: context, replaceExisting: replaceExisting)
@@ -56,7 +62,10 @@ final class WeekPlanGenerationCoordinator {
 
     func startPendingGenerationIfNeeded() {
         guard MealPlanGenerationPending.needsGeneration else { return }
-        startGeneration(replaceExisting: false)
+        startGeneration(
+            replaceExisting: false,
+            forWeekStarting: Calendar.current.startOfWeek(for: .now)
+        )
     }
 
     func cancelGeneration() {
@@ -80,7 +89,12 @@ final class WeekPlanGenerationCoordinator {
     private func performGeneration(in context: ModelContext, replaceExisting: Bool) async {
         let settings = AppSettingsService.settings(in: context)
         let weekPlans = (try? context.fetch(FetchDescriptor<WeekPlan>())) ?? []
-        let weekPlan = WeekPlanService.currentWeekPlan(from: weekPlans, in: context)
+        let weekStart = targetWeekStart ?? Calendar.current.startOfWeek(for: .now)
+        let weekPlan = WeekPlanService.weekPlan(
+            forWeekStarting: weekStart,
+            from: weekPlans,
+            in: context
+        )
         let candidates = ((try? context.fetch(FetchDescriptor<Recipe>())) ?? []).filter {
             $0.isCatalogRecipe && $0.isVisibleInApp
         }
@@ -105,6 +119,9 @@ final class WeekPlanGenerationCoordinator {
         )
         guard !Task.isCancelled else { return }
         MealPlanGenerationPending.clear()
+        let mealsCount = weekPlan.dayPlans.reduce(0) { $0 + $1.meals.count }
+        let daysFilled = weekPlan.dayPlans.filter { !$0.meals.isEmpty }.count
+        AppAnalytics.logPlanGenerateSuccess(mealsCount: mealsCount, daysFilled: daysFilled)
         state = .ready
     }
 }

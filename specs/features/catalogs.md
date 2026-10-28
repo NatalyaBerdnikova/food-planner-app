@@ -1,12 +1,12 @@
 # F-CAT — Каталоги продуктов и рецептов
 
 **Status:** shipped  
-**Primary:** `FoodCatalogSeeder`, `RecipeCatalogStore`, Resources JSON, `tools/`  
-**Related:** [recipes.md](recipes.md), [import.md](import.md), [nutrition.md](nutrition.md)
+**Primary:** `FoodCatalogSeeder`, `RecipeCatalogStore`, `RecipeCollections`, Resources JSON, `tools/`  
+**Related:** [recipes.md](recipes.md), [import.md](import.md), [nutrition.md](nutrition.md), [week-plan.md](week-plan.md)
 
 ## Цель
 
-Локальная база продуктов и стартовых рецептов; расширение контента без backend.
+Локальная база продуктов и стартовых рецептов; расширение контента без backend; стабильные id для генерации плана и дедупа в UI.
 
 ## Продукты
 
@@ -23,6 +23,7 @@
 - Изображения каталога: `Resources/RecipeImages/<imageId>.jpg`.
 - Редактор: `tools/recipe-catalog-manager.html`.
 - Поля каталога включают `cookTimeMinutes`, ingredients по `catalogKey`, steps.
+- Генерация плана создаёт клоны с тем же `catalogRecipeId`; библиотека/discovery используют `RecipeCollections.deduplicatedCatalogRecipes` (предпочтение «канонического» инстанса без meals).
 
 ## Формат единиц
 
@@ -36,3 +37,4 @@
 - [ ] Каталоговый рецепт идентифицируется стабильным `catalogRecipeId`.
 - [ ] Матчинг импорта использует те же `catalogKey`, что в food-catalog.
 - [ ] Промпт импорта на ru/en содержит полный (или почти полный) одноязычный список без критичной обрезки базовых продуктов.
+- [ ] После генерации недели библиотека не показывает несколько карточек одного catalog id.

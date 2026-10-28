@@ -14,6 +14,7 @@
 | Поведение фич (acceptance) | [features/](features/) |
 | Визуальный язык | [06-design-system.md](06-design-system.md) |
 | Планируемые изменения | [07-roadmap.md](07-roadmap.md) |
+| События аналитики (план) | [ANALYTICS_EVENTS.md](ANALYTICS_EVENTS.md) |
 
 ## Правила SDD в этом репозитории
 
@@ -29,12 +30,13 @@
 | --- | --- | --- | --- |
 | F-ONB | Онбординг и профиль питания | shipped | [features/onboarding.md](features/onboarding.md) |
 | F-HOME | Сегодня / Home | shipped | [features/home.md](features/home.md) |
-| F-PLAN | Недельный план | shipped | [features/week-plan.md](features/week-plan.md) |
+| F-PLAN | Недельный план, генерация, обмен `.foodplan` | shipped | [features/week-plan.md](features/week-plan.md) |
 | F-SHOP | Список покупок | shipped | [features/shopping.md](features/shopping.md) |
 | F-REC | Библиотека и карточка рецепта | shipped | [features/recipes.md](features/recipes.md) |
 | F-IMP | Импорт рецептов (Instagram / paste / share) | shipped | [features/import.md](features/import.md) |
 | F-NUT | КБЖУ, микронутриенты, цели | shipped | [features/nutrition.md](features/nutrition.md) |
 | F-SUB | Подписка (Adapty / StoreKit) | shipped | [features/subscription.md](features/subscription.md) |
+| F-ENG | Вовлечение: trial-пуши и запрос отзыва | shipped | [features/engagement.md](features/engagement.md) |
 | F-SET | Настройки | shipped | [features/settings.md](features/settings.md) |
 | F-CAT | Каталоги продуктов и рецептов | shipped | [features/catalogs.md](features/catalogs.md) |
 
@@ -46,6 +48,11 @@
 
 ## Недавние обновления спек (канон)
 
-- Share / deep link / cold-start импорт; стемминг и amount-parser; copy «Подбираем ингредиенты»
-- iPad: readable widths, adaptive grids, form sheets, 2-col week plan
-- Подписка: `AppVars.useSubscriptionMocks` для TestFlight (Continue + Restore)
+- Генерация недельного плана (`MealPlanGenerator`) + превью дня в онбординге/paywall
+- Обмен планом: формат `.foodplan`, экспорт с именем файла и средним КБЖУ, импорт с режимами
+- Очистка плана недели (meals + shopping) с confirmation
+- Trial engagement: локальные напоминания D1/D3/D7 и за 2 дня до списания + deep link вкладок
+- Запрос отзыва StoreKit после лайка/оценки рецепта (не в первый календарный день)
+- Поиск рецептов: сначала по названию, иначе секция «Похожие по ингредиенту»
+- Дедуп клонов каталога в библиотеке (`catalogRecipeId`)
+- Плавный opacity-переход bootstrap → app; scroll плана на iOS 18+ `ScrollPosition`

@@ -62,24 +62,37 @@
 | `plan_week_view` | custom | Открыта неделя | `source` (`home` / `onboarding` / `push`) |
 | `plan_day_view` | custom | Открыт день | `day_index`, `is_today` (bool) |
 | `meal_open` | custom | Открыт приём пищи / рецепт | `meal_type`, `source` |
-| `plan_edit` | custom | Замена блюда / правка плана | `edit_type` (`swap` / `remove` / `add`) |
+| `plan_edit` | custom | Замена блюда / правка плана | `edit_type` (`swap` / `remove` / `add` / `clear`) |
 | `plan_save` | custom | План сохранён | `days_count` |
+| `plan_generate_start` | custom | Старт автогенерации недели | `replace_existing` (bool) |
+| `plan_generate_success` | custom | Генерация завершена | `meals_count`, `days_filled` |
+| `plan_generate_error` | custom | Ошибка генерации | `error_code`, `stage` |
+| `plan_export_start` | custom | Открыт sheet экспорта `.foodplan` | `meals_count`, `filled_days` |
+| `plan_export_share` | custom | Пользователь шарит файл | `has_custom_filename` (bool) |
+| `plan_import_preview` | custom | Открыт preview импорта плана | `mode` (`replace` / `fill_empty`) |
+| `plan_import_apply` | custom | План применён | `mode`, `target_week_offset` |
 | `shopping_list_open` | custom | Открыт список покупок | `items_count` |
 | `shopping_list_item_check` | custom | Отметил продукт | `checked` (bool) |
 | `shopping_list_share` | custom | Шаринг списка | `method` (если известно) |
-| `share` | recommended | Системный share | `content_type` (`shopping_list` / `meal` / `plan`) |
-| `instagram_import_start` | custom | Старт импорта | `source` |
-| `instagram_import_success` | custom | Успешный импорт | `items_count` (если есть) |
-| `instagram_import_error` | custom | Ошибка импорта | `error_code` |
+| `share` | recommended | Системный share | `content_type` (`shopping_list` / `meal` / `plan` / `foodplan`) |
+| `instagram_import_start` | custom | Старт импорта рецепта | `source` |
+| `instagram_import_success` | custom | Успешный импорт рецепта | `items_count` (если есть) |
+| `instagram_import_error` | custom | Ошибка импорта рецепта | `error_code` |
+| `recipe_favorite` | custom | Лайк каталогового рецепта | `catalog_recipe_id`, `on` (bool) |
+| `recipe_rate` | custom | Оценка рецепта | `rating` (1–5) |
+| `recipe_search` | custom | Поиск в библиотеке | `query_len`, `result_mode` (`name` / `ingredient` / `empty`) |
 | `micronutrients_view` | custom | Экран микронутриентов | — |
+| `micronutrient_limit_hit` | custom | Попытка выбрать 6-й микро | — |
 
 ### Activation (для аудиторий / BigQuery)
 
 Считайте activated, если за D0–D1 было ≥1 из:
 - `plan_save`
+- `plan_generate_success`
 - `shopping_list_open`
 - `instagram_import_success`
 - `plan_edit`
+- `plan_import_apply`
 
 Опционально дублируйте одним событием:
 
@@ -109,8 +122,9 @@
 
 | Событие | Тип | Когда слать | Параметры |
 |---------|-----|-------------|-----------|
-| `rate_prompt_view` | custom | Показали системный/свой запрос | `trigger` (`plan_save` / `shopping_list`) |
-| `rate_prompt_result` | custom | Результат | `action` (`rated` / `dismissed` / `feedback`) |
+| `rate_prompt_view` | custom | Вызвали `requestReview` (система может не показать UI) | `trigger` (`recipe_favorite` / `recipe_rate`) |
+| `rate_prompt_result` | custom | Результат, если свой UI | `action` (`rated` / `dismissed` / `feedback`) |  
+Примечание: системный StoreKit sheet не отдаёт callback «показали/закрыли» — трекать факт вызова сервиса и гейты (`day > 1`, version gap).
 
 ---
 
@@ -119,7 +133,6 @@
 | Событие | Тип | Когда слать | Параметры |
 |---------|-----|-------------|-----------|
 | `app_exception` | recommended / crashlytics | Через Crashlytics | — |
-| `plan_generate_error` | custom | Не удалось собрать план | `error_code`, `stage` |
 | `entitlement_check` | custom | Проверка доступа к фиче | `feature`, `allowed` (bool) |
 
 ---
@@ -145,7 +158,7 @@
    `tutorial_begin` → `tutorial_complete` → `plan_preview_view` → `paywall_view` → `trial_start`
 
 2. **Активация в триале**  
-   `trial_start` → (`plan_week_view` | `shopping_list_open` | `instagram_import_success`) → `user_activated`
+   `trial_start` → (`plan_week_view` | `plan_generate_success` | `shopping_list_open` | `instagram_import_success`) → `user_activated`
 
 3. **Триал → оплата**  
    `trial_start` → `purchase` (с `plan_id`, без trial)
@@ -156,7 +169,8 @@
 
 Онбординг: `tutorial_begin`, `onboarding_step_complete`, `tutorial_complete`, `onboarding_targets_ready`  
 Paywall: `paywall_view`, `paywall_plan_select`, `paywall_cta_tap`, `trial_start`, `purchase`, `purchase_error`, `restore_result`  
-Продукт: `plan_preview_view`, `plan_week_view`, `plan_save`, `shopping_list_open`, `instagram_import_start`, `instagram_import_success`, `instagram_import_error`  
+Продукт: `plan_preview_view`, `plan_week_view`, `plan_save`, `plan_generate_success`, `shopping_list_open`, `instagram_import_start`, `instagram_import_success`, `instagram_import_error`, `plan_export_share`, `plan_import_apply`  
+Вовлечение: `trial_reminder_scheduled`, `notification_open`, `rate_prompt_view`  
 Свойства: `subscription_status`, `plan_id`, `activated`, `onboarding_completed`
 
 Остальное — второй итерацией.
@@ -168,3 +182,15 @@ Paywall: `paywall_view`, `paywall_plan_select`, `paywall_cta_tap`, `trial_start`
 - Включить DebugView в Firebase (Xcode argument: `-FIRDebugEnabled`).
 - Проверить, что `purchase` / подписки не двоятся с RevenueCat/StoreKit2 collector.
 - Имена событий не менять после запуска воронок — только добавлять новые.
+
+---
+
+## Implementation
+
+- Фасад: `food-planner/Core/AppAnalytics.swift` (typed helpers, truncate ≤100, no-op без `GoogleService-Info.plist`).
+- Bootstrap: `AppDelegate` → `AppAnalytics.configureIfPossible()` до Adapty.
+- SPM: `firebase-ios-sdk` → product `FirebaseAnalytics` на target `food-planner`.
+- Конфиг: скопировать `food-planner/GoogleService-Info.example.plist` → `GoogleService-Info.plist` и подставить значения из Firebase Console (реальный plist в `.gitignore`; example не входит в app target).
+- SPM pin появится в `Package.resolved` после Resolve Packages в Xcode.
+- Activation: `user_activated` + UserDefaults `analytics.activated` + user property `activated`.
+- `plan_save`: отдельного UI save нет — не шлётся; activation покрывается `plan_edit` / generate / shopping / import.

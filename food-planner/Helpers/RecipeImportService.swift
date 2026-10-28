@@ -30,6 +30,19 @@ enum RecipeImportError: LocalizedError {
     case apiQuotaExceeded
     case apiUnauthorized
 
+    var analyticsCode: String {
+        switch self {
+        case .unreadableFile: "unreadable_file"
+        case .invalidFormat: "invalid_format"
+        case .networkFailure: "network_failure"
+        case .instagramUnavailable: "instagram_unavailable"
+        case .transcriptionFailed: "transcription_failed"
+        case .parsingFailed: "parsing_failed"
+        case .apiQuotaExceeded: "api_quota_exceeded"
+        case .apiUnauthorized: "api_unauthorized"
+        }
+    }
+
     var errorDescription: String? {
         switch self {
         case .unreadableFile: String(localized: "import.error.unreadable")

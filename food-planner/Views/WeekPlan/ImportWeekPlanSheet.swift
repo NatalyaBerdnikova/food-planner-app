@@ -95,6 +95,8 @@ struct ImportWeekPlanSheet: View {
         .appFormSheetPresentation()
         .onAppear {
             transfer.attach(modelContext: modelContext)
+            let analyticsMode = mode == .replaceWeek ? "replace" : "fill_empty"
+            AppAnalytics.logPlanImportPreview(mode: analyticsMode)
         }
     }
 
@@ -162,7 +164,18 @@ struct ImportWeekPlanSheet: View {
             from: weekPlans,
             in: modelContext
         )
-        transfer.applyImport(document: document, to: weekPlan, mode: mode)
+        let currentWeek = Calendar.current.startOfWeek(for: .now)
+        let offset = Calendar.current.dateComponents(
+            [.weekOfYear],
+            from: currentWeek,
+            to: Calendar.current.startOfWeek(for: selectedWeekStart)
+        ).weekOfYear ?? 0
+        transfer.applyImport(
+            document: document,
+            to: weekPlan,
+            mode: mode,
+            targetWeekOffset: offset
+        )
         dismiss()
     }
 }
