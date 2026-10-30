@@ -15,10 +15,12 @@ struct AddRecipeView: View {
     @State private var stepsAttributed: NSAttributedString
     @State private var imageData: Data?
     @State private var sourceURL: String
+    @State private var sourceDescription: String
     @State private var draftIngredients: [DraftIngredient]
     @State private var unresolvedIngredients: [UnresolvedIngredient]
     @State private var resolvingUnresolved: UnresolvedIngredient?
     @State private var photoPickerItem: PhotosPickerItem?
+    @State private var showUnresolvedShare = false
 
     init(prefill: ImportedRecipeDraft? = nil) {
         _name = State(initialValue: prefill?.name ?? "")
@@ -30,6 +32,7 @@ struct AddRecipeView: View {
         )
         _imageData = State(initialValue: prefill?.imageData)
         _sourceURL = State(initialValue: prefill?.sourceURL ?? "")
+        _sourceDescription = State(initialValue: prefill?.sourceDescription ?? "")
         _draftIngredients = State(initialValue: prefill?.ingredients ?? [])
         _unresolvedIngredients = State(initialValue: prefill?.unresolvedIngredients ?? [])
     }
@@ -86,19 +89,25 @@ struct AddRecipeView: View {
                     Text("addRecipe.servingsFooter")
                 }
 
-                if !sourceURL.isEmpty {
-                    Section("addRecipe.sourceURL") {
-                        if let url = URL(string: sourceURL) {
-                            Link(sourceURL, destination: url)
-                        } else {
-                            Text(sourceURL)
-                                .foregroundStyle(.secondary)
+                if !sourceURL.isEmpty || !sourceDescription.isEmpty {
+                    Section("addRecipe.source") {
+                        if !sourceURL.isEmpty {
+                            if let url = URL(string: sourceURL) {
+                                Link(sourceURL, destination: url)
+                            } else {
+                                Text(sourceURL)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        if !sourceDescription.isEmpty {
+                            RecipeSourceDescriptionDisclosure(text: sourceDescription)
                         }
                     }
                 }
 
                 Section {
                     RichTextEditorView(attributedText: $stepsAttributed)
+                        .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
                 } header: {
                     Text("addRecipe.steps")
                 }
@@ -146,6 +155,16 @@ struct AddRecipeView: View {
                                 }
                             }
                         }
+
+                        Button {
+                            AppAnalytics.logUnresolvedIngredientsShare(
+                                itemsCount: unresolvedIngredients.count
+                            )
+                            showUnresolvedShare = true
+                        } label: {
+                            Label("import.unresolved.share", systemImage: "square.and.arrow.up")
+                        }
+                        .accessibilityLabel("import.unresolved.share")
                     } header: {
                         Text("import.unresolved.title")
                     } footer: {
@@ -195,6 +214,17 @@ struct AddRecipeView: View {
                     unresolvedIngredients.removeAll { $0.id == item.id }
                 }
             }
+            .sheet(isPresented: $showUnresolvedShare) {
+                ShareSheet(
+                    items: [
+                        UnresolvedIngredientsShare.text(
+                            recipeName: name,
+                            items: unresolvedIngredients,
+                            sourceURL: sourceURL
+                        )
+                    ]
+                )
+            }
             .onChange(of: photoPickerItem) { _, item in
                 loadPhoto(from: item)
             }
@@ -218,12 +248,15 @@ struct AddRecipeView: View {
 
     private func saveRecipe() {
         let trimmedSourceURL = sourceURL.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedSourceDescription = sourceDescription
+            .trimmingCharacters(in: .whitespacesAndNewlines)
         let recipe = Recipe(
             name: name.trimmingCharacters(in: .whitespaces),
             userRecipeId: UUID().uuidString,
             servings: servings,
             imageData: imageData,
             sourceURL: trimmedSourceURL.isEmpty ? nil : trimmedSourceURL,
+            sourceDescription: trimmedSourceDescription.isEmpty ? nil : trimmedSourceDescription,
             steps: RecipeStepsStorage.plainStepLines(from: stepsAttributed),
             stepsRichTextData: RecipeStepsStorage.rtfData(from: stepsAttributed),
             cookTimeMinutes: cookTimeMinutes,

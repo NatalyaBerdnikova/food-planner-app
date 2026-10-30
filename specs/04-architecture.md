@@ -122,11 +122,11 @@ ContentView.onOpenURL / checkPendingImport (после canPresentImport)
         ↓
 ImportCoordinator.startImport
         ↓
-ScrapeCreatorsClient (post + optional transcript)
+ScrapeCreatorsClient (post; transcript optional via config)
         ↓
-LLMRecipeParser / CaptionFallbackParser
+LLMRecipeParser / CaptionFallbackParser   ← только структура (без каталога)
         ↓
-IngredientAmountParser.normalize → IngredientCatalogMatcher
+IngredientAmountParser → IngredientCatalogMatcher   ← локальный матчинг
         ↓
 ImportProgressView → ImportedRecipeReviewView → Recipe в SwiftData (+ user JSON)
 ```
@@ -164,7 +164,7 @@ Import: fileImporter / onOpenURL → ImportWeekPlanSheet (неделя + mode + 
 ## Внешние зависимости (runtime)
 
 - **Adapty** — paywall placement `basic_placement`, access level `premium`.
-- **ScrapeCreators / LLM API** — через `ImportAPIConfig` (пример в `ImportAPIConfig.example.swift`).
+- **ScrapeCreators / LLM API** — `ImportAPIConfig` читает `ImportSecrets.plist` (или env); шаблон `ImportSecrets.example.plist`.
 
 ## Инструменты (вне приложения)
 

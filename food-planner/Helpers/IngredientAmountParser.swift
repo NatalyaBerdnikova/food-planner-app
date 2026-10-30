@@ -43,11 +43,50 @@ enum IngredientAmountParser {
             return ParsedAmount(name: trimmed, quantity: nil, unit: nil)
         }
 
+        if let match = matchLeadingAmount(in: trimmed) {
+            return match
+        }
+
         if let match = matchTrailingAmount(in: trimmed) {
             return match
         }
 
         return ParsedAmount(name: trimmed, quantity: nil, unit: nil)
+    }
+
+    private static func matchLeadingAmount(in text: String) -> ParsedAmount? {
+        let pattern = #"(?i)^(\d+(?:[.,]\d+)?)\s*([a-zа-яё.%]+(?:\s*[a-zа-яё.]+)?)?\s+(.+)$"#
+        guard let regex = try? NSRegularExpression(pattern: pattern),
+              let match = regex.firstMatch(in: text, range: NSRange(text.startIndex..., in: text)),
+              let quantityRange = Range(match.range(at: 1), in: text),
+              let nameRange = Range(match.range(at: 3), in: text) else {
+            return nil
+        }
+
+        let name = String(text[nameRange]).trimmingCharacters(in: .whitespacesAndNewlines)
+        guard name.count >= 2 else { return nil }
+
+        let quantityRaw = text[quantityRange].replacingOccurrences(of: ",", with: ".")
+        guard let quantity = Double(quantityRaw), quantity > 0 else { return nil }
+
+        var unit: MeasurementUnit?
+        if match.range(at: 2).location != NSNotFound,
+           let unitRange = Range(match.range(at: 2), in: text) {
+            let unitRaw = String(text[unitRange]).trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !unitRaw.isEmpty, isKnownUnit(unitRaw) else { return nil }
+            unit = UnitNormalizer.normalize(unitRaw)
+        }
+
+        if unit == nil {
+            let loweredName = name.lowercased()
+            if loweredName.contains("вода") || loweredName.contains("молоко") || loweredName.contains("сок") {
+                unit = .milliliter
+            } else {
+                unit = .gram
+            }
+        }
+
+        return ParsedAmount(name: name, quantity: quantity, unit: unit)
     }
 
     private static func looksLikeInstruction(_ text: String) -> Bool {
@@ -117,6 +156,7 @@ enum IngredientAmountParser {
             "stick", "sticks", "стик", "стика", "стиков", "стики",
             "tbsp", "tablespoon", "tablespoons", "стл", "столоваяложка", "столовыеложки",
             "tsp", "teaspoon", "teaspoons", "чл", "чайнаяложка", "чайныеложки",
+            "cup", "cups", "lb", "pound", "pounds",
         ]
         return known.contains(key)
     }

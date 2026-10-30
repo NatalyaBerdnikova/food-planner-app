@@ -95,9 +95,9 @@ final class WeekPlanGenerationCoordinator {
             from: weekPlans,
             in: context
         )
-        let candidates = ((try? context.fetch(FetchDescriptor<Recipe>())) ?? []).filter {
-            $0.isCatalogRecipe && $0.isVisibleInApp
-        }
+        let candidates = RecipeCollections.deduplicatedCatalogRecipes(
+            from: ((try? context.fetch(FetchDescriptor<Recipe>())) ?? []).filter(\.isVisibleInApp)
+        )
 
         let pinnedToday: MealPlanGenerator.DayBlueprint? = {
             guard !replaceExisting,

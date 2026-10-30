@@ -90,12 +90,7 @@ enum MealPlanGenerator {
     }
 
     static func blueprint(from snapshot: MealPlanDaySnapshot, candidates: [Recipe]) -> DayBlueprint? {
-        let byId = Dictionary(
-            uniqueKeysWithValues: candidates.compactMap { recipe -> (String, Recipe)? in
-                guard let id = recipe.catalogRecipeId else { return nil }
-                return (id, recipe)
-            }
-        )
+        let byId = RecipeCollections.catalogRecipesByID(from: candidates)
         var items: [PlannedItem] = []
         var used = Set<String>()
         for slot in snapshot.slots {
@@ -504,6 +499,8 @@ enum MealPlanGenerator {
             catalogRecipeId: source.catalogRecipeId,
             servings: 1,
             imageData: source.imageData,
+            sourceURL: source.sourceURL,
+            sourceDescription: source.sourceDescription,
             steps: source.steps,
             stepsRichTextData: source.stepsRichTextData,
             cookTimeMinutes: source.cookTimeMinutes,

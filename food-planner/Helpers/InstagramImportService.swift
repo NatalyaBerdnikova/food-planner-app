@@ -23,8 +23,13 @@ enum InstagramImportService {
             throw RecipeImportError.networkFailure
         }
 
-        onStage?(.readingContent)
-        let transcript = await ScrapeCreatorsClient.fetchTranscriptIfAvailable(url: normalizedURL)
+        let transcript: String
+        if ImportAPIConfig.fetchInstagramTranscript {
+            onStage?(.readingContent)
+            transcript = await ScrapeCreatorsClient.fetchTranscriptIfAvailable(url: normalizedURL)
+        } else {
+            transcript = ""
+        }
 
         guard !postInfo.caption.isEmpty || !transcript.isEmpty else {
             throw RecipeImportError.invalidFormat
@@ -33,10 +38,12 @@ enum InstagramImportService {
         onStage?(.parsingRecipe)
         let parsed = try await resolveParsedRecipe(
             caption: postInfo.caption,
-            transcript: transcript
+            transcript: transcript,
+            postTitleHint: postInfo.titleHint
         )
 
         onStage?(.matchingIngredients)
+        await FoodCatalogSeeder.seedIfNeeded(in: context)
         let matchResult = IngredientCatalogMatcher.match(parsed.ingredients, in: context)
 
         var imageData: Data?
@@ -47,13 +54,24 @@ enum InstagramImportService {
             imageData = await LinkMetadataFetcher.thumbnailData(for: pageURL)
         }
 
+        let attributedSteps = RecipeStepsStorage.attributedRecipeDocument(
+            intro: parsed.stepsIntro,
+            steps: parsed.steps
+        )
+
+        let sourceDescription = postInfo.caption
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
         onStage?(.ready)
         return ImportedRecipeDraft(
             name: parsed.name,
             sourceURL: normalizedURL,
+            sourceDescription: sourceDescription.isEmpty ? nil : sourceDescription,
             servings: parsed.servings,
             cookTimeMinutes: parsed.cookTimeMinutes,
             steps: parsed.steps,
+            stepsIntro: parsed.stepsIntro,
+            stepsRichTextData: RecipeStepsStorage.rtfData(from: attributedSteps),
             imageData: imageData,
             ingredients: matchResult.resolved,
             unresolvedIngredients: matchResult.unresolved
@@ -62,10 +80,15 @@ enum InstagramImportService {
 
     private static func resolveParsedRecipe(
         caption: String,
-        transcript: String
+        transcript: String,
+        postTitleHint: String?
     ) async throws -> ParsedRecipe {
         do {
-            return try await LLMRecipeParser.parse(caption: caption, transcript: transcript)
+            return try await LLMRecipeParser.parse(
+                caption: caption,
+                transcript: transcript,
+                postTitleHint: postTitleHint
+            )
         } catch let error as RecipeImportError {
             if let fallback = CaptionFallbackParser.parse(caption: caption, transcript: transcript) {
                 return fallback

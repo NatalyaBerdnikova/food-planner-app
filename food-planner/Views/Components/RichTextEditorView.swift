@@ -10,13 +10,9 @@ struct RichTextEditorView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            RichTextFormatToolbar()
-
-            Divider()
-
             ZStack(alignment: .topLeading) {
                 RichTextEditorRepresentable(attributedText: $attributedText)
-                    .frame(minHeight: 160)
+                    .frame(minHeight: 240)
 
                 if attributedText.string.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     Text("addRecipe.stepsPlaceholder")
@@ -26,6 +22,10 @@ struct RichTextEditorView: View {
                         .allowsHitTesting(false)
                 }
             }
+
+            Divider()
+
+            RichTextFormatToolbar()
         }
     }
 }
@@ -79,8 +79,9 @@ private struct RichTextEditorRepresentable: UIViewRepresentable {
         textView.allowsEditingTextAttributes = true
         textView.backgroundColor = .clear
         textView.font = .preferredFont(forTextStyle: .body)
-        textView.textContainerInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)
-        textView.attributedText = attributedText
+        textView.textContainer.lineFragmentPadding = 0
+        textView.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        textView.attributedText = RecipeStepsStorage.sanitizeListIndents(attributedText)
         RichTextFormatting.activeTextView = textView
         return textView
     }
@@ -88,8 +89,9 @@ private struct RichTextEditorRepresentable: UIViewRepresentable {
     func updateUIView(_ textView: UITextView, context: Context) {
         RichTextFormatting.activeTextView = textView
         guard !context.coordinator.isEditing else { return }
-        if textView.attributedText.string != attributedText.string {
-            textView.attributedText = attributedText
+        let sanitized = RecipeStepsStorage.sanitizeListIndents(attributedText)
+        if textView.attributedText.string != sanitized.string {
+            textView.attributedText = sanitized
         }
     }
 

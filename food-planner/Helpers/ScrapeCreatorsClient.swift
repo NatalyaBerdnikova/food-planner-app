@@ -2,6 +2,7 @@ import Foundation
 
 struct InstagramPostInfo {
     var caption: String
+    var titleHint: String?
     var thumbnailURL: URL?
 }
 
@@ -32,6 +33,8 @@ enum ScrapeCreatorsClient {
         var thumbnail_src: String?
         var display_url: String?
         var caption: String?
+        var title: String?
+        var accessibility_caption: String?
         var edge_media_to_caption: CaptionContainer?
     }
 
@@ -69,10 +72,15 @@ enum ScrapeCreatorsClient {
         }
 
         let caption = extractCaption(from: media)
+        let titleHint = extractTitleHint(from: media)
         let thumbnailString = media.thumbnail_src ?? media.display_url
         let thumbnailURL = thumbnailString.flatMap(URL.init(string:))
 
-        return InstagramPostInfo(caption: caption, thumbnailURL: thumbnailURL)
+        return InstagramPostInfo(
+            caption: caption,
+            titleHint: titleHint,
+            thumbnailURL: thumbnailURL
+        )
     }
 
     private static func isSuccessfulPostResponse(_ response: PostResponse) -> Bool {
@@ -88,6 +96,17 @@ enum ScrapeCreatorsClient {
         return media.edge_media_to_caption?.edges?
             .compactMap { $0.node?.text }
             .joined(separator: "\n") ?? ""
+    }
+
+    private static func extractTitleHint(from media: PostMedia) -> String? {
+        let candidates = [
+            media.title,
+            media.accessibility_caption,
+        ]
+        .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+        .filter { !$0.isEmpty }
+
+        return candidates.first
     }
 
     static func normalizeInstagramURL(_ url: String) -> String {

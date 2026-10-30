@@ -350,6 +350,11 @@ extension AppAnalytics {
         log("instagram_import_error", ["error_code": errorCode])
     }
 
+    static func logUnresolvedIngredientsShare(itemsCount: Int) {
+        log("unresolved_ingredients_share", ["items_count": itemsCount])
+        log("share", ["content_type": "unresolved_ingredients"])
+    }
+
     static func logRecipeFavorite(catalogRecipeID: String, on: Bool) {
         log("recipe_favorite", [
             "catalog_recipe_id": catalogRecipeID,

@@ -1,5 +1,32 @@
 # Инструменты food-planner
 
+## import_recipe_lab.py / import-recipe-lab.html
+
+Локальная лаборатория импорта рецептов: тот же LLM-промпт, нормализация единиц и fuzzy-matching каталога, что в приложении. Нужна для сверки промптов и matching без сборки iOS.
+
+**Источник данных по умолчанию** — caption из `tools/instagram-examples.txt` (`Reels 1` …). Instagram URL опционален и понадобится позже, когда доступ к API восстановят.
+
+### Запуск CLI
+
+```bash
+python3 tools/import_recipe_lab.py --list
+python3 tools/import_recipe_lab.py --example 3
+python3 tools/import_recipe_lab.py --example 1 --lang en
+python3 tools/import_recipe_lab.py --all --out /tmp/import-lab
+python3 tools/import_recipe_lab.py --caption '...' --out /tmp/import.json
+```
+
+Секреты AI provider (`AI_PROVIDER_*`) читаются из `food-planner/ImportSecrets.plist` (не коммитится). Язык по умолчанию `ru`: LLM переводит название, шаги и `rawName` ингредиентов на язык пользователя (`--lang en` / `auto`).
+
+### HTML UI
+
+```bash
+python3 tools/import_recipe_lab.py --serve --port 8765
+open http://127.0.0.1:8765/
+```
+
+Форма: готовые примеры / caption → name, servings, cook time, steps, matched/unresolved ингредиенты и raw JSON.
+
 ## ingredient-catalog-manager.html
 
 Локальная HTML-страница для управления каталогом продуктов (поля модели `FoodProduct`, значения **на 100 г**).

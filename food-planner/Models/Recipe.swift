@@ -13,6 +13,7 @@ final class Recipe {
     var servings: Int = 1
     @Attribute(.externalStorage) var imageData: Data?
     var sourceURL: String?
+    var sourceDescription: String?
     var steps: [String]
     @Attribute(.externalStorage) var stepsRichTextData: Data?
 
@@ -56,6 +57,7 @@ final class Recipe {
         servings: Int = 1,
         imageData: Data? = nil,
         sourceURL: String? = nil,
+        sourceDescription: String? = nil,
         steps: [String] = [],
         stepsRichTextData: Data? = nil,
         cookTimeMinutes: Int = 0,
@@ -74,6 +76,7 @@ final class Recipe {
         self.servings = max(servings, 1)
         self.imageData = imageData
         self.sourceURL = sourceURL
+        self.sourceDescription = sourceDescription
         self.steps = steps
         self.stepsRichTextData = stepsRichTextData
         self.cookTimeMinutes = max(cookTimeMinutes, 0)

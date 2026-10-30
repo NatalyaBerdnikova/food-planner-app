@@ -54,10 +54,10 @@ enum IngredientCatalogMatcher {
     }
 
     private static func fuzzyMatchCatalogKey(for rawName: String, index: CatalogMatchIndex) -> String? {
-        let query = normalizeForMatch(rawName)
+        let query = stripMatchNoise(normalizeForMatch(rawName))
         guard !query.isEmpty else { return nil }
 
-        let queryStem = IngredientNameStemmer.stem(query)
+        let queryStem = stripMatchNoise(IngredientNameStemmer.stem(query))
         var bestKey: String?
         var bestScore = 0
         var bestRank = Int.max
@@ -81,6 +81,31 @@ enum IngredientCatalogMatcher {
         }
 
         return bestScore >= 70 ? bestKey : nil
+    }
+
+    private static let matchNoiseTokens: Set<String> = [
+        "г", "гр", "грамм", "грамма", "граммы", "кг",
+        "мл", "л", "литр", "литра", "литры",
+        "шт", "штука", "штуки", "штук",
+        "стл", "чл", "ст", "ч",
+        "tbsp", "tsp", "cup", "cups", "lb", "oz",
+        "gram", "grams", "kg", "ml", "piece", "pieces",
+        "по", "вкусу", "taste", "pinch", "щепотка", "немного",
+        "свежий", "свежая", "свежие", "fresh", "finely", "minced", "chopped",
+    ]
+
+    private static func stripMatchNoise(_ text: String) -> String {
+        text
+            .split(separator: " ")
+            .map(String.init)
+            .filter { token in
+                guard !token.isEmpty else { return false }
+                if Double(token.replacingOccurrences(of: ",", with: ".")) != nil {
+                    return false
+                }
+                return !matchNoiseTokens.contains(token)
+            }
+            .joined(separator: " ")
     }
 
     private static func normalizeForMatch(_ text: String) -> String {

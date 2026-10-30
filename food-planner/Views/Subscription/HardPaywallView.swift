@@ -81,7 +81,6 @@ struct HardPaywallView: View {
             }
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)
-            .preferredColorScheme(.light)
             .onAppear {
                 AppAnalytics.logPlanPreviewView(
                     calories: Int(settings.targetCalories.rounded()),

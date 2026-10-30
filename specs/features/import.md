@@ -39,8 +39,8 @@ Share Extension: `UIViewController` + spinner (не `SLComposeServiceViewControl
 
 ## Стадии (`ImportStage`)
 
-1. `fetchingPost` — ScrapeCreators post info  
-2. `readingContent` — caption + optional transcript  
+1. `fetchingPost` — ScrapeCreators post info (caption + thumbnail)  
+2. `readingContent` — transcript (только если `IMPORT_FETCH_TRANSCRIPT=true`; по умолчанию выключено)  
 3. `parsingRecipe` — LLM (`LLMRecipeParser`) или `CaptionFallbackParser`  
 4. `matchingIngredients` — нормализация количества + `IngredientCatalogMatcher` (copy: «Подбираем ингредиенты»)  
 5. `ready` — draft для review  
@@ -49,10 +49,13 @@ UI: `ImportProgressView` sheet (на iPad — form sizing); ошибки → fai
 
 ## Парсинг и матчинг
 
-### LLM
+### LLM (только структура рецепта)
 
-- В промпт уходит каталог **на языке приложения** (`L10n.currentLanguageCode`): строки `catalogKey | localizedName` (ru или en), без обрезки критичной части списка.
-- `rawName` в ответе — на том же языке; `catalogKey` только из списка или `null`.
+- Промпт **без** food-catalog: extraction-engine + few-shot (messy IG caption → JSON).
+- Поля: name (не hook первой строки), servings/cookTime (null если нет), stepsIntro, steps, ingredients (`rawName`+qty+unit).
+- `response_format: json_object`; temperature ~0.2; пост-очистка имени/emoji/маркеров шагов.
+- Язык `rawName`/шагов — язык UI (ru|en).
+- Сопоставление с каталогом — только локальный matcher.
 
 ### Количество в названии (`IngredientAmountParser`)
 
@@ -64,8 +67,9 @@ UI: `ImportProgressView` sheet (на iPad — form sizing); ошибки → fai
 
 ### Fuzzy match (`IngredientCatalogMatcher` + `IngredientNameStemmer`)
 
-- Приоритет: валидный `catalogKey` из LLM → продукт в SwiftData.
-- Иначе стемминг (RU/EN) + score по токенам (порог ≥ 70); короткие токены только exact; производные («рисовая мука» при запросе «рис») штрафуются.
+Отдельная стадия после LLM/fallback:
+
+- Стемминг (RU/EN) + score по токенам (порог ≥ 70); короткие токены только exact; производные («рисовая мука» при запросе «рис») штрафуются.
 - Unresolved: `rawName` (без единиц) + suggested amount.
 
 Известный gap (roadmap): ручное сопоставление unresolved всё ещё friction; качество caption/transcript нестабильно.
@@ -85,7 +89,7 @@ UI: `ImportProgressView` sheet (на iPad — form sizing); ошибки → fai
 
 ## Конфиг
 
-Ключи API — `ImportAPIConfig` (не в git; пример `ImportAPIConfig.example.swift`).
+Ключи API — `ImportSecrets.plist` (gitignored; шаблон `ImportSecrets.example.plist`). `ImportAPIConfig` читает plist / env.
 
 ## Acceptance
 

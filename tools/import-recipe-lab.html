@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Import Recipe Lab — food-planner</title>
+  <style>
+    :root {
+      --bg: #f2f2f7;
+      --card: #ffffff;
+      --border: #d1d1d6;
+      --accent: #007aff;
+      --text: #1c1c1e;
+      --muted: #636366;
+      --ok: #34c759;
+      --warn: #ff9f0a;
+      --danger: #ff3b30;
+      --chip: #e8f2ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+    }
+    header h1 { margin: 0 0 4px; font-size: 1.35rem; }
+    header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 24px 64px;
+      display: grid;
+      gap: 16px;
+    }
+    @media (min-width: 960px) {
+      main { grid-template-columns: 360px 1fr; align-items: start; }
+      .span-2 { grid-column: 1 / -1; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    label {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 0 0 4px;
+    }
+    input, select, textarea, button {
+      font: inherit;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.82rem;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    button {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .hint { font-size: 0.8rem; color: var(--muted); }
+    .status {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #eef6ff;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      white-space: pre-wrap;
+    }
+    .status.error { background: #ffebea; color: #8a1f17; }
+    .status.ok { background: #eafaf0; color: #0b5; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin: 12px 0;
+    }
+    .meta-item {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .meta-item .k { font-size: 0.72rem; color: var(--muted); }
+    .meta-item .v { font-size: 1.05rem; font-weight: 600; }
+    .title {
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin: 8px 0 4px;
+    }
+    .steps {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    .steps li { margin-bottom: 8px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      border-bottom: 1px solid var(--border);
+      padding: 8px 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-weight: 600; font-size: 0.75rem; }
+    .ok-dot { color: var(--ok); font-weight: 700; }
+    .warn-dot { color: var(--warn); font-weight: 700; }
+    details {
+      margin-top: 12px;
+    }
+    details pre {
+      background: #111;
+      color: #e8e8e8;
+      padding: 12px;
+      border-radius: 10px;
+      overflow: auto;
+      font-size: 0.75rem;
+      max-height: 420px;
+    }
+    .example-btn {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 8px;
+    }
+    .example-btn small {
+      display: block;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .empty {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 24px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Import Recipe Lab</h1>
+    <p>Те же промпт, единицы и fuzzy-matching, что в приложении. Ключи остаются на локальном Python-сервере.</p>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Примеры caption</h2>
+      <p class="hint" style="margin-top:-6px;margin-bottom:12px">
+        Берём тексты из <code>tools/instagram-examples.txt</code>. Instagram URL пока не нужен.
+      </p>
+      <div id="examples"></div>
+
+      <h2 style="margin-top:18px">Ввод</h2>
+      <label for="language">Язык пользователя (перевод названия, шагов и ингредиентов)</label>
+      <select id="language">
+        <option value="ru" selected>ru</option>
+        <option value="en">en</option>
+        <option value="auto">auto (по языку caption)</option>
+      </select>
+
+      <input id="selectedExample" type="hidden" value="" />
+
+      <label for="caption">Caption</label>
+      <textarea id="caption" placeholder="Выберите Reels-пример выше или вставьте caption"></textarea>
+
+      <label for="titleHint">Title hint (опционально)</label>
+      <input id="titleHint" type="text" placeholder="accessibility / title" />
+
+      <details>
+        <summary class="hint">Instagram URL (когда доступ восстановят)</summary>
+        <label for="url">URL</label>
+        <input id="url" type="url" placeholder="https://www.instagram.com/reel/..." />
+      </details>
+
+      <div class="row" style="margin-top:12px">
+        <button class="primary" id="runBtn" type="button">Импортировать</button>
+        <button id="clearBtn" type="button">Очистить</button>
+      </div>
+      <p class="hint">Сервер: <code>python3 tools/import_recipe_lab.py --serve</code></p>
+      <div id="status" class="status" hidden></div>
+    </section>
+
+    <section class="card" id="resultCard">
+      <div class="badge">✦ AI import preview</div>
+      <div id="emptyState" class="empty">Результат появится здесь — как экран review в приложении.</div>
+      <div id="result" hidden>
+        <div class="title" id="name"></div>
+        <div class="hint" id="source"></div>
+        <div class="meta-grid">
+          <div class="meta-item"><div class="k">Порции</div><div class="v" id="servings">—</div></div>
+          <div class="meta-item"><div class="k">Время</div><div class="v" id="cookTime">—</div></div>
+          <div class="meta-item"><div class="k">Matched</div><div class="v" id="matchedCount">0</div></div>
+          <div class="meta-item"><div class="k">Unresolved</div><div class="v" id="unresolvedCount">0</div></div>
+        </div>
+
+        <h2>Шаги</h2>
+        <p class="hint" id="stepsIntro" hidden></p>
+        <ol class="steps" id="steps"></ol>
+
+        <h2 style="margin-top:18px">Ингредиенты (matched)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Сырьё</th>
+              <th>Каталог</th>
+              <th>Кол-во</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="matchedBody"></tbody>
+        </table>
+
+        <h2 style="margin-top:18px">Не распознаны</h2>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>rawName</th>
+              <th>Кол-во</th>
+              <th>Best score</th>
+            </tr>
+          </thead>
+          <tbody id="unresolvedBody"></tbody>
+        </table>
+
+        <h2 style="margin-top:18px">Parsed (до match)</h2>
+        <table>
+          <thead>
+            <tr><th>rawName</th><th>qty</th><th>unit</th></tr>
+          </thead>
+          <tbody id="parsedBody"></tbody>
+        </table>
+
+        <details>
+          <summary>Raw JSON / meta</summary>
+          <pre id="rawJson"></pre>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const statusEl = $("status");
+
+    function setStatus(text, kind) {
+      statusEl.hidden = !text;
+      statusEl.textContent = text || "";
+      statusEl.className = "status" + (kind ? " " + kind : "");
+    }
+
+    function unitLabel(unit) {
+      const map = {
+        gram: "г",
+        kilogram: "кг",
+        milliliter: "мл",
+        liter: "л",
+        piece: "шт",
+        tablespoon: "ст.л",
+        teaspoon: "ч.л",
+      };
+      return map[unit] || unit;
+    }
+
+    function qtyText(quantity, unit) {
+      const n = Number(quantity);
+      const pretty = Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100);
+      return `${pretty} ${unitLabel(unit)}`;
+    }
+
+    async function loadExamples() {
+      const box = $("examples");
+      try {
+        const res = await fetch("/api/examples");
+        const data = await res.json();
+        box.innerHTML = "";
+        for (const example of data.examples || []) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "example-btn";
+          btn.innerHTML = `<strong>Reels ${example.id}</strong><small>${example.preview}</small>`;
+          btn.addEventListener("click", () => {
+            $("caption").value = example.caption;
+            $("selectedExample").value = String(example.id);
+            $("url").value = "";
+            setStatus(`Загружен пример Reels ${example.id}`);
+          });
+          box.appendChild(btn);
+        }
+      } catch (error) {
+        box.innerHTML = `<p class="hint">Откройте через python-сервер, чтобы подтянуть примеры.</p>`;
+      }
+    }
+
+    function render(data) {
+      $("emptyState").hidden = true;
+      $("result").hidden = false;
+      $("name").textContent = data.name || "—";
+      $("source").textContent = data.sourceURL || "caption / example";
+      $("servings").textContent = data.servings ?? "—";
+      $("cookTime").textContent = data.cookTimeMinutes ? `${data.cookTimeMinutes} мин` : "—";
+      $("matchedCount").textContent = String((data.ingredientsMatched || []).length);
+      $("unresolvedCount").textContent = String((data.ingredientsUnresolved || []).length);
+
+      const intro = $("stepsIntro");
+      if (data.stepsIntro) {
+        intro.hidden = false;
+        intro.textContent = data.stepsIntro;
+      } else {
+        intro.hidden = true;
+      }
+      const steps = $("steps");
+      steps.innerHTML = "";
+      for (const step of data.steps || []) {
+        const li = document.createElement("li");
+        li.textContent = step;
+        steps.appendChild(li);
+      }
+
+      const matchedBody = $("matchedBody");
+      matchedBody.innerHTML = "";
+      for (const item of data.ingredientsMatched || []) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="ok-dot">●</td>
+          <td>${escapeHtml(item.raw_name)}</td>
+          <td><strong>${escapeHtml(item.display_name)}</strong><br><span class="hint">${escapeHtml(item.catalog_key)}</span></td>
+          <td>${escapeHtml(qtyText(item.quantity, item.unit))}</td>
+          <td>${item.match_score}</td>`;
+        matchedBody.appendChild(tr);
+      }
+
+      const unresolvedBody = $("unresolvedBody");
+      unresolvedBody.innerHTML = "";
+      for (const item of data.ingredientsUnresolved || []) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="warn-dot">●</td>
+          <td>${escapeHtml(item.raw_name)}</td>
+          <td>${escapeHtml(qtyText(item.quantity, item.unit))}</td>
+          <td>${item.best_score ?? "—"}</td>`;
+        unresolvedBody.appendChild(tr);
+      }
+
+      const parsedBody = $("parsedBody");
+      parsedBody.innerHTML = "";
+      for (const item of data.ingredientsParsed || []) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${escapeHtml(item.rawName)}</td>
+          <td>${item.quantity}</td>
+          <td>${escapeHtml(item.unit)}</td>`;
+        parsedBody.appendChild(tr);
+      }
+
+      $("rawJson").textContent = JSON.stringify(data, null, 2);
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    async function runImport() {
+      const btn = $("runBtn");
+      btn.disabled = true;
+      setStatus("Парсим через AI provider + matching…");
+      try {
+        const selectedExample = $("selectedExample").value.trim();
+        const payload = {
+          language: $("language").value,
+          url: $("url").value.trim() || null,
+          titleHint: $("titleHint").value.trim() || null,
+          caption: $("caption").value.trim() || null,
+          example: selectedExample ? Number(selectedExample) : null,
+        };
+        const res = await fetch("/api/import", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+        render(data);
+        const meta = data.meta || {};
+        setStatus(
+          `OK · parser=${meta.parser} · ${meta.durationMs || "?"}ms · matched ${meta.matchedCount}/${(meta.matchedCount || 0) + (meta.unresolvedCount || 0)}`,
+          "ok"
+        );
+      } catch (error) {
+        setStatus(String(error.message || error), "error");
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    $("runBtn").addEventListener("click", runImport);
+    $("clearBtn").addEventListener("click", () => {
+      $("url").value = "";
+      $("titleHint").value = "";
+      $("caption").value = "";
+      $("selectedExample").value = "";
+      $("result").hidden = true;
+      $("emptyState").hidden = false;
+      setStatus("");
+    });
+    $("caption").addEventListener("input", () => {
+      $("selectedExample").value = "";
+    });
+
+    loadExamples();
+  </script>
+</body>
+</html>

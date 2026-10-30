@@ -103,7 +103,7 @@
 | NFR-03 | Accessibility: VoiceOver labels на ключевых контролах; уважение Reduce Motion; hit targets ≥ 44pt | should |
 | NFR-04 | Контраст и Dynamic Type через системные стили SwiftUI где применимо | should |
 | NFR-05 | При битой локальной БД — recovery reset store (DEBUG-лог) и пересоздание контейнера | must |
-| NFR-06 | Секреты API импорта не коммитятся (`ImportAPIConfig.example.swift`) | must |
+| NFR-06 | Секреты API импорта не коммитятся (`ImportSecrets.plist` gitignored; шаблон `ImportSecrets.example.plist`) | must |
 | NFR-07 | Preview на симуляторе без обязательной подписи development team | should |
 | NFR-08 | Layout адаптируется по size class (readable columns, adaptive grids, form sheets на iPad) | must |
 | NFR-09 | Экспорт `.foodplan` — документированный Codable JSON; UTType зарегистрирован в приложении | must |

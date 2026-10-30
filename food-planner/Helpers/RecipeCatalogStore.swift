@@ -27,6 +27,8 @@ enum RecipeCatalogStore {
         var servings: Int?
         var cookTimeMinutes: Int?
         var mealTypes: [String]?
+        var sourceURL: String?
+        var sourceDescription: String?
         var imageId: String?
         var imageBase64: String?
         var steps: [String]?
@@ -222,6 +224,8 @@ enum RecipeCatalogStore {
             userRecipeId: userRecipeId,
             servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
+            sourceURL: trimmedOptional(item.sourceURL),
+            sourceDescription: trimmedOptional(item.sourceDescription),
             steps: resolvedSteps(from: item),
             cookTimeMinutes: max(item.cookTimeMinutes ?? 0, 0),
             mealTypeTags: mealTypeTags(from: item)
@@ -289,6 +293,8 @@ enum RecipeCatalogStore {
             servings: recipe.servings,
             cookTimeMinutes: recipe.cookTimeMinutes > 0 ? recipe.cookTimeMinutes : existing?.cookTimeMinutes,
             mealTypes: mealTypes.isEmpty ? existing?.mealTypes : mealTypes,
+            sourceURL: trimmedOptional(recipe.sourceURL) ?? existing?.sourceURL,
+            sourceDescription: trimmedOptional(recipe.sourceDescription) ?? existing?.sourceDescription,
             imageBase64: recipe.imageData?.base64EncodedString(),
             translations: translations,
             ingredients: ingredients
@@ -397,6 +403,14 @@ enum RecipeCatalogStore {
         return translations.values.first {
             !$0.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         }
+    }
+
+    private static func trimmedOptional(_ value: String?) -> String? {
+        guard let trimmed = value?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !trimmed.isEmpty else {
+            return nil
+        }
+        return trimmed
     }
 
     private static func resolvedName(from item: RecipeEntry) -> String {

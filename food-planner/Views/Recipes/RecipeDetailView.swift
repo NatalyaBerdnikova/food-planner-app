@@ -80,13 +80,27 @@ struct RecipeDetailView: View {
                     }
                 }
 
-                if let urlString = recipe.sourceURL, let url = URL(string: urlString) {
-                    Link(destination: url) {
-                        Label("recipe.source", systemImage: "safari.fill")
-                            .font(.subheadline.weight(.semibold))
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 12)
-                            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+                if recipe.sourceURL != nil || !(recipe.sourceDescription?.isEmpty ?? true) {
+                    sectionCard {
+                        VStack(alignment: .leading, spacing: 12) {
+                            if let urlString = recipe.sourceURL, let url = URL(string: urlString) {
+                                Link(destination: url) {
+                                    Label("recipe.source", systemImage: "safari.fill")
+                                        .font(.subheadline.weight(.semibold))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .contentShape(Rectangle())
+                                }
+                            }
+
+                            if let description = recipe.sourceDescription?
+                                .trimmingCharacters(in: .whitespacesAndNewlines),
+                               !description.isEmpty {
+                                if recipe.sourceURL != nil {
+                                    Divider()
+                                }
+                                RecipeSourceDescriptionDisclosure(text: description)
+                            }
+                        }
                     }
                 }
 

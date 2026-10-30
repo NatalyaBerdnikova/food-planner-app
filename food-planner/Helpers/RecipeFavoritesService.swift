@@ -89,6 +89,10 @@ enum RecipeCollections {
 
     /// Plan generation clones share `catalogRecipeId` with the seed recipe; keep one library row.
     static func deduplicatedCatalogRecipes(from recipes: [Recipe]) -> [Recipe] {
+        Array(catalogRecipesByID(from: recipes).values)
+    }
+
+    static func catalogRecipesByID(from recipes: [Recipe]) -> [String: Recipe] {
         var bestByCatalogId: [String: Recipe] = [:]
         for recipe in recipes where recipe.isCatalogRecipe {
             guard let catalogId = recipe.catalogRecipeId else { continue }
@@ -100,7 +104,7 @@ enum RecipeCollections {
                 bestByCatalogId[catalogId] = recipe
             }
         }
-        return Array(bestByCatalogId.values)
+        return bestByCatalogId
     }
 
     private static func prefersCatalogInstance(_ recipe: Recipe, over existing: Recipe) -> Bool {

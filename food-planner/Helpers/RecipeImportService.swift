@@ -8,13 +8,47 @@ struct UnresolvedIngredient: Identifiable {
     var suggestedUnit: MeasurementUnit
 }
 
+enum UnresolvedIngredientsShare {
+    static func text(
+        recipeName: String?,
+        items: [UnresolvedIngredient],
+        sourceURL: String? = nil
+    ) -> String {
+        let header = String(localized: "import.unresolved.shareHeader")
+        let trimmedName = recipeName?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let title: String
+        if let trimmedName, !trimmedName.isEmpty {
+            title = "\(header): \(trimmedName)"
+        } else {
+            title = header
+        }
+        var parts: [String] = [title]
+        parts.append(
+            contentsOf: items.map { item in
+                let amount = L10n.amount(quantity: item.suggestedQuantity, unit: item.suggestedUnit)
+                return "• \(item.rawName) — \(amount)"
+            }
+        )
+        if let sourceURL = sourceURL?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !sourceURL.isEmpty {
+            parts.append("")
+            parts.append(sourceURL)
+        }
+        return parts.joined(separator: "\n")
+    }
+}
+
 struct ImportedRecipeDraft: Identifiable {
     let id = UUID()
     var name: String
     var sourceURL: String?
+    var sourceDescription: String? = nil
     var servings: Int?
     var cookTimeMinutes: Int? = nil
     var steps: [String]
+    var stepsIntro: String? = nil
+    var stepsRichTextData: Data? = nil
     var imageData: Data?
     var ingredients: [DraftIngredient]
     var unresolvedIngredients: [UnresolvedIngredient]
@@ -67,6 +101,7 @@ enum RecipeImportService {
 
         var name: String
         var sourceURL: String?
+        var sourceDescription: String?
         var steps: [String]?
         var ingredients: [IngredientJSON]?
     }
@@ -101,9 +136,12 @@ enum RecipeImportService {
             try draftIngredient(from: item, in: context)
         }
 
+        let description = decoded.sourceDescription?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
         return ImportedRecipeDraft(
             name: decoded.name.trimmingCharacters(in: .whitespaces),
             sourceURL: decoded.sourceURL,
+            sourceDescription: (description?.isEmpty == false) ? description : nil,
             servings: nil,
             steps: decoded.steps ?? [],
             ingredients: ingredients,

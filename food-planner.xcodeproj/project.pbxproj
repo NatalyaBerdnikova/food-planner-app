@@ -62,6 +62,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"GoogleService-Info.example.plist",
+				Helpers/ImportAPIConfig.example.swift,
+				ImportSecrets.example.plist,
 			);
 			target = C16787C52FB70F8E00DA5BC9 /* food-planner */;
 		};
@@ -526,7 +528,7 @@
 				CODE_SIGN_ENTITLEMENTS = "food-planner/food-planner.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"food-planner/Preview Content\"";
 				DEVELOPMENT_TEAM = 2J7P8C9R3C;
 				ENABLE_PREVIEWS = YES;
@@ -567,7 +569,7 @@
 				CODE_SIGN_ENTITLEMENTS = "food-planner/food-planner.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"food-planner/Preview Content\"";
 				DEVELOPMENT_TEAM = 2J7P8C9R3C;
 				ENABLE_PREVIEWS = YES;
