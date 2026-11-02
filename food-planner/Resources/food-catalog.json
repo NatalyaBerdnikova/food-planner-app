@@ -6176,7 +6176,7 @@
       }
     },
     {
-      "catalogKey": "chickpeas_turkish_peas",
+      "catalogKey": "chickpeas",
       "displayName": "Нут (турецкий горох)",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -11355,7 +11355,7 @@
       }
     },
     {
-      "catalogKey": "tsyplyata_produkt_udalen",
+      "catalogKey": "poult",
       "displayName": "Цыплята",
       "category": "poultry",
       "defaultPieceWeightGrams": 100,
@@ -13426,7 +13426,11 @@
       "zincPer100g": 0.81,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 68
+      "vitaminB9Per100g": 68,
+      "translations": {
+        "ru": "Базилик, свежий",
+        "en": "Fresh basil"
+      }
     },
     {
       "catalogKey": "bazilik_sushenyy",
@@ -13453,7 +13457,11 @@
       "zincPer100g": 7.1,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 310
+      "vitaminB9Per100g": 310,
+      "translations": {
+        "ru": "Базилик, сушеный",
+        "en": "Dried basil"
+      }
     },
     {
       "catalogKey": "semena_chia_sushenye",
@@ -13480,7 +13488,11 @@
       "zincPer100g": 4.58,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Семена чиа, сушеные",
+        "en": "Dried chia seeds"
+      }
     },
     {
       "catalogKey": "tykvennye_semechki_sushenye",
@@ -13507,7 +13519,11 @@
       "zincPer100g": 7.81,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 58
+      "vitaminB9Per100g": 58,
+      "translations": {
+        "ru": "Тыквенные семечки, сушеные",
+        "en": "Dried pumpkin seeds"
+      }
     },
     {
       "catalogKey": "abrikosy",
@@ -13534,7 +13550,11 @@
       "zincPer100g": 0.082,
       "chromiumPer100g": 1,
       "iodinePer100g": 1,
-      "vitaminB9Per100g": 3
+      "vitaminB9Per100g": 3,
+      "translations": {
+        "ru": "Абрикосы",
+        "en": "Apricots"
+      }
     },
     {
       "catalogKey": "syr_rikotta_10_2_zhirnosti_iz_tselnogo_moloka_m_",
@@ -13561,7 +13581,11 @@
       "zincPer100g": 0.53,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 4
+      "vitaminB9Per100g": 4,
+      "translations": {
+        "ru": "Сыр рикотта 10,2% жирности, из цельного молока, м.д.ж. 39% в сух. в-ве",
+        "en": "Ricotta cheese 10.2% fat, from whole milk"
+      }
     },
     {
       "catalogKey": "karri_poroshok",
@@ -13588,7 +13612,11 @@
       "zincPer100g": 4.7,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 56
+      "vitaminB9Per100g": 56,
+      "translations": {
+        "ru": "Карри, порошок",
+        "en": "Curry powder"
+      }
     },
     {
       "catalogKey": "cilantro",
@@ -13615,10 +13643,14 @@
       "zincPer100g": 0.5,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 62
+      "vitaminB9Per100g": 62,
+      "translations": {
+        "ru": "Зелень кориандра (кинза), сырая",
+        "en": "Fresh cilantro (coriander)"
+      }
     },
     {
-      "catalogKey": "paprika_perets_sladkiy_molotyy",
+      "catalogKey": "paprika",
       "displayName": "Паприка, перец сладкий молотый",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -13642,7 +13674,11 @@
       "zincPer100g": 4.33,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 49
+      "vitaminB9Per100g": 49,
+      "translations": {
+        "ru": "Паприка, перец сладкий молотый",
+        "en": "Paprika, ground sweet pepper"
+      }
     },
     {
       "catalogKey": "zelenaya_grechka_zhitnitsa_zdorovya",
@@ -13670,7 +13706,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Зеленая Гречка",
+        "en": "Green buckwheat"
+      }
     },
     {
       "catalogKey": "cucumber",
@@ -13697,7 +13737,11 @@
       "zincPer100g": 0.215,
       "chromiumPer100g": 6,
       "iodinePer100g": 3,
-      "vitaminB9Per100g": 4
+      "vitaminB9Per100g": 4,
+      "translations": {
+        "ru": "Огурец грунтовый",
+        "en": "Field cucumber"
+      }
     },
     {
       "catalogKey": "soevyy_sous",
@@ -13724,7 +13768,11 @@
       "zincPer100g": 0.87,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 14
+      "vitaminB9Per100g": 14,
+      "translations": {
+        "ru": "Соевый соус",
+        "en": "Soy sauce"
+      }
     },
     {
       "catalogKey": "krahmal_tapiokovyy_garnets",
@@ -13752,7 +13800,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Крахмал Тапиоковый [Гарнец]",
+        "en": "Tapioca starch [Garnets]"
+      }
     },
     {
       "catalogKey": "tunets_v_sobstvennom_soku_fortuna",
@@ -13780,7 +13832,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Тунец в Собственном Соку [Fortuna]",
+        "en": "Tuna in own juice [Fortuna]"
+      }
     },
     {
       "catalogKey": "batat_kartofel_sladkiy",
@@ -13807,7 +13863,11 @@
       "zincPer100g": 0.3,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 11
+      "vitaminB9Per100g": 11,
+      "translations": {
+        "ru": "Батат, картофель сладкий",
+        "en": "Sweet potato"
+      }
     },
     {
       "catalogKey": "bekon",
@@ -13834,7 +13894,11 @@
       "zincPer100g": 1.14,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Бекон",
+        "en": "Bacon"
+      }
     },
     {
       "catalogKey": "pomidory_tomaty_vyalenye_upakovannye_v_masle",
@@ -13861,7 +13925,11 @@
       "zincPer100g": 0.78,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 23
+      "vitaminB9Per100g": 23,
+      "translations": {
+        "ru": "Помидоры (томаты), вяленые, упакованные в масле",
+        "en": "Sun-dried tomatoes packed in oil"
+      }
     },
     {
       "catalogKey": "quinoa",
@@ -13888,7 +13956,11 @@
       "zincPer100g": 3.1,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 184
+      "vitaminB9Per100g": 184,
+      "translations": {
+        "ru": "Киноа, неприготовленная",
+        "en": "Quinoa, uncooked"
+      }
     },
     {
       "catalogKey": "oregano_sushenyy",
@@ -13915,7 +13987,11 @@
       "zincPer100g": 2.69,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 237
+      "vitaminB9Per100g": 237,
+      "translations": {
+        "ru": "Орегано, сушеный",
+        "en": "Dried oregano"
+      }
     },
     {
       "catalogKey": "semena_lna",
@@ -13942,7 +14018,11 @@
       "zincPer100g": 4.34,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 87
+      "vitaminB9Per100g": 87,
+      "translations": {
+        "ru": "Семена льна",
+        "en": "Flax seeds"
+      }
     },
     {
       "catalogKey": "smetana_10_zhirnosti",
@@ -13969,7 +14049,11 @@
       "zincPer100g": 0.3,
       "chromiumPer100g": 2,
       "iodinePer100g": 9,
-      "vitaminB9Per100g": 10
+      "vitaminB9Per100g": 10,
+      "translations": {
+        "ru": "Сметана 10% жирности",
+        "en": "Sour cream 10% fat"
+      }
     },
     {
       "catalogKey": "smetana_20_zhirnosti",
@@ -13996,7 +14080,11 @@
       "zincPer100g": 0.26,
       "chromiumPer100g": 2,
       "iodinePer100g": 9,
-      "vitaminB9Per100g": 7.5
+      "vitaminB9Per100g": 7.5,
+      "translations": {
+        "ru": "Сметана 20% жирности",
+        "en": "Sour cream 20% fat"
+      }
     },
     {
       "catalogKey": "smetana_15_zhirnosti",
@@ -14023,7 +14111,11 @@
       "zincPer100g": 0.3,
       "chromiumPer100g": 2,
       "iodinePer100g": 9,
-      "vitaminB9Per100g": 10
+      "vitaminB9Per100g": 10,
+      "translations": {
+        "ru": "Сметана 15% жирности",
+        "en": "Sour cream 15% fat"
+      }
     },
     {
       "catalogKey": "syr_legkiy_syrobogatov",
@@ -14051,7 +14143,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Сыр Легкий [Сыробогатов]",
+        "en": "Light cheese [Syrobogatov]"
+      }
     },
     {
       "catalogKey": "uksus_yablochnyy",
@@ -14078,10 +14174,14 @@
       "zincPer100g": 0.04,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Уксус яблочный",
+        "en": "Apple cider vinegar"
+      }
     },
     {
-      "catalogKey": "hlopya_pertsa_chili_elementaree",
+      "catalogKey": "chili_powder",
       "displayName": "Хлопья Перца Чили [Elementaree]",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -14106,7 +14206,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Хлопья Перца Чили [Elementaree]",
+        "en": "Chili pepper flakes [Elementaree]"
+      }
     },
     {
       "catalogKey": "timyan_sushenyy",
@@ -14133,7 +14237,11 @@
       "zincPer100g": 6.18,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 274
+      "vitaminB9Per100g": 274,
+      "translations": {
+        "ru": "Тимьян, сушеный",
+        "en": "Dried thyme"
+      }
     },
     {
       "catalogKey": "timyan_svezhiy",
@@ -14160,7 +14268,11 @@
       "zincPer100g": 1.81,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 45
+      "vitaminB9Per100g": 45,
+      "translations": {
+        "ru": "Тимьян, свежий",
+        "en": "Fresh thyme"
+      }
     },
     {
       "catalogKey": "pshenichnaya_muka_vysshego_sorta",
@@ -14187,7 +14299,11 @@
       "zincPer100g": 0.7,
       "chromiumPer100g": 2.2,
       "iodinePer100g": 1.5,
-      "vitaminB9Per100g": 27.1
+      "vitaminB9Per100g": 27.1,
+      "translations": {
+        "ru": "Пшеничная мука, высшего сорта",
+        "en": "Wheat flour, premium grade"
+      }
     },
     {
       "catalogKey": "mango",
@@ -14214,7 +14330,11 @@
       "zincPer100g": 0.09,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 43
+      "vitaminB9Per100g": 43,
+      "translations": {
+        "ru": "Манго",
+        "en": "Mango"
+      }
     },
     {
       "catalogKey": "kurkuma_molotaya",
@@ -14241,7 +14361,11 @@
       "zincPer100g": 4.5,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 20
+      "vitaminB9Per100g": 20,
+      "translations": {
+        "ru": "Куркума, молотая",
+        "en": "Ground turmeric"
+      }
     },
     {
       "catalogKey": "zira_semena",
@@ -14268,7 +14392,11 @@
       "zincPer100g": 4.8,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 10
+      "vitaminB9Per100g": 10,
+      "translations": {
+        "ru": "Зира, семена",
+        "en": "Cumin seeds"
+      }
     },
     {
       "catalogKey": "kokosovaya_struzhka_podslaschennaya",
@@ -14295,7 +14423,11 @@
       "zincPer100g": 0.71,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 3
+      "vitaminB9Per100g": 3,
+      "translations": {
+        "ru": "Кокосовая стружка, подслащенная",
+        "en": "Sweetened shredded coconut"
+      }
     },
     {
       "catalogKey": "shredded_coconut",
@@ -14323,7 +14455,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Кокосовая Стружка [Айдиго]",
+        "en": "Shredded coconut [Aidigo]"
+      }
     },
     {
       "catalogKey": "kalmar",
@@ -14350,7 +14486,11 @@
       "zincPer100g": 1.8,
       "chromiumPer100g": 0,
       "iodinePer100g": 300,
-      "vitaminB9Per100g": 11
+      "vitaminB9Per100g": 11,
+      "translations": {
+        "ru": "Кальмар",
+        "en": "Squid"
+      }
     },
     {
       "catalogKey": "krabovoe_myaso_iz_surimi_iskustvennoe_krabovye_p",
@@ -14377,7 +14517,11 @@
       "zincPer100g": 0.33,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Крабовое мясо из сурими (искуственное), крабовые палочки",
+        "en": "Surimi crab meat (imitation), crab sticks"
+      }
     },
     {
       "catalogKey": "brokkoli",
@@ -14404,7 +14548,11 @@
       "zincPer100g": 0.42,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 65
+      "vitaminB9Per100g": 65,
+      "translations": {
+        "ru": "Брокколи",
+        "en": "Broccoli"
+      }
     },
     {
       "catalogKey": "brazilskiy_oreh",
@@ -14431,7 +14579,11 @@
       "zincPer100g": 4.06,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 22
+      "vitaminB9Per100g": 22,
+      "translations": {
+        "ru": "Бразильский орех",
+        "en": "Brazil nut"
+      }
     },
     {
       "catalogKey": "arahisovaya_pasta_s_solyu",
@@ -14458,7 +14610,11 @@
       "zincPer100g": 2.51,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 87
+      "vitaminB9Per100g": 87,
+      "translations": {
+        "ru": "Арахисовая паста с солью",
+        "en": "Peanut butter with salt"
+      }
     },
     {
       "catalogKey": "miso_pasta_sen_soy",
@@ -14486,7 +14642,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Мисо Паста [Сэн Сой]",
+        "en": "Miso paste [Sen Soy]"
+      }
     },
     {
       "catalogKey": "pasta_tom_yam_aroy_d",
@@ -14514,7 +14674,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Паста Том Ям [Aroy-D]",
+        "en": "Tom Yum paste [Aroy-D]"
+      }
     },
     {
       "catalogKey": "risovaya_bumaga_aroy_d",
@@ -14542,7 +14706,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Рисовая Бумага [Aroy-D]",
+        "en": "Rice paper [Aroy-D]"
+      }
     },
     {
       "catalogKey": "avocado",
@@ -14570,7 +14738,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Авокадо",
+        "en": "Avocado"
+      }
     },
     {
       "catalogKey": "soevoe_moloko_ne_moloko",
@@ -14598,7 +14770,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Соевое Молоко [не Молоко]",
+        "en": "Soy milk [ne Moloko]"
+      }
     },
     {
       "catalogKey": "perets_chernyy_molotyy_ili_goroshek",
@@ -14625,7 +14801,11 @@
       "zincPer100g": 1.19,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 17
+      "vitaminB9Per100g": 17,
+      "translations": {
+        "ru": "Перец черный, молотый или горошек",
+        "en": "Black pepper, ground or whole"
+      }
     },
     {
       "catalogKey": "cinnamon",
@@ -14652,7 +14832,11 @@
       "zincPer100g": 1.83,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 6
+      "vitaminB9Per100g": 6,
+      "translations": {
+        "ru": "Корица, молотая",
+        "en": "Ground cinnamon"
+      }
     },
     {
       "catalogKey": "risovaya_muka_belaya",
@@ -14679,7 +14863,11 @@
       "zincPer100g": 0.8,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 4
+      "vitaminB9Per100g": 4,
+      "translations": {
+        "ru": "Рисовая мука, белая",
+        "en": "White rice flour"
+      }
     },
     {
       "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
@@ -14706,7 +14894,11 @@
       "zincPer100g": 0.6,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 12
+      "vitaminB9Per100g": 12,
+      "translations": {
+        "ru": "Йогурт греческий 1,9% жирности, натуральный",
+        "en": "Greek yogurt 1.9% fat, plain"
+      }
     },
     {
       "catalogKey": "yogurt_grecheskiy_teos_2_savushkin_produkt",
@@ -14734,7 +14926,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Йогурт Греческий Teos 2% [Савушкин Продукт]",
+        "en": "Greek yogurt Teos 2% [Savushkin Product]"
+      }
     },
     {
       "catalogKey": "soevoe_moloko_nepodslaschennoe_s_dob_kaltsiya_vi",
@@ -14761,7 +14957,11 @@
       "zincPer100g": 0,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Соевое молоко, неподслащенное, с доб. кальция, витаминов A и D",
+        "en": "Unsweetened soy milk with added calcium, vitamins A and D"
+      }
     },
     {
       "catalogKey": "baking_powder",
@@ -14788,7 +14988,11 @@
       "zincPer100g": 0.01,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Разрыхлитель пищевой, пекарный порошок (заменяющий дрожжи), двойного действия, натрий, сульфат алюминия (Е-520)",
+        "en": "Baking powder, double-acting"
+      }
     },
     {
       "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
@@ -14815,7 +15019,11 @@
       "zincPer100g": 0.83,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 19
+      "vitaminB9Per100g": 19,
+      "translations": {
+        "ru": "Тофу, плотый, приготовленный с сульфатом кальция и хлоридом магния (нигари)",
+        "en": "Firm tofu, prepared with calcium sulfate and magnesium chloride (nigari)"
+      }
     },
     {
       "catalogKey": "syr_korol_syrov_syrobogatov",
@@ -14843,7 +15051,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Сыр Король Сыров [Сыробогатов]",
+        "en": "Korol Syrov cheese [Syrobogatov]"
+      }
     },
     {
       "catalogKey": "kokosovoe_moloko_na_rastitelnoy_osnove_alpro",
@@ -14871,7 +15083,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Кокосовое Молоко на Растительной Основе [Alpro]",
+        "en": "Plant-based coconut milk [Alpro]"
+      }
     },
     {
       "catalogKey": "drozhzhi_pischevye_neaktivnye_polezzno",
@@ -14899,7 +15115,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Дрожжи Пищевые Неактивные [Polezzno]",
+        "en": "Nutritional yeast, inactive [Polezzno]"
+      }
     },
     {
       "catalogKey": "urbech_iz_mindalya",
@@ -14927,7 +15147,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Урбеч из Миндаля",
+        "en": "Almond urbech"
+      }
     },
     {
       "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
@@ -14955,7 +15179,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Макароны Цельнозерновые с Зародышами и Клетчаткой [Макфа]",
+        "en": "Whole-grain pasta with germ and fiber [Makfa]"
+      }
     },
     {
       "catalogKey": "syr_slivochnyy_syrobogatov",
@@ -14983,7 +15211,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Сыр Сливочный [Сыробогатов]",
+        "en": "Cream cheese [Syrobogatov]"
+      }
     },
     {
       "catalogKey": "sirop_topinambura_royal_forest",
@@ -15011,10 +15243,14 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Сироп Топинамбура [Royal Forest]",
+        "en": "Jerusalem artichoke syrup [Royal Forest]"
+      }
     },
     {
-      "catalogKey": "perets_krasnyy_molotyy_ostryy",
+      "catalogKey": "cayenne_pepper",
       "displayName": "Перец красный молотый острый",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -15038,7 +15274,11 @@
       "zincPer100g": 2.48,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 106
+      "vitaminB9Per100g": 106,
+      "translations": {
+        "ru": "Перец красный молотый острый",
+        "en": "Cayenne pepper, ground"
+      }
     },
     {
       "catalogKey": "redonion",
@@ -15065,7 +15305,11 @@
       "zincPer100g": 0.17,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Красный лук",
+        "en": "Red onion"
+      }
     },
     {
       "catalogKey": "ginger",
@@ -15092,7 +15336,11 @@
       "zincPer100g": 0.34,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 11
+      "vitaminB9Per100g": 11,
+      "translations": {
+        "ru": "Имбиря корень сырой",
+        "en": "Raw ginger root"
+      }
     },
     {
       "catalogKey": "vinegar",
@@ -15120,7 +15368,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Уксус столовый 9%",
+        "en": "Table vinegar 9%"
+      }
     },
     {
       "catalogKey": "kiwi",
@@ -15147,7 +15399,11 @@
       "zincPer100g": 0.14,
       "chromiumPer100g": 1.45,
       "iodinePer100g": 2,
-      "vitaminB9Per100g": 25
+      "vitaminB9Per100g": 25,
+      "translations": {
+        "ru": "Киви",
+        "en": "Kiwi"
+      }
     },
     {
       "catalogKey": "parmesan",
@@ -15174,7 +15430,11 @@
       "zincPer100g": 2.75,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 7
+      "vitaminB9Per100g": 7,
+      "translations": {
+        "ru": "Сыр пармезан, 36% белка, твердый, м.д.ж. 36% в сух. в-ве",
+        "en": "Parmesan cheese, 36% protein, hard"
+      }
     },
     {
       "catalogKey": "olives",
@@ -15201,7 +15461,11 @@
       "zincPer100g": 0,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Оливки (мякоть, сырые)",
+        "en": "Olives (flesh, raw)"
+      }
     },
     {
       "catalogKey": "protein_powder",
@@ -15229,7 +15493,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Протеиновый Порошок",
+        "en": "Protein powder"
+      }
     },
     {
       "catalogKey": "peanut_powder",
@@ -15256,7 +15524,11 @@
       "zincPer100g": 0,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Порошок Арахисовой Пасты",
+        "en": "Peanut butter powder"
+      }
     },
     {
       "catalogKey": "papaya",
@@ -15270,7 +15542,7 @@
       "fiberPer100g": 1.7,
       "vitaminD3Per100g": 0,
       "vitaminAPer100g": 47,
-      "vitaminB6Per100g": 0.000038,
+      "vitaminB6Per100g": 3.8e-05,
       "vitaminB12Per100g": 0,
       "vitaminCPer100g": 60.9,
       "vitaminEPer100g": 0.0003,
@@ -15283,7 +15555,11 @@
       "zincPer100g": 0.08,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 37
+      "vitaminB9Per100g": 37,
+      "translations": {
+        "ru": "Папайя",
+        "en": "Papaya"
+      }
     },
     {
       "catalogKey": "spirulina",
@@ -15310,7 +15586,11 @@
       "zincPer100g": 2,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 94
+      "vitaminB9Per100g": 94,
+      "translations": {
+        "ru": "Морские водоросли спирулина, сушеные",
+        "en": "Dried spirulina seaweed"
+      }
     },
     {
       "catalogKey": "naan_bread",
@@ -15338,7 +15618,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Лепешка Наан",
+        "en": "Naan bread"
+      }
     },
     {
       "catalogKey": "black_pepper",
@@ -15365,7 +15649,11 @@
       "zincPer100g": 1.19,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 17
+      "vitaminB9Per100g": 17,
+      "translations": {
+        "ru": "Перец черный, молотый или горошек",
+        "en": "Black pepper, ground or whole"
+      }
     },
     {
       "catalogKey": "bagel",
@@ -15393,7 +15681,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Бейгл",
+        "en": "Bagel"
+      }
     },
     {
       "catalogKey": "light_cream_cheese",
@@ -15421,7 +15713,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Творожный Сыр Лёгкий 18% [Almette]",
+        "en": "Light cream cheese 18% fat"
+      }
     },
     {
       "catalogKey": "slices_of_sourdough",
@@ -15448,7 +15744,11 @@
       "zincPer100g": 1.04,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 170
+      "vitaminB9Per100g": 170,
+      "translations": {
+        "ru": "Хлеб на закваске",
+        "en": "Sourdough bread"
+      }
     },
     {
       "catalogKey": "tortilla_wraps",
@@ -15476,7 +15776,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Тортилья [Delicados]",
+        "en": "Tortilla [Delicados]"
+      }
     },
     {
       "catalogKey": "cherry_tomatoes",
@@ -15503,7 +15807,11 @@
       "zincPer100g": 0.2,
       "chromiumPer100g": 5,
       "iodinePer100g": 2,
-      "vitaminB9Per100g": 11
+      "vitaminB9Per100g": 11,
+      "translations": {
+        "ru": "Помидоры черри",
+        "en": "Cherry tomatoes"
+      }
     },
     {
       "catalogKey": "zero_sugar_syrup",
@@ -15530,7 +15838,11 @@
       "zincPer100g": 0,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Сироп без Сахара",
+        "en": "Sugar-free syrup"
+      }
     },
     {
       "catalogKey": "balsamic_vinegar",
@@ -15557,7 +15869,11 @@
       "zincPer100g": 0.08,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Уксус бальзамический",
+        "en": "Balsamic vinegar"
+      }
     },
     {
       "catalogKey": "protein_light_cheese",
@@ -15585,7 +15901,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Легкий сыр [Exponenta]",
+        "en": "Light cheese [Exponenta]"
+      }
     },
     {
       "catalogKey": "phyllo_sheets",
@@ -15613,7 +15933,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Тесто Фило [Морозко]",
+        "en": "Phyllo dough [Morozko]"
+      }
     },
     {
       "catalogKey": "protein_cheese",
@@ -15641,7 +15965,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Protein Cheese [Milbona]",
+        "en": "Protein cheese [Milbona]"
+      }
     },
     {
       "catalogKey": "feta_cheese",
@@ -15669,7 +15997,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Сыр Фета [Premialle]",
+        "en": "Feta cheese [Premialle]"
+      }
     },
     {
       "catalogKey": "sun_dried_tomatoes",
@@ -15686,7 +16018,7 @@
       "vitaminB6Per100g": 0.000332,
       "vitaminB12Per100g": 0,
       "vitaminCPer100g": 39.2,
-      "vitaminEPer100g": 0.00001,
+      "vitaminEPer100g": 1e-05,
       "vitaminKPer100g": 43,
       "potassiumPer100g": 3427,
       "calciumPer100g": 110,
@@ -15696,7 +16028,11 @@
       "zincPer100g": 1.99,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 68
+      "vitaminB9Per100g": 68,
+      "translations": {
+        "ru": "Помидоры (томаты), вяленые",
+        "en": "Sun-dried tomatoes"
+      }
     },
     {
       "catalogKey": "chocolate_chips",
@@ -15724,7 +16060,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Dark Chocolate Drops [Belbake]",
+        "en": "Dark chocolate drops [Belbake]"
+      }
     },
     {
       "catalogKey": "taco_tortillas",
@@ -15752,7 +16092,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Тортилья для тако",
+        "en": "Taco tortillas"
+      }
     },
     {
       "catalogKey": "pesto_sauce",
@@ -15779,9 +16123,13 @@
       "zincPer100g": 1.33,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Соус песто, готовый к употреблению, охлажденный",
+        "en": "Pesto sauce, ready-to-eat, chilled"
+      }
     },
-     {
+    {
       "catalogKey": "arugula",
       "displayName": "Руккола",
       "category": "greens",
@@ -15793,7 +16141,7 @@
       "fiberPer100g": 1.6,
       "vitaminD3Per100g": 0,
       "vitaminAPer100g": 119,
-      "vitaminB6Per100g": 0.000073,
+      "vitaminB6Per100g": 7.3e-05,
       "vitaminB12Per100g": 0,
       "vitaminCPer100g": 15,
       "vitaminEPer100g": 0.00043,
@@ -15806,7 +16154,11 @@
       "zincPer100g": 0.47,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 97
+      "vitaminB9Per100g": 97,
+      "translations": {
+        "ru": "Руккола",
+        "en": "Arugula"
+      }
     },
     {
       "catalogKey": "zero_sugar_strawberry_jam",
@@ -15834,7 +16186,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Клубничный Джем без Добавления Сахара [St. Dalfour]",
+        "en": "Strawberry jam with no added sugar [St. Dalfour]"
+      }
     },
     {
       "catalogKey": "light_mozzarella",
@@ -15862,7 +16218,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Моцарелла Лайт [Galbani]",
+        "en": "Light mozzarella [Galbani]"
+      }
     },
     {
       "catalogKey": "zucchini",
@@ -15889,7 +16249,11 @@
       "zincPer100g": 0.32,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 24
+      "vitaminB9Per100g": 24,
+      "translations": {
+        "ru": "Цукини с кожурой",
+        "en": "Zucchini with skin"
+      }
     },
     {
       "catalogKey": "chicken_broth",
@@ -15917,7 +16281,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Куриный бульон",
+        "en": "Chicken broth"
+      }
     },
     {
       "catalogKey": "edamame",
@@ -15945,7 +16313,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Эдамаме",
+        "en": "Edamame"
+      }
     },
     {
       "catalogKey": "lime_juice",
@@ -15973,7 +16345,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Сок Лайма",
+        "en": "Lime juice"
+      }
     },
     {
       "catalogKey": "humus",
@@ -16000,7 +16376,11 @@
       "zincPer100g": 1.44,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 48
+      "vitaminB9Per100g": 48,
+      "translations": {
+        "ru": "Хумус",
+        "en": "Hummus"
+      }
     },
     {
       "catalogKey": "truffle_spread",
@@ -16028,7 +16408,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Трюфельное Масло [Monini]",
+        "en": "Truffle oil [Monini]"
+      }
     },
     {
       "catalogKey": "small_pita",
@@ -16056,7 +16440,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Пита",
+        "en": "Pita"
+      }
     },
     {
       "catalogKey": "low_calorie_nacho_salsa_dip",
@@ -16084,7 +16472,11 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Сальса Пикантная [Delicados]",
+        "en": "Picante salsa [Delicados]"
+      }
     },
     {
       "catalogKey": "italian_seasoning",
@@ -16112,7 +16504,794 @@
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
-      "macrosOnly": true
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Итальянские специи",
+        "en": "Italian seasoning"
+      }
+    },
+    {
+      "catalogKey": "laurel",
+      "displayName": "Лавровый лист",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 313,
+      "proteinPer100g": 7.6,
+      "fatPer100g": 8.4,
+      "carbsPer100g": 48.7,
+      "fiberPer100g": 26.3,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 309,
+      "vitaminB6Per100g": 0.00174,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 46.5,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 529,
+      "calciumPer100g": 834,
+      "magnesiumPer100g": 120,
+      "ironPer100g": 0.043,
+      "seleniumPer100g": 2.8,
+      "zincPer100g": 3.7,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 180,
+      "translations": {
+        "ru": "Лавровый лист",
+        "en": "Bay leaf"
+      }
+    },
+    {
+      "catalogKey": "rice_risotto",
+      "displayName": "Рис Ризотто [Националь]",
+      "category": "grains",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 360,
+      "proteinPer100g": 6.5,
+      "fatPer100g": 0.5,
+      "carbsPer100g": 83,
+      "fiberPer100g": 0,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Рис Ризотто [Националь]",
+        "en": "Risotto rice [Natsional]"
+      }
+    },
+    {
+      "catalogKey": "basmati_rice",
+      "displayName": "Басмати Рис [Uncle Ben's]",
+      "category": "grains",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 351,
+      "proteinPer100g": 9,
+      "fatPer100g": 1.1,
+      "carbsPer100g": 76,
+      "fiberPer100g": 0.6,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Басмати Рис [Uncle Ben's]",
+        "en": "Basmati rice [Uncle Ben's]"
+      }
+    },
+    {
+      "catalogKey": "curry_spice",
+      "displayName": "Карри, порошок",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 325,
+      "proteinPer100g": 14.3,
+      "fatPer100g": 14,
+      "carbsPer100g": 2.6,
+      "fiberPer100g": 53.2,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 1,
+      "vitaminB6Per100g": 0.00010499999999999999,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0.7,
+      "vitaminEPer100g": 0.02524,
+      "vitaminKPer100g": 99.8,
+      "potassiumPer100g": 1170,
+      "calciumPer100g": 525,
+      "magnesiumPer100g": 255,
+      "ironPer100g": 0.019100000000000002,
+      "seleniumPer100g": 40.3,
+      "zincPer100g": 4.7,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 56,
+      "translations": {
+        "ru": "Карри, порошок",
+        "en": "Curry powder"
+      }
+    },
+    {
+      "catalogKey": "saffron_spice",
+      "displayName": "Шафран",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 310,
+      "proteinPer100g": 11.4,
+      "fatPer100g": 5.9,
+      "carbsPer100g": 61.5,
+      "fiberPer100g": 3.9,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 27,
+      "vitaminB6Per100g": 0.00101,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 80.8,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 1724,
+      "calciumPer100g": 111,
+      "magnesiumPer100g": 264,
+      "ironPer100g": 0.0111,
+      "seleniumPer100g": 5.6,
+      "zincPer100g": 1.09,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 93,
+      "translations": {
+        "ru": "Шафран",
+        "en": "Saffron"
+      }
+    },
+    {
+      "catalogKey": "garlic_powder",
+      "displayName": "Чеснок, порошок",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 331,
+      "proteinPer100g": 16.6,
+      "fatPer100g": 0.7,
+      "carbsPer100g": 63.7,
+      "fiberPer100g": 9,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0.0016539999999999999,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 1.2,
+      "vitaminEPer100g": 0.00067,
+      "vitaminKPer100g": 0.4,
+      "potassiumPer100g": 1193,
+      "calciumPer100g": 79,
+      "magnesiumPer100g": 77,
+      "ironPer100g": 0.0056500000000000005,
+      "seleniumPer100g": 23.9,
+      "zincPer100g": 2.99,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 47,
+      "translations": {
+        "ru": "Чеснок, порошок",
+        "en": "Garlic powder"
+      }
+    },
+    {
+      "catalogKey": "penne",
+      "displayName": "Пенне Ригате [Barilla]",
+      "category": "grains",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 359,
+      "proteinPer100g": 14,
+      "fatPer100g": 2,
+      "carbsPer100g": 69.7,
+      "fiberPer100g": 3,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Пенне Ригате [Barilla]",
+        "en": "Penne Rigate [Barilla]"
+      }
+    },
+    {
+      "catalogKey": "burrata",
+      "displayName": "Буратта [Galbani]",
+      "category": "dairy",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 204,
+      "proteinPer100g": 12,
+      "fatPer100g": 16,
+      "carbsPer100g": 3,
+      "fiberPer100g": 0,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Буратта [Galbani]",
+        "en": "Burrata [Galbani]"
+      }
+    },
+    {
+      "catalogKey": "white_wine",
+      "displayName": "Вино столовое белое, Шенен Блан (Chenin Blanc) 12% об.",
+      "category": "other",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 80,
+      "proteinPer100g": 0.1,
+      "fatPer100g": 0,
+      "carbsPer100g": 3.3,
+      "fiberPer100g": 0,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Вино столовое белое, Шенен Блан (Chenin Blanc) 12% об.",
+        "en": "Table white wine, Chenin Blanc 12% ABV"
+      }
+    },
+    {
+      "catalogKey": "prepared_yellow_mustard",
+      "displayName": "Горчица желтая, приготовленная",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 60,
+      "proteinPer100g": 3.7,
+      "fatPer100g": 3.3,
+      "carbsPer100g": 1.8,
+      "fiberPer100g": 4,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 5,
+      "vitaminB6Per100g": 7.000000000000001e-05,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0.3,
+      "vitaminEPer100g": 0.00035999999999999997,
+      "vitaminKPer100g": 1.4,
+      "potassiumPer100g": 152,
+      "calciumPer100g": 63,
+      "magnesiumPer100g": 48,
+      "ironPer100g": 0.00161,
+      "seleniumPer100g": 33.5,
+      "zincPer100g": 0.64,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 7,
+      "translations": {
+        "ru": "Горчица желтая, приготовленная",
+        "en": "Yellow mustard"
+      }
+    },
+    {
+      "catalogKey": "yellow_mustard_seeds",
+      "displayName": "Горчица желтая, семена",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 508,
+      "proteinPer100g": 26.1,
+      "fatPer100g": 36.2,
+      "carbsPer100g": 15.9,
+      "fiberPer100g": 12.2,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 2,
+      "vitaminB6Per100g": 0.000397,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 7.1,
+      "vitaminEPer100g": 0.00507,
+      "vitaminKPer100g": 5.4,
+      "potassiumPer100g": 738,
+      "calciumPer100g": 266,
+      "magnesiumPer100g": 370,
+      "ironPer100g": 0.009210000000000001,
+      "seleniumPer100g": 208.1,
+      "zincPer100g": 6.08,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 162,
+      "translations": {
+        "ru": "Горчица желтая, семена",
+        "en": "Yellow mustard seeds"
+      }
+    },
+    {
+      "catalogKey": "ground_beef_20",
+      "displayName": "Говяжий Фарш, 20%",
+      "category": "meat",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 248,
+      "proteinPer100g": 17,
+      "fatPer100g": 20,
+      "carbsPer100g": 0,
+      "fiberPer100g": 0,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Говяжий Фарш, 20%",
+        "en": "Ground beef, 20% fat"
+      }
+    },
+    {
+      "catalogKey": "ketchup",
+      "displayName": "Кетчуп",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 101,
+      "proteinPer100g": 1,
+      "fatPer100g": 0.1,
+      "carbsPer100g": 27.1,
+      "fiberPer100g": 0.3,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 26,
+      "vitaminB6Per100g": 0.000158,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 4.1,
+      "vitaminEPer100g": 0.00146,
+      "vitaminKPer100g": 3,
+      "potassiumPer100g": 281,
+      "calciumPer100g": 15,
+      "magnesiumPer100g": 13,
+      "ironPer100g": 0.00035,
+      "seleniumPer100g": 0.7,
+      "zincPer100g": 0.17,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 9,
+      "translations": {
+        "ru": "Кетчуп",
+        "en": "Ketchup"
+      }
+    },
+    {
+      "catalogKey": "worcestershire_sauce",
+      "displayName": "Вустерширский Соус [Heinz]",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 97,
+      "proteinPer100g": 0.7,
+      "fatPer100g": 0.7,
+      "carbsPer100g": 22,
+      "fiberPer100g": 0,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Вустерширский Соус [Heinz]",
+        "en": "Worcestershire sauce [Heinz]"
+      }
+    },
+    {
+      "catalogKey": "onion_powder",
+      "displayName": "Луковый порошок",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 341,
+      "proteinPer100g": 10.4,
+      "fatPer100g": 1,
+      "carbsPer100g": 63.9,
+      "fiberPer100g": 15.2,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0.000718,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 23.4,
+      "vitaminEPer100g": 0.00027,
+      "vitaminKPer100g": 4.1,
+      "potassiumPer100g": 985,
+      "calciumPer100g": 384,
+      "magnesiumPer100g": 113,
+      "ironPer100g": 0.0039,
+      "seleniumPer100g": 14.3,
+      "zincPer100g": 4.05,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 64,
+      "translations": {
+        "ru": "Луковый порошок",
+        "en": "Onion powder"
+      }
+    },
+    {
+      "catalogKey": "smoked_paprika",
+      "displayName": "Паприка копченая",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 282,
+      "proteinPer100g": 14.1,
+      "fatPer100g": 12.9,
+      "carbsPer100g": 19.1,
+      "fiberPer100g": 34.9,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 2463,
+      "vitaminB6Per100g": 0.002141,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0.9,
+      "vitaminEPer100g": 0.0291,
+      "vitaminKPer100g": 80.3,
+      "potassiumPer100g": 2280,
+      "calciumPer100g": 229,
+      "magnesiumPer100g": 178,
+      "ironPer100g": 0.02114,
+      "seleniumPer100g": 6.3,
+      "zincPer100g": 4.33,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 49,
+      "translations": {
+        "ru": "Паприка копченая",
+        "en": "Smoked paprika"
+      }
+    },
+    {
+      "catalogKey": "jalapeno_pepper",
+      "displayName": "Перец халапеньо",
+      "category": "vegetables",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 29,
+      "proteinPer100g": 0.9,
+      "fatPer100g": 0.4,
+      "carbsPer100g": 3.7,
+      "fiberPer100g": 2.8,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 54,
+      "vitaminB6Per100g": 0.000419,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 118.6,
+      "vitaminEPer100g": 0.0035800000000000003,
+      "vitaminKPer100g": 18.5,
+      "potassiumPer100g": 248,
+      "calciumPer100g": 12,
+      "magnesiumPer100g": 15,
+      "ironPer100g": 0.00025,
+      "seleniumPer100g": 0.4,
+      "zincPer100g": 0.14,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 27,
+      "translations": {
+        "ru": "Перец халапеньо",
+        "en": "Jalapeño pepper"
+      }
+    },
+    {
+      "catalogKey": "canned_jalapeno_pepper",
+      "displayName": "Перец халапеньо, консервированный",
+      "category": "vegetables",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 27,
+      "proteinPer100g": 0.9,
+      "fatPer100g": 0.9,
+      "carbsPer100g": 2.1,
+      "fiberPer100g": 2.6,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 85,
+      "vitaminB6Per100g": 0.00019,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 10,
+      "vitaminEPer100g": 0.00069,
+      "vitaminKPer100g": 12.9,
+      "potassiumPer100g": 193,
+      "calciumPer100g": 23,
+      "magnesiumPer100g": 15,
+      "ironPer100g": 0.00188,
+      "seleniumPer100g": 0.4,
+      "zincPer100g": 0.34,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 14,
+      "translations": {
+        "ru": "Перец халапеньо, консервированный",
+        "en": "Canned jalapeño pepper"
+      }
+    },
+    {
+      "catalogKey": "pickle_brine",
+      "displayName": "Огуречный рассол",
+      "category": "spices",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 12,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbsPer100g": 0.3,
+      "fiberPer100g": 0,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Огуречный рассол",
+        "en": "Pickle brine"
+      }
+    },
+    {
+      "catalogKey": "sweet_pickles",
+      "displayName": "Огурцы маринованные, сладкие",
+      "category": "vegetables",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 91,
+      "proteinPer100g": 0.6,
+      "fatPer100g": 0.4,
+      "carbsPer100g": 20.2,
+      "fiberPer100g": 1,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 38,
+      "vitaminB6Per100g": 2.4e-05,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0.7,
+      "vitaminEPer100g": 0.00035999999999999997,
+      "vitaminKPer100g": 47.1,
+      "potassiumPer100g": 100,
+      "calciumPer100g": 61,
+      "magnesiumPer100g": 7,
+      "ironPer100g": 0.00025,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0.12,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 1,
+      "translations": {
+        "ru": "Огурцы маринованные, сладкие",
+        "en": "Sweet pickles"
+      }
+    },
+    {
+      "catalogKey": "dill_pickles",
+      "displayName": "Огурцы маринованные с укропом",
+      "category": "vegetables",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 12,
+      "proteinPer100g": 0.5,
+      "fatPer100g": 0.3,
+      "carbsPer100g": 1.4,
+      "fiberPer100g": 1,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 6,
+      "vitaminB6Per100g": 3.5000000000000004e-05,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 2.3,
+      "vitaminEPer100g": 2.9999999999999997e-05,
+      "vitaminKPer100g": 17.3,
+      "potassiumPer100g": 117,
+      "calciumPer100g": 57,
+      "magnesiumPer100g": 7,
+      "ironPer100g": 0.00026000000000000003,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0.1,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 8,
+      "translations": {
+        "ru": "Огурцы маринованные с укропом",
+        "en": "Dill pickles"
+      }
+    },
+    {
+      "catalogKey": "pasta",
+      "displayName": "Макароны из муки высшего сорта",
+      "category": "grains",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 338,
+      "proteinPer100g": 11,
+      "fatPer100g": 1.3,
+      "carbsPer100g": 70.5,
+      "fiberPer100g": 3.7,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0.00016,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0.0015,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 123,
+      "calciumPer100g": 19,
+      "magnesiumPer100g": 16,
+      "ironPer100g": 0.0016,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0.708,
+      "chromiumPer100g": 2.2,
+      "iodinePer100g": 1.5,
+      "vitaminB9Per100g": 20,
+      "translations": {
+        "ru": "Макароны из муки высшего сорта",
+        "en": "Pasta from premium wheat flour"
+      }
+    },
+    {
+      "catalogKey": "spaghetti",
+      "displayName": "Спагетти [Federici]",
+      "category": "grains",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 350,
+      "proteinPer100g": 12,
+      "fatPer100g": 1,
+      "carbsPer100g": 72,
+      "fiberPer100g": 0,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Спагетти [Federici]",
+        "en": "Spaghetti [Federici]"
+      }
+    },
+    {
+      "catalogKey": "linguini",
+      "displayName": "Лингвини [Dolce Albero]",
+      "category": "grains",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 350,
+      "proteinPer100g": 12,
+      "fatPer100g": 1.2,
+      "carbsPer100g": 71,
+      "fiberPer100g": 0,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 0,
+      "vitaminB6Per100g": 0,
+      "vitaminB12Per100g": 0,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0,
+      "vitaminKPer100g": 0,
+      "potassiumPer100g": 0,
+      "calciumPer100g": 0,
+      "magnesiumPer100g": 0,
+      "ironPer100g": 0,
+      "seleniumPer100g": 0,
+      "zincPer100g": 0,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 0,
+      "macrosOnly": true,
+      "translations": {
+        "ru": "Лингвини [Dolce Albero]",
+        "en": "Linguini [Dolce Albero]"
+      }
+    },
+    {
+      "catalogKey": "beef_patties_90_lean",
+      "displayName": "Говядина, котлеты из фарша, 90% постного мяса/ 10% жира",
+      "category": "meat",
+      "defaultPieceWeightGrams": 100,
+      "caloriesPer100g": 204,
+      "proteinPer100g": 25.2,
+      "fatPer100g": 10.7,
+      "carbsPer100g": 0,
+      "fiberPer100g": 0,
+      "vitaminD3Per100g": 0,
+      "vitaminAPer100g": 3,
+      "vitaminB6Per100g": 0.000379,
+      "vitaminB12Per100g": 2.79,
+      "vitaminCPer100g": 0,
+      "vitaminEPer100g": 0.00013000000000000002,
+      "vitaminKPer100g": 1.1,
+      "potassiumPer100g": 363,
+      "calciumPer100g": 15,
+      "magnesiumPer100g": 23,
+      "ironPer100g": 0.00277,
+      "seleniumPer100g": 20.7,
+      "zincPer100g": 6.33,
+      "chromiumPer100g": 0,
+      "iodinePer100g": 0,
+      "vitaminB9Per100g": 8,
+      "translations": {
+        "ru": "Говядина, котлеты из фарша, 90% постного мяса/ 10% жира",
+        "en": "Beef patties, 90% lean / 10% fat"
+      }
     }
   ]
 }

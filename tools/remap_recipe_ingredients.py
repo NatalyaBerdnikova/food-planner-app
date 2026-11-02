@@ -22,7 +22,7 @@ LEGACY_KEY_MAP = {
     "onion": "bulb_onion",
     "yogurt": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
     "cheese": "syr_korol_syrov_syrobogatov",
-    "chicken_breast": "tsyplyata_produkt_udalen",
+    "chicken_breast": "poult",
     "rice": "white_rice_rice_groats",
     "tomato": "pomidor_tomat",
     "pasta": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",

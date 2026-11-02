@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Каталог ингредиентов — foodstruct.com</title>
+  <style>
+    :root {
+      --bg: #f2f2f7;
+      --card: #fff;
+      --border: #d1d1d6;
+      --accent: #007aff;
+      --text: #1c1c1e;
+      --muted: #636366;
+      --danger: #ff3b30;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+    header h1 { margin: 0 0 6px; font-size: 1.35rem; }
+    header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    main { max-width: 1280px; margin: 0 auto; padding: 20px 24px 48px; }
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 960px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+      .grid-editor { grid-template-columns: 380px 1fr; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .card h2 { margin: 0 0 12px; font-size: 1.05rem; }
+    label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font: inherit;
+      margin-bottom: 10px;
+    }
+    textarea { min-height: 100px; resize: vertical; font-family: ui-monospace, monospace; font-size: 0.82rem; }
+    .fields-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px 12px;
+    }
+    .fields-grid input { margin-bottom: 0; }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+    button {
+      font: inherit;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      cursor: pointer;
+    }
+    button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    button.danger { color: var(--danger); border-color: #ffc9c5; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; }
+    th { color: var(--muted); font-weight: 600; }
+    tr:hover td { background: #f9f9fb; }
+    tr.selected td { background: #e8f2ff; }
+    .hint { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+    .status { padding: 10px; border-radius: 8px; background: #eef6ff; font-size: 0.85rem; margin-top: 10px; }
+    .status.error { background: #ffebea; color: #8a1f17; }
+    .section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 14px 0 8px; }
+    .unit-hint { font-size: 0.7rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Менеджер каталога — foodstruct.com</h1>
+    <p>
+      Поля соответствуют модели <code>FoodProduct</code> (на 100 г).
+      Парсер заточен под <a href="https://foodstruct.com/" target="_blank" rel="noopener">foodstruct.com</a>
+      (таблица «All nutrients … per 100g»). В приложении нет натрия — он не экспортируется.
+      Вместо фтора в БД — <strong>хром (chromium)</strong>; на FoodStruct его обычно нет.
+    </p>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Импорт / экспорт JSON</h2>
+      <div class="row">
+        <input type="file" id="fileInput" accept="application/json,.json" />
+        <button type="button" id="btnExport">Скачать JSON</button>
+        <button type="button" id="btnClear" class="danger">Очистить список</button>
+      </div>
+      <p class="hint">Формат: <code>{ "version": 1, "products": [ … ] }</code> или массив продуктов.</p>
+      <div id="ioStatus" class="status" hidden></div>
+    </section>
+
+    <section class="card">
+      <h2>Парсинг с foodstruct.com</h2>
+      <label for="parseUrl">Ссылка на страницу продукта</label>
+      <input type="url" id="parseUrl" placeholder="https://foodstruct.com/food/lupins-matureseeds-raw-nutrition" />
+      <div class="row">
+        <button type="button" id="btnFetchParse" class="primary">Загрузить и разобрать</button>
+      </div>
+      <label for="pasteHtml">Или вставьте HTML / markdown страницы (если загрузка заблокирована Cloudflare / CORS)</label>
+      <textarea id="pasteHtml" placeholder="Вставьте HTML или markdown с foodstruct.com…"></textarea>
+      <div class="row">
+        <button type="button" id="btnParseHtml">Разобрать вставленный текст</button>
+      </div>
+      <p class="hint">
+        Сайт часто отдаёт Cloudflare challenge — удобнее вставить markdown из браузера
+        или содержимое через прокси. Значения берутся из таблицы на 100 g.
+      </p>
+      <div id="parseStatus" class="status" hidden></div>
+    </section>
+
+    <section class="card grid-editor" style="grid-column: 1 / -1;">
+      <div>
+        <h2 id="formTitle">Новый продукт</h2>
+        <form id="productForm">
+          <label for="displayName">Название (для каталога / локализации)</label>
+          <input type="text" id="displayName" required placeholder="Lupin Bean Raw" />
+
+          <div class="fields-grid">
+            <div>
+              <label for="catalogKey">catalogKey</label>
+              <input type="text" id="catalogKey" required placeholder="lupin_bean_raw" />
+            </div>
+            <div>
+              <label for="category">category</label>
+              <select id="category"></select>
+            </div>
+            <div>
+              <label for="defaultPieceWeightGrams">Вес «шт», г</label>
+              <input type="number" id="defaultPieceWeightGrams" min="0" step="1" value="100" />
+            </div>
+          </div>
+
+          <div class="section-title">КБЖУ (на 100 г)</div>
+          <div class="fields-grid">
+            <div><label>Калории</label><input type="number" id="caloriesPer100g" step="0.1" min="0" /></div>
+            <div><label>Белки, г</label><input type="number" id="proteinPer100g" step="0.1" min="0" /></div>
+            <div><label>Жиры, г</label><input type="number" id="fatPer100g" step="0.1" min="0" /></div>
+            <div><label>Углеводы, г</label><input type="number" id="carbsPer100g" step="0.1" min="0" /></div>
+          </div>
+
+          <div class="section-title">Микронутриенты (на 100 г)</div>
+          <p class="hint unit-hint">мг: Ca, Mg, Zn, C, K; мкг: D3, A, K, B9, B12, Se, Cr, I; г: fiber, E, B6, Fe</p>
+          <div class="fields-grid" id="microFields"></div>
+          <p id="macrosOnlyHint" class="hint" hidden>Только КБЖУ: микронутриенты не заполнены (<code>macrosOnly</code>).</p>
+
+          <div class="row" style="margin-top: 12px;">
+            <button type="submit" class="primary" id="btnSave">Сохранить в список</button>
+            <button type="button" id="btnCancel">Отмена</button>
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <h2>Список (<span id="countLabel">0</span>)</h2>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Название</th>
+                <th>key</th>
+                <th>ккал</th>
+                <th>Б</th>
+                <th>Ж</th>
+                <th>У</th>
+                <th>микро</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const CATEGORIES = [
+      { value: 'vegetables', label: 'Овощи' },
+      { value: 'greens', label: 'Зелень' },
+      { value: 'meat', label: 'Мясо' },
+      { value: 'fish', label: 'Рыба' },
+      { value: 'dairy', label: 'Молочное' },
+      { value: 'grains', label: 'Крупы' },
+      { value: 'fruits', label: 'Фрукты' },
+      { value: 'nuts', label: 'Орехи' },
+      { value: 'seeds', label: 'Семена' },
+      { value: 'spices', label: 'Специи' },
+      { value: 'other', label: 'Прочее' },
+    ];
+    const CATEGORY_VALUES = CATEGORIES.map(c => c.value);
+
+    const FIELD_DEFS = [
+      { key: 'fiberPer100g', label: 'Клетчатка', unit: 'г' },
+      { key: 'vitaminD3Per100g', label: 'Витамин D3', unit: 'мкг' },
+      { key: 'vitaminAPer100g', label: 'Витамин A', unit: 'мкг' },
+      { key: 'vitaminB6Per100g', label: 'Витамин B6', unit: 'г' },
+      { key: 'vitaminB12Per100g', label: 'Витамин B12', unit: 'мкг' },
+      { key: 'vitaminCPer100g', label: 'Витамин C', unit: 'мг' },
+      { key: 'vitaminEPer100g', label: 'Витамин E', unit: 'г' },
+      { key: 'vitaminKPer100g', label: 'Витамин K', unit: 'мкг' },
+      { key: 'potassiumPer100g', label: 'Калий', unit: 'мг' },
+      { key: 'calciumPer100g', label: 'Кальций', unit: 'мг' },
+      { key: 'magnesiumPer100g', label: 'Магний', unit: 'мг' },
+      { key: 'ironPer100g', label: 'Железо', unit: 'г' },
+      { key: 'seleniumPer100g', label: 'Селен', unit: 'мкг' },
+      { key: 'zincPer100g', label: 'Цинк', unit: 'мг' },
+      { key: 'chromiumPer100g', label: 'Хром (вместо фтора в БД)', unit: 'мкг' },
+      { key: 'iodinePer100g', label: 'Йод', unit: 'мкг' },
+      { key: 'vitaminB9Per100g', label: 'Витамин B9 (фолаты)', unit: 'мкг' },
+    ];
+
+    const MACRO_KEYS = ['caloriesPer100g', 'proteinPer100g', 'fatPer100g', 'carbsPer100g'];
+    const ALL_NUMERIC = [...MACRO_KEYS, ...FIELD_DEFS.map(f => f.key)];
+
+    let products = [];
+    let editingIndex = null;
+
+    const $ = (id) => document.getElementById(id);
+
+    function emptyProduct() {
+      const p = {
+        catalogKey: '',
+        displayName: '',
+        category: 'other',
+        defaultPieceWeightGrams: 100,
+      };
+      ALL_NUMERIC.forEach(k => { p[k] = 0; });
+      return p;
+    }
+
+    function slugify(text) {
+      const map = { а:'a', б:'b', в:'v', г:'g', д:'d', е:'e', ё:'e', ж:'zh', з:'z', и:'i', й:'y', к:'k', л:'l', м:'m', н:'n', о:'o', п:'p', р:'r', с:'s', т:'t', у:'u', ф:'f', х:'h', ц:'ts', ч:'ch', ш:'sh', щ:'sch', ъ:'', ы:'y', ь:'', э:'e', ю:'yu', я:'ya' };
+      return text.toLowerCase().trim()
+        .split('')
+        .map(ch => map[ch] ?? ch)
+        .join('')
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_|_$/g, '')
+        .slice(0, 48) || 'product';
+    }
+
+    function num(v) {
+      const n = parseFloat(String(v).replace(',', '.'));
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function isMacrosOnly(p) {
+      const hasMacro = MACRO_KEYS.some(k => num(p[k]) > 0);
+      if (!hasMacro) return false;
+      return FIELD_DEFS.every(f => num(p[f.key]) === 0);
+    }
+
+    function applyMacrosOnlyFlag(p) {
+      if (isMacrosOnly(p)) p.macrosOnly = true;
+      else delete p.macrosOnly;
+      return p;
+    }
+
+    function normalizeProduct(raw) {
+      const p = emptyProduct();
+      p.catalogKey = String(raw.catalogKey ?? raw.key ?? '').trim();
+      p.displayName = String(raw.displayName ?? raw.name ?? '').trim();
+      p.category = CATEGORY_VALUES.includes(raw.category) ? raw.category : 'other';
+      p.defaultPieceWeightGrams = num(raw.defaultPieceWeightGrams ?? raw.pieceGrams ?? 100);
+      ALL_NUMERIC.forEach(k => { p[k] = num(raw[k] ?? 0); });
+      if (!p.catalogKey && p.displayName) p.catalogKey = slugify(p.displayName);
+      if (raw.macrosOnly === true) p.macrosOnly = true;
+      return applyMacrosOnlyFlag(p);
+    }
+
+    function initForm() {
+      const cat = $('category');
+      cat.innerHTML = CATEGORIES.map(c => `<option value="${c.value}">${c.label} (${c.value})</option>`).join('');
+
+      const micro = $('microFields');
+      micro.innerHTML = FIELD_DEFS.map(f => `
+        <div>
+          <label>${f.label} <span class="unit-hint">(${f.unit})</span></label>
+          <input type="number" id="${f.key}" step="0.000001" min="0" data-field="${f.key}" />
+        </div>
+      `).join('');
+    }
+
+    function fillForm(p) {
+      $('displayName').value = p.displayName;
+      $('catalogKey').value = p.catalogKey;
+      $('category').value = p.category;
+      $('defaultPieceWeightGrams').value = p.defaultPieceWeightGrams;
+      MACRO_KEYS.forEach(k => { $(k).value = p[k]; });
+      FIELD_DEFS.forEach(f => { $(f.key).value = p[f.key]; });
+      const hint = $('macrosOnlyHint');
+      hint.hidden = !p.macrosOnly;
+    }
+
+    function readForm() {
+      const p = emptyProduct();
+      p.displayName = $('displayName').value.trim();
+      p.catalogKey = $('catalogKey').value.trim() || slugify(p.displayName);
+      p.category = $('category').value;
+      p.defaultPieceWeightGrams = num($('defaultPieceWeightGrams').value);
+      MACRO_KEYS.forEach(k => { p[k] = num($(k).value); });
+      FIELD_DEFS.forEach(f => { p[f.key] = num($(f.key).value); });
+      return applyMacrosOnlyFlag(p);
+    }
+
+    function renderTable() {
+      $('countLabel').textContent = products.length;
+      const tbody = $('tableBody');
+      tbody.innerHTML = products.map((p, i) => `
+        <tr class="${editingIndex === i ? 'selected' : ''}" data-index="${i}">
+          <td>${escapeHtml(p.displayName)}</td>
+          <td><code>${escapeHtml(p.catalogKey)}</code></td>
+          <td>${fmt(p.caloriesPer100g)}</td>
+          <td>${fmt(p.proteinPer100g)}</td>
+          <td>${fmt(p.fatPer100g)}</td>
+          <td>${fmt(p.carbsPer100g)}</td>
+          <td>${p.macrosOnly ? '—' : '✓'}</td>
+          <td>
+            <button type="button" data-edit="${i}">Изм.</button>
+            <button type="button" class="danger" data-del="${i}">×</button>
+          </td>
+        </tr>
+      `).join('');
+
+      tbody.querySelectorAll('[data-edit]').forEach(btn => {
+        btn.addEventListener('click', () => startEdit(+btn.dataset.edit));
+      });
+      tbody.querySelectorAll('[data-del]').forEach(btn => {
+        btn.addEventListener('click', () => deleteProduct(+btn.dataset.del));
+      });
+      tbody.querySelectorAll('tr[data-index]').forEach(row => {
+        row.addEventListener('click', (e) => {
+          if (e.target.closest('button')) return;
+          startEdit(+row.dataset.index);
+        });
+      });
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+    function fmt(n) { return Number(n).toLocaleString('ru-RU', { maximumFractionDigits: 2 }); }
+
+    function startEdit(index) {
+      editingIndex = index;
+      $('formTitle').textContent = 'Редактирование';
+      $('btnSave').textContent = 'Обновить';
+      fillForm(products[index]);
+      renderTable();
+    }
+
+    function resetForm() {
+      editingIndex = null;
+      $('formTitle').textContent = 'Новый продукт';
+      $('btnSave').textContent = 'Сохранить в список';
+      fillForm(emptyProduct());
+    }
+
+    function deleteProduct(index) {
+      if (!confirm('Удалить «' + products[index].displayName + '»?')) return;
+      products.splice(index, 1);
+      if (editingIndex === index) resetForm();
+      else if (editingIndex > index) editingIndex--;
+      renderTable();
+    }
+
+    function showStatus(el, msg, isError) {
+      el.hidden = false;
+      el.textContent = msg;
+      el.classList.toggle('error', !!isError);
+    }
+
+    $('productForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const p = readForm();
+      if (!p.displayName) return alert('Укажите название');
+      if (!p.catalogKey) return alert('Укажите catalogKey');
+
+      const dup = products.findIndex((x, i) => x.catalogKey === p.catalogKey && i !== editingIndex);
+      if (dup >= 0) return alert('catalogKey уже используется: ' + p.catalogKey);
+
+      if (editingIndex === null) products.push(p);
+      else products[editingIndex] = p;
+      resetForm();
+      renderTable();
+    });
+
+    $('btnCancel').addEventListener('click', resetForm);
+
+    $('displayName').addEventListener('blur', () => {
+      if (!$('catalogKey').value.trim() && $('displayName').value.trim()) {
+        $('catalogKey').value = slugify($('displayName').value);
+      }
+    });
+
+    $('fileInput').addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        const list = Array.isArray(data) ? data : data.products;
+        if (!Array.isArray(list)) throw new Error('Ожидается массив products');
+        products = list.map(normalizeProduct);
+        resetForm();
+        renderTable();
+        showStatus($('ioStatus'), `Загружено ${products.length} продукт(ов)`, false);
+      } catch (err) {
+        showStatus($('ioStatus'), 'Ошибка чтения JSON: ' + err.message, true);
+      }
+      e.target.value = '';
+    });
+
+    $('btnExport').addEventListener('click', () => {
+      const payload = { version: 1, exportedAt: new Date().toISOString(), products };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'food-catalog.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      showStatus($('ioStatus'), 'Файл food-catalog.json скачан', false);
+    });
+
+    $('btnClear').addEventListener('click', () => {
+      if (!confirm('Очистить весь список?')) return;
+      products = [];
+      resetForm();
+      renderTable();
+    });
+
+    // ——— foodstruct.com parser ———
+
+    const NUTRIENT_MAP = [
+      { patterns: [/^calories$/i], field: 'caloriesPer100g', unit: 'kcal' },
+      { patterns: [/^protein$/i], field: 'proteinPer100g', unit: 'g' },
+      { patterns: [/^fats?$/i, /^total\s*fat$/i], field: 'fatPer100g', unit: 'g' },
+      { patterns: [/^carbs$/i, /^carbohydrates?$/i, /^total\s*carbohydrate$/i], field: 'carbsPer100g', unit: 'g' },
+      { patterns: [/^fiber$/i, /^dietary\s*fiber$/i], field: 'fiberPer100g', unit: 'g' },
+      { patterns: [/^vitamin\s*a$/i], field: 'vitaminAPer100g', unit: 'mcg' },
+      { patterns: [/^vitamin\s*b\s*6$/i, /^pyridoxine$/i], field: 'vitaminB6Per100g', unit: 'g' },
+      { patterns: [/^vitamin\s*b\s*12$/i, /^cobalamin$/i], field: 'vitaminB12Per100g', unit: 'mcg' },
+      { patterns: [/^folate$/i, /^vitamin\s*b\s*9$/i, /^folic\s*acid$/i], field: 'vitaminB9Per100g', unit: 'mcg' },
+      { patterns: [/^vitamin\s*c$/i, /^ascorbic/i], field: 'vitaminCPer100g', unit: 'mg' },
+      // Prefer µg/mcg Vitamin D over IU row ("Vitamin D*")
+      { patterns: [/^vitamin\s*d$/i], field: 'vitaminD3Per100g', unit: 'mcg' },
+      { patterns: [/^vitamin\s*e$/i, /^alpha[-\s]?tocopherol$/i], field: 'vitaminEPer100g', unit: 'g' },
+      { patterns: [/^vitamin\s*k$/i, /^phylloquinone$/i], field: 'vitaminKPer100g', unit: 'mcg' },
+      { patterns: [/^potassium$/i], field: 'potassiumPer100g', unit: 'mg' },
+      { patterns: [/^calcium$/i], field: 'calciumPer100g', unit: 'mg' },
+      { patterns: [/^magnesium$/i], field: 'magnesiumPer100g', unit: 'mg' },
+      { patterns: [/^iron$/i], field: 'ironPer100g', unit: 'g' },
+      { patterns: [/^selenium$/i], field: 'seleniumPer100g', unit: 'mcg' },
+      { patterns: [/^zinc$/i], field: 'zincPer100g', unit: 'mg' },
+      { patterns: [/^chromium$/i], field: 'chromiumPer100g', unit: 'mcg' },
+      { patterns: [/^iodine$/i], field: 'iodinePer100g', unit: 'mcg' },
+    ];
+
+    const SKIP_NUTRIENT_NAMES = /^(net carbs|calories per|weight per|unsaturated|saturated fat|monounsaturated|polyunsaturated|trans fat|cholesterol|caffeine|tryptophan|threonine|isoleucine|leucine|lysine|methionine|phenylalanine|valine|histidine|sugar|sodium|copper|manganese|phosphorus|vitamin\s*b\s*[12345]|vitamin\s*d\*|nutrient)$/i;
+
+    function parseAmount(text) {
+      const t = text.replace(/\s+/g, ' ').replace(/,/g, '').trim().toLowerCase();
+      const m = t.match(/([\d.]+)\s*(kcal|iu|µg|μg|mcg|mg|g)?/i);
+      if (!m) return null;
+      let value = parseFloat(m[1]);
+      let unit = (m[2] || '').toLowerCase();
+      if (unit === 'kcal') unit = 'kcal';
+      else if (unit === 'g') unit = 'g';
+      else if (unit === 'mg') unit = 'mg';
+      else if (unit === 'µg' || unit === 'μg' || unit === 'mcg') unit = 'mcg';
+      else if (unit === 'iu') unit = 'iu';
+      return { value, unit };
+    }
+
+    function convertToFieldUnit(value, fromUnit, targetUnit) {
+      if (!fromUnit || fromUnit === targetUnit) return value;
+      if (targetUnit === 'kcal') return value;
+      // IU vitamin D ≈ 0.025 µg
+      if (fromUnit === 'iu' && targetUnit === 'mcg') return value * 0.025;
+      if (fromUnit === 'mg' && targetUnit === 'mcg') return value * 1000;
+      if (fromUnit === 'mcg' && targetUnit === 'mg') return value / 1000;
+      if (fromUnit === 'g' && targetUnit === 'mg') return value * 1000;
+      if (fromUnit === 'mg' && targetUnit === 'g') return value / 1000;
+      if (fromUnit === 'mcg' && targetUnit === 'g') return value / 1000000;
+      if (fromUnit === 'g' && targetUnit === 'mcg') return value * 1000000;
+      return value;
+    }
+
+    function applyNutrientToProduct(product, nutrientName, amountText, appliedFields) {
+      const parsed = parseAmount(amountText);
+      if (!parsed) return;
+      if (parsed.unit === 'iu') return; // skip IU row; prefer µg Vitamin D
+
+      const name = nutrientName
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .replace(/\*/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      if (SKIP_NUTRIENT_NAMES.test(name)) return;
+
+      for (const rule of NUTRIENT_MAP) {
+        if (rule.patterns.some(rx => rx.test(name))) {
+          if (appliedFields.has(rule.field)) return;
+          const val = convertToFieldUnit(parsed.value, parsed.unit, rule.unit);
+          product[rule.field] = val;
+          appliedFields.add(rule.field);
+          return;
+        }
+      }
+    }
+
+    function extractFoodstructTitle(text, doc) {
+      if (doc) {
+        const h1 = doc.querySelector('h1');
+        if (h1) {
+          return h1.textContent
+            .replace(/\s*nutrition:.*$/i, '')
+            .replace(/\s*nutrition$/i, '')
+            .trim();
+        }
+      }
+      const mdTitle =
+        text.match(/^#\s*(.+?)\s+nutrition\b/im) ||
+        text.match(/^Title:\s*(.+?)\s+nutrition\b/im);
+      if (mdTitle?.[1]) return mdTitle[1].replace(/\*+/g, '').trim();
+
+      const usda = text.match(/^(Lupins?|.+?),\s*(?:mature|raw|cooked).+$/im);
+      if (usda) return usda[0].trim();
+
+      return '';
+    }
+
+    function extractDefaultServingGrams(text) {
+      const m =
+        text.match(/Default serving size[^\n|]*\|\s*[^|]*?\((\d+)\s*g\)/i) ||
+        text.match(/1 cup[^\n]*?(\d+)\s*g/i);
+      return m ? parseInt(m[1], 10) : 100;
+    }
+
+    function parseFoodstructMarkdown(raw) {
+      const product = emptyProduct();
+      const appliedFields = new Set();
+      let text = raw.includes('Markdown Content:')
+        ? raw.split('Markdown Content:').slice(1).join('Markdown Content:')
+        : raw;
+
+      // Prefer the consolidated per-100g nutrients table; cut noise after it if needed
+      const allIdx = text.search(/##\s*\*?\*?All\*?\*?\s+nutrients/i);
+      const tableText = allIdx >= 0 ? text.slice(allIdx) : text;
+      const cutAt = tableText.search(/\n##\s*Check out|\n##\s*NUTRITION\s+FACTS|\n##\s*Health checks|\n##\s*References/i);
+      const focus = cutAt > 0 ? tableText.slice(0, cutAt) : tableText;
+
+      const title = extractFoodstructTitle(text, null);
+      if (title) {
+        product.displayName = title;
+        product.catalogKey = slugify(title);
+      }
+
+      const serving = extractDefaultServingGrams(text);
+      if (serving > 0) product.defaultPieceWeightGrams = serving;
+
+      const lines = focus.split('\n').map(x => x.replace(/\s+/g, ' ').trim()).filter(Boolean);
+      // Markdown table: | Protein | 36g | 86% | ...
+      const tableRowRx = /^\|\s*(.+?)\s*\|\s*([^|]+?)\s*\|/;
+      // Coverage lines: Calcium: 176mg of 1,000mg **18%**
+      const coverageRx = /^([A-Za-z][A-Za-z0-9\s/-]*?):\s*([\d.,]+\s*(?:kcal|IU|µg|μg|mcg|mg|g))\b/i;
+
+      for (const line of lines) {
+        if (line.startsWith('| ---') || /^\|\s*Nutrient\s*\|/i.test(line)) continue;
+
+        let name = null;
+        let amount = null;
+        const tm = line.match(tableRowRx);
+        if (tm) {
+          name = tm[1].trim();
+          amount = tm[2].trim();
+        } else {
+          const cm = line.match(coverageRx);
+          if (cm) {
+            name = cm[1].trim();
+            amount = cm[2].trim();
+          }
+        }
+        if (!name || !amount) continue;
+        applyNutrientToProduct(product, name, amount, appliedFields);
+      }
+
+      // Top facts fallback for calories
+      if (!appliedFields.has('caloriesPer100g')) {
+        const cal = text.match(/Calories[^\n|]*\|\s*([\d.]+)\s*kcal/i)
+          || text.match(/Calories in 100 grams\s*\|\s*([\d.]+)/i);
+        if (cal) {
+          product.caloriesPer100g = parseFloat(cal[1]);
+          appliedFields.add('caloriesPer100g');
+        }
+      }
+
+      guessCategory(product);
+      return applyMacrosOnlyFlag(product);
+    }
+
+    function guessCategory(product) {
+      const name = (product.displayName || '').toLowerCase();
+      const urlHint = ($('parseUrl')?.value || '').toLowerCase();
+      const blob = name + ' ' + urlHint;
+      if (/bean|lentil|quinoa|rice|oat|wheat|grain|pasta|buckwheat|lupin/.test(blob)) product.category = 'grains';
+      else if (/seed|chia|flax|sesame|sunflower/.test(blob)) product.category = 'seeds';
+      else if (/almond|walnut|nut|hazeln|cashew|pistachio/.test(blob)) product.category = 'nuts';
+      else if (/apple|banana|berry|fruit|orange|mango|kiwi/.test(blob)) product.category = 'fruits';
+      else if (/spinach|lettuce|basil|herb|cilantro|arugula|parsley/.test(blob)) product.category = 'greens';
+      else if (/tomato|cucumber|pepper|onion|carrot|zucchini|vegetable/.test(blob)) product.category = 'vegetables';
+      else if (/chicken|beef|pork|turkey|meat|bacon/.test(blob)) product.category = 'meat';
+      else if (/fish|salmon|tuna|cod|shrimp/.test(blob)) product.category = 'fish';
+      else if (/milk|cheese|yogurt|cream|butter/.test(blob)) product.category = 'dairy';
+      else if (/spice|pepper|salt|cinnamon|oregano|thyme|curry/.test(blob)) product.category = 'spices';
+    }
+
+    function parseFoodstructHtml(html) {
+      const looksLikeMarkdown =
+        /##\s*\*?\*?All\*?\*?\s+nutrients/i.test(html) ||
+        /\|\s*Nutrient\s*\|\s*Value\s*\|/i.test(html) ||
+        /Markdown Content:/i.test(html);
+
+      if (looksLikeMarkdown && !/<table[\s>]/i.test(html)) {
+        return parseFoodstructMarkdown(html);
+      }
+
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const product = emptyProduct();
+      const appliedFields = new Set();
+
+      const title = extractFoodstructTitle(html, doc);
+      if (title) {
+        product.displayName = title;
+        product.catalogKey = slugify(title);
+      }
+
+      const serving = extractDefaultServingGrams(doc.body?.textContent || html);
+      if (serving > 0) product.defaultPieceWeightGrams = serving;
+
+      const rows = doc.querySelectorAll('table tr');
+      rows.forEach(tr => {
+        const cells = [...tr.querySelectorAll('td, th')].map(c => c.textContent.replace(/\s+/g, ' ').trim());
+        if (cells.length < 2) return;
+        const name = cells[0];
+        const amount = cells[1];
+        if (!name || !amount || /^nutrient$/i.test(name) || /^value$/i.test(amount)) return;
+        // Skip relative-chart style rows without units
+        if (!/[\d.]/.test(amount)) return;
+        applyNutrientToProduct(product, name, amount, appliedFields);
+      });
+
+      // Coverage-style text nodes as fallback
+      const bodyText = doc.body?.textContent || '';
+      const coverageRx = /(Vitamin\s*[A-K0-9]+|Folate|Protein|Fats?|Carbs?|Fiber|Calcium|Iron|Magnesium|Potassium|Zinc|Selenium|Chromium|Iodine|Calories)\s*:\s*([\d.,]+\s*(?:kcal|IU|µg|μg|mcg|mg|g))/gi;
+      let m;
+      while ((m = coverageRx.exec(bodyText))) {
+        applyNutrientToProduct(product, m[1], m[2], appliedFields);
+      }
+
+      const hasMainValues = MACRO_KEYS.some(k => Number.isFinite(product[k]) && product[k] !== 0);
+      const hasMicros = [
+        product.vitaminAPer100g,
+        product.vitaminCPer100g,
+        product.calciumPer100g,
+        product.ironPer100g,
+        product.fiberPer100g,
+      ].some(v => Number.isFinite(v) && v !== 0);
+
+      if (!hasMainValues || (!hasMicros && /All\s+nutrients|Markdown Content:/i.test(html))) {
+        return parseFoodstructMarkdown(html);
+      }
+
+      guessCategory(product);
+      return applyMacrosOnlyFlag(product);
+    }
+
+    function applyParsedToForm(parsed) {
+      fillForm(parsed);
+      $('formTitle').textContent = 'Импорт с foodstruct.com';
+      $('btnSave').textContent = 'Сохранить в список';
+      editingIndex = null;
+      const filled = ALL_NUMERIC.filter(k => num(parsed[k]) > 0).length;
+      showStatus(
+        $('parseStatus'),
+        `Разобрано: ${parsed.displayName || 'без названия'} (${filled} ненулевых полей). Проверьте значения и сохраните.`,
+        false
+      );
+    }
+
+    $('btnParseHtml').addEventListener('click', () => {
+      const html = $('pasteHtml').value.trim();
+      if (!html) return showStatus($('parseStatus'), 'Вставьте HTML или markdown', true);
+      try {
+        applyParsedToForm(parseFoodstructHtml(html));
+      } catch (err) {
+        showStatus($('parseStatus'), 'Ошибка разбора: ' + err.message, true);
+      }
+    });
+
+    async function fetchWithTimeout(url, timeoutMs) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const res = await fetch(url, { signal: controller.signal });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return await res.text();
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    function proxyCandidates(sourceUrl) {
+      return [
+        {
+          name: 'r.jina.ai',
+          url: 'https://r.jina.ai/http://' + sourceUrl.replace(/^https?:\/\//i, ''),
+        },
+        {
+          name: 'corsproxy.io',
+          url: 'https://corsproxy.io/?' + encodeURIComponent(sourceUrl),
+        },
+      ];
+    }
+
+    $('btnFetchParse').addEventListener('click', async () => {
+      const url = $('parseUrl').value.trim();
+      if (!url) return showStatus($('parseStatus'), 'Укажите URL', true);
+      if (!/foodstruct\.com/i.test(url)) {
+        showStatus($('parseStatus'), 'Ожидается ссылка на foodstruct.com', true);
+        return;
+      }
+      showStatus($('parseStatus'), 'Загрузка…', false);
+      const attempts = proxyCandidates(url);
+      let lastError = null;
+
+      for (let i = 0; i < attempts.length; i++) {
+        const attempt = attempts[i];
+        showStatus($('parseStatus'), `Попытка ${i + 1}/${attempts.length}: ${attempt.name}…`, false);
+        try {
+          const html = await fetchWithTimeout(attempt.url, 20000);
+          if (/just a moment|cf-challenge|cloudflare/i.test(html) && !/All\s+nutrients|Calories/i.test(html)) {
+            throw new Error('Cloudflare challenge');
+          }
+          $('pasteHtml').value = html;
+          applyParsedToForm(parseFoodstructHtml(html));
+          return;
+        } catch (err) {
+          lastError = err;
+        }
+      }
+
+      showStatus(
+        $('parseStatus'),
+        'Не удалось загрузить страницу (' + (lastError?.message || 'network error') +
+          '). FoodStruct часто блокирует прокси. Вставьте markdown/HTML вручную.',
+        true
+      );
+    });
+
+    initForm();
+    resetForm();
+    renderTable();
+    $('parseUrl').value = 'https://foodstruct.com/food/lupins-matureseeds-raw-nutrition';
+  </script>
+</body>
+</html>

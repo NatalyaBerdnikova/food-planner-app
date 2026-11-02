@@ -852,7 +852,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 100,
           "unit": "gram"
         },
@@ -971,7 +971,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 150,
           "unit": "gram"
         },
@@ -1009,7 +1009,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 150,
           "unit": "gram"
         },
@@ -1062,7 +1062,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 150,
           "unit": "gram"
         },
@@ -1105,7 +1105,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 120,
           "unit": "gram"
         },
@@ -1346,7 +1346,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 200,
           "unit": "gram"
         },
@@ -1741,7 +1741,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 300,
           "unit": "gram"
         },
@@ -2442,7 +2442,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "chickpeas_turkish_peas",
+          "catalogKey": "chickpeas",
           "quantity": 250,
           "unit": "gram"
         },
@@ -2484,7 +2484,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 700,
           "unit": "gram"
         },
@@ -2865,7 +2865,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 150,
           "unit": "gram"
         },
@@ -2922,7 +2922,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 120,
           "unit": "gram"
         },
@@ -2964,7 +2964,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 700,
           "unit": "gram"
         },
@@ -3446,7 +3446,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 220,
           "unit": "gram"
         },
@@ -3575,7 +3575,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "chickpeas_turkish_peas",
+          "catalogKey": "chickpeas",
           "quantity": 60,
           "unit": "gram"
         }
@@ -4492,7 +4492,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 75,
           "unit": "gram"
         },
@@ -5225,7 +5225,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tsyplyata_produkt_udalen",
+          "catalogKey": "poult",
           "quantity": 600,
           "unit": "gram"
         },
