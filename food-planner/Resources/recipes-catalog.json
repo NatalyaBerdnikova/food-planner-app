@@ -852,7 +852,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 100,
           "unit": "gram"
         },
@@ -971,7 +971,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 150,
           "unit": "gram"
         },
@@ -1009,7 +1009,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 150,
           "unit": "gram"
         },
@@ -1062,7 +1062,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 150,
           "unit": "gram"
         },
@@ -1105,7 +1105,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 120,
           "unit": "gram"
         },
@@ -1216,7 +1216,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "item_5",
+          "catalogKey": "black_currant",
           "quantity": 80,
           "unit": "gram"
         },
@@ -1312,7 +1312,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "item_5",
+          "catalogKey": "black_currant",
           "quantity": 50,
           "unit": "gram"
         }
@@ -1350,7 +1350,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 200,
           "unit": "gram"
         },
@@ -1403,7 +1403,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sesame_seeds_and",
+          "catalogKey": "sesame_seeds",
           "quantity": 10,
           "unit": "gram"
         },
@@ -1537,7 +1537,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sesame_seeds_and",
+          "catalogKey": "sesame_seeds",
           "quantity": 10,
           "unit": "gram"
         }
@@ -1755,7 +1755,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 300,
           "unit": "gram"
         },
@@ -2127,7 +2127,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "item_5",
+          "catalogKey": "black_currant",
           "quantity": 100,
           "unit": "gram"
         }
@@ -2517,7 +2517,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 700,
           "unit": "gram"
         },
@@ -2906,7 +2906,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 150,
           "unit": "gram"
         },
@@ -2964,7 +2964,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 120,
           "unit": "gram"
         },
@@ -3007,7 +3007,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 700,
           "unit": "gram"
         },
@@ -3055,7 +3055,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "item_5",
+          "catalogKey": "black_currant",
           "quantity": 120,
           "unit": "gram"
         },
@@ -3477,7 +3477,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sesame_seeds_and",
+          "catalogKey": "sesame_seeds",
           "quantity": 15,
           "unit": "gram"
         }
@@ -3500,7 +3500,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 220,
           "unit": "gram"
         },
@@ -3601,7 +3601,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sesame_seeds_and",
+          "catalogKey": "sesame_seeds",
           "quantity": 15,
           "unit": "gram"
         },
@@ -3765,7 +3765,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "item_5",
+          "catalogKey": "black_currant",
           "quantity": 50,
           "unit": "gram"
         }
@@ -3927,7 +3927,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sesame_seeds_and",
+          "catalogKey": "sesame_seeds",
           "quantity": 10,
           "unit": "gram"
         }
@@ -4246,7 +4246,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sesame_seeds_and",
+          "catalogKey": "sesame_seeds",
           "quantity": 10,
           "unit": "gram"
         }
@@ -4410,7 +4410,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "item_5",
+          "catalogKey": "black_currant",
           "quantity": 30,
           "unit": "gram"
         },
@@ -4453,7 +4453,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "item_5",
+          "catalogKey": "black_currant",
           "quantity": 30,
           "unit": "gram"
         }
@@ -4572,7 +4572,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 75,
           "unit": "gram"
         },
@@ -4772,7 +4772,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sesame_seeds_and",
+          "catalogKey": "sesame_seeds",
           "quantity": 10,
           "unit": "gram"
         }
@@ -4828,7 +4828,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "item_5",
+          "catalogKey": "black_currant",
           "quantity": 50,
           "unit": "gram"
         },
@@ -5195,7 +5195,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
+          "catalogKey": "ogurets_marinovannyy_produkt_udalen",
           "quantity": 30,
           "unit": "gram"
         }
@@ -5324,7 +5324,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 600,
           "unit": "gram"
         },
@@ -8433,7 +8433,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sesame_seeds_and",
+          "catalogKey": "sesame_seeds",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -8863,7 +8863,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "zira_semena",
+          "catalogKey": "ground_cumin",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -8967,7 +8967,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "zira_semena",
+          "catalogKey": "ground_cumin",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -9006,7 +9006,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9090,7 +9090,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -9135,7 +9135,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "zira_semena",
+          "catalogKey": "ground_cumin",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -9184,7 +9184,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9258,7 +9258,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9318,7 +9318,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "zira_semena",
+          "catalogKey": "ground_cumin",
           "quantity": 4.0,
           "unit": "gram"
         },
@@ -9427,7 +9427,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "zira_semena",
+          "catalogKey": "ground_cumin",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9541,7 +9541,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "zira_semena",
+          "catalogKey": "ground_cumin",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9580,7 +9580,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9655,7 +9655,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "zira_semena",
+          "catalogKey": "ground_cumin",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -9763,12 +9763,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "cayenne_pepper",
+          "catalogKey": "bell_red",
           "quantity": 30.0,
           "unit": "gram"
         },
@@ -9837,7 +9837,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -9897,7 +9897,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "zira_semena",
+          "catalogKey": "ground_cumin",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -10139,7 +10139,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -10297,7 +10297,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -10356,7 +10356,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "poult",
+          "catalogKey": "chicken",
           "quantity": 100.0,
           "unit": "gram"
         },

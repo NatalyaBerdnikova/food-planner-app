@@ -157,6 +157,7 @@ def validate() -> list[str]:
                 locale,
                 translation.get("steps"),
             )
+        ingredient_pairs = []
         for ingredient in recipe.get("ingredients", []):
             key = ingredient.get("catalogKey")
             if key not in known_product_keys:
@@ -164,6 +165,16 @@ def validate() -> list[str]:
             unit = ingredient.get("unit")
             if unit not in UNIT_VALUES:
                 errors.append(f"recipe {recipe_id}: unknown unit {unit!r}")
+            ingredient_pairs.append((key, unit))
+        duplicate_ingredients = sorted(
+            pair
+            for pair, count in Counter(ingredient_pairs).items()
+            if count > 1
+        )
+        if duplicate_ingredients:
+            errors.append(
+                f"recipe {recipe_id}: duplicate ingredients {duplicate_ingredients}"
+            )
         image_id = recipe.get("imageId")
         if not image_id:
             errors.append(f"recipe {recipe_id}: missing imageId")
