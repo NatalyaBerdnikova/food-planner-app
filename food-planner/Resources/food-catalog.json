@@ -282,7 +282,7 @@
     },
     {
       "catalogKey": "peanut_butter_liquid",
-      "displayName": "Арахисовое масло жидкое",
+      "displayName": "Арахисовая паста",
       "category": "oils",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 899.0,
@@ -307,8 +307,8 @@
       "potassiumPer100g": 0,
       "iodinePer100g": 0,
       "translations": {
-        "ru": "Арахисовое масло жидкое",
-        "en": "Peanut butter, liquid"
+        "ru": "Арахисовая паста",
+        "en": "Peanut butter"
       }
     },
     {
@@ -437,7 +437,7 @@
     },
     {
       "catalogKey": "baranina_1_kat",
-      "displayName": "Баранина 1 кат.",
+      "displayName": "Баранина 1 кат",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 209.0,
@@ -462,7 +462,7 @@
       "potassiumPer100g": 270.0,
       "iodinePer100g": 2.7,
       "translations": {
-        "ru": "Баранина 1 кат.",
+        "ru": "Баранина 1 кат",
         "en": "Mutton, cat. 1"
       }
     },
@@ -499,7 +499,7 @@
     },
     {
       "catalogKey": "batata_sweet_potatoes",
-      "displayName": "Батат, картофель сладкий",
+      "displayName": "Батат",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 60.0,
@@ -524,8 +524,8 @@
       "potassiumPer100g": 397.0,
       "iodinePer100g": 0,
       "translations": {
-        "ru": "Батат, картофель сладкий",
-        "en": "Batata, sweet potatoes"
+        "ru": "Батат",
+        "en": "Sweet potato"
       }
     },
     {
@@ -561,7 +561,7 @@
     },
     {
       "catalogKey": "chicken_egg_white",
-      "displayName": "Яичный белок куриный",
+      "displayName": "Яичный белок",
       "category": "eggs",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 48.0,
@@ -586,8 +586,8 @@
       "potassiumPer100g": 152.0,
       "iodinePer100g": 7.0,
       "translations": {
-        "ru": "Яичный белок куриный",
-        "en": "Chicken egg white"
+        "ru": "Яичный белок",
+        "en": "Egg white"
       }
     },
     {
@@ -685,7 +685,7 @@
     },
     {
       "catalogKey": "besgo",
-      "displayName": "Бесуго",
+      "displayName": "Бесуго, Краснопёрый пагель",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 145.0,
@@ -716,7 +716,7 @@
     },
     {
       "catalogKey": "beans",
-      "displayName": "Бобы",
+      "displayName": "Фасоль",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 56.8,
@@ -741,7 +741,7 @@
       "potassiumPer100g": 0,
       "iodinePer100g": 0,
       "translations": {
-        "ru": "Бобы",
+        "ru": "Фасоль",
         "en": "Beans"
       }
     },
@@ -1245,7 +1245,7 @@
     },
     {
       "catalogKey": "hercules_oatmeal",
-      "displayName": "Овсяные хлопья \"геркулес\"",
+      "displayName": "Овсяные хлопья",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 352.0,
@@ -1270,8 +1270,8 @@
       "potassiumPer100g": 330.0,
       "iodinePer100g": 6.0,
       "translations": {
-        "ru": "Овсяные хлопья \"геркулес\"",
-        "en": "Oatmeal, Hercules oatmeal"
+        "ru": "Овсяные хлопья",
+        "en": "Rolled oats"
       }
     },
     {
@@ -1307,7 +1307,7 @@
     },
     {
       "catalogKey": "beef_cat_1",
-      "displayName": "Говядина 1 кат.",
+      "displayName": "Говядина",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 218.0,
@@ -1332,8 +1332,8 @@
       "potassiumPer100g": 326.0,
       "iodinePer100g": 7.2,
       "translations": {
-        "ru": "Говядина 1 кат.",
-        "en": "Beef Cat. 1"
+        "ru": "Говядина",
+        "en": "Beef"
       }
     },
     {
@@ -1364,7 +1364,7 @@
       "iodinePer100g": 0,
       "translations": {
         "ru": "Голубика",
-        "en": "Blueberry"
+        "en": "Blueberries"
       }
     },
     {
@@ -1643,7 +1643,7 @@
       "iodinePer100g": 2.0,
       "translations": {
         "ru": "Гранат",
-        "en": "pomegranate"
+        "en": "Pomegranate"
       }
     },
     {
@@ -2697,7 +2697,7 @@
       "iodinePer100g": 0,
       "translations": {
         "ru": "Какао-порошок",
-        "en": "Cocoa Powder"
+        "en": "Cocoa powder"
       }
     },
     {
@@ -3539,7 +3539,7 @@
     },
     {
       "catalogKey": "coconut_oil_liquid",
-      "displayName": "Кокосовое масло (жидкое)",
+      "displayName": "Кокосовое масло",
       "category": "oils",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 899.0,
@@ -3564,8 +3564,8 @@
       "potassiumPer100g": 0,
       "iodinePer100g": 0,
       "translations": {
-        "ru": "Кокосовое масло (жидкое)",
-        "en": "Coconut oil (liquid)"
+        "ru": "Кокосовое масло",
+        "en": "Coconut oil"
       }
     },
     {
@@ -3845,12 +3845,12 @@
       "iodinePer100g": 0,
       "translations": {
         "ru": "Кукурузный крахмал",
-        "en": "Corn starch, Ph."
+        "en": "Cornstarch"
       }
     },
     {
       "catalogKey": "far_eastern_shrimp_meat",
-      "displayName": "Креветка дальневосточная (мясо)",
+      "displayName": "Креветки",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 87.0,
@@ -3875,8 +3875,8 @@
       "potassiumPer100g": 260.0,
       "iodinePer100g": 110.0,
       "translations": {
-        "ru": "Креветка дальневосточная (мясо)",
-        "en": "Far Eastern shrimp (meat)"
+        "ru": "Креветки",
+        "en": "Shrimp"
       }
     },
     {
@@ -3975,7 +3975,7 @@
     },
     {
       "catalogKey": "corn",
-      "displayName": "Кукуруза, зерно",
+      "displayName": "Кукуруза",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 325.0,
@@ -4000,8 +4000,8 @@
       "potassiumPer100g": 340.0,
       "iodinePer100g": 5.2,
       "translations": {
-        "ru": "Кукуруза, зерно",
-        "en": "Cut Corn"
+        "ru": "Кукуруза",
+        "en": "Corn"
       }
     },
     {
@@ -4187,7 +4187,7 @@
       "iodinePer100g": 7.1,
       "translations": {
         "ru": "Кунжут",
-        "en": "Sesame Seeds and"
+        "en": "Sesame seeds"
       }
     },
     {
@@ -4223,7 +4223,7 @@
     },
     {
       "catalogKey": "dried_apricots_seedless_dried_apricots",
-      "displayName": "Курага (абрикосы сушеные без косточки)",
+      "displayName": "Курага",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 232.0,
@@ -4248,8 +4248,8 @@
       "potassiumPer100g": 1717.0,
       "iodinePer100g": 3.4,
       "translations": {
-        "ru": "Курага (абрикосы сушеные без косточки)",
-        "en": "Dried apricots (seedless dried apricots)"
+        "ru": "Курага",
+        "en": "Dried apricots"
       }
     },
     {
@@ -5154,7 +5154,7 @@
     },
     {
       "catalogKey": "bee_honey",
-      "displayName": "Мед пчелиный",
+      "displayName": "Мёд",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 328.0,
@@ -5179,8 +5179,8 @@
       "potassiumPer100g": 36.0,
       "iodinePer100g": 2.0,
       "translations": {
-        "ru": "Мед пчелиный",
-        "en": "Bee honey"
+        "ru": "Мёд",
+        "en": "Honey"
       }
     },
     {
@@ -5619,7 +5619,7 @@
     },
     {
       "catalogKey": "milk_3_5_fat_sterilized",
-      "displayName": "Молоко 3,5% жирности, стерилизованное",
+      "displayName": "Молоко, 3,5%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 63.0,
@@ -5644,8 +5644,8 @@
       "potassiumPer100g": 146.0,
       "iodinePer100g": 9.0,
       "translations": {
-        "ru": "Молоко 3,5% жирности, стерилизованное",
-        "en": "Milk 3.5% fat, sterilized"
+        "ru": "Молоко, 3,5%",
+        "en": "Milk, 3.5% fat"
       }
     },
     {
@@ -5707,7 +5707,7 @@
       "iodinePer100g": 5.0,
       "translations": {
         "ru": "Морковь",
-        "en": "Carrots"
+        "en": "Carrot"
       }
     },
     {
@@ -5774,7 +5774,7 @@
     },
     {
       "catalogKey": "dairy_ice_cream",
-      "displayName": "Мороженое молочное",
+      "displayName": "Мороженое молочное, 3.5% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 132.0,
@@ -5805,7 +5805,7 @@
     },
     {
       "catalogKey": "plombir_ice_cream",
-      "displayName": "Мороженое пломбир",
+      "displayName": "Мороженое пломбир, 15% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 232.0,
@@ -5836,7 +5836,7 @@
     },
     {
       "catalogKey": "creamy_ice_cream",
-      "displayName": "Мороженое сливочное",
+      "displayName": "Мороженое сливочное, 10% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 183.0,
@@ -6265,12 +6265,12 @@
       "iodinePer100g": 4.5,
       "translations": {
         "ru": "Овсяная крупа",
-        "en": "Oatmeal"
+        "en": "Oat groats"
       }
     },
     {
       "catalogKey": "pickled_cucumber",
-      "displayName": "Огурец соленый",
+      "displayName": "Маринованный огурец",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 13.0,
@@ -6295,13 +6295,13 @@
       "potassiumPer100g": 141.0,
       "iodinePer100g": 0,
       "translations": {
-        "ru": "Огурец соленый",
+        "ru": "Маринованный огурец",
         "en": "Pickled cucumber"
       }
     },
     {
       "catalogKey": "chicken_leg",
-      "displayName": "Куриный окорочок",
+      "displayName": "Куриная ножка",
       "category": "poultry",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 185.0,
@@ -6326,8 +6326,8 @@
       "potassiumPer100g": 260.0,
       "iodinePer100g": 6.0,
       "translations": {
-        "ru": "Куриныые ножки",
-        "en": "Chicken legs"
+        "ru": "Куриная ножка",
+        "en": "Chicken leg"
       }
     },
     {
@@ -6766,7 +6766,7 @@
     },
     {
       "catalogKey": "pectin_including_rpv_69_9",
-      "displayName": "Пектин (*в т. ч. РПВ-69,9)",
+      "displayName": "Пектин",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 52.0,
@@ -6922,7 +6922,7 @@
     },
     {
       "catalogKey": "bell_red",
-      "displayName": "Перец сладкий красный",
+      "displayName": "Красный сладкий перец",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 27.0,
@@ -6947,8 +6947,8 @@
       "potassiumPer100g": 163.0,
       "iodinePer100g": 3.0,
       "translations": {
-        "ru": "Перец сладкий красный",
-        "en": "Red sweet pepper"
+        "ru": "Красный сладкий перец",
+        "en": "Red bell pepper"
       }
     },
     {
@@ -7046,7 +7046,7 @@
     },
     {
       "catalogKey": "fresh_parsley",
-      "displayName": "Петрушка свежая",
+      "displayName": "Петрушка",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 49.0,
@@ -7071,8 +7071,8 @@
       "potassiumPer100g": 800.0,
       "iodinePer100g": 4.3,
       "translations": {
-        "ru": "Петрушка свежая",
-        "en": "Fresh parsley"
+        "ru": "Петрушка",
+        "en": "Parsley"
       }
     },
     {
@@ -7387,7 +7387,7 @@
     },
     {
       "catalogKey": "sunflower_sunflower_seeds",
-      "displayName": "Подсолнечник, семечки",
+      "displayName": "Семена подсолнечника",
       "category": "seeds",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 601.0,
@@ -7412,8 +7412,8 @@
       "potassiumPer100g": 647.0,
       "iodinePer100g": 6.8,
       "translations": {
-        "ru": "Подсолнечник, семечки",
-        "en": "Sunflower, sunflower seeds"
+        "ru": "Семена подсолнечника",
+        "en": "Sunflower seeds"
       }
     },
     {
@@ -7635,7 +7635,7 @@
     },
     {
       "catalogKey": "wheat_flour_premium_grade",
-      "displayName": "Пшеничная мука, высшего сорта",
+      "displayName": "Пшеничная мука высшего сорта",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 334.0,
@@ -7660,8 +7660,8 @@
       "potassiumPer100g": 122.0,
       "iodinePer100g": 1.5,
       "translations": {
-        "ru": "Пшеничная мука, высшего сорта",
-        "en": "Wheat flour, premium grade"
+        "ru": "Пшеничная мука высшего сорта",
+        "en": "Premium wheat flour"
       }
     },
     {
@@ -8038,7 +8038,7 @@
     },
     {
       "catalogKey": "white_rice_rice_groats",
-      "displayName": "Рис белый, крупа рисовая",
+      "displayName": "Белый рис",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 333.0,
@@ -8063,8 +8063,8 @@
       "potassiumPer100g": 100.0,
       "iodinePer100g": 1.4,
       "translations": {
-        "ru": "Рис белый, крупа рисовая",
-        "en": "White rice, rice groats"
+        "ru": "Белый рис",
+        "en": "White rice"
       }
     },
     {
@@ -9154,7 +9154,7 @@
     },
     {
       "catalogKey": "butter_61_5_fat_sandwich",
-      "displayName": "Масло сливочное 61,5% жирности, бутербродное",
+      "displayName": "Сливочное масло, 61,5%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 566.0,
@@ -9179,8 +9179,8 @@
       "potassiumPer100g": 33.0,
       "iodinePer100g": 0,
       "translations": {
-        "ru": "Масло сливочное 61,5% жирности, бутербродное",
-        "en": "Butter 61.5% fat"
+        "ru": "Сливочное масло, 61,5%",
+        "en": "Butter, 61.5% fat"
       }
     },
     {
@@ -9247,7 +9247,7 @@
     },
     {
       "catalogKey": "item_5",
-      "displayName": "Смородина черная",
+      "displayName": "Чёрная смородина",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 44.0,
@@ -9272,8 +9272,8 @@
       "potassiumPer100g": 350.0,
       "iodinePer100g": 1.0,
       "translations": {
-        "ru": "Смородина черная",
-        "en": "Black currant"
+        "ru": "Чёрная смородина",
+        "en": "Blackcurrant"
       }
     },
     {
@@ -9774,7 +9774,7 @@
     },
     {
       "catalogKey": "salt",
-      "displayName": "Соль поваренная пищевая",
+      "displayName": "Соль",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 100.0,
@@ -9799,7 +9799,7 @@
       "potassiumPer100g": 9.0,
       "iodinePer100g": 0,
       "translations": {
-        "ru": "Соль поваренная пищевая",
+        "ru": "Соль",
         "en": "Salt"
       }
     },
@@ -10054,7 +10054,7 @@
     },
     {
       "catalogKey": "syr_myagkiy_produkt_udalen",
-      "displayName": "Сыр мягкий",
+      "displayName": "Мягкий сыр",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 332.0,
@@ -10079,7 +10079,7 @@
       "potassiumPer100g": 180.0,
       "iodinePer100g": 0,
       "translations": {
-        "ru": "Сыр мягкий",
+        "ru": "Мягкий сыр",
         "en": "Soft cheese"
       }
     },
@@ -10271,7 +10271,7 @@
     },
     {
       "catalogKey": "tvorog_obezzhirennyy_0_6_zhirnosti",
-      "displayName": "Творог обезжиренный, 0,6% жирности",
+      "displayName": "Обезжиренный творог, 0,6%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 110.0,
@@ -10296,13 +10296,13 @@
       "potassiumPer100g": 117.0,
       "iodinePer100g": 9.0,
       "translations": {
-        "ru": "Творог обезжиренный, 0,6% жирности",
+        "ru": "Обезжиренный творог, 0,6%",
         "en": "Fat-free cottage cheese, 0.6% fat"
       }
     },
     {
       "catalogKey": "tvorog_9_zhirnosti",
-      "displayName": "Творог 9% жирности",
+      "displayName": "Творог, 9%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 169.0,
@@ -10327,13 +10327,13 @@
       "potassiumPer100g": 112.0,
       "iodinePer100g": 9.0,
       "translations": {
-        "ru": "Творог 9% жирности",
+        "ru": "Творог, 9%",
         "en": "Cottage cheese, 9% fat"
       }
     },
     {
       "catalogKey": "tvorog_5_zhirnosti",
-      "displayName": "Творог 5% жирности",
+      "displayName": "Творог, 5%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 121.0,
@@ -10358,13 +10358,13 @@
       "potassiumPer100g": 112.0,
       "iodinePer100g": 9.0,
       "translations": {
-        "ru": "Творог 5% жирности",
+        "ru": "Творог, 5%",
         "en": "Cottage cheese, 5% fat"
       }
     },
     {
       "catalogKey": "telyatina_1_kat",
-      "displayName": "Телятина 1 кат.",
+      "displayName": "Телятина 1 кат",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 97.0,
@@ -10389,7 +10389,7 @@
       "potassiumPer100g": 345.0,
       "iodinePer100g": 2.7,
       "translations": {
-        "ru": "Телятина 1 кат.",
+        "ru": "Телятина 1 кат",
         "en": "Veal, category 1"
       }
     },
@@ -10488,7 +10488,7 @@
     },
     {
       "catalogKey": "pomidor_tomat",
-      "displayName": "Помидор (томат)",
+      "displayName": "Помидор",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 19.9,
@@ -10513,7 +10513,7 @@
       "potassiumPer100g": 290.0,
       "iodinePer100g": 2.0,
       "translations": {
-        "ru": "Помидор (томат)",
+        "ru": "Помидор",
         "en": "Tomato"
       }
     },
@@ -10550,7 +10550,7 @@
     },
     {
       "catalogKey": "tomatnaya_pasta_konservy",
-      "displayName": "Томатная паста. Консервы",
+      "displayName": "Томатная паста",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 102.0,
@@ -11108,7 +11108,7 @@
     },
     {
       "catalogKey": "bread_pshenichnyy_produkt_udalen",
-      "displayName": "Хлеб пшеничный",
+      "displayName": "Пшеничный хлеб",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 213.6,
@@ -11133,7 +11133,7 @@
       "potassiumPer100g": 129.0,
       "iodinePer100g": 0,
       "translations": {
-        "ru": "Хлеб пшеничный",
+        "ru": "Пшеничный хлеб",
         "en": "Wheat bread"
       }
     },
@@ -11294,7 +11294,7 @@
     },
     {
       "catalogKey": "poult",
-      "displayName": "Цыплята",
+      "displayName": "Курица",
       "category": "poultry",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 139.7,
@@ -11319,7 +11319,7 @@
       "potassiumPer100g": 300.0,
       "iodinePer100g": 4.0,
       "translations": {
-        "ru": "Цыплята",
+        "ru": "Курица",
         "en": "Chicken"
       }
     },
@@ -11511,7 +11511,7 @@
     },
     {
       "catalogKey": "chernushka",
-      "displayName": "Чернушка",
+      "displayName": "Черный тмин",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 100.0,
@@ -11604,7 +11604,7 @@
     },
     {
       "catalogKey": "chechevitsa_zerno",
-      "displayName": "Чечевица, зерно",
+      "displayName": "Чечевица",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 295.0,
@@ -11629,8 +11629,8 @@
       "potassiumPer100g": 672.0,
       "iodinePer100g": 3.5,
       "translations": {
-        "ru": "Чечевица, зерно",
-        "en": "Lentils, grain"
+        "ru": "Чечевица",
+        "en": "Lentils"
       }
     },
     {
@@ -11661,7 +11661,7 @@
       "iodinePer100g": 18.0,
       "translations": {
         "ru": "Шампиньоны",
-        "en": "Champignons mushrooms"
+        "en": "Champignons"
       }
     },
     {
@@ -12131,7 +12131,7 @@
     },
     {
       "catalogKey": "yaytso_kurinoe",
-      "displayName": "Яйцо куриное",
+      "displayName": "Куриное яйцо",
       "category": "eggs",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 157.0,
@@ -12156,7 +12156,7 @@
       "potassiumPer100g": 140.0,
       "iodinePer100g": 20.0,
       "translations": {
-        "ru": "Яйцо куриное",
+        "ru": "Куриное яйцо",
         "en": "Chicken egg"
       }
     },
@@ -12286,7 +12286,7 @@
     },
     {
       "catalogKey": "losos_atlanticheskiy_semga",
-      "displayName": "Лосось атлантический (семга)",
+      "displayName": "Атлантический лосось",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 153.0,
@@ -12311,7 +12311,7 @@
       "potassiumPer100g": 420.0,
       "iodinePer100g": 50.0,
       "translations": {
-        "ru": "Лосось атлантический (семга)",
+        "ru": "Атлантический лосось",
         "en": "Atlantic salmon"
       }
     },
@@ -12534,7 +12534,7 @@
     },
     {
       "catalogKey": "okorok_vareno_kopchyonyy_produkt_udalen",
-      "displayName": "Окорок варено-копчёный",
+      "displayName": "Ветчина",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 510.0,
@@ -12559,8 +12559,8 @@
       "potassiumPer100g": 300.0,
       "iodinePer100g": 7.0,
       "translations": {
-        "ru": "Окорок варено-копчёный",
-        "en": "Boiled-smoked ham"
+        "ru": "Ветчина",
+        "en": "Ham"
       }
     },
     {
@@ -13310,7 +13310,7 @@
     },
     {
       "catalogKey": "basil",
-      "displayName": "Базилик, свежий",
+      "displayName": "Базилик",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 23,
@@ -13335,8 +13335,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 68,
       "translations": {
-        "ru": "Базилик, свежий",
-        "en": "Fresh basil"
+        "ru": "Базилик",
+        "en": "Basil"
       }
     },
     {
@@ -13372,7 +13372,7 @@
     },
     {
       "catalogKey": "semena_chia_sushenye",
-      "displayName": "Семена чиа, сушеные",
+      "displayName": "Семена чиа",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 486,
@@ -13397,8 +13397,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
       "translations": {
-        "ru": "Семена чиа, сушеные",
-        "en": "Dried chia seeds"
+        "ru": "Семена чиа",
+        "en": "Chia seeds"
       }
     },
     {
@@ -13465,7 +13465,7 @@
     },
     {
       "catalogKey": "cilantro",
-      "displayName": "Зелень кориандра (кинза), сырая",
+      "displayName": "Кинза",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 23,
@@ -13490,13 +13490,13 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 62,
       "translations": {
-        "ru": "Зелень кориандра (кинза), сырая",
-        "en": "Fresh cilantro (coriander)"
+        "ru": "Кинза",
+        "en": "Cilantro"
       }
     },
     {
       "catalogKey": "paprika",
-      "displayName": "Паприка, перец сладкий молотый",
+      "displayName": "Паприка",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 282,
@@ -13521,8 +13521,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 49,
       "translations": {
-        "ru": "Паприка, перец сладкий молотый",
-        "en": "Paprika, ground sweet pepper"
+        "ru": "Паприка",
+        "en": "Paprika"
       }
     },
     {
@@ -13559,7 +13559,7 @@
     },
     {
       "catalogKey": "cucumber",
-      "displayName": "Огурец грунтовый",
+      "displayName": "Огурец",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 14,
@@ -13584,8 +13584,8 @@
       "iodinePer100g": 3,
       "vitaminB9Per100g": 4,
       "translations": {
-        "ru": "Огурец грунтовый",
-        "en": "Field cucumber"
+        "ru": "Огурец",
+        "en": "Cucumber"
       }
     },
     {
@@ -13747,7 +13747,7 @@
     },
     {
       "catalogKey": "quinoa",
-      "displayName": "Киноа, неприготовленная",
+      "displayName": "Киноа",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 368,
@@ -13772,13 +13772,13 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 184,
       "translations": {
-        "ru": "Киноа, неприготовленная",
-        "en": "Quinoa, uncooked"
+        "ru": "Киноа",
+        "en": "Quinoa"
       }
     },
     {
       "catalogKey": "oregano_sushenyy",
-      "displayName": "Орегано, сушеный",
+      "displayName": "Орегано",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 265,
@@ -13803,8 +13803,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 237,
       "translations": {
-        "ru": "Орегано, сушеный",
-        "en": "Dried oregano"
+        "ru": "Орегано",
+        "en": "Oregano"
       }
     },
     {
@@ -13996,7 +13996,7 @@
     },
     {
       "catalogKey": "chili_powder",
-      "displayName": "Хлопья Перца Чили [Elementaree]",
+      "displayName": "Хлопья чили",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 438,
@@ -14022,8 +14022,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Хлопья Перца Чили [Elementaree]",
-        "en": "Chili pepper flakes [Elementaree]"
+        "ru": "Хлопья чили",
+        "en": "Chili flakes"
       }
     },
     {
@@ -14152,7 +14152,7 @@
     },
     {
       "catalogKey": "zira_semena",
-      "displayName": "Зира, семена",
+      "displayName": "Зира",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 375,
@@ -14177,8 +14177,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 10,
       "translations": {
-        "ru": "Зира, семена",
-        "en": "Cumin seeds"
+        "ru": "Зира",
+        "en": "Cumin"
       }
     },
     {
@@ -14214,7 +14214,7 @@
     },
     {
       "catalogKey": "shredded_coconut",
-      "displayName": "Кокосовая Стружка [Айдиго]",
+      "displayName": "Кокосовая стружка",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 690,
@@ -14240,8 +14240,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Кокосовая Стружка [Айдиго]",
-        "en": "Shredded coconut [Aidigo]"
+        "ru": "Кокосовая стружка",
+        "en": "Shredded coconut"
       }
     },
     {
@@ -14434,7 +14434,7 @@
     },
     {
       "catalogKey": "risovaya_bumaga_aroy_d",
-      "displayName": "Рисовая Бумага [Aroy-D]",
+      "displayName": "Рисовая бумага",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 337,
@@ -14460,8 +14460,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Рисовая Бумага [Aroy-D]",
-        "en": "Rice paper [Aroy-D]"
+        "ru": "Рисовая бумага",
+        "en": "Rice paper"
       }
     },
     {
@@ -14530,7 +14530,7 @@
     },
     {
       "catalogKey": "cinnamon",
-      "displayName": "Корица, молотая",
+      "displayName": "Корица",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 247,
@@ -14555,8 +14555,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 6,
       "translations": {
-        "ru": "Корица, молотая",
-        "en": "Ground cinnamon"
+        "ru": "Корица",
+        "en": "Cinnamon"
       }
     },
     {
@@ -14592,7 +14592,7 @@
     },
     {
       "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
-      "displayName": "Йогурт греческий 1,9% жирности, натуральный",
+      "displayName": "Натуральный греческий йогурт, 1,9%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 73,
@@ -14617,8 +14617,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 12,
       "translations": {
-        "ru": "Йогурт греческий 1,9% жирности, натуральный",
-        "en": "Greek yogurt 1.9% fat, plain"
+        "ru": "Натуральный греческий йогурт, 1,9%",
+        "en": "Plain Greek yogurt, 1.9% fat"
       }
     },
     {
@@ -14686,7 +14686,7 @@
     },
     {
       "catalogKey": "baking_powder",
-      "displayName": "Разрыхлитель пищевой, пекарный порошок (заменяющий дрожжи), двойного действия, натрий, сульфат алюминия (Е-520)",
+      "displayName": "Разрыхлитель",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 53,
@@ -14711,8 +14711,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
       "translations": {
-        "ru": "Разрыхлитель пищевой, пекарный порошок (заменяющий дрожжи), двойного действия, натрий, сульфат алюминия (Е-520)",
-        "en": "Baking powder, double-acting"
+        "ru": "Разрыхлитель",
+        "en": "Baking powder"
       }
     },
     {
@@ -14748,7 +14748,7 @@
     },
     {
       "catalogKey": "syr_korol_syrov_syrobogatov",
-      "displayName": "Сыр Король Сыров [Сыробогатов]",
+      "displayName": "Твёрдый сыр, 29% белка",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 305,
@@ -14774,8 +14774,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Сыр Король Сыров [Сыробогатов]",
-        "en": "Korol Syrov cheese [Syrobogatov]"
+        "ru": "Твёрдый сыр, 29% белка",
+        "en": "Hard cheese, 29% protein"
       }
     },
     {
@@ -14876,7 +14876,7 @@
     },
     {
       "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
-      "displayName": "Макароны Цельнозерновые с Зародышами и Клетчаткой [Макфа]",
+      "displayName": "Цельнозерновые макароны",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 365,
@@ -14902,8 +14902,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Макароны Цельнозерновые с Зародышами и Клетчаткой [Макфа]",
-        "en": "Whole-grain pasta with germ and fiber [Makfa]"
+        "ru": "Цельнозерновые макароны",
+        "en": "Whole-grain pasta"
       }
     },
     {
@@ -14972,7 +14972,7 @@
     },
     {
       "catalogKey": "cayenne_pepper",
-      "displayName": "Перец красный молотый острый",
+      "displayName": "Кайенский перец",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 318,
@@ -14997,8 +14997,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 106,
       "translations": {
-        "ru": "Перец красный молотый острый",
-        "en": "Cayenne pepper, ground"
+        "ru": "Кайенский перец",
+        "en": "Cayenne pepper"
       }
     },
     {
@@ -15034,7 +15034,7 @@
     },
     {
       "catalogKey": "ginger",
-      "displayName": "Имбиря корень сырой",
+      "displayName": "Имбирь",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 80,
@@ -15059,8 +15059,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 11,
       "translations": {
-        "ru": "Имбиря корень сырой",
-        "en": "Raw ginger root"
+        "ru": "Имбирь",
+        "en": "Ginger"
       }
     },
     {
@@ -15128,7 +15128,7 @@
     },
     {
       "catalogKey": "parmesan",
-      "displayName": "Сыр пармезан, 36% белка, твердый, м.д.ж. 36% в сух. в-ве",
+      "displayName": "Пармезан",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 392,
@@ -15153,13 +15153,13 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 7,
       "translations": {
-        "ru": "Сыр пармезан, 36% белка, твердый, м.д.ж. 36% в сух. в-ве",
-        "en": "Parmesan cheese, 36% protein, hard"
+        "ru": "Пармезан",
+        "en": "Parmesan"
       }
     },
     {
       "catalogKey": "olives",
-      "displayName": "Оливки (мякоть, сырые)",
+      "displayName": "Оливки",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 296,
@@ -15184,13 +15184,13 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
       "translations": {
-        "ru": "Оливки (мякоть, сырые)",
-        "en": "Olives (flesh, raw)"
+        "ru": "Оливки",
+        "en": "Olives"
       }
     },
     {
       "catalogKey": "protein_powder",
-      "displayName": "Протеиновый Порошок",
+      "displayName": "Протеиновый порошок",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 400,
@@ -15216,13 +15216,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Протеиновый Порошок",
+        "ru": "Протеиновый порошок",
         "en": "Protein powder"
       }
     },
     {
       "catalogKey": "peanut_powder",
-      "displayName": "Порошок Арахисовой Пасты",
+      "displayName": "Арахисовая пудра",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 417,
@@ -15247,8 +15247,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
       "translations": {
-        "ru": "Порошок Арахисовой Пасты",
-        "en": "Peanut butter powder"
+        "ru": "Арахисовая пудра",
+        "en": "Peanut powder"
       }
     },
     {
@@ -15284,7 +15284,7 @@
     },
     {
       "catalogKey": "spirulina",
-      "displayName": "Морские водоросли спирулина, сушеные",
+      "displayName": "Спирулина",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 290,
@@ -15309,13 +15309,13 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 94,
       "translations": {
-        "ru": "Морские водоросли спирулина, сушеные",
-        "en": "Dried spirulina seaweed"
+        "ru": "Спирулина",
+        "en": "Spirulina"
       }
     },
     {
       "catalogKey": "naan_bread",
-      "displayName": "Лепешка Наан",
+      "displayName": "Наан",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 250,
@@ -15341,13 +15341,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Лепешка Наан",
-        "en": "Naan bread"
+        "ru": "Наан",
+        "en": "Naan"
       }
     },
     {
       "catalogKey": "black_pepper",
-      "displayName": "Перец черный, молотый или горошек",
+      "displayName": "Чёрный перец",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 251,
@@ -15372,8 +15372,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 17,
       "translations": {
-        "ru": "Перец черный, молотый или горошек",
-        "en": "Black pepper, ground or whole"
+        "ru": "Чёрный перец",
+        "en": "Black pepper"
       }
     },
     {
@@ -15410,7 +15410,7 @@
     },
     {
       "catalogKey": "light_cream_cheese",
-      "displayName": "Творожный Сыр Лёгкий 18% [Almette]",
+      "displayName": "Лёгкий творожный сыр, 18%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 217,
@@ -15436,8 +15436,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Творожный Сыр Лёгкий 18% [Almette]",
-        "en": "Light cream cheese 18% fat"
+        "ru": "Лёгкий творожный сыр, 18%",
+        "en": "Light cream cheese, 18% fat"
       }
     },
     {
@@ -15473,7 +15473,7 @@
     },
     {
       "catalogKey": "tortilla_wraps",
-      "displayName": "Тортилья [Delicados]",
+      "displayName": "Тортильи",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 280,
@@ -15499,8 +15499,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Тортилья [Delicados]",
-        "en": "Tortilla [Delicados]"
+        "ru": "Тортильи",
+        "en": "Tortillas"
       }
     },
     {
@@ -15536,7 +15536,7 @@
     },
     {
       "catalogKey": "zero_sugar_syrup",
-      "displayName": "Сироп без Сахара",
+      "displayName": "Сироп без сахара",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 20,
@@ -15561,7 +15561,7 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
       "translations": {
-        "ru": "Сироп без Сахара",
+        "ru": "Сироп без сахара",
         "en": "Sugar-free syrup"
       }
     },
@@ -15598,7 +15598,7 @@
     },
     {
       "catalogKey": "protein_light_cheese",
-      "displayName": "Легкий сыр [Exponenta]",
+      "displayName": "Лёгкий протеиновый сыр",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 181,
@@ -15624,13 +15624,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Легкий сыр [Exponenta]",
-        "en": "Light cheese [Exponenta]"
+        "ru": "Лёгкий протеиновый сыр",
+        "en": "Light protein cheese"
       }
     },
     {
       "catalogKey": "phyllo_sheets",
-      "displayName": "Тесто Фило [Морозко]",
+      "displayName": "Тесто фило",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 238,
@@ -15656,13 +15656,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Тесто Фило [Морозко]",
-        "en": "Phyllo dough [Morozko]"
+        "ru": "Тесто фило",
+        "en": "Phyllo dough"
       }
     },
     {
       "catalogKey": "protein_cheese",
-      "displayName": "Protein Cheese [Milbona]",
+      "displayName": "Протеиновый сыр",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 214,
@@ -15688,13 +15688,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Protein Cheese [Milbona]",
-        "en": "Protein cheese [Milbona]"
+        "ru": "Протеиновый сыр",
+        "en": "Protein cheese"
       }
     },
     {
       "catalogKey": "feta_cheese",
-      "displayName": "Сыр Фета [Premialle]",
+      "displayName": "Фета",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 222,
@@ -15720,13 +15720,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Сыр Фета [Premialle]",
-        "en": "Feta cheese [Premialle]"
+        "ru": "Фета",
+        "en": "Feta"
       }
     },
     {
       "catalogKey": "sun_dried_tomatoes",
-      "displayName": "Помидоры (томаты), вяленые",
+      "displayName": "Вяленые помидоры",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 258,
@@ -15751,13 +15751,13 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 68,
       "translations": {
-        "ru": "Помидоры (томаты), вяленые",
+        "ru": "Вяленые помидоры",
         "en": "Sun-dried tomatoes"
       }
     },
     {
       "catalogKey": "chocolate_chips",
-      "displayName": "Dark Chocolate Drops [Belbake]",
+      "displayName": "Капли тёмного шоколада",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 520,
@@ -15783,13 +15783,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Dark Chocolate Drops [Belbake]",
-        "en": "Dark chocolate drops [Belbake]"
+        "ru": "Капли тёмного шоколада",
+        "en": "Dark chocolate chips"
       }
     },
     {
       "catalogKey": "taco_tortillas",
-      "displayName": "Тортилья для тако, пшеничная",
+      "displayName": "Тортильи для тако",
       "category": "grains",
       "defaultPieceWeightGrams": 37,
       "caloriesPer100g": 292,
@@ -15815,8 +15815,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Тортилья для тако, пшеничная",
-        "en": "Taco tortilla, wheat"
+        "ru": "Тортильи для тако",
+        "en": "Taco tortillas"
       }
     },
     {
@@ -15948,7 +15948,7 @@
     },
     {
       "catalogKey": "vanilla_protein_pudding",
-      "displayName": "Протеиновый пудинг ванильный",
+      "displayName": "Ванильный протеиновый пудинг",
       "category": "dairy",
       "defaultPieceWeightGrams": 200,
       "caloriesPer100g": 80,
@@ -15974,7 +15974,7 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Протеиновый пудинг ванильный",
+        "ru": "Ванильный протеиновый пудинг",
         "en": "Vanilla protein pudding"
       }
     },
@@ -16043,7 +16043,7 @@
     },
     {
       "catalogKey": "pesto_sauce",
-      "displayName": "Соус песто, готовый к употреблению, охлажденный",
+      "displayName": "Песто",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 418,
@@ -16068,8 +16068,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
       "translations": {
-        "ru": "Соус песто, готовый к употреблению, охлажденный",
-        "en": "Pesto sauce, ready-to-eat, chilled"
+        "ru": "Песто",
+        "en": "Pesto"
       }
     },
     {
@@ -16105,7 +16105,7 @@
     },
     {
       "catalogKey": "zero_sugar_strawberry_jam",
-      "displayName": "Клубничный Джем без Добавления Сахара [St. Dalfour]",
+      "displayName": "Клубничный джем без добавления сахара",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 210,
@@ -16131,13 +16131,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Клубничный Джем без Добавления Сахара [St. Dalfour]",
-        "en": "Strawberry jam with no added sugar [St. Dalfour]"
+        "ru": "Клубничный джем без добавления сахара",
+        "en": "Strawberry jam with no added sugar"
       }
     },
     {
       "catalogKey": "light_mozzarella",
-      "displayName": "Моцарелла Лайт [Galbani]",
+      "displayName": "Лёгкая моцарелла",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 153,
@@ -16163,13 +16163,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Моцарелла Лайт [Galbani]",
-        "en": "Light mozzarella [Galbani]"
+        "ru": "Лёгкая моцарелла",
+        "en": "Light mozzarella"
       }
     },
     {
       "catalogKey": "zucchini",
-      "displayName": "Цукини с кожурой",
+      "displayName": "Кабачок",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 17,
@@ -16194,8 +16194,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 24,
       "translations": {
-        "ru": "Цукини с кожурой",
-        "en": "Zucchini with skin"
+        "ru": "Кабачок",
+        "en": "Zucchini"
       }
     },
     {
@@ -16264,7 +16264,7 @@
     },
     {
       "catalogKey": "lime_juice",
-      "displayName": "Сок Лайма",
+      "displayName": "Сок лайма",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 27,
@@ -16290,7 +16290,7 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Сок Лайма",
+        "ru": "Сок лайма",
         "en": "Lime juice"
       }
     },
@@ -16327,7 +16327,7 @@
     },
     {
       "catalogKey": "truffle_spread",
-      "displayName": "Трюфельное Масло [Monini]",
+      "displayName": "Трюфельная паста",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 900,
@@ -16353,8 +16353,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Трюфельное Масло [Monini]",
-        "en": "Truffle oil [Monini]"
+        "ru": "Трюфельная паста",
+        "en": "Truffle spread"
       }
     },
     {
@@ -16391,7 +16391,7 @@
     },
     {
       "catalogKey": "low_calorie_nacho_salsa_dip",
-      "displayName": "Сальса Пикантная [Delicados]",
+      "displayName": "Сальса",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 30,
@@ -16417,13 +16417,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Сальса Пикантная [Delicados]",
-        "en": "Picante salsa [Delicados]"
+        "ru": "Сальса",
+        "en": "Salsa"
       }
     },
     {
       "catalogKey": "italian_seasoning",
-      "displayName": "Итальянские специи",
+      "displayName": "Итальянские травы",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 337,
@@ -16449,7 +16449,7 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Итальянские специи",
+        "ru": "Итальянские травы",
         "en": "Italian seasoning"
       }
     },
@@ -16486,7 +16486,7 @@
     },
     {
       "catalogKey": "rice_risotto",
-      "displayName": "Рис Ризотто [Националь]",
+      "displayName": "Рис для ризотто",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 360,
@@ -16512,13 +16512,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Рис Ризотто [Националь]",
-        "en": "Risotto rice [Natsional]"
+        "ru": "Рис для ризотто",
+        "en": "Risotto rice"
       }
     },
     {
       "catalogKey": "basmati_rice",
-      "displayName": "Басмати Рис [Uncle Ben's]",
+      "displayName": "Рис басмати",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 351,
@@ -16543,13 +16543,13 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
       "translations": {
-        "ru": "Басмати Рис [Uncle Ben's]",
-        "en": "Basmati rice [Uncle Ben's]"
+        "ru": "Рис басмати",
+        "en": "Basmati rice"
       }
     },
     {
       "catalogKey": "curry_spice",
-      "displayName": "Карри, порошок",
+      "displayName": "Карри",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 325,
@@ -16574,7 +16574,7 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 56,
       "translations": {
-        "ru": "Карри, порошок",
+        "ru": "Карри",
         "en": "Curry powder"
       }
     },
@@ -16642,7 +16642,7 @@
     },
     {
       "catalogKey": "penne",
-      "displayName": "Пенне Ригате [Barilla]",
+      "displayName": "Пенне",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 359,
@@ -16667,8 +16667,8 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 0,
       "translations": {
-        "ru": "Пенне Ригате [Barilla]",
-        "en": "Penne Rigate [Barilla]"
+        "ru": "Пенне",
+        "en": "Penne"
       }
     },
     {
@@ -16705,7 +16705,7 @@
     },
     {
       "catalogKey": "white_wine",
-      "displayName": "Вино столовое белое, Шенен Блан (Chenin Blanc) 12% об.",
+      "displayName": "Сухое белое вино",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 80,
@@ -16731,8 +16731,8 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Вино столовое белое, Шенен Блан (Chenin Blanc) 12% об.",
-        "en": "Table white wine, Chenin Blanc 12% ABV"
+        "ru": "Сухое белое вино",
+        "en": "Dry white wine"
       }
     },
     {
@@ -17143,7 +17143,7 @@
     },
     {
       "catalogKey": "spaghetti",
-      "displayName": "Спагетти [Federici]",
+      "displayName": "Спагетти",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 350,
@@ -17169,13 +17169,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Спагетти [Federici]",
-        "en": "Spaghetti [Federici]"
+        "ru": "Спагетти",
+        "en": "Spaghetti"
       }
     },
     {
       "catalogKey": "linguini",
-      "displayName": "Лингвини [Dolce Albero]",
+      "displayName": "Лингвини",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 350,
@@ -17201,13 +17201,13 @@
       "vitaminB9Per100g": 0,
       "macrosOnly": true,
       "translations": {
-        "ru": "Лингвини [Dolce Albero]",
-        "en": "Linguini [Dolce Albero]"
+        "ru": "Лингвини",
+        "en": "Linguine"
       }
     },
     {
       "catalogKey": "beef_patties_90_lean",
-      "displayName": "Говядина, котлеты из фарша, 90% постного мяса/ 10% жира",
+      "displayName": "Котлеты из постной говядины",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 204,
@@ -17232,13 +17232,13 @@
       "iodinePer100g": 0,
       "vitaminB9Per100g": 8,
       "translations": {
-        "ru": "Говядина, котлеты из фарша, 90% постного мяса/ 10% жира",
-        "en": "Beef patties, 90% lean / 10% fat"
+        "ru": "Котлеты из постной говядины",
+        "en": "Lean beef patties"
       }
     },
     {
       "catalogKey": "lemon_zest",
-      "displayName": "Лимонная цедра, сырая",
+      "displayName": "Цедра лимона",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 47,
@@ -17261,7 +17261,11 @@
       "zincPer100g": 0.25,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 13
+      "vitaminB9Per100g": 13,
+      "translations": {
+        "ru": "Цедра лимона",
+        "en": "Lemon zest"
+      }
     },
     {
       "catalogKey": "vanilla_extract",
@@ -17288,7 +17292,11 @@
       "zincPer100g": 0.11,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Ванильный экстракт",
+        "en": "Vanilla extract"
+      }
     },
     {
       "catalogKey": "sweetener",
@@ -17315,11 +17323,15 @@
       "zincPer100g": 0,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Подсластитель",
+        "en": "Sweetener"
+      }
     },
     {
       "catalogKey": "white_chocolate",
-      "displayName": "Сладости, белый шоколад",
+      "displayName": "Белый шоколад",
       "category": "other",
       "defaultPieceWeightGrams": 100,
       "caloriesPer100g": 539,
@@ -17342,7 +17354,11 @@
       "zincPer100g": 0.74,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 7
+      "vitaminB9Per100g": 7,
+      "translations": {
+        "ru": "Белый шоколад",
+        "en": "White chocolate"
+      }
     },
     {
       "catalogKey": "oreo_cookies",
@@ -17369,7 +17385,11 @@
       "zincPer100g": 0,
       "chromiumPer100g": 0,
       "iodinePer100g": 0,
-      "vitaminB9Per100g": 0
+      "vitaminB9Per100g": 0,
+      "translations": {
+        "ru": "Печенье Oreo",
+        "en": "Oreo cookies"
+      }
     },
     {
       "catalogKey": "sugar",

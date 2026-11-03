@@ -18,20 +18,17 @@ enum FoodCatalogLocalization {
     static func name(for catalogKey: String, languageCode: String) -> String? {
         let canonicalKey = FoodCatalogAliases.canonicalKey(for: catalogKey)
         guard let entry = loadEntries()[canonicalKey] else { return nil }
+        let locale = languageCode.hasPrefix("ru") ? "ru" : "en"
 
-        if let translated = entry.translations?[languageCode], !translated.isEmpty {
+        if let translated = entry.translations?[locale], !translated.isEmpty {
             return translated
         }
 
-        if languageCode.hasPrefix("ru"), let displayName = entry.displayName, !displayName.isEmpty {
+        if locale == "ru", let displayName = entry.displayName, !displayName.isEmpty {
             return displayName
         }
 
-        if let english = entry.translations?["en"], !english.isEmpty {
-            return english
-        }
-
-        return entry.displayName
+        return nil
     }
 
     static func matchesSearch(catalogKey: String, query: String) -> Bool {

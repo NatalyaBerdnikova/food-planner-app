@@ -61,20 +61,13 @@ enum RecipeCatalogLocalization {
               let translations = entry.translations else {
             return nil
         }
+        let locale = languageCode.hasPrefix("ru") ? "ru" : "en"
 
-        if let translated = translations[languageCode], !translated.name.isEmpty {
+        if let translated = translations[locale], !translated.name.isEmpty {
             return translated
         }
 
-        if languageCode.hasPrefix("ru"), let russian = translations["ru"], !russian.name.isEmpty {
-            return russian
-        }
-
-        if let english = translations["en"], !english.name.isEmpty {
-            return english
-        }
-
-        return translations.values.first
+        return nil
     }
 
     private static func loadEntries() -> [String: RecipeEntry] {
