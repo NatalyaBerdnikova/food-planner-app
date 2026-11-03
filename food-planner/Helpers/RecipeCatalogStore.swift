@@ -201,6 +201,8 @@ enum RecipeCatalogStore {
             catalogRecipeId: catalogId,
             servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
+            sourceURL: trimmedOptional(item.sourceURL),
+            sourceDescription: trimmedOptional(item.sourceDescription),
             steps: resolvedSteps(from: item),
             cookTimeMinutes: max(item.cookTimeMinutes ?? 0, 0),
             mealTypeTags: mealTypeTags(from: item)

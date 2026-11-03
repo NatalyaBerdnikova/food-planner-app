@@ -135,6 +135,10 @@ def validate() -> list[str]:
     image_ids: list[str] = []
     for recipe in recipes:
         recipe_id = recipe.get("id", "<missing-id>")
+        if recipe_id.startswith("arise_") and recipe.get("sourceDescription") != (
+            "ARISE COOKBOOK — Nicolina Nunes"
+        ):
+            errors.append(f"recipe {recipe_id}: missing ARISE source attribution")
         translations = recipe.get("translations") or {}
         for locale in ("en", "ru"):
             translation = translations.get(locale) or {}
