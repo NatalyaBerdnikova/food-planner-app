@@ -2,3 +2,5 @@ food-planner/ImportSecrets.plist
 food-planner/GoogleService-Info.plist
 
 .DS_Store
+__pycache__/
+tools/generated/

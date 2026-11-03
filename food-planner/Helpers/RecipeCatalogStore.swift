@@ -201,6 +201,8 @@ enum RecipeCatalogStore {
             catalogRecipeId: catalogId,
             servings: max(item.servings ?? 1, 1),
             imageData: loadImageData(for: item),
+            sourceURL: trimmedOptional(item.sourceURL),
+            sourceDescription: trimmedOptional(item.sourceDescription),
             steps: resolvedSteps(from: item),
             cookTimeMinutes: max(item.cookTimeMinutes ?? 0, 0),
             mealTypeTags: mealTypeTags(from: item)
@@ -387,22 +389,12 @@ enum RecipeCatalogStore {
     private static func resolvedTranslation(from item: RecipeEntry) -> RecipeEntry.Translation? {
         guard let translations = item.translations, !translations.isEmpty else { return nil }
 
-        let preferred = L10n.currentLanguageCode
+        let preferred = L10n.currentLanguageCode.hasPrefix("ru") ? "ru" : "en"
         if let translation = translations[preferred],
            !translation.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             return translation
         }
-        if let translation = translations["ru"],
-           !translation.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return translation
-        }
-        if let translation = translations["en"],
-           !translation.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return translation
-        }
-        return translations.values.first {
-            !$0.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        }
+        return nil
     }
 
     private static func trimmedOptional(_ value: String?) -> String? {

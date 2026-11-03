@@ -119,7 +119,7 @@ enum FoodCatalogSeeder {
             }
         }
 
-        for (index, seed) in catalog.enumerated() {
+        for (index, seed) in catalog.enumerated() where FoodCatalogAliases.isCanonical(seed.key) {
             guard !existingKeys.contains(seed.key) else { continue }
             let m = seed.micro
             let product = FoodProduct(
@@ -170,7 +170,7 @@ enum FoodCatalogSeeder {
             existingKeys.insert(json.catalogKey)
         }
 
-        for seed in catalog {
+        for seed in catalog where FoodCatalogAliases.isCanonical(seed.key) {
             guard !existingKeys.contains(seed.key) else { continue }
             let m = seed.micro
             let product = FoodProduct(
@@ -207,8 +207,9 @@ enum FoodCatalogSeeder {
 
     @MainActor
     static func product(forKey key: String, in context: ModelContext) -> FoodProduct? {
+        let canonicalKey = FoodCatalogAliases.canonicalKey(for: key)
         var descriptor = FetchDescriptor<FoodProduct>(
-            predicate: #Predicate { $0.catalogKey == key }
+            predicate: #Predicate { $0.catalogKey == canonicalKey }
         )
         descriptor.fetchLimit = 1
         return try? context.fetch(descriptor).first

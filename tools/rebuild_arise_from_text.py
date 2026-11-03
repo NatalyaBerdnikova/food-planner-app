@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""
-Rebuild arise-recipes-catalog.json from tools/arise-cookbook-full.txt
-(OCR text dump of ARISE COOKBOOK). Keeps every parsed ingredient in recipes;
-unmatched catalog keys also go to arise-missing-ingredients.json.
-"""
+"""Build ARISE staging catalogs from the cookbook OCR source."""
 
 from __future__ import annotations
 
@@ -12,12 +8,13 @@ import re
 from collections import OrderedDict
 from pathlib import Path
 
-ROOT = Path("/Users/natalya/Work/food-planner")
+ROOT = Path(__file__).resolve().parents[1]
+GENERATED_DIR = ROOT / "tools/generated"
 FULL_TEXT = ROOT / "tools/arise-cookbook-full.txt"
 TEXT_DIR = ROOT / "tools/arise-text"
 FOOD_CATALOG = ROOT / "food-planner/Resources/food-catalog.json"
-OUT_RECIPES = ROOT / "food-planner/Resources/arise-recipes-catalog.json"
-OUT_MISSING = ROOT / "food-planner/Resources/arise-missing-ingredients.json"
+OUT_RECIPES = GENERATED_DIR / "arise-recipes-catalog.json"
+OUT_MISSING = GENERATED_DIR / "arise-missing-ingredients.json"
 OUT_FULL = ROOT / "tools/arise-cookbook-full.txt"
 
 ALIASES: dict[str, str] = {
@@ -850,6 +847,7 @@ def main():
     for r in recipes:
         clean.append({k: v for k, v in r.items() if not k.startswith("_")})
 
+    GENERATED_DIR.mkdir(parents=True, exist_ok=True)
     OUT_RECIPES.write_text(
         json.dumps({
             "version": 2,

@@ -33,6 +33,7 @@ struct IngredientTagSearchField: View {
         let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !query.isEmpty else { return [] }
         return products
+            .filter { FoodCatalogAliases.isCanonical($0.catalogKey) }
             .filter { !excludedCatalogKeys.contains($0.catalogKey) }
             .filter { FoodCatalogLocalization.matchesSearch(catalogKey: $0.catalogKey, query: query) }
             .prefix(12)
