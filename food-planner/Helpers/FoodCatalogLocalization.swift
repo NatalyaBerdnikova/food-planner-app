@@ -16,7 +16,8 @@ enum FoodCatalogLocalization {
     private static let supportedLanguageCodes = ["en", "ru"]
 
     static func name(for catalogKey: String, languageCode: String) -> String? {
-        guard let entry = loadEntries()[catalogKey] else { return nil }
+        let canonicalKey = FoodCatalogAliases.canonicalKey(for: catalogKey)
+        guard let entry = loadEntries()[canonicalKey] else { return nil }
 
         if let translated = entry.translations?[languageCode], !translated.isEmpty {
             return translated
@@ -43,12 +44,15 @@ enum FoodCatalogLocalization {
     }
 
     static func searchableTexts(for catalogKey: String) -> [String] {
+        let canonicalKey = FoodCatalogAliases.canonicalKey(for: catalogKey)
         var texts: Set<String> = [
             catalogKey,
             catalogKey.replacingOccurrences(of: "_", with: " "),
+            canonicalKey,
+            canonicalKey.replacingOccurrences(of: "_", with: " "),
         ]
 
-        if let entry = loadEntries()[catalogKey] {
+        if let entry = loadEntries()[canonicalKey] {
             if let displayName = entry.displayName, !displayName.isEmpty {
                 texts.insert(displayName)
             }
@@ -58,7 +62,7 @@ enum FoodCatalogLocalization {
         }
 
         for code in supportedLanguageCodes {
-            if let name = name(for: catalogKey, languageCode: code), !name.isEmpty {
+            if let name = name(for: canonicalKey, languageCode: code), !name.isEmpty {
                 texts.insert(name)
             }
         }

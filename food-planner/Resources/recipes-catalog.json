@@ -2739,7 +2739,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "courgette",
+          "catalogKey": "zucchini",
           "quantity": 100,
           "unit": "gram"
         },
@@ -4562,7 +4562,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "courgette",
+          "catalogKey": "zucchini",
           "quantity": 80,
           "unit": "gram"
         },
@@ -5195,7 +5195,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "ogurets_marinovannyy_produkt_udalen",
+          "catalogKey": "pickled_cucumber",
           "quantity": 30,
           "unit": "gram"
         }
@@ -5965,7 +5965,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -6349,7 +6349,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         }
@@ -6408,7 +6408,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -6541,7 +6541,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -7300,7 +7300,7 @@
         },
         {
           "catalogKey": "salt",
-          "quantity": 5.0,
+          "quantity": 7.0,
           "unit": "gram"
         },
         {
@@ -7311,11 +7311,6 @@
         {
           "catalogKey": "italian_seasoning",
           "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 2.0,
           "unit": "gram"
         },
         {
@@ -7437,7 +7432,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -7447,7 +7442,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -7516,7 +7511,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         }
@@ -7733,7 +7728,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         }
@@ -7886,7 +7881,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 10.0,
           "unit": "gram"
         }
@@ -7945,12 +7940,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 5.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         }
@@ -7999,7 +7994,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         }
@@ -8280,12 +8275,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 10.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -8508,7 +8503,7 @@
       "ingredients": [
         {
           "catalogKey": "garlic_clove",
-          "quantity": 1.0,
+          "quantity": 11.0,
           "unit": "gram"
         },
         {
@@ -8519,11 +8514,6 @@
         {
           "catalogKey": "far_eastern_shrimp_meat",
           "quantity": 150.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "garlic_clove",
-          "quantity": 10.0,
           "unit": "gram"
         },
         {
@@ -8547,7 +8537,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -8636,7 +8626,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
         }
@@ -8715,7 +8705,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
         }
@@ -8863,7 +8853,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -8873,7 +8863,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cumin",
+          "catalogKey": "zira_semena",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -8967,7 +8957,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -8977,7 +8967,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cumin",
+          "catalogKey": "zira_semena",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -9051,7 +9041,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9145,7 +9135,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cumin",
+          "catalogKey": "zira_semena",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -9239,7 +9229,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
         }
@@ -9304,12 +9294,7 @@
         },
         {
           "catalogKey": "pomidor_tomat",
-          "quantity": 60.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "pomidor_tomat",
-          "quantity": 150.0,
+          "quantity": 210.0,
           "unit": "gram"
         },
         {
@@ -9333,7 +9318,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cumin",
+          "catalogKey": "zira_semena",
           "quantity": 4.0,
           "unit": "gram"
         },
@@ -9432,7 +9417,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9442,7 +9427,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cumin",
+          "catalogKey": "zira_semena",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9546,7 +9531,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9556,7 +9541,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cumin",
+          "catalogKey": "zira_semena",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9670,7 +9655,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cumin",
+          "catalogKey": "zira_semena",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -9739,7 +9724,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -9813,7 +9798,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -9912,7 +9897,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cumin",
+          "catalogKey": "zira_semena",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9996,7 +9981,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "parsley",
+          "catalogKey": "fresh_parsley",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -10110,7 +10095,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -10169,7 +10154,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -10233,7 +10218,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -10327,7 +10312,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano",
+          "catalogKey": "oregano_sushenyy",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -10642,7 +10627,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cranberries",
+          "catalogKey": "cranberry",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -10967,7 +10952,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cream_cheese_light_18_fat",
+          "catalogKey": "light_cream_cheese",
           "quantity": 20.0,
           "unit": "gram"
         },
@@ -11090,7 +11075,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "chia_seeds",
+          "catalogKey": "semena_chia_sushenye",
           "quantity": 20.0,
           "unit": "gram"
         },
@@ -11243,7 +11228,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "cranberries",
+          "catalogKey": "cranberry",
           "quantity": 120.0,
           "unit": "gram"
         }
@@ -11425,7 +11410,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "honey",
+          "catalogKey": "bee_honey",
           "quantity": 60.0,
           "unit": "gram"
         },
