@@ -1,5 +1,17 @@
 # Инструменты food-planner
 
+## validate_localization.py
+
+Проверяет единый каталог рецептов и продуктов: наличие переводов `en`/`ru`, соответствие алфавита локали, уникальность ID и локализованных названий продуктов, существование `catalogKey`, единицы измерения и файлы изображений.
+
+```bash
+python3 tools/validate_localization.py
+```
+
+## ARISE staging
+
+`rebuild_arise_from_text.py` и `parse_arise_recipes.py` сохраняют промежуточные результаты в `tools/generated/`. Приложение читает только единые `food-planner/Resources/recipes-catalog.json` и `food-catalog.json`; результаты повторного OCR-разбора нужно канонизировать, локализовать, проверить и вручную объединить с основными каталогами.
+
 ## import_recipe_lab.py / import-recipe-lab.html
 
 Локальная лаборатория импорта рецептов: тот же LLM-промпт, нормализация единиц и fuzzy-matching каталога, что в приложении. Нужна для сверки промптов и matching без сборки iOS.

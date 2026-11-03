@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse OCR'd ARISE cookbook pages into recipes-catalog-compatible JSON."""
+"""Build ARISE staging catalogs from OCR pages."""
 
 from __future__ import annotations
 
@@ -8,10 +8,12 @@ import re
 from pathlib import Path
 from collections import OrderedDict
 
-TEXT_DIR = Path("/Users/natalya/Work/food-planner/tools/arise-text")
-FOOD_CATALOG = Path("/Users/natalya/Work/food-planner/food-planner/Resources/food-catalog.json")
-OUT_RECIPES = Path("/Users/natalya/Work/food-planner/food-planner/Resources/arise-recipes-catalog.json")
-OUT_MISSING = Path("/Users/natalya/Work/food-planner/food-planner/Resources/arise-missing-ingredients.json")
+ROOT = Path(__file__).resolve().parents[1]
+GENERATED_DIR = ROOT / "tools/generated"
+TEXT_DIR = ROOT / "tools/arise-text"
+FOOD_CATALOG = ROOT / "food-planner/Resources/food-catalog.json"
+OUT_RECIPES = GENERATED_DIR / "arise-recipes-catalog.json"
+OUT_MISSING = GENERATED_DIR / "arise-missing-ingredients.json"
 
 # Cookbook / OCR wording -> existing catalogKey (only keys that exist)
 ALIASES: dict[str, str] = {
@@ -592,6 +594,7 @@ def main():
         "source": "ARISE COOKBOOK — Nicolina Nunes",
         "recipes": recipes,
     }
+    GENERATED_DIR.mkdir(parents=True, exist_ok=True)
     OUT_RECIPES.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     OUT_MISSING.write_text(
         json.dumps(
