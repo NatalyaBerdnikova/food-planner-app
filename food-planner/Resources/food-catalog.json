@@ -932,7 +932,7 @@
       }
     },
     {
-      "catalogKey": "buffalo_product_removed",
+      "catalogKey": "buffalo_",
       "displayName": "Буйволятина",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -4502,7 +4502,7 @@
       }
     },
     {
-      "catalogKey": "blueberry_leaves_product_removed",
+      "catalogKey": "blueberry_leaves_",
       "displayName": "Листья черники",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -5649,7 +5649,7 @@
       }
     },
     {
-      "catalogKey": "carrots_product_removed",
+      "catalogKey": "carrots_",
       "displayName": "Морковь",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -6362,7 +6362,7 @@
       }
     },
     {
-      "catalogKey": "deer_meat_product_removed",
+      "catalogKey": "deer_meat_",
       "displayName": "Оленина",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -6827,7 +6827,7 @@
       }
     },
     {
-      "catalogKey": "allspice_product_removed",
+      "catalogKey": "allspice_",
       "displayName": "Перец душистый",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -8502,7 +8502,7 @@
       }
     },
     {
-      "catalogKey": "sugar_syrup_product_removed",
+      "catalogKey": "sugar_syrup_",
       "displayName": "Сахарный сироп",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -8750,7 +8750,7 @@
       }
     },
     {
-      "catalogKey": "atlantic_herring_product_removed",
+      "catalogKey": "atlantic_herring_",
       "displayName": "Сельдь атлантическая",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8781,7 +8781,7 @@
       }
     },
     {
-      "catalogKey": "iwashi_herring_product_removed",
+      "catalogKey": "iwashi_herring_",
       "displayName": "Сельдь иваси",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8812,7 +8812,7 @@
       }
     },
     {
-      "catalogKey": "pacific_herring_product_removed",
+      "catalogKey": "pacific_herring_",
       "displayName": "Сельдь тихоокеанская",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -9463,7 +9463,7 @@
       }
     },
     {
-      "catalogKey": "sok_grushevyy_produkt_udalen",
+      "catalogKey": "sok_grushevyy",
       "displayName": "Сок грушевый",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9991,7 +9991,7 @@
       }
     },
     {
-      "catalogKey": "syr_myagkiy_produkt_udalen",
+      "catalogKey": "syr_myagkiy",
       "displayName": "Мягкий сыр",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10022,7 +10022,7 @@
       }
     },
     {
-      "catalogKey": "syr_plavlenyy_produkt_udalen",
+      "catalogKey": "syr_plavlenyy",
       "displayName": "Сыр плавленый",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10053,7 +10053,7 @@
       }
     },
     {
-      "catalogKey": "syr_tverdyy_produkt_udalen",
+      "catalogKey": "syr_tverdyy",
       "displayName": "Сыр твердый",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10518,7 +10518,7 @@
       }
     },
     {
-      "catalogKey": "toplenoe_oil_produkt_udalen",
+      "catalogKey": "toplenoe_oil",
       "displayName": "Топленое масло",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10673,7 +10673,7 @@
       }
     },
     {
-      "catalogKey": "ugolnaya_ryba_produkt_udalen",
+      "catalogKey": "ugolnaya_ryba",
       "displayName": "Угольная рыба",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -11045,7 +11045,7 @@
       }
     },
     {
-      "catalogKey": "bread_pshenichnyy_produkt_udalen",
+      "catalogKey": "bread_pshenichnyy",
       "displayName": "Пшеничный хлеб",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -11076,7 +11076,7 @@
       }
     },
     {
-      "catalogKey": "bread_rzhanoy_produkt_udalen",
+      "catalogKey": "bread_rzhanoy",
       "displayName": "Хлеб ржаной",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -12223,7 +12223,7 @@
       }
     },
     {
-      "catalogKey": "fazan_produkt_udalen",
+      "catalogKey": "fazan",
       "displayName": "Фазан",
       "category": "poultry",
       "defaultPieceWeightGrams": 100,
@@ -12254,7 +12254,7 @@
       }
     },
     {
-      "catalogKey": "ryabchik_produkt_udalen",
+      "catalogKey": "ryabchik",
       "displayName": "Рябчик",
       "category": "poultry",
       "defaultPieceWeightGrams": 100,
@@ -12285,7 +12285,7 @@
       }
     },
     {
-      "catalogKey": "teterev_produkt_udalen",
+      "catalogKey": "teterev",
       "displayName": "Тетерев",
       "category": "poultry",
       "defaultPieceWeightGrams": 100,
@@ -12316,7 +12316,7 @@
       }
     },
     {
-      "catalogKey": "merlang_produkt_udalen",
+      "catalogKey": "merlang",
       "displayName": "Мерланг",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -12409,7 +12409,7 @@
       }
     },
     {
-      "catalogKey": "perets_sladkiy_marinovannyy_produkt_udalen",
+      "catalogKey": "perets_sladkiy_marinovannyy",
       "displayName": "Перец сладкий маринованный",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -12440,7 +12440,7 @@
       }
     },
     {
-      "catalogKey": "okorok_vareno_kopchyonyy_produkt_udalen",
+      "catalogKey": "okorok_vareno_kopchyonyy",
       "displayName": "Ветчина",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12471,7 +12471,7 @@
       }
     },
     {
-      "catalogKey": "minoga_produkt_udalen",
+      "catalogKey": "minoga",
       "displayName": "Минога",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -12502,7 +12502,7 @@
       }
     },
     {
-      "catalogKey": "tryufeli_produkt_udalen",
+      "catalogKey": "tryufeli",
       "displayName": "Трюфели",
       "category": "mushrooms",
       "defaultPieceWeightGrams": 100,
@@ -12657,7 +12657,7 @@
       }
     },
     {
-      "catalogKey": "fistashki_produkt_udalen",
+      "catalogKey": "fistashki",
       "displayName": "Фисташки",
       "category": "nuts",
       "defaultPieceWeightGrams": 100,
@@ -12688,7 +12688,7 @@
       }
     },
     {
-      "catalogKey": "orekh_muskatnyy_produkt_udalen",
+      "catalogKey": "orekh_muskatnyy",
       "displayName": "Орех мускатный",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -12782,7 +12782,7 @@
       "macrosOnly": true
     },
     {
-      "catalogKey": "golova_baranya_produkt_udalen",
+      "catalogKey": "golova_baranya",
       "displayName": "Голова баранья",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12813,7 +12813,7 @@
       }
     },
     {
-      "catalogKey": "nogi_barani_produkt_udalen",
+      "catalogKey": "nogi_barani",
       "displayName": "Ноги бараньи",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12875,7 +12875,7 @@
       }
     },
     {
-      "catalogKey": "guby_govyazhi_produkt_udalen",
+      "catalogKey": "guby_govyazhi",
       "displayName": "Губы говяжьи",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12906,7 +12906,7 @@
       }
     },
     {
-      "catalogKey": "subprodukty_golovy_nogi_krylya_zheludki_shei_konservy_produkt_udalen",
+      "catalogKey": "subprodukty_golovy_nogi_krylya_zheludki_shei_konservy",
       "displayName": "Субпродукты (головы, ноги, крылья, желудки, шеи), консервы",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12937,7 +12937,7 @@
       }
     },
     {
-      "catalogKey": "pechen_telyachya_produkt_udalen",
+      "catalogKey": "pechen_telyachya",
       "displayName": "Печень телячья",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12968,7 +12968,7 @@
       }
     },
     {
-      "catalogKey": "putovyy_sustav_govyazhiy_produkt_udalen",
+      "catalogKey": "putovyy_sustav_govyazhiy",
       "displayName": "Путовый сустав говяжий",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -13030,7 +13030,7 @@
       }
     },
     {
-      "catalogKey": "kapusta_savoyskaya_produkt_udalen",
+      "catalogKey": "kapusta_savoyskaya",
       "displayName": "Капуста савойская",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -13061,7 +13061,7 @@
       }
     },
     {
-      "catalogKey": "kosti_svinokopchenostey_produkt_udalen",
+      "catalogKey": "kosti_svinokopchenostey",
       "displayName": "Кости свинокопченостей",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -13123,7 +13123,7 @@
       }
     },
     {
-      "catalogKey": "sig_produkt_udalen",
+      "catalogKey": "sig",
       "displayName": "Сиг",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -13154,7 +13154,7 @@
       }
     },
     {
-      "catalogKey": "sterlyad_produkt_udalen",
+      "catalogKey": "sterlyad",
       "displayName": "Стерлядь",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -17485,7 +17485,7 @@
       }
     },
     {
-      "catalogKey": "ogurets_marinovannyy_produkt_udalen",
+      "catalogKey": "ogurets_marinovannyy",
       "displayName": "Маринованный огурец",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
