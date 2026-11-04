@@ -7,12 +7,12 @@
       "imageId": "1",
       "translations": {
         "ru": {
-          "name": "Йогурт с гранолой и ягодами",
-          "steps": "Для приготовления гранолы: Обжарить овсяные хлопья до золотистого цвета в небольшом количестве сливочного масла. Добавить мед и обжарить до впитывания меда. Добавить орехи и прогреть. \nВыложите йогурт в миску и украсьте нарезанным бананом."
+          "name": "Йогурт с гранолой и бананом",
+          "steps": "Для приготовления гранолы: Обжарить овсяные хлопья до золотистого цвета в небольшом количестве сливочного масла. Добавить мед и обжарить до впитывания меда. Добавить орехи и прогреть.\nВыложите йогурт в миску и украсьте нарезанным бананом."
         },
         "en": {
-          "name": "Yogurt with granola and berries",
-          "steps": "For granola: Toast oatmeal until golden brown in a small amount of butter. Add honey and toast until the honey is absorbed. Add nuts and toast. \nPlace yogurt in a bowl and top with sliced banana."
+          "name": "Yogurt with granola and banana",
+          "steps": "For granola: Toast oatmeal until golden brown in a small amount of butter. Add honey and toast until the honey is absorbed. Add nuts and toast.\nPlace yogurt in a bowl and top with sliced banana."
         }
       },
       "ingredients": [
@@ -52,7 +52,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_03",
@@ -75,7 +79,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "chia_seeds",
+          "catalogKey": "semena_chia_sushenye",
           "quantity": 30,
           "unit": "gram"
         },
@@ -95,7 +99,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_04",
@@ -114,7 +122,7 @@
       "ingredients": [
         {
           "catalogKey": "buckwheat_kernel",
-          "quantity": 150,
+          "quantity": 70,
           "unit": "gram"
         },
         {
@@ -133,11 +141,16 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_05",
-      "servings": 1,
+      "servings": 2,
       "imageId": "5",
       "translations": {
         "ru": {
@@ -176,7 +189,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_08",
@@ -229,7 +246,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_09",
@@ -272,7 +293,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_10",
@@ -315,7 +340,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_12",
@@ -358,7 +387,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_16",
@@ -406,7 +439,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_19",
@@ -449,7 +486,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_23",
@@ -477,12 +518,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "mayonnaise",
+          "catalogKey": "mayonnaise_provansal_67_fat_content",
           "quantity": 20,
           "unit": "gram"
         },
         {
-          "catalogKey": "soy_sauce",
+          "catalogKey": "soevyy_sous",
           "quantity": 10,
           "unit": "gram"
         },
@@ -497,7 +538,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_24",
@@ -516,7 +561,7 @@
       "ingredients": [
         {
           "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
-          "quantity": 120,
+          "quantity": 80,
           "unit": "gram"
         },
         {
@@ -540,7 +585,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_25",
@@ -588,7 +637,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_26",
@@ -636,7 +689,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_31",
@@ -694,7 +751,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_33",
@@ -742,7 +803,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_35",
@@ -780,7 +845,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "lunch",
+        "dinner",
+        "snack"
+      ]
     },
     {
       "id": "recipe_36",
@@ -823,7 +893,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_37",
@@ -831,7 +905,7 @@
       "imageId": "37",
       "translations": {
         "ru": {
-          "name": "Шоколадный чиа-пуддинг",
+          "name": "Шоколадный чиа-пудинг",
           "steps": "Залить семена чиа молоком. Добавить какао и подсластитель. Хорошо перемешать и оставить в холодильнике на ночь.\nДобавить кешью и взбить пуддинг блендером для более легкой текстуры.\nМожно не взбивать и просто использовать кешью как украшение.\nПо желанию можно украсить ягодами."
         },
         "en": {
@@ -846,7 +920,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "chia_seeds",
+          "catalogKey": "semena_chia_sushenye",
           "quantity": 30,
           "unit": "gram"
         },
@@ -866,7 +940,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40
+      "cookTimeMinutes": 40,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_38",
@@ -914,7 +992,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "recipe_39",
@@ -967,7 +1048,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_47",
@@ -1010,7 +1095,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_50",
@@ -1036,9 +1125,33 @@
           "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 140,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "semena_chia_sushenye",
+          "quantity": 25,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hercules_oatmeal",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "mango",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sirop_topinambura_royal_forest",
+          "quantity": 10,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_51",
@@ -1047,11 +1160,11 @@
       "translations": {
         "ru": {
           "name": "Сырники на манной крупе",
-          "steps": "Смешать все ингредиенты, накрыть пищевой пленкой и отправить в холодильник на полчаса. Также можно заготовить на ночь.\nСлепить сырники любой формы, можно обвалять в небольшом количестве манной крупы.\nЗапечь на 200 градусах 20 минут. Подавать с любимым топпингом. Например можно пробить ягоды с небольшим количеством сиропа топинамбура. \nТакже можно добавить греческим йогурт или сметану."
+          "steps": "Смешать все ингредиенты, накрыть пищевой пленкой и отправить в холодильник на полчаса. Также можно заготовить на ночь.\nСлепить сырники любой формы, можно обвалять в небольшом количестве манной крупы.\nЗапечь на 200 градусах 20 минут. Подавать с любимым топпингом. Например можно пробить ягоды с небольшим количеством сиропа топинамбура.\nТакже можно добавить греческим йогурт или сметану."
         },
         "en": {
           "name": "Semolina syrniki",
-          "steps": "Mix all ingredients, cover with cling film and refrigerate for half an hour. You can also refrigerate it overnight.\nMake cheesecakes of any shape, you can roll them in a small amount of semolina.\nBake at 200 degrees for 20 minutes. Serve with your favorite topping. For example, you can blend the berries with a small amount of Jerusalem artichoke syrup. \nYou can also add Greek yogurt or sour cream."
+          "steps": "Mix all ingredients, cover with cling film and refrigerate for half an hour. You can also refrigerate it overnight.\nMake cheesecakes of any shape, you can roll them in a small amount of semolina.\nBake at 200 degrees for 20 minutes. Serve with your favorite topping. For example, you can blend the berries with a small amount of Jerusalem artichoke syrup.\nYou can also add Greek yogurt or sour cream."
         }
       },
       "ingredients": [
@@ -1081,7 +1194,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40
+      "cookTimeMinutes": 40,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_52",
@@ -1122,9 +1239,18 @@
           "catalogKey": "lemon_juice",
           "quantity": 5,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "cornstarch",
+          "quantity": 10,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_53",
@@ -1175,52 +1301,23 @@
           "catalogKey": "uksus_vinnyy_3",
           "quantity": 10,
           "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 45
-    },
-    {
-      "id": "recipe_54",
-      "servings": 1,
-      "imageId": "54",
-      "translations": {
-        "ru": {
-          "name": "Горячие бутерброды",
-          "steps": "Смешать все ингредиенты для начинки, выложить на тостовый хлеб и запечь в предварительно разогретой в духовке на 10 минут при 180 градусах. После включить режим «гриль» и оставить еще на 2 минуты до появления корочки"
         },
-        "en": {
-          "name": "Hot sandwiches",
-          "steps": "Mix all the ingredients for the filling, spread over the sliced bread and bake in a preheated oven for 10 minutes at 180 degrees. Then turn on the grill mode and leave for another 2 minutes until a crust appears."
-        }
-      },
-      "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
-          "quantity": 50,
+          "catalogKey": "millet_groats_ground_millet",
+          "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
-          "quantity": 110,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
-          "quantity": 50,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "green_onion_feather",
-          "quantity": 10,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "bread_pshenichnyy",
-          "quantity": 50,
+          "catalogKey": "semena_lna",
+          "quantity": 30,
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_55",
@@ -1278,39 +1375,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
-    },
-    {
-      "id": "recipe_56",
-      "servings": 10,
-      "imageId": "56",
-      "translations": {
-        "ru": {
-          "name": "Горчица с солью",
-          "steps": "Смешать горчицу с солью до однородности. Перед подачей охладить."
-        },
-        "en": {
-          "name": "Seasoned mustard",
-          "steps": "Mix mustard and salt until smooth. Cool before serving."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "gorchitsa_stolovaya",
-          "quantity": 6,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 3,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_57",
-      "servings": 3,
+      "servings": 1,
       "imageId": "57",
       "translations": {
         "ru": {
@@ -1325,7 +1398,7 @@
       "ingredients": [
         {
           "catalogKey": "finiki",
-          "quantity": 30,
+          "quantity": 80,
           "unit": "gram"
         },
         {
@@ -1339,7 +1412,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "recipe_58",
@@ -1372,7 +1448,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_59",
@@ -1405,7 +1485,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "recipe_60",
@@ -1446,9 +1529,22 @@
           "catalogKey": "vanilin",
           "quantity": 1,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
+          "quantity": 200,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 100,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "recipe_61",
@@ -1516,7 +1612,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_62",
@@ -1569,45 +1669,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
-    },
-    {
-      "id": "recipe_63",
-      "servings": 4,
-      "imageId": "63",
-      "translations": {
-        "ru": {
-          "name": "Блинчики из зеленой гречки",
-          "steps": "Гречневую крупу на ночь замочить в воде, утром промыть несколько раз. Соду погасить соком лимона. Все ингредиенты смешать в блендере до однородной массы.\nВыпекать как обычные блинчики на хорошо разогретой сковороде"
-        },
-        "en": {
-          "name": "Green buckwheat crepes",
-          "steps": "Soak buckwheat in water overnight and rinse several times in the morning. Activate the baking soda with lemon juice. Mix all ingredients in a blender until smooth.\nBake like regular pancakes in a well-heated frying pan."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "buckwheat_kernel",
-          "quantity": 150,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "vanilin",
-          "quantity": 0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 2,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "sunflower_oil",
-          "quantity": 10,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_64",
@@ -1653,9 +1719,28 @@
           "catalogKey": "coconut_oil_liquid",
           "quantity": 10,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "garlic_clove",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "basil",
+          "quantity": 10,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_65",
@@ -1713,7 +1798,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_66",
@@ -1756,7 +1845,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_67",
@@ -1794,7 +1887,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "recipe_68",
@@ -1837,7 +1933,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_69",
@@ -1895,7 +1995,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_70",
@@ -1936,9 +2040,23 @@
           "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 20,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "pasta_tom_yam_aroy_d",
+          "quantity": 25,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "kokosovoe_moloko_na_rastitelnoy_osnove_alpro",
+          "quantity": 150,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_71",
@@ -1984,9 +2102,23 @@
           "catalogKey": "water",
           "quantity": 200,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "smetana_15_zhirnosti",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "wheat_flour_premium_grade",
+          "quantity": 20,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_72",
@@ -2022,9 +2154,18 @@
           "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 250,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "protein_powder",
+          "quantity": 25,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_73",
@@ -2072,7 +2213,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "recipe_74",
@@ -2106,7 +2250,7 @@
         },
         {
           "catalogKey": "vanilin",
-          "quantity": 0,
+          "quantity": 1,
           "unit": "gram"
         },
         {
@@ -2118,9 +2262,18 @@
           "catalogKey": "shokolad_gorkiy",
           "quantity": 10,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "oreo_cookies",
+          "quantity": 20,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_75",
@@ -2169,16 +2322,30 @@
         },
         {
           "catalogKey": "vanilin",
-          "quantity": 0,
+          "quantity": 1,
           "unit": "gram"
         },
         {
           "catalogKey": "syr_myagkiy",
           "quantity": 130,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "poppy_seed",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cornstarch",
+          "quantity": 15,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_76",
@@ -2207,16 +2374,40 @@
         },
         {
           "catalogKey": "vanilin",
-          "quantity": 0,
+          "quantity": 1,
           "unit": "gram"
         },
         {
           "catalogKey": "almonds",
           "quantity": 10,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "wheat_flour_premium_grade",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "raisins_with_pits_dried_grapes",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cinnamon",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "baking_powder",
+          "quantity": 5,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_77",
@@ -2224,11 +2415,11 @@
       "imageId": "77",
       "translations": {
         "ru": {
-          "name": "Салат",
+          "name": "Салат со свеклой, апельсином и фетой",
           "steps": "Свеклу отварить, свеклу, очищенный апельсин и фету нарезать небольшим кубиком. Для заправки смешать: Масло, сироп (Можно заменить медом), горчицу, сок лимона, соль и перец.\nВсе смешать и можно подавать, украсив орешками."
         },
         "en": {
-          "name": "Salad",
+          "name": "Beet, orange, and feta salad",
           "steps": "Boil the beets, cut the beets, peeled orange and feta into small cubes. For the dressing, combine the olive oil, syrup (Can be replaced with honey), mustard, lemon juice, salt and pepper.\nMix everything and serve, garnished with nuts."
         }
       },
@@ -2257,9 +2448,28 @@
           "catalogKey": "salt",
           "quantity": 2,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "beetroots",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "feta_cheese",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "walnut",
+          "quantity": 15,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_78",
@@ -2290,47 +2500,17 @@
           "catalogKey": "salt",
           "quantity": 2,
           "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 25
-    },
-    {
-      "id": "recipe_79",
-      "servings": 1,
-      "imageId": "79",
-      "translations": {
-        "ru": {
-          "name": "Синнабон-блинчики",
-          "steps": "Приготовить блинчики.\nБлинчики смазать кисточкой сливочным маслом, сиропом, посыпать корицей. Свернуть блинчики в рулетики.\nСмешать сыр, кокосовое молоко и йогурт, выложить этот крем сверху на блины, посыпать корицей и крошкой грецкого ореха."
-        },
-        "en": {
-          "name": "Cinnabon crepes",
-          "steps": "Prepare pancakes.\nBrush the crepes with butter and syrup, then sprinkle with cinnamon. Roll the pancakes into rolls.\nMix cheese, coconut milk and yogurt, place this cream on top of the pancakes, sprinkle with cinnamon and walnut crumbs."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "butter_61_5_fat_sandwich",
-          "quantity": 10,
-          "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
-          "quantity": 100,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "walnut",
-          "quantity": 5,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "syr_myagkiy",
-          "quantity": 140,
+          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
+          "quantity": 300,
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "recipe_80",
@@ -2378,7 +2558,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40
+      "cookTimeMinutes": 40,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "recipe_81",
@@ -2431,7 +2614,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_82",
@@ -2487,9 +2674,18 @@
           "catalogKey": "olive_oil",
           "quantity": 5,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "wheat_flour_premium_grade",
+          "quantity": 80,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
+        "lunch"
+      ]
     },
     {
       "id": "recipe_83",
@@ -2525,9 +2721,23 @@
           "catalogKey": "butter_61_5_fat_sandwich",
           "quantity": 10,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_egg_yolk",
+          "quantity": 20,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "risovaya_muka_belaya",
+          "quantity": 40,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_84",
@@ -2583,9 +2793,23 @@
           "catalogKey": "chickpeas",
           "quantity": 60,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "beetroots",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "feta_cheese",
+          "quantity": 40,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_85",
@@ -2631,9 +2855,18 @@
           "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
           "quantity": 120,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "beetroots",
+          "quantity": 100,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_86",
@@ -2676,7 +2909,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_87",
@@ -2719,7 +2956,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_88",
@@ -2765,9 +3006,23 @@
           "catalogKey": "green_onion_feather",
           "quantity": 10,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "risovaya_muka_belaya",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "smetana_15_zhirnosti",
+          "quantity": 30,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 50
+      "cookTimeMinutes": 50,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_89",
@@ -2805,7 +3060,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_90",
@@ -2841,9 +3100,23 @@
           "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
           "quantity": 70,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_rikotta_10_2_zhirnosti_iz_tselnogo_moloka_m_",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "basil",
+          "quantity": 10,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_91",
@@ -2851,12 +3124,12 @@
       "imageId": "91",
       "translations": {
         "ru": {
-          "name": "Сырные булочки",
-          "steps": "<p>Натереть сыр, добавить творог, яйцо и пюрировать блендером.</p>\n<p>Добавить муку и перемешать, можно добавить соль/специи по вкусу.</p>\n<p>Мокрыми руками сформировать шарики, выложить на пергамент и посыпать кунжутом.</p>\n<p>Выпекать в предварительно разогретой до 180 градусов духовке 25 минут.</p>"
+          "name": "Творожно-сырные булочки",
+          "steps": "Натереть сыр, добавить творог, яйцо и пюрировать блендером.\nДобавить муку и перемешать, можно добавить соль и специи по вкусу.\nМокрыми руками сформировать шарики, выложить на пергамент и посыпать кунжутом.\nВыпекать в предварительно разогретой до 180 градусов духовке 25 минут."
         },
         "en": {
-          "name": "Cheese buns",
-          "steps": "<p>Grate the cheese, add cottage cheese, egg and puree with a blender.</p>\n<p>Add flour and mix, you can add salt/spices to taste.</p>\n<p>With wet hands, form balls, place on parchment and sprinkle with sesame seeds.</p>\n<p>Bake in an oven preheated to 180 degrees for 25 minutes.</p>"
+          "name": "Cottage cheese and cheese buns",
+          "steps": "Grate the cheese, add cottage cheese, egg and puree with a blender.\nAdd flour and mix, you can add salt and spices to taste.\nWith wet hands, form balls, place on parchment and sprinkle with sesame seeds.\nBake in an oven preheated to 180 degrees for 25 minutes."
         }
       },
       "ingredients": [
@@ -2879,9 +3152,18 @@
           "catalogKey": "sesame_seeds",
           "quantity": 10,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "risovaya_muka_belaya",
+          "quantity": 60,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_92",
@@ -2915,7 +3197,7 @@
         },
         {
           "catalogKey": "vanilin",
-          "quantity": 0,
+          "quantity": 1,
           "unit": "gram"
         },
         {
@@ -2924,11 +3206,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_93",
-      "servings": 10,
+      "servings": 6,
       "imageId": "93",
       "translations": {
         "ru": {
@@ -2972,73 +3258,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
-    },
-    {
-      "id": "recipe_94",
-      "servings": 5,
-      "imageId": "94",
-      "translations": {
-        "ru": {
-          "name": "Кешью-соус",
-          "steps": "Кешью замочить на ночь или залить кипятком на пару часов. Смешать в блендере все ингредиенты до однородной текстуры.\nВоды добавляйте по необходимости больше или меньше в зависимости от того, какую густоту хотите получить."
-        },
-        "en": {
-          "name": "Cashew sauce",
-          "steps": "Soak cashews overnight or pour boiling water over them for a couple of hours. Mix all ingredients in a blender until smooth.\nAdd more or less water as needed, depending on how thick you want it to be."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "cashew",
-          "quantity": 150,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "olive_oil",
-          "quantity": 15,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "lemon_juice",
-          "quantity": 7,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 3,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "water",
-          "quantity": 100,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 25
-    },
-    {
-      "id": "recipe_95",
-      "servings": 8,
-      "imageId": "95",
-      "translations": {
-        "ru": {
-          "name": "Кокосовая сгущенка",
-          "steps": "Залить все ингредиенты в высокую кастрюлю и варить на среднем огне, периодически помешивая, до загустения. Масса должна немного пожелтеть и уменьшиться примерно в двое.\nСнять с огня, немного остудить, чтобы масса не была кипящей и эмульгировать (пробить) погружным блендером.\nПерелить в баночку и хранить в холодильнике до 5 дней."
-        },
-        "en": {
-          "name": "Coconut condensed milk",
-          "steps": "Pour all ingredients into a tall saucepan and cook over medium heat, stirring occasionally, until thickened. The mixture should turn a little yellow and decrease by about half.\nRemove from heat, cool slightly so that the mixture is not boiling and blend with an immersion blender until emulsified.\nPour into a jar and store in the refrigerator for up to 5 days."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "sok_apelsinovyy",
-          "quantity": 30,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 60,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_96",
@@ -3081,7 +3305,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "snack"
+      ]
     },
     {
       "id": "recipe_97",
@@ -3124,7 +3353,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_98",
@@ -3167,7 +3400,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_99",
@@ -3175,7 +3412,7 @@
       "imageId": "99",
       "translations": {
         "ru": {
-          "name": "Ониги спайси-тунец",
+          "name": "Онигири спайси-тунец",
           "steps": "Отварить рис по инструкции. Из банки с тунцом слить воду, добавить майонез, шрирачу, размять вилкой.\nС помощью пищевой пленки сформировать треугольник из риса, добавить в центр начинку из тунца. Посыпать сверху кунжутом и обернуть треугольнички половинками листа нори."
         },
         "en": {
@@ -3198,37 +3435,18 @@
           "catalogKey": "sesame_seeds",
           "quantity": 10,
           "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35
-    },
-    {
-      "id": "recipe_100",
-      "servings": 6,
-      "imageId": "100",
-      "translations": {
-        "ru": {
-          "name": "Карбонара на кокосовом молоке",
-          "steps": "<p>Макароны отварить по инструкции, не доварив пару минут - чтобы они смогли впитать больше соуса.</p>\n<p>В это же время обжарить бекон до золотистости, чтобы вытопился жир. Часть его можно слить. Сыр натереть на терке.</p>\n<p>Посыпать бекон перцем и мускатным орехом, немного обжарить, чтобы специи раскрылись. Соль НЕ добавляем, потому что и бекон и сыр дают свою соленость. По готовности - можно по вкусу посолить.</p>\n<p>Бекон залить кокосовым молоком/сливками. Когда немного загустеет - добавить сыр. Когда сыр расплавится - добавить макароны.</p>\n<p>Готовое блюдо можно поперчить дополнительно, для более яркой пряности.</p>"
-        },
-        "en": {
-          "name": "Carbonara with coconut milk",
-          "steps": "<p>Boil the pasta according to the instructions, without cooking it for a couple of minutes - so it can absorb more sauce.</p>\n<p>At the same time, fry the bacon until golden, so that the fat is rendered. Some of it can be drained. Grate the cheese.</p>\n<p>Sprinkle the bacon with pepper and nutmeg and fry a little to release the spices. We DO NOT add salt, because both bacon and cheese add their own saltiness. When ready, you can add salt to taste.</p>\n<p>Pour coconut milk/cream over the bacon. When it thickens a little, add cheese. When the cheese melts, add the pasta.</p>\n<p>The finished dish can be additionally peppered for a stronger peppery flavor.</p>"
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
-          "quantity": 300,
-          "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
-          "quantity": 100,
+          "catalogKey": "mayonnaise_provansal_67_fat_content",
+          "quantity": 15,
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "snack"
+      ]
     },
     {
       "id": "recipe_101",
@@ -3237,11 +3455,11 @@
       "translations": {
         "ru": {
           "name": "Фасоль в кешью-шпинатном соусе",
-          "steps": "<p>Фасоль предварительно замочить минимум на 4 часа и отварить до мягкости - 1 час. Или использовать консервированную в объеме х2.</p>\n<p>Лук мелко нарезать, обжарить до прозрачности. Вяленые томаты (4-6 штучек, отряхнуть от масла) нарезать мелким кубиком. добавить к луку.</p>\n<p>Шпинат, если используете замороженный - немного разморозить и добавить к овощам обжариваться.</p>\n<p>Кешью залить кипятком на 10 минут, так текстура будет однороднее. Потом вместе с этой водой пюрировать блендером. Добавить к овощной смеси.</p>\n<p>Добавить в соус фасоль.</p>"
+          "steps": "Фасоль предварительно замочить минимум на 4 часа и отварить до мягкости — 1 час. Или использовать консервированную в объеме х2.\nЛук мелко нарезать, обжарить до прозрачности. Вяленые томаты (4–6 штучек, отряхнуть от масла) нарезать мелким кубиком и добавить к луку.\nШпинат, если используете замороженный, немного разморозить и добавить к овощам обжариваться.\nКешью залить кипятком на 10 минут, так текстура будет однороднее. Потом вместе с этой водой пюрировать блендером. Добавить к овощной смеси.\nДобавить в соус фасоль."
         },
         "en": {
           "name": "Beans in cashew-spinach sauce",
-          "steps": "<p>Pre-soak the beans for at least 4 hours and boil until soft - 1 hour. Or use twice the amount of canned beans.</p>\n<p>Finely chop the onion and fry until transparent. Cut sun-dried tomatoes (4-6 pieces, shake off oil) into small cubes. Add them to the onion.</p>\n<p>If you use frozen spinach, defrost it a little and add it to the vegetables to fry.</p>\n<p>Pour boiling water over cashews for 10 minutes, so the texture will be more uniform. Then puree with this water in a blender. Add to vegetable mixture.</p>\n<p>Add beans to the sauce.</p>"
+          "steps": "Pre-soak the beans for at least 4 hours and boil until soft - 1 hour. Or use twice the amount of canned beans.\nFinely chop the onion and fry until transparent. Cut sun-dried tomatoes (4-6 pieces, shake off oil) into small cubes and add them to the onion.\nIf you use frozen spinach, defrost it a little and add it to the vegetables to fry.\nPour boiling water over cashews for 10 minutes, so the texture will be more uniform. Then puree with this water in a blender. Add to vegetable mixture.\nAdd beans to the sauce."
         }
       },
       "ingredients": [
@@ -3269,26 +3487,18 @@
           "catalogKey": "salt",
           "quantity": 3,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidory_tomaty_vyalenye_upakovannye_v_masle",
+          "quantity": 30,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
-    },
-    {
-      "id": "recipe_102",
-      "servings": 4,
-      "imageId": "102",
-      "translations": {
-        "ru": {
-          "name": "Ореховый карри-соус для спринг-роллов",
-          "steps": "Смешать все ингредиенты, по необходимости добавить немного воды для облегчения консистенции.\n<p>Разбавить водой до желаемой консистенции.</p>"
-        },
-        "en": {
-          "name": "Nut curry sauce for spring rolls",
-          "steps": "Mix all the ingredients. Add water as needed and stir until the sauce reaches the desired consistency."
-        }
-      },
-      "ingredients": [],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_103",
@@ -3296,7 +3506,7 @@
       "imageId": "103",
       "translations": {
         "ru": {
-          "name": "Плавленный сыр с беконом",
+          "name": "Плавленый сыр с беконом",
           "steps": "Бекон предварительно запечь до хрусткости. Выложить на пергамент отдельными кусочками и выпекать на 180 градусах пока не вытопится жир, время индивидуально.\nСмешать все ингредиенты блендером, переложить в кастрюлю с толстым дном. На маленьком огне загущаем, постоянно перемешивая. Как только масса закипела и стала жидкая - снять с огня.\nРазложить по формам и добавить мелко нарезанный хрустящий бекон или другую начинку. Отправить в холодильник на 30-60 минут для стабилизации и загустения."
         },
         "en": {
@@ -3324,9 +3534,18 @@
           "catalogKey": "salt",
           "quantity": 3,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "bekon",
+          "quantity": 60,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_104",
@@ -3367,9 +3586,18 @@
           "catalogKey": "sunflower_oil",
           "quantity": 5,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "risovaya_muka_belaya",
+          "quantity": 40,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_105",
@@ -3405,9 +3633,18 @@
           "catalogKey": "black_currant",
           "quantity": 30,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "risovaya_muka_belaya",
+          "quantity": 30,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_106",
@@ -3415,12 +3652,12 @@
       "imageId": "106",
       "translations": {
         "ru": {
-          "name": "Лобио",
-          "steps": "<p>Фасоль предварительно замочить на 4+ часа. Отварить до мягкости, примерно 1 час.</p>\nНа оливковом масле обжарить лук до прозрачности. Добавить томатную пасту и хорошо прогреть ее. Затем добавить специи. Прогреть.\nДобавить фасоль, слегка обжарить ее. В конце приготовления или при подаче добавить мелко нарезанную кинзу и нарезанные на кусочки грецкие орехи."
+          "name": "Лобио в томатном соусе",
+          "steps": "Фасоль предварительно замочить на 4+ часа. Отварить до мягкости, примерно 1 час.\nНа оливковом масле обжарить лук до прозрачности. Добавить томатную пасту и хорошо прогреть ее. Затем добавить специи и прогреть.\nДобавить фасоль, слегка обжарить ее. В конце приготовления или при подаче добавить мелко нарезанную кинзу и нарезанные на кусочки грецкие орехи."
         },
         "en": {
-          "name": "Lobio",
-          "steps": "<p>Pre-soak the beans for 4+ hours. Boil until soft, about 1 hour.</p>\nFry the onion in olive oil until transparent. Add tomato paste and heat it well. Then add spices. Warm up.\nAdd beans and fry them lightly. At the end of cooking or when serving, add finely chopped cilantro and chopped walnuts."
+          "name": "Lobio in tomato sauce",
+          "steps": "Pre-soak the beans for 4+ hours. Boil until soft, about 1 hour.\nFry the onion in olive oil until transparent. Add tomato paste and heat it well. Then add spices and warm through.\nAdd beans and fry them lightly. At the end of cooking or when serving, add finely chopped cilantro and chopped walnuts."
         }
       },
       "ingredients": [
@@ -3453,47 +3690,18 @@
           "catalogKey": "beans",
           "quantity": 800,
           "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35
-    },
-    {
-      "id": "recipe_107",
-      "servings": 3,
-      "imageId": "107",
-      "translations": {
-        "ru": {
-          "name": "Протеиновые вафли с яблоком",
-          "steps": "Яблоки очистить от кожуры, порезать небольшими кубиками и обжарить на сливочном масле до мягкости, добавив подсластитель и корицу.\nВ миску разбить яйца, добавить кефир, соль, разрыхлитель, протеиновый порошок, муку и хорошо перемешать. Выпекать вафли 5–7 минут.\nПри подаче положить яблоки на вафли."
-        },
-        "en": {
-          "name": "Protein apple waffles",
-          "steps": "Peel the apples, cut into small cubes and fry in butter until soft, adding sweetener and cinnamon.\nCrack the eggs into a bowl, add kefir, salt, baking powder, protein powder, flour and mix well. Bake waffles for 5-7 minutes.\nWhen serving, place apples on waffles."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "yabloko",
-          "quantity": 400,
-          "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
-          "quantity": 20,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "sugar",
-          "quantity": 2,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "yaytso_kurinoe",
-          "quantity": 110,
+          "catalogKey": "cilantro",
+          "quantity": 15,
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_108",
@@ -3541,7 +3749,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
+        "lunch"
+      ]
     },
     {
       "id": "recipe_109",
@@ -3587,47 +3799,18 @@
           "catalogKey": "coconut_oil_liquid",
           "quantity": 5,
           "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 25
-    },
-    {
-      "id": "recipe_110",
-      "servings": 10,
-      "imageId": "110",
-      "translations": {
-        "ru": {
-          "name": "«Майонез» из тыквенных семечек",
-          "steps": "Тыквенные семечки хорошо промыть и откинуть на сито.\nРазогреть сковородку и выложить на неё семечки. Подсушить их на небольшом огне, постоянно помешивая до легкой румяности, в течении 5-7 минут. Остудить.\nОбжаренные семечки измельчить в кофемолке. Соединить в высокой чаше со всеми остальными ингредиентами и пробить погружным блендером.\nГотовый соус хранить в холодильнике до 4-5 дней в закрытом герметичном контейнере."
-        },
-        "en": {
-          "name": "Pumpkin seed mayo",
-          "steps": "Rinse the pumpkin seeds well and place in a sieve.\nHeat a frying pan and place the seeds on it. Toast them over low heat, stirring constantly until lightly browned, for 5-7 minutes. Cool.\nGrind the roasted seeds in a coffee grinder. Combine in a tall bowl with all other ingredients and puree with an immersion blender.\nStore the finished sauce in the refrigerator for up to 4-5 days in a closed, airtight container."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "water",
-          "quantity": 160,
-          "unit": "gram"
         },
         {
-          "catalogKey": "lemon_juice",
-          "quantity": 20,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "gorchitsa_stolovaya",
-          "quantity": 15,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 3,
+          "catalogKey": "quinoa",
+          "quantity": 120,
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_111",
@@ -3658,9 +3841,18 @@
           "catalogKey": "almonds",
           "quantity": 15,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "semena_chia_sushenye",
+          "quantity": 15,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_112",
@@ -3686,47 +3878,18 @@
           "catalogKey": "almonds",
           "quantity": 15,
           "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 25
-    },
-    {
-      "id": "recipe_113",
-      "servings": 1,
-      "imageId": "113",
-      "translations": {
-        "ru": {
-          "name": "Спринг-роллы с креветками и фунчозой",
-          "steps": "Обжарить креветки с солью и перцем на небольшом количестве сливочного масла. Фунчозу заварить кипятком по инструкции. Огурцы нарезать соломкой\nБумажное полотенце размером больше чем лист рисовой бумаги положить на рабочую поверхность, хорошо увлажнить. Лист рисовой бумаги смочить в глубокой тарелке с водой в двух сторон и выложить на полотенце.\nПосыпать кунжутом, выложить креветки, фунчозу и несколько соломинок огурца. Сложить стороны по кругу."
-        },
-        "en": {
-          "name": "Shrimp spring rolls with glass noodles",
-          "steps": "Sauté the shrimp in a little butter and season with salt and pepper. Prepare the glass noodles according to the package instructions. Cut the cucumber into matchsticks.\nPlace a damp paper towel larger than the rice-paper wrapper on the work surface. Dip both sides of the wrapper in water and place it on the towel.\nAdd sesame seeds, shrimp, glass noodles, and a few cucumber matchsticks. Fold in the sides and roll up tightly."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "cucumber",
-          "quantity": 50,
-          "unit": "gram"
         },
         {
-          "catalogKey": "far_eastern_shrimp_meat",
-          "quantity": 70,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "butter_61_5_fat_sandwich",
-          "quantity": 5,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "sesame_seeds",
-          "quantity": 10,
+          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
+          "quantity": 150,
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_114",
@@ -3757,9 +3920,18 @@
           "catalogKey": "cherries",
           "quantity": 200,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "risovaya_muka_belaya",
+          "quantity": 40,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_115",
@@ -3802,7 +3974,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_116",
@@ -3840,7 +4016,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_118",
@@ -3896,37 +4076,23 @@
           "catalogKey": "salt",
           "quantity": 3,
           "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35
-    },
-    {
-      "id": "recipe_119",
-      "servings": 1,
-      "imageId": "119",
-      "translations": {
-        "ru": {
-          "name": "Блинчики с мягким творогом, манго и миндалем",
-          "steps": "Разогреть блинчики, полить сиропом топинамбура. Съесть совместно с творогом, миндалем и кусочками манго."
         },
-        "en": {
-          "name": "Crepes with soft cottage cheese, mango, and almonds",
-          "steps": "Heat the pancakes, drizzle with Jerusalem artichoke syrup. Serve with the cottage cheese, almonds, and mango."
-        }
-      },
-      "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
-          "quantity": 170,
+          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
+          "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "almonds",
-          "quantity": 10,
+          "catalogKey": "white_cabbage",
+          "quantity": 150,
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_120",
@@ -3974,7 +4140,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "recipe_121",
@@ -4010,9 +4179,23 @@
           "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
           "quantity": 70,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5_fat_sterilized",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "drozhzhi_pischevye_neaktivnye_polezzno",
+          "quantity": 10,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_122",
@@ -4050,7 +4233,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "recipe_123",
@@ -4076,9 +4262,23 @@
           "catalogKey": "bread_pshenichnyy",
           "quantity": 70,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "syr_rikotta_10_2_zhirnosti_iz_tselnogo_moloka_m_",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidory_tomaty_vyalenye_upakovannye_v_masle",
+          "quantity": 20,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "recipe_124",
@@ -4086,8 +4286,8 @@
       "imageId": "124",
       "translations": {
         "ru": {
-          "name": "Запеченая рыба и овощи с творожным соусом",
-          "steps": "Рыбу предварительно разморозить. Картофель и морковь нарезать дольками, выложить в отдельные емкости для запекания, посолить, поперчить и накрыть фольгой.\nВыпекать рыбу и овощи 50 минут в разогретой до 180градусов духовке.\nДля соуса смешать мягкий творог, перец, немного соли, мелко нарезанные уроп и мелко нарезанные кубиком маринованные огурцы."
+          "name": "Запечённая рыба и овощи с творожным соусом",
+          "steps": "Рыбу предварительно разморозить. Картофель и морковь нарезать дольками, выложить в отдельные емкости для запекания, посолить, поперчить и накрыть фольгой.\nВыпекать рыбу и овощи 50 минут в разогретой до 180 градусов духовке.\nДля соуса смешать мягкий творог, перец, немного соли, мелко нарезанный укроп и мелко нарезанные кубиком маринованные огурцы."
         },
         "en": {
           "name": "Baked fish and vegetables with cottage cheese sauce",
@@ -4131,7 +4331,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 45
+      "cookTimeMinutes": 45,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_125",
@@ -4194,7 +4398,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "recipe_126",
@@ -4235,9 +4442,17 @@
           "catalogKey": "fresh_parsley",
           "quantity": 10,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "okorok_vareno_kopchyonyy",
+          "quantity": 40,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "recipe_127",
@@ -4285,7 +4500,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "recipe_128",
@@ -4333,7 +4552,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 35
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "book_001",
@@ -4371,7 +4593,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 5
+      "cookTimeMinutes": 5,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_002",
@@ -4432,9 +4658,18 @@
           "catalogKey": "peanut_powder",
           "quantity": 10.0,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "water",
+          "quantity": 20,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_003",
@@ -4463,7 +4698,7 @@
         },
         {
           "catalogKey": "water",
-          "quantity": 5.0,
+          "quantity": 20,
           "unit": "gram"
         },
         {
@@ -4477,7 +4712,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "book_004",
@@ -4506,7 +4744,7 @@
         },
         {
           "catalogKey": "water",
-          "quantity": 5.0,
+          "quantity": 20,
           "unit": "gram"
         },
         {
@@ -4530,7 +4768,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_005",
@@ -4573,7 +4815,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 5
+      "cookTimeMinutes": 5,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_006",
@@ -4607,7 +4853,7 @@
         },
         {
           "catalogKey": "water",
-          "quantity": 5.0,
+          "quantity": 20,
           "unit": "gram"
         },
         {
@@ -4621,7 +4867,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "book_007",
@@ -4684,7 +4933,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "lunch"
+      ]
     },
     {
       "id": "book_008",
@@ -4752,7 +5005,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast",
+        "lunch"
+      ]
     },
     {
       "id": "book_009",
@@ -4790,55 +5047,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
-    },
-    {
-      "id": "book_010",
-      "servings": 1,
-      "imageId": "book_010",
-      "translations": {
-        "ru": {
-          "name": "Тосты с яйцами пашот",
-          "steps": "Подсушить хлеб на закваске.\nОдин тост намазать авокадо, другой — арахисовой пастой.\nНа арахисовую пасту выложить нарезанную клубнику, на авокадо — ломтики редиса, сверху на него положить яйца, посолить и поперчить."
-        },
-        "en": {
-          "name": "Toast with poached eggs",
-          "steps": "Toast the sourdough bread.\nSpread one piece of toast with avocado, the other with peanut butter.\nPlace sliced strawberries on the peanut butter, slices of radish on the avocado, place eggs on top, salt and pepper."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "slices_of_sourdough",
-          "quantity": 100.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "avocado",
-          "quantity": 75.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "peanut_butter_liquid",
-          "quantity": 10.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "yaytso_kurinoe",
-          "quantity": 100.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "strawberries",
-          "quantity": 36.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "radish",
-          "quantity": 36.0,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_011",
@@ -4906,11 +5119,16 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "snack"
+      ]
     },
     {
       "id": "book_012",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_012",
       "translations": {
         "ru": {
@@ -4954,7 +5172,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_013",
@@ -5007,7 +5229,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_014",
@@ -5065,7 +5292,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "book_015",
@@ -5133,7 +5363,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 5
+      "cookTimeMinutes": 5,
+      "mealTypes": [
+        "lunch",
+        "snack"
+      ]
     },
     {
       "id": "book_016",
@@ -5191,11 +5425,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_017",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_017",
       "translations": {
         "ru": {
@@ -5269,7 +5507,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "snack"
+      ]
     },
     {
       "id": "book_018",
@@ -5337,7 +5579,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "lunch"
+      ]
     },
     {
       "id": "book_019",
@@ -5395,7 +5641,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_020",
@@ -5463,7 +5713,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "book_021",
@@ -5506,7 +5759,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_022",
@@ -5564,7 +5821,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "snack"
+      ]
     },
     {
       "id": "book_023",
@@ -5632,7 +5894,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "book_024",
@@ -5700,7 +5965,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "book_025",
@@ -5734,7 +6002,7 @@
         },
         {
           "catalogKey": "cucumber",
-          "quantity": 6.0,
+          "quantity": 40,
           "unit": "gram"
         },
         {
@@ -5751,9 +6019,17 @@
           "catalogKey": "vinegar",
           "quantity": 5.0,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "avocado",
+          "quantity": 60,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "book_026",
@@ -5809,9 +6085,17 @@
           "catalogKey": "yaytso_kurinoe",
           "quantity": 100.0,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "quantity": 30,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "book_028",
@@ -5820,11 +6104,11 @@
       "translations": {
         "ru": {
           "name": "Яичные маффины",
-          "steps": "Разогреть духовку до 180–200 °C.\nВ миске смешать яйца с белками, добавить сыр, нарезанные помидоры, грибы, оливки, орегано, соль и перец по вкусу.\nРазлить по формочкам и запекать около 30 минут до полной готовности.\nДостать, дать остыть и подавать с соусом сальса."
+          "steps": "Разогреть духовку до 180–200 °C.\nВыложить тесто фило в формочки для маффинов.\nВ миске смешать яйца с белками, добавить сыр, нарезанные помидоры, грибы, оливки, шпинат, соль и перец по вкусу.\nРазлить смесь по формочкам и запекать около 30 минут до полной готовности.\nДостать, дать остыть и подавать с соусом сальса."
         },
         "en": {
           "name": "Egg muffins",
-          "steps": "Preheat the oven to 180–200 °C.\nIn a bowl, mix whole eggs and egg whites, add cheese, chopped tomatoes, mushrooms, olives, oregano, salt and pepper to taste.\nPour into molds and bake for about 30 minutes until fully cooked.\nRemove, let cool and serve with salsa."
+          "steps": "Preheat the oven to 180–200 °C.\nLine muffin tins with phyllo sheets.\nIn a bowl, mix whole eggs and egg whites, add cheese, chopped tomatoes, mushrooms, olives, spinach, salt and pepper to taste.\nPour into the lined molds and bake for about 30 minutes until fully cooked.\nRemove, let cool and serve with salsa."
         }
       },
       "ingredients": [
@@ -5884,7 +6168,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_029",
@@ -5962,7 +6250,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "book_030",
@@ -6013,9 +6304,18 @@
           "catalogKey": "light_cream_cheese",
           "quantity": 20.0,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "yaytso_kurinoe",
+          "quantity": 50,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_031",
@@ -6093,7 +6393,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast"
+      ]
     },
     {
       "id": "book_033",
@@ -6132,7 +6435,7 @@
         },
         {
           "catalogKey": "bell_red",
-          "quantity": 7.5,
+          "quantity": 75,
           "unit": "gram"
         },
         {
@@ -6151,75 +6454,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
-    },
-    {
-      "id": "book_034",
-      "servings": 1,
-      "imageId": "book_034",
-      "translations": {
-        "ru": {
-          "name": "Тыквенный боул",
-          "steps": "Разогреть духовку до 250 °C.\nНарезать тыкву, выложить на противень с пергаментом, сбрызнуть оливковым маслом, посолить, поперчить и посыпать итальянскими травами. Запекать до румяности.\nВыложить тыкву на тарелку, сверху — творог, малину, грецкие орехи и гранат."
-        },
-        "en": {
-          "name": "Pumpkin bowl",
-          "steps": "Preheat oven to 250°C.\nSlice the pumpkin, place on a parchment-lined baking sheet, drizzle with olive oil, salt and pepper and sprinkle with Italian herbs. Bake until golden brown.\nPlace the pumpkin on a plate, top with cottage cheese, raspberries, walnuts and pomegranate."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "tykva",
-          "quantity": 200.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "olive_oil",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "raspberries",
-          "quantity": 50.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "pomegranate",
-          "quantity": 30.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "walnut",
-          "quantity": 20.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "tvorog_5_zhirnosti",
-          "quantity": 100.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 7.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "pesto_sauce",
-          "quantity": 15.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "italian_seasoning",
-          "quantity": 5.0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "black_pepper",
-          "quantity": 2.0,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_035",
@@ -6282,7 +6521,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_036",
@@ -6316,7 +6559,7 @@
         },
         {
           "catalogKey": "cucumber",
-          "quantity": 20.0,
+          "quantity": 80,
           "unit": "gram"
         },
         {
@@ -6353,9 +6596,18 @@
           "catalogKey": "salt",
           "quantity": 2.0,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 10,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_037",
@@ -6413,7 +6665,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_039",
@@ -6421,11 +6677,11 @@
       "imageId": "book_039",
       "translations": {
         "ru": {
-          "name": "Салат ширази",
+          "name": "Салат с креветками, киноа и манго",
           "steps": "Сварить киноа.\nНа сковороде обжарить зубчики чеснока и креветки с солью, чёрным перцем и паприкой до румяности.\nМелко нарезать клубнику, огурец, манго и болгарский перец.\nВыложить в миску киноа, обжаренные креветки, клубнику, огурец, манго, перец и фету.\nДля соуса размять манго в пюре, добавить сок лайма, соль и оливковое масло, перемешать и полить салат."
         },
         "en": {
-          "name": "Shirazi salad",
+          "name": "Shrimp, quinoa, and mango salad",
           "steps": "Cook the quinoa.\nIn a frying pan, fry the garlic cloves and shrimp with salt, black pepper and paprika until golden brown.\nFinely chop strawberries, cucumber, mango and bell pepper.\nPlace quinoa, sautéed shrimp, strawberries, cucumber, mango, pepper and feta in a bowl.\nFor the sauce, mash the mango, add lime juice, salt and olive oil, stir and pour over the salad."
         }
       },
@@ -6496,7 +6752,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_040",
@@ -6559,11 +6819,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_041",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_041",
       "translations": {
         "ru": {
@@ -6627,7 +6891,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_042",
@@ -6710,7 +6978,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_043",
@@ -6778,7 +7050,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 50
+      "cookTimeMinutes": 50,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_044",
@@ -6841,7 +7117,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "snack"
+      ]
     },
     {
       "id": "book_045",
@@ -6889,7 +7169,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner",
+        "snack"
+      ]
     },
     {
       "id": "book_046",
@@ -6942,11 +7227,16 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner",
+        "snack"
+      ]
     },
     {
       "id": "book_048",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_048",
       "translations": {
         "ru": {
@@ -7020,7 +7310,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 90
+      "cookTimeMinutes": 90,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_049",
@@ -7093,11 +7387,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40
+      "cookTimeMinutes": 40,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_050",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_050",
       "translations": {
         "ru": {
@@ -7181,7 +7479,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner",
+        "snack"
+      ]
     },
     {
       "id": "book_051",
@@ -7259,7 +7562,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_052",
@@ -7367,7 +7674,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40
+      "cookTimeMinutes": 40,
+      "mealTypes": [
+        "lunch",
+        "dinner",
+        "snack"
+      ]
     },
     {
       "id": "book_053",
@@ -7375,11 +7687,11 @@
       "imageId": "book_053",
       "translations": {
         "ru": {
-          "name": "Паста с креветками в сливочном соусе",
+          "name": "Паста с креветками и шпинатом",
           "steps": "Нарезать лук, чеснок и помидор.\nОтварить пенне в подсоленной воде. На сковороде с маслом и 1 зубчиком чеснока обжарить креветки.\nНа другой сковороде с оливковым маслом обжарить лук, чеснок и помидоры. Добавить шпинат, перемешать, затем выложить пасту и креветки.\nВлить 1 стакан воды, в которой варилась паста, хорошо перемешать, посыпать пармезаном, посолить, добавить орегано и чёрный перец."
         },
         "en": {
-          "name": "Shrimp pasta in creamy sauce",
+          "name": "Shrimp and spinach pasta",
           "steps": "Chop onion, garlic and tomato.\nBoil the penne in salted water. Fry the shrimp in a frying pan with oil and 1 clove of garlic.\nIn another frying pan with olive oil, fry the onions, garlic and tomatoes. Add spinach, stir, then add pasta and shrimp.\nPour in 1 glass of water in which the pasta was cooked, mix well, sprinkle with Parmesan, salt, add oregano and black pepper."
         }
       },
@@ -7428,9 +7740,23 @@
           "catalogKey": "black_pepper",
           "quantity": 2.0,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "pomidor_tomat",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bulb_onion",
+          "quantity": 40,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_054",
@@ -7511,9 +7837,18 @@
           "catalogKey": "oregano_sushenyy",
           "quantity": 3.0,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "celery",
+          "quantity": 40,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_055",
@@ -7557,7 +7892,7 @@
         },
         {
           "catalogKey": "cherry_tomatoes",
-          "quantity": 1000.0,
+          "quantity": 100,
           "unit": "gram"
         },
         {
@@ -7591,19 +7926,23 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40
+      "cookTimeMinutes": 40,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_056",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_056",
       "translations": {
         "ru": {
-          "name": "Паста с томатами и грибами",
+          "name": "Паста с тунцом, томатами и грибами",
           "steps": "Нарезать лук, грибы и помидоры черри.\nОтварить лингвини в подсоленной воде. На сковороде с маслом обжарить лук, грибы и черри. Затем добавить тунца и сыр, посыпать орегано, посолить и поперчить.\nСмешать всё в миске и украсить базиликом."
         },
         "en": {
-          "name": "Pasta with tomatoes and mushrooms",
+          "name": "Pasta with tuna, tomatoes and mushrooms",
           "steps": "Chop onions, mushrooms and cherry tomatoes.\nBoil linguine in salted water. Fry onions, mushrooms and cherry tomatoes in a frying pan with oil. Then add tuna and cheese, sprinkle with oregano, salt and pepper.\nMix everything in a bowl and garnish with basil."
         }
       },
@@ -7659,11 +7998,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_057",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_057",
       "translations": {
         "ru": {
@@ -7762,7 +8105,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_058",
@@ -7860,7 +8207,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_059",
@@ -7868,11 +8219,11 @@
       "imageId": "book_059",
       "translations": {
         "ru": {
-          "name": "Макароны с сыром",
+          "name": "Макароны с курицей в тыквенно-сырном соусе",
           "steps": "Отварить пасту в подсоленной воде, в другой кастрюле отварить тыкву.\nСложить в блендер готовую тыкву, соль, перец, греческий йогурт и молоко и пробить до кремообразного состояния.\nНа сковороде с оливковым маслом обжарить нарезанные лук и чеснок. Затем добавить тыквенный крем, разобранную на волокна куриную грудку, пасту и протеиновый сыр, посыпать орегано и чесночным порошком и хорошо перемешать."
         },
         "en": {
-          "name": "Macaroni and cheese",
+          "name": "Macaroni with chicken in pumpkin cheese sauce",
           "steps": "Boil the pasta in salted water, and boil the pumpkin in another pan.\nPlace the prepared pumpkin, salt, pepper, Greek yogurt and milk in a blender and blend until creamy.\nFry chopped onion and garlic in a frying pan with olive oil. Then add pumpkin cream, shredded chicken breast, pasta and protein cheese, sprinkle with oregano and garlic powder and mix well."
         }
       },
@@ -7943,11 +8294,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_060",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_060",
       "translations": {
         "ru": {
@@ -8036,7 +8391,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_061",
@@ -8109,11 +8468,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_062",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_062",
       "translations": {
         "ru": {
@@ -8207,11 +8570,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_063",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_063",
       "translations": {
         "ru": {
@@ -8325,7 +8692,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_064",
@@ -8428,11 +8799,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_065",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_065",
       "translations": {
         "ru": {
@@ -8536,7 +8911,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_066",
@@ -8607,9 +8986,23 @@
           "catalogKey": "black_pepper",
           "quantity": 2.0,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bell_red",
+          "quantity": 50,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_067",
@@ -8682,11 +9075,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 50
+      "cookTimeMinutes": 50,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_068",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_068",
       "translations": {
         "ru": {
@@ -8795,7 +9192,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40
+      "cookTimeMinutes": 40,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_069",
@@ -8868,11 +9269,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_070",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_070",
       "translations": {
         "ru": {
@@ -8971,7 +9376,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_071",
@@ -9034,11 +9443,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_072",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_072",
       "translations": {
         "ru": {
@@ -9127,7 +9540,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_073",
@@ -9190,7 +9607,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ]
     },
     {
       "id": "book_074",
@@ -9253,7 +9674,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "snack"
+      ]
     },
     {
       "id": "book_075",
@@ -9306,7 +9732,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_076",
@@ -9369,7 +9799,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_077",
@@ -9422,7 +9856,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "book_078",
@@ -9505,7 +9942,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_079",
@@ -9573,7 +10014,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30
+      "cookTimeMinutes": 30,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_080",
@@ -9631,7 +10076,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_081",
@@ -9684,7 +10133,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_082",
@@ -9767,7 +10220,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_083",
@@ -9830,7 +10287,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 60
+      "cookTimeMinutes": 60,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "book_084",
@@ -9888,7 +10348,10 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "snack"
+      ]
     },
     {
       "id": "book_085",
@@ -9946,7 +10409,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_086",
@@ -10022,13 +10489,22 @@
           "catalogKey": "white_chocolate",
           "quantity": 5.0,
           "unit": "gram"
+        },
+        {
+          "catalogKey": "protein_powder",
+          "quantity": 15,
+          "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_087",
-      "servings": 1,
+      "servings": 6,
       "imageId": "book_087",
       "translations": {
         "ru": {
@@ -10082,7 +10558,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15
+      "cookTimeMinutes": 15,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_088",
@@ -10120,7 +10600,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_089",
@@ -10198,11 +10682,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_090",
-      "servings": 1,
+      "servings": 6,
       "imageId": "book_090",
       "translations": {
         "ru": {
@@ -10271,11 +10759,15 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 50
+      "cookTimeMinutes": 50,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_091",
-      "servings": 1,
+      "servings": 2,
       "imageId": "book_091",
       "translations": {
         "ru": {
@@ -10345,7 +10837,7 @@
         },
         {
           "catalogKey": "white_chocolate",
-          "quantity": 80.0,
+          "quantity": 15,
           "unit": "gram"
         },
         {
@@ -10354,7 +10846,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     },
     {
       "id": "book_093",
@@ -10402,7 +10898,11 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40
+      "cookTimeMinutes": 40,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
     }
   ]
 }

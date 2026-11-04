@@ -43,7 +43,7 @@ enum RecipeCatalogStore {
     static func seedIfNeeded(in context: ModelContext) async {
         await importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
         await importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
-        syncCatalogCookTimes(in: context)
+        syncCatalogMetadata(in: context)
         LocalPersistence.save(context)
     }
 
@@ -52,7 +52,7 @@ enum RecipeCatalogStore {
     static func seedIfNeeded(in context: ModelContext) {
         importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
         importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
-        syncCatalogCookTimes(in: context)
+        syncCatalogMetadata(in: context)
         LocalPersistence.save(context)
     }
 
@@ -304,7 +304,7 @@ enum RecipeCatalogStore {
     }
 
     @MainActor
-    private static func syncCatalogCookTimes(in context: ModelContext) {
+    private static func syncCatalogMetadata(in context: ModelContext) {
         guard let url = bundleCatalogURL(),
               FileManager.default.fileExists(atPath: url.path),
               let data = try? Data(contentsOf: url),
@@ -312,22 +312,27 @@ enum RecipeCatalogStore {
             return
         }
 
-        var timesById: [String: Int] = [:]
+        var entriesById: [String: RecipeEntry] = [:]
         for item in catalog.recipes {
             let id = resolvedEntryId(for: item)
-            guard !id.isEmpty, let minutes = item.cookTimeMinutes, minutes > 0 else { continue }
-            timesById[id] = minutes
+            guard !id.isEmpty else { continue }
+            entriesById[id] = item
         }
 
         let descriptor = FetchDescriptor<Recipe>()
         guard let all = try? context.fetch(descriptor) else { return }
         for recipe in all {
             guard let catalogId = recipe.catalogRecipeId,
-                  let minutes = timesById[catalogId],
-                  recipe.cookTimeMinutes != minutes else {
+                  let entry = entriesById[catalogId] else {
                 continue
             }
-            recipe.cookTimeMinutes = minutes
+            if let minutes = entry.cookTimeMinutes, minutes > 0, recipe.cookTimeMinutes != minutes {
+                recipe.cookTimeMinutes = minutes
+            }
+            let tags = mealTypeTags(from: entry)
+            if !tags.isEmpty, recipe.mealTypeTags != tags {
+                recipe.mealTypeTags = tags
+            }
         }
     }
 

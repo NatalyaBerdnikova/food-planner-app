@@ -21,7 +21,7 @@ enum PreviewSampleData {
 
         guard let breakfastRecipe = catalogRecipe(id: "recipe_01", in: context),
               let lunchRecipe = catalogRecipe(id: "recipe_10", in: context),
-              let dinnerRecipe = catalogRecipe(id: "recipe_18", in: context) else {
+              let dinnerRecipe = catalogRecipe(id: "recipe_25", in: context) else {
             return
         }
 
