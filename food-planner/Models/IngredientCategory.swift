@@ -15,20 +15,24 @@ enum IngredientCategory: String, Codable, CaseIterable {
 }
 
 extension IngredientCategory {
-    /// Порядок секций в списке покупок.
-    static let shoppingListOrder: [IngredientCategory] = [
+    /// Порядок в рецепте и списке покупок: белок и основа → гарнир → мелочь и специи.
+    static let recipeDisplayOrder: [IngredientCategory] = [
+        .meat,
+        .fish,
+        .dairy,
+        .grains,
         .vegetables,
         .greens,
         .fruits,
         .nuts,
         .seeds,
-        .meat,
-        .fish,
-        .dairy,
-        .grains,
         .spices,
         .other,
     ]
+
+    var recipeDisplayOrderIndex: Int {
+        Self.recipeDisplayOrder.firstIndex(of: self) ?? Int.max
+    }
 
     var displayName: LocalizedStringResource {
         switch self {

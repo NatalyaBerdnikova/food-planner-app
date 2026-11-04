@@ -70,41 +70,41 @@ struct DefaultPaywall: View {
         return [
             PaywallPlanOption(
                 id: "monthly",
-                title: String(localized: "subscription.period.monthly"),
+                title: L10n.string("subscription.period.monthly"),
                 price: "$9.99",
-                periodLabel: String(localized: "subscription.plan.period.month"),
-                subtitle: String(localized: "subscription.plan.monthly.subtitle")
+                periodLabel: L10n.string("subscription.plan.period.month"),
+                subtitle: L10n.string("subscription.plan.monthly.subtitle")
             ),
             PaywallPlanOption(
                 id: "annual",
-                title: String(localized: "subscription.period.annual"),
+                title: L10n.string("subscription.period.annual"),
                 price: "$49.99",
-                periodLabel: String(localized: "subscription.plan.period.year"),
-                subtitle: String(localized: "subscription.plan.annual.subtitle"),
-                badge: String(localized: "subscription.plan.badge.fourteenDayTrial"),
+                periodLabel: L10n.string("subscription.plan.period.year"),
+                subtitle: L10n.string("subscription.plan.annual.subtitle"),
+                badge: L10n.string("subscription.plan.badge.fourteenDayTrial"),
                 showsBestValueRibbon: true,
                 includesTrial: true,
                 trialPeriodDescription: trialPeriod
             ),
             PaywallPlanOption(
                 id: "lifetime",
-                title: String(localized: "subscription.period.lifetime"),
+                title: L10n.string("subscription.period.lifetime"),
                 price: "$149.99",
-                periodLabel: String(localized: "subscription.plan.period.once"),
-                subtitle: String(localized: "subscription.plan.lifetime.subtitle")
+                periodLabel: L10n.string("subscription.plan.period.once"),
+                subtitle: L10n.string("subscription.plan.lifetime.subtitle")
             ),
         ]
     }
 
     private var trialFooterHint: String {
         guard hasTrial else {
-            return String(localized: "subscription.cta.subscribeHint")
+            return L10n.string("subscription.cta.subscribeHint")
         }
 
         if useMockPlans {
             guard let plan = planOptions.first(where: { $0.id == selectedPlanId }),
                   let period = plan.trialPeriodDescription else {
-                return String(localized: "subscription.cta.subscribeHint")
+                return L10n.string("subscription.cta.subscribeHint")
             }
             let priceLine = [plan.price, plan.periodLabel].compactMap { $0 }.joined(separator: " ")
             return SubscriptionProductDisplay.trialHint(periodDescription: period, priceLine: priceLine)
@@ -112,7 +112,7 @@ struct DefaultPaywall: View {
 
         guard let product = selectedProduct,
               let period = SubscriptionProductDisplay.trialDescription(for: product) else {
-            return String(localized: "subscription.cta.subscribeHint")
+            return L10n.string("subscription.cta.subscribeHint")
         }
         return SubscriptionProductDisplay.trialHint(
             periodDescription: period,
@@ -350,7 +350,7 @@ struct DefaultPaywall: View {
     private func planAccessibilityLabel(_ plan: PaywallPlanOption) -> Text {
         var parts = [plan.title]
         if plan.showsBestValueRibbon {
-            parts.append(String(localized: "subscription.plan.badge.best"))
+            parts.append(L10n.string("subscription.plan.badge.best"))
         }
         if let badge = plan.badge {
             parts.append(badge)
@@ -449,7 +449,7 @@ struct DefaultPaywall: View {
                     errorCode: String(error.prefix(100)),
                     isUserCancelled: AppAnalytics.isUserCancelledPurchaseError(error)
                 )
-                subscriptionSession.showAlert(String(localized: "subscription.purchaseError"))
+                subscriptionSession.showAlert(L10n.string("subscription.purchaseError"))
             }
         }
     }
@@ -506,7 +506,7 @@ struct DefaultPaywall: View {
                 if purchased {
                     successPurchaseCallback()
                 } else {
-                    subscriptionSession.showAlert(String(localized: "subscription.restoreEmpty"))
+                    subscriptionSession.showAlert(L10n.string("subscription.restoreEmpty"))
                 }
             }
         } errorCallback: { _ in
@@ -601,13 +601,13 @@ struct DefaultPaywall: View {
                                     : missingFromAdapty)
                                     .joined(separator: ", ")
                                 subscriptionSession.showAlert(
-                                    String(
-                                        localized: "subscription.productsIncomplete \(loadedIds.count) \(expectedIds.count) \(missing)"
+                                    L10n.string(
+                                        "subscription.productsIncomplete \(loadedIds.count) \(expectedIds.count) \(missing)"
                                     )
                                 )
                             } else if expectedIds.count < 3 {
                                 subscriptionSession.showAlert(
-                                    String(localized: "subscription.paywallIncomplete \(expectedIds.count)")
+                                    L10n.string("subscription.paywallIncomplete \(expectedIds.count)")
                                 )
                             }
                         }
@@ -658,7 +658,7 @@ struct DefaultPaywall: View {
                 periodLabel: SubscriptionProductDisplay.periodLabel(for: product),
                 subtitle: SubscriptionProductDisplay.subtitle(for: product, among: products),
                 badge: isAnnual
-                    ? String(localized: "subscription.plan.badge.fourteenDayTrial")
+                    ? L10n.string("subscription.plan.badge.fourteenDayTrial")
                     : nil,
                 showsBestValueRibbon: isAnnual,
                 includesTrial: isAnnual ? trialEligible || trialPeriod != nil : (trialPeriod != nil && trialEligible),

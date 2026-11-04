@@ -18,7 +18,7 @@ struct ShoppingListView: View {
         guard displayedWeekPlan != nil else { return [] }
 
         let grouped = Dictionary(grouping: sortedItems, by: \.category)
-        return IngredientCategory.shoppingListOrder.compactMap { category in
+        return IngredientCategory.recipeDisplayOrder.compactMap { category in
             guard let items = grouped[category], !items.isEmpty else { return nil }
             return (category, items)
         }
@@ -30,8 +30,8 @@ struct ShoppingListView: View {
             if lhs.isPurchased != rhs.isPurchased {
                 return !lhs.isPurchased
             }
-            if lhs.category.shoppingListOrderIndex != rhs.category.shoppingListOrderIndex {
-                return lhs.category.shoppingListOrderIndex < rhs.category.shoppingListOrderIndex
+            if lhs.category.recipeDisplayOrderIndex != rhs.category.recipeDisplayOrderIndex {
+                return lhs.category.recipeDisplayOrderIndex < rhs.category.recipeDisplayOrderIndex
             }
             return lhs.displayName.localizedCaseInsensitiveCompare(rhs.displayName) == .orderedAscending
         }
@@ -120,9 +120,9 @@ struct ShoppingListView: View {
     }
 
     private var shareText: String {
-        let header = String(localized: "shopping.shareHeader")
+        let header = L10n.string("shopping.shareHeader")
         let sections = groupedItems.map { section in
-            let title = String(localized: section.category.displayName)
+            let title = L10n.string(String.LocalizationValue("category.\(section.category.rawValue)"))
             let lines = section.items.map { item in
                 L10n.shoppingShareLine(
                     purchased: item.isPurchased,
@@ -210,11 +210,5 @@ struct ShoppingItemRow: View {
         )
         .accessibilityHint("accessibility.togglePurchased")
         .accessibilityAddTraits(.isButton)
-    }
-}
-
-private extension IngredientCategory {
-    var shoppingListOrderIndex: Int {
-        Self.shoppingListOrder.firstIndex(of: self) ?? Int.max
     }
 }

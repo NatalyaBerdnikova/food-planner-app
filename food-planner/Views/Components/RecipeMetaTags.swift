@@ -52,7 +52,7 @@ struct RecipeCookTimeTag: View {
 
     var body: some View {
         if minutes > 0 {
-            let text = String(localized: "recipe.cookTime \(minutes)")
+            let text = L10n.string("recipe.cookTime \(minutes)")
             if usesMaterial {
                 RecipeMaterialMetaTag(systemImage: "clock", text: text)
             } else {
@@ -67,7 +67,7 @@ struct RecipeCaloriesTag: View {
     var usesMaterial: Bool = false
 
     private var text: String {
-        String(localized: "nutrition.kcalShort \(Int(calories.rounded()))")
+        L10n.string("nutrition.kcalShort \(Int(calories.rounded()))")
     }
 
     var body: some View {

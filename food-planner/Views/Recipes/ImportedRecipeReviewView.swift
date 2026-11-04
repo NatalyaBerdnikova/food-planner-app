@@ -37,7 +37,7 @@ struct ImportedRecipeReviewView: View {
         _imageData = State(initialValue: draft.imageData)
         _sourceURL = State(initialValue: draft.sourceURL ?? "")
         _sourceDescription = State(initialValue: draft.sourceDescription ?? "")
-        _draftIngredients = State(initialValue: draft.ingredients)
+        _draftIngredients = State(initialValue: draft.ingredients.sortedForRecipeDisplay())
         _unresolvedIngredients = State(initialValue: draft.unresolvedIngredients)
     }
 
@@ -147,6 +147,7 @@ struct ImportedRecipeReviewView: View {
                         draftIngredients.append(
                             DraftIngredient(product: product, quantity: 100, unit: .gram)
                         )
+                        draftIngredients.sortForRecipeDisplay()
                         scrollIngredientSearchToTop(proxy)
                     }
                     .id(ScrollAnchor.ingredientSearch)
@@ -232,6 +233,7 @@ struct ImportedRecipeReviewView: View {
                     initialUnit: item.suggestedUnit
                 ) { draft in
                     draftIngredients.append(draft)
+                    draftIngredients.sortForRecipeDisplay()
                     unresolvedIngredients.removeAll { $0.id == item.id }
                 }
             }

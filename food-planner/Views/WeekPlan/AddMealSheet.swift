@@ -13,8 +13,8 @@ struct AddMealSheet: View {
     @State private var filterTab: RecipeFilterTab = .all
     @State private var showFavoritesOnly = false
     @State private var showMineOnly = false
-    @State private var selectedRecipeIDs: Set<PersistentIdentifier>
-    @State private var pinnedSelectedIDs: Set<PersistentIdentifier>
+    @State private var selectedKeys: Set<String>
+    @State private var pinnedSelectedKeys: Set<String>
     @State private var searchText = ""
 
     private let columns = [
@@ -31,11 +31,13 @@ struct AddMealSheet: View {
         self.targetMealType = preferredMealType
         self.onSave = onSave
 
-        let existingIDs = Set(
-            dayPlan.meals(for: preferredMealType).compactMap(\.recipe?.persistentModelID)
+        let existingKeys = Set(
+            dayPlan.meals(for: preferredMealType).compactMap { meal in
+                meal.recipe.flatMap(Self.selectionKey(for:))
+            }
         )
-        _selectedRecipeIDs = State(initialValue: existingIDs)
-        _pinnedSelectedIDs = State(initialValue: existingIDs)
+        _selectedKeys = State(initialValue: existingKeys)
+        _pinnedSelectedKeys = State(initialValue: existingKeys)
     }
 
     private var navigationTitle: LocalizedStringResource {
@@ -45,8 +47,8 @@ struct AddMealSheet: View {
     private var emptyStateHint: String {
         let hasFilters = !searchText.isEmpty || showFavoritesOnly || showMineOnly || filterTab != .all
         return hasFilters
-            ? String(localized: "search.noResults.hint")
-            : String(localized: "empty.recipes.hint")
+            ? L10n.string("search.noResults.hint")
+            : L10n.string("empty.recipes.hint")
     }
 
     private var favoriteIds: Set<String> {
@@ -86,8 +88,12 @@ struct AddMealSheet: View {
     }
 
     private func pinnedFirst(_ recipes: [Recipe]) -> [Recipe] {
-        let pinned = recipes.filter { pinnedSelectedIDs.contains($0.persistentModelID) }
-        let rest = recipes.filter { !pinnedSelectedIDs.contains($0.persistentModelID) }
+        let pinned = recipes.filter { recipe in
+            selectionKey(for: recipe).map(pinnedSelectedKeys.contains) ?? false
+        }
+        let rest = recipes.filter { recipe in
+            !(selectionKey(for: recipe).map(pinnedSelectedKeys.contains) ?? false)
+        }
         return pinned + rest
     }
 
@@ -121,7 +127,7 @@ struct AddMealSheet: View {
                         )
                     }
                     .padding(AppTheme.contentPadding)
-                    .padding(.bottom, selectedRecipeIDs.isEmpty ? 0 : 56)
+                    .padding(.bottom, selectedKeys.isEmpty ? 0 : 56)
                 }
             }
             .background(AppTheme.canvas)
@@ -185,8 +191,8 @@ struct AddMealSheet: View {
 
     @ViewBuilder
     private var selectedCountTag: some View {
-        if !selectedRecipeIDs.isEmpty {
-            Text("addMeal.selectedCount \(selectedRecipeIDs.count)")
+        if !selectedKeys.isEmpty {
+            Text("addMeal.selectedCount \(selectedKeys.count)")
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.primary)
                 .padding(.horizontal, 14)
@@ -196,7 +202,7 @@ struct AddMealSheet: View {
                 .padding(.leading, AppTheme.contentPadding)
                 .padding(.bottom, 16)
                 .transition(.move(edge: .bottom).combined(with: .opacity))
-                .motionSafeAnimation(.easeInOut(duration: 0.2), value: selectedRecipeIDs.count)
+                .motionSafeAnimation(.easeInOut(duration: 0.2), value: selectedKeys.count)
         }
     }
 
@@ -237,14 +243,14 @@ struct AddMealSheet: View {
         if includesOuterPadding {
             grid
                 .padding(AppTheme.contentPadding)
-                .padding(.bottom, selectedRecipeIDs.isEmpty ? 0 : 56)
+                .padding(.bottom, selectedKeys.isEmpty ? 0 : 56)
         } else {
             grid
         }
     }
 
     private func selectableRecipeCard(_ recipe: Recipe) -> some View {
-        let isSelected = selectedRecipeIDs.contains(recipe.persistentModelID)
+        let isSelected = selectionKey(for: recipe).map(selectedKeys.contains) ?? false
         return Button {
             toggleSelection(for: recipe)
         } label: {
@@ -283,11 +289,11 @@ struct AddMealSheet: View {
     }
 
     private func toggleSelection(for recipe: Recipe) {
-        let id = recipe.persistentModelID
-        if selectedRecipeIDs.contains(id) {
-            selectedRecipeIDs.remove(id)
+        guard let key = selectionKey(for: recipe) else { return }
+        if selectedKeys.contains(key) {
+            selectedKeys.remove(key)
         } else {
-            selectedRecipeIDs.insert(id)
+            selectedKeys.insert(key)
         }
     }
 
@@ -295,23 +301,29 @@ struct AddMealSheet: View {
         let existing = dayPlan.meals.filter { $0.mealType == targetMealType }
 
         for meal in existing {
-            guard let recipeID = meal.recipe?.persistentModelID else {
-                modelContext.delete(meal)
-                continue
-            }
-            if !selectedRecipeIDs.contains(recipeID) {
+            guard let recipe = meal.recipe,
+                  let key = selectionKey(for: recipe),
+                  selectedKeys.contains(key) else {
                 modelContext.delete(meal)
                 dayPlan.meals.removeAll { $0.persistentModelID == meal.persistentModelID }
+                continue
             }
         }
 
-        let remainingRecipeIDs = Set(
-            dayPlan.meals(for: targetMealType).compactMap(\.recipe?.persistentModelID)
+        let remainingKeys = Set(
+            dayPlan.meals(for: targetMealType).compactMap { meal in
+                meal.recipe.flatMap(Self.selectionKey(for:))
+            }
         )
 
-        let selectedRecipes = recipes.filter { selectedRecipeIDs.contains($0.persistentModelID) }
-        for recipe in selectedRecipes {
-            guard !remainingRecipeIDs.contains(recipe.persistentModelID) else { continue }
+        var libraryByKey: [String: Recipe] = [:]
+        for recipe in RecipeCollections.libraryRecipes(from: recipes) {
+            guard let key = selectionKey(for: recipe) else { continue }
+            libraryByKey[key] = recipe
+        }
+
+        for key in selectedKeys where !remainingKeys.contains(key) {
+            guard let recipe = libraryByKey[key] else { continue }
             let meal = Meal(
                 mealType: targetMealType,
                 date: dayPlan.date,
@@ -330,5 +342,19 @@ struct AddMealSheet: View {
         AppAnalytics.logPlanEdit(editType: "add")
         onSave()
         dismiss()
+    }
+
+    private func selectionKey(for recipe: Recipe) -> String? {
+        Self.selectionKey(for: recipe)
+    }
+
+    private static func selectionKey(for recipe: Recipe) -> String? {
+        if let catalogId = recipe.catalogRecipeId, !catalogId.isEmpty {
+            return "catalog:\(catalogId)"
+        }
+        if let userId = recipe.userRecipeId, !userId.isEmpty {
+            return "user:\(userId)"
+        }
+        return "persistent:\(String(describing: recipe.persistentModelID))"
     }
 }

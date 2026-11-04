@@ -37,7 +37,7 @@ struct MicronutrientProgressRow: View {
     }
 
     private var valueLabel: String {
-        let unit = String(localized: String.LocalizationValue(kind.unitLocalizationKey))
+        let unit = L10n.string(String.LocalizationValue(kind.unitLocalizationKey))
         let percent = target > 0 ? Int((actual / target * 100).rounded()) : 0
         return "\(formatted(actual)) / \(formatted(target)) \(unit) · \(percent)%"
     }

@@ -49,11 +49,11 @@ enum SubscriptionProductDisplay {
     static func title(for product: AdaptyPaywallProduct) -> String {
         switch kind(for: product) {
         case .annual:
-            return String(localized: "subscription.period.annual")
+            return L10n.string("subscription.period.annual")
         case .monthly:
-            return String(localized: "subscription.period.monthly")
+            return L10n.string("subscription.period.monthly")
         case .lifetime:
-            return String(localized: "subscription.period.lifetime")
+            return L10n.string("subscription.period.lifetime")
         case .other:
             break
         }
@@ -61,9 +61,9 @@ enum SubscriptionProductDisplay {
         if let period = product.subscriptionPeriod {
             switch period.unit {
             case .week:
-                return String(localized: "subscription.period.weekly")
+                return L10n.string("subscription.period.weekly")
             case .day where period.numberOfUnits == 7:
-                return String(localized: "subscription.period.weekly")
+                return L10n.string("subscription.period.weekly")
             default:
                 break
             }
@@ -79,11 +79,11 @@ enum SubscriptionProductDisplay {
     static func periodLabel(for product: AdaptyPaywallProduct) -> String? {
         switch kind(for: product) {
         case .monthly:
-            return String(localized: "subscription.plan.period.month")
+            return L10n.string("subscription.plan.period.month")
         case .annual:
-            return String(localized: "subscription.plan.period.year")
+            return L10n.string("subscription.plan.period.year")
         case .lifetime:
-            return String(localized: "subscription.plan.period.once")
+            return L10n.string("subscription.plan.period.once")
         case .other:
             return nil
         }
@@ -95,12 +95,12 @@ enum SubscriptionProductDisplay {
     ) -> String? {
         switch kind(for: product) {
         case .monthly:
-            return String(localized: "subscription.plan.monthly.subtitle")
+            return L10n.string("subscription.plan.monthly.subtitle")
         case .annual:
             return annualSavingsSubtitle(among: products)
-                ?? String(localized: "subscription.plan.annual.subtitle")
+                ?? L10n.string("subscription.plan.annual.subtitle")
         case .lifetime:
-            return String(localized: "subscription.plan.lifetime.subtitle")
+            return L10n.string("subscription.plan.lifetime.subtitle")
         case .other:
             return nil
         }
@@ -132,7 +132,7 @@ enum SubscriptionProductDisplay {
 
         let perMonth = annualStore.price / 12
         let perMonthText = perMonth.formatted(annualStore.priceFormatStyle)
-        return String(localized: "subscription.plan.annual.savings \(percent) \(perMonthText)")
+        return L10n.string("subscription.plan.annual.savings \(percent) \(perMonthText)")
     }
 
     static func periodDescription(dayCount: Int) -> String {
@@ -140,15 +140,15 @@ enum SubscriptionProductDisplay {
     }
 
     static func trialBadge(periodDescription: String) -> String {
-        String(localized: "subscription.plan.badge.trial \(periodDescription)")
+        L10n.string("subscription.plan.badge.trial \(periodDescription)")
     }
 
     static func trialHint(periodDescription: String, priceLine: String) -> String {
-        String(localized: "subscription.cta.trialHint \(periodDescription) \(priceLine)")
+        L10n.string("subscription.cta.trialHint \(periodDescription) \(priceLine)")
     }
 
     static func priceHint(periodDescription: String) -> String {
-        String(localized: "home.proOffer.priceHint \(periodDescription)")
+        L10n.string("home.proOffer.priceHint \(periodDescription)")
     }
 
     static func trialDescription(for product: AdaptyPaywallProduct) -> String? {

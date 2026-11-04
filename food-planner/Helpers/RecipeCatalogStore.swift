@@ -41,20 +41,16 @@ enum RecipeCatalogStore {
     /// Импортирует отсутствующие рецепты из bundle и пользовательского файла в SwiftData.
     @MainActor
     static func seedIfNeeded(in context: ModelContext) async {
-        migrateLegacyCatalogIds(in: context)
         await importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
         await importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
-        syncCatalogMetadata(in: context)
         LocalPersistence.save(context)
     }
 
     /// Синхронный вариант для превью Xcode.
     @MainActor
     static func seedIfNeeded(in context: ModelContext) {
-        migrateLegacyCatalogIds(in: context)
         importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
         importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
-        syncCatalogMetadata(in: context)
         LocalPersistence.save(context)
     }
 
@@ -304,88 +300,6 @@ enum RecipeCatalogStore {
             translations: translations,
             ingredients: ingredients
         )
-    }
-
-    @MainActor
-    private static func migrateLegacyCatalogIds(in context: ModelContext) {
-        let recipes = (try? context.fetch(FetchDescriptor<Recipe>())) ?? []
-        var canonicalSeedById: [String: Recipe] = [:]
-
-        for recipe in recipes {
-            guard let oldId = recipe.catalogRecipeId else { continue }
-            let canonicalId = FoodCatalogAliases.canonicalRecipeId(for: oldId)
-            if canonicalId != oldId {
-                recipe.catalogRecipeId = canonicalId
-            }
-            if recipe.meals.isEmpty {
-                if let existingSeed = canonicalSeedById[canonicalId] {
-                    if existingSeed.persistentModelID != recipe.persistentModelID {
-                        context.delete(recipe)
-                    }
-                } else {
-                    canonicalSeedById[canonicalId] = recipe
-                }
-            }
-        }
-
-        let settings = AppSettingsService.settings(in: context)
-        let migratedFavorites = Set(settings.favoriteCatalogRecipeIds.map(FoodCatalogAliases.canonicalRecipeId(for:))).sorted()
-        if settings.favoriteCatalogRecipeIds != migratedFavorites {
-            settings.favoriteCatalogRecipeIds = migratedFavorites
-        }
-
-        let migratedHidden = Set(settings.hiddenCatalogRecipeIds.map(FoodCatalogAliases.canonicalRecipeId(for:))).sorted()
-        if settings.hiddenCatalogRecipeIds != migratedHidden {
-            settings.hiddenCatalogRecipeIds = migratedHidden
-        }
-
-        if var snapshot = MealPlanGenerationPending.previewSnapshot {
-            var changed = false
-            for idx in snapshot.slots.indices {
-                let oldId = snapshot.slots[idx].catalogRecipeId
-                let canonicalId = FoodCatalogAliases.canonicalRecipeId(for: oldId)
-                if canonicalId != oldId {
-                    snapshot.slots[idx].catalogRecipeId = canonicalId
-                    changed = true
-                }
-            }
-            if changed {
-                MealPlanGenerationPending.previewSnapshot = snapshot
-            }
-        }
-    }
-
-    @MainActor
-    private static func syncCatalogMetadata(in context: ModelContext) {
-        guard let url = bundleCatalogURL(),
-              FileManager.default.fileExists(atPath: url.path),
-              let data = try? Data(contentsOf: url),
-              let catalog = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
-            return
-        }
-
-        var entriesById: [String: RecipeEntry] = [:]
-        for item in catalog.recipes {
-            let id = resolvedEntryId(for: item)
-            guard !id.isEmpty else { continue }
-            entriesById[id] = item
-        }
-
-        let descriptor = FetchDescriptor<Recipe>()
-        guard let all = try? context.fetch(descriptor) else { return }
-        for recipe in all {
-            guard let catalogId = recipe.catalogRecipeId,
-                  let entry = entriesById[catalogId] else {
-                continue
-            }
-            if let minutes = entry.cookTimeMinutes, minutes > 0, recipe.cookTimeMinutes != minutes {
-                recipe.cookTimeMinutes = minutes
-            }
-            let tags = mealTypeTags(from: entry)
-            if !tags.isEmpty, recipe.mealTypeTags != tags {
-                recipe.mealTypeTags = tags
-            }
-        }
     }
 
     private static func loadExistingUserEntriesById() -> [String: RecipeEntry] {

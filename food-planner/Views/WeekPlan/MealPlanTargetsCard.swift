@@ -33,15 +33,15 @@ struct MealPlanTargetsCard: View {
                 )
                 parameterChip(
                     title: "nutrition.macro.protein.full",
-                    value: "\(Int(target.protein.rounded()))g"
+                    value: "\(Int(target.protein.rounded()))\(gramUnit)"
                 )
                 parameterChip(
                     title: "nutrition.macro.fat.full",
-                    value: "\(Int(target.fat.rounded()))g"
+                    value: "\(Int(target.fat.rounded()))\(gramUnit)"
                 )
                 parameterChip(
                     title: "nutrition.macro.carbs.full",
-                    value: "\(Int(target.carbs.rounded()))g"
+                    value: "\(Int(target.carbs.rounded()))\(gramUnit)"
                 )
             }
 
@@ -68,6 +68,10 @@ struct MealPlanTargetsCard: View {
                 }
         }
         .accessibilityElement(children: .combine)
+    }
+
+    private var gramUnit: String {
+        L10n.string("nutrition.unit.g")
     }
 
     private func parameterChip(title: LocalizedStringKey, value: String) -> some View {

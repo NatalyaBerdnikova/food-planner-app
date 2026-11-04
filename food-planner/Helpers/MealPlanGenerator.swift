@@ -23,12 +23,18 @@ enum WeekPlanGenerationStage: Int, CaseIterable, Identifiable {
 
 @MainActor
 enum MealPlanGenerator {
-    /// Soft band: keep natural portions when the day already lands here.
-    private static let softMinCoverage = 0.88
-    private static let softMaxCoverage = 1.08
-    private static let poolLimit = 14
-    private static let maxItemsPerDay = 7
-    private static let topCombinationCount = 10
+    /// Допуск ±20% по каждому макросу за день (1 порция рецепта как есть).
+    private static let softMinCoverage = 0.80
+    private static let softMaxCoverage = 1.20
+    /// Допуск ±10% по сумме макросов за всю неделю относительно цели × число дней.
+    private static let weekSoftMinCoverage = 0.90
+    private static let weekSoftMaxCoverage = 1.10
+    private static let maxRecipeOccurrencesPerWeek = 3
+    private static let poolLimit = 16
+    private static let maxItemsPerDay = 5
+    private static let topCombinationCount = 12
+    private static let weekRebalanceAttempts = 8
+    private static let combinationYieldStride = 250
 
     struct PlannedItem {
         let catalogRecipeId: String
@@ -41,19 +47,53 @@ enum MealPlanGenerator {
         let items: [PlannedItem]
     }
 
+    fileprivate struct MacroCache {
+        private let byCatalogId: [String: DailyNutrition]
+
+        init(recipes: [Recipe]) {
+            var map: [String: DailyNutrition] = [:]
+            map.reserveCapacity(recipes.count)
+            for recipe in recipes {
+                guard let id = recipe.catalogRecipeId else { continue }
+                map[id] = NutritionCalculator.nutritionPerServing(for: recipe)
+            }
+            byCatalogId = map
+        }
+
+        func nutrition(for recipe: Recipe) -> DailyNutrition {
+            guard let id = recipe.catalogRecipeId else {
+                return NutritionCalculator.nutritionPerServing(for: recipe)
+            }
+            return byCatalogId[id] ?? .zero
+        }
+
+        func sum(_ recipes: [Recipe]) -> DailyNutrition {
+            recipes.reduce(into: DailyNutrition.zero) { partial, recipe in
+                let nutrition = self.nutrition(for: recipe)
+                partial.calories += nutrition.calories
+                partial.protein += nutrition.protein
+                partial.fat += nutrition.fat
+                partial.carbs += nutrition.carbs
+            }
+        }
+    }
+
     static func makePreviewDayPlan(
         in context: ModelContext,
         matching target: DailyNutrition,
         micronutrientFocus: [MicronutrientKind]
-    ) -> DayPlan? {
+    ) async -> DayPlan? {
         _ = micronutrientFocus
-        FoodCatalogSeeder.seedIfNeeded(in: context)
-        RecipeCatalogStore.seedIfNeeded(in: context)
+        await FoodCatalogSeeder.seedIfNeeded(in: context)
+        await RecipeCatalogStore.seedIfNeeded(in: context)
 
-        guard let blueprint = blueprint(
+        let candidates = candidateRecipes(in: context)
+        let macros = MacroCache(recipes: candidates)
+        guard let blueprint = await blueprint(
             matching: target,
-            candidates: candidateRecipes(in: context),
-            avoiding: []
+            candidates: candidates,
+            usageCounts: [:],
+            macros: macros
         ) else { return nil }
 
         let today = Calendar.current.startOfDay(for: .now)
@@ -72,21 +112,43 @@ enum MealPlanGenerator {
     static func blueprint(
         matching target: DailyNutrition,
         candidates: [Recipe],
-        avoiding avoidIds: Set<String>,
+        usageCounts: [String: Int],
         pinned: DayBlueprint? = nil,
         varietySalt: Int = 0
-    ) -> DayBlueprint? {
+    ) async -> DayBlueprint? {
+        await blueprint(
+            matching: target,
+            candidates: candidates,
+            usageCounts: usageCounts,
+            macros: MacroCache(recipes: candidates),
+            pinned: pinned,
+            varietySalt: varietySalt
+        )
+    }
+
+    private static func blueprint(
+        matching target: DailyNutrition,
+        candidates: [Recipe],
+        usageCounts: [String: Int],
+        macros: MacroCache,
+        pinned: DayBlueprint? = nil,
+        varietySalt: Int = 0
+    ) async -> DayBlueprint? {
         if let pinned, !pinned.items.isEmpty {
             return pinned
         }
 
-        let available = candidates.filter { recipe in
-            guard let id = recipe.catalogRecipeId else { return false }
-            return !avoidIds.contains(id)
-        }
+        let available = availableRecipes(from: candidates, usageCounts: usageCounts)
         let poolSource = available.isEmpty ? candidates : available
-        return buildDay(from: poolSource, matching: target, varietySalt: varietySalt)
-            ?? buildDay(from: candidates, matching: target, varietySalt: varietySalt &+ 17)
+        if let day = await buildDay(from: poolSource, matching: target, macros: macros, varietySalt: varietySalt) {
+            return day
+        }
+        return await buildDay(
+            from: candidates,
+            matching: target,
+            macros: macros,
+            varietySalt: varietySalt &+ 17
+        )
     }
 
     static func blueprint(from snapshot: MealPlanDaySnapshot, candidates: [Recipe]) -> DayBlueprint? {
@@ -94,17 +156,16 @@ enum MealPlanGenerator {
         var items: [PlannedItem] = []
         var used = Set<String>()
         for slot in snapshot.slots {
-            let canonicalId = FoodCatalogAliases.canonicalRecipeId(for: slot.catalogRecipeId)
             guard let mealType = slot.mealType,
-                  let source = byId[canonicalId],
-                  used.insert(canonicalId).inserted
+                  let source = byId[slot.catalogRecipeId],
+                  used.insert(slot.catalogRecipeId).inserted
             else { continue }
             items.append(
                 PlannedItem(
-                    catalogRecipeId: canonicalId,
+                    catalogRecipeId: slot.catalogRecipeId,
                     source: source,
                     mealType: mealType,
-                    scale: slot.scale
+                    scale: 1
                 )
             )
         }
@@ -118,7 +179,7 @@ enum MealPlanGenerator {
                 .init(
                     mealTypeRaw: $0.mealType.rawValue,
                     catalogRecipeId: $0.catalogRecipeId,
-                    scale: $0.scale
+                    scale: 1
                 )
             },
             createdAt: .now
@@ -138,17 +199,20 @@ enum MealPlanGenerator {
         onStage(.pickingRecipes)
         await FoodCatalogSeeder.seedIfNeeded(in: context)
         await RecipeCatalogStore.seedIfNeeded(in: context)
-        try? await Task.sleep(for: .milliseconds(350))
+        await Task.yield()
 
         let candidates = candidateRecipes(in: context)
+        let macros = MacroCache(recipes: candidates)
+        await Task.yield()
+
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: .now)
         let days = weekPlan.dayPlans.sorted { $0.date < $1.date }
 
         onStage(.fillingDays)
-        var usedAcrossWeek = Set<String>()
+        var usageCounts: [String: Int] = [:]
         if let pinnedToday {
-            usedAcrossWeek.formUnion(pinnedToday.items.map(\.catalogRecipeId))
+            addUsage(&usageCounts, ids: pinnedToday.items.map(\.catalogRecipeId))
         }
 
         for (dayIndex, dayPlan) in days.enumerated() {
@@ -157,32 +221,41 @@ enum MealPlanGenerator {
             let hasMeals = !dayPlan.meals.isEmpty
 
             if !replaceExisting && hasMeals && !(isToday && pinnedToday != nil) {
-                usedAcrossWeek.formUnion(catalogIds(in: dayPlan))
+                addUsage(&usageCounts, ids: Array(catalogIds(in: dayPlan)))
                 continue
             }
 
             let pinned = isToday ? pinnedToday : nil
             let daySalt = dayIndex &* 31 &+ calendar.component(.day, from: dayPlan.date)
-            guard let dayBlueprint = blueprint(
+            guard let dayBlueprint = await blueprint(
                 matching: target,
                 candidates: candidates,
-                avoiding: usedAcrossWeek,
+                usageCounts: usageCounts,
+                macros: macros,
                 pinned: pinned,
                 varietySalt: daySalt
             ) else { continue }
 
             apply(dayBlueprint, to: dayPlan, in: context, clearExisting: true)
-            usedAcrossWeek.formUnion(dayBlueprint.items.map(\.catalogRecipeId))
-            try? await Task.sleep(for: .milliseconds(120))
+            addUsage(&usageCounts, ids: dayBlueprint.items.map(\.catalogRecipeId))
+            await Task.yield()
         }
 
         onStage(.checkingMacros)
-        try? await Task.sleep(for: .milliseconds(400))
+        await rebalanceWeekIfNeeded(
+            weekPlan: weekPlan,
+            matching: target,
+            candidates: candidates,
+            macros: macros,
+            pinnedToday: pinnedToday,
+            in: context
+        )
+        await Task.yield()
 
         onStage(.saving)
         WeekPlanService.syncShoppingItems(for: weekPlan, in: context)
         LocalPersistence.save(context)
-        try? await Task.sleep(for: .milliseconds(250))
+        await Task.yield()
         onStage(.ready)
     }
 
@@ -198,11 +271,10 @@ enum MealPlanGenerator {
 
         var meals = dayPlan.meals
         for item in blueprint.items {
-            let clone = cloneRecipe(item.source, factor: item.scale, in: context)
             let meal = Meal(
                 mealType: item.mealType,
                 date: dayPlan.date,
-                recipe: clone,
+                recipe: item.source,
                 dayPlan: dayPlan
             )
             context.insert(meal)
@@ -212,13 +284,8 @@ enum MealPlanGenerator {
     }
 
     static func removeMeals(from dayPlan: DayPlan, in context: ModelContext) {
-        let meals = dayPlan.meals
-        for meal in meals {
-            let recipe = meal.recipe
+        for meal in dayPlan.meals {
             context.delete(meal)
-            if let recipe, shouldDeletePlanClone(recipe, in: context) {
-                context.delete(recipe)
-            }
         }
         dayPlan.meals = []
     }
@@ -227,11 +294,128 @@ enum MealPlanGenerator {
         Set(dayPlan.meals.compactMap(\.recipe?.catalogRecipeId))
     }
 
-    private static func shouldDeletePlanClone(_ recipe: Recipe, in context: ModelContext) -> Bool {
-        guard let catalogId = recipe.catalogRecipeId else { return false }
-        let all = (try? context.fetch(FetchDescriptor<Recipe>())) ?? []
-        return all.contains {
-            $0.persistentModelID != recipe.persistentModelID && $0.catalogRecipeId == catalogId
+    private static func catalogIdList(in dayPlan: DayPlan) -> [String] {
+        dayPlan.meals.compactMap(\.recipe?.catalogRecipeId)
+    }
+
+    private static func addUsage(_ counts: inout [String: Int], ids: [String]) {
+        for id in ids {
+            counts[id, default: 0] += 1
+        }
+    }
+
+    private static func removeUsage(_ counts: inout [String: Int], ids: [String]) {
+        for id in ids {
+            guard let current = counts[id] else { continue }
+            if current <= 1 {
+                counts.removeValue(forKey: id)
+            } else {
+                counts[id] = current - 1
+            }
+        }
+    }
+
+    private static func availableRecipes(
+        from candidates: [Recipe],
+        usageCounts: [String: Int]
+    ) -> [Recipe] {
+        candidates.filter { recipe in
+            guard let id = recipe.catalogRecipeId else { return false }
+            return usageCounts[id, default: 0] < maxRecipeOccurrencesPerWeek
+        }
+    }
+
+    private static func weekUsageCounts(in weekPlan: WeekPlan) -> [String: Int] {
+        var counts: [String: Int] = [:]
+        for day in weekPlan.dayPlans {
+            addUsage(&counts, ids: catalogIdList(in: day))
+        }
+        return counts
+    }
+
+    private static func weekMacros(in weekPlan: WeekPlan) -> DailyNutrition {
+        weekPlan.dayPlans.reduce(into: DailyNutrition.zero) { partial, dayPlan in
+            let daily = NutritionCalculator.from(dayPlan: dayPlan)
+            partial.calories += daily.calories
+            partial.protein += daily.protein
+            partial.fat += daily.fat
+            partial.carbs += daily.carbs
+        }
+    }
+
+    private static func isWithinWeekBand(_ actual: DailyNutrition, dailyTarget: DailyNutrition, dayCount: Int) -> Bool {
+        guard dayCount > 0 else { return true }
+        let weekTarget = DailyNutrition(
+            calories: dailyTarget.calories * Double(dayCount),
+            protein: dailyTarget.protein * Double(dayCount),
+            fat: dailyTarget.fat * Double(dayCount),
+            carbs: dailyTarget.carbs * Double(dayCount)
+        )
+        let ratios = [
+            ratio(actual.calories, weekTarget.calories),
+            ratio(actual.protein, weekTarget.protein),
+            ratio(actual.fat, weekTarget.fat),
+            ratio(actual.carbs, weekTarget.carbs),
+        ]
+        return ratios.allSatisfy { $0 >= weekSoftMinCoverage && $0 <= weekSoftMaxCoverage }
+    }
+
+    private static func rebalanceWeekIfNeeded(
+        weekPlan: WeekPlan,
+        matching target: DailyNutrition,
+        candidates: [Recipe],
+        macros: MacroCache,
+        pinnedToday: DayBlueprint?,
+        in context: ModelContext
+    ) async {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: .now)
+        let days = weekPlan.dayPlans.sorted { $0.date < $1.date }
+        guard !days.isEmpty else { return }
+
+        var usageCounts = weekUsageCounts(in: weekPlan)
+
+        for attempt in 0..<weekRebalanceAttempts {
+            if Task.isCancelled { return }
+            let actual = weekMacros(in: weekPlan)
+            if isWithinWeekBand(actual, dailyTarget: target, dayCount: days.count) {
+                return
+            }
+
+            let rebuildCandidates = days.compactMap { dayPlan -> (DayPlan, Double)? in
+                let isToday = calendar.isDate(dayPlan.date, inSameDayAs: today)
+                if isToday, pinnedToday != nil { return nil }
+                guard !dayPlan.meals.isEmpty else { return nil }
+                let dayActual = NutritionCalculator.from(dayPlan: dayPlan)
+                let score = fitness(actual: dayActual, target: target)
+                return (dayPlan, score)
+            }
+            .sorted { $0.1 < $1.1 }
+
+            guard let weakest = rebuildCandidates.first else { return }
+
+            let dayPlan = weakest.0
+            let previousIds = catalogIdList(in: dayPlan)
+            removeUsage(&usageCounts, ids: previousIds)
+
+            let daySalt = attempt &* 47
+                &+ calendar.component(.day, from: dayPlan.date)
+                &+ calendar.component(.month, from: dayPlan.date)
+            guard let replacement = await blueprint(
+                matching: target,
+                candidates: candidates,
+                usageCounts: usageCounts,
+                macros: macros,
+                pinned: nil,
+                varietySalt: daySalt
+            ) else {
+                addUsage(&usageCounts, ids: previousIds)
+                return
+            }
+
+            apply(replacement, to: dayPlan, in: context, clearExisting: true)
+            addUsage(&usageCounts, ids: replacement.items.map(\.catalogRecipeId))
+            await Task.yield()
         }
     }
 
@@ -244,37 +428,57 @@ enum MealPlanGenerator {
     private static func buildDay(
         from candidates: [Recipe],
         matching target: DailyNutrition,
+        macros: MacroCache,
         varietySalt: Int
-    ) -> DayBlueprint? {
+    ) async -> DayBlueprint? {
         guard !candidates.isEmpty, target.calories > 0 else { return nil }
 
-        guard var items = selectCoreThree(from: candidates, matching: target, varietySalt: varietySalt) else {
+        guard var items = await selectCoreThree(
+            from: candidates,
+            matching: target,
+            macros: macros,
+            varietySalt: varietySalt
+        ) else {
             return fallbackDay(from: candidates, matching: target, varietySalt: varietySalt)
         }
 
         var used = Set(items.map(\.catalogRecipeId))
+        ensureRequiredMealTypes(in: &items, from: candidates, used: &used, macros: macros)
 
         while items.count < maxItemsPerDay {
-            let actual = macrosSum(items.map(\.source))
-            let calorieRatio = ratio(actual.calories, target.calories)
-            let proteinRatio = ratio(actual.protein, target.protein)
-            guard calorieRatio < softMinCoverage || proteinRatio < softMinCoverage else { break }
+            let actual = macros.sum(items.map(\.source))
+            guard !isWithinBand(actual, target: target) else { break }
+            guard ratio(actual.calories, target.calories) < softMinCoverage else { break }
 
             let deficitCalories = max(0, target.calories * softMinCoverage - actual.calories)
             guard deficitCalories > 80 else { break }
 
             let mealType = nextMealType(for: items)
-            let rotatedPool = rotated(
-                pool(for: mealType, from: candidates).filter {
-                    guard let id = $0.catalogRecipeId else { return false }
-                    return !used.contains(id)
-                },
-                by: varietySalt &+ items.count
-            )
-            guard let pick = rotatedPool.min(by: {
-                abs(NutritionCalculator.nutritionPerServing(for: $0).calories - deficitCalories)
-                    < abs(NutritionCalculator.nutritionPerServing(for: $1).calories - deficitCalories)
+            let snackPool = pool(
+                for: mealType,
+                from: candidates,
+                targetSlotCalories: deficitCalories,
+                macros: macros
+            ).filter {
+                guard let id = $0.catalogRecipeId else { return false }
+                return !used.contains(id)
+            }
+            guard let pick = snackPool.max(by: {
+                fitness(
+                    actual: macros.sum(items.map(\.source) + [$0]),
+                    target: target
+                ) < fitness(
+                    actual: macros.sum(items.map(\.source) + [$1]),
+                    target: target
+                )
             }), let catalogId = pick.catalogRecipeId else { break }
+
+            let improved = fitness(
+                actual: macros.sum(items.map(\.source) + [pick]),
+                target: target
+            )
+            let current = fitness(actual: actual, target: target)
+            guard improved > current else { break }
 
             used.insert(catalogId)
             items.append(
@@ -287,47 +491,51 @@ enum MealPlanGenerator {
             )
         }
 
-        ensureRequiredMealTypes(in: &items, from: candidates, used: &used, scale: 1)
-
-        let base = macrosSum(items.map(\.source))
-        let scale = naturalScale(baseCalories: base.calories, targetCalories: target.calories)
-        items = items.map {
-            PlannedItem(
-                catalogRecipeId: $0.catalogRecipeId,
-                source: $0.source,
-                mealType: $0.mealType,
-                scale: scale
-            )
-        }
         return DayBlueprint(items: items)
     }
 
     private static func selectCoreThree(
         from candidates: [Recipe],
         matching target: DailyNutrition,
+        macros: MacroCache,
         varietySalt: Int
-    ) -> [PlannedItem]? {
-        let breakfastPool = rotated(pool(for: .breakfast, from: candidates), by: varietySalt)
-        let lunchPool = rotated(pool(for: .lunch, from: candidates), by: varietySalt &+ 3)
-        let dinnerPool = rotated(pool(for: .dinner, from: candidates), by: varietySalt &+ 7)
+    ) async -> [PlannedItem]? {
+        let slotCalories = target.calories / 3
+        let breakfastPool = rotated(
+            pool(for: .breakfast, from: candidates, targetSlotCalories: slotCalories, macros: macros),
+            by: varietySalt
+        )
+        let lunchPool = rotated(
+            pool(for: .lunch, from: candidates, targetSlotCalories: slotCalories, macros: macros),
+            by: varietySalt &+ 3
+        )
+        let dinnerPool = rotated(
+            pool(for: .dinner, from: candidates, targetSlotCalories: slotCalories, macros: macros),
+            by: varietySalt &+ 7
+        )
 
-        var ranked: [(sources: [Recipe], scale: Double, score: Double)] = []
+        var ranked: [(sources: [Recipe], score: Double)] = []
+        var combinationsChecked = 0
 
         for breakfast in breakfastPool {
             for lunch in lunchPool {
                 for dinner in dinnerPool {
+                    combinationsChecked += 1
+                    if combinationsChecked.isMultiple(of: combinationYieldStride) {
+                        await Task.yield()
+                        if Task.isCancelled { return nil }
+                    }
+
                     guard let bId = breakfast.catalogRecipeId,
                           let lId = lunch.catalogRecipeId,
                           let dId = dinner.catalogRecipeId
                     else { continue }
                     guard Set([bId, lId, dId]).count == 3 else { continue }
 
-                    let base = macrosSum([breakfast, lunch, dinner])
+                    let base = macros.sum([breakfast, lunch, dinner])
                     guard base.calories > 0 else { continue }
-                    let scale = naturalScale(baseCalories: base.calories, targetCalories: target.calories)
-                    let scaled = scaleMacros(base, by: scale)
-                    let score = fitness(actual: scaled, target: target, scale: scale)
-                    ranked.append(([breakfast, lunch, dinner], scale, score))
+                    let score = fitness(actual: base, target: target)
+                    ranked.append(([breakfast, lunch, dinner], score))
                 }
             }
         }
@@ -344,7 +552,7 @@ enum MealPlanGenerator {
                 catalogRecipeId: id,
                 source: source,
                 mealType: type,
-                scale: pick.scale
+                scale: 1
             )
         }
     }
@@ -357,12 +565,10 @@ enum MealPlanGenerator {
         let rotatedCandidates = rotated(candidates, by: varietySalt)
         let picks = Array(rotatedCandidates.prefix(3))
         guard picks.count == 3 else { return nil }
-        let base = macrosSum(picks)
-        let scale = naturalScale(baseCalories: base.calories, targetCalories: target.calories)
         let types: [MealType] = [.breakfast, .lunch, .dinner]
         let items = zip(picks, types).compactMap { source, type -> PlannedItem? in
             guard let id = source.catalogRecipeId else { return nil }
-            return PlannedItem(catalogRecipeId: id, source: source, mealType: type, scale: scale)
+            return PlannedItem(catalogRecipeId: id, source: source, mealType: type, scale: 1)
         }
         return items.count == 3 ? DayBlueprint(items: items) : nil
     }
@@ -381,11 +587,20 @@ enum MealPlanGenerator {
         in items: inout [PlannedItem],
         from candidates: [Recipe],
         used: inout Set<String>,
-        scale: Double
+        macros: MacroCache
     ) {
+        let slotCalories = max(
+            macros.sum(items.map(\.source)).calories / 3,
+            300
+        )
         for required in [MealType.breakfast, .lunch, .dinner] {
             guard !items.contains(where: { $0.mealType == required }) else { continue }
-            guard let pick = pool(for: required, from: candidates).first(where: {
+            guard let pick = pool(
+                for: required,
+                from: candidates,
+                targetSlotCalories: slotCalories,
+                macros: macros
+            ).first(where: {
                 guard let id = $0.catalogRecipeId else { return false }
                 return !used.contains(id)
             }), let id = pick.catalogRecipeId else { continue }
@@ -395,26 +610,37 @@ enum MealPlanGenerator {
                     catalogRecipeId: id,
                     source: pick,
                     mealType: required,
-                    scale: scale
+                    scale: 1
                 )
             )
         }
     }
 
-    private static func pool(for mealType: MealType, from candidates: [Recipe]) -> [Recipe] {
+    private static func pool(
+        for mealType: MealType,
+        from candidates: [Recipe],
+        targetSlotCalories: Double,
+        macros: MacroCache
+    ) -> [Recipe] {
         let tagged = candidates.filter {
             $0.mealTypeTags.isEmpty || $0.mealTypeTags.contains(mealType)
         }
         let source = tagged.isEmpty ? candidates : tagged
+        let slotTarget = max(targetSlotCalories, 120)
         return Array(
             source
                 .sorted { lhs, rhs in
-                    let left = NutritionCalculator.nutritionPerServing(for: lhs)
-                    let right = NutritionCalculator.nutritionPerServing(for: rhs)
-                    let leftDensity = left.protein / max(left.calories, 1)
-                    let rightDensity = right.protein / max(right.calories, 1)
-                    if leftDensity != rightDensity {
-                        return leftDensity > rightDensity
+                    let left = macros.nutrition(for: lhs)
+                    let right = macros.nutrition(for: rhs)
+                    let leftCalFit = abs(left.calories - slotTarget)
+                    let rightCalFit = abs(right.calories - slotTarget)
+                    if abs(leftCalFit - rightCalFit) > 40 {
+                        return leftCalFit < rightCalFit
+                    }
+                    let leftProteinFit = abs(ratio(left.protein, slotTarget * 0.045) - 1)
+                    let rightProteinFit = abs(ratio(right.protein, slotTarget * 0.045) - 1)
+                    if abs(leftProteinFit - rightProteinFit) > 0.15 {
+                        return leftProteinFit < rightProteinFit
                     }
                     return left.calories > right.calories
                 }
@@ -422,43 +648,17 @@ enum MealPlanGenerator {
         )
     }
 
-    private static func macrosSum(_ recipes: [Recipe]) -> DailyNutrition {
-        recipes.reduce(into: DailyNutrition.zero) { partial, recipe in
-            let nutrition = NutritionCalculator.nutritionPerServing(for: recipe)
-            partial.calories += nutrition.calories
-            partial.protein += nutrition.protein
-            partial.fat += nutrition.fat
-            partial.carbs += nutrition.carbs
-        }
+    private static func isWithinBand(_ actual: DailyNutrition, target: DailyNutrition) -> Bool {
+        let ratios = [
+            ratio(actual.calories, target.calories),
+            ratio(actual.protein, target.protein),
+            ratio(actual.fat, target.fat),
+            ratio(actual.carbs, target.carbs),
+        ]
+        return ratios.allSatisfy { $0 >= softMinCoverage && $0 <= softMaxCoverage }
     }
 
-    private static func scaleMacros(_ nutrition: DailyNutrition, by factor: Double) -> DailyNutrition {
-        DailyNutrition(
-            calories: nutrition.calories * factor,
-            protein: nutrition.protein * factor,
-            fat: nutrition.fat * factor,
-            carbs: nutrition.carbs * factor
-        )
-    }
-
-    private static func clampedScale(_ scale: Double) -> Double {
-        min(max(scale, 0.7), 1.35)
-    }
-
-    /// Keep 1.0 when already in band; otherwise only nudge to the nearest band edge.
-    private static func naturalScale(baseCalories: Double, targetCalories: Double) -> Double {
-        guard baseCalories > 0, targetCalories > 0 else { return 1 }
-        let coverage = baseCalories / targetCalories
-        if coverage >= softMinCoverage && coverage <= softMaxCoverage {
-            return 1
-        }
-        if coverage < softMinCoverage {
-            return clampedScale((targetCalories * softMinCoverage) / baseCalories)
-        }
-        return clampedScale((targetCalories * softMaxCoverage) / baseCalories)
-    }
-
-    private static func fitness(actual: DailyNutrition, target: DailyNutrition, scale: Double) -> Double {
+    private static func fitness(actual: DailyNutrition, target: DailyNutrition) -> Double {
         let ratios = [
             ratio(actual.calories, target.calories),
             ratio(actual.protein, target.protein),
@@ -467,15 +667,14 @@ enum MealPlanGenerator {
         ]
         let minimum = ratios.min() ?? 0
         let maximum = ratios.max() ?? 0
-        let naturalBonus = (1 - abs(scale - 1)) * 220
+        let distancePenalty = ratios.reduce(0.0) { $0 + abs($1 - 1) } * 120
+        let underPenalty = ratios.reduce(0.0) { $0 + max(0, softMinCoverage - $1) } * 280
+        let overPenalty = ratios.reduce(0.0) { $0 + max(0, $1 - softMaxCoverage) } * 420
 
         if minimum >= softMinCoverage && maximum <= softMaxCoverage {
-            return 2_000 + naturalBonus + (1 - abs(minimum - 1)) * 40
+            return 2_000 - distancePenalty
         }
-        if minimum >= softMinCoverage {
-            return 1_000 + naturalBonus - max(0, maximum - softMaxCoverage) * 180
-        }
-        return minimum * 100 + naturalBonus - max(0, maximum - softMaxCoverage) * 50
+        return minimum * 120 - underPenalty - overPenalty
     }
 
     private static func rotated<T>(_ items: [T], by offset: Int) -> [T] {
@@ -488,47 +687,5 @@ enum MealPlanGenerator {
     private static func ratio(_ actual: Double, _ target: Double) -> Double {
         guard target > 0 else { return 1 }
         return actual / target
-    }
-
-    private static func cloneRecipe(
-        _ source: Recipe,
-        factor: Double,
-        in context: ModelContext
-    ) -> Recipe {
-        let clone = Recipe(
-            name: source.name,
-            catalogRecipeId: source.catalogRecipeId,
-            servings: 1,
-            imageData: source.imageData,
-            sourceURL: source.sourceURL,
-            sourceDescription: source.sourceDescription,
-            steps: source.steps,
-            stepsRichTextData: source.stepsRichTextData,
-            cookTimeMinutes: source.cookTimeMinutes,
-            communityLikeCount: source.communityLikeCount,
-            mealTypeTags: source.mealTypeTags,
-            caloriesPer100g: source.caloriesPer100g,
-            proteinPer100g: source.proteinPer100g,
-            fatPer100g: source.fatPer100g,
-            carbsPer100g: source.carbsPer100g
-        )
-        context.insert(clone)
-
-        let ingredients = source.ingredients.map { ingredient in
-            Ingredient(
-                name: ingredient.name,
-                quantity: ingredient.quantity * factor,
-                unit: ingredient.unit,
-                category: ingredient.category,
-                recipe: clone,
-                foodProduct: ingredient.foodProduct
-            )
-        }
-        for ingredient in ingredients {
-            context.insert(ingredient)
-        }
-        clone.ingredients = ingredients
-        clone.recalculateNutrition()
-        return clone
     }
 }

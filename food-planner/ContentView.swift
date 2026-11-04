@@ -46,7 +46,6 @@ struct ContentView: View {
         ZStack {
             if isSessionReady {
                 gatedRoot
-                    .applyAppLanguage(appLanguage)
                     .transition(.opacity)
             } else {
                 ZStack {
@@ -56,6 +55,7 @@ struct ContentView: View {
                 .transition(.opacity)
             }
         }
+        .applyAppLanguage(appLanguage)
         .motionSafeAnimation(
             reduceMotion
                 ? .easeOut(duration: 0.2)
@@ -111,6 +111,7 @@ struct ContentView: View {
         .sheet(item: $importCoordinator.progressPresentation) { _ in
             ImportProgressView(coordinator: importCoordinator)
                 .environment(importCoordinator)
+                .applyAppLanguage(appLanguage)
                 .appFormSheetPresentation()
         }
         .sheet(item: $importCoordinator.editingDraft, onDismiss: {
@@ -120,11 +121,13 @@ struct ContentView: View {
                 ImportedRecipeReviewView(draft: draft)
             }
             .environment(importCoordinator)
+            .applyAppLanguage(appLanguage)
             .appFormSheetPresentation()
         }
         .sheet(item: $weekPlanGeneration.progressPresentation) { _ in
             WeekPlanGenerationProgressView(coordinator: weekPlanGeneration)
                 .environment(weekPlanGeneration)
+                .applyAppLanguage(appLanguage)
                 .appFormSheetPresentation()
         }
         .sheet(item: $weekPlanTransfer.exportPresentation, onDismiss: {
@@ -132,11 +135,13 @@ struct ContentView: View {
         }) { presentation in
             ExportWeekPlanSheet(presentation: presentation)
                 .environment(weekPlanTransfer)
+                .applyAppLanguage(appLanguage)
         }
         .sheet(item: $weekPlanTransfer.sharePresentation, onDismiss: {
             weekPlanTransfer.dismissShare()
         }) { presentation in
             ShareSheet(items: [presentation.fileURL])
+                .applyAppLanguage(appLanguage)
         }
         .sheet(item: $weekPlanTransfer.importPresentation, onDismiss: {
             weekPlanTransfer.dismissImport()
@@ -147,6 +152,7 @@ struct ContentView: View {
                     ?? Calendar.current.startOfWeek(for: .now)
             )
             .environment(weekPlanTransfer)
+            .applyAppLanguage(appLanguage)
         }
         .alert(
             subscriptionSession.alertText,

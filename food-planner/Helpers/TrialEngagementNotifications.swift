@@ -164,7 +164,7 @@ enum TrialEngagementNotifications {
             identifier: categoryID,
             actions: [],
             intentIdentifiers: [],
-            hiddenPreviewsBodyPlaceholder: String(localized: "notification.trial.previewPlaceholder"),
+            hiddenPreviewsBodyPlaceholder: L10n.string("notification.trial.previewPlaceholder"),
             options: []
         )
         UNUserNotificationCenter.current().setNotificationCategories([category])
@@ -172,8 +172,8 @@ enum TrialEngagementNotifications {
 
     private static func schedule(_ kind: Kind, at date: Date) async {
         let content = UNMutableNotificationContent()
-        content.title = String(localized: LocalizedStringResource(stringLiteral: kind.titleKey))
-        content.body = String(localized: LocalizedStringResource(stringLiteral: kind.bodyKey))
+        content.title = L10n.string(String.LocalizationValue(stringLiteral: kind.titleKey))
+        content.body = L10n.string(String.LocalizationValue(stringLiteral: kind.bodyKey))
         content.sound = .default
         content.categoryIdentifier = categoryID
         content.interruptionLevel = .active

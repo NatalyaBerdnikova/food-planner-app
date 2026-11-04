@@ -78,6 +78,12 @@ struct SettingsView: View {
             LabeledContent("onboarding.body.targetWeight") {
                 Text(String(format: "%.1f kg", settings.profileTargetWeightKg))
             }
+
+            Button {
+                showNutritionCalculator = true
+            } label: {
+                Label("settings.profile.edit", systemImage: "slider.horizontal.3")
+            }
         } header: {
             Text("settings.profile.title")
         } footer: {
@@ -264,7 +270,7 @@ struct SettingsView: View {
                     let settings = AppSettingsService.settings(in: modelContext)
                     subscriptionSession.upgradeToPro(settings: settings, in: modelContext)
                 } else {
-                    subscriptionSession.showAlert(String(localized: "subscription.restoreEmpty"))
+                    subscriptionSession.showAlert(L10n.string("subscription.restoreEmpty"))
                 }
             }
         } errorCallback: { message in

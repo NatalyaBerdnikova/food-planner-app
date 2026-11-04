@@ -158,8 +158,8 @@ struct RecipeCardView: View {
                 .buttonStyle(.plain)
                 .accessibilityLabel(
                     isFavorite
-                        ? String(localized: "accessibility.removeFavorite")
-                        : String(localized: "accessibility.addFavorite")
+                        ? L10n.string("accessibility.removeFavorite")
+                        : L10n.string("accessibility.addFavorite")
                 )
             }
         }

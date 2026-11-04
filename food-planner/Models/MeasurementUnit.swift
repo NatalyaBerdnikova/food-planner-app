@@ -36,6 +36,6 @@ extension MeasurementUnit {
     }
 
     var localizedName: String {
-        String(localized: String.LocalizationValue(localizationKey))
+        L10n.string(String.LocalizationValue(localizationKey))
     }
 }

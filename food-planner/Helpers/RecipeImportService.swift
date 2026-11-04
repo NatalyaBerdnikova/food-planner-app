@@ -14,7 +14,7 @@ enum UnresolvedIngredientsShare {
         items: [UnresolvedIngredient],
         sourceURL: String? = nil
     ) -> String {
-        let header = String(localized: "import.unresolved.shareHeader")
+        let header = L10n.string("import.unresolved.shareHeader")
         let trimmedName = recipeName?
             .trimmingCharacters(in: .whitespacesAndNewlines)
         let title: String
@@ -79,14 +79,14 @@ enum RecipeImportError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .unreadableFile: String(localized: "import.error.unreadable")
-        case .invalidFormat: String(localized: "import.error.invalid")
-        case .networkFailure: String(localized: "import.error.network")
-        case .instagramUnavailable: String(localized: "import.error.instagram")
-        case .transcriptionFailed: String(localized: "import.error.transcription")
-        case .parsingFailed: String(localized: "import.error.parsing")
-        case .apiQuotaExceeded: String(localized: "import.error.api.quota")
-        case .apiUnauthorized: String(localized: "import.error.api.auth")
+        case .unreadableFile: L10n.string("import.error.unreadable")
+        case .invalidFormat: L10n.string("import.error.invalid")
+        case .networkFailure: L10n.string("import.error.network")
+        case .instagramUnavailable: L10n.string("import.error.instagram")
+        case .transcriptionFailed: L10n.string("import.error.transcription")
+        case .parsingFailed: L10n.string("import.error.parsing")
+        case .apiQuotaExceeded: L10n.string("import.error.api.quota")
+        case .apiUnauthorized: L10n.string("import.error.api.auth")
         }
     }
 }

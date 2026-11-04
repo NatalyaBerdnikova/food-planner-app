@@ -185,13 +185,15 @@ struct HardPaywallView: View {
 
     private func openDayPreview() {
         guard let settings else { return }
-        previewDayPlan = OnboardingDayPreviewFactory.makeDayPlan(
-            in: modelContext,
-            matching: settings.targetNutrition,
-            micronutrientFocus: settings.profileMicronutrientFocus
-        )
-        guard previewDayPlan != nil else { return }
-        showDayPreview = true
+        Task { @MainActor in
+            previewDayPlan = await OnboardingDayPreviewFactory.makeDayPlan(
+                in: modelContext,
+                matching: settings.targetNutrition,
+                micronutrientFocus: settings.profileMicronutrientFocus
+            )
+            guard previewDayPlan != nil else { return }
+            showDayPreview = true
+        }
     }
 
     private func discardPreviewDayPlan() {

@@ -140,10 +140,10 @@ struct ImportProgressView: View {
     }
 
     private func errorSymbolName(for message: String) -> String {
-        if message == String(localized: "import.error.network") {
+        if message == L10n.string("import.error.network") {
             return "wifi.exclamationmark"
         }
-        if message == String(localized: "import.error.instagram") {
+        if message == L10n.string("import.error.instagram") {
             return "link.badge.exclamationmark"
         }
         return "exclamationmark.triangle"

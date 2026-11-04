@@ -8,6 +8,21 @@ struct DraftIngredient: Identifiable {
     var unit: MeasurementUnit
 }
 
+extension Array where Element == DraftIngredient {
+    func sortedForRecipeDisplay() -> [DraftIngredient] {
+        sorted { lhs, rhs in
+            if lhs.product.category.recipeDisplayOrderIndex != rhs.product.category.recipeDisplayOrderIndex {
+                return lhs.product.category.recipeDisplayOrderIndex < rhs.product.category.recipeDisplayOrderIndex
+            }
+            return lhs.product.displayName.localizedCaseInsensitiveCompare(rhs.product.displayName) == .orderedAscending
+        }
+    }
+
+    mutating func sortForRecipeDisplay() {
+        self = sortedForRecipeDisplay()
+    }
+}
+
 struct AddIngredientSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion

@@ -76,8 +76,8 @@ struct RecipeLibraryView: View {
 
     private var emptyStateHint: String {
         hasActiveQuickFilter
-            ? String(localized: "empty.recipesFiltered.hint")
-            : String(localized: "empty.recipesLibrary.hint")
+            ? L10n.string("empty.recipesFiltered.hint")
+            : L10n.string("empty.recipesLibrary.hint")
     }
 
     @ViewBuilder
@@ -342,8 +342,8 @@ struct RecipeLibraryView: View {
                 .padding(8)
                 .accessibilityLabel(
                     isFavorite
-                        ? String(localized: "accessibility.removeFavorite")
-                        : String(localized: "accessibility.addFavorite")
+                        ? L10n.string("accessibility.removeFavorite")
+                        : L10n.string("accessibility.addFavorite")
                 )
             }
         }

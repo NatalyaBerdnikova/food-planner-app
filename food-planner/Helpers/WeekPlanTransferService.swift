@@ -12,13 +12,13 @@ enum WeekPlanTransferError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .emptyWeek:
-            String(localized: "weekPlan.transfer.error.empty")
+            L10n.string("weekPlan.transfer.error.empty")
         case .invalidFile:
-            String(localized: "weekPlan.transfer.error.invalid")
+            L10n.string("weekPlan.transfer.error.invalid")
         case .unsupportedVersion:
-            String(localized: "weekPlan.transfer.error.version")
+            L10n.string("weekPlan.transfer.error.version")
         case .writeFailed:
-            String(localized: "weekPlan.transfer.error.write")
+            L10n.string("weekPlan.transfer.error.write")
         }
     }
 }
@@ -337,10 +337,9 @@ enum WeekPlanTransferService {
 
     private static func makeRecipe(from dto: FoodPlanRecipeDTO, in context: ModelContext) -> Recipe {
         let tags = Set(dto.mealTypeTags.compactMap(MealType.init(rawValue:)))
-        let canonicalCatalogId = dto.catalogRecipeId.map(FoodCatalogAliases.canonicalRecipeId(for:))
         let recipe = Recipe(
             name: dto.name,
-            catalogRecipeId: canonicalCatalogId,
+            catalogRecipeId: dto.catalogRecipeId,
             servings: max(dto.servings, 1),
             imageData: imageData(fromBase64: dto.imageJPEGBase64),
             steps: dto.steps,

@@ -32,18 +32,12 @@ struct OnboardingDayPreviewStep: View {
 
 #Preview {
     let container = FoodPlannerSchema.previewContainer
-    let context = container.mainContext
     let target = DailyNutrition(calories: 1994, protein: 130, fat: 70, carbs: 220)
-    let dayPlan = OnboardingDayPreviewFactory.makeDayPlan(
-        in: context,
-        matching: target,
-        micronutrientFocus: [.fiber, .vitaminD3, .iron]
-    ) ?? DayPlan(date: .now)
 
     return NavigationStack {
         ScrollView {
             OnboardingDayPreviewStep(
-                dayPlan: dayPlan,
+                dayPlan: DayPlan(date: .now),
                 target: target,
                 micronutrientFocus: [.fiber, .vitaminD3, .iron]
             )

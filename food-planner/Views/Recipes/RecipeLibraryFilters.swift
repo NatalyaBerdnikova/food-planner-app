@@ -205,17 +205,17 @@ struct RecipeAdvancedFiltersSheet: View {
 
     private var caloriesLabel: String {
         if draft.isCaloriesLimited {
-            String(localized: "recipeLibrary.maxCalories \(Int(draft.maxCalories.rounded()))")
+            L10n.string("recipeLibrary.maxCalories \(Int(draft.maxCalories.rounded()))")
         } else {
-            String(localized: "recipeLibrary.anyCalories")
+            L10n.string("recipeLibrary.anyCalories")
         }
     }
 
     private var cookTimeLabel: String {
         if draft.isCookTimeLimited {
-            String(localized: "recipeLibrary.maxCookTime \(draft.maxCookTimeMinutes)")
+            L10n.string("recipeLibrary.maxCookTime \(draft.maxCookTimeMinutes)")
         } else {
-            String(localized: "recipeLibrary.anyCookTime")
+            L10n.string("recipeLibrary.anyCookTime")
         }
     }
 }

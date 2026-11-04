@@ -135,10 +135,10 @@ struct PlannedMealSlotView: View {
     }
 
     private func macroSummary(_ nutrition: DailyNutrition) -> String {
-        let kcalUnit = String(localized: "nutrition.unit.kcal")
-        let proteinLabel = String(localized: "nutrition.macro.protein").lowercased()
-        let fatLabel = String(localized: "nutrition.macro.fat").lowercased()
-        let carbsLabel = String(localized: "nutrition.macro.carbs").lowercased()
+        let kcalUnit = L10n.string("nutrition.unit.kcal")
+        let proteinLabel = L10n.string("nutrition.macro.protein").lowercased()
+        let fatLabel = L10n.string("nutrition.macro.fat").lowercased()
+        let carbsLabel = L10n.string("nutrition.macro.carbs").lowercased()
         let kcal = "\(formatted(nutrition.calories)) \(kcalUnit)"
         let protein = "\(formatted(nutrition.protein)) \(proteinLabel)"
         let fat = "\(formatted(nutrition.fat)) \(fatLabel)"

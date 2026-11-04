@@ -23,6 +23,10 @@ struct RecipeDetailView: View {
         NutritionCalculator.nutritionPerServing(for: recipe)
     }
 
+    private var orderedIngredients: [Ingredient] {
+        recipe.ingredients.sortedForRecipeDisplay()
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
@@ -41,13 +45,13 @@ struct RecipeDetailView: View {
                     }
                 }
 
-                if !recipe.ingredients.isEmpty {
+                if !orderedIngredients.isEmpty {
                     sectionCard {
                         VStack(alignment: .leading, spacing: 12) {
                             sectionHeader(
                                 title: "recipe.ingredients",
                                 systemImage: "leaf.fill",
-                                subtitle: "\(recipe.ingredients.count)"
+                                subtitle: "\(orderedIngredients.count)"
                             )
 
                             HStack(spacing: 12) {
@@ -63,7 +67,7 @@ struct RecipeDetailView: View {
                             }
 
                             VStack(spacing: 10) {
-                                ForEach(recipe.ingredients) { ingredient in
+                                ForEach(orderedIngredients) { ingredient in
                                     ingredientRow(ingredient)
                                 }
                             }
@@ -202,7 +206,7 @@ struct RecipeDetailView: View {
                     if recipe.hasCookTime {
                         heroMetricChip(
                             icon: "clock.fill",
-                            text: String(localized: "recipe.cookTime \(recipe.cookTimeMinutes)")
+                            text: L10n.string("recipe.cookTime \(recipe.cookTimeMinutes)")
                         )
                     }
 
@@ -211,7 +215,7 @@ struct RecipeDetailView: View {
                     if recipe.isUserCreated {
                         heroMetricChip(
                             icon: "person.fill",
-                            text: String(localized: "recipeDetail.yours")
+                            text: L10n.string("recipeDetail.yours")
                         )
                     } else {
                         heroMetricChip(
@@ -266,8 +270,12 @@ struct RecipeDetailView: View {
             ) { value in
                 guard !isPreviewPresentation else { return }
                 let previous = recipe.userRating
-                recipe.setUserRating(value)
-                LocalPersistence.save(modelContext)
+                var transaction = Transaction()
+                transaction.disablesAnimations = true
+                withTransaction(transaction) {
+                    recipe.setUserRating(value)
+                    LocalPersistence.save(modelContext)
+                }
                 if value > 0, value != previous {
                     AppAnalytics.logRecipeRate(rating: value)
                     ReviewPromptService.considerAfterRecipeAppreciation(
@@ -357,8 +365,8 @@ struct RecipeDetailView: View {
         }
         .accessibilityLabel(
             isFavorite
-                ? String(localized: "accessibility.removeFavorite")
-                : String(localized: "accessibility.addFavorite")
+                ? L10n.string("accessibility.removeFavorite")
+                : L10n.string("accessibility.addFavorite")
         )
     }
 

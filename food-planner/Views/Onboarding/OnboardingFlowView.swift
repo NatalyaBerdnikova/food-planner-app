@@ -329,10 +329,26 @@ struct OnboardingFlowView: View {
                 .accessibilityElement(children: .combine)
             } else if let nutrition = revealedNutrition {
                 VStack(spacing: 14) {
-                    macroRevealRow(title: "nutrition.macro.kcal.full", value: nutrition.calories, unit: "kcal")
-                    macroRevealRow(title: "nutrition.macro.protein.full", value: nutrition.protein, unit: "g")
-                    macroRevealRow(title: "nutrition.macro.fat.full", value: nutrition.fat, unit: "g")
-                    macroRevealRow(title: "nutrition.macro.carbs.full", value: nutrition.carbs, unit: "g")
+                    macroRevealRow(
+                        title: "nutrition.macro.kcal.full",
+                        value: nutrition.calories,
+                        unit: L10n.string("nutrition.unit.kcal")
+                    )
+                    macroRevealRow(
+                        title: "nutrition.macro.protein.full",
+                        value: nutrition.protein,
+                        unit: L10n.string("nutrition.unit.g")
+                    )
+                    macroRevealRow(
+                        title: "nutrition.macro.fat.full",
+                        value: nutrition.fat,
+                        unit: L10n.string("nutrition.unit.g")
+                    )
+                    macroRevealRow(
+                        title: "nutrition.macro.carbs.full",
+                        value: nutrition.carbs,
+                        unit: L10n.string("nutrition.unit.g")
+                    )
                 }
 
                 Text("onboarding.reveal.disclaimer")
@@ -443,13 +459,15 @@ struct OnboardingFlowView: View {
 
     private func openDayPreview() {
         guard let nutrition = revealedNutrition else { return }
-        previewDayPlan = OnboardingDayPreviewFactory.makeDayPlan(
-            in: modelContext,
-            matching: nutrition,
-            micronutrientFocus: Array(draft.micronutrientFocus)
-        )
-        guard previewDayPlan != nil else { return }
-        showDayPreview = true
+        Task { @MainActor in
+            previewDayPlan = await OnboardingDayPreviewFactory.makeDayPlan(
+                in: modelContext,
+                matching: nutrition,
+                micronutrientFocus: Array(draft.micronutrientFocus)
+            )
+            guard previewDayPlan != nil else { return }
+            showDayPreview = true
+        }
     }
 
     private func discardPreviewDayPlan() {
@@ -625,16 +643,11 @@ struct OnboardingFlowView: View {
 
 #Preview("Day preview") {
     let container = FoodPlannerSchema.previewContainer
-    let dayPlan = OnboardingDayPreviewFactory.makeDayPlan(
-        in: container.mainContext,
-        matching: DailyNutrition(calories: 1994, protein: 130, fat: 70, carbs: 220),
-        micronutrientFocus: [.fiber, .vitaminD3, .iron]
-    ) ?? DayPlan(date: .now)
 
     return NavigationStack {
         ScrollView {
             OnboardingDayPreviewStep(
-                dayPlan: dayPlan,
+                dayPlan: DayPlan(date: .now),
                 target: DailyNutrition(calories: 1994, protein: 130, fat: 70, carbs: 220),
                 micronutrientFocus: [.fiber, .vitaminD3, .iron]
             )

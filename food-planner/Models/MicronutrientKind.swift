@@ -45,7 +45,7 @@ enum MicronutrientKind: String, CaseIterable, Identifiable {
     }
 
     var displayName: String {
-        String(localized: String.LocalizationValue(localizationKey))
+        L10n.string(String.LocalizationValue(localizationKey))
     }
 
     var unitLocalizationKey: String {

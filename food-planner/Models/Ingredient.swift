@@ -37,3 +37,14 @@ final class Ingredient {
         return L10n.resolvedProductName(name)
     }
 }
+
+extension Array where Element == Ingredient {
+    func sortedForRecipeDisplay() -> [Ingredient] {
+        sorted { lhs, rhs in
+            if lhs.category.recipeDisplayOrderIndex != rhs.category.recipeDisplayOrderIndex {
+                return lhs.category.recipeDisplayOrderIndex < rhs.category.recipeDisplayOrderIndex
+            }
+            return lhs.displayName.localizedCaseInsensitiveCompare(rhs.displayName) == .orderedAscending
+        }
+    }
+}

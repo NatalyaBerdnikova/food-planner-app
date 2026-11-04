@@ -7,8 +7,8 @@ enum OnboardingDayPreviewFactory {
         in context: ModelContext,
         matching target: DailyNutrition,
         micronutrientFocus: [MicronutrientKind]
-    ) -> DayPlan? {
-        MealPlanGenerator.makePreviewDayPlan(
+    ) async -> DayPlan? {
+        await MealPlanGenerator.makePreviewDayPlan(
             in: context,
             matching: target,
             micronutrientFocus: micronutrientFocus

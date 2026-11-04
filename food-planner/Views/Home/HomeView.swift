@@ -153,8 +153,8 @@ struct HomeView: View {
                         .padding(8)
                         .accessibilityLabel(
                             isFavorite
-                                ? String(localized: "accessibility.removeFavorite")
-                                : String(localized: "accessibility.addFavorite")
+                                ? L10n.string("accessibility.removeFavorite")
+                                : L10n.string("accessibility.addFavorite")
                         )
                     }
                 }
@@ -335,8 +335,8 @@ struct HomeView: View {
                 .padding(8)
                 .accessibilityLabel(
                     isFavorite
-                        ? String(localized: "accessibility.removeFavorite")
-                        : String(localized: "accessibility.addFavorite")
+                        ? L10n.string("accessibility.removeFavorite")
+                        : L10n.string("accessibility.addFavorite")
                 )
             }
         }
