@@ -157,7 +157,7 @@
       }
     },
     {
-      "catalogKey": "cherry_plum_cherry_plum",
+      "catalogKey": "cherry_plum",
       "displayName": "Слива вишненосная, алыча",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -281,30 +281,30 @@
       }
     },
     {
-      "catalogKey": "peanut_butter_liquid",
+      "catalogKey": "peanut_butter",
       "displayName": "Арахисовая паста",
-      "category": "oils",
+      "category": "nuts",
       "defaultPieceWeightGrams": 100,
-      "caloriesPer100g": 899.0,
-      "proteinPer100g": 0,
-      "fatPer100g": 99.9,
-      "carbsPer100g": 0,
-      "fiberPer100g": 0,
+      "caloriesPer100g": 588.0,
+      "proteinPer100g": 25.0,
+      "fatPer100g": 50.0,
+      "carbsPer100g": 20.0,
+      "fiberPer100g": 6.0,
       "vitaminD3Per100g": 0,
-      "calciumPer100g": 0,
-      "magnesiumPer100g": 0,
-      "zincPer100g": 0.01,
-      "vitaminKPer100g": 0.7,
+      "calciumPer100g": 43.0,
+      "magnesiumPer100g": 154.0,
+      "zincPer100g": 2.9,
+      "vitaminKPer100g": 0.6,
       "vitaminCPer100g": 0,
-      "vitaminEPer100g": 16.7,
+      "vitaminEPer100g": 9.0,
       "vitaminAPer100g": 0,
-      "vitaminB6Per100g": 0,
-      "vitaminB9Per100g": 0,
+      "vitaminB6Per100g": 0.5,
+      "vitaminB9Per100g": 74.0,
       "vitaminB12Per100g": 0,
-      "seleniumPer100g": 0,
+      "seleniumPer100g": 5.6,
       "chromiumPer100g": 0,
-      "ironPer100g": 0.03,
-      "potassiumPer100g": 0,
+      "ironPer100g": 1.9,
+      "potassiumPer100g": 649.0,
       "iodinePer100g": 0,
       "translations": {
         "ru": "Арахисовая паста",
@@ -436,7 +436,7 @@
       }
     },
     {
-      "catalogKey": "baranina_1_kat",
+      "catalogKey": "mutton",
       "displayName": "Баранина 1 кат",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -498,7 +498,7 @@
       }
     },
     {
-      "catalogKey": "batata_sweet_potatoes",
+      "catalogKey": "sweet_potato",
       "displayName": "Батат",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -653,7 +653,7 @@
       }
     },
     {
-      "catalogKey": "berix",
+      "catalogKey": "alfonsino",
       "displayName": "Берикс",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -684,7 +684,7 @@
       }
     },
     {
-      "catalogKey": "besgo",
+      "catalogKey": "red_seabream",
       "displayName": "Бесуго, Краснопёрый пагель",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -750,7 +750,7 @@
       "displayName": "Боржоми",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
-      "caloriesPer100g": 100.0,
+      "caloriesPer100g": 0,
       "proteinPer100g": 0,
       "fatPer100g": 0,
       "carbsPer100g": 0,
@@ -808,7 +808,7 @@
       }
     },
     {
-      "catalogKey": "brusnika",
+      "catalogKey": "lingonberry",
       "displayName": "Брусника",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -839,7 +839,7 @@
       }
     },
     {
-      "catalogKey": "brynza_iz_korovego_moloka_m_d_zh_40_v_sukh_v_ve",
+      "catalogKey": "cows_milk_feta",
       "displayName": "Брынза из коровьего молока, м.д.ж. 40% в сух. в-ве",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -870,7 +870,7 @@
       }
     },
     {
-      "catalogKey": "sheep_cheese_wt_40_in_dry_substance",
+      "catalogKey": "sheep_feta",
       "displayName": "Брынза овечья, м.д.ж. 40% в сух. в-ве",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -932,7 +932,7 @@
       }
     },
     {
-      "catalogKey": "buffalo_",
+      "catalogKey": "buffalo_meat",
       "displayName": "Буйволятина",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -963,7 +963,7 @@
       }
     },
     {
-      "catalogKey": "vanilin",
+      "catalogKey": "vanillin",
       "displayName": "Ванилин",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -995,7 +995,7 @@
       "macrosOnly": true
     },
     {
-      "catalogKey": "category_1_camel_meat",
+      "catalogKey": "camel_meat",
       "displayName": "Верблюжатина 1 категории",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -1119,7 +1119,7 @@
       }
     },
     {
-      "catalogKey": "c41_c43_family_cyprinidae_carps_and_minnows",
+      "catalogKey": "caspian_roach",
       "displayName": "Вобла",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -1154,7 +1154,7 @@
       "displayName": "Вода",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
-      "caloriesPer100g": 100.0,
+      "caloriesPer100g": 0,
       "proteinPer100g": 0,
       "fatPer100g": 0,
       "carbsPer100g": 0,
@@ -1181,7 +1181,7 @@
       }
     },
     {
-      "catalogKey": "vodyanika",
+      "catalogKey": "crowberry",
       "displayName": "Водяника",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -1212,7 +1212,7 @@
       }
     },
     {
-      "catalogKey": "carnation",
+      "catalogKey": "cloves",
       "displayName": "Гвоздика",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -1244,7 +1244,7 @@
       "macrosOnly": true
     },
     {
-      "catalogKey": "hercules_oatmeal",
+      "catalogKey": "rolled_oats",
       "displayName": "Овсяные хлопья",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -1275,7 +1275,7 @@
       }
     },
     {
-      "catalogKey": "gladgogolov",
+      "catalogKey": "smoothhead",
       "displayName": "Гладкоголов",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -1306,7 +1306,7 @@
       }
     },
     {
-      "catalogKey": "beef_cat_1",
+      "catalogKey": "beef",
       "displayName": "Говядина",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -1337,7 +1337,7 @@
       }
     },
     {
-      "catalogKey": "golubika",
+      "catalogKey": "blueberries",
       "displayName": "Голубика",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -1368,7 +1368,7 @@
       }
     },
     {
-      "catalogKey": "gorbusha",
+      "catalogKey": "pink_salmon",
       "displayName": "Горбуша",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -1399,7 +1399,7 @@
       }
     },
     {
-      "catalogKey": "gorokh_zerno_tselnoe",
+      "catalogKey": "whole_peas",
       "displayName": "Горох, зерно цельное",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -1430,7 +1430,7 @@
       }
     },
     {
-      "catalogKey": "gorokh_luschenyy_krupa",
+      "catalogKey": "split_peas",
       "displayName": "Горох лущеный, крупа",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -1461,7 +1461,7 @@
       }
     },
     {
-      "catalogKey": "goroshek_zelenyy_svezhiy",
+      "catalogKey": "fresh_green_peas",
       "displayName": "Горошек зеленый свежий",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -1492,7 +1492,7 @@
       }
     },
     {
-      "catalogKey": "goroshek_zelenyy_sushenyy",
+      "catalogKey": "dried_green_peas",
       "displayName": "Горошек зеленый сушеный",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -1523,7 +1523,7 @@
       }
     },
     {
-      "catalogKey": "gorchitsa_semya",
+      "catalogKey": "mustard_seeds",
       "displayName": "Горчица, семя",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -1554,7 +1554,7 @@
       }
     },
     {
-      "catalogKey": "gorchichnoe_oil",
+      "catalogKey": "mustard_oil",
       "displayName": "Горчичное масло",
       "category": "oils",
       "defaultPieceWeightGrams": 100,
@@ -1647,7 +1647,7 @@
       }
     },
     {
-      "catalogKey": "greypfrut",
+      "catalogKey": "grapefruit",
       "displayName": "Грейпфрут",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -1678,7 +1678,7 @@
       }
     },
     {
-      "catalogKey": "buckwheat_whole_unprocessed_grain",
+      "catalogKey": "whole_buckwheat_grain",
       "displayName": "Гречиха, зерно цельное необработанное",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -1709,7 +1709,7 @@
       }
     },
     {
-      "catalogKey": "buckwheat_cut_through",
+      "catalogKey": "cracked_buckwheat",
       "displayName": "Гречневая крупа продел",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -1771,7 +1771,7 @@
       }
     },
     {
-      "catalogKey": "cargo",
+      "catalogKey": "milk_mushroom",
       "displayName": "Груздь",
       "category": "mushrooms",
       "defaultPieceWeightGrams": 100,
@@ -1864,7 +1864,7 @@
       }
     },
     {
-      "catalogKey": "drepana",
+      "catalogKey": "sicklefish",
       "displayName": "Дрепана",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -1895,7 +1895,7 @@
       }
     },
     {
-      "catalogKey": "pressed_yeast_ergosterol",
+      "catalogKey": "pressed_yeast",
       "displayName": "Дрожжи прессованные (*эргостерин)",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -1988,11 +1988,11 @@
       }
     },
     {
-      "catalogKey": "essentuki_no_4",
+      "catalogKey": "essentuki_4",
       "displayName": "Ессентуки №4",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
-      "caloriesPer100g": 100.0,
+      "caloriesPer100g": 0,
       "proteinPer100g": 0,
       "fatPer100g": 0,
       "carbsPer100g": 0,
@@ -2205,7 +2205,7 @@
       }
     },
     {
-      "catalogKey": "item",
+      "catalogKey": "greenback_horse_mackerel",
       "displayName": "Зеленоглазка",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -2360,7 +2360,7 @@
       }
     },
     {
-      "catalogKey": "raisins_with_pits_dried_grapes",
+      "catalogKey": "raisins",
       "displayName": "Изюм с косточками (виноград сушеный)",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -2391,7 +2391,7 @@
       }
     },
     {
-      "catalogKey": "beluga_caviar_granular_salty",
+      "catalogKey": "beluga_caviar",
       "displayName": "Икра белужья зернистая, соленая",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -2422,7 +2422,7 @@
       }
     },
     {
-      "catalogKey": "salted_pink_salmon_caviar_granular",
+      "catalogKey": "pink_salmon_caviar",
       "displayName": "Икра горбуши зернистая, соленая",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -2453,7 +2453,7 @@
       }
     },
     {
-      "catalogKey": "chum_salmon_caviar_granular",
+      "catalogKey": "chum_salmon_caviar",
       "displayName": "Икра кеты зернистая, соленая",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -2484,7 +2484,7 @@
       }
     },
     {
-      "catalogKey": "broken_pollock_caviar_salted",
+      "catalogKey": "pollock_caviar",
       "displayName": "Икра минтая пробойная, соленая",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -2515,7 +2515,7 @@
       }
     },
     {
-      "catalogKey": "sturgeon_caviar_grained_salted",
+      "catalogKey": "sturgeon_caviar",
       "displayName": "Икра осетровая зернистая, соленая",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -2546,7 +2546,7 @@
       }
     },
     {
-      "catalogKey": "sturgeon_caviar_paius_salted",
+      "catalogKey": "pressed_sturgeon_caviar",
       "displayName": "Икра осетровая паюсная, соленая",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -2577,7 +2577,7 @@
       }
     },
     {
-      "catalogKey": "starry_sturgeon_caviar_granular_salty",
+      "catalogKey": "stellate_sturgeon_caviar",
       "displayName": "Икра севрюги зернистая, соленая",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -2763,7 +2763,7 @@
       }
     },
     {
-      "catalogKey": "kalina",
+      "catalogKey": "viburnum",
       "displayName": "Калина",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -3166,7 +3166,7 @@
       }
     },
     {
-      "catalogKey": "dry_instant_instant_mashed_potatoes_flakes_grits",
+      "catalogKey": "instant_mashed_potatoes",
       "displayName": "Картофельное пюре сухое, растворимое, быстрого приготовления (хлопья, крупка)",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -3414,7 +3414,7 @@
       }
     },
     {
-      "catalogKey": "qishmish",
+      "catalogKey": "seedless_grapes",
       "displayName": "Кишмиш",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -3507,7 +3507,7 @@
       }
     },
     {
-      "catalogKey": "kniazhenika",
+      "catalogKey": "arctic_bramble",
       "displayName": "Княженика",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -3538,7 +3538,7 @@
       }
     },
     {
-      "catalogKey": "coconut_oil_liquid",
+      "catalogKey": "coconut_oil",
       "displayName": "Кокосовое масло",
       "category": "oils",
       "defaultPieceWeightGrams": 100,
@@ -3663,7 +3663,7 @@
       }
     },
     {
-      "catalogKey": "kostyanika",
+      "catalogKey": "stone_bramble",
       "displayName": "Костяника",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -3694,7 +3694,7 @@
       }
     },
     {
-      "catalogKey": "instant_coffee_dry",
+      "catalogKey": "instant_coffee",
       "displayName": "Кофе растворимый, сухой",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -3725,7 +3725,7 @@
       }
     },
     {
-      "catalogKey": "kamchatka_crab_meat",
+      "catalogKey": "king_crab_meat",
       "displayName": "Краб камчатский (мясо)",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -3756,7 +3756,7 @@
       }
     },
     {
-      "catalogKey": "krasnoperka_far_eastern",
+      "catalogKey": "far_eastern_rudd",
       "displayName": "Красноперка дальневосточная",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -3849,7 +3849,7 @@
       }
     },
     {
-      "catalogKey": "far_eastern_shrimp_meat",
+      "catalogKey": "shrimp",
       "displayName": "Креветки",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -3942,7 +3942,7 @@
       }
     },
     {
-      "catalogKey": "xylitol_for_food",
+      "catalogKey": "xylitol",
       "displayName": "Ксилит пищевой",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -4098,7 +4098,7 @@
       }
     },
     {
-      "catalogKey": "mare_s_milk_kumys",
+      "catalogKey": "mare_milk_koumiss",
       "displayName": "Кумыс из кобыльего молока",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -4129,7 +4129,7 @@
       }
     },
     {
-      "catalogKey": "kumys_cow",
+      "catalogKey": "cow_milk_koumiss",
       "displayName": "Кумыс коровий",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -4160,7 +4160,7 @@
       }
     },
     {
-      "catalogKey": "so",
+      "catalogKey": "sesame_oil",
       "displayName": "Кунжутное масло",
       "category": "oils",
       "defaultPieceWeightGrams": 100,
@@ -4191,7 +4191,7 @@
       }
     },
     {
-      "catalogKey": "dried_apricots_seedless_dried_apricots",
+      "catalogKey": "dried_apricots",
       "displayName": "Курага",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -4284,7 +4284,7 @@
       }
     },
     {
-      "catalogKey": "lemonema",
+      "catalogKey": "morid_cod",
       "displayName": "Лемонема",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -4346,7 +4346,7 @@
       }
     },
     {
-      "catalogKey": "archosargus_rhomboidalis",
+      "catalogKey": "sea_bream",
       "displayName": "Лещ морской",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -4440,7 +4440,7 @@
       "macrosOnly": true
     },
     {
-      "catalogKey": "chinese_lemongrass_fresh_berries_without_seeds",
+      "catalogKey": "schisandra_berries",
       "displayName": "Лимонник китайский, ягоды свежие без семян",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -4502,7 +4502,7 @@
       }
     },
     {
-      "catalogKey": "blueberry_leaves_",
+      "catalogKey": "bilberry_leaves",
       "displayName": "Листья черники",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -4533,7 +4533,7 @@
       }
     },
     {
-      "catalogKey": "green_onion_feather",
+      "catalogKey": "green_onion",
       "displayName": "Лук зеленый (перо)",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -4657,7 +4657,7 @@
       }
     },
     {
-      "catalogKey": "oceanic_loufar",
+      "catalogKey": "bluefish",
       "displayName": "Луфарь океанический",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -4688,7 +4688,7 @@
       }
     },
     {
-      "catalogKey": "mavrolikus",
+      "catalogKey": "pearlsides",
       "displayName": "Мавроликус",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -4719,7 +4719,7 @@
       }
     },
     {
-      "catalogKey": "mayonnaise_provansal_67_fat_content",
+      "catalogKey": "mayonnaise",
       "displayName": "Майонез «Провансаль», 67% жирности",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -4843,7 +4843,7 @@
       }
     },
     {
-      "catalogKey": "macrurus_small_eyed",
+      "catalogKey": "smalleyed_grenadier",
       "displayName": "Макрурус малоглазый",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -4874,7 +4874,7 @@
       }
     },
     {
-      "catalogKey": "stupid_macrurus",
+      "catalogKey": "roundnose_grenadier",
       "displayName": "Макрурус тупорылый",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -4967,7 +4967,7 @@
       }
     },
     {
-      "catalogKey": "semolina_flour",
+      "catalogKey": "semolina",
       "displayName": "Манная крупа",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -4998,7 +4998,7 @@
       }
     },
     {
-      "catalogKey": "margarine_zdorovye",
+      "catalogKey": "margarine",
       "displayName": "Маргарин",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -5060,7 +5060,7 @@
       }
     },
     {
-      "catalogKey": "ancients",
+      "catalogKey": "slippery_jack_mushrooms",
       "displayName": "Маслята",
       "category": "mushrooms",
       "defaultPieceWeightGrams": 100,
@@ -5091,7 +5091,7 @@
       }
     },
     {
-      "catalogKey": "mash_mung_beans",
+      "catalogKey": "mung_beans",
       "displayName": "Маш (бобы мунг)",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -5122,7 +5122,7 @@
       }
     },
     {
-      "catalogKey": "bee_honey",
+      "catalogKey": "honey",
       "displayName": "Мёд",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -5153,7 +5153,7 @@
       }
     },
     {
-      "catalogKey": "merow",
+      "catalogKey": "grouper",
       "displayName": "Мероу",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -5277,7 +5277,7 @@
       }
     },
     {
-      "catalogKey": "mirabell_plum_yellow_plum",
+      "catalogKey": "mirabelle_plum",
       "displayName": "Слива Мирабель (желтая слива)",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -5308,7 +5308,7 @@
       }
     },
     {
-      "catalogKey": "juniper_cone_berries",
+      "catalogKey": "juniper_berries",
       "displayName": "Можжевельник, шишкоягоды",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -5370,7 +5370,7 @@
       }
     },
     {
-      "catalogKey": "autumn_cape",
+      "catalogKey": "autumn_capelin",
       "displayName": "Мойва осенняя",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -5432,7 +5432,7 @@
       }
     },
     {
-      "catalogKey": "mare_s_milk",
+      "catalogKey": "mare_milk",
       "displayName": "Молоко кобылье",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -5463,7 +5463,7 @@
       }
     },
     {
-      "catalogKey": "goat_s_milk",
+      "catalogKey": "goat_milk",
       "displayName": "Молоко козье",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -5494,7 +5494,7 @@
       }
     },
     {
-      "catalogKey": "sheep_s_milk",
+      "catalogKey": "sheep_milk",
       "displayName": "Молоко овечье",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -5525,7 +5525,7 @@
       }
     },
     {
-      "catalogKey": "condensed_milk_with_sugar_8_5_fat_whole",
+      "catalogKey": "sweetened_condensed_milk",
       "displayName": "Молоко сгущенное с сахаром 8,5% жирности, цельное",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -5556,7 +5556,7 @@
       }
     },
     {
-      "catalogKey": "sugar_free_condensed_milk_7_8_fat_sterilized",
+      "catalogKey": "evaporated_milk",
       "displayName": "Молоко сгущенное без сахара 7,8% жирности, стерилизованное",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -5587,7 +5587,7 @@
       }
     },
     {
-      "catalogKey": "milk_3_5_fat_sterilized",
+      "catalogKey": "milk_3_5",
       "displayName": "Молоко, 3,5%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -5618,7 +5618,7 @@
       }
     },
     {
-      "catalogKey": "milk_6_fat_melted",
+      "catalogKey": "baked_milk_6",
       "displayName": "Молоко 6% жирности, топленое",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -5649,7 +5649,7 @@
       }
     },
     {
-      "catalogKey": "carrots_",
+      "catalogKey": "carrot",
       "displayName": "Морковь",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -5680,7 +5680,7 @@
       }
     },
     {
-      "catalogKey": "sauced_carrots",
+      "catalogKey": "pickled_carrots",
       "displayName": "Морковь квашеная",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -5773,7 +5773,7 @@
       }
     },
     {
-      "catalogKey": "plombir_ice_cream",
+      "catalogKey": "rich_ice_cream_15",
       "displayName": "Мороженое пломбир, 15% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -5835,7 +5835,7 @@
       }
     },
     {
-      "catalogKey": "rubus_chamaemorus",
+      "catalogKey": "cloudberry",
       "displayName": "Морошка",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -5866,7 +5866,7 @@
       }
     },
     {
-      "catalogKey": "laminaria_kelp_fresh",
+      "catalogKey": "sea_kelp",
       "displayName": "Морская капуста (ламинария) свежая",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -5959,7 +5959,7 @@
       }
     },
     {
-      "catalogKey": "navaga_belomorskaya",
+      "catalogKey": "white_sea_cod",
       "displayName": "Навага беломорская",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -5990,7 +5990,7 @@
       }
     },
     {
-      "catalogKey": "navaga_far_eastern",
+      "catalogKey": "saffron_cod",
       "displayName": "Навага дальневосточная",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -6021,11 +6021,11 @@
       }
     },
     {
-      "catalogKey": "item_2",
+      "catalogKey": "narzan",
       "displayName": "Нарзан",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
-      "caloriesPer100g": 100.0,
+      "caloriesPer100g": 0,
       "proteinPer100g": 0,
       "fatPer100g": 0,
       "carbsPer100g": 0,
@@ -6052,7 +6052,7 @@
       }
     },
     {
-      "catalogKey": "notoscopepelus_crowery",
+      "catalogKey": "lanternfish",
       "displayName": "Нотоскопелюс кроуэри",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -6083,7 +6083,7 @@
       }
     },
     {
-      "catalogKey": "marble_notothenia",
+      "catalogKey": "marbled_rockcod",
       "displayName": "Нототения мраморная",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -6238,7 +6238,7 @@
       }
     },
     {
-      "catalogKey": "pickled_cucumber",
+      "catalogKey": "salted_cucumber",
       "displayName": "Солёный огурец",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -6300,7 +6300,7 @@
       }
     },
     {
-      "catalogKey": "sea_bass_sea_bass",
+      "catalogKey": "sea_bass",
       "displayName": "Окунь морской (сибас)",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -6362,7 +6362,7 @@
       }
     },
     {
-      "catalogKey": "deer_meat_",
+      "catalogKey": "venison",
       "displayName": "Оленина",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -6424,7 +6424,7 @@
       }
     },
     {
-      "catalogKey": "item_3",
+      "catalogKey": "honey_fungus",
       "displayName": "Опенок",
       "category": "mushrooms",
       "defaultPieceWeightGrams": 100,
@@ -6486,7 +6486,7 @@
       }
     },
     {
-      "catalogKey": "caspian_and_azov_black_sea_sturgeon",
+      "catalogKey": "russian_sturgeon",
       "displayName": "Осетр каспийский и азово-черноморский",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -6579,7 +6579,7 @@
       }
     },
     {
-      "catalogKey": "pagrus",
+      "catalogKey": "red_porgy",
       "displayName": "Пагрус",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -6610,7 +6610,7 @@
       }
     },
     {
-      "catalogKey": "halibut_white_breasted",
+      "catalogKey": "atlantic_halibut",
       "displayName": "Палтус белокорый",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -6641,7 +6641,7 @@
       }
     },
     {
-      "catalogKey": "halibut_black",
+      "catalogKey": "greenland_halibut",
       "displayName": "Палтус черный",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -6734,7 +6734,7 @@
       }
     },
     {
-      "catalogKey": "pectin_including_rpv_69_9",
+      "catalogKey": "pectin",
       "displayName": "Пектин",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -6765,7 +6765,7 @@
       }
     },
     {
-      "catalogKey": "pelamida",
+      "catalogKey": "atlantic_bonito",
       "displayName": "Пеламида",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -6827,7 +6827,7 @@
       }
     },
     {
-      "catalogKey": "allspice_",
+      "catalogKey": "allspice",
       "displayName": "Перец душистый",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -6890,7 +6890,7 @@
       }
     },
     {
-      "catalogKey": "bell_red",
+      "catalogKey": "red_bell_pepper",
       "displayName": "Красный сладкий перец",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -6983,7 +6983,7 @@
       }
     },
     {
-      "catalogKey": "peach_butter",
+      "catalogKey": "peach_kernel_oil",
       "displayName": "Персиковое масло",
       "category": "oils",
       "defaultPieceWeightGrams": 100,
@@ -7262,7 +7262,7 @@
       }
     },
     {
-      "catalogKey": "dried_podberezovik",
+      "catalogKey": "dried_birch_bolete",
       "displayName": "Подберезовик сушеный",
       "category": "mushrooms",
       "defaultPieceWeightGrams": 100,
@@ -7293,7 +7293,7 @@
       }
     },
     {
-      "catalogKey": "boletus",
+      "catalogKey": "aspen_bolete",
       "displayName": "Подосиновик",
       "category": "mushrooms",
       "defaultPieceWeightGrams": 100,
@@ -7324,7 +7324,7 @@
       }
     },
     {
-      "catalogKey": "dried_podsinovik",
+      "catalogKey": "dried_aspen_bolete",
       "displayName": "Подосиновик сушеный",
       "category": "mushrooms",
       "defaultPieceWeightGrams": 100,
@@ -7355,7 +7355,7 @@
       }
     },
     {
-      "catalogKey": "sunflower_sunflower_seeds",
+      "catalogKey": "sunflower_seeds",
       "displayName": "Семена подсолнечника",
       "category": "seeds",
       "defaultPieceWeightGrams": 100,
@@ -7448,7 +7448,7 @@
       }
     },
     {
-      "catalogKey": "millet_food_grains",
+      "catalogKey": "millet_grain",
       "displayName": "Просо, зерно продовольственное",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -7479,7 +7479,7 @@
       }
     },
     {
-      "catalogKey": "whiting_fish",
+      "catalogKey": "blue_whiting",
       "displayName": "Путассу",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -7603,7 +7603,7 @@
       }
     },
     {
-      "catalogKey": "wheat_flour_premium_grade",
+      "catalogKey": "wheat_flour",
       "displayName": "Пшеничная мука высшего сорта",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -7634,7 +7634,7 @@
       }
     },
     {
-      "catalogKey": "wheat_flour_wallpaper",
+      "catalogKey": "whole_wheat_flour",
       "displayName": "Пшеничная мука, обойная",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -7696,7 +7696,7 @@
       }
     },
     {
-      "catalogKey": "millet_groats_ground_millet",
+      "catalogKey": "millet_groats",
       "displayName": "Пшенная крупа, пшено шлифованное",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -7913,7 +7913,7 @@
       }
     },
     {
-      "catalogKey": "rye_flour_wallpaper",
+      "catalogKey": "whole_rye_flour",
       "displayName": "Ржаная мука, обойная",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -7944,7 +7944,7 @@
       }
     },
     {
-      "catalogKey": "rye_flour_sown",
+      "catalogKey": "sifted_rye_flour",
       "displayName": "Ржаная мука, сеяная",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -7975,7 +7975,7 @@
       }
     },
     {
-      "catalogKey": "rice_whole_unprocessed_grains",
+      "catalogKey": "brown_rice",
       "displayName": "Рис, зерно цельное необработанное",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -8006,7 +8006,7 @@
       }
     },
     {
-      "catalogKey": "white_rice_rice_groats",
+      "catalogKey": "white_rice",
       "displayName": "Белый рис",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -8037,7 +8037,7 @@
       }
     },
     {
-      "catalogKey": "rye_whole_unprocessed_grain",
+      "catalogKey": "whole_rye_grain",
       "displayName": "Рожь, зерно цельное необработанное",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -8161,7 +8161,7 @@
       }
     },
     {
-      "catalogKey": "camelina",
+      "catalogKey": "saffron_milk_cap",
       "displayName": "Рыжик",
       "category": "mashrooms",
       "defaultPieceWeightGrams": 100,
@@ -8192,7 +8192,7 @@
       }
     },
     {
-      "catalogKey": "red_garden_rowan_wood",
+      "catalogKey": "rowan_berries",
       "displayName": "Рябина садовая красная",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -8254,7 +8254,7 @@
       }
     },
     {
-      "catalogKey": "ryazhenka_4_0_fat",
+      "catalogKey": "fermented_baked_milk_4",
       "displayName": "Ряженка 4,0% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -8285,7 +8285,7 @@
       }
     },
     {
-      "catalogKey": "sazan_azov",
+      "catalogKey": "azov_carp",
       "displayName": "Сазан азовский",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8347,7 +8347,7 @@
       }
     },
     {
-      "catalogKey": "saira",
+      "catalogKey": "pacific_saury",
       "displayName": "Сайра",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8378,7 +8378,7 @@
       }
     },
     {
-      "catalogKey": "salaka",
+      "catalogKey": "baltic_herring",
       "displayName": "Салака",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8440,7 +8440,7 @@
       }
     },
     {
-      "catalogKey": "salilota_brotola",
+      "catalogKey": "patagonian_cod",
       "displayName": "Салилота (бротола)",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8502,7 +8502,7 @@
       }
     },
     {
-      "catalogKey": "sugar_syrup_",
+      "catalogKey": "sugar_syrup",
       "displayName": "Сахарный сироп",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -8564,7 +8564,7 @@
       }
     },
     {
-      "catalogKey": "sauced_beetroot",
+      "catalogKey": "pickled_beetroot",
       "displayName": "Свекла квашеная",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -8626,7 +8626,7 @@
       }
     },
     {
-      "catalogKey": "sturgeons",
+      "catalogKey": "stellate_sturgeon",
       "displayName": "Севрюга",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8750,7 +8750,7 @@
       }
     },
     {
-      "catalogKey": "atlantic_herring_",
+      "catalogKey": "atlantic_herring",
       "displayName": "Сельдь атлантическая",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8781,7 +8781,7 @@
       }
     },
     {
-      "catalogKey": "iwashi_herring_",
+      "catalogKey": "iwashi_herring",
       "displayName": "Сельдь иваси",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8812,7 +8812,7 @@
       }
     },
     {
-      "catalogKey": "pacific_herring_",
+      "catalogKey": "pacific_herring",
       "displayName": "Сельдь тихоокеанская",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -8843,7 +8843,7 @@
       }
     },
     {
-      "catalogKey": "heart_of_a_mutton",
+      "catalogKey": "lamb_heart",
       "displayName": "Сердце баранье",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -8967,7 +8967,7 @@
       }
     },
     {
-      "catalogKey": "seriolella",
+      "catalogKey": "warehou",
       "displayName": "Сериолелла",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -9060,7 +9060,7 @@
       }
     },
     {
-      "catalogKey": "plum_drupes_seed",
+      "catalogKey": "plum_kernel",
       "displayName": "Слива, семя костянки",
       "category": "seeds",
       "defaultPieceWeightGrams": 100,
@@ -9091,7 +9091,7 @@
       }
     },
     {
-      "catalogKey": "plum_seed_oil",
+      "catalogKey": "plum_kernel_oil",
       "displayName": "Масло из сливовых косточек",
       "category": "oils",
       "defaultPieceWeightGrams": 100,
@@ -9122,7 +9122,7 @@
       }
     },
     {
-      "catalogKey": "butter_61_5_fat_sandwich",
+      "catalogKey": "butter_61_5",
       "displayName": "Сливочное масло, 61,5%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -9215,7 +9215,7 @@
       }
     },
     {
-      "catalogKey": "wrinkle_mushroom",
+      "catalogKey": "morel_mushroom",
       "displayName": "Сморчок, гриб",
       "category": "mashrooms",
       "defaultPieceWeightGrams": 100,
@@ -9246,7 +9246,7 @@
       }
     },
     {
-      "catalogKey": "non_fat_soy_flour",
+      "catalogKey": "full_fat_soy_flour",
       "displayName": "Соевая мука необезжиренная",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -9277,7 +9277,7 @@
       }
     },
     {
-      "catalogKey": "soybean_meal_defatted",
+      "catalogKey": "defatted_soy_flour",
       "displayName": "Соевая мука обезжиренная",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -9339,7 +9339,7 @@
       }
     },
     {
-      "catalogKey": "sok_abrikosovyy",
+      "catalogKey": "apricot_juice",
       "displayName": "Сок абрикосовый",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9370,7 +9370,7 @@
       }
     },
     {
-      "catalogKey": "sok_ananasovyy",
+      "catalogKey": "pineapple_juice",
       "displayName": "Сок ананасовый",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9401,7 +9401,7 @@
       }
     },
     {
-      "catalogKey": "sok_apelsinovyy",
+      "catalogKey": "orange_juice",
       "displayName": "Сок апельсиновый",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9432,7 +9432,7 @@
       }
     },
     {
-      "catalogKey": "sok_greypfrutovyy",
+      "catalogKey": "grapefruit_juice",
       "displayName": "Сок грейпфрутовый",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9463,7 +9463,7 @@
       }
     },
     {
-      "catalogKey": "sok_grushevyy",
+      "catalogKey": "pear_juice",
       "displayName": "Сок грушевый",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9525,7 +9525,7 @@
       }
     },
     {
-      "catalogKey": "sok_mandarinovyy",
+      "catalogKey": "mandarin_juice",
       "displayName": "Сок мандариновый",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9556,7 +9556,7 @@
       }
     },
     {
-      "catalogKey": "sok_persikovyy",
+      "catalogKey": "peach_juice",
       "displayName": "Сок персиковый",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9587,7 +9587,7 @@
       }
     },
     {
-      "catalogKey": "sok_slivovyy",
+      "catalogKey": "plum_juice",
       "displayName": "Сок сливовый",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9618,7 +9618,7 @@
       }
     },
     {
-      "catalogKey": "sok_tomatnyy",
+      "catalogKey": "tomato_juice",
       "displayName": "Сок томатный",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9649,7 +9649,7 @@
       }
     },
     {
-      "catalogKey": "sok_yablochnyy",
+      "catalogKey": "apple_juice",
       "displayName": "Сок яблочный",
       "category": "drinks",
       "defaultPieceWeightGrams": 100,
@@ -9680,7 +9680,7 @@
       }
     },
     {
-      "catalogKey": "solnechnik_ryba",
+      "catalogKey": "john_dory",
       "displayName": "Солнечник, рыба",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -9715,7 +9715,7 @@
       "displayName": "Соль",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
-      "caloriesPer100g": 100.0,
+      "caloriesPer100g": 0,
       "proteinPer100g": 0,
       "fatPer100g": 0,
       "carbsPer100g": 0,
@@ -9742,7 +9742,7 @@
       }
     },
     {
-      "catalogKey": "som",
+      "catalogKey": "catfish",
       "displayName": "Сом",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -9773,7 +9773,7 @@
       }
     },
     {
-      "catalogKey": "sorbit_pischevoy",
+      "catalogKey": "sorbitol",
       "displayName": "Сорбит пищевой",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -9805,7 +9805,7 @@
       "macrosOnly": true
     },
     {
-      "catalogKey": "soya_zerno",
+      "catalogKey": "soybeans",
       "displayName": "Соя, зерно",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -9867,7 +9867,7 @@
       }
     },
     {
-      "catalogKey": "stavrida",
+      "catalogKey": "horse_mackerel",
       "displayName": "Ставрида",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -9898,7 +9898,7 @@
       }
     },
     {
-      "catalogKey": "sudak",
+      "catalogKey": "zander",
       "displayName": "Судак",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -9929,7 +9929,7 @@
       }
     },
     {
-      "catalogKey": "suluguni_m_d_zh_46_v_sukh_v_ve",
+      "catalogKey": "suluguni_cheese",
       "displayName": "Сулугуни, м.д.ж. 46% в сух. в-ве",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -9960,7 +9960,7 @@
       }
     },
     {
-      "catalogKey": "syvorotka_tvorozhnaya",
+      "catalogKey": "cheese_whey",
       "displayName": "Сыворотка творожная",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -9991,7 +9991,7 @@
       }
     },
     {
-      "catalogKey": "syr_myagkiy",
+      "catalogKey": "soft_cheese",
       "displayName": "Мягкий сыр",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10022,7 +10022,7 @@
       }
     },
     {
-      "catalogKey": "syr_plavlenyy",
+      "catalogKey": "processed_cheese",
       "displayName": "Сыр плавленый",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10053,7 +10053,7 @@
       }
     },
     {
-      "catalogKey": "syr_tverdyy",
+      "catalogKey": "hard_cheese",
       "displayName": "Сыр твердый",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10084,7 +10084,7 @@
       }
     },
     {
-      "catalogKey": "syroezhki",
+      "catalogKey": "russula_mushrooms",
       "displayName": "Сыроежки",
       "category": "mashrooms",
       "defaultPieceWeightGrams": 100,
@@ -10115,7 +10115,7 @@
       }
     },
     {
-      "catalogKey": "syrok_pelyad_ryba",
+      "catalogKey": "peled_whitefish",
       "displayName": "Сырок (пелядь), рыба",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -10146,7 +10146,7 @@
       }
     },
     {
-      "catalogKey": "tvorog_18_zhirnosti",
+      "catalogKey": "cottage_cheese_18",
       "displayName": "Творог 18% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10177,7 +10177,7 @@
       }
     },
     {
-      "catalogKey": "tvorog_11_zhirnosti",
+      "catalogKey": "cottage_cheese_11",
       "displayName": "Творог 11% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10208,7 +10208,7 @@
       }
     },
     {
-      "catalogKey": "tvorog_obezzhirennyy_0_6_zhirnosti",
+      "catalogKey": "cottage_cheese_0_6",
       "displayName": "Обезжиренный творог, 0,6%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10239,7 +10239,7 @@
       }
     },
     {
-      "catalogKey": "tvorog_9_zhirnosti",
+      "catalogKey": "cottage_cheese_9",
       "displayName": "Творог, 9%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10270,7 +10270,7 @@
       }
     },
     {
-      "catalogKey": "tvorog_5_zhirnosti",
+      "catalogKey": "cottage_cheese_5",
       "displayName": "Творог, 5%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10301,7 +10301,7 @@
       }
     },
     {
-      "catalogKey": "telyatina_1_kat",
+      "catalogKey": "veal",
       "displayName": "Телятина 1 кат",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -10332,7 +10332,7 @@
       }
     },
     {
-      "catalogKey": "tern",
+      "catalogKey": "sloe_berry",
       "displayName": "Терн",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -10363,7 +10363,7 @@
       }
     },
     {
-      "catalogKey": "terpug",
+      "catalogKey": "greenling",
       "displayName": "Терпуг",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -10394,7 +10394,7 @@
       }
     },
     {
-      "catalogKey": "tolokno",
+      "catalogKey": "oat_bran",
       "displayName": "Толокно",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -10425,7 +10425,7 @@
       }
     },
     {
-      "catalogKey": "pomidor_tomat",
+      "catalogKey": "tomato",
       "displayName": "Помидор",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -10456,7 +10456,7 @@
       }
     },
     {
-      "catalogKey": "pomidory_tomaty_solenye",
+      "catalogKey": "salted_tomatoes",
       "displayName": "Помидоры (томаты) соленые",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -10487,7 +10487,7 @@
       }
     },
     {
-      "catalogKey": "tomatnaya_pasta_konservy",
+      "catalogKey": "tomato_paste",
       "displayName": "Томатная паста",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -10518,7 +10518,7 @@
       }
     },
     {
-      "catalogKey": "toplenoe_oil",
+      "catalogKey": "ghee",
       "displayName": "Топленое масло",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -10549,7 +10549,7 @@
       }
     },
     {
-      "catalogKey": "treska",
+      "catalogKey": "cod",
       "displayName": "Треска",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -10580,7 +10580,7 @@
       }
     },
     {
-      "catalogKey": "tritikale",
+      "catalogKey": "triticale",
       "displayName": "Тритикале",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -10642,7 +10642,7 @@
       }
     },
     {
-      "catalogKey": "tykva",
+      "catalogKey": "pumpkin",
       "displayName": "Тыква",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -10673,7 +10673,7 @@
       }
     },
     {
-      "catalogKey": "ugolnaya_ryba",
+      "catalogKey": "sablefish",
       "displayName": "Угольная рыба",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -10704,7 +10704,7 @@
       }
     },
     {
-      "catalogKey": "ugor_rechnoy",
+      "catalogKey": "river_eel",
       "displayName": "Угорь речной",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -10735,7 +10735,7 @@
       }
     },
     {
-      "catalogKey": "udilschik",
+      "catalogKey": "monkfish",
       "displayName": "Удильщик",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -10766,7 +10766,7 @@
       }
     },
     {
-      "catalogKey": "ukrop",
+      "catalogKey": "dill",
       "displayName": "Укроп",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -10797,7 +10797,7 @@
       }
     },
     {
-      "catalogKey": "uksus_vinnyy_3",
+      "catalogKey": "wine_vinegar_3",
       "displayName": "Уксус винный 3%",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -10828,7 +10828,7 @@
       }
     },
     {
-      "catalogKey": "abrikosy_sushenye_s_kostochkoy_uryuk",
+      "catalogKey": "dried_apricots_with_pit",
       "displayName": "Абрикосы сушеные с косточкой (урюк)",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -10859,7 +10859,7 @@
       }
     },
     {
-      "catalogKey": "fasol_zerno",
+      "catalogKey": "dry_beans",
       "displayName": "Фасоль, зерно",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -10890,7 +10890,7 @@
       }
     },
     {
-      "catalogKey": "fasol_struchkovaya",
+      "catalogKey": "green_beans",
       "displayName": "Фасоль стручковая",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -10921,7 +10921,7 @@
       }
     },
     {
-      "catalogKey": "finiki",
+      "catalogKey": "dates",
       "displayName": "Финики",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -10952,7 +10952,7 @@
       }
     },
     {
-      "catalogKey": "funduk",
+      "catalogKey": "hazelnut",
       "displayName": "Фундук",
       "category": "nuts",
       "defaultPieceWeightGrams": 100,
@@ -10983,7 +10983,7 @@
       }
     },
     {
-      "catalogKey": "khek",
+      "catalogKey": "hake",
       "displayName": "Хек",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -11014,7 +11014,7 @@
       }
     },
     {
-      "catalogKey": "bread_rzhano_pshenichnyy_borodinskiy_muka_rzhanaya_oboynaya_i_pshenichnaya_2_sorta",
+      "catalogKey": "borodinsky_bread",
       "displayName": "Хлеб ржано-пшеничный бородинский (мука ржаная обойная и пшеничная 2 сорта)",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -11045,7 +11045,7 @@
       }
     },
     {
-      "catalogKey": "bread_pshenichnyy",
+      "catalogKey": "wheat_bread",
       "displayName": "Пшеничный хлеб",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -11076,7 +11076,7 @@
       }
     },
     {
-      "catalogKey": "bread_rzhanoy",
+      "catalogKey": "rye_bread",
       "displayName": "Хлеб ржаной",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -11107,7 +11107,7 @@
       }
     },
     {
-      "catalogKey": "khlopkovoe_oil",
+      "catalogKey": "cottonseed_oil",
       "displayName": "Хлопковое масло",
       "category": "oils",
       "defaultPieceWeightGrams": 100,
@@ -11138,7 +11138,7 @@
       }
     },
     {
-      "catalogKey": "khlopchatnik_semya",
+      "catalogKey": "cotton_seeds",
       "displayName": "Хлопчатник, семя",
       "category": "seeds",
       "defaultPieceWeightGrams": 100,
@@ -11169,7 +11169,7 @@
       }
     },
     {
-      "catalogKey": "khren_koren",
+      "catalogKey": "horseradish_root",
       "displayName": "Хрен, корень",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -11200,7 +11200,7 @@
       }
     },
     {
-      "catalogKey": "khurma",
+      "catalogKey": "persimmon",
       "displayName": "Хурма",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -11231,7 +11231,7 @@
       }
     },
     {
-      "catalogKey": "chay_chernyy_baykhovyy_sukhaya_zavarka",
+      "catalogKey": "black_tea_leaves",
       "displayName": "Чай черный байховый (сухая заварка)",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -11262,7 +11262,7 @@
       }
     },
     {
-      "catalogKey": "cheremukha",
+      "catalogKey": "bird_cherry",
       "displayName": "Черемуха",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -11293,7 +11293,7 @@
       }
     },
     {
-      "catalogKey": "cheremsha",
+      "catalogKey": "wild_garlic",
       "displayName": "Черемша",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -11324,7 +11324,7 @@
       }
     },
     {
-      "catalogKey": "chereshnya",
+      "catalogKey": "sweet_cherry",
       "displayName": "Черешня",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -11355,7 +11355,7 @@
       }
     },
     {
-      "catalogKey": "chernika",
+      "catalogKey": "bilberry",
       "displayName": "Черника",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -11386,7 +11386,7 @@
       }
     },
     {
-      "catalogKey": "chernosliv_sliva_sushenaya",
+      "catalogKey": "prunes",
       "displayName": "Чернослив (слива сушеная)",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -11417,7 +11417,7 @@
       }
     },
     {
-      "catalogKey": "chernushka",
+      "catalogKey": "black_cumin",
       "displayName": "Черный тмин",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -11479,7 +11479,7 @@
       }
     },
     {
-      "catalogKey": "chesnok_zelen",
+      "catalogKey": "garlic_greens",
       "displayName": "Чеснок, зелень",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -11510,7 +11510,7 @@
       }
     },
     {
-      "catalogKey": "chechevitsa_zerno",
+      "catalogKey": "lentils",
       "displayName": "Чечевица",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -11541,7 +11541,7 @@
       }
     },
     {
-      "catalogKey": "shampinony",
+      "catalogKey": "champignons",
       "displayName": "Шампиньоны",
       "category": "mashrooms",
       "defaultPieceWeightGrams": 100,
@@ -11572,7 +11572,7 @@
       }
     },
     {
-      "catalogKey": "shelkovitsa",
+      "catalogKey": "mulberry",
       "displayName": "Шелковица",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -11603,7 +11603,7 @@
       }
     },
     {
-      "catalogKey": "shipovnik",
+      "catalogKey": "rose_hip",
       "displayName": "Шиповник",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -11634,7 +11634,7 @@
       }
     },
     {
-      "catalogKey": "shipovnik_sukhoy",
+      "catalogKey": "dried_rose_hip",
       "displayName": "Шиповник сухой",
       "category": "berries",
       "defaultPieceWeightGrams": 100,
@@ -11665,7 +11665,7 @@
       }
     },
     {
-      "catalogKey": "shokolad_gorkiy",
+      "catalogKey": "dark_chocolate",
       "displayName": "Шоколад горький",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -11696,7 +11696,7 @@
       }
     },
     {
-      "catalogKey": "shpinat",
+      "catalogKey": "spinach",
       "displayName": "Шпинат",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -11727,7 +11727,7 @@
       }
     },
     {
-      "catalogKey": "schavel",
+      "catalogKey": "sorrel",
       "displayName": "Щавель",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -11758,7 +11758,7 @@
       }
     },
     {
-      "catalogKey": "schuka",
+      "catalogKey": "pike",
       "displayName": "Щука",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -11789,7 +11789,7 @@
       }
     },
     {
-      "catalogKey": "epigonus_chyornyy_dalnevostochnyy_kardinal",
+      "catalogKey": "black_cardinalfish",
       "displayName": "Эпигонус чёрный дальневосточный (кардинал)",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -11820,7 +11820,7 @@
       }
     },
     {
-      "catalogKey": "yabloko",
+      "catalogKey": "apple",
       "displayName": "Яблоко",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -11851,7 +11851,7 @@
       }
     },
     {
-      "catalogKey": "yabloko_sushenoe",
+      "catalogKey": "dried_apple",
       "displayName": "Яблоко сушеное",
       "category": "fruits",
       "defaultPieceWeightGrams": 100,
@@ -11882,7 +11882,7 @@
       }
     },
     {
-      "catalogKey": "yazyk_baraniy",
+      "catalogKey": "lamb_tongue",
       "displayName": "Язык бараний",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -11913,7 +11913,7 @@
       }
     },
     {
-      "catalogKey": "yazyk_govyazhiy",
+      "catalogKey": "beef_tongue",
       "displayName": "Язык говяжий",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -11944,7 +11944,7 @@
       }
     },
     {
-      "catalogKey": "yazyk_morskoy",
+      "catalogKey": "common_sole",
       "displayName": "Язык морской",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -11975,7 +11975,7 @@
       }
     },
     {
-      "catalogKey": "yazyk_svinoy",
+      "catalogKey": "pork_tongue",
       "displayName": "Язык свиной",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12006,7 +12006,7 @@
       }
     },
     {
-      "catalogKey": "yaz",
+      "catalogKey": "ide_fish",
       "displayName": "Язь",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -12037,7 +12037,7 @@
       }
     },
     {
-      "catalogKey": "yaytso_kurinoe",
+      "catalogKey": "chicken_egg",
       "displayName": "Куриное яйцо",
       "category": "eggs",
       "defaultPieceWeightGrams": 100,
@@ -12068,7 +12068,7 @@
       }
     },
     {
-      "catalogKey": "yaytso_perepelinoe",
+      "catalogKey": "quail_egg",
       "displayName": "Яйцо перепелиное",
       "category": "eggs",
       "defaultPieceWeightGrams": 100,
@@ -12099,7 +12099,7 @@
       }
     },
     {
-      "catalogKey": "yachmennaya_muka",
+      "catalogKey": "barley_flour",
       "displayName": "Ячменная мука",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -12130,7 +12130,7 @@
       }
     },
     {
-      "catalogKey": "yachmen_zerno_tselnoe_neobrabotannoe",
+      "catalogKey": "whole_barley_grain",
       "displayName": "Ячмень, зерно цельное необработанное",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -12161,7 +12161,7 @@
       }
     },
     {
-      "catalogKey": "yachnevaya_krupa",
+      "catalogKey": "barley_groats",
       "displayName": "Ячневая крупа",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -12192,7 +12192,7 @@
       }
     },
     {
-      "catalogKey": "losos_atlanticheskiy_semga",
+      "catalogKey": "atlantic_salmon",
       "displayName": "Атлантический лосось",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -12223,7 +12223,7 @@
       }
     },
     {
-      "catalogKey": "fazan",
+      "catalogKey": "pheasant",
       "displayName": "Фазан",
       "category": "poultry",
       "defaultPieceWeightGrams": 100,
@@ -12254,7 +12254,7 @@
       }
     },
     {
-      "catalogKey": "ryabchik",
+      "catalogKey": "hazel_grouse",
       "displayName": "Рябчик",
       "category": "poultry",
       "defaultPieceWeightGrams": 100,
@@ -12285,7 +12285,7 @@
       }
     },
     {
-      "catalogKey": "teterev",
+      "catalogKey": "black_grouse",
       "displayName": "Тетерев",
       "category": "poultry",
       "defaultPieceWeightGrams": 100,
@@ -12316,7 +12316,7 @@
       }
     },
     {
-      "catalogKey": "merlang",
+      "catalogKey": "whiting",
       "displayName": "Мерланг",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -12347,7 +12347,7 @@
       }
     },
     {
-      "catalogKey": "ushi_svinye",
+      "catalogKey": "pig_ears",
       "displayName": "Уши свиные",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12378,7 +12378,7 @@
       }
     },
     {
-      "catalogKey": "gorchitsa_stolovaya",
+      "catalogKey": "table_mustard",
       "displayName": "Горчица столовая",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -12409,7 +12409,7 @@
       }
     },
     {
-      "catalogKey": "perets_sladkiy_marinovannyy",
+      "catalogKey": "pickled_sweet_pepper",
       "displayName": "Перец сладкий маринованный",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -12440,7 +12440,7 @@
       }
     },
     {
-      "catalogKey": "okorok_vareno_kopchyonyy",
+      "catalogKey": "ham",
       "displayName": "Ветчина",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12471,7 +12471,7 @@
       }
     },
     {
-      "catalogKey": "minoga",
+      "catalogKey": "lamprey",
       "displayName": "Минога",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -12502,7 +12502,7 @@
       }
     },
     {
-      "catalogKey": "tryufeli",
+      "catalogKey": "truffles",
       "displayName": "Трюфели",
       "category": "mushrooms",
       "defaultPieceWeightGrams": 100,
@@ -12533,7 +12533,7 @@
       }
     },
     {
-      "catalogKey": "omul",
+      "catalogKey": "baikal_whitefish",
       "displayName": "Омуль",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -12564,7 +12564,7 @@
       }
     },
     {
-      "catalogKey": "nelma",
+      "catalogKey": "inconnu_whitefish",
       "displayName": "Нельма",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -12595,7 +12595,7 @@
       }
     },
     {
-      "catalogKey": "nogi_svinye",
+      "catalogKey": "pig_feet",
       "displayName": "Ноги свиные",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12626,7 +12626,7 @@
       }
     },
     {
-      "catalogKey": "salo_shpik_svinoy_bez_shkurki",
+      "catalogKey": "pork_fatback",
       "displayName": "Сало (шпик свиной, без шкурки)",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12657,7 +12657,7 @@
       }
     },
     {
-      "catalogKey": "fistashki",
+      "catalogKey": "pistachios",
       "displayName": "Фисташки",
       "category": "nuts",
       "defaultPieceWeightGrams": 100,
@@ -12688,7 +12688,7 @@
       }
     },
     {
-      "catalogKey": "orekh_muskatnyy",
+      "catalogKey": "nutmeg",
       "displayName": "Орех мускатный",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -12719,7 +12719,7 @@
       }
     },
     {
-      "catalogKey": "rubets_govyazhiy",
+      "catalogKey": "beef_tripe",
       "displayName": "Рубец говяжий",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12750,7 +12750,7 @@
       }
     },
     {
-      "catalogKey": "golova_govyazhya",
+      "catalogKey": "beef_head",
       "displayName": "Голова говяжья",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12782,7 +12782,7 @@
       "macrosOnly": true
     },
     {
-      "catalogKey": "golova_baranya",
+      "catalogKey": "lamb_head",
       "displayName": "Голова баранья",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12813,7 +12813,7 @@
       }
     },
     {
-      "catalogKey": "nogi_barani",
+      "catalogKey": "lamb_feet",
       "displayName": "Ноги бараньи",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12844,7 +12844,7 @@
       }
     },
     {
-      "catalogKey": "ushi_govyazhi",
+      "catalogKey": "beef_ears",
       "displayName": "Уши говяжьи",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12875,7 +12875,7 @@
       }
     },
     {
-      "catalogKey": "guby_govyazhi",
+      "catalogKey": "beef_lips",
       "displayName": "Губы говяжьи",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12906,7 +12906,7 @@
       }
     },
     {
-      "catalogKey": "subprodukty_golovy_nogi_krylya_zheludki_shei_konservy",
+      "catalogKey": "canned_poultry_offal",
       "displayName": "Субпродукты (головы, ноги, крылья, желудки, шеи), консервы",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12937,7 +12937,7 @@
       }
     },
     {
-      "catalogKey": "pechen_telyachya",
+      "catalogKey": "veal_liver",
       "displayName": "Печень телячья",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12968,7 +12968,7 @@
       }
     },
     {
-      "catalogKey": "putovyy_sustav_govyazhiy",
+      "catalogKey": "beef_hock_joint",
       "displayName": "Путовый сустав говяжий",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -12999,7 +12999,7 @@
       }
     },
     {
-      "catalogKey": "zhir_kulinarnyy",
+      "catalogKey": "cooking_fat",
       "displayName": "Жир кулинарный",
       "category": "oils",
       "defaultPieceWeightGrams": 100,
@@ -13030,7 +13030,7 @@
       }
     },
     {
-      "catalogKey": "kapusta_savoyskaya",
+      "catalogKey": "savoy_cabbage",
       "displayName": "Капуста савойская",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -13061,7 +13061,7 @@
       }
     },
     {
-      "catalogKey": "kosti_svinokopchenostey",
+      "catalogKey": "smoked_pork_bones",
       "displayName": "Кости свинокопченостей",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -13092,7 +13092,7 @@
       }
     },
     {
-      "catalogKey": "pochki_govyazhi",
+      "catalogKey": "beef_kidneys",
       "displayName": "Почки говяжьи",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -13123,7 +13123,7 @@
       }
     },
     {
-      "catalogKey": "sig",
+      "catalogKey": "whitefish",
       "displayName": "Сиг",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -13154,7 +13154,7 @@
       }
     },
     {
-      "catalogKey": "sterlyad",
+      "catalogKey": "sterlet",
       "displayName": "Стерлядь",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -13185,7 +13185,7 @@
       }
     },
     {
-      "catalogKey": "goroshek_zelenyy_konservy",
+      "catalogKey": "canned_green_peas",
       "displayName": "Горошек зеленый. Консервы",
       "category": "beans",
       "defaultPieceWeightGrams": 100,
@@ -13247,7 +13247,7 @@
       }
     },
     {
-      "catalogKey": "bazilik_sushenyy",
+      "catalogKey": "dried_basil",
       "displayName": "Базилик, сушеный",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -13278,7 +13278,7 @@
       }
     },
     {
-      "catalogKey": "semena_chia_sushenye",
+      "catalogKey": "chia_seeds",
       "displayName": "Семена чиа",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -13309,7 +13309,7 @@
       }
     },
     {
-      "catalogKey": "tykvennye_semechki_sushenye",
+      "catalogKey": "pumpkin_seeds",
       "displayName": "Тыквенные семечки, сушеные",
       "category": "seeds",
       "defaultPieceWeightGrams": 100,
@@ -13340,7 +13340,7 @@
       }
     },
     {
-      "catalogKey": "syr_rikotta_10_2_zhirnosti_iz_tselnogo_moloka_m_",
+      "catalogKey": "ricotta_cheese",
       "displayName": "Сыр рикотта 10,2% жирности, из цельного молока, м.д.ж. 39% в сух. в-ве",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -13433,7 +13433,7 @@
       }
     },
     {
-      "catalogKey": "zelenaya_grechka_zhitnitsa_zdorovya",
+      "catalogKey": "green_buckwheat",
       "displayName": "Зеленая Гречка",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -13496,7 +13496,7 @@
       }
     },
     {
-      "catalogKey": "soevyy_sous",
+      "catalogKey": "soy_sauce",
       "displayName": "Соевый соус",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -13527,7 +13527,7 @@
       }
     },
     {
-      "catalogKey": "krahmal_tapiokovyy_garnets",
+      "catalogKey": "tapioca_starch",
       "displayName": "Крахмал Тапиоковый [Гарнец]",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -13559,7 +13559,7 @@
       }
     },
     {
-      "catalogKey": "tunets_v_sobstvennom_soku_fortuna",
+      "catalogKey": "canned_tuna_in_water",
       "displayName": "Тунец в Собственном Соку [Fortuna]",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -13591,7 +13591,7 @@
       }
     },
     {
-      "catalogKey": "bekon",
+      "catalogKey": "bacon",
       "displayName": "Бекон",
       "category": "meat",
       "defaultPieceWeightGrams": 100,
@@ -13622,7 +13622,7 @@
       }
     },
     {
-      "catalogKey": "pomidory_tomaty_vyalenye_upakovannye_v_masle",
+      "catalogKey": "sun_dried_tomatoes_in_oil",
       "displayName": "Помидоры (томаты), вяленые, упакованные в масле",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -13684,7 +13684,7 @@
       }
     },
     {
-      "catalogKey": "oregano_sushenyy",
+      "catalogKey": "oregano",
       "displayName": "Орегано",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -13715,7 +13715,7 @@
       }
     },
     {
-      "catalogKey": "semena_lna",
+      "catalogKey": "flax_seeds",
       "displayName": "Семена льна",
       "category": "seeds",
       "defaultPieceWeightGrams": 100,
@@ -13746,7 +13746,7 @@
       }
     },
     {
-      "catalogKey": "smetana_10_zhirnosti",
+      "catalogKey": "sour_cream_10",
       "displayName": "Сметана 10% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -13777,7 +13777,7 @@
       }
     },
     {
-      "catalogKey": "smetana_20_zhirnosti",
+      "catalogKey": "sour_cream_20",
       "displayName": "Сметана 20% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -13808,7 +13808,7 @@
       }
     },
     {
-      "catalogKey": "smetana_15_zhirnosti",
+      "catalogKey": "sour_cream_15",
       "displayName": "Сметана 15% жирности",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -13839,7 +13839,7 @@
       }
     },
     {
-      "catalogKey": "syr_legkiy_syrobogatov",
+      "catalogKey": "light_hard_cheese",
       "displayName": "Сыр Легкий [Сыробогатов]",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -13871,7 +13871,7 @@
       }
     },
     {
-      "catalogKey": "uksus_yablochnyy",
+      "catalogKey": "apple_cider_vinegar",
       "displayName": "Уксус яблочный",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -13902,7 +13902,7 @@
       }
     },
     {
-      "catalogKey": "chili_powder",
+      "catalogKey": "chili_flakes",
       "displayName": "Хлопья чили",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -13934,7 +13934,7 @@
       }
     },
     {
-      "catalogKey": "timyan_sushenyy",
+      "catalogKey": "dried_thyme",
       "displayName": "Тимьян, сушеный",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -13965,7 +13965,7 @@
       }
     },
     {
-      "catalogKey": "timyan_svezhiy",
+      "catalogKey": "fresh_thyme",
       "displayName": "Тимьян, свежий",
       "category": "greens",
       "defaultPieceWeightGrams": 100,
@@ -14027,7 +14027,7 @@
       }
     },
     {
-      "catalogKey": "kurkuma_molotaya",
+      "catalogKey": "ground_turmeric",
       "displayName": "Куркума, молотая",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -14058,7 +14058,7 @@
       }
     },
     {
-      "catalogKey": "zira_semena",
+      "catalogKey": "cumin_seeds",
       "displayName": "Зира",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -14089,7 +14089,7 @@
       }
     },
     {
-      "catalogKey": "kokosovaya_struzhka_podslaschennaya",
+      "catalogKey": "sweetened_shredded_coconut",
       "displayName": "Кокосовая стружка, подслащенная",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -14152,7 +14152,7 @@
       }
     },
     {
-      "catalogKey": "krabovoe_myaso_iz_surimi_iskustvennoe_krabovye_p",
+      "catalogKey": "crab_sticks",
       "displayName": "Крабовое мясо из сурими (искуственное), крабовые палочки",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -14183,7 +14183,7 @@
       }
     },
     {
-      "catalogKey": "brokkoli",
+      "catalogKey": "broccoli",
       "displayName": "Брокколи",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,
@@ -14214,7 +14214,7 @@
       }
     },
     {
-      "catalogKey": "brazilskiy_oreh",
+      "catalogKey": "brazil_nut",
       "displayName": "Бразильский орех",
       "category": "nuts",
       "defaultPieceWeightGrams": 100,
@@ -14245,7 +14245,7 @@
       }
     },
     {
-      "catalogKey": "arahisovaya_pasta_s_solyu",
+      "catalogKey": "salted_peanut_butter",
       "displayName": "Арахисовая паста с солью",
       "category": "nuts",
       "defaultPieceWeightGrams": 100,
@@ -14276,7 +14276,7 @@
       }
     },
     {
-      "catalogKey": "miso_pasta_sen_soy",
+      "catalogKey": "miso_paste",
       "displayName": "Мисо Паста [Сэн Сой]",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -14308,7 +14308,7 @@
       }
     },
     {
-      "catalogKey": "pasta_tom_yam_aroy_d",
+      "catalogKey": "tom_yum_paste",
       "displayName": "Паста Том Ям [Aroy-D]",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -14340,7 +14340,7 @@
       }
     },
     {
-      "catalogKey": "risovaya_bumaga_aroy_d",
+      "catalogKey": "rice_paper",
       "displayName": "Рисовая бумага",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -14404,7 +14404,7 @@
       }
     },
     {
-      "catalogKey": "soevoe_moloko_ne_moloko",
+      "catalogKey": "soy_milk",
       "displayName": "Соевое Молоко [не Молоко]",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -14467,7 +14467,7 @@
       }
     },
     {
-      "catalogKey": "risovaya_muka_belaya",
+      "catalogKey": "white_rice_flour",
       "displayName": "Рисовая мука, белая",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -14498,7 +14498,7 @@
       }
     },
     {
-      "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+      "catalogKey": "greek_yogurt_1_9",
       "displayName": "Натуральный греческий йогурт, 1,9%",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -14529,7 +14529,7 @@
       }
     },
     {
-      "catalogKey": "yogurt_grecheskiy_teos_2_savushkin_produkt",
+      "catalogKey": "greek_yogurt_2",
       "displayName": "Йогурт Греческий Teos 2% [Савушкин Продукт]",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -14561,7 +14561,7 @@
       }
     },
     {
-      "catalogKey": "soevoe_moloko_nepodslaschennoe_s_dob_kaltsiya_vi",
+      "catalogKey": "unsweetened_soy_milk",
       "displayName": "Соевое молоко, неподслащенное, с доб. кальция, витаминов A и D",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -14623,7 +14623,7 @@
       }
     },
     {
-      "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
+      "catalogKey": "firm_tofu",
       "displayName": "Тофу, плотый, приготовленный с сульфатом кальция и хлоридом магния (нигари)",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -14654,7 +14654,7 @@
       }
     },
     {
-      "catalogKey": "syr_korol_syrov_syrobogatov",
+      "catalogKey": "hard_cheese_29_protein",
       "displayName": "Твёрдый сыр, 29% белка",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -14686,7 +14686,7 @@
       }
     },
     {
-      "catalogKey": "kokosovoe_moloko_na_rastitelnoy_osnove_alpro",
+      "catalogKey": "coconut_milk_drink",
       "displayName": "Кокосовое Молоко на Растительной Основе [Alpro]",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -14718,7 +14718,7 @@
       }
     },
     {
-      "catalogKey": "drozhzhi_pischevye_neaktivnye_polezzno",
+      "catalogKey": "nutritional_yeast",
       "displayName": "Дрожжи Пищевые Неактивные [Polezzno]",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -14750,7 +14750,7 @@
       }
     },
     {
-      "catalogKey": "urbech_iz_mindalya",
+      "catalogKey": "almond_butter",
       "displayName": "Урбеч из Миндаля",
       "category": "nuts",
       "defaultPieceWeightGrams": 100,
@@ -14782,7 +14782,7 @@
       }
     },
     {
-      "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+      "catalogKey": "whole_grain_pasta",
       "displayName": "Цельнозерновые макароны",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -14814,7 +14814,7 @@
       }
     },
     {
-      "catalogKey": "syr_slivochnyy_syrobogatov",
+      "catalogKey": "cream_cheese",
       "displayName": "Сыр Сливочный [Сыробогатов]",
       "category": "dairy",
       "defaultPieceWeightGrams": 100,
@@ -14846,7 +14846,7 @@
       }
     },
     {
-      "catalogKey": "sirop_topinambura_royal_forest",
+      "catalogKey": "jerusalem_artichoke_syrup",
       "displayName": "Сироп Топинамбура [Royal Forest]",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -14909,7 +14909,7 @@
       }
     },
     {
-      "catalogKey": "redonion",
+      "catalogKey": "red_onion",
       "displayName": "Красный лук",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -15348,7 +15348,7 @@
       }
     },
     {
-      "catalogKey": "slices_of_sourdough",
+      "catalogKey": "sourdough_bread",
       "displayName": "Хлеб на закваске",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -16202,7 +16202,7 @@
       }
     },
     {
-      "catalogKey": "humus",
+      "catalogKey": "hummus",
       "displayName": "Хумус",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -16297,7 +16297,7 @@
       }
     },
     {
-      "catalogKey": "low_calorie_nacho_salsa_dip",
+      "catalogKey": "salsa_dip",
       "displayName": "Сальса",
       "category": "other",
       "defaultPieceWeightGrams": 100,
@@ -16361,7 +16361,7 @@
       }
     },
     {
-      "catalogKey": "laurel",
+      "catalogKey": "bay_leaf",
       "displayName": "Лавровый лист",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -16392,7 +16392,7 @@
       }
     },
     {
-      "catalogKey": "rice_risotto",
+      "catalogKey": "risotto_rice",
       "displayName": "Рис для ризотто",
       "category": "grains",
       "defaultPieceWeightGrams": 100,
@@ -16455,7 +16455,7 @@
       }
     },
     {
-      "catalogKey": "curry_spice",
+      "catalogKey": "curry_powder",
       "displayName": "Карри",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -16486,7 +16486,7 @@
       }
     },
     {
-      "catalogKey": "saffron_spice",
+      "catalogKey": "saffron",
       "displayName": "Шафран",
       "category": "spices",
       "defaultPieceWeightGrams": 100,
@@ -17454,7 +17454,7 @@
       }
     },
     {
-      "catalogKey": "carp_2",
+      "catalogKey": "common_carp",
       "displayName": "Сазан",
       "category": "fish",
       "defaultPieceWeightGrams": 100,
@@ -17485,7 +17485,7 @@
       }
     },
     {
-      "catalogKey": "ogurets_marinovannyy",
+      "catalogKey": "pickled_cucumber",
       "displayName": "Маринованный огурец",
       "category": "vegetables",
       "defaultPieceWeightGrams": 100,

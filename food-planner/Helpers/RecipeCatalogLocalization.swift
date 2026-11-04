@@ -45,9 +45,10 @@ enum RecipeCatalogLocalization {
     }
 
     static func searchableNameTexts(for catalogRecipeId: String) -> [String] {
-        guard let entry = loadEntries()[catalogRecipeId] else { return [] }
+        let canonicalId = FoodCatalogAliases.canonicalRecipeId(for: catalogRecipeId)
+        guard let entry = loadEntries()[canonicalId] else { return [] }
 
-        var texts: Set<String> = [catalogRecipeId]
+        var texts: Set<String> = [catalogRecipeId, canonicalId]
         entry.translations?.values.forEach { translation in
             if !translation.name.isEmpty {
                 texts.insert(translation.name)
@@ -57,7 +58,8 @@ enum RecipeCatalogLocalization {
     }
 
     private static func translation(for catalogRecipeId: String, languageCode: String) -> Translation? {
-        guard let entry = loadEntries()[catalogRecipeId],
+        let canonicalId = FoodCatalogAliases.canonicalRecipeId(for: catalogRecipeId)
+        guard let entry = loadEntries()[canonicalId],
               let translations = entry.translations else {
             return nil
         }

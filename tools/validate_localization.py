@@ -26,6 +26,9 @@ UNIT_KEYS = {
     "unit.teaspoon",
 }
 UNIT_VALUES = {key.removeprefix("unit.") for key in UNIT_KEYS}
+MEAL_TYPE_VALUES = {"breakfast", "lunch", "dinner", "snack"}
+SNAKE_CASE_KEY = re.compile(r"^[a-z][a-z0-9]*(?:_[a-z0-9]+)*$")
+RECIPE_ID_PATTERN = re.compile(r"^recipe_\d+$")
 
 
 def load_json(path: Path) -> dict:
@@ -108,6 +111,8 @@ def validate() -> list[str]:
     }
     for product in products:
         key = product.get("catalogKey", "<missing-key>")
+        if not isinstance(key, str) or not SNAKE_CASE_KEY.match(key):
+            errors.append(f"product {key!r}: catalogKey must be ASCII snake_case")
         translations = product.get("translations") or {}
         for locale in ("en", "ru"):
             name = translations.get(locale)
@@ -135,10 +140,8 @@ def validate() -> list[str]:
     image_ids: list[str] = []
     for recipe in recipes:
         recipe_id = recipe.get("id", "<missing-id>")
-        if recipe_id.startswith("arise_") and recipe.get("sourceDescription") != (
-            "ARISE COOKBOOK — Nicolina Nunes"
-        ):
-            errors.append(f"recipe {recipe_id}: missing ARISE source attribution")
+        if not isinstance(recipe_id, str) or not RECIPE_ID_PATTERN.match(recipe_id):
+            errors.append(f"recipe {recipe_id!r}: id must match recipe_N format")
         translations = recipe.get("translations") or {}
         for locale in ("en", "ru"):
             translation = translations.get(locale) or {}
@@ -157,14 +160,43 @@ def validate() -> list[str]:
                 locale,
                 translation.get("steps"),
             )
+        servings = recipe.get("servings")
+        if not isinstance(servings, int) or servings < 1:
+            errors.append(f"recipe {recipe_id}: invalid servings {servings!r}")
+        cook_time = recipe.get("cookTimeMinutes")
+        if not isinstance(cook_time, int) or cook_time < 1:
+            errors.append(f"recipe {recipe_id}: invalid cookTimeMinutes {cook_time!r}")
+        meal_types = recipe.get("mealTypes")
+        if not isinstance(meal_types, list) or not meal_types:
+            errors.append(f"recipe {recipe_id}: missing mealTypes")
+        else:
+            invalid_meal_types = [
+                meal_type
+                for meal_type in meal_types
+                if meal_type not in MEAL_TYPE_VALUES
+            ]
+            if invalid_meal_types:
+                errors.append(
+                    f"recipe {recipe_id}: unknown mealTypes {invalid_meal_types!r}"
+                )
+            if len(meal_types) != len(set(meal_types)):
+                errors.append(f"recipe {recipe_id}: duplicate mealTypes {meal_types!r}")
+        ingredients = recipe.get("ingredients") or []
+        if not ingredients:
+            errors.append(f"recipe {recipe_id}: missing ingredients")
         ingredient_pairs = []
-        for ingredient in recipe.get("ingredients", []):
+        for ingredient in ingredients:
             key = ingredient.get("catalogKey")
             if key not in known_product_keys:
                 errors.append(f"recipe {recipe_id}: unknown catalogKey {key!r}")
             unit = ingredient.get("unit")
             if unit not in UNIT_VALUES:
                 errors.append(f"recipe {recipe_id}: unknown unit {unit!r}")
+            quantity = ingredient.get("quantity")
+            if not isinstance(quantity, (int, float)) or quantity <= 0:
+                errors.append(
+                    f"recipe {recipe_id}: invalid quantity {quantity!r} for {key!r}"
+                )
             ingredient_pairs.append((key, unit))
         duplicate_ingredients = sorted(
             pair
@@ -193,6 +225,17 @@ def validate() -> list[str]:
     )
     if duplicate_image_ids:
         errors.append(f"duplicate image ids: {duplicate_image_ids}")
+
+    referenced_image_ids = set(image_ids)
+    unused_images = sorted(
+        path.name
+        for path in IMAGES_PATH.iterdir()
+        if path.is_file()
+        and not path.name.startswith(".")
+        and path.stem not in referenced_image_ids
+    )
+    if unused_images:
+        errors.append(f"unused recipe image files: {unused_images}")
 
     for key in UNIT_KEYS:
         entry = strings.get(key) or {}
