@@ -5,7 +5,7 @@ enum ImportAPIConfig {
     static var aiProviderApiKey: String { string("AI_PROVIDER_API_KEY") }
 
     static var aiProviderBaseURL: String {
-        string("AI_PROVIDER_BASE_URL")
+        string("AI_PROVIDER_BASE_URL", default: "https://polza.ai/api/v1")
     }
 
     static var aiProviderModel: String {

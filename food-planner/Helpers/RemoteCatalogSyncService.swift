@@ -32,25 +32,39 @@ enum RemoteCatalogError: Error, Equatable {
 
 struct RemoteCatalogManifest: Codable, Equatable, Sendable {
     struct ResourceDescriptor: Codable, Equatable, Sendable {
+        var url: String?
+        var schemaVersion: Int?
+        var itemCount: Int?
         var sha256: String
-        var version: String?
-        var path: String?
-        var count: Int?
+        var sizeBytes: Int?
+
+        var path: String? { url }
+        var count: Int? { itemCount }
 
         private enum CodingKeys: String, CodingKey {
+            case url
+            case path
+            case schemaVersion
+            case version
+            case itemCount
+            case count
             case sha256
             case hash
-            case version
-            case path
-            case url
-            case count
+            case sizeBytes
         }
 
-        init(sha256: String, version: String? = nil, path: String? = nil, count: Int? = nil) {
+        init(
+            url: String? = nil,
+            schemaVersion: Int? = nil,
+            itemCount: Int? = nil,
+            sha256: String,
+            sizeBytes: Int? = nil
+        ) {
+            self.url = url
+            self.schemaVersion = schemaVersion
+            self.itemCount = itemCount
             self.sha256 = Self.normalizeHash(sha256)
-            self.version = version
-            self.path = path
-            self.count = count
+            self.sizeBytes = sizeBytes
         }
 
         init(from decoder: Decoder) throws {
@@ -63,10 +77,11 @@ struct RemoteCatalogManifest: Codable, Equatable, Sendable {
                         debugDescription: "Empty SHA256 hash"
                     )
                 }
+                self.url = nil
+                self.schemaVersion = nil
+                self.itemCount = nil
                 self.sha256 = cleaned
-                self.version = nil
-                self.path = nil
-                self.count = nil
+                self.sizeBytes = nil
                 return
             }
 
@@ -84,18 +99,22 @@ struct RemoteCatalogManifest: Codable, Equatable, Sendable {
                 )
             }
             self.sha256 = cleaned
-            self.version = Self.decodeVersionString(from: container, key: .version)
-            self.path = (try? container.decode(String.self, forKey: .path))
-                ?? (try? container.decode(String.self, forKey: .url))
-            self.count = try? container.decode(Int.self, forKey: .count)
+            self.url = (try? container.decode(String.self, forKey: .url))
+                ?? (try? container.decode(String.self, forKey: .path))
+            self.schemaVersion = Self.decodeIntOrString(from: container, key: .schemaVersion)
+                ?? Self.decodeIntOrString(from: container, key: .version)
+            self.itemCount = (try? container.decode(Int.self, forKey: .itemCount))
+                ?? (try? container.decode(Int.self, forKey: .count))
+            self.sizeBytes = try? container.decode(Int.self, forKey: .sizeBytes)
         }
 
         func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encodeIfPresent(url, forKey: .url)
+            try container.encodeIfPresent(schemaVersion, forKey: .schemaVersion)
+            try container.encodeIfPresent(itemCount, forKey: .itemCount)
             try container.encode(sha256, forKey: .sha256)
-            try container.encodeIfPresent(version, forKey: .version)
-            try container.encodeIfPresent(path, forKey: .path)
-            try container.encodeIfPresent(count, forKey: .count)
+            try container.encodeIfPresent(sizeBytes, forKey: .sizeBytes)
         }
 
         static func normalizeHash(_ value: String) -> String {
@@ -108,41 +127,55 @@ struct RemoteCatalogManifest: Codable, Equatable, Sendable {
             return trimmed.trimmingCharacters(in: .whitespacesAndNewlines)
         }
 
-        private static func decodeVersionString<K: CodingKey>(
+        private static func decodeIntOrString<K: CodingKey>(
             from container: KeyedDecodingContainer<K>,
             key: K
-        ) -> String? {
+        ) -> Int? {
             if let intVal = try? container.decode(Int.self, forKey: key) {
-                return String(intVal)
+                return intVal
             }
             if let strVal = try? container.decode(String.self, forKey: key),
-               !strVal.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                return strVal.trimmingCharacters(in: .whitespacesAndNewlines)
+               let parsed = Int(strVal.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                return parsed
             }
             return nil
         }
     }
 
+    struct CatalogsContainer: Codable, Equatable, Sendable {
+        var recipes: ResourceDescriptor
+        var foods: ResourceDescriptor
+    }
+
     var version: String
     var generatedAt: String?
+    var sourceRepository: String?
+    var sourceBranch: String?
     var recipes: ResourceDescriptor
     var foods: ResourceDescriptor
+
+    var catalogs: CatalogsContainer {
+        CatalogsContainer(recipes: recipes, foods: foods)
+    }
 
     private enum CodingKeys: String, CodingKey {
         case version
         case catalogVersion
         case generatedAt
         case updatedAt
+        case sourceRepository
+        case sourceBranch
+        case catalogs
+        case files
         case recipes
         case foods
         case recipesSha256
         case foodsSha256
         case recipesHash
         case foodsHash
-        case files
     }
 
-    private enum FilesCodingKeys: String, CodingKey {
+    private enum NestedCatalogsCodingKeys: String, CodingKey {
         case recipes
         case foods
         case recipesCatalog = "recipes.json"
@@ -152,11 +185,15 @@ struct RemoteCatalogManifest: Codable, Equatable, Sendable {
     init(
         version: String,
         generatedAt: String? = nil,
+        sourceRepository: String? = nil,
+        sourceBranch: String? = nil,
         recipes: ResourceDescriptor,
         foods: ResourceDescriptor
     ) {
         self.version = version
         self.generatedAt = generatedAt
+        self.sourceRepository = sourceRepository
+        self.sourceBranch = sourceBranch
         self.recipes = recipes
         self.foods = foods
     }
@@ -165,16 +202,16 @@ struct RemoteCatalogManifest: Codable, Equatable, Sendable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         let resolvedVersion: String
-        if let intVersion = try? container.decode(Int.self, forKey: .version) {
-            resolvedVersion = String(intVersion)
-        } else if let strVersion = try? container.decode(String.self, forKey: .version),
-                  !strVersion.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if let strVersion = try? container.decode(String.self, forKey: .version),
+           !strVersion.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             resolvedVersion = strVersion.trimmingCharacters(in: .whitespacesAndNewlines)
-        } else if let intCatalogVersion = try? container.decode(Int.self, forKey: .catalogVersion) {
-            resolvedVersion = String(intCatalogVersion)
+        } else if let intVersion = try? container.decode(Int.self, forKey: .version) {
+            resolvedVersion = String(intVersion)
         } else if let strCatalogVersion = try? container.decode(String.self, forKey: .catalogVersion),
                   !strCatalogVersion.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             resolvedVersion = strCatalogVersion.trimmingCharacters(in: .whitespacesAndNewlines)
+        } else if let intCatalogVersion = try? container.decode(Int.self, forKey: .catalogVersion) {
+            resolvedVersion = String(intCatalogVersion)
         } else {
             resolvedVersion = "1"
         }
@@ -182,12 +219,34 @@ struct RemoteCatalogManifest: Codable, Equatable, Sendable {
         self.version = resolvedVersion
         self.generatedAt = (try? container.decode(String.self, forKey: .generatedAt))
             ?? (try? container.decode(String.self, forKey: .updatedAt))
+        self.sourceRepository = try? container.decode(String.self, forKey: .sourceRepository)
+        self.sourceBranch = try? container.decode(String.self, forKey: .sourceBranch)
 
-        var decodedRecipes = try? container.decode(ResourceDescriptor.self, forKey: .recipes)
-        var decodedFoods = try? container.decode(ResourceDescriptor.self, forKey: .foods)
+        var decodedRecipes: ResourceDescriptor?
+        var decodedFoods: ResourceDescriptor?
+
+        if let catalogsContainer = try? container.nestedContainer(
+            keyedBy: NestedCatalogsCodingKeys.self,
+            forKey: .catalogs
+        ) {
+            decodedRecipes = (try? catalogsContainer.decode(ResourceDescriptor.self, forKey: .recipes))
+                ?? (try? catalogsContainer.decode(ResourceDescriptor.self, forKey: .recipesCatalog))
+            decodedFoods = (try? catalogsContainer.decode(ResourceDescriptor.self, forKey: .foods))
+                ?? (try? catalogsContainer.decode(ResourceDescriptor.self, forKey: .foodsCatalog))
+        }
+
+        if decodedRecipes == nil {
+            decodedRecipes = try? container.decode(ResourceDescriptor.self, forKey: .recipes)
+        }
+        if decodedFoods == nil {
+            decodedFoods = try? container.decode(ResourceDescriptor.self, forKey: .foods)
+        }
 
         if (decodedRecipes == nil || decodedFoods == nil),
-           let filesContainer = try? container.nestedContainer(keyedBy: FilesCodingKeys.self, forKey: .files) {
+           let filesContainer = try? container.nestedContainer(
+               keyedBy: NestedCatalogsCodingKeys.self,
+               forKey: .files
+           ) {
             if decodedRecipes == nil {
                 decodedRecipes = (try? filesContainer.decode(ResourceDescriptor.self, forKey: .recipes))
                     ?? (try? filesContainer.decode(ResourceDescriptor.self, forKey: .recipesCatalog))
@@ -222,7 +281,7 @@ struct RemoteCatalogManifest: Codable, Equatable, Sendable {
             throw DecodingError.dataCorrupted(
                 DecodingError.Context(
                     codingPath: decoder.codingPath,
-                    debugDescription: "Manifest must contain recipes and foods SHA256 descriptors"
+                    debugDescription: "Manifest must contain catalogs.recipes and catalogs.foods SHA256 descriptors"
                 )
             )
         }
@@ -235,8 +294,9 @@ struct RemoteCatalogManifest: Codable, Equatable, Sendable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(version, forKey: .version)
         try container.encodeIfPresent(generatedAt, forKey: .generatedAt)
-        try container.encode(recipes, forKey: .recipes)
-        try container.encode(foods, forKey: .foods)
+        try container.encodeIfPresent(sourceRepository, forKey: .sourceRepository)
+        try container.encodeIfPresent(sourceBranch, forKey: .sourceBranch)
+        try container.encode(CatalogsContainer(recipes: recipes, foods: foods), forKey: .catalogs)
     }
 }
 
@@ -391,6 +451,9 @@ enum RemoteCatalogSyncService {
             throw RemoteCatalogError.invalidManifest
         }
 
+        let resolvedETag = headerValue(for: "ETag", in: manifestResponse)
+            ?? "\"\(sha256Hex(of: manifestData))\""
+
         let foodsFileURL = cacheDirectory.appendingPathComponent(foodsFileName)
         let recipesFileURL = cacheDirectory.appendingPathComponent(recipesFileName)
         let manifestFileURL = cacheDirectory.appendingPathComponent(manifestFileName)
@@ -405,17 +468,18 @@ enum RemoteCatalogSyncService {
         )
 
         if !foodsNeedsDownload && !recipesNeedsDownload && cachedManifest == remoteManifest {
-            if let etag = headerValue(for: "ETag", in: manifestResponse) {
-                userDefaults.set(etag, forHTTPHeaderFieldETagKey: etagDefaultsKey)
-            }
+            userDefaults.set(resolvedETag, forKey: etagDefaultsKey)
             userDefaults.set(now.timeIntervalSince1970, forKey: lastCheckDefaultsKey)
             return .upToDate
         }
 
         var downloadedFoodsData: Data?
         if foodsNeedsDownload {
-            let foodsPath = remoteManifest.foods.path ?? BackendAPIConfig.Path.catalogFoods
-            let foodsURL = BackendAPIConfig.endpointURL(path: foodsPath, baseURLString: baseURLString)
+            let foodsURL = resolveResourceURL(
+                urlOrPath: remoteManifest.foods.url,
+                defaultPath: BackendAPIConfig.Path.catalogFoods,
+                baseURLString: baseURLString
+            )
             var request = URLRequest(url: foodsURL)
             request.httpMethod = "GET"
             request.cachePolicy = .reloadIgnoringLocalCacheData
@@ -438,8 +502,11 @@ enum RemoteCatalogSyncService {
 
         var downloadedRecipesData: Data?
         if recipesNeedsDownload {
-            let recipesPath = remoteManifest.recipes.path ?? BackendAPIConfig.Path.catalogRecipes
-            let recipesURL = BackendAPIConfig.endpointURL(path: recipesPath, baseURLString: baseURLString)
+            let recipesURL = resolveResourceURL(
+                urlOrPath: remoteManifest.recipes.url,
+                defaultPath: BackendAPIConfig.Path.catalogRecipes,
+                baseURLString: baseURLString
+            )
             var request = URLRequest(url: recipesURL)
             request.httpMethod = "GET"
             request.cachePolicy = .reloadIgnoringLocalCacheData
@@ -472,18 +539,32 @@ enum RemoteCatalogSyncService {
             try downloadedRecipesData.write(to: recipesFileURL, options: .atomic)
         }
 
-        let encodedManifest = try JSONEncoder().encode(remoteManifest)
-        try encodedManifest.write(to: manifestFileURL, options: .atomic)
+        try manifestData.write(to: manifestFileURL, options: .atomic)
 
-        if let etag = headerValue(for: "ETag", in: manifestResponse) {
-            userDefaults.set(etag, forHTTPHeaderFieldETagKey: etagDefaultsKey)
-        }
+        userDefaults.set(resolvedETag, forKey: etagDefaultsKey)
         userDefaults.set(now.timeIntervalSince1970, forKey: lastCheckDefaultsKey)
 
         return .updated(
             recipesUpdated: downloadedRecipesData != nil || cachedManifest?.recipes != remoteManifest.recipes,
             foodsUpdated: downloadedFoodsData != nil || cachedManifest?.foods != remoteManifest.foods
         )
+    }
+
+    private static func resolveResourceURL(
+        urlOrPath: String?,
+        defaultPath: String,
+        baseURLString: String
+    ) -> URL {
+        if let raw = urlOrPath?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !raw.isEmpty {
+            if let absolute = URL(string: raw),
+               let scheme = absolute.scheme?.lowercased(),
+               scheme == "http" || scheme == "https" {
+                return absolute
+            }
+            return BackendAPIConfig.endpointURL(path: raw, baseURLString: baseURLString)
+        }
+        return BackendAPIConfig.endpointURL(path: defaultPath, baseURLString: baseURLString)
     }
 
     // MARK: - SHA256 Verification
@@ -630,11 +711,5 @@ enum RemoteCatalogSyncService {
             }
         }
         return nil
-    }
-}
-
-private extension UserDefaults {
-    func set(_ value: String, forHTTPHeaderFieldETagKey key: String) {
-        set(value, forKey: key)
     }
 }

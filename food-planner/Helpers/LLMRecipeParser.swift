@@ -59,9 +59,7 @@ enum LLMRecipeParser {
         postTitleHint: String? = nil
     ) async throws -> ParsedRecipe {
         guard !ImportAPIConfig.aiProviderApiKey.isEmpty,
-              ImportAPIConfig.aiProviderApiKey != "YOUR_AI_PROVIDER_API_KEY",
-              !ImportAPIConfig.aiProviderBaseURL.isEmpty,
-              let endpoint = URL(string: "\(ImportAPIConfig.aiProviderBaseURL)/chat/completions") else {
+              ImportAPIConfig.aiProviderApiKey != "YOUR_AI_PROVIDER_API_KEY" else {
             throw RecipeImportError.apiUnauthorized
         }
 
@@ -75,6 +73,7 @@ enum LLMRecipeParser {
                 languageCode: languageCode
             )
         )
+        let endpoint = URL(string: "\(ImportAPIConfig.aiProviderBaseURL)/chat/completions")!
 
         var urlRequest = URLRequest(url: endpoint)
         urlRequest.httpMethod = "POST"

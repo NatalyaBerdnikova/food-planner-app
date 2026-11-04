@@ -132,29 +132,44 @@ struct food_plannerTests {
 
         let manifestData = """
         {
-          "version": 3,
+          "version": "2.1.ab12cd34ef56gh78",
           "generatedAt": "2026-11-04T12:00:00Z",
-          "recipes": {
-            "sha256": "SHA256:\(recipesHash.uppercased())",
-            "version": 2,
-            "path": "/catalog/recipes.json",
-            "count": 1
-          },
-          "foods": {
-            "sha256": "\(foodsHash)",
-            "version": 1,
-            "path": "/catalog/foods.json",
-            "count": 1
+          "sourceRepository": "m-chugaev/food-planner-site",
+          "sourceBranch": "main",
+          "catalogs": {
+            "recipes": {
+              "url": "/catalog/recipes.json",
+              "schemaVersion": 2,
+              "itemCount": 176,
+              "sha256": "\(recipesHash)",
+              "sizeBytes": \(recipesJSON.count)
+            },
+            "foods": {
+              "url": "/catalog/foods.json",
+              "schemaVersion": 1,
+              "itemCount": 564,
+              "sha256": "\(foodsHash)",
+              "sizeBytes": \(foodsJSON.count)
+            }
           }
         }
         """.data(using: .utf8)!
 
         let manifest = try JSONDecoder().decode(RemoteCatalogManifest.self, from: manifestData)
-        #expect(manifest.version == "3")
+        #expect(manifest.version == "2.1.ab12cd34ef56gh78")
+        #expect(manifest.generatedAt == "2026-11-04T12:00:00Z")
+        #expect(manifest.sourceRepository == "m-chugaev/food-planner-site")
+        #expect(manifest.sourceBranch == "main")
+        #expect(manifest.recipes.url == "/catalog/recipes.json")
+        #expect(manifest.recipes.schemaVersion == 2)
+        #expect(manifest.recipes.itemCount == 176)
         #expect(manifest.recipes.sha256 == recipesHash)
+        #expect(manifest.recipes.sizeBytes == recipesJSON.count)
+        #expect(manifest.foods.url == "/catalog/foods.json")
+        #expect(manifest.foods.schemaVersion == 1)
+        #expect(manifest.foods.itemCount == 564)
         #expect(manifest.foods.sha256 == foodsHash)
-        #expect(manifest.recipes.count == 1)
-        #expect(manifest.foods.count == 1)
+        #expect(manifest.foods.sizeBytes == foodsJSON.count)
 
         try RemoteCatalogSyncService.verifySHA256(
             data: foodsJSON,
@@ -195,8 +210,9 @@ struct food_plannerTests {
         let foodsHash = RemoteCatalogSyncService.sha256Hex(of: foodsData)
         let recipesHash = RemoteCatalogSyncService.sha256Hex(of: recipesData)
         let manifestData = """
-        {"version":1,"recipes":{"sha256":"\(recipesHash)"},"foods":{"sha256":"\(foodsHash)"}}
+        {"version":"2.1.ab12cd34ef56gh78","generatedAt":"2026-11-04T12:00:00Z","catalogs":{"recipes":{"url":"/catalog/recipes.json","schemaVersion":2,"itemCount":1,"sha256":"\(recipesHash)","sizeBytes":\(recipesData.count)},"foods":{"url":"/catalog/foods.json","schemaVersion":1,"itemCount":1,"sha256":"\(foodsHash)","sizeBytes":\(foodsData.count)}}}
         """.data(using: .utf8)!
+        let manifestETag = "\"\(RemoteCatalogSyncService.sha256Hex(of: manifestData))\""
 
         let client1 = MockCatalogHTTPClient { request in
             let url = request.url!
@@ -207,7 +223,7 @@ struct food_plannerTests {
                     MockCatalogHTTPClient.response(
                         url: url,
                         statusCode: 200,
-                        headers: ["ETag": "\"etag-v1\""]
+                        headers: ["ETag": manifestETag]
                     )
                 )
             case BackendAPIConfig.Path.catalogFoods:
@@ -231,7 +247,7 @@ struct food_plannerTests {
         #expect(RemoteCatalogSyncService.cachedRecipesData(in: cacheDir) == recipesData)
 
         let client2 = MockCatalogHTTPClient { request in
-            #expect(request.value(forHTTPHeaderField: "If-None-Match") == "\"etag-v1\"")
+            #expect(request.value(forHTTPHeaderField: "If-None-Match") == manifestETag)
             return (Data(), MockCatalogHTTPClient.response(url: request.url!, statusCode: 304))
         }
 
@@ -273,7 +289,7 @@ struct food_plannerTests {
         {"version":1,"products":[{"catalogKey":"apple","caloriesPer100g":52,"proteinPer100g":0.3,"fatPer100g":0.2,"carbsPer100g":14}]}
         """.data(using: .utf8)!
         let manifestData = """
-        {"version":2,"recipes":{"sha256":"aaaa"},"foods":{"sha256":"bbbb"}}
+        {"version":"2.1.ab12cd34ef56gh78","catalogs":{"recipes":{"url":"/catalog/recipes.json","sha256":"aaaa"},"foods":{"url":"/catalog/foods.json","sha256":"bbbb"}}}
         """.data(using: .utf8)!
 
         let client = MockCatalogHTTPClient { request in
@@ -303,7 +319,7 @@ struct food_plannerTests {
         let secret = "test_ingest_secret_123"
         let timestampSeconds = 1_762_272_000
         let rawBody = Data(
-            #"{"appVersion":"1.0","ingredients":[{"amount":150,"language":"ru","name":"Паста мисо","unit":"gram"}],"language":"ru","sourceRecipeUrl":"https://www.instagram.com/reel/ABC123/"}"#
+            #"{"appVersion":"1.0","ingredients":[{"amount":150,"language":"ru","name":"Паста мисо","sourceRecipeUrl":"https://www.instagram.com/reel/ABC123/","unit":"gram"}],"sourceRecipeUrl":"https://www.instagram.com/reel/ABC123/"}"#
                 .utf8
         )
 
@@ -316,7 +332,7 @@ struct food_plannerTests {
         #expect(headers["X-FoodPlanner-Timestamp"] == "1762272000")
         #expect(
             headers["X-FoodPlanner-Signature"]
-                == "ad75b240bc348cc54d3731c75363c247b657f8b69bfffc8c686a9b16087f438e"
+                == "sha256=7d6873fd48af784be618721f769956018b11c7f5b7f281063ce51702eac2d0a6"
         )
     }
 
@@ -334,7 +350,7 @@ struct food_plannerTests {
             ),
             UnresolvedIngredient(
                 rawName: "Соус терияки",
-                suggestedQuantity: 2,
+                suggestedQuantity: 200_000,
                 suggestedUnit: .tablespoon
             ),
         ]
@@ -349,7 +365,6 @@ struct food_plannerTests {
         let unwrapped = try #require(payload)
         #expect(unwrapped.appVersion == "1.0")
         #expect(unwrapped.sourceRecipeUrl == "https://www.instagram.com/reel/ABC123/")
-        #expect(unwrapped.language == "ru")
         #expect(unwrapped.ingredients.count == 2)
         #expect(
             unwrapped.ingredients[0]
@@ -357,16 +372,18 @@ struct food_plannerTests {
                     name: "Паста мисо",
                     amount: 150,
                     unit: "gram",
-                    language: "ru"
+                    language: "ru",
+                    sourceRecipeUrl: "https://www.instagram.com/reel/ABC123/"
                 )
         )
         #expect(
             unwrapped.ingredients[1]
                 == UnmatchedIngredientReportItem(
                     name: "Соус терияки",
-                    amount: 2,
+                    amount: 100_000,
                     unit: "tablespoon",
-                    language: "ru"
+                    language: "ru",
+                    sourceRecipeUrl: "https://www.instagram.com/reel/ABC123/"
                 )
         )
 
@@ -400,10 +417,47 @@ struct food_plannerTests {
         #expect(queuedAfterFailure.count == 1)
         #expect(queuedAfterFailure.first?.attemptCount == 1)
 
+        let rateLimitedClient = MockCatalogHTTPClient { request in
+            (
+                Data(),
+                MockCatalogHTTPClient.response(
+                    url: request.url!,
+                    statusCode: 429,
+                    headers: ["Retry-After": "120"]
+                )
+            )
+        }
+
+        let flushedDuringRateLimit = await UnmatchedIngredientReporter.flushQueue(
+            queueFileURL: queueURL,
+            endpointURL: endpoint,
+            secret: "test_ingest_secret_123",
+            httpClient: rateLimitedClient,
+            now: Date(timeIntervalSince1970: 1_762_272_010)
+        )
+        #expect(flushedDuringRateLimit == 0)
+        let queuedAfter429 = UnmatchedIngredientReporter.loadQueue(from: queueURL)
+        #expect(queuedAfter429.first?.nextRetryAt == Date(timeIntervalSince1970: 1_762_272_130))
+
+        let earlyClient = MockCatalogHTTPClient { request in
+            (Data(), MockCatalogHTTPClient.response(url: request.url!, statusCode: 200))
+        }
+        let flushedTooEarly = await UnmatchedIngredientReporter.flushQueue(
+            queueFileURL: queueURL,
+            endpointURL: endpoint,
+            secret: "test_ingest_secret_123",
+            httpClient: earlyClient,
+            now: Date(timeIntervalSince1970: 1_762_272_050)
+        )
+        #expect(flushedTooEarly == 0)
+        #expect(earlyClient.recordedRequests.isEmpty)
+
         let succeedingClient = MockCatalogHTTPClient { request in
             #expect(request.httpMethod == "POST")
-            #expect(request.value(forHTTPHeaderField: "X-FoodPlanner-Timestamp") == "1762272060")
-            #expect(request.value(forHTTPHeaderField: "X-FoodPlanner-Signature")?.count == 64)
+            #expect(request.value(forHTTPHeaderField: "X-FoodPlanner-Timestamp") == "1762272140")
+            let sig = request.value(forHTTPHeaderField: "X-FoodPlanner-Signature") ?? ""
+            #expect(sig.hasPrefix("sha256="))
+            #expect(sig.count == "sha256=".count + 64)
             return (Data(#"{"ok":true}"#.utf8), MockCatalogHTTPClient.response(url: request.url!, statusCode: 200))
         }
 
@@ -412,9 +466,24 @@ struct food_plannerTests {
             endpointURL: endpoint,
             secret: "test_ingest_secret_123",
             httpClient: succeedingClient,
-            now: Date(timeIntervalSince1970: 1_762_272_060)
+            now: Date(timeIntervalSince1970: 1_762_272_140)
         )
         #expect(flushedCount == 1)
         #expect(UnmatchedIngredientReporter.loadQueue(from: queueURL).isEmpty)
+
+        for nonRetryStatus in [400, 422, 401] {
+            let client = MockCatalogHTTPClient { request in
+                (Data(), MockCatalogHTTPClient.response(url: request.url!, statusCode: nonRetryStatus))
+            }
+            await UnmatchedIngredientReporter.enqueueAndFlush(
+                payload: unwrapped,
+                queueFileURL: queueURL,
+                endpointURL: endpoint,
+                secret: "test_ingest_secret_123",
+                httpClient: client,
+                now: Date(timeIntervalSince1970: 1_762_272_200)
+            )
+            #expect(UnmatchedIngredientReporter.loadQueue(from: queueURL).isEmpty)
+        }
     }
 }

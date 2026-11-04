@@ -1,23 +1,25 @@
 import CryptoKit
 import Foundation
+import OSLog
 
 struct UnmatchedIngredientReportItem: Codable, Equatable, Sendable {
     var name: String
     var amount: Double
     var unit: String
     var language: String
+    var sourceRecipeUrl: String?
 }
 
 struct UnmatchedIngredientsReportPayload: Codable, Equatable, Sendable {
     var appVersion: String
     var sourceRecipeUrl: String?
-    var language: String
     var ingredients: [UnmatchedIngredientReportItem]
 }
 
 enum UnmatchedIngredientHMACSigner {
     static let timestampHeader = "X-FoodPlanner-Timestamp"
     static let signatureHeader = "X-FoodPlanner-Signature"
+    static let signaturePrefix = "sha256="
 
     static func canonicalSigningMessage(timestamp: String, rawBody: Data) -> Data {
         var message = Data("\(timestamp).".utf8)
@@ -36,13 +38,21 @@ enum UnmatchedIngredientHMACSigner {
         return mac.map { String(format: "%02x", $0) }.joined()
     }
 
+    static func signatureHeaderValue(
+        secret: String,
+        timestamp: String,
+        rawBody: Data
+    ) -> String {
+        "\(signaturePrefix)\(signatureHex(secret: secret, timestamp: timestamp, rawBody: rawBody))"
+    }
+
     static func signedHeaders(
         secret: String,
         timestampSeconds: Int,
         rawBody: Data
     ) -> [String: String] {
         let timestamp = String(timestampSeconds)
-        let signature = signatureHex(secret: secret, timestamp: timestamp, rawBody: rawBody)
+        let signature = signatureHeaderValue(secret: secret, timestamp: timestamp, rawBody: rawBody)
         return [
             timestampHeader: timestamp,
             signatureHeader: signature,
@@ -51,6 +61,9 @@ enum UnmatchedIngredientHMACSigner {
 }
 
 enum UnmatchedIngredientPayloadBuilder {
+    static let maxNameLength = 160
+    static let maxAmount: Double = 100_000
+
     static func normalizedLanguageCode(_ languageCode: String) -> String {
         languageCode.lowercased().hasPrefix("ru") ? "ru" : "en"
     }
@@ -62,28 +75,31 @@ enum UnmatchedIngredientPayloadBuilder {
         appVersion: String = AppVars.appVersion
     ) -> UnmatchedIngredientsReportPayload? {
         let lang = normalizedLanguageCode(languageCode)
+        let trimmedURL = sourceRecipeUrl?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let resolvedURL = (trimmedURL?.isEmpty == false) ? trimmedURL : nil
+
         let items: [UnmatchedIngredientReportItem] = unresolved.compactMap { item in
             let trimmedName = item.rawName.trimmingCharacters(in: .whitespacesAndNewlines)
             guard !trimmedName.isEmpty else { return nil }
-            let amount = item.suggestedQuantity > 0 ? item.suggestedQuantity : 1
+            let boundedName = String(trimmedName.prefix(maxNameLength))
+            let positiveAmount = item.suggestedQuantity > 0 ? item.suggestedQuantity : 1
+            let boundedAmount = min(positiveAmount, maxAmount)
             return UnmatchedIngredientReportItem(
-                name: trimmedName,
-                amount: amount,
+                name: boundedName,
+                amount: boundedAmount,
                 unit: item.suggestedUnit.rawValue,
-                language: lang
+                language: lang,
+                sourceRecipeUrl: resolvedURL
             )
         }
 
         guard !items.isEmpty else { return nil }
 
-        let trimmedURL = sourceRecipeUrl?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let resolvedURL = (trimmedURL?.isEmpty == false) ? trimmedURL : nil
         let resolvedVersion = appVersion.trimmingCharacters(in: .whitespacesAndNewlines)
 
         return UnmatchedIngredientsReportPayload(
             appVersion: resolvedVersion.isEmpty ? "Unknown" : resolvedVersion,
             sourceRecipeUrl: resolvedURL,
-            language: lang,
             ingredients: items
         )
     }
@@ -101,20 +117,27 @@ enum UnmatchedIngredientReporter {
         var payload: UnmatchedIngredientsReportPayload
         var createdAt: Date
         var attemptCount: Int
+        var nextRetryAt: Date?
 
         init(
             id: UUID = UUID(),
             payload: UnmatchedIngredientsReportPayload,
             createdAt: Date = .now,
-            attemptCount: Int = 0
+            attemptCount: Int = 0,
+            nextRetryAt: Date? = nil
         ) {
             self.id = id
             self.payload = payload
             self.createdAt = createdAt
             self.attemptCount = attemptCount
+            self.nextRetryAt = nextRetryAt
         }
     }
 
+    private static let logger = Logger(
+        subsystem: "com.mikhail-chugaev.food-planner",
+        category: "UnmatchedIngredientReporter"
+    )
     private static let appSupportFolder = "food-planner"
     private static let queueFileName = "unmatched-ingredients-queue.json"
     static let maxQueueSize = 50
@@ -219,8 +242,22 @@ enum UnmatchedIngredientReporter {
 
         var remaining: [QueuedReport] = []
         var sentCount = 0
+        var rateLimitedUntil: Date?
 
         for var item in currentQueue {
+            if let rateLimitedUntil, now < rateLimitedUntil {
+                if item.nextRetryAt == nil || item.nextRetryAt! < rateLimitedUntil {
+                    item.nextRetryAt = rateLimitedUntil
+                }
+                remaining.append(item)
+                continue
+            }
+
+            if let nextRetryAt = item.nextRetryAt, now < nextRetryAt {
+                remaining.append(item)
+                continue
+            }
+
             do {
                 let request = try buildSignedRequest(
                     payload: item.payload,
@@ -229,20 +266,37 @@ enum UnmatchedIngredientReporter {
                     timestampSeconds: Int(now.timeIntervalSince1970)
                 )
                 let (_, response) = try await httpClient.data(for: request)
-                if (200...299).contains(response.statusCode) {
+                let status = response.statusCode
+
+                if (200...299).contains(status) {
                     sentCount += 1
-                } else if (400...499).contains(response.statusCode),
-                          response.statusCode != 408,
-                          response.statusCode != 429 {
+                } else if status == 401 {
+                    logger.error("Unmatched ingredient report rejected with 401 Unauthorized; dropping item \(item.id.uuidString, privacy: .public)")
+                    continue
+                } else if status == 400 || status == 422 {
+                    logger.warning("Unmatched ingredient report rejected with \(status, privacy: .public); dropping item \(item.id.uuidString, privacy: .public)")
+                    continue
+                } else if status == 429 {
+                    let retryDelay = parseRetryAfterSeconds(from: response, now: now) ?? 60
+                    let retryDate = now.addingTimeInterval(retryDelay)
+                    rateLimitedUntil = retryDate
+                    item.attemptCount += 1
+                    item.nextRetryAt = retryDate
+                    if item.attemptCount < maxAttemptsPerItem {
+                        remaining.append(item)
+                    }
+                } else if (400...499).contains(status), status != 408 {
                     continue
                 } else {
                     item.attemptCount += 1
+                    item.nextRetryAt = nil
                     if item.attemptCount < maxAttemptsPerItem {
                         remaining.append(item)
                     }
                 }
             } catch {
                 item.attemptCount += 1
+                item.nextRetryAt = nil
                 if item.attemptCount < maxAttemptsPerItem {
                     remaining.append(item)
                 }
@@ -275,6 +329,28 @@ enum UnmatchedIngredientReporter {
         }
         request.httpBody = body
         return request
+    }
+
+    static func parseRetryAfterSeconds(from response: HTTPURLResponse, now: Date = .now) -> TimeInterval? {
+        for (key, value) in response.allHeaderFields {
+            guard let keyStr = key as? String,
+                  keyStr.caseInsensitiveCompare("Retry-After") == .orderedSame,
+                  let rawValue = value as? String else {
+                continue
+            }
+            let trimmed = rawValue.trimmingCharacters(in: .whitespacesAndNewlines)
+            if let seconds = Double(trimmed), seconds >= 0 {
+                return seconds
+            }
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.timeZone = TimeZone(secondsFromGMT: 0)
+            formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
+            if let date = formatter.date(from: trimmed) {
+                return max(0, date.timeIntervalSince(now))
+            }
+        }
+        return nil
     }
 
     // MARK: - Disk Queue Persistence
