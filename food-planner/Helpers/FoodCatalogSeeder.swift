@@ -108,19 +108,27 @@ enum FoodCatalogSeeder {
     static func seedIfNeeded(in context: ModelContext) async {
         let descriptor = FetchDescriptor<FoodProduct>()
         let existingProducts = (try? context.fetch(descriptor)) ?? []
-        var existingKeys = Set(existingProducts.map(\.catalogKey))
+        var existingByKey: [String: FoodProduct] = [:]
+        for product in existingProducts {
+            existingByKey[product.catalogKey] = product
+        }
 
-        let bundleProducts = loadBundleCatalog()
-        for (index, json) in bundleProducts.enumerated() where !existingKeys.contains(json.catalogKey) {
-            context.insert(makeProduct(from: json))
-            existingKeys.insert(json.catalogKey)
+        let catalogProducts = loadActiveCatalog()
+        for (index, json) in catalogProducts.enumerated() {
+            if let existing = existingByKey[json.catalogKey] {
+                apply(json, to: existing)
+            } else {
+                let created = makeProduct(from: json)
+                context.insert(created)
+                existingByKey[json.catalogKey] = created
+            }
             if index.isMultiple(of: 20) {
                 await Task.yield()
             }
         }
 
-        for (index, seed) in catalog.enumerated() where FoodCatalogAliases.isCanonical(seed.key) {
-            guard !existingKeys.contains(seed.key) else { continue }
+        for (index, seed) in catalog.enumerated() {
+            guard existingByKey[seed.key] == nil else { continue }
             let m = seed.micro
             let product = FoodProduct(
                 catalogKey: seed.key,
@@ -149,7 +157,7 @@ enum FoodCatalogSeeder {
                 iodinePer100g: m.i
             )
             context.insert(product)
-            existingKeys.insert(seed.key)
+            existingByKey[seed.key] = product
             if index.isMultiple(of: 10) {
                 await Task.yield()
             }
@@ -157,21 +165,33 @@ enum FoodCatalogSeeder {
         LocalPersistence.save(context)
     }
 
-    /// Синхронный вариант для превью Xcode.
     @MainActor
     static func seedIfNeeded(in context: ModelContext) {
+        syncFromActiveCatalog(in: context)
+    }
+
+    @MainActor
+    static func syncFromActiveCatalog(in context: ModelContext) {
         let descriptor = FetchDescriptor<FoodProduct>()
         let existingProducts = (try? context.fetch(descriptor)) ?? []
-        var existingKeys = Set(existingProducts.map(\.catalogKey))
-
-        let bundleProducts = loadBundleCatalog()
-        for json in bundleProducts where !existingKeys.contains(json.catalogKey) {
-            context.insert(makeProduct(from: json))
-            existingKeys.insert(json.catalogKey)
+        var existingByKey: [String: FoodProduct] = [:]
+        for product in existingProducts {
+            existingByKey[product.catalogKey] = product
         }
 
-        for seed in catalog where FoodCatalogAliases.isCanonical(seed.key) {
-            guard !existingKeys.contains(seed.key) else { continue }
+        let catalogProducts = loadActiveCatalog()
+        for json in catalogProducts {
+            if let existing = existingByKey[json.catalogKey] {
+                apply(json, to: existing)
+            } else {
+                let created = makeProduct(from: json)
+                context.insert(created)
+                existingByKey[json.catalogKey] = created
+            }
+        }
+
+        for seed in catalog {
+            guard existingByKey[seed.key] == nil else { continue }
             let m = seed.micro
             let product = FoodProduct(
                 catalogKey: seed.key,
@@ -200,33 +220,49 @@ enum FoodCatalogSeeder {
                 iodinePer100g: m.i
             )
             context.insert(product)
-            existingKeys.insert(seed.key)
+            existingByKey[seed.key] = product
         }
         LocalPersistence.save(context)
     }
 
     @MainActor
     static func product(forKey key: String, in context: ModelContext) -> FoodProduct? {
-        let canonicalKey = FoodCatalogAliases.canonicalKey(for: key)
         var descriptor = FetchDescriptor<FoodProduct>(
-            predicate: #Predicate { $0.catalogKey == canonicalKey }
+            predicate: #Predicate { $0.catalogKey == key }
         )
         descriptor.fetchLimit = 1
         return try? context.fetch(descriptor).first
     }
 
-    private static func loadBundleCatalog() -> [ProductJSON] {
-        guard let url = Bundle.main.url(forResource: "food-catalog", withExtension: "json"),
-              let data = try? Data(contentsOf: url) else {
+    static func isValidCatalogData(_ data: Data) -> Bool {
+        guard let products = decodeProducts(from: data), !products.isEmpty else {
+            return false
+        }
+        return products.allSatisfy {
+            !$0.catalogKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                && $0.caloriesPer100g >= 0
+                && $0.proteinPer100g >= 0
+                && $0.fatPer100g >= 0
+                && $0.carbsPer100g >= 0
+        }
+    }
+
+    private static func loadActiveCatalog() -> [ProductJSON] {
+        guard let data = RemoteCatalogSyncService.activeFoodsCatalogData(),
+              let products = decodeProducts(from: data) else {
             return []
         }
+        return products
+    }
+
+    private static func decodeProducts(from data: Data) -> [ProductJSON]? {
         if let file = try? JSONDecoder().decode(CatalogFile.self, from: data) {
             return file.products
         }
         if let array = try? JSONDecoder().decode([ProductJSON].self, from: data) {
             return array
         }
-        return []
+        return nil
     }
 
     private static func makeProduct(from json: ProductJSON) -> FoodProduct {
@@ -257,5 +293,31 @@ enum FoodCatalogSeeder {
             potassiumPer100g: json.potassiumPer100g ?? 0,
             iodinePer100g: json.iodinePer100g ?? 0
         )
+    }
+
+    private static func apply(_ json: ProductJSON, to product: FoodProduct) {
+        product.category = IngredientCategory(rawValue: json.category ?? "") ?? .other
+        product.defaultPieceWeightGrams = json.defaultPieceWeightGrams ?? 100
+        product.caloriesPer100g = json.caloriesPer100g
+        product.proteinPer100g = json.proteinPer100g
+        product.fatPer100g = json.fatPer100g
+        product.carbsPer100g = json.carbsPer100g
+        product.fiberPer100g = json.fiberPer100g ?? 0
+        product.vitaminD3Per100g = json.vitaminD3Per100g ?? 0
+        product.calciumPer100g = json.calciumPer100g ?? 0
+        product.magnesiumPer100g = json.magnesiumPer100g ?? 0
+        product.zincPer100g = json.zincPer100g ?? 0
+        product.vitaminKPer100g = json.vitaminKPer100g ?? 0
+        product.vitaminCPer100g = json.vitaminCPer100g ?? 0
+        product.vitaminEPer100g = json.vitaminEPer100g ?? 0
+        product.vitaminAPer100g = json.vitaminAPer100g ?? 0
+        product.vitaminB6Per100g = json.vitaminB6Per100g ?? 0
+        product.vitaminB9Per100g = json.vitaminB9Per100g ?? 0
+        product.vitaminB12Per100g = json.vitaminB12Per100g ?? 0
+        product.seleniumPer100g = json.seleniumPer100g ?? 0
+        product.chromiumPer100g = json.chromiumPer100g ?? 0
+        product.ironPer100g = json.ironPer100g ?? 0
+        product.potassiumPer100g = json.potassiumPer100g ?? 0
+        product.iodinePer100g = json.iodinePer100g ?? 0
     }
 }

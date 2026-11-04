@@ -16,8 +16,7 @@ enum FoodCatalogLocalization {
     private static let supportedLanguageCodes = ["en", "ru"]
 
     static func name(for catalogKey: String, languageCode: String) -> String? {
-        let canonicalKey = FoodCatalogAliases.canonicalKey(for: catalogKey)
-        guard let entry = loadEntries()[canonicalKey] else { return nil }
+        guard let entry = loadEntries()[catalogKey] else { return nil }
         let locale = languageCode.hasPrefix("ru") ? "ru" : "en"
 
         if let translated = entry.translations?[locale], !translated.isEmpty {
@@ -41,15 +40,12 @@ enum FoodCatalogLocalization {
     }
 
     static func searchableTexts(for catalogKey: String) -> [String] {
-        let canonicalKey = FoodCatalogAliases.canonicalKey(for: catalogKey)
         var texts: Set<String> = [
             catalogKey,
             catalogKey.replacingOccurrences(of: "_", with: " "),
-            canonicalKey,
-            canonicalKey.replacingOccurrences(of: "_", with: " "),
         ]
 
-        if let entry = loadEntries()[canonicalKey] {
+        if let entry = loadEntries()[catalogKey] {
             if let displayName = entry.displayName, !displayName.isEmpty {
                 texts.insert(displayName)
             }
@@ -59,7 +55,7 @@ enum FoodCatalogLocalization {
         }
 
         for code in supportedLanguageCodes {
-            if let name = name(for: canonicalKey, languageCode: code), !name.isEmpty {
+            if let name = name(for: catalogKey, languageCode: code), !name.isEmpty {
                 texts.insert(name)
             }
         }
@@ -67,20 +63,33 @@ enum FoodCatalogLocalization {
         return Array(texts)
     }
 
+    static func invalidateCache() {
+        namesByKey = nil
+    }
+
     private static func loadEntries() -> [String: ProductEntry] {
         if let namesByKey {
             return namesByKey
         }
 
-        guard let url = Bundle.main.url(forResource: "food-catalog", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let file = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+        guard let data = RemoteCatalogSyncService.activeFoodsCatalogData(),
+              let products = decodeProducts(from: data) else {
             namesByKey = [:]
             return [:]
         }
 
-        let map = Dictionary(file.products.map { ($0.catalogKey, $0) }, uniquingKeysWith: { first, _ in first })
+        let map = Dictionary(products.map { ($0.catalogKey, $0) }, uniquingKeysWith: { first, _ in first })
         namesByKey = map
         return map
+    }
+
+    private static func decodeProducts(from data: Data) -> [ProductEntry]? {
+        if let file = try? JSONDecoder().decode(CatalogFile.self, from: data) {
+            return file.products
+        }
+        if let array = try? JSONDecoder().decode([ProductEntry].self, from: data) {
+            return array
+        }
+        return nil
     }
 }

@@ -56,16 +56,34 @@ enum ImportAPIConfig {
         return dict
     }
 
+    static func resolvedString(forKey key: String, default defaultValue: String = "") -> String {
+        string(key, default: defaultValue)
+    }
+
+    static func resolvedDouble(forKey key: String, default defaultValue: Double) -> Double {
+        double(key, default: defaultValue)
+    }
+
+    static func resolvedInt(forKey key: String, default defaultValue: Int) -> Int {
+        int(key, default: defaultValue)
+    }
+
     private static func string(_ key: String, default defaultValue: String = "") -> String {
         if let value = ProcessInfo.processInfo.environment[key]?
             .trimmingCharacters(in: .whitespacesAndNewlines),
-           !value.isEmpty {
+           !value.isEmpty,
+           !value.hasPrefix("$(") {
             return value
         }
 
         if let value = plist()[key] as? String {
             let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
-            if !trimmed.isEmpty { return trimmed }
+            if !trimmed.isEmpty, !trimmed.hasPrefix("$(") { return trimmed }
+        }
+
+        if let value = Bundle.main.infoDictionary?[key] as? String {
+            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !trimmed.isEmpty, !trimmed.hasPrefix("$(") { return trimmed }
         }
 
         return defaultValue
@@ -77,13 +95,15 @@ enum ImportAPIConfig {
             return value
         }
 
-        let value = plist()[key]
-        if let number = value as? NSNumber {
-            return number.doubleValue
-        }
-        if let raw = value as? String,
-           let parsed = Double(raw.trimmingCharacters(in: .whitespacesAndNewlines)) {
-            return parsed
+        for dict in [plist(), Bundle.main.infoDictionary ?? [:]] {
+            let value = dict[key]
+            if let number = value as? NSNumber {
+                return number.doubleValue
+            }
+            if let raw = value as? String,
+               let parsed = Double(raw.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                return parsed
+            }
         }
 
         return defaultValue
@@ -95,13 +115,15 @@ enum ImportAPIConfig {
             return value
         }
 
-        let value = plist()[key]
-        if let number = value as? NSNumber {
-            return number.intValue
-        }
-        if let raw = value as? String,
-           let parsed = Int(raw.trimmingCharacters(in: .whitespacesAndNewlines)) {
-            return parsed
+        for dict in [plist(), Bundle.main.infoDictionary ?? [:]] {
+            let value = dict[key]
+            if let number = value as? NSNumber {
+                return number.intValue
+            }
+            if let raw = value as? String,
+               let parsed = Int(raw.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                return parsed
+            }
         }
 
         return defaultValue

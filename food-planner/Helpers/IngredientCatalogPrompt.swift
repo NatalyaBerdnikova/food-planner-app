@@ -15,20 +15,24 @@ enum IngredientCatalogPrompt {
     private static var cachedKeys: [String]?
     private static let maxPromptCharacters = 24_000
 
+    static func invalidateCache() {
+        cachedPrompts = [:]
+        cachedKeys = nil
+    }
+
     static func compactCatalog(languageCode: String = L10n.currentLanguageCode) -> String {
         let code = normalizedLanguageCode(languageCode)
         if let cached = cachedPrompts[code] {
             return cached
         }
 
-        guard let url = Bundle.main.url(forResource: "food-catalog", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let file = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+        guard let data = RemoteCatalogSyncService.activeFoodsCatalogData(),
+              let products = decodeProducts(from: data) else {
             cachedPrompts[code] = ""
             return ""
         }
 
-        let prompt = file.products.map { entry in
+        let prompt = products.map { entry in
             "\(entry.catalogKey) | \(localizedName(for: entry, languageCode: code))"
         }.joined(separator: "\n")
 
@@ -51,16 +55,25 @@ enum IngredientCatalogPrompt {
             return cachedKeys
         }
 
-        guard let url = Bundle.main.url(forResource: "food-catalog", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let file = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+        guard let data = RemoteCatalogSyncService.activeFoodsCatalogData(),
+              let products = decodeProducts(from: data) else {
             cachedKeys = []
             return []
         }
 
-        let keys = file.products.map(\.catalogKey)
+        let keys = products.map(\.catalogKey)
         cachedKeys = keys
         return keys
+    }
+
+    private static func decodeProducts(from data: Data) -> [ProductEntry]? {
+        if let file = try? JSONDecoder().decode(CatalogFile.self, from: data) {
+            return file.products
+        }
+        if let array = try? JSONDecoder().decode([ProductEntry].self, from: data) {
+            return array
+        }
+        return nil
     }
 
     private static func normalizedLanguageCode(_ languageCode: String) -> String {

@@ -1,5 +1,6 @@
 food-planner/ImportSecrets.plist
 food-planner/GoogleService-Info.plist
+Config/Local.xcconfig
 
 .DS_Store
 __pycache__/
