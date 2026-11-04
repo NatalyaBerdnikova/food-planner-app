@@ -1013,34 +1013,6 @@
       "cookTimeMinutes": 35
     },
     {
-      "id": "recipe_50",
-      "servings": 1,
-      "imageId": "50",
-      "translations": {
-        "ru": {
-          "name": "Чиа-йогурт с манго",
-          "steps": "Залить семена чиа и овсянку молоком, добавить корицу и сироп топинамбура, перемешать, оставить на час.\nСушеный манго замочить теплой водой.\nЧиа-пуддинг перемешать, смешать с йогуртом, по желанию можно взбить блендером, если вам не нравится очущение скользких семян. Манго мелко нарезать и положить сверху."
-        },
-        "en": {
-          "name": "Chia yogurt with mango",
-          "steps": "Pour milk over chia seeds and oatmeal, add cinnamon and Jerusalem artichoke syrup, stir, and leave for an hour.\nSoak dried mango in warm water.\nStir chia pudding, mix with yogurt, optionally beat with a blender if you don’t like the feeling of slippery seeds. Finely chop the mango and place on top."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "milk_3_5_fat_sterilized",
-          "quantity": 200,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
-          "quantity": 140,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35
-    },
-    {
       "id": "recipe_51",
       "servings": 4,
       "imageId": "51",
@@ -1071,8 +1043,8 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sugar",
-          "quantity": 4,
+          "catalogKey": "sirop_topinambura_royal_forest",
+          "quantity": 20,
           "unit": "gram"
         },
         {
@@ -1229,7 +1201,7 @@
       "translations": {
         "ru": {
           "name": "Паста в соусе Ромеско",
-          "steps": "Перцы запечь до черной корочки. После выпекания накрыть фольгой, дать \"отпотеть\" и снять черную пленку. Помидоры бланшировать или использовать банку томатов в собственном соку.\nВ блендере соединить все ингредиенты соуса, кроме томатной пасты, до гладкой текстуры. Прогреть томатную пасту, добавить соус и немного выпарить для загустения.\nОтварить макароны по инструкции. Можно недоварить 1-2 минуты, чтобы макароны лучше напитались соусом. Залить макароны соусом."
+          "steps": "Перцы запечь до черной корочки. После выпекания накрыть фольгой, дать \"отпотеть\" и снять черную пленку. Помидоры бланшировать или использовать банку томатов в собственном соку. Кешью замочить в кипятке на 5 минут, затем воду слить.\nВ блендере соединить все ингредиенты соуса, кроме томатной пасты, до гладкой текстуры. Прогреть томатную пасту, добавить соус и немного выпарить для загустения.\nОтварить макароны по инструкции. Можно недоварить 1-2 минуты, чтобы макароны лучше напитались соусом. Залить макароны соусом."
         },
         "en": {
           "name": "Pasta in romesco sauce",
@@ -1281,251 +1253,13 @@
       "cookTimeMinutes": 35
     },
     {
-      "id": "recipe_56",
-      "servings": 10,
-      "imageId": "56",
-      "translations": {
-        "ru": {
-          "name": "Горчица с солью",
-          "steps": "Смешать горчицу с солью до однородности. Перед подачей охладить."
-        },
-        "en": {
-          "name": "Seasoned mustard",
-          "steps": "Mix mustard and salt until smooth. Cool before serving."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "gorchitsa_stolovaya",
-          "quantity": 6,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 3,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 15
-    },
-    {
-      "id": "recipe_57",
-      "servings": 3,
-      "imageId": "57",
-      "translations": {
-        "ru": {
-          "name": "Лимонно-финиковый мусс",
-          "steps": "Финики залить горячей водой на 10 минут, затем слить воду. Смешать финики с лимонным соком и цедрой, пробить блендером до однородной кремовой консистенции. Перед подачей охладить."
-        },
-        "en": {
-          "name": "Lemon-date mousse",
-          "steps": "Pour hot water over the dates for 10 minutes, then drain the water. Mix dates with lemon juice and zest and puree with a blender until smooth and creamy. Cool before serving."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "finiki",
-          "quantity": 30,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "lemon_juice",
-          "quantity": 15,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "lemon",
-          "quantity": 5,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 15
-    },
-    {
-      "id": "recipe_58",
-      "servings": 1,
-      "imageId": "58",
-      "translations": {
-        "ru": {
-          "name": "Шпинатные блинчики",
-          "steps": "Смешиваем все ингредиенты в блендере, жарим наши зелёные блинчики на масле авокадо, гхи или кокосовом.\nВ блины заворачиваем любимую начинку, например слабосоленую красную рыбу, творожный сыр и огурец."
-        },
-        "en": {
-          "name": "Spinach crepes",
-          "steps": "Mix all the ingredients in a blender, cook the green crepes in avocado oil, ghee, or coconut oil.\nWe wrap pancakes with your favorite filling, such as lightly cured salmon or trout, cream cheese and cucumber."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "yaytso_kurinoe",
-          "quantity": 165,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shpinat",
-          "quantity": 30,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 2,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 25
-    },
-    {
-      "id": "recipe_59",
-      "servings": 1,
-      "imageId": "59",
-      "translations": {
-        "ru": {
-          "name": "Шоколадный мусс из батата",
-          "steps": "Батат почистить, нарезать на произвольные кусочки и запечь до мягкости при 180 градусах. После запекания заморозить вместе с очищенным и нарезанным бананом. Замораживать около 1-1.5 часа.\nВзбить в блендере до кремовой консистенции."
-        },
-        "en": {
-          "name": "Sweet potato chocolate mousse",
-          "steps": "Peel the sweet potato, cut into chunks and bake until soft at 180 degrees. Once baked, freeze along with the peeled and sliced banana. Freeze for about 1-1.5 hours.\nBlend in a blender until creamy."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "batata_sweet_potatoes",
-          "quantity": 140,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cocoa_powder",
-          "quantity": 20,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "banana",
-          "quantity": 120,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 45
-    },
-    {
-      "id": "recipe_60",
-      "servings": 8,
-      "imageId": "60",
-      "translations": {
-        "ru": {
-          "name": "Веганский шоколадный чизкейк",
-          "steps": "Нут заранее замочить в воде на 12 часов. Затем отварить до готовности, примерно 40 минут. Растопить молочный шоколад в микроволновке с небольшим количеством молока.\nВ блендере смешать до гладкой текстуры: нут, какао, растопленный шоколад, тофу, очищенные от косточек финики, ванилин и молоко.\nВыложить в форму для запекания и выпекать при 160 градусах 40 минут."
-        },
-        "en": {
-          "name": "Vegan chocolate cheesecake",
-          "steps": "Soak the chickpeas in water for 12 hours in advance. Then boil until tender, about 40 minutes. Melt milk chocolate in the microwave with a little milk.\nIn a blender, blend until smooth: chickpeas, cocoa, melted chocolate, tofu, pitted dates, vanilla and milk.\nPlace in a baking dish and bake at 160 degrees for 40 minutes."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "chickpeas",
-          "quantity": 250,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cocoa_powder",
-          "quantity": 55,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shokolad_gorkiy",
-          "quantity": 200,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "finiki",
-          "quantity": 130,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "vanilin",
-          "quantity": 1,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 45
-    },
-    {
-      "id": "recipe_61",
-      "servings": 4,
-      "imageId": "61",
-      "translations": {
-        "ru": {
-          "name": "Курица в сливочном соусе по-тоскански",
-          "steps": "Нарезать куриное филе кубиками. Добавить хлопья чили, базилик, соль, копченую паприку, оливковое масло, по желанию можно добавить чеснок. Перемешать и оставить недолго мариноваться.\nДля соуса в блендере смешать: молоко, сливочный сыр, пармезан, томатную пасту, базилик.\nОбжарить курицу до готовности, добавить соус, шпинат и помидорки черри, нарезанные на половинки. Накрыть крышкой и тушить примерно 5-7 минут.\nПодавать с отварным рисом или другим гарниром по вкусу."
-        },
-        "en": {
-          "name": "Tuscan chicken in cream sauce",
-          "steps": "Cut the chicken fillet into cubes. Add chili flakes, basil, salt, smoked paprika, olive oil, and garlic if desired. Stir and leave to marinate for a short time.\nFor the sauce, combine in a blender: milk, cream cheese, Parmesan, tomato paste, basil.\nFry the chicken until cooked, add the sauce, spinach and cherry tomatoes, cut into halves. Cover with a lid and simmer for about 5-7 minutes.\nServe with boiled rice or other side dish to taste."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "chicken",
-          "quantity": 700,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 3,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shpinat",
-          "quantity": 60,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "pomidor_tomat",
-          "quantity": 120,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "olive_oil",
-          "quantity": 10,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "milk_3_5_fat_sterilized",
-          "quantity": 350,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
-          "quantity": 40,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "tomatnaya_pasta_konservy",
-          "quantity": 70,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "syr_myagkiy",
-          "quantity": 150,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "white_rice_rice_groats",
-          "quantity": 60,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35
-    },
-    {
       "id": "recipe_62",
       "servings": 4,
       "imageId": "62",
       "translations": {
         "ru": {
           "name": "Морковно-творожная запеканка",
-          "steps": "Морковь порезать помельче, масло растопить в микроволновке. Все ингредиенты смешиваем и измельчаем в блендере, выливаем в силиконовую форму, даем постоять чтобы манка разбухла минут 10-15.\nВыпеаем в предварительно разогретой до 180 градусах духовке 30 минут.\nОстужаем и сверху по желанию можно покрыть греческим йогуртом."
+          "steps": "Морковь порезать помельче, масло растопить в микроволновке. Все ингредиенты смешиваем и измельчаем в блендере, выливаем в силиконовую форму, даем постоять чтобы манка разбухла минут 10-15.\nВыпекаем в предварительно разогретой до 180 градусах духовке 30 минут.\nОстужаем и сверху по желанию можно покрыть греческим йогуртом."
         },
         "en": {
           "name": "Carrot cottage cheese casserole",
@@ -1565,97 +1299,11 @@
         },
         {
           "catalogKey": "sugar",
-          "quantity": 4,
+          "quantity": 10,
           "unit": "gram"
         }
       ],
       "cookTimeMinutes": 45
-    },
-    {
-      "id": "recipe_63",
-      "servings": 4,
-      "imageId": "63",
-      "translations": {
-        "ru": {
-          "name": "Блинчики из зеленой гречки",
-          "steps": "Гречневую крупу на ночь замочить в воде, утром промыть несколько раз. Соду погасить соком лимона. Все ингредиенты смешать в блендере до однородной массы.\nВыпекать как обычные блинчики на хорошо разогретой сковороде"
-        },
-        "en": {
-          "name": "Green buckwheat crepes",
-          "steps": "Soak buckwheat in water overnight and rinse several times in the morning. Activate the baking soda with lemon juice. Mix all ingredients in a blender until smooth.\nBake like regular pancakes in a well-heated frying pan."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "buckwheat_kernel",
-          "quantity": 150,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "vanilin",
-          "quantity": 0,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 2,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "sunflower_oil",
-          "quantity": 10,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 25
-    },
-    {
-      "id": "recipe_64",
-      "servings": 2,
-      "imageId": "64",
-      "translations": {
-        "ru": {
-          "name": "Паста со шпинатом и тофу",
-          "steps": "Отварить макароны по инструкции. Часть воды, в которой варились макароны - оставить.\nВ антипригарную сковородку добавьте небольшой кусочек масла. Добавляем измельченный чеснок и хлопья чили и мелко нарезанный лук, готовим пару минут. Добавьте свежий шпинат и перемешивайте до того как шпинат станет мягким и маленьким.\nВ блендере соедините до гладкой текстуры жареный шпинат, тофу, базилик, семечки конопли, пищевые дрожжи, щепотку соли, перец и воду из под макарон.\nПоместите соус обратно в кастрюлю, где приготовили шпинат, добавьте готовые макароны и продолжайте готовить, пока соус не будет нужной текстуры.\nПодавайте пасту с дополнительными семенами конопли и веганским сыром пармезан."
-        },
-        "en": {
-          "name": "Pasta with spinach and tofu",
-          "steps": "Boil pasta according to instructions. Leave some of the water in which the pasta was cooked.\nAdd a small knob of butter to a non-stick frying pan. Add chopped garlic and chili flakes and finely chopped onion, cook for a couple of minutes. Add fresh spinach and stir until the spinach has wilted.\nIn a blender, combine sautéed spinach, tofu, basil, hemp seeds, nutritional yeast, a pinch of salt, pepper and pasta water until smooth.\nPlace the sauce back into the pan where you cooked the spinach, add the cooked pasta and continue cooking until the sauce has the desired texture.\nServe pasta with extra hemp seeds and vegan Parmesan cheese."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "hemp_seed",
-          "quantity": 20,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shpinat",
-          "quantity": 75,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 1,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "bulb_onion",
-          "quantity": 30,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
-          "quantity": 160,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "coconut_oil_liquid",
-          "quantity": 10,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35
     },
     {
       "id": "recipe_65",
