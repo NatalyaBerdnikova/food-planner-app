@@ -99,6 +99,8 @@ struct ContentView: View {
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
                 processPendingImportIfNeeded()
+                RemoteCatalogSyncService.refreshInBackgroundIfNeeded(in: modelContext)
+                UnmatchedIngredientReporter.flushQueueInBackground()
                 if subscriptionSession.hasFullAccess {
                     TrialEngagementNotifications.refreshFromAdapty()
                 }
@@ -232,6 +234,8 @@ struct ContentView: View {
         await Task.yield()
         await FoodCatalogSeeder.seedIfNeeded(in: modelContext)
         await RecipeCatalogStore.seedIfNeeded(in: modelContext)
+        RemoteCatalogSyncService.refreshInBackgroundIfNeeded(in: modelContext)
+        UnmatchedIngredientReporter.flushQueueInBackground()
         let settings = AppSettingsService.settings(in: modelContext)
         subscriptionSession.load(from: settings)
         await refreshSubscriptionStatus()

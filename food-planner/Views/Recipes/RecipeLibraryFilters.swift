@@ -45,12 +45,8 @@ struct RecipeAdvancedFilters: Equatable {
         }
 
         if hasIngredientFilter {
-            let recipeKeys = Set(recipe.ingredients.compactMap(\.foodProduct?.catalogKey).map {
-                FoodCatalogAliases.canonicalKey(for: $0)
-            })
-            let selected = Set(ingredientCatalogKeys.map {
-                FoodCatalogAliases.canonicalKey(for: $0)
-            })
+            let recipeKeys = Set(recipe.ingredients.compactMap(\.foodProduct?.catalogKey))
+            let selected = Set(ingredientCatalogKeys)
             if matchAnyIngredient {
                 if selected.isDisjoint(with: recipeKeys) {
                     return false

@@ -32,8 +32,7 @@ final class WeekPlan {
 
                 for ingredient in recipe.ingredients {
                     let catalogKey = ingredient.foodProduct?.catalogKey ?? ingredient.name
-                    let canonicalName = FoodCatalogAliases.canonicalKey(for: catalogKey)
-                    let key = "\(canonicalName.lowercased())|\(ingredient.unit.rawValue)"
+                    let key = "\(catalogKey.lowercased())|\(ingredient.unit.rawValue)"
 
                     if let existing = totals[key] {
                         totals[key] = (
@@ -44,7 +43,7 @@ final class WeekPlan {
                         )
                     } else {
                         totals[key] = (
-                            canonicalName,
+                            catalogKey,
                             ingredient.quantity,
                             ingredient.unit,
                             ingredient.category

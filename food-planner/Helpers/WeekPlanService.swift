@@ -197,7 +197,6 @@ enum WeekPlanService {
     }
 
     private static func shoppingItemKey(name: String, unit: MeasurementUnit) -> String {
-        let canonicalName = FoodCatalogAliases.canonicalKey(for: name)
-        return "\(canonicalName.lowercased())|\(unit.rawValue)"
+        "\(name.lowercased())|\(unit.rawValue)"
     }
 }

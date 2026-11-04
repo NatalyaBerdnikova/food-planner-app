@@ -45,6 +45,12 @@ enum InstagramImportService {
         onStage?(.matchingIngredients)
         await FoodCatalogSeeder.seedIfNeeded(in: context)
         let matchResult = IngredientCatalogMatcher.match(parsed.ingredients, in: context)
+        if !matchResult.unresolved.isEmpty {
+            UnmatchedIngredientReporter.reportInBackground(
+                unresolved: matchResult.unresolved,
+                sourceRecipeUrl: normalizedURL
+            )
+        }
 
         var imageData: Data?
         if let thumbnailURL = postInfo.thumbnailURL {

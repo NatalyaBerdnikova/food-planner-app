@@ -70,20 +70,23 @@ enum RecipeCatalogLocalization {
         return nil
     }
 
+    static func invalidateCache() {
+        entriesById = nil
+    }
+
     private static func loadEntries() -> [String: RecipeEntry] {
         if let entriesById {
             return entriesById
         }
 
-        guard let url = Bundle.main.url(forResource: "recipes-catalog", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let file = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+        guard let data = RemoteCatalogSyncService.activeRecipesCatalogData(),
+              let recipes = decodeRecipes(from: data) else {
             entriesById = [:]
             return [:]
         }
 
         var map: [String: RecipeEntry] = [:]
-        for recipe in file.recipes {
+        for recipe in recipes {
             guard let id = recipe.id?.trimmingCharacters(in: .whitespacesAndNewlines), !id.isEmpty else {
                 continue
             }
@@ -91,5 +94,15 @@ enum RecipeCatalogLocalization {
         }
         entriesById = map
         return map
+    }
+
+    private static func decodeRecipes(from data: Data) -> [RecipeEntry]? {
+        if let file = try? JSONDecoder().decode(CatalogFile.self, from: data) {
+            return file.recipes
+        }
+        if let array = try? JSONDecoder().decode([RecipeEntry].self, from: data) {
+            return array
+        }
+        return nil
     }
 }

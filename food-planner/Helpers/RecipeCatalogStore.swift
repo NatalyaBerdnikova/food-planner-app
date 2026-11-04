@@ -38,20 +38,33 @@ enum RecipeCatalogStore {
 
     // MARK: - Public API
 
-    /// Импортирует отсутствующие рецепты из bundle и пользовательского файла в SwiftData.
     @MainActor
     static func seedIfNeeded(in context: ModelContext) async {
-        await importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
-        await importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
+        await importMissingRecipes(from: activeSystemCatalogData(), isUserSource: false, in: context)
+        await importMissingRecipes(from: userCatalogData(), isUserSource: true, in: context)
+        syncCatalogMetadata(from: activeSystemCatalogData(), in: context)
         LocalPersistence.save(context)
     }
 
-    /// Синхронный вариант для превью Xcode.
     @MainActor
     static func seedIfNeeded(in context: ModelContext) {
-        importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
-        importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
+        syncFromActiveCatalog(in: context)
+    }
+
+    @MainActor
+    static func syncFromActiveCatalog(in context: ModelContext) {
+        let systemData = activeSystemCatalogData()
+        importMissingRecipesSync(from: systemData, isUserSource: false, in: context)
+        importMissingRecipesSync(from: userCatalogData(), isUserSource: true, in: context)
+        syncCatalogMetadata(from: systemData, in: context)
         LocalPersistence.save(context)
+    }
+
+    static func isValidCatalogData(_ data: Data) -> Bool {
+        guard let catalog = decodeCatalog(from: data), !catalog.recipes.isEmpty else {
+            return false
+        }
+        return catalog.recipes.allSatisfy { !resolvedEntryId(for: $0).isEmpty }
     }
 
     /// Сохраняет все пользовательские рецепты из SwiftData в файл на устройстве.
@@ -84,23 +97,12 @@ enum RecipeCatalogStore {
 
     @MainActor
     private static func importMissingRecipes(
-        from url: URL?,
-        isUserSource: Bool,
-        in context: ModelContext
-    ) {
-        importMissingRecipesSync(from: url, isUserSource: isUserSource, in: context)
-    }
-
-    @MainActor
-    private static func importMissingRecipes(
-        from url: URL?,
+        from data: Data?,
         isUserSource: Bool,
         in context: ModelContext
     ) async {
-        guard let url,
-              FileManager.default.fileExists(atPath: url.path),
-              let data = try? Data(contentsOf: url),
-              let catalog = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+        guard let data,
+              let catalog = decodeCatalog(from: data) else {
             return
         }
 
@@ -135,14 +137,12 @@ enum RecipeCatalogStore {
 
     @MainActor
     private static func importMissingRecipesSync(
-        from url: URL?,
+        from data: Data?,
         isUserSource: Bool,
         in context: ModelContext
     ) {
-        guard let url,
-              FileManager.default.fileExists(atPath: url.path),
-              let data = try? Data(contentsOf: url),
-              let catalog = try? JSONDecoder().decode(CatalogFile.self, from: data) else {
+        guard let data,
+              let catalog = decodeCatalog(from: data) else {
             return
         }
 
@@ -167,6 +167,51 @@ enum RecipeCatalogStore {
                     continue
                 }
                 context.insert(recipe)
+            }
+        }
+    }
+
+    @MainActor
+    private static func syncCatalogMetadata(from data: Data?, in context: ModelContext) {
+        guard let data,
+              let catalog = decodeCatalog(from: data) else {
+            return
+        }
+
+        var entriesById: [String: RecipeEntry] = [:]
+        for item in catalog.recipes {
+            let id = resolvedEntryId(for: item)
+            guard !id.isEmpty else { continue }
+            entriesById[id] = item
+        }
+
+        let descriptor = FetchDescriptor<Recipe>()
+        guard let all = try? context.fetch(descriptor) else { return }
+        for recipe in all where recipe.meals.isEmpty {
+            guard let catalogId = recipe.catalogRecipeId,
+                  let entry = entriesById[catalogId] else {
+                continue
+            }
+            let name = resolvedName(from: entry)
+            if !name.isEmpty, recipe.name != name {
+                recipe.name = name
+            }
+            let steps = resolvedSteps(from: entry)
+            if !steps.isEmpty, recipe.steps != steps {
+                recipe.steps = steps
+            }
+            if let servings = entry.servings, servings > 0, recipe.servings != servings {
+                recipe.servings = servings
+            }
+            if let minutes = entry.cookTimeMinutes, minutes > 0, recipe.cookTimeMinutes != minutes {
+                recipe.cookTimeMinutes = minutes
+            }
+            let tags = mealTypeTags(from: entry)
+            if !tags.isEmpty, recipe.mealTypeTags != tags {
+                recipe.mealTypeTags = tags
+            }
+            if !recipe.hasImage, let imageData = loadImageData(for: entry) {
+                recipe.imageData = imageData
             }
         }
     }
@@ -271,8 +316,7 @@ enum RecipeCatalogStore {
         guard recipe.isUserCreated else { return nil }
 
         let ingredients = recipe.ingredients.compactMap { ingredient -> RecipeEntry.IngredientEntry? in
-            let rawKey = ingredient.foodProduct?.catalogKey ?? ingredient.name
-            let key = FoodCatalogAliases.canonicalKey(for: rawKey)
+            let key = ingredient.foodProduct?.catalogKey ?? ingredient.name
             guard !key.isEmpty else { return nil }
             return RecipeEntry.IngredientEntry(
                 catalogKey: key,
@@ -334,10 +378,26 @@ enum RecipeCatalogStore {
             .joined(separator: "\n")
     }
 
-    // MARK: - URLs
+    // MARK: - URLs & Data
 
-    private static func bundleCatalogURL() -> URL? {
-        Bundle.main.url(forResource: "recipes-catalog", withExtension: "json")
+    private static func activeSystemCatalogData() -> Data? {
+        RemoteCatalogSyncService.activeRecipesCatalogData()
+    }
+
+    private static func userCatalogData() -> Data? {
+        let url = userCatalogURL()
+        guard FileManager.default.fileExists(atPath: url.path) else { return nil }
+        return try? Data(contentsOf: url)
+    }
+
+    private static func decodeCatalog(from data: Data) -> CatalogFile? {
+        if let file = try? JSONDecoder().decode(CatalogFile.self, from: data) {
+            return file
+        }
+        if let recipes = try? JSONDecoder().decode([RecipeEntry].self, from: data) {
+            return CatalogFile(version: 2, recipes: recipes)
+        }
+        return nil
     }
 
     static func userCatalogURL() -> URL {
