@@ -4336,9 +4336,9 @@
       "cookTimeMinutes": 35
     },
     {
-      "id": "arise_001",
+      "id": "book_001",
       "servings": 1,
-      "imageId": "arise_001",
+      "imageId": "book_001",
       "translations": {
         "ru": {
           "name": "Протеиновый кофе",
@@ -4371,13 +4371,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 5,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 5
     },
     {
-      "id": "arise_002",
+      "id": "book_002",
       "servings": 1,
-      "imageId": "arise_002",
+      "imageId": "book_002",
       "translations": {
         "ru": {
           "name": "Летний смузи-боул",
@@ -4435,13 +4434,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_003",
+      "id": "book_003",
       "servings": 1,
-      "imageId": "arise_003",
+      "imageId": "book_003",
       "translations": {
         "ru": {
           "name": "Шоколадно-ягодное мороженое",
@@ -4479,13 +4477,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_004",
+      "id": "book_004",
       "servings": 1,
-      "imageId": "arise_004",
+      "imageId": "book_004",
       "translations": {
         "ru": {
           "name": "Ягодный смузи-боул",
@@ -4533,13 +4530,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_005",
+      "id": "book_005",
       "servings": 1,
-      "imageId": "arise_005",
+      "imageId": "book_005",
       "translations": {
         "ru": {
           "name": "Шоколадный смузи",
@@ -4577,13 +4573,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 5,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 5
     },
     {
-      "id": "arise_006",
+      "id": "book_006",
       "servings": 1,
-      "imageId": "arise_006",
+      "imageId": "book_006",
       "translations": {
         "ru": {
           "name": "Летнее фиолетовое мороженое",
@@ -4626,13 +4621,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_007",
+      "id": "book_007",
       "servings": 1,
-      "imageId": "arise_007",
+      "imageId": "book_007",
       "translations": {
         "ru": {
           "name": "Наан с хамоном",
@@ -4690,13 +4684,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_008",
+      "id": "book_008",
       "servings": 1,
-      "imageId": "arise_008",
+      "imageId": "book_008",
       "translations": {
         "ru": {
           "name": "Сытный бейгл",
@@ -4759,13 +4752,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_009",
+      "id": "book_009",
       "servings": 1,
-      "imageId": "arise_009",
+      "imageId": "book_009",
       "translations": {
         "ru": {
           "name": "Тост с инжиром",
@@ -4798,13 +4790,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_010",
+      "id": "book_010",
       "servings": 1,
-      "imageId": "arise_010",
+      "imageId": "book_010",
       "translations": {
         "ru": {
           "name": "Тосты с яйцами пашот",
@@ -4847,13 +4838,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_011",
+      "id": "book_011",
       "servings": 1,
-      "imageId": "arise_011",
+      "imageId": "book_011",
       "translations": {
         "ru": {
           "name": "Ролл с яичным салатом",
@@ -4916,13 +4906,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_012",
+      "id": "book_012",
       "servings": 1,
-      "imageId": "arise_012",
+      "imageId": "book_012",
       "translations": {
         "ru": {
           "name": "Тост с творогом и карамелизированным манго",
@@ -4965,13 +4954,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_013",
+      "id": "book_013",
       "servings": 1,
-      "imageId": "arise_013",
+      "imageId": "book_013",
       "translations": {
         "ru": {
           "name": "Испанская тортилья",
@@ -5019,13 +5007,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_014",
+      "id": "book_014",
       "servings": 1,
-      "imageId": "arise_014",
+      "imageId": "book_014",
       "translations": {
         "ru": {
           "name": "Итальянский тост",
@@ -5078,13 +5065,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_015",
+      "id": "book_015",
       "servings": 1,
-      "imageId": "arise_015",
+      "imageId": "book_015",
       "translations": {
         "ru": {
           "name": "Пьядина с хамоном",
@@ -5147,13 +5133,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 5,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 5
     },
     {
-      "id": "arise_016",
+      "id": "book_016",
       "servings": 1,
-      "imageId": "arise_016",
+      "imageId": "book_016",
       "translations": {
         "ru": {
           "name": "Слойки с сыром и ветчиной",
@@ -5206,13 +5191,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_017",
+      "id": "book_017",
       "servings": 1,
-      "imageId": "arise_017",
+      "imageId": "book_017",
       "translations": {
         "ru": {
           "name": "Хумус из люпина",
@@ -5285,13 +5269,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_018",
+      "id": "book_018",
       "servings": 1,
-      "imageId": "arise_018",
+      "imageId": "book_018",
       "translations": {
         "ru": {
           "name": "Ролл со шпинатом и фетой",
@@ -5354,13 +5337,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_019",
+      "id": "book_019",
       "servings": 1,
-      "imageId": "arise_019",
+      "imageId": "book_019",
       "translations": {
         "ru": {
           "name": "Осенний тост с творогом",
@@ -5413,13 +5395,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_020",
+      "id": "book_020",
       "servings": 1,
-      "imageId": "arise_020",
+      "imageId": "book_020",
       "translations": {
         "ru": {
           "name": "Яичные корзинки с пармезаном",
@@ -5482,13 +5463,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_021",
+      "id": "book_021",
       "servings": 1,
-      "imageId": "arise_021",
+      "imageId": "book_021",
       "translations": {
         "ru": {
           "name": "Тост с хумусом",
@@ -5526,13 +5506,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_022",
+      "id": "book_022",
       "servings": 1,
-      "imageId": "arise_022",
+      "imageId": "book_022",
       "translations": {
         "ru": {
           "name": "Тост-пицца",
@@ -5585,13 +5564,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_023",
+      "id": "book_023",
       "servings": 1,
-      "imageId": "arise_023",
+      "imageId": "book_023",
       "translations": {
         "ru": {
           "name": "Яйца на сковороде",
@@ -5654,13 +5632,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_024",
+      "id": "book_024",
       "servings": 1,
-      "imageId": "arise_024",
+      "imageId": "book_024",
       "translations": {
         "ru": {
           "name": "Тост с трюфельной пастой",
@@ -5723,13 +5700,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_025",
+      "id": "book_025",
       "servings": 1,
-      "imageId": "arise_025",
+      "imageId": "book_025",
       "translations": {
         "ru": {
           "name": "Тост со свежим авокадо",
@@ -5777,13 +5753,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_026",
+      "id": "book_026",
       "servings": 1,
-      "imageId": "arise_026",
+      "imageId": "book_026",
       "translations": {
         "ru": {
           "name": "Завтрак в пите",
@@ -5836,13 +5811,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_028",
+      "id": "book_028",
       "servings": 1,
-      "imageId": "arise_028",
+      "imageId": "book_028",
       "translations": {
         "ru": {
           "name": "Яичные маффины",
@@ -5910,13 +5884,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_029",
+      "id": "book_029",
       "servings": 1,
-      "imageId": "arise_029",
+      "imageId": "book_029",
       "translations": {
         "ru": {
           "name": "Несладкие гренки",
@@ -5989,13 +5962,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_030",
+      "id": "book_030",
       "servings": 1,
-      "imageId": "arise_030",
+      "imageId": "book_030",
       "translations": {
         "ru": {
           "name": "Тост с йогуртовым заварным кремом",
@@ -6043,13 +6015,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_031",
+      "id": "book_031",
       "servings": 1,
-      "imageId": "arise_031",
+      "imageId": "book_031",
       "translations": {
         "ru": {
           "name": "Тост капрезе",
@@ -6122,13 +6093,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_033",
+      "id": "book_033",
       "servings": 1,
-      "imageId": "arise_033",
+      "imageId": "book_033",
       "translations": {
         "ru": {
           "name": "Томатный крем-суп",
@@ -6181,13 +6151,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_034",
+      "id": "book_034",
       "servings": 1,
-      "imageId": "arise_034",
+      "imageId": "book_034",
       "translations": {
         "ru": {
           "name": "Тыквенный боул",
@@ -6250,13 +6219,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_035",
+      "id": "book_035",
       "servings": 1,
-      "imageId": "arise_035",
+      "imageId": "book_035",
       "translations": {
         "ru": {
           "name": "Грибной крем-суп",
@@ -6314,13 +6282,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_036",
+      "id": "book_036",
       "servings": 1,
-      "imageId": "arise_036",
+      "imageId": "book_036",
       "translations": {
         "ru": {
           "name": "Салат с креветками и эдамаме",
@@ -6388,13 +6355,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_037",
+      "id": "book_037",
       "servings": 1,
-      "imageId": "arise_037",
+      "imageId": "book_037",
       "translations": {
         "ru": {
           "name": "Крем-суп из запечённой тыквы",
@@ -6447,13 +6413,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_039",
+      "id": "book_039",
       "servings": 1,
-      "imageId": "arise_039",
+      "imageId": "book_039",
       "translations": {
         "ru": {
           "name": "Салат ширази",
@@ -6531,13 +6496,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_040",
+      "id": "book_040",
       "servings": 1,
-      "imageId": "arise_040",
+      "imageId": "book_040",
       "translations": {
         "ru": {
           "name": "Гаспачо",
@@ -6595,13 +6559,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_041",
+      "id": "book_041",
       "servings": 1,
-      "imageId": "arise_041",
+      "imageId": "book_041",
       "translations": {
         "ru": {
           "name": "Уютный чечевичный суп",
@@ -6664,13 +6627,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_042",
+      "id": "book_042",
       "servings": 1,
-      "imageId": "arise_042",
+      "imageId": "book_042",
       "translations": {
         "ru": {
           "name": "Оливье с тунцом",
@@ -6748,13 +6710,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_043",
+      "id": "book_043",
       "servings": 1,
-      "imageId": "arise_043",
+      "imageId": "book_043",
       "translations": {
         "ru": {
           "name": "Рататуй",
@@ -6817,13 +6778,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 50,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 50
     },
     {
-      "id": "arise_044",
+      "id": "book_044",
       "servings": 1,
-      "imageId": "arise_044",
+      "imageId": "book_044",
       "translations": {
         "ru": {
           "name": "Закуска с яичным салатом",
@@ -6881,13 +6841,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_045",
+      "id": "book_045",
       "servings": 1,
-      "imageId": "arise_045",
+      "imageId": "book_045",
       "translations": {
         "ru": {
           "name": "Летняя буррата",
@@ -6930,13 +6889,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_046",
+      "id": "book_046",
       "servings": 1,
-      "imageId": "arise_046",
+      "imageId": "book_046",
       "translations": {
         "ru": {
           "name": "Рулетики из кабачка с сыром",
@@ -6984,13 +6942,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_048",
+      "id": "book_048",
       "servings": 1,
-      "imageId": "arise_048",
+      "imageId": "book_048",
       "translations": {
         "ru": {
           "name": "Рыба, запечённая с овощами",
@@ -7063,13 +7020,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 90,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 90
     },
     {
-      "id": "arise_049",
+      "id": "book_049",
       "servings": 1,
-      "imageId": "arise_049",
+      "imageId": "book_049",
       "translations": {
         "ru": {
           "name": "Ризотто со спаржей",
@@ -7137,13 +7093,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 40
     },
     {
-      "id": "arise_050",
+      "id": "book_050",
       "servings": 1,
-      "imageId": "arise_050",
+      "imageId": "book_050",
       "translations": {
         "ru": {
           "name": "Ролл с тунцовой пастой",
@@ -7226,13 +7181,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_051",
+      "id": "book_051",
       "servings": 1,
-      "imageId": "arise_051",
+      "imageId": "book_051",
       "translations": {
         "ru": {
           "name": "Боул с лососем и пико-де-гальо",
@@ -7305,13 +7259,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_052",
+      "id": "book_052",
       "servings": 1,
-      "imageId": "arise_052",
+      "imageId": "book_052",
       "translations": {
         "ru": {
           "name": "Спринг-роллы",
@@ -7414,13 +7367,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 40
     },
     {
-      "id": "arise_053",
+      "id": "book_053",
       "servings": 1,
-      "imageId": "arise_053",
+      "imageId": "book_053",
       "translations": {
         "ru": {
           "name": "Паста с креветками в сливочном соусе",
@@ -7478,13 +7430,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_054",
+      "id": "book_054",
       "servings": 1,
-      "imageId": "arise_054",
+      "imageId": "book_054",
       "translations": {
         "ru": {
           "name": "Лодочки из кабачков",
@@ -7562,13 +7513,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_055",
+      "id": "book_055",
       "servings": 1,
-      "imageId": "arise_055",
+      "imageId": "book_055",
       "translations": {
         "ru": {
           "name": "Лосось, запечённый с овощами",
@@ -7641,13 +7591,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 40
     },
     {
-      "id": "arise_056",
+      "id": "book_056",
       "servings": 1,
-      "imageId": "arise_056",
+      "imageId": "book_056",
       "translations": {
         "ru": {
           "name": "Паста с томатами и грибами",
@@ -7710,13 +7659,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_057",
+      "id": "book_057",
       "servings": 1,
-      "imageId": "arise_057",
+      "imageId": "book_057",
       "translations": {
         "ru": {
           "name": "Спагетти болоньезе",
@@ -7814,13 +7762,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_058",
+      "id": "book_058",
       "servings": 1,
-      "imageId": "arise_058",
+      "imageId": "book_058",
       "translations": {
         "ru": {
           "name": "Картофельная запеканка с мясом",
@@ -7913,13 +7860,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_059",
+      "id": "book_059",
       "servings": 1,
-      "imageId": "arise_059",
+      "imageId": "book_059",
       "translations": {
         "ru": {
           "name": "Макароны с сыром",
@@ -7997,13 +7943,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_060",
+      "id": "book_060",
       "servings": 1,
-      "imageId": "arise_060",
+      "imageId": "book_060",
       "translations": {
         "ru": {
           "name": "Фахитас с курицей",
@@ -8091,13 +8036,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_061",
+      "id": "book_061",
       "servings": 1,
-      "imageId": "arise_061",
+      "imageId": "book_061",
       "translations": {
         "ru": {
           "name": "Карбонара",
@@ -8165,13 +8109,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_062",
+      "id": "book_062",
       "servings": 1,
-      "imageId": "arise_062",
+      "imageId": "book_062",
       "translations": {
         "ru": {
           "name": "Курица в масляном соусе (баттер чикен)",
@@ -8264,13 +8207,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_063",
+      "id": "book_063",
       "servings": 1,
-      "imageId": "arise_063",
+      "imageId": "book_063",
       "translations": {
         "ru": {
           "name": "Начос с картофельными дольками",
@@ -8383,13 +8325,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_064",
+      "id": "book_064",
       "servings": 1,
-      "imageId": "arise_064",
+      "imageId": "book_064",
       "translations": {
         "ru": {
           "name": "Хрустящие мясные рулеты",
@@ -8487,13 +8428,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_065",
+      "id": "book_065",
       "servings": 1,
-      "imageId": "arise_065",
+      "imageId": "book_065",
       "translations": {
         "ru": {
           "name": "Боул с курицей чипотле",
@@ -8596,13 +8536,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_066",
+      "id": "book_066",
       "servings": 1,
-      "imageId": "arise_066",
+      "imageId": "book_066",
       "translations": {
         "ru": {
           "name": "Картофель, фаршированный мясом и сыром",
@@ -8670,13 +8609,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_067",
+      "id": "book_067",
       "servings": 1,
-      "imageId": "arise_067",
+      "imageId": "book_067",
       "translations": {
         "ru": {
           "name": "Пенне с курицей в соусе из запечённых овощей",
@@ -8744,13 +8682,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 50,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 50
     },
     {
-      "id": "arise_068",
+      "id": "book_068",
       "servings": 1,
-      "imageId": "arise_068",
+      "imageId": "book_068",
       "translations": {
         "ru": {
           "name": "Сырные такитос",
@@ -8858,13 +8795,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 40
     },
     {
-      "id": "arise_069",
+      "id": "book_069",
       "servings": 1,
-      "imageId": "arise_069",
+      "imageId": "book_069",
       "translations": {
         "ru": {
           "name": "Ролл с бургером",
@@ -8932,13 +8868,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_070",
+      "id": "book_070",
       "servings": 1,
-      "imageId": "arise_070",
+      "imageId": "book_070",
       "translations": {
         "ru": {
           "name": "Буррито-боул",
@@ -9036,13 +8971,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_071",
+      "id": "book_071",
       "servings": 1,
-      "imageId": "arise_071",
+      "imageId": "book_071",
       "translations": {
         "ru": {
           "name": "Пицца на баклажанах",
@@ -9100,13 +9034,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_072",
+      "id": "book_072",
       "servings": 1,
-      "imageId": "arise_072",
+      "imageId": "book_072",
       "translations": {
         "ru": {
           "name": "Тако",
@@ -9194,13 +9127,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_073",
+      "id": "book_073",
       "servings": 1,
-      "imageId": "arise_073",
+      "imageId": "book_073",
       "translations": {
         "ru": {
           "name": "Пицца на тортилье",
@@ -9258,13 +9190,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_074",
+      "id": "book_074",
       "servings": 1,
-      "imageId": "arise_074",
+      "imageId": "book_074",
       "translations": {
         "ru": {
           "name": "Сэндвич с курицей и сыром",
@@ -9322,13 +9253,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_075",
+      "id": "book_075",
       "servings": 1,
-      "imageId": "arise_075",
+      "imageId": "book_075",
       "translations": {
         "ru": {
           "name": "Мини-пирожки с яблоком",
@@ -9376,13 +9306,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_076",
+      "id": "book_076",
       "servings": 1,
-      "imageId": "arise_076",
+      "imageId": "book_076",
       "translations": {
         "ru": {
           "name": "Мини-панкейки с шоколадом",
@@ -9440,13 +9369,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_077",
+      "id": "book_077",
       "servings": 1,
-      "imageId": "arise_077",
+      "imageId": "book_077",
       "translations": {
         "ru": {
           "name": "Шоколадные трюфели",
@@ -9494,13 +9422,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_078",
+      "id": "book_078",
       "servings": 1,
-      "imageId": "arise_078",
+      "imageId": "book_078",
       "translations": {
         "ru": {
           "name": "Пирог с клюквой и белым шоколадом",
@@ -9578,13 +9505,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 25,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 25
     },
     {
-      "id": "arise_079",
+      "id": "book_079",
       "servings": 1,
-      "imageId": "arise_079",
+      "imageId": "book_079",
       "translations": {
         "ru": {
           "name": "Протеиновые блинчики с начинкой и шоколадом",
@@ -9647,13 +9573,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 30,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 30
     },
     {
-      "id": "arise_080",
+      "id": "book_080",
       "servings": 1,
-      "imageId": "arise_080",
+      "imageId": "book_080",
       "translations": {
         "ru": {
           "name": "Панкейк «Синнабон»",
@@ -9706,13 +9631,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_081",
+      "id": "book_081",
       "servings": 1,
-      "imageId": "arise_081",
+      "imageId": "book_081",
       "translations": {
         "ru": {
           "name": "Банана-сплит",
@@ -9760,13 +9684,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_082",
+      "id": "book_082",
       "servings": 1,
-      "imageId": "arise_082",
+      "imageId": "book_082",
       "translations": {
         "ru": {
           "name": "Тропический пирог",
@@ -9844,13 +9767,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_083",
+      "id": "book_083",
       "servings": 1,
-      "imageId": "arise_083",
+      "imageId": "book_083",
       "translations": {
         "ru": {
           "name": "Шоколадный торт с малиной",
@@ -9908,13 +9830,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 60,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 60
     },
     {
-      "id": "arise_084",
+      "id": "book_084",
       "servings": 1,
-      "imageId": "arise_084",
+      "imageId": "book_084",
       "translations": {
         "ru": {
           "name": "Шоколадное печенье-брауни",
@@ -9967,13 +9888,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_085",
+      "id": "book_085",
       "servings": 1,
-      "imageId": "arise_085",
+      "imageId": "book_085",
       "translations": {
         "ru": {
           "name": "Клубничный чиа-пудинг",
@@ -10026,13 +9946,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_086",
+      "id": "book_086",
       "servings": 1,
-      "imageId": "arise_086",
+      "imageId": "book_086",
       "translations": {
         "ru": {
           "name": "Пирог с персиками и творогом",
@@ -10105,13 +10024,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_087",
+      "id": "book_087",
       "servings": 1,
-      "imageId": "arise_087",
+      "imageId": "book_087",
       "translations": {
         "ru": {
           "name": "Пряная гранола",
@@ -10164,13 +10082,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 15,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 15
     },
     {
-      "id": "arise_088",
+      "id": "book_088",
       "servings": 1,
-      "imageId": "arise_088",
+      "imageId": "book_088",
       "translations": {
         "ru": {
           "name": "Йогуртовый парфе",
@@ -10203,13 +10120,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 10,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 10
     },
     {
-      "id": "arise_089",
+      "id": "book_089",
       "servings": 1,
-      "imageId": "arise_089",
+      "imageId": "book_089",
       "translations": {
         "ru": {
           "name": "Лимонный пирог с голубикой",
@@ -10282,13 +10198,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_090",
+      "id": "book_090",
       "servings": 1,
-      "imageId": "arise_090",
+      "imageId": "book_090",
       "translations": {
         "ru": {
           "name": "Банановый хлеб с шоколадом",
@@ -10356,13 +10271,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 50,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 50
     },
     {
-      "id": "arise_091",
+      "id": "book_091",
       "servings": 1,
-      "imageId": "arise_091",
+      "imageId": "book_091",
       "translations": {
         "ru": {
           "name": "Пряный яблочный пирог",
@@ -10440,13 +10354,12 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 20,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 20
     },
     {
-      "id": "arise_093",
+      "id": "book_093",
       "servings": 1,
-      "imageId": "arise_093",
+      "imageId": "book_093",
       "translations": {
         "ru": {
           "name": "Запечённый протеиновый заварной крем",
@@ -10489,8 +10402,7 @@
           "unit": "gram"
         }
       ],
-      "cookTimeMinutes": 40,
-      "sourceDescription": "ARISE COOKBOOK — Nicolina Nunes"
+      "cookTimeMinutes": 40
     }
   ]
 }
