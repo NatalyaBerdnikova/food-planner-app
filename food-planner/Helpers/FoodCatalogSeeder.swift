@@ -106,6 +106,7 @@ enum FoodCatalogSeeder {
 
     @MainActor
     static func seedIfNeeded(in context: ModelContext) async {
+        migrateLegacyProductKeys(in: context)
         let descriptor = FetchDescriptor<FoodProduct>()
         let existingProducts = (try? context.fetch(descriptor)) ?? []
         var existingKeys = Set(existingProducts.map(\.catalogKey))
@@ -160,6 +161,7 @@ enum FoodCatalogSeeder {
     /// Синхронный вариант для превью Xcode.
     @MainActor
     static func seedIfNeeded(in context: ModelContext) {
+        migrateLegacyProductKeys(in: context)
         let descriptor = FetchDescriptor<FoodProduct>()
         let existingProducts = (try? context.fetch(descriptor)) ?? []
         var existingKeys = Set(existingProducts.map(\.catalogKey))
@@ -213,6 +215,54 @@ enum FoodCatalogSeeder {
         )
         descriptor.fetchLimit = 1
         return try? context.fetch(descriptor).first
+    }
+
+    @MainActor
+    private static func migrateLegacyProductKeys(in context: ModelContext) {
+        let products = (try? context.fetch(FetchDescriptor<FoodProduct>())) ?? []
+        var canonicalProducts: [String: FoodProduct] = [:]
+
+        for product in products where FoodCatalogAliases.isCanonical(product.catalogKey) {
+            canonicalProducts[product.catalogKey] = product
+        }
+
+        for product in products {
+            let oldKey = product.catalogKey
+            let newKey = FoodCatalogAliases.canonicalKey(for: oldKey)
+            guard newKey != oldKey else { continue }
+
+            if let target = canonicalProducts[newKey], target.persistentModelID != product.persistentModelID {
+                for ingredient in Array(product.ingredients) {
+                    ingredient.foodProduct = target
+                    if ingredient.name == oldKey {
+                        ingredient.name = newKey
+                    }
+                }
+                context.delete(product)
+            } else {
+                product.catalogKey = newKey
+                canonicalProducts[newKey] = product
+                for ingredient in product.ingredients where ingredient.name == oldKey {
+                    ingredient.name = newKey
+                }
+            }
+        }
+
+        let ingredients = (try? context.fetch(FetchDescriptor<Ingredient>())) ?? []
+        for ingredient in ingredients {
+            let canonicalName = FoodCatalogAliases.canonicalKey(for: ingredient.name)
+            if canonicalName != ingredient.name {
+                ingredient.name = canonicalName
+            }
+        }
+
+        let shoppingItems = (try? context.fetch(FetchDescriptor<ShoppingItem>())) ?? []
+        for item in shoppingItems {
+            let canonicalName = FoodCatalogAliases.canonicalKey(for: item.name)
+            if canonicalName != item.name {
+                item.name = canonicalName
+            }
+        }
     }
 
     private static func loadBundleCatalog() -> [ProductJSON] {

@@ -41,6 +41,7 @@ enum RecipeCatalogStore {
     /// Импортирует отсутствующие рецепты из bundle и пользовательского файла в SwiftData.
     @MainActor
     static func seedIfNeeded(in context: ModelContext) async {
+        migrateLegacyCatalogIds(in: context)
         await importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
         await importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
         syncCatalogMetadata(in: context)
@@ -50,6 +51,7 @@ enum RecipeCatalogStore {
     /// Синхронный вариант для превью Xcode.
     @MainActor
     static func seedIfNeeded(in context: ModelContext) {
+        migrateLegacyCatalogIds(in: context)
         importMissingRecipes(from: bundleCatalogURL(), isUserSource: false, in: context)
         importMissingRecipes(from: userCatalogURL(), isUserSource: true, in: context)
         syncCatalogMetadata(in: context)
@@ -273,7 +275,8 @@ enum RecipeCatalogStore {
         guard recipe.isUserCreated else { return nil }
 
         let ingredients = recipe.ingredients.compactMap { ingredient -> RecipeEntry.IngredientEntry? in
-            let key = ingredient.foodProduct?.catalogKey ?? ingredient.name
+            let rawKey = ingredient.foodProduct?.catalogKey ?? ingredient.name
+            let key = FoodCatalogAliases.canonicalKey(for: rawKey)
             guard !key.isEmpty else { return nil }
             return RecipeEntry.IngredientEntry(
                 catalogKey: key,
@@ -301,6 +304,55 @@ enum RecipeCatalogStore {
             translations: translations,
             ingredients: ingredients
         )
+    }
+
+    @MainActor
+    private static func migrateLegacyCatalogIds(in context: ModelContext) {
+        let recipes = (try? context.fetch(FetchDescriptor<Recipe>())) ?? []
+        var canonicalSeedById: [String: Recipe] = [:]
+
+        for recipe in recipes {
+            guard let oldId = recipe.catalogRecipeId else { continue }
+            let canonicalId = FoodCatalogAliases.canonicalRecipeId(for: oldId)
+            if canonicalId != oldId {
+                recipe.catalogRecipeId = canonicalId
+            }
+            if recipe.meals.isEmpty {
+                if let existingSeed = canonicalSeedById[canonicalId] {
+                    if existingSeed.persistentModelID != recipe.persistentModelID {
+                        context.delete(recipe)
+                    }
+                } else {
+                    canonicalSeedById[canonicalId] = recipe
+                }
+            }
+        }
+
+        let settings = AppSettingsService.settings(in: context)
+        let migratedFavorites = Set(settings.favoriteCatalogRecipeIds.map(FoodCatalogAliases.canonicalRecipeId(for:))).sorted()
+        if settings.favoriteCatalogRecipeIds != migratedFavorites {
+            settings.favoriteCatalogRecipeIds = migratedFavorites
+        }
+
+        let migratedHidden = Set(settings.hiddenCatalogRecipeIds.map(FoodCatalogAliases.canonicalRecipeId(for:))).sorted()
+        if settings.hiddenCatalogRecipeIds != migratedHidden {
+            settings.hiddenCatalogRecipeIds = migratedHidden
+        }
+
+        if var snapshot = MealPlanGenerationPending.previewSnapshot {
+            var changed = false
+            for idx in snapshot.slots.indices {
+                let oldId = snapshot.slots[idx].catalogRecipeId
+                let canonicalId = FoodCatalogAliases.canonicalRecipeId(for: oldId)
+                if canonicalId != oldId {
+                    snapshot.slots[idx].catalogRecipeId = canonicalId
+                    changed = true
+                }
+            }
+            if changed {
+                MealPlanGenerationPending.previewSnapshot = snapshot
+            }
+        }
     }
 
     @MainActor

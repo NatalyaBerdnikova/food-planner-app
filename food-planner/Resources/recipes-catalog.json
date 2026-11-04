@@ -17,7 +17,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 180,
           "unit": "gram"
         },
@@ -27,12 +27,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 15,
           "unit": "gram"
         },
         {
-          "catalogKey": "bee_honey",
+          "catalogKey": "honey",
           "quantity": 15,
           "unit": "gram"
         },
@@ -74,22 +74,22 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "semena_chia_sushenye",
+          "catalogKey": "chia_seeds",
           "quantity": 30,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "bee_honey",
+          "catalogKey": "honey",
           "quantity": 15,
           "unit": "gram"
         },
@@ -126,12 +126,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "brokkoli",
+          "catalogKey": "broccoli",
           "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100,
           "unit": "gram"
         },
@@ -164,27 +164,27 @@
       },
       "ingredients": [
         {
-          "catalogKey": "wheat_flour_premium_grade",
+          "catalogKey": "wheat_flour",
           "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 15,
           "unit": "gram"
         }
@@ -221,7 +221,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100,
           "unit": "gram"
         },
@@ -268,22 +268,22 @@
       },
       "ingredients": [
         {
-          "catalogKey": "far_eastern_shrimp_meat",
+          "catalogKey": "shrimp",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "fasol_struchkovaya",
+          "catalogKey": "green_beans",
           "quantity": 100,
           "unit": "gram"
         },
@@ -315,12 +315,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "chechevitsa_zerno",
+          "catalogKey": "lentils",
           "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 80,
           "unit": "gram"
         },
@@ -330,12 +330,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "bread_pshenichnyy",
+          "catalogKey": "wheat_bread",
           "quantity": 40,
           "unit": "gram"
         }
@@ -362,27 +362,27 @@
       },
       "ingredients": [
         {
-          "catalogKey": "bread_pshenichnyy",
+          "catalogKey": "wheat_bread",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 70,
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 70,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "green_onion_feather",
+          "catalogKey": "green_onion",
           "quantity": 15,
           "unit": "gram"
         }
@@ -409,7 +409,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 60,
           "unit": "gram"
         },
@@ -434,7 +434,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50,
           "unit": "gram"
         }
@@ -461,12 +461,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "far_eastern_shrimp_meat",
+          "catalogKey": "shrimp",
           "quantity": 120,
           "unit": "gram"
         },
@@ -481,7 +481,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50,
           "unit": "gram"
         }
@@ -508,7 +508,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "bread_pshenichnyy",
+          "catalogKey": "wheat_bread",
           "quantity": 90,
           "unit": "gram"
         },
@@ -518,17 +518,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "mayonnaise_provansal_67_fat_content",
+          "catalogKey": "mayonnaise",
           "quantity": 20,
           "unit": "gram"
         },
         {
-          "catalogKey": "soevyy_sous",
+          "catalogKey": "soy_sauce",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "bee_honey",
+          "catalogKey": "honey",
           "quantity": 10,
           "unit": "gram"
         },
@@ -560,7 +560,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "catalogKey": "whole_grain_pasta",
           "quantity": 80,
           "unit": "gram"
         },
@@ -570,17 +570,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 40,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 15,
           "unit": "gram"
         }
@@ -617,12 +617,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 60,
           "unit": "gram"
         },
@@ -659,7 +659,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 60,
           "unit": "gram"
         },
@@ -669,12 +669,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 100,
           "unit": "gram"
         },
@@ -711,7 +711,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 60,
           "unit": "gram"
         },
@@ -721,22 +721,22 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sunflower_sunflower_seeds",
+          "catalogKey": "sunflower_seeds",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "bee_honey",
+          "catalogKey": "honey",
           "quantity": 30,
           "unit": "gram"
         },
         {
-          "catalogKey": "coconut_oil_liquid",
+          "catalogKey": "coconut_oil",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 200,
           "unit": "gram"
         },
@@ -773,12 +773,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "far_eastern_shrimp_meat",
+          "catalogKey": "shrimp",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 50,
           "unit": "gram"
         },
@@ -793,7 +793,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
@@ -830,17 +830,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 80,
           "unit": "gram"
         }
@@ -868,17 +868,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 75,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 50,
           "unit": "gram"
         },
@@ -920,12 +920,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "semena_chia_sushenye",
+          "catalogKey": "chia_seeds",
           "quantity": 30,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 200,
           "unit": "gram"
         },
@@ -962,12 +962,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 45,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 110,
           "unit": "gram"
         },
@@ -1018,12 +1018,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "kamchatka_crab_meat",
+          "catalogKey": "king_crab_meat",
           "quantity": 200,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 110,
           "unit": "gram"
         },
@@ -1033,17 +1033,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "ukrop",
+          "catalogKey": "dill",
           "quantity": 30,
           "unit": "gram"
         },
         {
-          "catalogKey": "green_onion_feather",
+          "catalogKey": "green_onion",
           "quantity": 30,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 80,
           "unit": "gram"
         }
@@ -1070,80 +1070,28 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "vanilin",
+          "catalogKey": "vanillin",
           "quantity": 1,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 45,
           "unit": "gram"
         },
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 40,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35,
-      "mealTypes": [
-        "breakfast",
-        "snack"
-      ]
-    },
-    {
-      "id": "recipe_50",
-      "servings": 1,
-      "imageId": "50",
-      "translations": {
-        "ru": {
-          "name": "Чиа-йогурт с манго",
-          "steps": "Залить семена чиа и овсянку молоком, добавить корицу и сироп топинамбура, перемешать, оставить на час.\nСушеный манго замочить теплой водой.\nЧиа-пуддинг перемешать, смешать с йогуртом, по желанию можно взбить блендером, если вам не нравится очущение скользких семян. Манго мелко нарезать и положить сверху."
-        },
-        "en": {
-          "name": "Chia yogurt with mango",
-          "steps": "Pour milk over chia seeds and oatmeal, add cinnamon and Jerusalem artichoke syrup, stir, and leave for an hour.\nSoak dried mango in warm water.\nStir chia pudding, mix with yogurt, optionally beat with a blender if you don’t like the feeling of slippery seeds. Finely chop the mango and place on top."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "milk_3_5_fat_sterilized",
-          "quantity": 200,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
-          "quantity": 140,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "semena_chia_sushenye",
-          "quantity": 25,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "hercules_oatmeal",
-          "quantity": 20,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "mango",
-          "quantity": 80,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "sirop_topinambura_royal_forest",
-          "quantity": 10,
           "unit": "gram"
         }
       ],
@@ -1169,23 +1117,23 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "semolina_flour",
+          "catalogKey": "semolina",
           "quantity": 40,
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 400,
           "unit": "gram"
         },
         {
-          "catalogKey": "sugar",
-          "quantity": 4,
+          "catalogKey": "jerusalem_artichoke_syrup",
+          "quantity": 20,
           "unit": "gram"
         },
         {
@@ -1226,7 +1174,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 200,
           "unit": "gram"
         },
@@ -1273,12 +1221,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "coconut_oil_liquid",
+          "catalogKey": "coconut_oil",
           "quantity": 40,
           "unit": "gram"
         },
         {
-          "catalogKey": "sunflower_sunflower_seeds",
+          "catalogKey": "sunflower_seeds",
           "quantity": 30,
           "unit": "gram"
         },
@@ -1298,22 +1246,69 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "uksus_vinnyy_3",
+          "catalogKey": "wine_vinegar_3",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "millet_groats_ground_millet",
+          "catalogKey": "millet_groats",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "semena_lna",
+          "catalogKey": "flax_seeds",
           "quantity": 30,
           "unit": "gram"
         }
       ],
       "cookTimeMinutes": 45,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
+    },
+    {
+      "id": "recipe_54",
+      "servings": 1,
+      "imageId": "54",
+      "translations": {
+        "ru": {
+          "name": "Горячие бутерброды",
+          "steps": "Смешать творог, яйца, твёрдый сыр и мелко нарезанный зелёный лук для начинки.\nВыложить массу на ломтики хлеба и запечь в предварительно разогретой до 180 °C духовке 10 минут.\nЗатем включить режим «гриль» и оставить ещё на 2 минуты до румяной корочки."
+        },
+        "en": {
+          "name": "Hot sandwiches",
+          "steps": "Mix cottage cheese, eggs, grated hard cheese, and finely chopped green onion for the topping.\nSpread over the bread slices and bake in a preheated 180 °C oven for 10 minutes.\nThen switch to the grill mode for another 2 minutes until golden brown."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cottage_cheese_5",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_egg",
+          "quantity": 110,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hard_cheese_29_protein",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "green_onion",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "rye_bread",
+          "quantity": 60,
+          "unit": "gram"
+        }
+      ],
+      "cookTimeMinutes": 15,
       "mealTypes": [
         "breakfast",
         "snack"
@@ -1326,7 +1321,7 @@
       "translations": {
         "ru": {
           "name": "Паста в соусе Ромеско",
-          "steps": "Перцы запечь до черной корочки. После выпекания накрыть фольгой, дать \"отпотеть\" и снять черную пленку. Помидоры бланшировать или использовать банку томатов в собственном соку.\nВ блендере соединить все ингредиенты соуса, кроме томатной пасты, до гладкой текстуры. Прогреть томатную пасту, добавить соус и немного выпарить для загустения.\nОтварить макароны по инструкции. Можно недоварить 1-2 минуты, чтобы макароны лучше напитались соусом. Залить макароны соусом."
+          "steps": "Перцы запечь до черной корочки. После выпекания накрыть фольгой, дать \"отпотеть\" и снять черную пленку. Помидоры бланшировать или использовать банку томатов в собственном соку. Кешью замочить в кипятке на 5 минут, затем воду слить.\nВ блендере соединить все ингредиенты соуса, кроме томатной пасты, до гладкой текстуры. Прогреть томатную пасту, добавить соус и немного выпарить для загустения.\nОтварить макароны по инструкции. Можно недоварить 1-2 минуты, чтобы макароны лучше напитались соусом. Залить макароны соусом."
         },
         "en": {
           "name": "Pasta in romesco sauce",
@@ -1335,12 +1330,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 600,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 400,
           "unit": "gram"
         },
@@ -1355,7 +1350,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 150,
           "unit": "gram"
         },
@@ -1370,245 +1365,8 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "catalogKey": "whole_grain_pasta",
           "quantity": 400,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35,
-      "mealTypes": [
-        "lunch",
-        "dinner"
-      ]
-    },
-    {
-      "id": "recipe_57",
-      "servings": 1,
-      "imageId": "57",
-      "translations": {
-        "ru": {
-          "name": "Лимонно-финиковый мусс",
-          "steps": "Финики залить горячей водой на 10 минут, затем слить воду. Смешать финики с лимонным соком и цедрой, пробить блендером до однородной кремовой консистенции. Перед подачей охладить."
-        },
-        "en": {
-          "name": "Lemon-date mousse",
-          "steps": "Pour hot water over the dates for 10 minutes, then drain the water. Mix dates with lemon juice and zest and puree with a blender until smooth and creamy. Cool before serving."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "finiki",
-          "quantity": 80,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "lemon_juice",
-          "quantity": 15,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "lemon",
-          "quantity": 5,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 15,
-      "mealTypes": [
-        "snack"
-      ]
-    },
-    {
-      "id": "recipe_58",
-      "servings": 1,
-      "imageId": "58",
-      "translations": {
-        "ru": {
-          "name": "Шпинатные блинчики",
-          "steps": "Смешиваем все ингредиенты в блендере, жарим наши зелёные блинчики на масле авокадо, гхи или кокосовом.\nВ блины заворачиваем любимую начинку, например слабосоленую красную рыбу, творожный сыр и огурец."
-        },
-        "en": {
-          "name": "Spinach crepes",
-          "steps": "Mix all the ingredients in a blender, cook the green crepes in avocado oil, ghee, or coconut oil.\nWe wrap pancakes with your favorite filling, such as lightly cured salmon or trout, cream cheese and cucumber."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "yaytso_kurinoe",
-          "quantity": 165,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shpinat",
-          "quantity": 30,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 2,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 25,
-      "mealTypes": [
-        "breakfast",
-        "snack"
-      ]
-    },
-    {
-      "id": "recipe_59",
-      "servings": 1,
-      "imageId": "59",
-      "translations": {
-        "ru": {
-          "name": "Шоколадный мусс из батата",
-          "steps": "Батат почистить, нарезать на произвольные кусочки и запечь до мягкости при 180 градусах. После запекания заморозить вместе с очищенным и нарезанным бананом. Замораживать около 1-1.5 часа.\nВзбить в блендере до кремовой консистенции."
-        },
-        "en": {
-          "name": "Sweet potato chocolate mousse",
-          "steps": "Peel the sweet potato, cut into chunks and bake until soft at 180 degrees. Once baked, freeze along with the peeled and sliced banana. Freeze for about 1-1.5 hours.\nBlend in a blender until creamy."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "batata_sweet_potatoes",
-          "quantity": 140,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cocoa_powder",
-          "quantity": 20,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "banana",
-          "quantity": 120,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 45,
-      "mealTypes": [
-        "snack"
-      ]
-    },
-    {
-      "id": "recipe_60",
-      "servings": 8,
-      "imageId": "60",
-      "translations": {
-        "ru": {
-          "name": "Веганский шоколадный чизкейк",
-          "steps": "Нут заранее замочить в воде на 12 часов. Затем отварить до готовности, примерно 40 минут. Растопить молочный шоколад в микроволновке с небольшим количеством молока.\nВ блендере смешать до гладкой текстуры: нут, какао, растопленный шоколад, тофу, очищенные от косточек финики, ванилин и молоко.\nВыложить в форму для запекания и выпекать при 160 градусах 40 минут."
-        },
-        "en": {
-          "name": "Vegan chocolate cheesecake",
-          "steps": "Soak the chickpeas in water for 12 hours in advance. Then boil until tender, about 40 minutes. Melt milk chocolate in the microwave with a little milk.\nIn a blender, blend until smooth: chickpeas, cocoa, melted chocolate, tofu, pitted dates, vanilla and milk.\nPlace in a baking dish and bake at 160 degrees for 40 minutes."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "chickpeas",
-          "quantity": 250,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "cocoa_powder",
-          "quantity": 55,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shokolad_gorkiy",
-          "quantity": 200,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "finiki",
-          "quantity": 130,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "vanilin",
-          "quantity": 1,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
-          "quantity": 200,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "milk_3_5_fat_sterilized",
-          "quantity": 100,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 45,
-      "mealTypes": [
-        "snack"
-      ]
-    },
-    {
-      "id": "recipe_61",
-      "servings": 4,
-      "imageId": "61",
-      "translations": {
-        "ru": {
-          "name": "Курица в сливочном соусе по-тоскански",
-          "steps": "Нарезать куриное филе кубиками. Добавить хлопья чили, базилик, соль, копченую паприку, оливковое масло, по желанию можно добавить чеснок. Перемешать и оставить недолго мариноваться.\nДля соуса в блендере смешать: молоко, сливочный сыр, пармезан, томатную пасту, базилик.\nОбжарить курицу до готовности, добавить соус, шпинат и помидорки черри, нарезанные на половинки. Накрыть крышкой и тушить примерно 5-7 минут.\nПодавать с отварным рисом или другим гарниром по вкусу."
-        },
-        "en": {
-          "name": "Tuscan chicken in cream sauce",
-          "steps": "Cut the chicken fillet into cubes. Add chili flakes, basil, salt, smoked paprika, olive oil, and garlic if desired. Stir and leave to marinate for a short time.\nFor the sauce, combine in a blender: milk, cream cheese, Parmesan, tomato paste, basil.\nFry the chicken until cooked, add the sauce, spinach and cherry tomatoes, cut into halves. Cover with a lid and simmer for about 5-7 minutes.\nServe with boiled rice or other side dish to taste."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "chicken",
-          "quantity": 700,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 3,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shpinat",
-          "quantity": 60,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "pomidor_tomat",
-          "quantity": 120,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "olive_oil",
-          "quantity": 10,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "milk_3_5_fat_sterilized",
-          "quantity": 350,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
-          "quantity": 40,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "tomatnaya_pasta_konservy",
-          "quantity": 70,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "syr_myagkiy",
-          "quantity": 150,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "white_rice_rice_groats",
-          "quantity": 60,
           "unit": "gram"
         }
       ],
@@ -1625,7 +1383,7 @@
       "translations": {
         "ru": {
           "name": "Морковно-творожная запеканка",
-          "steps": "Морковь порезать помельче, масло растопить в микроволновке. Все ингредиенты смешиваем и измельчаем в блендере, выливаем в силиконовую форму, даем постоять чтобы манка разбухла минут 10-15.\nВыпеаем в предварительно разогретой до 180 градусах духовке 30 минут.\nОстужаем и сверху по желанию можно покрыть греческим йогуртом."
+          "steps": "Морковь порезать помельче, масло растопить в микроволновке. Все ингредиенты смешиваем и измельчаем в блендере, выливаем в силиконовую форму, даем постоять чтобы манка разбухла минут 10-15.\nВыпекаем в предварительно разогретой до 180 градусах духовке 30 минут.\nОстужаем и сверху по желанию можно покрыть греческим йогуртом."
         },
         "en": {
           "name": "Carrot cottage cheese casserole",
@@ -1634,38 +1392,38 @@
       },
       "ingredients": [
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 300,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 110,
           "unit": "gram"
         },
         {
-          "catalogKey": "semolina_flour",
+          "catalogKey": "semolina",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 20,
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 480,
           "unit": "gram"
         },
         {
-          "catalogKey": "vanilin",
+          "catalogKey": "vanillin",
           "quantity": 1,
           "unit": "gram"
         },
         {
           "catalogKey": "sugar",
-          "quantity": 4,
+          "quantity": 10,
           "unit": "gram"
         }
       ],
@@ -1673,73 +1431,6 @@
       "mealTypes": [
         "breakfast",
         "snack"
-      ]
-    },
-    {
-      "id": "recipe_64",
-      "servings": 2,
-      "imageId": "64",
-      "translations": {
-        "ru": {
-          "name": "Паста со шпинатом и тофу",
-          "steps": "Отварить макароны по инструкции. Часть воды, в которой варились макароны - оставить.\nВ антипригарную сковородку добавьте небольшой кусочек масла. Добавляем измельченный чеснок и хлопья чили и мелко нарезанный лук, готовим пару минут. Добавьте свежий шпинат и перемешивайте до того как шпинат станет мягким и маленьким.\nВ блендере соедините до гладкой текстуры жареный шпинат, тофу, базилик, семечки конопли, пищевые дрожжи, щепотку соли, перец и воду из под макарон.\nПоместите соус обратно в кастрюлю, где приготовили шпинат, добавьте готовые макароны и продолжайте готовить, пока соус не будет нужной текстуры.\nПодавайте пасту с дополнительными семенами конопли и веганским сыром пармезан."
-        },
-        "en": {
-          "name": "Pasta with spinach and tofu",
-          "steps": "Boil pasta according to instructions. Leave some of the water in which the pasta was cooked.\nAdd a small knob of butter to a non-stick frying pan. Add chopped garlic and chili flakes and finely chopped onion, cook for a couple of minutes. Add fresh spinach and stir until the spinach has wilted.\nIn a blender, combine sautéed spinach, tofu, basil, hemp seeds, nutritional yeast, a pinch of salt, pepper and pasta water until smooth.\nPlace the sauce back into the pan where you cooked the spinach, add the cooked pasta and continue cooking until the sauce has the desired texture.\nServe pasta with extra hemp seeds and vegan Parmesan cheese."
-        }
-      },
-      "ingredients": [
-        {
-          "catalogKey": "hemp_seed",
-          "quantity": 20,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "shpinat",
-          "quantity": 75,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "salt",
-          "quantity": 1,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "bulb_onion",
-          "quantity": 30,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
-          "quantity": 160,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "coconut_oil_liquid",
-          "quantity": 10,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
-          "quantity": 150,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "garlic_clove",
-          "quantity": 5,
-          "unit": "gram"
-        },
-        {
-          "catalogKey": "basil",
-          "quantity": 10,
-          "unit": "gram"
-        }
-      ],
-      "cookTimeMinutes": 35,
-      "mealTypes": [
-        "lunch",
-        "dinner"
       ]
     },
     {
@@ -1763,7 +1454,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 50,
           "unit": "gram"
         },
@@ -1778,7 +1469,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
@@ -1793,7 +1484,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 10,
           "unit": "gram"
         }
@@ -1820,7 +1511,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "chechevitsa_zerno",
+          "catalogKey": "lentils",
           "quantity": 250,
           "unit": "gram"
         },
@@ -1830,17 +1521,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 15,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 70,
           "unit": "gram"
         }
@@ -1872,12 +1563,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 110,
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 100,
           "unit": "gram"
         },
@@ -1908,27 +1599,27 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 110,
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 140,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 200,
           "unit": "gram"
         }
@@ -1965,7 +1656,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 60,
           "unit": "gram"
         },
@@ -1980,7 +1671,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 30,
           "unit": "gram"
         },
@@ -1990,7 +1681,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "gorchitsa_stolovaya",
+          "catalogKey": "table_mustard",
           "quantity": 5,
           "unit": "gram"
         }
@@ -2027,27 +1718,27 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 70,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 40,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 20,
           "unit": "gram"
         },
         {
-          "catalogKey": "pasta_tom_yam_aroy_d",
+          "catalogKey": "tom_yum_paste",
           "quantity": 25,
           "unit": "gram"
         },
         {
-          "catalogKey": "kokosovoe_moloko_na_rastitelnoy_osnove_alpro",
+          "catalogKey": "coconut_milk_drink",
           "quantity": 150,
           "unit": "gram"
         }
@@ -2084,17 +1775,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 20,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 30,
           "unit": "gram"
         },
@@ -2104,12 +1795,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "smetana_15_zhirnosti",
+          "catalogKey": "sour_cream_15",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "wheat_flour_premium_grade",
+          "catalogKey": "wheat_flour",
           "quantity": 20,
           "unit": "gram"
         }
@@ -2146,12 +1837,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 70,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 250,
           "unit": "gram"
         },
@@ -2193,7 +1884,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 400,
           "unit": "gram"
         },
@@ -2203,12 +1894,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 330,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 350,
           "unit": "gram"
         }
@@ -2239,17 +1930,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 30,
           "unit": "gram"
         },
         {
-          "catalogKey": "vanilin",
+          "catalogKey": "vanillin",
           "quantity": 1,
           "unit": "gram"
         },
@@ -2259,7 +1950,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 10,
           "unit": "gram"
         },
@@ -2291,17 +1982,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 250,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 110,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 120,
           "unit": "gram"
         },
@@ -2316,17 +2007,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tykva",
+          "catalogKey": "pumpkin",
           "quantity": 250,
           "unit": "gram"
         },
         {
-          "catalogKey": "vanilin",
+          "catalogKey": "vanillin",
           "quantity": 1,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_myagkiy",
+          "catalogKey": "soft_cheese",
           "quantity": 130,
           "unit": "gram"
         },
@@ -2363,17 +2054,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 200,
           "unit": "gram"
         },
         {
-          "catalogKey": "coconut_oil_liquid",
+          "catalogKey": "coconut_oil",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "vanilin",
+          "catalogKey": "vanillin",
           "quantity": 1,
           "unit": "gram"
         },
@@ -2383,12 +2074,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "wheat_flour_premium_grade",
+          "catalogKey": "wheat_flour",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "raisins_with_pits_dried_grapes",
+          "catalogKey": "raisins",
           "quantity": 30,
           "unit": "gram"
         },
@@ -2435,7 +2126,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "gorchitsa_stolovaya",
+          "catalogKey": "table_mustard",
           "quantity": 10,
           "unit": "gram"
         },
@@ -2492,7 +2183,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 100,
           "unit": "gram"
         },
@@ -2502,13 +2193,80 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
+          "catalogKey": "firm_tofu",
           "quantity": 300,
           "unit": "gram"
         }
       ],
       "cookTimeMinutes": 25,
       "mealTypes": [
+        "snack"
+      ]
+    },
+    {
+      "id": "recipe_79",
+      "servings": 2,
+      "imageId": "79",
+      "translations": {
+        "ru": {
+          "name": "Синнабон-блинчики",
+          "steps": "Смешать муку, яйцо и молоко до однородного теста и испечь тонкие блинчики на сковороде.\nСмазать готовые блинчики мягким сливочным маслом и сиропом топинамбура, посыпать корицей, свернуть в плотные рулетики и нарезать небольшими шайбами.\nСмешать мягкий сыр с греческим йогуртом, выложить крем сверху на рулетики, посыпать корицей и рубленным грецким орехом."
+        },
+        "en": {
+          "name": "Cinnabon crepes",
+          "steps": "Whisk flour, egg, and milk into a smooth batter and cook thin crepes in a skillet.\nBrush the warm crepes with softened butter and Jerusalem artichoke syrup, sprinkle with cinnamon, roll up tightly, and slice into bite-sized rolls.\nMix soft cheese with Greek yogurt, spoon the cream over the rolls, and top with cinnamon and chopped walnuts."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "butter_61_5",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "greek_yogurt_1_9",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "walnut",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "soft_cheese",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "wheat_flour",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_egg",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cinnamon",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "jerusalem_artichoke_syrup",
+          "quantity": 15,
+          "unit": "gram"
+        }
+      ],
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "breakfast",
         "snack"
       ]
     },
@@ -2528,17 +2286,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 165,
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 200,
           "unit": "gram"
         },
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 90,
           "unit": "gram"
         },
@@ -2548,12 +2306,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 30,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 50,
           "unit": "gram"
         }
@@ -2584,7 +2342,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 80,
           "unit": "gram"
         },
@@ -2604,7 +2362,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 80,
           "unit": "gram"
         },
@@ -2641,22 +2399,22 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 220,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 50,
           "unit": "gram"
         },
@@ -2666,7 +2424,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "uksus_vinnyy_3",
+          "catalogKey": "wine_vinegar_3",
           "quantity": 10,
           "unit": "gram"
         },
@@ -2676,7 +2434,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "wheat_flour_premium_grade",
+          "catalogKey": "wheat_flour",
           "quantity": 80,
           "unit": "gram"
         }
@@ -2703,22 +2461,22 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 400,
           "unit": "gram"
         },
         {
-          "catalogKey": "tykva",
+          "catalogKey": "pumpkin",
           "quantity": 250,
           "unit": "gram"
         },
         {
-          "catalogKey": "vanilin",
+          "catalogKey": "vanillin",
           "quantity": 1,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 10,
           "unit": "gram"
         },
@@ -2728,7 +2486,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "risovaya_muka_belaya",
+          "catalogKey": "white_rice_flour",
           "quantity": 40,
           "unit": "gram"
         }
@@ -2755,7 +2513,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 120,
           "unit": "gram"
         },
@@ -2775,7 +2533,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "gorchitsa_stolovaya",
+          "catalogKey": "table_mustard",
           "quantity": 7,
           "unit": "gram"
         },
@@ -2785,7 +2543,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "ukrop",
+          "catalogKey": "dill",
           "quantity": 20,
           "unit": "gram"
         },
@@ -2832,27 +2590,27 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 35,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "coconut_oil_liquid",
+          "catalogKey": "coconut_oil",
           "quantity": 7,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 120,
           "unit": "gram"
         },
@@ -2884,12 +2642,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "catalogKey": "whole_grain_pasta",
           "quantity": 300,
           "unit": "gram"
         },
         {
-          "catalogKey": "shpinat",
+          "catalogKey": "spinach",
           "quantity": 250,
           "unit": "gram"
         },
@@ -2931,17 +2689,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 500.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "semolina_flour",
+          "catalogKey": "semolina",
           "quantity": 40,
           "unit": "gram"
         },
@@ -2978,22 +2736,22 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 180,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "shpinat",
+          "catalogKey": "spinach",
           "quantity": 40,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 30,
           "unit": "gram"
         },
@@ -3003,17 +2761,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "green_onion_feather",
+          "catalogKey": "green_onion",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "risovaya_muka_belaya",
+          "catalogKey": "white_rice_flour",
           "quantity": 30,
           "unit": "gram"
         },
         {
-          "catalogKey": "smetana_15_zhirnosti",
+          "catalogKey": "sour_cream_15",
           "quantity": 30,
           "unit": "gram"
         }
@@ -3045,7 +2803,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 110,
           "unit": "gram"
         },
@@ -3055,7 +2813,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "coconut_oil_liquid",
+          "catalogKey": "coconut_oil",
           "quantity": 10,
           "unit": "gram"
         }
@@ -3082,7 +2840,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 350,
           "unit": "gram"
         },
@@ -3092,17 +2850,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 15,
           "unit": "gram"
         },
         {
-          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "catalogKey": "whole_grain_pasta",
           "quantity": 70,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_rikotta_10_2_zhirnosti_iz_tselnogo_moloka_m_",
+          "catalogKey": "ricotta_cheese",
           "quantity": 60,
           "unit": "gram"
         },
@@ -3134,17 +2892,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 200,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 50,
           "unit": "gram"
         },
@@ -3154,7 +2912,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "risovaya_muka_belaya",
+          "catalogKey": "white_rice_flour",
           "quantity": 60,
           "unit": "gram"
         }
@@ -3181,7 +2939,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 180,
           "unit": "gram"
         },
@@ -3196,7 +2954,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "vanilin",
+          "catalogKey": "vanillin",
           "quantity": 1,
           "unit": "gram"
         },
@@ -3233,17 +2991,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 140,
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 70,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 30,
           "unit": "gram"
         },
@@ -3261,6 +3019,52 @@
       "cookTimeMinutes": 60,
       "mealTypes": [
         "breakfast",
+        "snack"
+      ]
+    },
+    {
+      "id": "recipe_94",
+      "servings": 3,
+      "imageId": "94",
+      "translations": {
+        "ru": {
+          "name": "Кешью-соус",
+          "steps": "Кешью замочить на ночь или залить кипятком на пару часов. Смешать в блендере все ингредиенты до однородной текстуры.\nВоды добавляйте по необходимости больше или меньше в зависимости от того, какую густоту хотите получить."
+        },
+        "en": {
+          "name": "Cashew sauce",
+          "steps": "Soak cashews overnight or pour boiling water over them for a couple of hours. Mix all ingredients in a blender until smooth.\nAdd more or less water as needed, depending on how thick you want it to be."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cashew",
+          "quantity": 150,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "lemon_juice",
+          "quantity": 7,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "water",
+          "quantity": 100,
+          "unit": "gram"
+        }
+      ],
+      "cookTimeMinutes": 15,
+      "mealTypes": [
         "snack"
       ]
     },
@@ -3295,12 +3099,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_myagkiy",
+          "catalogKey": "soft_cheese",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "bread_pshenichnyy",
+          "catalogKey": "wheat_bread",
           "quantity": 120,
           "unit": "gram"
         }
@@ -3328,12 +3132,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "chechevitsa_zerno",
+          "catalogKey": "lentils",
           "quantity": 150,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 165,
           "unit": "gram"
         },
@@ -3380,7 +3184,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 40,
           "unit": "gram"
         },
@@ -3390,12 +3194,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 300,
           "unit": "gram"
         }
@@ -3427,7 +3231,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 50,
           "unit": "gram"
         },
@@ -3437,7 +3241,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "mayonnaise_provansal_67_fat_content",
+          "catalogKey": "mayonnaise",
           "quantity": 15,
           "unit": "gram"
         }
@@ -3446,6 +3250,58 @@
       "mealTypes": [
         "lunch",
         "snack"
+      ]
+    },
+    {
+      "id": "recipe_100",
+      "servings": 4,
+      "imageId": "100",
+      "translations": {
+        "ru": {
+          "name": "Карбонара на кокосовом молоке",
+          "steps": "Макароны отварить по инструкции, не доварив пару минут, чтобы они впитали больше соуса.\nОбжарить нарезанный бекон до золотистости, чтобы вытопился жир. Сыр натереть на тёрке.\nПосыпать бекон чёрным перцем и мускатным орехом и слегка прогреть, чтобы специи раскрылись.\nЗалить бекон кокосовым молоком, слегка уварить до загустения и добавить тёртый сыр.\nКогда сыр расплавится, соединить соус с макаронами и перемешать."
+        },
+        "en": {
+          "name": "Carbonara with coconut milk",
+          "steps": "Boil the pasta according to package instructions, undercooking by a couple of minutes so it absorbs more sauce.\nFry the chopped bacon until golden and crisp. Grate the cheese.\nSeason the bacon with black pepper and nutmeg and cook briefly to release the aroma.\nPour coconut milk over the bacon, simmer slightly until thickened, and stir in the grated cheese.\nOnce the cheese melts, toss with the pasta and serve."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "whole_grain_pasta",
+          "quantity": 300,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "hard_cheese_29_protein",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "bacon",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "coconut_milk_drink",
+          "quantity": 250,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "nutmeg",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2,
+          "unit": "gram"
+        }
+      ],
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
+        "dinner"
       ]
     },
     {
@@ -3474,7 +3330,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shpinat",
+          "catalogKey": "spinach",
           "quantity": 100,
           "unit": "gram"
         },
@@ -3489,7 +3345,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidory_tomaty_vyalenye_upakovannye_v_masle",
+          "catalogKey": "sun_dried_tomatoes_in_oil",
           "quantity": 30,
           "unit": "gram"
         }
@@ -3498,6 +3354,73 @@
       "mealTypes": [
         "lunch",
         "dinner"
+      ]
+    },
+    {
+      "id": "recipe_102",
+      "servings": 2,
+      "imageId": "102",
+      "translations": {
+        "ru": {
+          "name": "Овощные спринг-роллы с ореховым карри-соусом",
+          "steps": "Краснокочанную капусту тонко нашинковать, морковь и огурец нарезать тонкой соломкой.\nЛисты рисовой бумаги поочерёдно смочить в тёплой воде, выложить овощную начинку и плотно свернуть в спринг-роллы.\nДля соуса смешать арахисовую пасту, соевый соус, сок лимона и карри, разбавить тёплой водой до кремовой консистенции и подавать со спринг-роллами."
+        },
+        "en": {
+          "name": "Vegetable spring rolls with nut curry sauce",
+          "steps": "Thinly shred the red cabbage and cut the carrot and cucumber into fine matchsticks.\nDip the rice paper sheets briefly in warm water, fill with the julienned vegetables, and roll tightly into spring rolls.\nFor the dipping sauce, whisk together peanut butter, soy sauce, lemon juice, and curry powder, thinning with warm water until smooth and creamy. Serve with the spring rolls."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "rice_paper",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "red_cabbage",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrot",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cucumber",
+          "quantity": 60,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "peanut_butter",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "soy_sauce",
+          "quantity": 15,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "curry_powder",
+          "quantity": 3,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "lemon_juice",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "water",
+          "quantity": 40,
+          "unit": "gram"
+        }
+      ],
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "lunch",
+        "snack"
       ]
     },
     {
@@ -3516,17 +3439,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 350,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 60,
           "unit": "gram"
         },
@@ -3536,7 +3459,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bekon",
+          "catalogKey": "bacon",
           "quantity": 60,
           "unit": "gram"
         }
@@ -3563,12 +3486,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 170,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 110,
           "unit": "gram"
         },
@@ -3588,7 +3511,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "risovaya_muka_belaya",
+          "catalogKey": "white_rice_flour",
           "quantity": 40,
           "unit": "gram"
         }
@@ -3615,12 +3538,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 120,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
@@ -3635,7 +3558,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "risovaya_muka_belaya",
+          "catalogKey": "white_rice_flour",
           "quantity": 30,
           "unit": "gram"
         }
@@ -3662,7 +3585,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 250,
           "unit": "gram"
         },
@@ -3724,7 +3647,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
@@ -3734,7 +3657,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 20,
           "unit": "gram"
         },
@@ -3776,12 +3699,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "green_onion_feather",
+          "catalogKey": "green_onion",
           "quantity": 7,
           "unit": "gram"
         },
@@ -3796,7 +3719,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "coconut_oil_liquid",
+          "catalogKey": "coconut_oil",
           "quantity": 5,
           "unit": "gram"
         },
@@ -3833,7 +3756,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 40,
           "unit": "gram"
         },
@@ -3843,7 +3766,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "semena_chia_sushenye",
+          "catalogKey": "chia_seeds",
           "quantity": 15,
           "unit": "gram"
         }
@@ -3880,7 +3803,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
+          "catalogKey": "firm_tofu",
           "quantity": 150,
           "unit": "gram"
         }
@@ -3888,6 +3811,58 @@
       "cookTimeMinutes": 25,
       "mealTypes": [
         "breakfast",
+        "snack"
+      ]
+    },
+    {
+      "id": "recipe_113",
+      "servings": 1,
+      "imageId": "113",
+      "translations": {
+        "ru": {
+          "name": "Спринг-роллы с креветками и овощами",
+          "steps": "Обжарить креветки с солью и перцем на небольшом количестве сливочного масла. Огурец и морковь нарезать тонкой соломкой.\nБумажное полотенце размером больше листа рисовой бумаги положить на рабочую поверхность и хорошо увлажнить. Лист рисовой бумаги смочить в глубокой тарелке с водой с двух сторон и выложить на полотенце.\nПосыпать кунжутом, выложить креветки и соломку из огурца и моркови. Плотно свернуть спринг-роллы."
+        },
+        "en": {
+          "name": "Shrimp and vegetable spring rolls",
+          "steps": "Sauté the shrimp in a little butter and season with salt and pepper. Cut the cucumber and carrot into thin matchsticks.\nPlace a damp paper towel larger than the rice-paper wrapper on the work surface. Dip both sides of the wrapper in water and lay it on the towel.\nSprinkle with sesame seeds, add the shrimp, cucumber, and carrot matchsticks, then fold in the sides and roll up tightly."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cucumber",
+          "quantity": 50,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "shrimp",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "butter_61_5",
+          "quantity": 5,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "sesame_seeds",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "rice_paper",
+          "quantity": 30,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "carrot",
+          "quantity": 50,
+          "unit": "gram"
+        }
+      ],
+      "cookTimeMinutes": 35,
+      "mealTypes": [
+        "lunch",
         "snack"
       ]
     },
@@ -3907,12 +3882,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 200,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
@@ -3922,7 +3897,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "risovaya_muka_belaya",
+          "catalogKey": "white_rice_flour",
           "quantity": 40,
           "unit": "gram"
         }
@@ -3959,12 +3934,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 40,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 200,
           "unit": "gram"
         },
@@ -4006,7 +3981,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 200,
           "unit": "gram"
         },
@@ -4038,7 +4013,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "chechevitsa_zerno",
+          "catalogKey": "lentils",
           "quantity": 60,
           "unit": "gram"
         },
@@ -4048,7 +4023,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 20,
           "unit": "gram"
         },
@@ -4058,7 +4033,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 50,
           "unit": "gram"
         },
@@ -4068,7 +4043,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 20,
           "unit": "gram"
         },
@@ -4078,7 +4053,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tofu_plotyy_prigotovlennyy_s_sulfatom_kaltsiya_i",
+          "catalogKey": "firm_tofu",
           "quantity": 120,
           "unit": "gram"
         },
@@ -4092,6 +4067,63 @@
       "mealTypes": [
         "lunch",
         "dinner"
+      ]
+    },
+    {
+      "id": "recipe_119",
+      "servings": 1,
+      "imageId": "119",
+      "translations": {
+        "ru": {
+          "name": "Блинчики с мягким творогом, манго и миндалем",
+          "steps": "Смешать муку, яйцо и молоко до однородного теста и выпечь тонкие блинчики на разогретой сковороде.\nВыложить на блинчики мягкий творог и нарезанное кубиками манго.\nПолить сиропом топинамбура и посыпать лепестками миндаля."
+        },
+        "en": {
+          "name": "Crepes with soft cottage cheese, mango, and almonds",
+          "steps": "Whisk flour, egg, and milk into a smooth batter and cook thin crepes in a heated skillet.\nTop the warm crepes with soft cottage cheese and diced fresh mango.\nDrizzle with Jerusalem artichoke syrup and sprinkle with sliced almonds."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "cottage_cheese_5",
+          "quantity": 120,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "almonds",
+          "quantity": 10,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "wheat_flour",
+          "quantity": 40,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_egg",
+          "quantity": 55,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "milk_3_5",
+          "quantity": 100,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "mango",
+          "quantity": 80,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "jerusalem_artichoke_syrup",
+          "quantity": 10,
+          "unit": "gram"
+        }
+      ],
+      "cookTimeMinutes": 20,
+      "mealTypes": [
+        "breakfast",
+        "snack"
       ]
     },
     {
@@ -4110,17 +4142,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 30,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 200,
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 85,
           "unit": "gram"
         },
@@ -4171,22 +4203,22 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sunflower_sunflower_seeds",
+          "catalogKey": "sunflower_seeds",
           "quantity": 10,
           "unit": "gram"
         },
         {
-          "catalogKey": "makarony_tselnozernovye_s_zarodyshami_i_kletchat",
+          "catalogKey": "whole_grain_pasta",
           "quantity": 70,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 80,
           "unit": "gram"
         },
         {
-          "catalogKey": "drozhzhi_pischevye_neaktivnye_polezzno",
+          "catalogKey": "nutritional_yeast",
           "quantity": 10,
           "unit": "gram"
         }
@@ -4213,17 +4245,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 130,
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_obezzhirennyy_0_6_zhirnosti",
+          "catalogKey": "cottage_cheese_0_6",
           "quantity": 100,
           "unit": "gram"
         },
@@ -4259,17 +4291,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bread_pshenichnyy",
+          "catalogKey": "wheat_bread",
           "quantity": 70,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_rikotta_10_2_zhirnosti_iz_tselnogo_moloka_m_",
+          "catalogKey": "ricotta_cheese",
           "quantity": 60,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidory_tomaty_vyalenye_upakovannye_v_masle",
+          "catalogKey": "sun_dried_tomatoes_in_oil",
           "quantity": 20,
           "unit": "gram"
         }
@@ -4296,7 +4328,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "treska",
+          "catalogKey": "cod",
           "quantity": 150,
           "unit": "gram"
         },
@@ -4306,17 +4338,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 85,
           "unit": "gram"
         },
         {
-          "catalogKey": "ukrop",
+          "catalogKey": "dill",
           "quantity": 5,
           "unit": "gram"
         },
@@ -4326,7 +4358,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "ogurets_marinovannyy",
+          "catalogKey": "pickled_cucumber",
           "quantity": 30,
           "unit": "gram"
         }
@@ -4353,7 +4385,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 50,
           "unit": "gram"
         },
@@ -4363,7 +4395,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 50,
           "unit": "gram"
         },
@@ -4383,7 +4415,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 170,
           "unit": "gram"
         },
@@ -4419,22 +4451,22 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 110,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 20,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "butter_61_5_fat_sandwich",
+          "catalogKey": "butter_61_5",
           "quantity": 5,
           "unit": "gram"
         },
@@ -4444,7 +4476,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "okorok_vareno_kopchyonyy",
+          "catalogKey": "ham",
           "quantity": 40,
           "unit": "gram"
         }
@@ -4475,17 +4507,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "brokkoli",
+          "catalogKey": "broccoli",
           "quantity": 100,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 55,
           "unit": "gram"
         },
         {
-          "catalogKey": "syr_korol_syrov_syrobogatov",
+          "catalogKey": "hard_cheese_29_protein",
           "quantity": 60,
           "unit": "gram"
         },
@@ -4522,12 +4554,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "hercules_oatmeal",
+          "catalogKey": "rolled_oats",
           "quantity": 50,
           "unit": "gram"
         },
         {
-          "catalogKey": "dried_apricots_seedless_dried_apricots",
+          "catalogKey": "dried_apricots",
           "quantity": 40,
           "unit": "gram"
         },
@@ -4547,7 +4579,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 170,
           "unit": "gram"
         }
@@ -4558,9 +4590,9 @@
       ]
     },
     {
-      "id": "book_001",
+      "id": "recipe_129",
       "servings": 1,
-      "imageId": "book_001",
+      "imageId": "129",
       "translations": {
         "ru": {
           "name": "Протеиновый кофе",
@@ -4583,12 +4615,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "instant_coffee_dry",
+          "catalogKey": "instant_coffee",
           "quantity": 10.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 200.0,
           "unit": "gram"
         }
@@ -4600,9 +4632,9 @@
       ]
     },
     {
-      "id": "book_002",
+      "id": "recipe_130",
       "servings": 1,
-      "imageId": "book_002",
+      "imageId": "130",
       "translations": {
         "ru": {
           "name": "Летний смузи-боул",
@@ -4640,12 +4672,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "golubika",
+          "catalogKey": "blueberries",
           "quantity": 120.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "greypfrut",
+          "catalogKey": "grapefruit",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -4672,9 +4704,9 @@
       ]
     },
     {
-      "id": "book_003",
+      "id": "recipe_131",
       "servings": 1,
-      "imageId": "book_003",
+      "imageId": "131",
       "translations": {
         "ru": {
           "name": "Шоколадно-ягодное мороженое",
@@ -4707,7 +4739,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 15.0,
           "unit": "gram"
         }
@@ -4718,9 +4750,9 @@
       ]
     },
     {
-      "id": "book_004",
+      "id": "recipe_132",
       "servings": 1,
-      "imageId": "book_004",
+      "imageId": "132",
       "translations": {
         "ru": {
           "name": "Ягодный смузи-боул",
@@ -4753,7 +4785,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "greypfrut",
+          "catalogKey": "grapefruit",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -4775,9 +4807,9 @@
       ]
     },
     {
-      "id": "book_005",
+      "id": "recipe_133",
       "servings": 1,
-      "imageId": "book_005",
+      "imageId": "133",
       "translations": {
         "ru": {
           "name": "Шоколадный смузи",
@@ -4800,7 +4832,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -4810,7 +4842,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 15.0,
           "unit": "gram"
         }
@@ -4822,9 +4854,9 @@
       ]
     },
     {
-      "id": "book_006",
+      "id": "recipe_134",
       "servings": 1,
-      "imageId": "book_006",
+      "imageId": "134",
       "translations": {
         "ru": {
           "name": "Летнее фиолетовое мороженое",
@@ -4837,7 +4869,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "golubika",
+          "catalogKey": "blueberries",
           "quantity": 200.0,
           "unit": "gram"
         },
@@ -4873,9 +4905,9 @@
       ]
     },
     {
-      "id": "book_007",
+      "id": "recipe_135",
       "servings": 1,
-      "imageId": "book_007",
+      "imageId": "135",
       "translations": {
         "ru": {
           "name": "Наан с хамоном",
@@ -4893,22 +4925,22 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 15.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "okorok_vareno_kopchyonyy",
+          "catalogKey": "ham",
           "quantity": 50.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -4923,7 +4955,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -4940,9 +4972,9 @@
       ]
     },
     {
-      "id": "book_008",
+      "id": "recipe_136",
       "servings": 1,
-      "imageId": "book_008",
+      "imageId": "136",
       "translations": {
         "ru": {
           "name": "Сытный бейгл",
@@ -4965,22 +4997,22 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "okorok_vareno_kopchyonyy",
+          "catalogKey": "ham",
           "quantity": 50.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 20.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -4995,7 +5027,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 5.0,
           "unit": "gram"
         },
@@ -5012,9 +5044,9 @@
       ]
     },
     {
-      "id": "book_009",
+      "id": "recipe_137",
       "servings": 1,
-      "imageId": "book_009",
+      "imageId": "137",
       "translations": {
         "ru": {
           "name": "Тост с инжиром",
@@ -5027,17 +5059,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 250.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 20.0,
           "unit": "gram"
         },
@@ -5054,9 +5086,60 @@
       ]
     },
     {
-      "id": "book_011",
+      "id": "recipe_138",
       "servings": 1,
-      "imageId": "book_011",
+      "imageId": "138",
+      "translations": {
+        "ru": {
+          "name": "Тосты с авокадо, редисом и яйцами пашот",
+          "steps": "Подсушить ломтики хлеба на закваске.\nРазмять авокадо и намазать на тосты, сверху выложить тонкие ломтики редиса.\nПриготовить яйца пашот, выложить их поверх тостов с авокадо, посолить и поперчить по вкусу."
+        },
+        "en": {
+          "name": "Avocado and radish toast with poached eggs",
+          "steps": "Toast the slices of sourdough bread.\nMash the avocado and spread it over the toast, then top with thin radish slices.\nPoach the eggs, place them on top of the avocado toast, and season with salt and black pepper."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "sourdough_bread",
+          "quantity": 100.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "avocado",
+          "quantity": 75.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "chicken_egg",
+          "quantity": 100.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "radish",
+          "quantity": 36.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2,
+          "unit": "gram"
+        }
+      ],
+      "cookTimeMinutes": 10,
+      "mealTypes": [
+        "breakfast"
+      ]
+    },
+    {
+      "id": "recipe_139",
+      "servings": 1,
+      "imageId": "139",
       "translations": {
         "ru": {
           "name": "Ролл с яичным салатом",
@@ -5074,12 +5157,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -5104,7 +5187,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -5127,9 +5210,9 @@
       ]
     },
     {
-      "id": "book_012",
+      "id": "recipe_140",
       "servings": 2,
-      "imageId": "book_012",
+      "imageId": "140",
       "translations": {
         "ru": {
           "name": "Тост с творогом и карамелизированным манго",
@@ -5142,17 +5225,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 250.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 20.0,
           "unit": "gram"
         },
@@ -5179,9 +5262,9 @@
       ]
     },
     {
-      "id": "book_013",
+      "id": "recipe_141",
       "servings": 1,
-      "imageId": "book_013",
+      "imageId": "141",
       "translations": {
         "ru": {
           "name": "Испанская тортилья",
@@ -5194,7 +5277,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -5237,9 +5320,9 @@
       ]
     },
     {
-      "id": "book_014",
+      "id": "recipe_142",
       "servings": 1,
-      "imageId": "book_014",
+      "imageId": "142",
       "translations": {
         "ru": {
           "name": "Итальянский тост",
@@ -5252,7 +5335,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5262,12 +5345,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5298,9 +5381,9 @@
       ]
     },
     {
-      "id": "book_015",
+      "id": "recipe_143",
       "servings": 1,
-      "imageId": "book_015",
+      "imageId": "143",
       "translations": {
         "ru": {
           "name": "Пьядина с хамоном",
@@ -5318,7 +5401,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "okorok_vareno_kopchyonyy",
+          "catalogKey": "ham",
           "quantity": 30.0,
           "unit": "gram"
         },
@@ -5328,7 +5411,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5338,7 +5421,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -5348,7 +5431,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -5370,9 +5453,9 @@
       ]
     },
     {
-      "id": "book_016",
+      "id": "recipe_144",
       "servings": 1,
-      "imageId": "book_016",
+      "imageId": "144",
       "translations": {
         "ru": {
           "name": "Слойки с сыром и ветчиной",
@@ -5390,7 +5473,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5400,17 +5483,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "okorok_vareno_kopchyonyy",
+          "catalogKey": "ham",
           "quantity": 30.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -5432,9 +5515,9 @@
       ]
     },
     {
-      "id": "book_017",
+      "id": "recipe_145",
       "servings": 2,
-      "imageId": "book_017",
+      "imageId": "145",
       "translations": {
         "ru": {
           "name": "Хумус из люпина",
@@ -5462,7 +5545,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 20.0,
           "unit": "gram"
         },
@@ -5482,7 +5565,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5514,9 +5597,9 @@
       ]
     },
     {
-      "id": "book_018",
+      "id": "recipe_146",
       "servings": 1,
-      "imageId": "book_018",
+      "imageId": "146",
       "translations": {
         "ru": {
           "name": "Ролл со шпинатом и фетой",
@@ -5534,7 +5617,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5544,7 +5627,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shpinat",
+          "catalogKey": "spinach",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -5564,7 +5647,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -5586,9 +5669,9 @@
       ]
     },
     {
-      "id": "book_019",
+      "id": "recipe_147",
       "servings": 1,
-      "imageId": "book_019",
+      "imageId": "147",
       "translations": {
         "ru": {
           "name": "Осенний тост с творогом",
@@ -5601,7 +5684,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -5621,12 +5704,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 20.0,
           "unit": "gram"
         },
@@ -5648,9 +5731,9 @@
       ]
     },
     {
-      "id": "book_020",
+      "id": "recipe_148",
       "servings": 1,
-      "imageId": "book_020",
+      "imageId": "148",
       "translations": {
         "ru": {
           "name": "Яичные корзинки с пармезаном",
@@ -5668,17 +5751,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 20.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 30.0,
           "unit": "gram"
         },
@@ -5688,7 +5771,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5719,9 +5802,9 @@
       ]
     },
     {
-      "id": "book_021",
+      "id": "recipe_149",
       "servings": 1,
-      "imageId": "book_021",
+      "imageId": "149",
       "translations": {
         "ru": {
           "name": "Тост с хумусом",
@@ -5734,17 +5817,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "humus",
+          "catalogKey": "hummus",
           "quantity": 15.0,
           "unit": "gram"
         },
@@ -5766,9 +5849,9 @@
       ]
     },
     {
-      "id": "book_022",
+      "id": "recipe_150",
       "servings": 1,
-      "imageId": "book_022",
+      "imageId": "150",
       "translations": {
         "ru": {
           "name": "Тост-пицца",
@@ -5781,12 +5864,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -5796,7 +5879,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -5829,9 +5912,9 @@
       ]
     },
     {
-      "id": "book_023",
+      "id": "recipe_151",
       "servings": 1,
-      "imageId": "book_023",
+      "imageId": "151",
       "translations": {
         "ru": {
           "name": "Яйца на сковороде",
@@ -5844,12 +5927,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5859,7 +5942,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5869,7 +5952,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "okorok_vareno_kopchyonyy",
+          "catalogKey": "ham",
           "quantity": 40.0,
           "unit": "gram"
         },
@@ -5900,9 +5983,9 @@
       ]
     },
     {
-      "id": "book_024",
+      "id": "recipe_152",
       "servings": 1,
-      "imageId": "book_024",
+      "imageId": "152",
       "translations": {
         "ru": {
           "name": "Тост с трюфельной пастой",
@@ -5915,17 +5998,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "shpinat",
+          "catalogKey": "spinach",
           "quantity": 50.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -5935,7 +6018,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -5971,9 +6054,9 @@
       ]
     },
     {
-      "id": "book_025",
+      "id": "recipe_153",
       "servings": 1,
-      "imageId": "book_025",
+      "imageId": "153",
       "translations": {
         "ru": {
           "name": "Тост со свежим авокадо",
@@ -5986,12 +6069,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -6006,7 +6089,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -6032,9 +6115,9 @@
       ]
     },
     {
-      "id": "book_026",
+      "id": "recipe_154",
       "servings": 1,
-      "imageId": "book_026",
+      "imageId": "154",
       "translations": {
         "ru": {
           "name": "Завтрак в пите",
@@ -6082,12 +6165,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 30,
           "unit": "gram"
         }
@@ -6098,9 +6181,9 @@
       ]
     },
     {
-      "id": "book_028",
+      "id": "recipe_155",
       "servings": 1,
-      "imageId": "book_028",
+      "imageId": "155",
       "translations": {
         "ru": {
           "name": "Яичные маффины",
@@ -6118,7 +6201,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -6133,12 +6216,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 30.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -6148,7 +6231,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shpinat",
+          "catalogKey": "spinach",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -6163,7 +6246,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "low_calorie_nacho_salsa_dip",
+          "catalogKey": "salsa_dip",
           "quantity": 50.0,
           "unit": "gram"
         }
@@ -6175,9 +6258,9 @@
       ]
     },
     {
-      "id": "book_029",
+      "id": "recipe_156",
       "servings": 1,
-      "imageId": "book_029",
+      "imageId": "156",
       "translations": {
         "ru": {
           "name": "Несладкие гренки",
@@ -6190,12 +6273,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -6215,7 +6298,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -6256,9 +6339,9 @@
       ]
     },
     {
-      "id": "book_030",
+      "id": "recipe_157",
       "servings": 1,
-      "imageId": "book_030",
+      "imageId": "157",
       "translations": {
         "ru": {
           "name": "Тост с йогуртовым заварным кремом",
@@ -6271,12 +6354,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -6306,7 +6389,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50,
           "unit": "gram"
         }
@@ -6318,9 +6401,9 @@
       ]
     },
     {
-      "id": "book_031",
+      "id": "recipe_158",
       "servings": 1,
-      "imageId": "book_031",
+      "imageId": "158",
       "translations": {
         "ru": {
           "name": "Тост капрезе",
@@ -6333,12 +6416,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -6363,7 +6446,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 80.0,
           "unit": "gram"
         },
@@ -6399,9 +6482,9 @@
       ]
     },
     {
-      "id": "book_033",
+      "id": "recipe_159",
       "servings": 1,
-      "imageId": "book_033",
+      "imageId": "159",
       "translations": {
         "ru": {
           "name": "Томатный крем-суп",
@@ -6424,7 +6507,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 300.0,
           "unit": "gram"
         },
@@ -6434,7 +6517,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 75,
           "unit": "gram"
         },
@@ -6461,9 +6544,81 @@
       ]
     },
     {
-      "id": "book_035",
+      "id": "recipe_160",
       "servings": 1,
-      "imageId": "book_035",
+      "imageId": "160",
+      "translations": {
+        "ru": {
+          "name": "Тыквенный боул",
+          "steps": "Разогреть духовку до 220 °C.\nНарезать тыкву кубиками, выложить на противень с пергаментом, сбрызнуть оливковым маслом, посолить, поперчить и посыпать итальянскими травами. Запекать около 20 минут до мягкости и румяности.\nВыложить запечённую тыкву на тарелку, в центр добавить творог, полить соусом песто и украсить грецкими орехами, малиной и зёрнами граната."
+        },
+        "en": {
+          "name": "Pumpkin bowl",
+          "steps": "Preheat the oven to 220 °C.\nCube the pumpkin, place on a parchment-lined baking sheet, drizzle with olive oil, and season with salt, pepper, and Italian herbs. Roast for about 20 minutes until tender and golden.\nArrange the roasted pumpkin on a plate, add cottage cheese in the center, drizzle with pesto, and top with walnuts, raspberries, and pomegranate seeds."
+        }
+      },
+      "ingredients": [
+        {
+          "catalogKey": "pumpkin",
+          "quantity": 200.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "olive_oil",
+          "quantity": 5.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "raspberries",
+          "quantity": 50.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pomegranate",
+          "quantity": 30.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "walnut",
+          "quantity": 20.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "cottage_cheese_5",
+          "quantity": 100.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "salt",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "pesto_sauce",
+          "quantity": 15.0,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "italian_seasoning",
+          "quantity": 2,
+          "unit": "gram"
+        },
+        {
+          "catalogKey": "black_pepper",
+          "quantity": 2.0,
+          "unit": "gram"
+        }
+      ],
+      "cookTimeMinutes": 25,
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ]
+    },
+    {
+      "id": "recipe_161",
+      "servings": 1,
+      "imageId": "161",
       "translations": {
         "ru": {
           "name": "Грибной крем-суп",
@@ -6496,7 +6651,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -6528,9 +6683,9 @@
       ]
     },
     {
-      "id": "book_036",
+      "id": "recipe_162",
       "servings": 1,
-      "imageId": "book_036",
+      "imageId": "162",
       "translations": {
         "ru": {
           "name": "Салат с креветками и эдамаме",
@@ -6548,7 +6703,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "far_eastern_shrimp_meat",
+          "catalogKey": "shrimp",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -6583,7 +6738,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -6610,9 +6765,9 @@
       ]
     },
     {
-      "id": "book_037",
+      "id": "recipe_163",
       "servings": 1,
-      "imageId": "book_037",
+      "imageId": "163",
       "translations": {
         "ru": {
           "name": "Крем-суп из запечённой тыквы",
@@ -6645,7 +6800,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tykva",
+          "catalogKey": "pumpkin",
           "quantity": 300.0,
           "unit": "gram"
         },
@@ -6672,9 +6827,9 @@
       ]
     },
     {
-      "id": "book_039",
+      "id": "recipe_164",
       "servings": 1,
-      "imageId": "book_039",
+      "imageId": "164",
       "translations": {
         "ru": {
           "name": "Салат с креветками, киноа и манго",
@@ -6692,7 +6847,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "far_eastern_shrimp_meat",
+          "catalogKey": "shrimp",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -6712,7 +6867,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 15.0,
           "unit": "gram"
         },
@@ -6759,9 +6914,9 @@
       ]
     },
     {
-      "id": "book_040",
+      "id": "recipe_165",
       "servings": 1,
-      "imageId": "book_040",
+      "imageId": "165",
       "translations": {
         "ru": {
           "name": "Гаспачо",
@@ -6774,22 +6929,22 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 40.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -6826,9 +6981,9 @@
       ]
     },
     {
-      "id": "book_041",
+      "id": "recipe_166",
       "servings": 2,
-      "imageId": "book_041",
+      "imageId": "166",
       "translations": {
         "ru": {
           "name": "Уютный чечевичный суп",
@@ -6856,7 +7011,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tykva",
+          "catalogKey": "pumpkin",
           "quantity": 200.0,
           "unit": "gram"
         },
@@ -6866,7 +7021,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "chechevitsa_zerno",
+          "catalogKey": "lentils",
           "quantity": 200.0,
           "unit": "gram"
         },
@@ -6898,9 +7053,9 @@
       ]
     },
     {
-      "id": "book_042",
+      "id": "recipe_167",
       "servings": 1,
-      "imageId": "book_042",
+      "imageId": "167",
       "translations": {
         "ru": {
           "name": "Оливье с тунцом",
@@ -6923,17 +7078,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 60.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "redonion",
+          "catalogKey": "red_onion",
           "quantity": 25,
           "unit": "gram"
         },
         {
-          "catalogKey": "carrots_",
+          "catalogKey": "carrot",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -6943,7 +7098,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pickled_cucumber",
+          "catalogKey": "salted_cucumber",
           "quantity": 30.0,
           "unit": "gram"
         },
@@ -6985,9 +7140,9 @@
       ]
     },
     {
-      "id": "book_043",
+      "id": "recipe_168",
       "servings": 1,
-      "imageId": "book_043",
+      "imageId": "168",
       "translations": {
         "ru": {
           "name": "Рататуй",
@@ -7005,17 +7160,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 120.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "redonion",
+          "catalogKey": "red_onion",
           "quantity": 70.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -7030,7 +7185,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -7045,7 +7200,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 10.0,
           "unit": "gram"
         }
@@ -7057,9 +7212,9 @@
       ]
     },
     {
-      "id": "book_044",
+      "id": "recipe_169",
       "servings": 1,
-      "imageId": "book_044",
+      "imageId": "169",
       "translations": {
         "ru": {
           "name": "Закуска с яичным салатом",
@@ -7072,12 +7227,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 120.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -7087,7 +7242,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -7107,7 +7262,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 5.0,
           "unit": "gram"
         },
@@ -7124,9 +7279,9 @@
       ]
     },
     {
-      "id": "book_045",
+      "id": "recipe_170",
       "servings": 1,
-      "imageId": "book_045",
+      "imageId": "170",
       "translations": {
         "ru": {
           "name": "Летняя буррата",
@@ -7177,9 +7332,9 @@
       ]
     },
     {
-      "id": "book_046",
+      "id": "recipe_171",
       "servings": 1,
-      "imageId": "book_046",
+      "imageId": "171",
       "translations": {
         "ru": {
           "name": "Рулетики из кабачка с сыром",
@@ -7235,9 +7390,9 @@
       ]
     },
     {
-      "id": "book_048",
+      "id": "recipe_172",
       "servings": 2,
-      "imageId": "book_048",
+      "imageId": "172",
       "translations": {
         "ru": {
           "name": "Рыба, запечённая с овощами",
@@ -7265,7 +7420,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "redonion",
+          "catalogKey": "red_onion",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -7275,7 +7430,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -7290,7 +7445,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "laurel",
+          "catalogKey": "bay_leaf",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -7317,9 +7472,9 @@
       ]
     },
     {
-      "id": "book_049",
+      "id": "recipe_173",
       "servings": 1,
-      "imageId": "book_049",
+      "imageId": "173",
       "translations": {
         "ru": {
           "name": "Ризотто со спаржей",
@@ -7332,12 +7487,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "rice_risotto",
+          "catalogKey": "risotto_rice",
           "quantity": 50.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "far_eastern_shrimp_meat",
+          "catalogKey": "shrimp",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -7394,9 +7549,9 @@
       ]
     },
     {
-      "id": "book_050",
+      "id": "recipe_174",
       "servings": 2,
-      "imageId": "book_050",
+      "imageId": "174",
       "translations": {
         "ru": {
           "name": "Ролл с тунцовой пастой",
@@ -7424,7 +7579,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -7444,7 +7599,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "redonion",
+          "catalogKey": "red_onion",
           "quantity": 40.0,
           "unit": "gram"
         },
@@ -7459,7 +7614,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -7487,9 +7642,9 @@
       ]
     },
     {
-      "id": "book_051",
+      "id": "recipe_175",
       "servings": 1,
-      "imageId": "book_051",
+      "imageId": "175",
       "translations": {
         "ru": {
           "name": "Боул с лососем и пико-де-гальо",
@@ -7507,12 +7662,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "losos_atlanticheskiy_semga",
+          "catalogKey": "atlantic_salmon",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "redonion",
+          "catalogKey": "red_onion",
           "quantity": 40.0,
           "unit": "gram"
         },
@@ -7522,7 +7677,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100,
           "unit": "gram"
         },
@@ -7569,9 +7724,9 @@
       ]
     },
     {
-      "id": "book_052",
+      "id": "recipe_176",
       "servings": 1,
-      "imageId": "book_052",
+      "imageId": "176",
       "translations": {
         "ru": {
           "name": "Спринг-роллы",
@@ -7584,17 +7739,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "risovaya_bumaga_aroy_d",
+          "catalogKey": "rice_paper",
           "quantity": 50.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "far_eastern_shrimp_meat",
+          "catalogKey": "shrimp",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 40.0,
           "unit": "gram"
         },
@@ -7629,17 +7784,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 15.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "soevyy_sous",
+          "catalogKey": "soy_sauce",
           "quantity": 20.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "curry_spice",
+          "catalogKey": "curry_powder",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -7649,7 +7804,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "saffron_spice",
+          "catalogKey": "saffron",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -7682,9 +7837,9 @@
       ]
     },
     {
-      "id": "book_053",
+      "id": "recipe_177",
       "servings": 1,
-      "imageId": "book_053",
+      "imageId": "177",
       "translations": {
         "ru": {
           "name": "Паста с креветками и шпинатом",
@@ -7707,12 +7862,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "far_eastern_shrimp_meat",
+          "catalogKey": "shrimp",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "shpinat",
+          "catalogKey": "spinach",
           "quantity": 80.0,
           "unit": "gram"
         },
@@ -7732,7 +7887,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -7742,7 +7897,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 80,
           "unit": "gram"
         },
@@ -7759,9 +7914,9 @@
       ]
     },
     {
-      "id": "book_054",
+      "id": "recipe_178",
       "servings": 1,
-      "imageId": "book_054",
+      "imageId": "178",
       "translations": {
         "ru": {
           "name": "Лодочки из кабачков",
@@ -7789,7 +7944,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -7799,7 +7954,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "redonion",
+          "catalogKey": "red_onion",
           "quantity": 30,
           "unit": "gram"
         },
@@ -7834,7 +7989,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -7851,9 +8006,9 @@
       ]
     },
     {
-      "id": "book_055",
+      "id": "recipe_179",
       "servings": 1,
-      "imageId": "book_055",
+      "imageId": "179",
       "translations": {
         "ru": {
           "name": "Лосось, запечённый с овощами",
@@ -7866,7 +8021,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "losos_atlanticheskiy_semga",
+          "catalogKey": "atlantic_salmon",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -7886,7 +8041,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 80.0,
           "unit": "gram"
         },
@@ -7921,7 +8076,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 3.0,
           "unit": "gram"
         }
@@ -7933,9 +8088,9 @@
       ]
     },
     {
-      "id": "book_056",
+      "id": "recipe_180",
       "servings": 2,
-      "imageId": "book_056",
+      "imageId": "180",
       "translations": {
         "ru": {
           "name": "Паста с тунцом, томатами и грибами",
@@ -7968,7 +8123,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -8005,9 +8160,9 @@
       ]
     },
     {
-      "id": "book_057",
+      "id": "recipe_181",
       "servings": 2,
-      "imageId": "book_057",
+      "imageId": "181",
       "translations": {
         "ru": {
           "name": "Спагетти болоньезе",
@@ -8025,7 +8180,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "beef_cat_1",
+          "catalogKey": "beef",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -8040,12 +8195,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 200.0,
           "unit": "gram"
         },
@@ -8060,7 +8215,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -8075,7 +8230,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -8112,9 +8267,9 @@
       ]
     },
     {
-      "id": "book_058",
+      "id": "recipe_182",
       "servings": 1,
-      "imageId": "book_058",
+      "imageId": "182",
       "translations": {
         "ru": {
           "name": "Картофельная запеканка с мясом",
@@ -8132,7 +8287,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "beef_cat_1",
+          "catalogKey": "beef",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -8147,12 +8302,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -8167,7 +8322,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -8182,7 +8337,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -8214,9 +8369,9 @@
       ]
     },
     {
-      "id": "book_059",
+      "id": "recipe_183",
       "servings": 1,
-      "imageId": "book_059",
+      "imageId": "183",
       "translations": {
         "ru": {
           "name": "Макароны с курицей в тыквенно-сырном соусе",
@@ -8249,17 +8404,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tykva",
+          "catalogKey": "pumpkin",
           "quantity": 200.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -8269,7 +8424,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -8301,9 +8456,9 @@
       ]
     },
     {
-      "id": "book_060",
+      "id": "recipe_184",
       "servings": 2,
-      "imageId": "book_060",
+      "imageId": "184",
       "translations": {
         "ru": {
           "name": "Фахитас с курицей",
@@ -8346,7 +8501,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 200.0,
           "unit": "gram"
         },
@@ -8361,7 +8516,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "chili_powder",
+          "catalogKey": "chili_flakes",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -8398,9 +8553,9 @@
       ]
     },
     {
-      "id": "book_061",
+      "id": "recipe_185",
       "servings": 1,
-      "imageId": "book_061",
+      "imageId": "185",
       "translations": {
         "ru": {
           "name": "Карбонара",
@@ -8423,7 +8578,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -8438,7 +8593,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "okorok_vareno_kopchyonyy",
+          "catalogKey": "ham",
           "quantity": 30.0,
           "unit": "gram"
         },
@@ -8463,7 +8618,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 3.0,
           "unit": "gram"
         }
@@ -8475,9 +8630,9 @@
       ]
     },
     {
-      "id": "book_062",
+      "id": "recipe_186",
       "servings": 2,
-      "imageId": "book_062",
+      "imageId": "186",
       "translations": {
         "ru": {
           "name": "Курица в масляном соусе (баттер чикен)",
@@ -8500,7 +8655,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -8520,7 +8675,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -8530,12 +8685,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 210.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -8550,7 +8705,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "curry_spice",
+          "catalogKey": "curry_powder",
           "quantity": 4.0,
           "unit": "gram"
         },
@@ -8577,9 +8732,9 @@
       ]
     },
     {
-      "id": "book_063",
+      "id": "recipe_187",
       "servings": 2,
-      "imageId": "book_063",
+      "imageId": "187",
       "translations": {
         "ru": {
           "name": "Начос с картофельными дольками",
@@ -8597,7 +8752,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "beef_cat_1",
+          "catalogKey": "beef",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -8612,12 +8767,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -8632,7 +8787,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -8657,7 +8812,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -8699,9 +8854,9 @@
       ]
     },
     {
-      "id": "book_064",
+      "id": "recipe_188",
       "servings": 1,
-      "imageId": "book_064",
+      "imageId": "188",
       "translations": {
         "ru": {
           "name": "Хрустящие мясные рулеты",
@@ -8719,7 +8874,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "beef_cat_1",
+          "catalogKey": "beef",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -8734,12 +8889,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -8754,7 +8909,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -8774,7 +8929,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -8794,7 +8949,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50.0,
           "unit": "gram"
         }
@@ -8806,9 +8961,9 @@
       ]
     },
     {
-      "id": "book_065",
+      "id": "recipe_189",
       "servings": 2,
-      "imageId": "book_065",
+      "imageId": "189",
       "translations": {
         "ru": {
           "name": "Боул с курицей чипотле",
@@ -8821,7 +8976,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -8846,7 +9001,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -8856,7 +9011,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 200.0,
           "unit": "gram"
         },
@@ -8896,7 +9051,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "chili_powder",
+          "catalogKey": "chili_flakes",
           "quantity": 1.0,
           "unit": "gram"
         },
@@ -8918,9 +9073,9 @@
       ]
     },
     {
-      "id": "book_066",
+      "id": "recipe_190",
       "servings": 1,
-      "imageId": "book_066",
+      "imageId": "190",
       "translations": {
         "ru": {
           "name": "Картофель, фаршированный мясом и сыром",
@@ -8943,7 +9098,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "beef_cat_1",
+          "catalogKey": "beef",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -8963,7 +9118,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -8973,7 +9128,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -8993,7 +9148,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 50,
           "unit": "gram"
         }
@@ -9005,9 +9160,9 @@
       ]
     },
     {
-      "id": "book_067",
+      "id": "recipe_191",
       "servings": 1,
-      "imageId": "book_067",
+      "imageId": "191",
       "translations": {
         "ru": {
           "name": "Пенне с курицей в соусе из запечённых овощей",
@@ -9030,12 +9185,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 30.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "tykva",
+          "catalogKey": "pumpkin",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -9060,7 +9215,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -9082,9 +9237,9 @@
       ]
     },
     {
-      "id": "book_068",
+      "id": "recipe_192",
       "servings": 2,
-      "imageId": "book_068",
+      "imageId": "192",
       "translations": {
         "ru": {
           "name": "Сырные такитос",
@@ -9117,7 +9272,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -9132,7 +9287,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 200.0,
           "unit": "gram"
         },
@@ -9157,7 +9312,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "chili_powder",
+          "catalogKey": "chili_flakes",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9199,9 +9354,9 @@
       ]
     },
     {
-      "id": "book_069",
+      "id": "recipe_193",
       "servings": 1,
-      "imageId": "book_069",
+      "imageId": "193",
       "translations": {
         "ru": {
           "name": "Ролл с бургером",
@@ -9239,7 +9394,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 80,
           "unit": "gram"
         },
@@ -9276,9 +9431,9 @@
       ]
     },
     {
-      "id": "book_070",
+      "id": "recipe_194",
       "servings": 2,
-      "imageId": "book_070",
+      "imageId": "194",
       "translations": {
         "ru": {
           "name": "Буррито-боул",
@@ -9291,17 +9446,17 @@
       },
       "ingredients": [
         {
-          "catalogKey": "white_rice_rice_groats",
+          "catalogKey": "white_rice",
           "quantity": 50.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "beef_cat_1",
+          "catalogKey": "beef",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9321,7 +9476,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9366,7 +9521,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -9383,9 +9538,9 @@
       ]
     },
     {
-      "id": "book_071",
+      "id": "recipe_195",
       "servings": 1,
-      "imageId": "book_071",
+      "imageId": "195",
       "translations": {
         "ru": {
           "name": "Пицца на баклажанах",
@@ -9403,7 +9558,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -9423,12 +9578,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shampinony",
+          "catalogKey": "champignons",
           "quantity": 40.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 3.0,
           "unit": "gram"
         },
@@ -9450,9 +9605,9 @@
       ]
     },
     {
-      "id": "book_072",
+      "id": "recipe_196",
       "servings": 2,
-      "imageId": "book_072",
+      "imageId": "196",
       "translations": {
         "ru": {
           "name": "Тако",
@@ -9475,7 +9630,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bell_red",
+          "catalogKey": "red_bell_pepper",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9495,7 +9650,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -9515,7 +9670,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9547,9 +9702,9 @@
       ]
     },
     {
-      "id": "book_073",
+      "id": "recipe_197",
       "servings": 1,
-      "imageId": "book_073",
+      "imageId": "197",
       "translations": {
         "ru": {
           "name": "Пицца на тортилье",
@@ -9567,7 +9722,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tomatnaya_pasta_konservy",
+          "catalogKey": "tomato_paste",
           "quantity": 70.0,
           "unit": "gram"
         },
@@ -9582,7 +9737,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "pomidor_tomat",
+          "catalogKey": "tomato",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9592,7 +9747,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "oregano_sushenyy",
+          "catalogKey": "oregano",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -9614,9 +9769,9 @@
       ]
     },
     {
-      "id": "book_074",
+      "id": "recipe_198",
       "servings": 1,
-      "imageId": "book_074",
+      "imageId": "198",
       "translations": {
         "ru": {
           "name": "Сэндвич с курицей и сыром",
@@ -9629,12 +9784,12 @@
       },
       "ingredients": [
         {
-          "catalogKey": "slices_of_sourdough",
+          "catalogKey": "sourdough_bread",
           "quantity": 80.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "shpinat",
+          "catalogKey": "spinach",
           "quantity": 60.0,
           "unit": "gram"
         },
@@ -9644,7 +9799,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "redonion",
+          "catalogKey": "red_onion",
           "quantity": 40.0,
           "unit": "gram"
         },
@@ -9682,9 +9837,9 @@
       ]
     },
     {
-      "id": "book_075",
+      "id": "recipe_199",
       "servings": 1,
-      "imageId": "book_075",
+      "imageId": "199",
       "translations": {
         "ru": {
           "name": "Мини-пирожки с яблоком",
@@ -9697,7 +9852,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -9707,7 +9862,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9722,12 +9877,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sugar_syrup_",
+          "catalogKey": "sugar_syrup",
           "quantity": 15.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 200.0,
           "unit": "gram"
         }
@@ -9739,9 +9894,9 @@
       ]
     },
     {
-      "id": "book_076",
+      "id": "recipe_200",
       "servings": 1,
-      "imageId": "book_076",
+      "imageId": "200",
       "translations": {
         "ru": {
           "name": "Мини-панкейки с шоколадом",
@@ -9759,7 +9914,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9769,7 +9924,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 75.0,
           "unit": "gram"
         },
@@ -9789,7 +9944,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 15.0,
           "unit": "gram"
         },
@@ -9806,9 +9961,9 @@
       ]
     },
     {
-      "id": "book_077",
+      "id": "recipe_201",
       "servings": 1,
-      "imageId": "book_077",
+      "imageId": "201",
       "translations": {
         "ru": {
           "name": "Шоколадные трюфели",
@@ -9821,7 +9976,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 20.0,
           "unit": "gram"
         },
@@ -9831,7 +9986,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 40.0,
           "unit": "gram"
         },
@@ -9846,7 +10001,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 10.0,
           "unit": "gram"
         },
@@ -9862,9 +10017,9 @@
       ]
     },
     {
-      "id": "book_078",
+      "id": "recipe_202",
       "servings": 1,
-      "imageId": "book_078",
+      "imageId": "202",
       "translations": {
         "ru": {
           "name": "Пирог с клюквой и белым шоколадом",
@@ -9892,12 +10047,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 30.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -9932,7 +10087,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -9949,9 +10104,9 @@
       ]
     },
     {
-      "id": "book_079",
+      "id": "recipe_203",
       "servings": 1,
-      "imageId": "book_079",
+      "imageId": "203",
       "translations": {
         "ru": {
           "name": "Протеиновые блинчики с начинкой и шоколадом",
@@ -9969,7 +10124,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -9979,7 +10134,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 75.0,
           "unit": "gram"
         },
@@ -9994,12 +10149,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 200.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "golubika",
+          "catalogKey": "blueberries",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -10009,7 +10164,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 15.0,
           "unit": "gram"
         }
@@ -10021,9 +10176,9 @@
       ]
     },
     {
-      "id": "book_080",
+      "id": "recipe_204",
       "servings": 1,
-      "imageId": "book_080",
+      "imageId": "204",
       "translations": {
         "ru": {
           "name": "Панкейк «Синнабон»",
@@ -10041,7 +10196,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -10051,7 +10206,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 75.0,
           "unit": "gram"
         },
@@ -10083,9 +10238,9 @@
       ]
     },
     {
-      "id": "book_081",
+      "id": "recipe_205",
       "servings": 1,
-      "imageId": "book_081",
+      "imageId": "205",
       "translations": {
         "ru": {
           "name": "Банана-сплит",
@@ -10103,12 +10258,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "sugar_syrup_",
+          "catalogKey": "sugar_syrup",
           "quantity": 15.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 200.0,
           "unit": "gram"
         },
@@ -10118,17 +10273,17 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 5.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 15.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "golubika",
+          "catalogKey": "blueberries",
           "quantity": 20.0,
           "unit": "gram"
         }
@@ -10140,9 +10295,9 @@
       ]
     },
     {
-      "id": "book_082",
+      "id": "recipe_206",
       "servings": 1,
-      "imageId": "book_082",
+      "imageId": "206",
       "translations": {
         "ru": {
           "name": "Тропический пирог",
@@ -10160,7 +10315,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -10170,7 +10325,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 75.0,
           "unit": "gram"
         },
@@ -10190,7 +10345,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -10227,9 +10382,9 @@
       ]
     },
     {
-      "id": "book_083",
+      "id": "recipe_207",
       "servings": 1,
-      "imageId": "book_083",
+      "imageId": "207",
       "translations": {
         "ru": {
           "name": "Шоколадный торт с малиной",
@@ -10257,7 +10412,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 250.0,
           "unit": "gram"
         },
@@ -10277,7 +10432,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 15.0,
           "unit": "gram"
         },
@@ -10293,9 +10448,9 @@
       ]
     },
     {
-      "id": "book_084",
+      "id": "recipe_208",
       "servings": 1,
-      "imageId": "book_084",
+      "imageId": "208",
       "translations": {
         "ru": {
           "name": "Шоколадное печенье-брауни",
@@ -10308,7 +10463,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 15.0,
           "unit": "gram"
         },
@@ -10323,7 +10478,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 25.0,
           "unit": "gram"
         },
@@ -10338,12 +10493,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "shokolad_gorkiy",
+          "catalogKey": "dark_chocolate",
           "quantity": 10.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 200.0,
           "unit": "gram"
         }
@@ -10354,9 +10509,9 @@
       ]
     },
     {
-      "id": "book_085",
+      "id": "recipe_209",
       "servings": 1,
-      "imageId": "book_085",
+      "imageId": "209",
       "translations": {
         "ru": {
           "name": "Клубничный чиа-пудинг",
@@ -10379,7 +10534,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -10389,12 +10544,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "semena_chia_sushenye",
+          "catalogKey": "chia_seeds",
           "quantity": 20.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -10416,9 +10571,9 @@
       ]
     },
     {
-      "id": "book_086",
+      "id": "recipe_210",
       "servings": 1,
-      "imageId": "book_086",
+      "imageId": "210",
       "translations": {
         "ru": {
           "name": "Пирог с персиками и творогом",
@@ -10436,7 +10591,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -10446,7 +10601,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 75.0,
           "unit": "gram"
         },
@@ -10466,12 +10621,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "tvorog_5_zhirnosti",
+          "catalogKey": "cottage_cheese_5",
           "quantity": 25.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -10503,9 +10658,9 @@
       ]
     },
     {
-      "id": "book_087",
+      "id": "recipe_211",
       "servings": 6,
-      "imageId": "book_087",
+      "imageId": "211",
       "translations": {
         "ru": {
           "name": "Пряная гранола",
@@ -10543,7 +10698,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "peanut_butter_liquid",
+          "catalogKey": "peanut_butter",
           "quantity": 90.0,
           "unit": "gram"
         },
@@ -10565,9 +10720,9 @@
       ]
     },
     {
-      "id": "book_088",
+      "id": "recipe_212",
       "servings": 1,
-      "imageId": "book_088",
+      "imageId": "212",
       "translations": {
         "ru": {
           "name": "Йогуртовый парфе",
@@ -10585,12 +10740,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 150.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "golubika",
+          "catalogKey": "blueberries",
           "quantity": 30.0,
           "unit": "gram"
         },
@@ -10607,9 +10762,9 @@
       ]
     },
     {
-      "id": "book_089",
+      "id": "recipe_213",
       "servings": 1,
-      "imageId": "book_089",
+      "imageId": "213",
       "translations": {
         "ru": {
           "name": "Лимонный пирог с голубикой",
@@ -10627,7 +10782,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -10637,7 +10792,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 75.0,
           "unit": "gram"
         },
@@ -10657,7 +10812,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -10667,7 +10822,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "golubika",
+          "catalogKey": "blueberries",
           "quantity": 40.0,
           "unit": "gram"
         },
@@ -10689,9 +10844,9 @@
       ]
     },
     {
-      "id": "book_090",
+      "id": "recipe_214",
       "servings": 6,
-      "imageId": "book_090",
+      "imageId": "214",
       "translations": {
         "ru": {
           "name": "Банановый хлеб с шоколадом",
@@ -10709,7 +10864,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "milk_3_5_fat_sterilized",
+          "catalogKey": "milk_3_5",
           "quantity": 200.0,
           "unit": "gram"
         },
@@ -10744,12 +10899,12 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "bee_honey",
+          "catalogKey": "honey",
           "quantity": 60.0,
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 50.0,
           "unit": "gram"
         },
@@ -10766,9 +10921,9 @@
       ]
     },
     {
-      "id": "book_091",
+      "id": "recipe_215",
       "servings": 2,
-      "imageId": "book_091",
+      "imageId": "215",
       "translations": {
         "ru": {
           "name": "Пряный яблочный пирог",
@@ -10786,7 +10941,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 100.0,
           "unit": "gram"
         },
@@ -10796,7 +10951,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yabloko",
+          "catalogKey": "apple",
           "quantity": 150.0,
           "unit": "gram"
         },
@@ -10816,7 +10971,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "orekh_muskatnyy",
+          "catalogKey": "nutmeg",
           "quantity": 2.0,
           "unit": "gram"
         },
@@ -10826,7 +10981,7 @@
           "unit": "gram"
         },
         {
-          "catalogKey": "yogurt_grecheskiy_1_9_zhirnosti_naturalnyy",
+          "catalogKey": "greek_yogurt_1_9",
           "quantity": 160.0,
           "unit": "gram"
         },
@@ -10853,9 +11008,9 @@
       ]
     },
     {
-      "id": "book_093",
+      "id": "recipe_216",
       "servings": 1,
-      "imageId": "book_093",
+      "imageId": "216",
       "translations": {
         "ru": {
           "name": "Запечённый протеиновый заварной крем",
@@ -10868,7 +11023,7 @@
       },
       "ingredients": [
         {
-          "catalogKey": "yaytso_kurinoe",
+          "catalogKey": "chicken_egg",
           "quantity": 150.0,
           "unit": "gram"
         },

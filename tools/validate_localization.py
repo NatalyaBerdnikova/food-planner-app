@@ -27,6 +27,8 @@ UNIT_KEYS = {
 }
 UNIT_VALUES = {key.removeprefix("unit.") for key in UNIT_KEYS}
 MEAL_TYPE_VALUES = {"breakfast", "lunch", "dinner", "snack"}
+SNAKE_CASE_KEY = re.compile(r"^[a-z][a-z0-9]*(?:_[a-z0-9]+)*$")
+RECIPE_ID_PATTERN = re.compile(r"^recipe_\d+$")
 
 
 def load_json(path: Path) -> dict:
@@ -109,6 +111,8 @@ def validate() -> list[str]:
     }
     for product in products:
         key = product.get("catalogKey", "<missing-key>")
+        if not isinstance(key, str) or not SNAKE_CASE_KEY.match(key):
+            errors.append(f"product {key!r}: catalogKey must be ASCII snake_case")
         translations = product.get("translations") or {}
         for locale in ("en", "ru"):
             name = translations.get(locale)
@@ -136,10 +140,8 @@ def validate() -> list[str]:
     image_ids: list[str] = []
     for recipe in recipes:
         recipe_id = recipe.get("id", "<missing-id>")
-        if recipe_id.startswith("arise_") and recipe.get("sourceDescription") != (
-            "ARISE COOKBOOK — Nicolina Nunes"
-        ):
-            errors.append(f"recipe {recipe_id}: missing ARISE source attribution")
+        if not isinstance(recipe_id, str) or not RECIPE_ID_PATTERN.match(recipe_id):
+            errors.append(f"recipe {recipe_id!r}: id must match recipe_N format")
         translations = recipe.get("translations") or {}
         for locale in ("en", "ru"):
             translation = translations.get(locale) or {}

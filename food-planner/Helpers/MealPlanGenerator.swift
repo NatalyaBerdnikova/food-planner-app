@@ -94,13 +94,14 @@ enum MealPlanGenerator {
         var items: [PlannedItem] = []
         var used = Set<String>()
         for slot in snapshot.slots {
+            let canonicalId = FoodCatalogAliases.canonicalRecipeId(for: slot.catalogRecipeId)
             guard let mealType = slot.mealType,
-                  let source = byId[slot.catalogRecipeId],
-                  used.insert(slot.catalogRecipeId).inserted
+                  let source = byId[canonicalId],
+                  used.insert(canonicalId).inserted
             else { continue }
             items.append(
                 PlannedItem(
-                    catalogRecipeId: slot.catalogRecipeId,
+                    catalogRecipeId: canonicalId,
                     source: source,
                     mealType: mealType,
                     scale: slot.scale

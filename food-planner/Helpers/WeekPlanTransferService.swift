@@ -337,9 +337,10 @@ enum WeekPlanTransferService {
 
     private static func makeRecipe(from dto: FoodPlanRecipeDTO, in context: ModelContext) -> Recipe {
         let tags = Set(dto.mealTypeTags.compactMap(MealType.init(rawValue:)))
+        let canonicalCatalogId = dto.catalogRecipeId.map(FoodCatalogAliases.canonicalRecipeId(for:))
         let recipe = Recipe(
             name: dto.name,
-            catalogRecipeId: dto.catalogRecipeId,
+            catalogRecipeId: canonicalCatalogId,
             servings: max(dto.servings, 1),
             imageData: imageData(fromBase64: dto.imageJPEGBase64),
             steps: dto.steps,
