@@ -225,8 +225,16 @@ enum UnmatchedIngredientReporter {
         now: Date = .now
     ) async -> Int {
         let trimmedSecret = secret.trimmingCharacters(in: .whitespacesAndNewlines)
+        let currentQueue = loadQueue(from: queueFileURL)
+        guard !currentQueue.isEmpty else { return 0 }
+
         guard !trimmedSecret.isEmpty,
               trimmedSecret != BackendAPIConfig.placeholderIngestSecret else {
+            presentUnmatchedDebugStatus([
+                "POST \(endpointURL.absoluteString)",
+                "Skipped: ingest secret missing or placeholder",
+                "Queue items: \(currentQueue.count)",
+            ])
             return 0
         }
 
@@ -237,12 +245,13 @@ enum UnmatchedIngredientReporter {
             Task { await worker.endFlush() }
         }
 
-        let currentQueue = loadQueue(from: queueFileURL)
-        guard !currentQueue.isEmpty else { return 0 }
-
         var remaining: [QueuedReport] = []
         var sentCount = 0
         var rateLimitedUntil: Date?
+        var debugLines: [String] = [
+            "POST \(endpointURL.absoluteString)",
+            "Queue: \(currentQueue.count)",
+        ]
 
         for var item in currentQueue {
             if let rateLimitedUntil, now < rateLimitedUntil {
@@ -265,8 +274,18 @@ enum UnmatchedIngredientReporter {
                     secret: trimmedSecret,
                     timestampSeconds: Int(now.timeIntervalSince1970)
                 )
-                let (_, response) = try await httpClient.data(for: request)
+                let (data, response) = try await httpClient.data(for: request)
                 let status = response.statusCode
+                let bodyPreview = String(data: data, encoding: .utf8)
+                    .map { String($0.prefix(280)) }
+                    ?? "<\(data.count) bytes>"
+                let names = item.payload.ingredients.map(\.name).joined(separator: ", ")
+                debugLines.append(
+                    "• \(status) · \(item.payload.ingredients.count) items · \(names)"
+                )
+                if !bodyPreview.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    debugLines.append(bodyPreview)
+                }
 
                 if (200...299).contains(status) {
                     sentCount += 1
@@ -295,6 +314,7 @@ enum UnmatchedIngredientReporter {
                     }
                 }
             } catch {
+                debugLines.append("• ERROR · \(error.localizedDescription)")
                 item.attemptCount += 1
                 item.nextRetryAt = nil
                 if item.attemptCount < maxAttemptsPerItem {
@@ -304,7 +324,24 @@ enum UnmatchedIngredientReporter {
         }
 
         saveQueue(remaining, to: queueFileURL)
+        debugLines.append("Sent: \(sentCount) · Remaining: \(remaining.count)")
+        presentUnmatchedDebugStatus(debugLines)
         return sentCount
+    }
+
+    private static func presentUnmatchedDebugStatus(_ lines: [String]) {
+        #if DEBUG
+        guard ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil else {
+            return
+        }
+        let message = lines.joined(separator: "\n")
+        Task { @MainActor in
+            APIDebugStatusPresenter.present(
+                title: "Unmatched ingredients API",
+                message: message
+            )
+        }
+        #endif
     }
 
     static func buildSignedRequest(

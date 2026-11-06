@@ -1,7 +1,0 @@
-// Copy to Config/Local.xcconfig (gitignored) or set via Info.plist / ImportSecrets.plist / Scheme environment variables.
-// Note: In xcconfig files, "//" starts a comment, so use $() to escape URL slashes if overriding FOOD_PLANNER_API_BASE_URL here.
-
-FOOD_PLANNER_API_BASE_URL = https:/$()/food-planner.web-dev.su
-FOOD_PLANNER_INGEST_SECRET = YOUR_FOOD_PLANNER_INGEST_SECRET
-
-#include? "Local.xcconfig"

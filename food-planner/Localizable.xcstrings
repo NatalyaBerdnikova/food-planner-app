@@ -6741,6 +6741,54 @@
         }
       }
     },
+    "settings.legal.deleteData" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete my data"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удаление данных"
+          }
+        }
+      }
+    },
+    "settings.legal.support" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддержка"
+          }
+        }
+      }
+    },
+    "settings.legal.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legal & Support"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Документы и поддержка"
+          }
+        }
+      }
+    },
     "settings.micros.footer" : {
       "localizations" : {
         "en" : {

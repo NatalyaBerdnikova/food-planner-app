@@ -217,11 +217,11 @@ struct DefaultPaywall: View {
 
             VStack(spacing: 12) {
                 HStack(spacing: 12) {
-                    Link("subscription.terms", destination: URL(string: AppVars.termsUrl)!)
+                    Link("subscription.terms", destination: AppVars.termsURL)
                         .simultaneousGesture(TapGesture().onEnded {
                             AppAnalytics.logPaywallLinkTap(linkType: "terms")
                         })
-                    Link("subscription.privacy", destination: URL(string: AppVars.privacyUrl)!)
+                    Link("subscription.privacy", destination: AppVars.privacyURL)
                         .simultaneousGesture(TapGesture().onEnded {
                             AppAnalytics.logPaywallLinkTap(linkType: "privacy")
                         })
