@@ -43,6 +43,8 @@ struct SettingsView: View {
 
             languageSection
 
+            legalSection
+
             statisticsSection
         }
         .navigationTitle("nav.settings")
@@ -194,6 +196,17 @@ struct SettingsView: View {
             Toggle("settings.showMacroFractions", isOn: $showMacroFractions)
         } footer: {
             Text("settings.showMacroFractions.footer")
+        }
+    }
+
+    private var legalSection: some View {
+        Section {
+            Link("subscription.privacy", destination: AppVars.privacyURL)
+            Link("subscription.terms", destination: AppVars.termsURL)
+            Link("settings.legal.support", destination: AppVars.supportURL)
+            Link("settings.legal.deleteData", destination: AppVars.deleteDataURL)
+        } header: {
+            Text("settings.legal.title")
         }
     }
 

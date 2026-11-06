@@ -1,7 +1,7 @@
 import Foundation
 
 enum BackendAPIConfig {
-    static let defaultBaseURLString = "https://food-planner.web-dev.su"
+    static let defaultBaseURLString = "https://food-planner.app"
 
     static let baseURLKey = "FOOD_PLANNER_API_BASE_URL"
     static let ingestSecretKey = "FOOD_PLANNER_INGEST_SECRET"

@@ -57,30 +57,30 @@ struct food_plannerTests {
     // MARK: - 1. BackendAPIConfig
 
     @Test func backendConfigEndpoints() {
-        let base = "https://food-planner.web-dev.su/"
+        let base = "https://food-planner.app/"
         #expect(
             BackendAPIConfig.endpointURL(
                 path: BackendAPIConfig.Path.catalogManifest,
                 baseURLString: base
-            ).absoluteString == "https://food-planner.web-dev.su/catalog/manifest.json"
+            ).absoluteString == "https://food-planner.app/catalog/manifest.json"
         )
         #expect(
             BackendAPIConfig.endpointURL(
                 path: BackendAPIConfig.Path.catalogRecipes,
                 baseURLString: base
-            ).absoluteString == "https://food-planner.web-dev.su/catalog/recipes.json"
+            ).absoluteString == "https://food-planner.app/catalog/recipes.json"
         )
         #expect(
             BackendAPIConfig.endpointURL(
                 path: BackendAPIConfig.Path.catalogFoods,
                 baseURLString: base
-            ).absoluteString == "https://food-planner.web-dev.su/catalog/foods.json"
+            ).absoluteString == "https://food-planner.app/catalog/foods.json"
         )
         #expect(
             BackendAPIConfig.endpointURL(
                 path: BackendAPIConfig.Path.unmatchedIngredients,
                 baseURLString: base
-            ).absoluteString == "https://food-planner.web-dev.su/api/ingredients/unmatched"
+            ).absoluteString == "https://food-planner.app/api/ingredients/unmatched"
         )
     }
 
@@ -236,7 +236,7 @@ struct food_plannerTests {
         }
 
         let outcome1 = try await RemoteCatalogSyncService.fetchAndCacheCatalogIfNeeded(
-            baseURLString: "https://food-planner.web-dev.su",
+            baseURLString: "https://food-planner.app",
             httpClient: client1,
             cacheDirectory: cacheDir,
             userDefaults: defaults,
@@ -252,7 +252,7 @@ struct food_plannerTests {
         }
 
         let outcome2 = try await RemoteCatalogSyncService.fetchAndCacheCatalogIfNeeded(
-            baseURLString: "https://food-planner.web-dev.su",
+            baseURLString: "https://food-planner.app",
             httpClient: client2,
             cacheDirectory: cacheDir,
             userDefaults: defaults,
@@ -302,7 +302,7 @@ struct food_plannerTests {
 
         await #expect(throws: RemoteCatalogError.self) {
             _ = try await RemoteCatalogSyncService.fetchAndCacheCatalogIfNeeded(
-                baseURLString: "https://food-planner.web-dev.su",
+                baseURLString: "https://food-planner.app",
                 httpClient: client,
                 cacheDirectory: cacheDir,
                 userDefaults: defaults
@@ -398,7 +398,7 @@ struct food_plannerTests {
         let tempDir = try makeTempDirectory()
         defer { try? FileManager.default.removeItem(at: tempDir) }
         let queueURL = tempDir.appendingPathComponent("queue.json")
-        let endpoint = URL(string: "https://food-planner.web-dev.su/api/ingredients/unmatched")!
+        let endpoint = URL(string: "https://food-planner.app/api/ingredients/unmatched")!
 
         let failingClient = MockCatalogHTTPClient { request in
             (Data(), MockCatalogHTTPClient.response(url: request.url!, statusCode: 503))

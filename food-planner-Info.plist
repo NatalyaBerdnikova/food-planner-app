@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>FOOD_PLANNER_API_BASE_URL</key>
-	<string>$(FOOD_PLANNER_API_BASE_URL)</string>
-	<key>FOOD_PLANNER_INGEST_SECRET</key>
-	<string>$(FOOD_PLANNER_INGEST_SECRET)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>CFBundleURLTypes</key>
