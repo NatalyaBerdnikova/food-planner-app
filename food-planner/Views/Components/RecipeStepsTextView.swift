@@ -14,13 +14,14 @@ struct RecipeStepsTextView: UIViewRepresentable {
         textView.textContainer.lineFragmentPadding = 0
         textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        textView.attributedText = attributedText
+        textView.attributedText = RecipeStepsStorage.sanitizeListIndents(attributedText)
         return textView
     }
 
     func updateUIView(_ textView: UITextView, context: Context) {
-        if textView.attributedText != attributedText {
-            textView.attributedText = attributedText
+        let sanitized = RecipeStepsStorage.sanitizeListIndents(attributedText)
+        if textView.attributedText != sanitized {
+            textView.attributedText = sanitized
         }
     }
 

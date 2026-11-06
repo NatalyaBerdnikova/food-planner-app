@@ -49,8 +49,32 @@ enum RecipeStepsStorage {
             .filter { !$0.isEmpty }
     }
 
+    static func plainSteps(fromStoredText text: String) -> [String] {
+        text
+            .components(separatedBy: .newlines)
+            .map(stripLeadingListMarker(from:))
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+    }
+
+    static func plainSteps(fromStoredLines lines: [String]) -> [String] {
+        lines
+            .map(stripLeadingListMarker(from:))
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+    }
+
+    static func stripLeadingListMarker(from line: String) -> String {
+        let trimmed = line.trimmingCharacters(in: .whitespaces)
+        guard let regex = try? NSRegularExpression(pattern: #"^\d+[.)]\s+"#) else {
+            return trimmed
+        }
+        let range = NSRange(trimmed.startIndex..., in: trimmed)
+        return regex.stringByReplacingMatches(in: trimmed, options: [], range: range, withTemplate: "")
+    }
+
     static func attributedString(fromPlainSteps steps: [String]) -> NSAttributedString {
-        attributedRecipeDocument(intro: nil, steps: steps)
+        attributedRecipeDocument(intro: nil, steps: plainSteps(fromStoredLines: steps))
     }
 
     /// Builds text compatible with `RichTextEditorView` (optional intro + decimal `NSTextList`).

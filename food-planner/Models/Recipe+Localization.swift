@@ -20,12 +20,9 @@ extension Recipe {
                !attributed.string.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 return attributed
             }
-            let joined = steps
-                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-                .filter { !$0.isEmpty }
-                .joined(separator: "\n")
-            guard !joined.isEmpty else { return nil }
-            return NSAttributedString(string: joined, attributes: RecipeStepsStorage.defaultBodyAttributes())
+            let lines = RecipeStepsStorage.plainSteps(fromStoredLines: steps)
+            guard !lines.isEmpty else { return nil }
+            return RecipeStepsStorage.attributedString(fromPlainSteps: lines)
         }
 
         if let catalogRecipeId,
@@ -34,15 +31,14 @@ extension Recipe {
             languageCode: L10n.currentLanguageCode
            ),
            !steps.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return NSAttributedString(string: steps, attributes: RecipeStepsStorage.defaultBodyAttributes())
+            let lines = RecipeStepsStorage.plainSteps(fromStoredText: steps)
+            guard !lines.isEmpty else { return nil }
+            return RecipeStepsStorage.attributedString(fromPlainSteps: lines)
         }
 
-        let joined = steps
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .filter { !$0.isEmpty }
-            .joined(separator: "\n")
-        guard !joined.isEmpty else { return nil }
-        return NSAttributedString(string: joined, attributes: RecipeStepsStorage.defaultBodyAttributes())
+        let lines = RecipeStepsStorage.plainSteps(fromStoredLines: steps)
+        guard !lines.isEmpty else { return nil }
+        return RecipeStepsStorage.attributedString(fromPlainSteps: lines)
     }
 
     var localizedStepsText: String? {
