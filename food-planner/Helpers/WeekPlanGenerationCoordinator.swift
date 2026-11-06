@@ -62,9 +62,24 @@ final class WeekPlanGenerationCoordinator {
 
     func startPendingGenerationIfNeeded() {
         guard MealPlanGenerationPending.needsGeneration else { return }
+        guard let context = modelContext else { return }
+
+        let weekStart = Calendar.current.startOfWeek(for: .now)
+        let weekPlans = (try? context.fetch(FetchDescriptor<WeekPlan>())) ?? []
+        let weekPlan = WeekPlanService.weekPlan(
+            forWeekStarting: weekStart,
+            from: weekPlans,
+            in: context
+        )
+        let weekAlreadyHasMeals = weekPlan.dayPlans.contains { !$0.meals.isEmpty }
+        if weekAlreadyHasMeals {
+            MealPlanGenerationPending.clear()
+            return
+        }
+
         startGeneration(
             replaceExisting: false,
-            forWeekStarting: Calendar.current.startOfWeek(for: .now)
+            forWeekStarting: weekStart
         )
     }
 
@@ -96,7 +111,7 @@ final class WeekPlanGenerationCoordinator {
             in: context
         )
         let candidates = RecipeCollections.deduplicatedCatalogRecipes(
-            from: ((try? context.fetch(FetchDescriptor<Recipe>())) ?? []).filter(\.isVisibleInApp)
+            from: (try? context.fetch(FetchDescriptor<Recipe>())) ?? []
         )
 
         let pinnedToday: MealPlanGenerator.DayBlueprint? = {

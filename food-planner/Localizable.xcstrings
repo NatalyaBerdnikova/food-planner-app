@@ -1853,6 +1853,38 @@
         }
       }
     },
+    "bootstrap.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cook what you love. Hit your targets."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готовьте любимое. Держите цели."
+          }
+        }
+      }
+    },
+    "bootstrap.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Food Planner"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Food Planner"
+          }
+        }
+      }
+    },
     "common.loading" : {
       "localizations" : {
         "en" : {

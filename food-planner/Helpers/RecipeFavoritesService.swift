@@ -64,16 +64,12 @@ enum RecipeFavoritesService {
 }
 
 enum RecipeCollections {
-    static func visible(_ recipes: [Recipe]) -> [Recipe] {
-        recipes.filter(\.isVisibleInApp)
-    }
-
     static func catalogRecipes(from recipes: [Recipe]) -> [Recipe] {
-        deduplicatedCatalogRecipes(from: visible(recipes))
+        deduplicatedCatalogRecipes(from: recipes)
     }
 
     static func userRecipes(from recipes: [Recipe]) -> [Recipe] {
-        visible(recipes)
+        recipes
             .filter(\.isUserCreated)
             .sorted { $0.localizedName.localizedCaseInsensitiveCompare($1.localizedName) == .orderedAscending }
     }

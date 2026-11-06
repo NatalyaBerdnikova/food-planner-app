@@ -48,11 +48,8 @@ struct ContentView: View {
                 gatedRoot
                     .transition(.opacity)
             } else {
-                ZStack {
-                    AppTheme.heroGradient.ignoresSafeArea()
-                    SparklesLoader(tint: .white)
-                }
-                .transition(.opacity)
+                BootstrapSplashView()
+                    .transition(.opacity)
             }
         }
         .applyAppLanguage(appLanguage)

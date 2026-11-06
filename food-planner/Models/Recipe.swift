@@ -47,9 +47,6 @@ final class Recipe {
     var hasCookTime: Bool { cookTimeMinutes > 0 }
     var hasImage: Bool { imageData.map { !$0.isEmpty } ?? false }
 
-    /// Временный базовый фильтр видимости в UI: без фото рецепт скрыт из списков и подбора.
-    var isVisibleInApp: Bool { hasImage }
-
     init(
         name: String,
         catalogRecipeId: String? = nil,
