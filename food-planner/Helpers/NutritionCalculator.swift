@@ -24,7 +24,7 @@ enum NutritionCalculator {
     static func totals(from dayPlan: DayPlan) -> NutrientTotals {
         dayPlan.meals.reduce(into: NutrientTotals.zero) { totals, meal in
             guard let recipe = meal.recipe else { return }
-            totals = totals + recipeNutrition(recipe).total
+            totals = totals + totalsPerServing(for: recipe)
         }
     }
 
@@ -70,15 +70,13 @@ enum NutritionCalculator {
         return RecipeNutrition(total: totals, totalWeightGrams: totalWeight, per100g: per100g)
     }
 
-    static func nutritionPerServing(for recipe: Recipe) -> DailyNutrition {
-        let nutrition = recipeNutrition(recipe)
+    static func totalsPerServing(for recipe: Recipe) -> NutrientTotals {
         let servings = max(Double(recipe.servings), 1)
-        return DailyNutrition(
-            calories: nutrition.total.calories / servings,
-            protein: nutrition.total.protein / servings,
-            fat: nutrition.total.fat / servings,
-            carbs: nutrition.total.carbs / servings
-        )
+        return recipeNutrition(recipe).total.scaled(by: 1.0 / servings)
+    }
+
+    static func nutritionPerServing(for recipe: Recipe) -> DailyNutrition {
+        totalsPerServing(for: recipe).macros
     }
 
     static func weightPerServingGrams(for recipe: Recipe) -> Double {

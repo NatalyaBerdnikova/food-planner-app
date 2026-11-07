@@ -21,30 +21,32 @@ final class WeekPlan {
         self.shoppingItems = shoppingItems
     }
 
-    /// Сводный список покупок из ингредиентов всех рецептов недели.
-    /// Одинаковые продукты (название + единица) суммируются.
+    /// Сводный список покупок из ингредиентов всех приёмов пищи недели.
+    /// На каждый слот плана берётся 1 порция рецепта; одинаковые продукты суммируются.
     var aggregatedShoppingList: [AggregatedShoppingItem] {
         var totals: [String: (name: String, quantity: Double, unit: MeasurementUnit, category: IngredientCategory)] = [:]
 
         for dayPlan in dayPlans {
             for meal in dayPlan.meals {
                 guard let recipe = meal.recipe else { continue }
+                let servings = max(Double(recipe.servings), 1)
 
                 for ingredient in recipe.ingredients {
+                    let portionQuantity = ingredient.quantity / servings
                     let catalogKey = ingredient.foodProduct?.catalogKey ?? ingredient.name
                     let key = "\(catalogKey.lowercased())|\(ingredient.unit.rawValue)"
 
                     if let existing = totals[key] {
                         totals[key] = (
                             existing.name,
-                            existing.quantity + ingredient.quantity,
+                            existing.quantity + portionQuantity,
                             existing.unit,
                             existing.category
                         )
                     } else {
                         totals[key] = (
                             catalogKey,
-                            ingredient.quantity,
+                            portionQuantity,
                             ingredient.unit,
                             ingredient.category
                         )

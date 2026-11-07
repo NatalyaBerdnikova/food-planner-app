@@ -244,7 +244,8 @@ enum WeekPlanTransferService {
             guard grams > 0 else { continue }
             totals = totals + product.nutrientsPer100g.scaled(by: grams / 100.0)
         }
-        return totals.macros
+        let servings = max(Double(recipe.servings), 1)
+        return totals.scaled(by: 1.0 / servings).macros
     }
 
     static func apply(
